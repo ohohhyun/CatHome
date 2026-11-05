@@ -30,7 +30,7 @@ jobs:
           s = p.read_text(encoding="utf-8")
           option = "textures/vram_compression/import_etc2_astc=true"
           if option not in s:
-              s = s.replace("[rendering]\\n", "[rendering]\\n" + option + "\\n", 1)
+              s = s.replace("[rendering]\n", "[rendering]\n" + option + "\n", 1)
           if option not in s:
               raise SystemExit("Missing [rendering] section in Godot config")
           p.write_text(s, encoding="utf-8")
