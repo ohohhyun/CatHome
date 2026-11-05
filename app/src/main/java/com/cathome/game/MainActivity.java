@@ -30,13 +30,13 @@ public class MainActivity extends Activity {
         game.loadUrl("file:///android_asset/index.html");
     }
     @Override protected void onPause() {
-        game.evaluateJavascript("if(state==='play')panel('pause');flushSave();", null);
+        game.evaluateJavascript("if(state==='play')panel('pause');pauseMusic();flushSave();", null);
         game.onPause();
         super.onPause();
     }
     @Override protected void onResume() { super.onResume(); if(game != null) game.onResume(); }
     @Override public void onBackPressed() {
-        game.evaluateJavascript("if(!document.getElementById('levels').classList.contains('hidden')){hide('levels')}else if(state==='play'){panel('pause')}else if(state==='pause'){resume()}else{goHome()}", null);
+        game.evaluateJavascript("if(closeTopPanel()){}else if(state==='play'){panel('pause')}else if(state==='pause'){resume()}else{goHome()}", null);
     }
     @Override protected void onDestroy() { game.destroy(); super.onDestroy(); }
 }
