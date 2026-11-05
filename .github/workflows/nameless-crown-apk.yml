@@ -1,0 +1,81 @@
+name: Nameless Crown Android APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - nameless-crown-dev
+    paths:
+      - 'NamelessCrown/**'
+
+permissions:
+  contents: read
+
+jobs:
+  godot-android:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 45
+    defaults:
+      run:
+        working-directory: NamelessCrown
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify isolated Godot project
+        run: |
+          test -f project.godot
+          test -f export_presets.cfg
+          test -f scenes/main.tscn
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - uses: android-actions/setup-android@v3
+      - name: Install Android SDK
+        run: |
+          yes | sdkmanager --licenses >/dev/null || true
+          sdkmanager 'platform-tools' 'build-tools;35.0.1' 'platforms;android-35'
+
+      - uses: chickensoft-games/setup-godot@v2
+        with:
+          version: 4.7.2
+          use-dotnet: false
+          include-templates: true
+
+      - name: Import resources and check scripts
+        run: |
+          godot --version
+          godot --headless --editor --path . --import --quit
+
+      - name: Game smoke test
+        run: godot --headless --path . --script res://qa/smoke.gd
+
+      - name: Prepare debug signing
+        run: |
+          mkdir -p "$HOME/.android"
+          if [ ! -f "$HOME/.android/debug.keystore" ]; then
+            keytool -genkeypair -keystore "$HOME/.android/debug.keystore" \
+              -storepass android -alias androiddebugkey -keypass android \
+              -keyalg RSA -keysize 2048 -validity 10000 \
+              -dname 'CN=Android Debug,O=Android,C=US'
+          fi
+          python3 ci/configure_android.py
+
+      - name: Export APK
+        env:
+          GODOT_ANDROID_KEYSTORE_DEBUG_USER: androiddebugkey
+          GODOT_ANDROID_KEYSTORE_DEBUG_PASSWORD: android
+        run: |
+          export GODOT_ANDROID_KEYSTORE_DEBUG_PATH="$HOME/.android/debug.keystore"
+          mkdir -p dist
+          godot --headless --path . --export-debug Android dist/NamelessCrown-debug.apk
+          test -s dist/NamelessCrown-debug.apk
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: NamelessCrown-Android-APK
+          path: NamelessCrown/dist/NamelessCrown-debug.apk
+          if-no-files-found: error
+          retention-days: 30
