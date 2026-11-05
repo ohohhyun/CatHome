@@ -26,6 +26,11 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
       - name: Verify Gradle Wrapper
         run: echo '498495120a03b9a6ab5d155f5de3c8f0d986a449153702fb80fc80e134484f17  gradle/wrapper/gradle-wrapper.jar' | sha256sum --check
+      - name: Preserve test APK signing key
+        uses: actions/cache@v4
+        with:
+          path: ~/.android/debug.keystore
+          key: cathome-debug-signing-v1
       - name: Build APK
         run: bash gradlew assembleDebug --no-daemon
       - uses: actions/upload-artifact@v4
