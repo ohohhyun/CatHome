@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 
 root = Path(__file__).resolve().parent.parent
-source = root / 'legacy' / 'cathome-0.7'
+source = root.parent / 'legacy' / 'cathome-0.7'
 target = Path(sys.argv[1]).resolve()
 if not source.is_dir():
     raise SystemExit('Preserved CatHome v0.7 snapshot is missing')

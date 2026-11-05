@@ -2,7 +2,7 @@ name: Build installable APK
 on:
   workflow_dispatch:
   push:
-    branches: [main, codex/ashen-rift-apk]
+    branches: [main]
 permissions:
   contents: read
 jobs:
@@ -11,33 +11,30 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
-      - name: Unpack bundled offline game art
-        run: node tools/unpack-art.cjs
-      - name: Check combat and campaign
-        run: |
-          node tests/game.test.cjs
-          node tests/rpg.test.cjs
-      - name: Test native four-player LAN transport
-        run: |
-          mkdir -p build/lan-test
-          javac -d build/lan-test app/src/main/java/com/cathome/game/LanTransport.java tests/LanTransportTest.java
-          java -cp build/lan-test LanTransportTest
-      - name: Install UI test library
+      - name: Check game logic
+        run: node tests/game.test.cjs
+      - name: Install browser test library
         run: npm install --prefix "$RUNNER_TEMP/cathome-ui" --no-package-lock --no-audit --no-fund playwright@1.56.1
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
-      - name: Test four-player game protocol and mobile layout
+      - name: Check mobile mode selection in browser
         run: node tests/browser.test.cjs
+        env:
+          NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
+      - name: Compare render workload with v0.4
+        run: node tests/performance.test.cjs
         env:
           NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: AshenRift-Previews
+          name: CatHome-Menu-Previews
           path: build/previews/*.png
           if-no-files-found: ignore
       - uses: android-actions/setup-android@v3
@@ -65,33 +62,11 @@ jobs:
         env:
           CATHOME_DEBUG_KEYSTORE: ${{ github.workspace }}/.signing/debug.keystore
       - name: Verify installable APK and signer
-        run: |
-          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --print-certs app/build/outputs/apk/debug/app-debug.apk
-          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging app/build/outputs/apk/debug/app-debug.apk
-          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging app/build/outputs/apk/debug/app-debug.apk | rg -F "package: name='com.ashenrift.game'"
-          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging app/build/outputs/apk/debug/app-debug.apk | rg -F "launchable-activity: name='com.cathome.game.MainActivity'"
-          cp app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/AshenRift-2.0.1-Separate.apk
+        run: '"$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --print-certs app/build/outputs/apk/debug/app-debug.apk'
+
       - uses: actions/upload-artifact@v4
         with:
-          name: AshenRift-Separate-APK
-          path: app/build/outputs/apk/debug/AshenRift-2.0.1-Separate.apk
-          if-no-files-found: error
-          retention-days: 30
-      - name: Prepare original CatHome recovery build
-        run: python tools/prepare-original-restore.py "$RUNNER_TEMP/cathome-restore"
-      - name: Build preserved original CatHome APK
-        run: bash "$RUNNER_TEMP/cathome-restore/gradlew" -p "$RUNNER_TEMP/cathome-restore" assembleDebug --no-daemon
-        env:
-          CATHOME_DEBUG_KEYSTORE: ${{ github.workspace }}/.signing/debug.keystore
-      - name: Verify original CatHome recovery identity
-        run: |
-          RESTORE_APK="$RUNNER_TEMP/cathome-restore/app/build/outputs/apk/debug/app-debug.apk"
-          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --print-certs "$RESTORE_APK"
-          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$RESTORE_APK" | rg -F "package: name='com.cathome.game' versionCode='10'"
-          cp "$RESTORE_APK" "$RUNNER_TEMP/CatHome-0.7-Restore.apk"
-      - uses: actions/upload-artifact@v4
-        with:
-          name: CatHome-Original-Restore-APK
-          path: ${{ runner.temp }}/CatHome-0.7-Restore.apk
+          name: CatHome-APK
+          path: app/build/outputs/apk/debug/app-debug.apk
           if-no-files-found: error
           retention-days: 30

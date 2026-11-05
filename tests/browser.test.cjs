@@ -1,27 +1,70 @@
-const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
-(async()=>{const browser=await chromium.launch({executablePath:process.env.CHROME_BIN||'/usr/bin/google-chrome',args:['--no-sandbox']});const pages=[],errors=[];fs.mkdirSync('build/previews',{recursive:true});
-try{
- for(let i=0;i<4;i++){
-  const p=await browser.newPage({viewport:{width:960,height:480},deviceScaleFactor:1,hasTouch:true});pages.push(p);p.on('pageerror',e=>errors.push(e.message));
-  await p.exposeFunction('nativeSend',async raw=>{const body=JSON.parse(raw);if(i===0){for(let j=1;j<pages.length;j++)await pages[j].evaluate(b=>window.onNativeEvent({kind:'packet',peer:0,body:b}),body);}else await pages[0].evaluate(({peer,body})=>window.onNativeEvent({kind:'packet',peer,body}),{peer:i,body});});
-  await p.addInitScript(({id})=>{window.RiftNative={send:s=>window.nativeSend(s),disconnect:()=>{},localIp:()=> '192.168.1.20',vibrate:()=>{},host:()=>setTimeout(()=>window.onNativeEvent({kind:'hosting',peer:0,message:'192.168.1.20|1234'}),10),join:()=>setTimeout(()=>window.onNativeEvent({kind:'connected',peer:id,message:''}),10)};},{id:i});
-  await p.goto('file://'+path.resolve('app/src/main/assets/index.html'));await p.waitForFunction(()=>window.RiftTown&&window.RiftApp);await p.evaluate(()=>document.fonts.ready);await p.locator('.char-card').nth(i).click();
- }
- const host=pages[0];await host.screenshot({path:'build/previews/01-town.png'});await host.locator('#solo').click();await host.waitForFunction(()=>RiftApp.getMode()==='playing');assert.equal(await host.evaluate(()=>RiftApp.getState().enemies.length),5,'solo first room population');
- // Simultaneous mobile movement and attack with independent pointer capture.
- const cdp=await host.context().newCDPSession(host),joy=await host.locator('#joystick').boundingBox(),attack=await host.locator('#attack').boundingBox(),initialX=await host.evaluate(()=>RiftApp.getState().players[0].x);
- await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:joy.x+joy.width*.85,y:joy.y+joy.height*.5,id:1},{x:attack.x+attack.width*.5,y:attack.y+attack.height*.5,id:2}]});await host.waitForTimeout(400);await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});assert((await host.evaluate(()=>RiftApp.getState().players[0].x))>initialX+10);assert((await host.evaluate(()=>RiftApp.getState().players[0].combo))>0);
- await host.screenshot({path:'build/previews/02-combat.png'});await host.locator('#pause').click();await host.locator('#resume').click();await host.evaluate(()=>RiftApp.getState().phase='victory');await host.waitForFunction(()=>RiftApp.getMode()==='result');await host.locator('#result-next').click();await host.locator('#claim-main-quest').click();assert.equal(await host.evaluate(()=>RiftApp.getSave().chars[0].story),1);assert((await host.evaluate(()=>RiftRPG.level(RiftApp.getSave().chars[0])))>=3);
- await host.screenshot({path:'build/previews/03-quests.png'});await host.locator('#town-tabs [data-town="inventory"]').click();const newId=await host.evaluate(()=>RiftApp.getSave().chars[0].items.find(it=>it.id>24).id);await host.locator('[data-item-id="'+newId+'"]').click();await host.locator('.gear-actions').getByRole('button',{name:'착용',exact:true}).click();assert(await host.evaluate(id=>Object.values(RiftApp.getSave().chars[0].equipped).includes(id),newId));await host.screenshot({path:'build/previews/04-inventory.png'});
- await host.locator('#town-tabs [data-town="skills"]').click();const rank=await host.evaluate(()=>RiftApp.getSave().chars[0].ranks[0]);await host.locator('.skill-node').first().locator('button').click();assert.equal(await host.evaluate(()=>RiftApp.getSave().chars[0].ranks[0]),rank+1);await host.locator('#town-close').click();
- await host.reload();await host.waitForFunction(()=>window.RiftTown);assert.equal(await host.evaluate(()=>RiftApp.getSave().chars[0].story),1);assert.equal(await host.evaluate(()=>RiftApp.getSave().chars[0].ranks[0]),rank+1);await host.evaluate(()=>RiftApp.setConfig({kind:'story',dungeon:1,difficulty:0}));
- await host.locator('#lan-open').click();await host.locator('#host-room').click();await host.waitForFunction(()=>!document.getElementById('lobby').hidden);
- for(let i=1;i<4;i++){const p=pages[i];await p.locator('#lan-open').click();await p.locator('#nickname').fill('동료'+i);await p.locator('#host-ip').fill('192.168.1.20');await p.locator('#join-code').fill('1234');await p.locator('#join-room').click();await host.waitForFunction(n=>document.querySelectorAll('.roster-player').length===n,i+1);}
- assert(await host.locator('#party-start').isDisabled(),'higher quest gate respects least progressed party member');await host.evaluate(()=>RiftApp.setConfig({kind:'story',dungeon:0,difficulty:0}));await host.waitForFunction(()=>!document.getElementById('party-start').disabled);await host.screenshot({path:'build/previews/05-party-lobby.png'});await host.locator('#party-start').click();for(const p of pages)await p.waitForFunction(()=>RiftApp.getMode()==='playing'&&RiftApp.getState().players.length===4);assert.equal(await host.evaluate(()=>RiftApp.getState().enemies.length),11,'four players spawn more monsters');
- const initial=await host.evaluate(()=>RiftApp.getState().players.find(p=>p.id===2).x);await pages[2].keyboard.down('KeyD');await pages[2].waitForTimeout(450);await pages[2].keyboard.up('KeyD');await host.waitForFunction(x=>RiftApp.getState().players.find(p=>p.id===2).x>x+20,initial);await host.locator('#pause').click();for(const p of pages)await p.waitForFunction(()=>!document.getElementById('pause-screen').hidden);await host.locator('#resume').click();await pages[1].screenshot({path:'build/previews/06-four-player.png'});
- await host.evaluate(()=>RiftApp.getState().phase='victory');for(const p of pages)await p.waitForFunction(()=>RiftApp.getMode()==='result');const gold=await host.evaluate(()=>RiftApp.getSave().gold);await host.locator('#home').click();assert(await host.evaluate(()=>RiftApp.isParty()),'party persists while returning to town');assert.equal(await host.evaluate(()=>RiftApp.getSave().gold),gold);
- for(let i=1;i<4;i++){await pages[i].locator('#result-next').click();await pages[i].locator('#claim-main-quest').click();assert.equal(await pages[i].evaluate(()=>RiftApp.getSave().chars[RiftApp.getClass()].story),1);await pages[i].locator('#town-close').click();}
- await host.evaluate(()=>RiftApp.setConfig({kind:'story',dungeon:1,difficulty:0}));await host.locator('#lan-open').click();await host.waitForFunction(()=>!document.getElementById('party-start').disabled);await host.locator('#party-start').click();for(const p of pages)await p.waitForFunction(()=>RiftApp.getMode()==='playing'&&RiftApp.getState().dungeon===1);
- await host.evaluate(()=>RiftApp.getState().phase='victory');for(const p of pages)await p.waitForFunction(()=>RiftApp.getMode()==='result');assert((await host.evaluate(()=>RiftApp.getSave().gold))>gold);await host.screenshot({path:'build/previews/07-results.png'});
- assert.deepEqual(errors,[]);console.log('PASS: town, multi-touch attack+move, solo clear and quest unlock, equipment and skill growth, persistent reload, four-player quest gate and scaling, remote movement, pause, reward delivery, party town return and subsequent quest dungeon.');
-}finally{await browser.close();}})().catch(e=>{console.error(e);process.exit(1);});
+const {chromium}=require('playwright');
+const assert=require('node:assert/strict');
+const path=require('node:path'),fs=require('node:fs');
+const {pathToFileURL}=require('node:url');
+(async()=>{
+ const browser=await chromium.launch({executablePath:process.env.CHROME_BIN||'/usr/bin/google-chrome',headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});
+ try{
+  for(const [width,height] of [[320,568],[390,844],[480,960]]){
+   const context=await browser.newContext({viewport:{width,height},isMobile:true,hasTouch:true});
+   const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
+   await page.addInitScript(()=>{localStorage.catHomeSave=JSON.stringify({cleared:9,unlocked:10,best:0,bestRound:1,medals:{},wallet:120,inventory:{continue:0,umbrella:0,water:0,fish:0},musicEnabled:true,sound:false})});
+   await page.goto(pathToFileURL(path.resolve(__dirname,'../app/src/main/assets/index.html')).href);
+   await page.waitForFunction(()=>typeof STAGES!=='undefined');
+   assert.equal(await page.locator('#endless').isDisabled(),true);
+   assert.match(await page.locator('#story-detail').textContent(),/1~30/);
+   const output=path.resolve(process.env.PREVIEW_DIR||'build/previews');fs.mkdirSync(output,{recursive:true});
+   await page.locator('#shop-open').click();
+   for(const kind of ['continue','umbrella','water','fish'])await page.locator('#buy-'+kind).click();
+   assert.equal(await page.evaluate(()=>wallet),24);
+   assert.deepEqual(await page.evaluate(()=>({...inventory})),{continue:1,umbrella:1,water:1,fish:1});
+   await page.locator('#qty-water').fill('99');await page.locator('#buy-water').click();assert.match(await page.locator('#shop-message').textContent(),/99/);
+   assert.equal(await page.evaluate(()=>inventory.water),1);await page.locator('#qty-water').fill('1');
+   await page.screenshot({path:path.join(output,`shop-${width}.png`)});
+   await page.locator('#shop-close').click();await page.locator('#start').click();
+   assert.deepEqual(await page.evaluate(()=>({state,mode,level})),{state:'play',mode:'story',level:9});
+   const geometry=await page.evaluate(()=>{const game=document.getElementById('game').getBoundingClientRect(),controls=document.getElementById('controls').getBoundingClientRect(),items=document.getElementById('item-controls').getBoundingClientRect();return {bottomGap:game.bottom-controls.bottom,itemGap:controls.top-items.bottom}});
+   assert(Math.abs(geometry.bottomGap-44.4)<2,'controls rise only another 7.4px');assert(geometry.itemGap>=12,'item buttons do not overlap movement controls');
+   const hintGeometry=await page.evaluate(()=>{const hint=document.getElementById('hint'),rect=hint.getBoundingClientRect(),game=document.getElementById('game').getBoundingClientRect();return {parent:hint.parentElement.id,bottom:rect.bottom,actorTop:game.top+(py()-40)*game.height/H}});
+   assert.equal(hintGeometry.parent,'hud');assert(hintGeometry.bottom<hintGeometry.actorTop-10,'guide does not overlap player or platform');
+   assert.equal(await page.locator('#use-fish').isVisible(),true);
+   await page.screenshot({path:path.join(output,`patched-controls-${width}.png`)});
+   assert.equal(await page.locator('#sound').isVisible(),false);assert.equal(await page.locator('#settings-open').isVisible(),false);
+   await page.waitForFunction(()=>document.getElementById('bgm').readyState>=2);
+   assert.equal(await page.evaluate(()=>document.getElementById('bgm').paused),false,'calm background music plays after start');
+   await page.locator('#pause').click();await page.locator('#pause-settings').click();await page.locator('#sound').click();
+   assert.equal(await page.evaluate(()=>Object.keys(soundBuffers).length),6);
+   await page.locator('#music-toggle').click();assert.equal(await page.evaluate(()=>document.getElementById('bgm').paused),true);
+   await page.locator('#music-toggle').click();await page.locator('#settings-close').click();await page.locator('#next').click();
+   await page.locator('#use-umbrella').click();assert.equal(await page.evaluate(()=>usedItems.umbrella),true);assert.equal(await page.evaluate(()=>inventory.umbrella),0);
+   await page.locator('#use-water').click();assert.equal(await page.evaluate(()=>usedItems.water),true);assert.equal(await page.evaluate(()=>inventory.water),0);
+   await page.evaluate(()=>{shots=[];shotTimer=0;cats=[{lane:1,fromLane:0,x:px,base:px,y:py()-90,lift:0,kind:'straight',type:0,age:0,skin:'cheese',hit:false,passed:false,flee:0}];update(.1)});
+   assert(await page.evaluate(()=>cats.some(c=>c.flee>0)),'water hit makes a cat run away');
+   await page.evaluate(()=>{waterTime=0;shots=[];spawn=999;cats=[{tag:'now',lane:0,x:112,base:112,y:py()-130,age:0,kind:'straight',type:0,skin:'calico',flee:0,hit:false,passed:false},{tag:'hidden',lane:2,x:272,base:272,y:-350,age:0,kind:'straight',type:0,skin:'tuxedo',flee:0,hit:false,passed:false}]});
+   await page.locator('#use-fish').click();
+   assert.equal(await page.evaluate(()=>inventory.fish),0);assert.equal(await page.evaluate(()=>cats.find(c=>c.tag==='now').fleeKind),'fish');
+   assert.equal(await page.evaluate(()=>cats.find(c=>c.tag==='hidden').flee),0);
+   await page.evaluate(()=>{cats.push({tag:'later',lane:1,x:192,base:192,y:80,age:0,kind:'straight',type:0,skin:'cheese',flee:0,hit:false,passed:false});update(.02)});
+   assert.equal(await page.evaluate(()=>cats.find(c=>c.tag==='later').flee),0);
+   await page.evaluate(()=>{elapsed=8;hits=3;panel('fail')});await page.locator('#continue-run').click();
+   assert.deepEqual(await page.evaluate(()=>({state,used:usedItems.continue,stock:inventory.continue})),{state:'play',used:true,stock:0});
+   await page.evaluate(()=>{hits=3;panel('fail')});assert.equal(await page.locator('#continue-run').isDisabled(),true);
+   await page.locator('#next').click();
+   await page.evaluate(()=>{cats=[];elapsed=STAGES[9][2]-.001;update(.02)});assert.equal(await page.evaluate(()=>state),'clear');
+   await page.locator('#next').click();assert.deepEqual(await page.evaluate(()=>({mode,level})),{mode:'story',level:10});
+   await page.evaluate(()=>goHome());assert.equal(await page.locator('#endless').isEnabled(),true);await page.locator('#endless').click();
+   assert.deepEqual(await page.evaluate(()=>({mode,round:endlessRound(),cleared})),{mode:'endless',round:1,cleared:10});
+   await page.evaluate(()=>{cats=[];elapsed=19.99;update(.02)});assert.equal(await page.evaluate(()=>endlessRound()),2);
+   await page.evaluate(()=>{start(19);cats=[];elapsed=STAGES[19][2]-.001;update(.02)});assert.equal(await page.evaluate(()=>state),'clear','normal mode continues beyond stage 20');
+   await page.locator('#next').click();assert.equal(await page.evaluate(()=>level),20);
+   await page.evaluate(()=>{start(29);cats=[];elapsed=STAGES[29][2]-.001;update(.02)});assert.equal(await page.evaluate(()=>state),'win');
+   await page.locator('#next').click();await page.locator('#select').click();assert.equal(await page.locator('#levelgrid button').count(),30);
+   await page.locator('#levelgrid button').last().click();assert.equal(await page.evaluate(()=>level),29);
+   assert.equal(await page.evaluate(()=>spriteCache.size),16);
+   await page.evaluate(()=>{elapsed=5;layoutLanes();state='pause';cats=['diagonal','pounce','feint'].map((kind,i)=>{const c={skin:['siamese','silver','black'][i],kind,lane:i,fromLane:2-i,x:lanes[i],y:py()-160-i*45,age:1,type:0};positionCat(c);return c});render()});
+   await page.screenshot({path:path.join(output,`jump-patterns-${width}.png`)});
+   assert.deepEqual(errors,[],`Browser exceptions at ${width}x${height}`);
+   await context.close();console.log(`PASS browser ${width}x${height}: 24-coin shop, non-overlapping HUD guide, controls +7.4px, throw-time fish snapshot, BGM, existing items, 30 stages`);
+  }
+ }finally{await browser.close()}
+})().catch(e=>{console.error(e);process.exit(1)});

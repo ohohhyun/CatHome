@@ -1,23 +1,35 @@
-# 2.0 validation
+# v0.7 검증
 
-Local checks passed:
+`node tests/game.test.cjs`:
 
-- JavaScript syntax and all 24 dungeons at all four difficulties through five-room progression.
-- Door entry after room clear, co-op revival, telegraphs, dodge/jump/shield, skill gates/resources, deterministic simulation and bounded effects.
-- Population and HP scaling across 1/2/3/4 players and all difficulties; downscaling after a peer leaves.
-- Persistent v1→v2 migration and reload, all 24 story quests to level 60, advancement and awakening, mastery and repeatable rift unlocks.
-- Reward ID deduplication, epic pity, equipment stats and sets, enhancement, protected dismantling, targeted crafting, SP budgets/reset, entry gates and material charges, daily/weekly bonuses and party reward differences.
+- 일반 30단계 및 10단계에서 별도 무한 모드 해금
+- 기존 단계/별/최고 기록 저장 데이터 복원
+- 코인 지갑, 구매 거래의 차감/재고 추가, 잔액 부족/수량 오류/99개 초과 거부, 게임 중 구매 금지
+- 구매와 지갑 저장/복원, 실패한 판의 코인 유지
+- 우산 정확히 2초, 물총 정확히 3초, 맞은 고양이 도망
+- 아이템 종류별 판당 한 번, 이어하기 중 사용 제한 유지, 재도전 시 새 판
+- 21~30단계가 속도 상한을 올리지 않고 대각선/도약/페인트 패턴을 추가
+- 기존 충돌/회피/콤보/캐시/프레임 시간/지연 저장/최대 난도 통과 경로 검사
 
-CI is configured to additionally verify:
+`tests/browser.test.cjs`는 실제 Chrome의 320×568 / 390×844 / 480×960 화면에서 다음을 확인합니다.
 
-- Actual native TCP host + three clients, pairing/capacity rejection, UTF-8/large packets and disconnect.
-- Four browser clients with Android bridge simulation: mobile multi-touch movement/attack, clear→quest report→level unlock, equip/skill growth and reload, party entry gates and monster scaling, live movement, pause, persistent rewards, party town return and a subsequent dungeon.
-- Android SDK 35 compilation, APK signature and manifest inspection.
+- 상점에서 네 아이템 구매, 99개 제한, 소지 코인 및 재고 표시
+- 조작 버튼의 바닥 여백 44.4px(v0.6보다 7.4px 상승), 아이템 버튼과 겹치지 않음
+- 플레이 중 소리 버튼이 보이지 않고 일시정지의 소리 설정에서만 조절
+- 배경음 파일 디코딩/재생 및 켜기/끄기, 효과음 생성
+- 우산/물총/생선/이어하기 버튼 사용, 물총 명중 도망, 1회 제한
+- 일반 20단계 후에도 진행, 30단계 귀가 엔딩, 30개 단계 지도
+- 상점과 점프 패턴 스크린샷 기록
 
-Consult the matching workflow result before claiming CI passed for a particular commit. Actual Android installation, native Wi-Fi on physical phones, Android SharedPreferences behavior on-device, long-session performance and human pacing/balance remain unverified here. The browser bridge test does not emulate Android networking or storage internals.
+기존 v0.4 대비 그리기/DOM 작업량 비교와 Android APK 컴파일/서명 검사도 GitHub Actions에서 수행합니다. 실제 Android 기기의 터치감·체감 난도·성능은 별도 확인이 필요합니다.
 
-Only ohohhyun/CatHome is in scope. The original CatHome v0.7 source remains in legacy/cathome-0.7/.
 
-## App identity separation correction
+v0.7 추가 검사:
 
-The new game now uses com.ashenrift.game. Original CatHome remains com.cathome.game on main. CI verifies the compiled package name and launch activity, and also builds an optional original-game recovery APK from the untouched legacy/cathome-0.7 snapshot in a temporary directory with a higher versionCode. Previous 1.0/2.0 AshenRift APKs used the original app ID and could replace it on a phone; do not distribute those as coexistence builds. A separate package does not automatically import the previous shared package's save data. Physical coexistence/recovery/data restoration remains unverified on a real phone.
+- 모든 아이템 24코인, 이전 코인 및 재고 복원과 신규 생선 재고 0 초기값
+- 안내 문구가 HUD 안에 배치되고 플레이어 영역과 겹치지 않는지 모바일 세 크기에서 검사
+- 생선 던지는 순간 화면과 교차하는 고양이만 선택, 화면 밖 고양이는 제외
+- 이미 다른 방향으로 달아나던 화면 내 고양이도 오른쪽으로 유도
+- 던진 뒤 새로 화면 안에 들어온 고양이에 지속 효과 없음
+- 선택한 고양이들이 오른쪽 끝으로 빠져나가 제거되는지 검사
+- 생선 한 판 한 번 사용 및 재고 차감/저장
