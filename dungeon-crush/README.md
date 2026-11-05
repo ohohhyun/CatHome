@@ -6,22 +6,15 @@ CatHome 저장소의 `dungeon-crush/`에 별도 Android 프로젝트로 보관�
 
 **던전크러시!은 별도 앱 `com.dungeoncrush.game`입니다. ‘집사 사절!’의 `com.cathome.game`을 대체하지 않습니다.** 두 게임을 함께 설치할 수 있습니다. GitHub main의 기존 게임도 변경하지 않았으며 새 게임은 전용 브랜치와 PR에 있습니다.
 
-Actions → Build Dungeon Crush APK → codex/ashen-rift-apk의 최신 성공 실행에서:
+Actions → Build Dungeon Crush APK → codex/ashen-rift-apk의 최신 성공 실행에서 **DungeonCrush-APK**를 누르면 `DungeonCrush-2.1.apk`가 담긴 ZIP을 다운로드합니다. GitHub 로그인이 필요합니다.
 
-- **DungeonCrush-APK**: `DungeonCrush-2.0.1.apk`. 새 게임을 별도로 설치합니다.
-- **CatHome-Original-Restore-APK**: `CatHome-0.7-Restore.apk`. 이전에 잘못된 공유 앱 ID의 1.0/2.0 APK를 설치해 ‘집사 사절!’이 바뀐 경우 사용하는 기존 게임 복구 파일입니다. 해당 파일은 원본 게임과 같은 앱 ID·서명, 더 높은 설치 버전 번호를 사용합니다.
-
-**이전에 제공한 AshenRift-1.0.apk / AshenRift-2.0.apk는 같은 com.cathome.game을 사용하므로 더 이상 설치하지 마세요.** 이미 설치한 경우 앱을 먼저 삭제하지 마세요. 기존 게임 데이터가 남아 있을 때 복구 APK를 업데이트 설치하면 원본 코드가 그 저장을 읽을 수 있습니다. 기기에서 이미 삭제했거나 데이터가 지워진 기록의 복구는 보장하지 않습니다.
-
-분리된 새 앱은 Android의 다른 저장 공간을 사용하므로 이전 공유 ID의 던전크러시! 저장을 자동으로 가져오지 않습니다. 새 앱 내부에서는 영구 저장과 저장 형식 이전을 계속 지원합니다. 다른 앱의 기록을 덮어쓰거나 읽지 않습니다.
-
-새 게임 versionCode 10 / versionName 2.0.1-dungeon-crush. 복구 파일은 보관된 CatHome v0.7 전체 소스에서 화면·로직·앱 ID를 유지하고 임시 빌드 사본의 versionCode만 10으로 올려 빌드합니다. 보관 소스와 main은 변경하지 않습니다. 원본은 저장소 루트의 `legacy/cathome-0.7/`에 있습니다.
+새 게임 versionCode 11 / versionName 2.1-client-motion-audio. 이번 전용 워크플로는 던전크러시만 빌드합니다. 집사 사절 코드·빌드·복구 APK는 수정하거나 빌드하지 않습니다. 예전 공유 ID APK는 배포 대상이 아닙니다.
 
 Android 6.0 이상과 최신 Android System WebView를 권장합니다. GitHub Artifact 다운로드에는 로그인이 필요하며 파일 앱의 ‘알 수 없는 앱 설치’ 허용이 필요할 수 있습니다. 테스트 서명 APK이며 Play 스토어용 서명은 아닙니다.
 
 ## 계속 이어지는 플레이
 
-1. **마을 · 재의 항구**: 원정대 의뢰, 원정 지도, 장비 가방, 전직·스킬, 제작·강화에 접근합니다.
+1. **타이틀 → 게임 시작 → 캐릭터 선택 → 마을 → 스토리/던전/레이드 선택**: 별도 화면에서 캐릭터와 지역·난이도를 확인한 뒤 입장합니다. **마을 · 재의 항구**: 원정대 의뢰, 원정 지도, 장비 가방, 전직·스킬, 제작·강화에 접근합니다.
 2. **메인 의뢰와 지역 해금**: 8개 지역의 던전 24개를 순서대로 정복하고 보상을 보고해 다음 목적지를 엽니다. 의뢰 보상은 중복 수령할 수 없습니다.
 3. **던전 탐색**: 일반 던전은 5개 방입니다. 각 방의 적을 정리하고 오른쪽 관문으로 직접 이동합니다. 마지막 방의 보스를 처치하면 정산합니다.
 4. **장비 파밍과 빌드**: 직업별 장비를 모으고 착용·강화·분해·제작하며 스킬 포인트를 배분합니다. 같은 던전을 다시 돌아 재료와 더 좋은 장비를 얻을 수 있습니다.
@@ -79,7 +72,7 @@ Android 6.0 이상과 최신 Android System WebView를 권장합니다. GitHub A
 
 ## 같은 Wi-Fi 협동
 
-모두 같은 Wi-Fi와 같은 2.0 APK를 사용하세요. 각자 캐릭터를 선택한 뒤 한 명이 **Wi-Fi 협동 → 방 만들기**로 표시된 IP·4자리 코드를 알려주고, 나머지가 입력해 참가합니다. 최대 4명, PC·계정·외부 게임 서버 없이 동작합니다.
+모두 같은 Wi-Fi와 같은 2.1 APK를 사용하세요. 각자 캐릭터를 선택한 뒤 한 명이 **Wi-Fi 협동 → 방 만들기**로 표시된 IP·4자리 코드를 알려주고, 나머지가 입력해 참가합니다. 최대 4명, PC·계정·외부 게임 서버 없이 동작합니다.
 
 파티원 모두가 목적지의 퀘스트·레벨·가방·입장 재료 조건을 충족해야 합니다. 전투 후 **마을로 돌아가기**로 파티를 유지하며 각자 장비와 퀘스트를 정비하고 다음 원정을 시작할 수 있습니다. 방장만 목적지·시작·일시정지·재도전을 조절합니다. 진행 중인 원정에는 새로 합류할 수 없습니다.
 
@@ -94,8 +87,9 @@ Android 6.0 이상과 최신 Android System WebView를 권장합니다. GitHub A
 ## 검증과 빌드
 
 ```sh
-cd ashen-rift
+cd dungeon-crush
 node tools/unpack-art.cjs
+python3 tools/fetch-audio.py
 node tests/game.test.cjs
 node tests/rpg.test.cjs
 # JDK 17 이상:
@@ -103,12 +97,16 @@ mkdir -p build/lan-test
 javac -d build/lan-test app/src/main/java/com/dungeoncrush/game/LanTransport.java tests/LanTransportTest.java
 java -cp build/lan-test LanTransportTest
 # Playwright와 Chrome:
+node tests/presentation.test.cjs
 node tests/browser.test.cjs
 bash gradlew assembleDebug
 ```
 
 GitHub Actions는 전투·RPG 거래·원시 TCP·4인 게임 흐름을 검사하고 APK를 빌드·서명 검증합니다. 브라우저 검사는 Android 브리지를 모사하며 실제 Wi-Fi 기기 테스트를 대체하지 않습니다. 실제 휴대폰의 설치·멀티터치·공유기 연결·장시간 발열·플레이 밸런스는 별도 검증이 필요합니다.
 
-기존 게임의 고유 캐릭터·맵·명칭을 복제하지 않은 독자 세계입니다. 캐릭터는 고해상도 2D 아트의 변형과 공격 이펙트로 표현하며, 던전은 공통 배경을 색조·지역 설정·전투 구성으로 구분합니다. 상용 게임의 방대한 아트·프레임별 전신 애니메이션·모든 시스템을 구현한 상태로 주장하지 않습니다.
+기존 게임의 고유 캐릭터·맵·명칭을 복제하지 않은 독자 세계입니다. 캐릭터는 기존 2D 아트를 팔·무기·상체·다리로 분리한 관절 애니메이션과 공격 이펙트로 표현하며, 던전은 공통 배경을 색조·지역 설정·전투 구성으로 구분합니다. 상용 게임의 방대한 아트·프레임별 전신 애니메이션·모든 시스템을 구현한 상태로 주장하지 않습니다.
 
 `art-source/*.b64`의 아트·폰트는 Gradle 빌드가 자동 복원합니다. Gradle 8.9 / AGP 8.7.3 / SDK 35 / min SDK 23을 사용합니다. 수정 범위는 ohohhyun/CatHome뿐입니다.
+
+
+2.1 UI 참고자료와 구현 범위는 [REFERENCES.md](REFERENCES.md), 기존 CC0 음원 출처는 [음원 크레딧](app/src/main/assets/audio/CREDITS.txt)과 [고정 파일 목록](audio-sources.json)에 정리했습니다. 새 캐릭터나 스토리는 추가하지 않습니다. 실제 BGM·효과음을 APK에 넣으며 별도 볼륨 설정과 백그라운드 중지를 제공합니다. Gradle 첫 빌드에는 Python 3와 음원 파일을 받기 위한 인터넷이 필요합니다. 포함 파일은 체크섬을 확인하므로 한 번 준비한 뒤에는 오프라인으로 재빌드할 수 있습니다.

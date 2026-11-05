@@ -1,4 +1,4 @@
-# 2.0 validation
+# 2.1 validation
 
 Local checks passed:
 
@@ -20,4 +20,13 @@ Only ohohhyun/CatHome is in scope. The original CatHome v0.7 source remains in l
 
 ## App identity separation correction
 
-The Dungeon Crush now uses com.dungeoncrush.game. Original CatHome remains com.cathome.game on main. CI verifies the compiled package name and launch activity, and also builds an optional original-game recovery APK from the untouched legacy/cathome-0.7 snapshot in a temporary directory with a higher versionCode. Previous 1.0/2.0 AshenRift APKs used the original app ID and could replace it on a phone; do not distribute those as coexistence builds. A separate package does not automatically import the previous shared package's save data. Physical coexistence/recovery/data restoration remains unverified on a real phone.
+The Dungeon Crush now uses com.dungeoncrush.game. Original CatHome remains com.cathome.game on main. CI verifies the compiled package name and launch activity, does not build the original game. Previous 1.0/2.0 AshenRift APKs used the original app ID and could replace it on a phone; do not distribute those as coexistence builds. A separate package does not automatically import the previous shared package's save data. Physical coexistence/recovery/data restoration remains unverified on a real phone.
+
+
+## Presentation regression coverage
+
+- Title → character selection → town → content → stage/difficulty → combat, back navigation and locked raid requirements.
+- Existing character selection persists after reload; compact landscape primary actions remain in view.
+- Independent arm/leg joint angles change during running; screenshots capture four class skills plus movement/jump.
+- Existing bundled music decodes and advances playback, town/battle track changes, pause/resume and independently saved music/SFX volumes.
+- Actual phone Wi-Fi co-op, audio hardware behavior, visual quality and performance across devices still require physical testing.

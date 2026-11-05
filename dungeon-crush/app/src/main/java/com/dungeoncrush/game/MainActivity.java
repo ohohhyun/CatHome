@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
  }
  private synchronized void stopLan(){if(lan!=null){lan.close();lan=null;}}
  @Override protected void onPause(){game.evaluateJavascript("window.appPause&&window.appPause()",null);stopLan();game.onPause();super.onPause();}
- @Override protected void onResume(){super.onResume();if(game!=null)game.onResume();immersive();}
+ @Override protected void onResume(){super.onResume();if(game!=null){game.onResume();game.evaluateJavascript("window.appResume&&window.appResume()",null);}immersive();}
  @Override public void onBackPressed(){game.evaluateJavascript("window.appBack&&window.appBack()",null);}
  @Override public void onWindowFocusChanged(boolean focus){super.onWindowFocusChanged(focus);if(focus)immersive();}
  @Override protected void onDestroy(){destroyed=true;stopLan();connections.shutdownNow();game.removeJavascriptInterface("RiftNative");game.destroy();super.onDestroy();}

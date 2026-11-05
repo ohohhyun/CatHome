@@ -5,3 +5,8 @@ local.properties
 *.iml
 *.jks
 *.keystore
+
+# Downloaded, checksum-verified audio; CREDITS.txt remains tracked.
+app/src/main/assets/audio/*.wav
+app/src/main/assets/audio/*.ogg
+app/src/main/assets/audio/*.mp3
