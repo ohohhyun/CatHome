@@ -81,14 +81,14 @@ const asyncSave=boot(),idleTasks=[];asyncSave.env.window.requestIdleCallback=cb=
 asyncSave.run('cleared=10;save();cleared=11;save()');assert.equal(idleTasks.length,1);assert.equal(asyncSave.storage.catHomeSave,undefined);asyncSave.run('flushSave()');assert.equal(JSON.parse(asyncSave.storage.catHomeSave).cleared,11);idleTasks[0]();
 assert.equal(boot(asyncSave.storage).run('cleared'),11);
 // Persistent coins and pre-game purchases, including maximum stock and rejected transactions.
-const shop=boot();assert.equal(shop.run('ITEM_PRICE'),8);assert.equal(shop.run('wallet'),0);assert.equal(shop.run("buyItem('water',1)"),false);
-shop.run('wallet=800');assert.equal(shop.run("buyItem('water',99)"),true);assert.equal(shop.run('inventory.water'),99);assert.equal(shop.run('wallet'),8);assert.equal(shop.run("buyItem('water',1)"),false);assert.equal(shop.run('wallet'),8);
+const shop=boot();assert.equal(shop.run('ITEM_PRICE'),24);assert.equal(shop.run('wallet'),0);assert.equal(shop.run("buyItem('water',1)"),false);
+shop.run('wallet=2400');assert.equal(shop.run("buyItem('water',99)"),true);assert.equal(shop.run('inventory.water'),99);assert.equal(shop.run('wallet'),24);assert.equal(shop.run("buyItem('water',1)"),false);assert.equal(shop.run('wallet'),24);
 for(const quantity of [0,-1,1.5,100,NaN])assert.equal(shop.run(`buyItem('umbrella',${quantity})`),false);
 assert.equal(shop.run("buyItem('umbrella',1)"),true);assert.equal(shop.run('wallet'),0);
 const savedShop=boot(shop.storage);assert.equal(savedShop.run('inventory.water'),99);assert.equal(savedShop.run('inventory.umbrella'),1);assert.equal(savedShop.run('wallet'),0);
 shop.run('start(0)');assert.equal(shop.run("buyItem('continue',1)"),false,'no mid-game shopping');
 // Umbrella gives exactly two seconds, water gives three seconds, each kind once per attempt.
-const items=boot();items.run('inventory={continue:2,umbrella:2,water:2};start(0)');
+const items=boot();items.run('inventory={continue:2,umbrella:2,water:2,fish:2};start(0)');
 assert.equal(items.run("useItem('umbrella')"),true);assert.equal(items.run('umbrellaTime'),2);assert.equal(items.run('inventory.umbrella'),1);assert.equal(items.run("useItem('umbrella')"),false);
 items.run('cats=[];spawn=999;update(1)');assert.equal(items.run('umbrellaTime'),1);items.run('cats=[];update(1)');assert.equal(items.run('umbrellaTime'),0);
 assert.equal(items.run("useItem('water')"),true);assert.equal(items.run('waterTime'),3);assert.equal(items.run("useItem('water')"),false);
@@ -103,5 +103,18 @@ for(let l=20;l<30;l++)assert.equal(run(`STAGES[${l}][3]`),run('STAGES[19][3]'));
 const patterns=new Set();for(let l=20;l<30;l++)for(let n=0;n<12;n++){run(`level=${l};mode='story';cats=[];wave()`);for(const k of run('cats.map(c=>c.kind)'))patterns.add(k)}for(const k of ['diagonal','pounce','feint'])assert(patterns.has(k));
 run("level=29;mode='story';elapsed=2;layoutLanes();let diagonal={lane:2,fromLane:0,y:45,age:0,kind:'diagonal',type:0};positionCat(diagonal);if(diagonal.x!==lanes[0])throw Error('diagonal start');diagonal.y=py()-110;positionCat(diagonal);if(Math.abs(diagonal.x-lanes[2])>.01||Math.abs(diagonal.lift)>.01)throw Error('diagonal landing')");
 for(let l=20;l<30;l++)run(`level=${l};cats=[];wave();render()`);
-console.log('PASS: 30 stages; separate endless; inventory caps/purchase transactions; coin banking; 2-second umbrella; 3-second water and fleeing cats; per-kind use limits and continue; new jump/feint patterns; timing and save migration.');
+// Fish attracts only the cats actually intersecting the viewport at throw time.
+const fish=boot();fish.run('inventory.fish=2;start(6);spawn=999;waterTime=0;shots=[]');
+fish.run("cats=[{tag:'visible',lane:0,x:112,y:200,lift:0,kind:'straight',age:0,type:0,flee:0,hit:false,passed:false},{tag:'edge',lane:2,x:272,y:-15,lift:0,kind:'straight',age:0,type:0,flee:0,hit:false,passed:false},{tag:'above',lane:1,x:192,y:-100,lift:0,kind:'straight',age:0,type:0,flee:0,hit:false,passed:false},{tag:'below',lane:1,x:192,y:H+100,lift:0,kind:'straight',age:0,type:0,flee:0,hit:false,passed:false},{tag:'outside',lane:0,x:-100,y:200,lift:0,kind:'straight',age:0,type:0,flee:0,hit:false,passed:false},{tag:'already-left',lane:1,x:190,y:250,lift:0,kind:'straight',age:0,type:0,flee:.5,fleeDir:-1,passed:true}]");
+assert.equal(fish.run("useItem('fish')"),true);assert.equal(fish.run('inventory.fish'),1);assert.equal(fish.run("useItem('fish')"),false);
+assert(fish.run("cats.filter(c=>['visible','edge','already-left'].includes(c.tag)).every(c=>c.fleeKind==='fish'&&c.fleeDir===1)"));
+assert(fish.run("cats.filter(c=>['above','below','outside'].includes(c.tag)).every(c=>!c.fleeKind)"));
+fish.run("cats.push({tag:'later',lane:2,x:272,y:100,lift:0,kind:'straight',age:0,type:0,flee:0,hit:false,passed:false});update(.05)");
+assert.equal(fish.run("cats.find(c=>c.tag==='later').flee"),0);assert(fish.run("cats.find(c=>c.tag==='visible').x>112"));
+fish.run("for(let i=0;i<40;i++)update(.05)");assert(!fish.run("cats.some(c=>c.tag==='visible'||c.tag==='edge'||c.tag==='already-left')"),'selected cats exit to the right');
+assert.equal(fish.run('fishThrow'),null);assert.equal(boot(fish.storage).run('inventory.fish'),1);
+const oldStock=boot({catHomeSave:JSON.stringify({cleared:7,unlocked:8,best:300,medals:{},wallet:90,inventory:{continue:2,umbrella:3,water:4}})});
+assert.equal(oldStock.run('wallet'),90);assert.equal(oldStock.run('inventory.water'),4);assert.equal(oldStock.run('inventory.fish'),0);
+assert(!html.includes("text('이동하는 칸'"),'remove the duplicated under-player canvas text');
+console.log('PASS: fish throw-time viewport snapshot, right exit, future cats unaffected, per-run fish limit and saved stock; 24-coin economy; all previous 30-stage/shop/item/timing tests.');
 module.exports={boot};
