@@ -1,0 +1,57 @@
+[
+  {
+    "name": "click.wav",
+    "url": "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/4596a49eaf5a533948d49a47467f606bcdea70ff/addons/kenney_interface_sounds/click_001.wav",
+    "git_sha": "f7378a24b790c2ee6340db66c849e617bd315966"
+  },
+  {
+    "name": "confirm.wav",
+    "url": "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/4596a49eaf5a533948d49a47467f606bcdea70ff/addons/kenney_interface_sounds/confirmation_001.wav",
+    "git_sha": "57b0731148815280947db27a3015c483c3fa24e7"
+  },
+  {
+    "name": "select.wav",
+    "url": "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/4596a49eaf5a533948d49a47467f606bcdea70ff/addons/kenney_interface_sounds/select_001.wav",
+    "git_sha": "9b87d500823213ccb556b286bef7164a44fcabe1"
+  },
+  {
+    "name": "swing.wav",
+    "url": "https://raw.githubusercontent.com/Calinou/kenney-interface-sounds/4596a49eaf5a533948d49a47467f606bcdea70ff/addons/kenney_interface_sounds/switch_001.wav",
+    "git_sha": "d88108d1c6ae984c58d9f808832446b2f79e1918"
+  },
+  {
+    "name": "town.ogg",
+    "url": "https://raw.githubusercontent.com/tegnike/aozora-islands/6dc06266c3263e93d8b8efd3d7e9a31b7db141f8/src/assets/audio/menu_music_loop.ogg",
+    "git_sha": "30a9210148d78adc7a89a69ce9b04566f6f43b24"
+  },
+  {
+    "name": "battle.mp3",
+    "url": "https://raw.githubusercontent.com/tegnike/aozora-islands/6dc06266c3263e93d8b8efd3d7e9a31b7db141f8/src/assets/audio/battle_music_final_loop.mp3",
+    "git_sha": "0067accd5e7677f137ecef5db825b66358eb890c"
+  },
+  {
+    "name": "hit.ogg",
+    "url": "https://raw.githubusercontent.com/tegnike/aozora-islands/6dc06266c3263e93d8b8efd3d7e9a31b7db141f8/src/assets/audio/sfx-attack.ogg",
+    "git_sha": "4fa319d4d5e0b6efabdf51d027644466fb5f704c"
+  },
+  {
+    "name": "hurt.ogg",
+    "url": "https://raw.githubusercontent.com/tegnike/aozora-islands/6dc06266c3263e93d8b8efd3d7e9a31b7db141f8/src/assets/audio/sfx-damage.ogg",
+    "git_sha": "21b55e0eae3da5d549e85a038da4f80daa809162"
+  },
+  {
+    "name": "block.ogg",
+    "url": "https://raw.githubusercontent.com/tegnike/aozora-islands/6dc06266c3263e93d8b8efd3d7e9a31b7db141f8/src/assets/audio/sfx-block.ogg",
+    "git_sha": "bb3a381d0e945fb2e11096129c4cd280e3b8a23c"
+  },
+  {
+    "name": "charge.ogg",
+    "url": "https://raw.githubusercontent.com/tegnike/aozora-islands/6dc06266c3263e93d8b8efd3d7e9a31b7db141f8/src/assets/audio/sfx-charge.ogg",
+    "git_sha": "21e6f4d79f31f55e7813f2bbec9572e0d6043eb7"
+  },
+  {
+    "name": "step.ogg",
+    "url": "https://raw.githubusercontent.com/Boyquotes/kenney-impact-sounds-for-godot/999dd1684873f8b020a3aa5b26e713da21688924/addons/kenney%20impact%20sounds/footstep_concrete_000.ogg",
+    "git_sha": "163cc56468f1734fe694351e7ff984699afa8b86"
+  }
+]

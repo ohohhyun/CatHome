@@ -6,8 +6,8 @@ android {
         applicationId 'com.dungeoncrush.game'
         minSdk 23
         targetSdk 35
-        versionCode 10
-        versionName '2.0.1-dungeon-crush'
+        versionCode 11
+        versionName '2.1-client-motion-audio'
     }
     signingConfigs {
         debug {
@@ -37,3 +37,12 @@ def unpackRiftArt = tasks.register('unpackRiftArt') {
 }
 tasks.named('preBuild').configure { dependsOn unpackRiftArt }
 
+
+// Verified, existing CC0 music/SFX are packaged into the APK, never streamed at play.
+def prepareDungeonAudio = tasks.register('prepareDungeonAudio', Exec) {
+    workingDir rootProject.projectDir
+    commandLine 'python3', 'tools/fetch-audio.py'
+    inputs.file rootProject.file('audio-sources.json')
+    outputs.dir file('src/main/assets/audio')
+}
+tasks.named('preBuild').configure { dependsOn prepareDungeonAudio }

@@ -23,6 +23,8 @@ jobs:
           java-version: '17'
       - name: Unpack bundled offline game art
         run: node tools/unpack-art.cjs
+      - name: Package verified existing CC0 music and effects
+        run: python3 tools/fetch-audio.py
       - name: Check combat and campaign
         run: |
           node tests/game.test.cjs
@@ -37,7 +39,9 @@ jobs:
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
       - name: Test four-player game protocol and mobile layout
-        run: node tests/browser.test.cjs
+        run: |
+          node tests/presentation.test.cjs
+          node tests/browser.test.cjs
         env:
           NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
       - uses: actions/upload-artifact@v4
@@ -74,28 +78,10 @@ jobs:
         run: |
           "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --print-certs app/build/outputs/apk/debug/app-debug.apk
           python tools/verify-apk-identity.py "$ANDROID_HOME/build-tools/35.0.0/aapt" app/build/outputs/apk/debug/app-debug.apk com.dungeoncrush.game com.dungeoncrush.game.MainActivity "던전크러시!"
-          cp app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/DungeonCrush-2.0.1.apk
+          cp app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/DungeonCrush-2.1.apk
       - uses: actions/upload-artifact@v4
         with:
           name: DungeonCrush-APK
-          path: dungeon-crush/app/build/outputs/apk/debug/DungeonCrush-2.0.1.apk
-          if-no-files-found: error
-          retention-days: 30
-      - name: Prepare original CatHome recovery build
-        run: python tools/prepare-original-restore.py "$RUNNER_TEMP/cathome-restore"
-      - name: Build preserved original CatHome APK
-        run: bash "$RUNNER_TEMP/cathome-restore/gradlew" -p "$RUNNER_TEMP/cathome-restore" assembleDebug --no-daemon
-        env:
-          CATHOME_DEBUG_KEYSTORE: ${{ github.workspace }}/.signing/debug.keystore
-      - name: Verify original CatHome recovery identity
-        run: |
-          RESTORE_APK="$RUNNER_TEMP/cathome-restore/app/build/outputs/apk/debug/app-debug.apk"
-          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --print-certs "$RESTORE_APK"
-          python tools/verify-apk-identity.py "$ANDROID_HOME/build-tools/35.0.0/aapt" "$RESTORE_APK" com.cathome.game com.cathome.game.MainActivity
-          cp "$RESTORE_APK" "$RUNNER_TEMP/CatHome-0.7-Restore.apk"
-      - uses: actions/upload-artifact@v4
-        with:
-          name: CatHome-Original-Restore-APK
-          path: ${{ runner.temp }}/CatHome-0.7-Restore.apk
+          path: dungeon-crush/app/build/outputs/apk/debug/DungeonCrush-2.1.apk
           if-no-files-found: error
           retention-days: 30
