@@ -1,78 +1,92 @@
-name: Nameless Crown Android APK
-
+name: Nameless Crown APK (Godot)
 on:
   workflow_dispatch:
   push:
-    branches:
-      - nameless-crown-dev
+    branches: [nameless-crown-dev]
     paths:
       - 'NamelessCrown/**'
-
+      - '.github/workflows/nameless-crown-apk.yml'
 permissions:
   contents: read
-
 jobs:
-  godot-android:
+  android:
     runs-on: ubuntu-24.04
     timeout-minutes: 45
-    defaults:
-      run:
-        working-directory: NamelessCrown
-
     steps:
       - uses: actions/checkout@v4
-      - name: Verify isolated Godot project
+      - name: Assemble and verify original Godot project
+        shell: bash
         run: |
-          test -f project.godot
-          test -f export_presets.cfg
-          test -f scenes/main.tscn
-
+          set -euo pipefail
+          mkdir -p NamelessCrown/game NamelessCrown/dist
+          cat NamelessCrown/packed/part_*.bin > "$RUNNER_TEMP/crown-project.zip"
+          echo "a2c454cbc6116da17cf34f0f13a5f6e188e5ce4477f64f62141577a8071cc6cc  $RUNNER_TEMP/crown-project.zip" | sha256sum -c -
+          unzip -q "$RUNNER_TEMP/crown-project.zip" -d "$RUNNER_TEMP/crown-unpacked"
+          cp -a "$RUNNER_TEMP/crown-unpacked/NamelessCrown_v0.6/." NamelessCrown/game/
+          test -f NamelessCrown/game/project.godot
+          test -f NamelessCrown/game/export_presets.cfg
+          test -f NamelessCrown/game/scenes/main.tscn
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run offline data and route checks
+        run: |
+          python3 NamelessCrown/game/qa/audit.py
+          python3 NamelessCrown/game/qa/source_syntax_audit.py
+          python3 NamelessCrown/game/qa/route_model_audit.py
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
-
       - uses: android-actions/setup-android@v3
-      - name: Install Android SDK
+      - name: Install Android build packages
+        shell: bash
         run: |
+          set -euo pipefail
           yes | sdkmanager --licenses >/dev/null || true
-          sdkmanager 'platform-tools' 'build-tools;35.0.1' 'platforms;android-35'
-
+          sdkmanager "platform-tools" "build-tools;35.0.1" "platforms;android-35" "cmdline-tools;latest"
       - uses: chickensoft-games/setup-godot@v2
         with:
-          version: 4.7.2
+          version: '4.7.2'
           use-dotnet: false
           include-templates: true
-
-      - name: Import resources and check scripts
+      - name: Import resources and check GDScript
+        shell: bash
         run: |
+          set -o pipefail
           godot --version
-          godot --headless --editor --path . --import --quit
-
-      - name: Game smoke test
-        run: godot --headless --path . --script res://qa/smoke.gd
-
-      - name: Prepare debug signing
-        run: |
-          mkdir -p "$HOME/.android"
-          if [ ! -f "$HOME/.android/debug.keystore" ]; then
-            keytool -genkeypair -keystore "$HOME/.android/debug.keystore" \
-              -storepass android -alias androiddebugkey -keypass android \
-              -keyalg RSA -keysize 2048 -validity 10000 \
-              -dname 'CN=Android Debug,O=Android,C=US'
+          godot --headless --editor --path NamelessCrown/game --import --quit 2>&1 | tee "$RUNNER_TEMP/godot-import.log"
+          if grep -E "(SCRIPT ERROR|Parser Error|Parse Error|Failed to load script)" "$RUNNER_TEMP/godot-import.log"; then
+            echo 'Godot parsing failed'
+            exit 1
           fi
-          python3 ci/configure_android.py
-
-      - name: Export APK
+      - name: Run engine-level scene smoke tests
+        shell: bash
+        run: |
+          set -o pipefail
+          godot --headless --path NamelessCrown/game --script res://qa/smoke.gd 2>&1 | tee "$RUNNER_TEMP/godot-smoke.log"
+          if grep -E "(SCRIPT ERROR|Parser Error|Parse Error|Failed to load script|FAIL:)" "$RUNNER_TEMP/godot-smoke.log"; then
+            exit 1
+          fi
+          grep -q "SMOKE PASS" "$RUNNER_TEMP/godot-smoke.log"
+      - name: Create local debug signing key
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p "$HOME/.android"
+          keytool -genkeypair -keystore "$HOME/.android/debug.keystore" -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
+          python3 NamelessCrown/game/ci/configure_android.py
+      - name: Export Android APK
+        shell: bash
         env:
           GODOT_ANDROID_KEYSTORE_DEBUG_USER: androiddebugkey
           GODOT_ANDROID_KEYSTORE_DEBUG_PASSWORD: android
         run: |
+          set -euo pipefail
           export GODOT_ANDROID_KEYSTORE_DEBUG_PATH="$HOME/.android/debug.keystore"
-          mkdir -p dist
-          godot --headless --path . --export-debug Android dist/NamelessCrown-debug.apk
-          test -s dist/NamelessCrown-debug.apk
-
+          godot --headless --path NamelessCrown/game --export-debug Android "$GITHUB_WORKSPACE/NamelessCrown/dist/NamelessCrown-debug.apk"
+          test -s NamelessCrown/dist/NamelessCrown-debug.apk
+          file NamelessCrown/dist/NamelessCrown-debug.apk
       - uses: actions/upload-artifact@v4
         with:
           name: NamelessCrown-Android-APK
