@@ -23,6 +23,18 @@ jobs:
           echo "a2c454cbc6116da17cf34f0f13a5f6e188e5ce4477f64f62141577a8071cc6cc  $RUNNER_TEMP/crown-project.zip" | sha256sum -c -
           unzip -q "$RUNNER_TEMP/crown-project.zip" -d "$RUNNER_TEMP/crown-unpacked"
           cp -a "$RUNNER_TEMP/crown-unpacked/NamelessCrown_v0.6/." NamelessCrown/game/
+          # Android requires ETC2/ASTC texture import even for the Compatibility renderer.
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path("NamelessCrown/game/project.godot")
+          s = p.read_text(encoding="utf-8")
+          option = "textures/vram_compression/import_etc2_astc=true"
+          if option not in s:
+              s = s.replace("[rendering]\\n", "[rendering]\\n" + option + "\\n", 1)
+          if option not in s:
+              raise SystemExit("Missing [rendering] section in Godot config")
+          p.write_text(s, encoding="utf-8")
+          PY
           test -f NamelessCrown/game/project.godot
           test -f NamelessCrown/game/export_presets.cfg
           test -f NamelessCrown/game/scenes/main.tscn
