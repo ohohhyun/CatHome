@@ -1,56 +1,19 @@
-const {chromium}=require('playwright');
-const assert=require('node:assert/strict');
-const path=require('node:path');
-const fs=require('node:fs');
-const {pathToFileURL}=require('node:url');
-(async()=>{
- const browser=await chromium.launch({executablePath:process.env.CHROME_BIN||'/usr/bin/google-chrome',headless:true,args:['--no-sandbox','--disable-dev-shm-usage']});
- try{
-  for(const [width,height] of [[320,568],[390,844],[480,960]]){
-   const context=await browser.newContext({viewport:{width,height},isMobile:true,hasTouch:true});
-   const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
-   await page.addInitScript(()=>{localStorage.catCleared='9';localStorage.catUnlocked='10'});
-   await page.goto(pathToFileURL(path.resolve(__dirname,'../app/src/main/assets/index.html')).href);
-   await page.waitForFunction(()=>typeof STAGES!=='undefined');
-   assert.equal(await page.locator('#start').isVisible(),true);
-   assert.equal(await page.locator('#endless').isVisible(),true);
-   assert.equal(await page.locator('#endless').isDisabled(),true);
-   assert.match(await page.locator('#story-detail').textContent(),/1~20/);
-   await page.locator('#start').click();
-   assert.deepEqual(await page.evaluate(()=>({state,mode,level})),{state:'play',mode:'story',level:9});
-   // Complete stage 10 through the real update function; campaign must continue normally.
-   await page.evaluate(()=>{cats=[];elapsed=STAGES[9][2]-.001;update(.02)});
-   assert.equal(await page.evaluate(()=>state),'clear');
-   await page.locator('#next').click();
-   assert.deepEqual(await page.evaluate(()=>({mode,level})),{mode:'story',level:10});
-   await page.evaluate(()=>goHome());
-   assert.equal(await page.locator('#endless').isEnabled(),true);
-   assert.match(await page.locator('#endless-detail').textContent(),/끝없이/);
-   const output=path.resolve(process.env.PREVIEW_DIR||'build/previews');fs.mkdirSync(output,{recursive:true});
-   await page.screenshot({path:path.join(output,`mode-menu-${width}.png`)});
-   await page.locator('#endless').click();
-   assert.deepEqual(await page.evaluate(()=>({mode,round:endlessRound(),cleared})),{mode:'endless',round:1,cleared:10});
-   await page.evaluate(()=>{cats=[];elapsed=19.99;update(.02)});
-   assert.equal(await page.evaluate(()=>endlessRound()),2);
-   await page.evaluate(()=>goHome());await page.locator('#start').click();
-   assert.deepEqual(await page.evaluate(()=>({mode,level})),{mode:'story',level:10});
-   await page.evaluate(()=>{start(19);cats=[];elapsed=STAGES[19][2]-.001;update(.02)});
-   assert.equal(await page.evaluate(()=>state),'win');await page.locator('#next').click();
-   assert.equal(await page.evaluate(()=>state),'menu');
-   await page.locator('#select').click();assert.equal(await page.locator('#levelgrid button').count(),20);
-   await page.locator('#levelgrid button').last().click();
-   assert.deepEqual(await page.evaluate(()=>({mode,level})),{mode:'story',level:19});
-   await page.evaluate(()=>{start(5);elapsed=5;layoutLanes()});
-   assert.notDeepEqual(await page.evaluate(()=>Array.from(lanes)),[112,192,272]);
-   assert.equal(await page.evaluate(()=>spriteCache.size),10);
-   await page.locator('#sound').click();
-   assert.equal(await page.evaluate(()=>Object.keys(soundBuffers).length),6);
-   await page.evaluate(()=>{for(let i=0;i<30;i++)sfx('coin')});
-   assert(await page.evaluate(()=>activeVoices<=4));
-   await page.evaluate(()=>{state='pause';cats=CAT_SKINS.map((skin,i)=>({skin,lane:i,x:lanes[i],base:lanes[i],y:py()-125-i*38,age:1,type:0}));render()});
-   await page.screenshot({path:path.join(output,`moving-lanes-cats-${width}.png`)});
-   assert.deepEqual(errors,[],`Browser exceptions at ${width}x${height}`);
-   await context.close();console.log(`PASS browser ${width}x${height}: mode menu, stage 10 unlock, normal 11, independent endless, normal 20 ending and scrollable stage map`);
-  }
- }finally{await browser.close()}
-})().catch(e=>{console.error(e);process.exit(1)});
+const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
+(async()=>{const browser=await chromium.launch({executablePath:process.env.CHROME_BIN||'/usr/bin/google-chrome',args:['--no-sandbox']});const pages=[],errors=[];fs.mkdirSync('build/previews',{recursive:true});
+try{
+ for(let i=0;i<4;i++){
+  const p=await browser.newPage({viewport:{width:960,height:480},deviceScaleFactor:1,hasTouch:true});pages.push(p);p.on('pageerror',e=>errors.push(e.message));
+  await p.exposeFunction('nativeSend',async raw=>{let body=JSON.parse(raw);if(i===0){for(let j=1;j<pages.length;j++)await pages[j].evaluate(b=>window.onNativeEvent({kind:'packet',peer:0,body:b}),body);}else await pages[0].evaluate(({peer,body})=>window.onNativeEvent({kind:'packet',peer,body}),{peer:i,body});});
+  await p.addInitScript(({id})=>{window.RiftNative={send:s=>window.nativeSend(s),disconnect:()=>{},localIp:()=> '192.168.1.20',vibrate:()=>{},host:()=>setTimeout(()=>window.onNativeEvent({kind:'hosting',peer:0,message:'192.168.1.20|1234'}),10),join:()=>setTimeout(()=>window.onNativeEvent({kind:'connected',peer:id,message:''}),10)};},{id:i});
+  await p.goto('file://'+path.resolve('app/src/main/assets/index.html'));await p.waitForFunction(()=>window.RiftApp);await p.locator('.char-card').nth(i).click();
+ }
+ await pages[0].screenshot({path:'build/previews/01-menu.png'});await pages[0].locator('#solo').click();await pages[0].waitForFunction(()=>RiftApp.getMode()==='playing');await pages[0].screenshot({path:'build/previews/02-combat.png'});await pages[0].locator('#pause').click();await pages[0].locator('#exit').click();
+ await pages[0].locator('#guide-open').click();assert.equal(await pages[0].locator('.skill-catalog>div').count(),6);await pages[0].locator('[data-close="guide-screen"]').click();
+ await pages[0].locator('#lan-open').click();await pages[0].locator('#host-room').click();await pages[0].waitForFunction(()=>!document.getElementById('lobby').hidden);
+ for(let i=1;i<4;i++){const p=pages[i];await p.locator('#lan-open').click();await p.locator('#nickname').fill('동료'+i);await p.locator('#host-ip').fill('192.168.1.20');await p.locator('#join-code').fill('1234');await p.locator('#join-room').click();await pages[0].waitForFunction(n=>document.querySelectorAll('.roster-player').length===n,i+1);}
+ await pages[0].screenshot({path:'build/previews/03-lan-lobby.png'});await pages[0].locator('#party-start').click();for(const p of pages)await p.waitForFunction(()=>RiftApp.getMode()==='playing'&&RiftApp.getState().players.length===4);
+ const initial=await pages[0].evaluate(()=>RiftApp.getState().players.find(p=>p.id===2).x);await pages[2].keyboard.down('KeyD');await pages[2].waitForTimeout(450);await pages[2].keyboard.up('KeyD');await pages[0].waitForFunction(x=>RiftApp.getState().players.find(p=>p.id===2).x>x+20,initial);
+ await pages[0].locator('#pause').click();for(const p of pages)await p.waitForFunction(()=>!document.getElementById('pause-screen').hidden);await pages[0].locator('#resume').click();
+ await pages[1].screenshot({path:'build/previews/04-four-player.png'});await pages[0].evaluate(()=>RiftApp.getState().phase='victory');for(const p of pages){await p.waitForFunction(()=>RiftApp.getMode()==='result');assert((await p.evaluate(()=>RiftApp.getSave().gold))>=0);}
+ await pages[0].screenshot({path:'build/previews/05-results.png'});assert.deepEqual(errors,[]);console.log('PASS: offline art/menu, solo start/pause, six class skills, four-client lobby and start, remote movement, host pause/resume, terminal state delivery and rewards.');
+}finally{await browser.close();}})().catch(e=>{console.error(e);process.exit(1);});

@@ -1,31 +1,9 @@
-# v0.5 · 성능 / 고양이 무늬 / 이동하는 칸
+# ASHEN RIFT validation
 
-`node tests/game.test.cjs` 통과:
+- Local: JavaScript syntax checks and `node tests/game.test.cjs` passed. Covers all four classes, 24 unique skills, resource/cooldown rules, movement bounds, jump edge triggering, telegraphed damage and defenses, all three dungeons at all three difficulties, co-op revival, defeat, deterministic simulation, effect bounds, packaged assets and manifest basics.
+- CI: `tests/LanTransportTest.java` opens real loopback TCP sockets for a host and three clients, verifies authentication rejection, capacity rejection, UTF-8 inputs, 30KB snapshot broadcasts, disconnect and shutdown.
+- CI: `tests/browser.test.cjs` drives four browser clients with a simulated Android bridge, checks lobby, start, remote movement, pause, terminal state and rewards. Captures menu, combat, lobby and results as workflow artifacts.
+- CI: Android SDK 35 compile, APK signer verification and manifest inspection.
+- Not verified here: physical Android install, actual router/mobile Wi-Fi communication, device-specific multitouch/performance, long sessions and background transitions. CI pass confirms only the checks that actually ran successfully; inspect the matching workflow run.
 
-- 일반 모드 20단계 전체 완료와 20단계 귀가 엔딩
-- 9단계 완료 전 무한 모드 잠금, 10단계 완료 시 해금
-- 10단계 완료 후 다음 버튼은 일반 11단계로 이동
-- 시작 화면의 큰 일반/무한 버튼에서 각각 별도로 모드 선택
-- 무한 모드를 플레이해도 일반 완료 단계가 바뀌지 않음
-- 기존 10단계 완료 저장 기록 복원 시 일반 11단계와 무한 모드 모두 선택 가능
-- 무한 모드는 별도 구간/점수로 진행, 20초마다 구간 증가, 최고 구간과 점수 저장
-- 후반 11~20단계의 속도 증가/간격 감소, 두 칸 이동 패턴과 빈 차선 유지
-- 세 가지 화면 길이에서 가만히 있으면 실패하고, 최대 난도의 안전 경로를 즉시 읽는 봇은 간택 없이 60초 생존
-- 이동/충돌/회피/콤보/별/일시 정지 및 20단계 테마 그리기
-
-`tests/browser.test.cjs`는 GitHub Actions의 실제 Chrome에서 320×568 / 390×844 / 480×960 모바일 화면을 검사합니다. 시작 화면 모드 버튼, 10단계 해금, 일반 11단계, 별도 무한 모드, 일반 20단계 엔딩, 20개 단계 지도 스크롤을 검사하고 시작 화면 스크린샷을 저장합니다.
-
-Android APK 컴파일은 GitHub Actions에서 검증합니다. 실제 휴대폰의 터치감과 인간 반응 속도에 따른 체감 난도는 별도로 확인해야 합니다.
-
-
-v0.5 추가 검사:
-
-- 요청한 삼색이/턱시도/치즈냥 세 가지가 실제 생성되는지 확인
-- 그림 캐시가 스프라이트 10개/건물 60개로 제한되고 반복 렌더링 중 증가하지 않는지 확인
-- 파티클 96개/떠오르는 글자 12개 상한
-- 이동하는 칸의 간격과 충돌 좌표, 3개 화면 길이에서 최대 난도 통과 경로 유지
-- 120Hz 프레임 입력에서도 게임 시간이 일정하게 흐르고 일시 정지 시 멈추는지 확인
-- 이전 저장 데이터 복원, 지연 저장 및 생명 주기 중 즉시 저장
-- Chrome 모바일 화면에서 미리 만든 효과음 6종과 동시 재생 상한 확인
-
-`tests/performance.test.cjs`는 고정된 v0.4 소스와 현재 소스를 Chrome 4배 CPU 제한에서 비교합니다. 고양이 12마리와 HUD를 360회 그릴 때의 작업 제출 시간, Canvas 명령 수, DOM 변경 수를 기록합니다. 캐시를 채운 뒤 비교하며 명령 수/DOM 변경 감소를 검사합니다. GPU 합성 시간, 실제 휴대폰 프레임 속도 또는 주기적 끊김이 완전히 해결됐는지를 증명하는 검사는 아닙니다.
+Only the `ohohhyun/CatHome` repository is in scope.

@@ -2,7 +2,7 @@ name: Build installable APK
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [main, codex/ashen-rift-apk]
 permissions:
   contents: read
 jobs:
@@ -11,30 +11,31 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
           java-version: '17'
-      - name: Check game logic
+      - name: Unpack bundled offline game art
+        run: node tools/unpack-art.cjs
+      - name: Check combat and campaign
         run: node tests/game.test.cjs
-      - name: Install browser test library
+      - name: Test native four-player LAN transport
+        run: |
+          mkdir -p build/lan-test
+          javac -d build/lan-test app/src/main/java/com/cathome/game/LanTransport.java tests/LanTransportTest.java
+          java -cp build/lan-test LanTransportTest
+      - name: Install UI test library
         run: npm install --prefix "$RUNNER_TEMP/cathome-ui" --no-package-lock --no-audit --no-fund playwright@1.56.1
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
-      - name: Check mobile mode selection in browser
+      - name: Test four-player game protocol and mobile layout
         run: node tests/browser.test.cjs
-        env:
-          NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
-      - name: Compare render workload with v0.4
-        run: node tests/performance.test.cjs
         env:
           NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: CatHome-Menu-Previews
+          name: AshenRift-Previews
           path: build/previews/*.png
           if-no-files-found: ignore
       - uses: android-actions/setup-android@v3
@@ -62,11 +63,13 @@ jobs:
         env:
           CATHOME_DEBUG_KEYSTORE: ${{ github.workspace }}/.signing/debug.keystore
       - name: Verify installable APK and signer
-        run: '"$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --print-certs app/build/outputs/apk/debug/app-debug.apk'
-
+        run: |
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --print-certs app/build/outputs/apk/debug/app-debug.apk
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging app/build/outputs/apk/debug/app-debug.apk
+          cp app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/AshenRift-1.0.apk
       - uses: actions/upload-artifact@v4
         with:
-          name: CatHome-APK
-          path: app/build/outputs/apk/debug/app-debug.apk
+          name: CatHome-AshenRift-APK
+          path: app/build/outputs/apk/debug/AshenRift-1.0.apk
           if-no-files-found: error
           retention-days: 30

@@ -6,8 +6,8 @@ android {
         applicationId 'com.cathome.game'
         minSdk 23
         targetSdk 35
-        versionCode 5
-        versionName '0.5-smooth-cats'
+        versionCode 6
+        versionName '1.0-ashen-rift-lan'
     }
     signingConfigs {
         debug {
@@ -22,3 +22,18 @@ android {
     }
     buildTypes { release { minifyEnabled false } }
 }
+
+// Art sources are text-encoded for repository transport; decoded files are bundled offline.
+def unpackRiftArt = tasks.register('unpackRiftArt') {
+    inputs.dir rootProject.file('art-source')
+    outputs.dir file('src/main/assets/art')
+    doLast {
+        rootProject.fileTree('art-source').matching { include '*.webp.b64' }.each { source ->
+            def output = new File(projectDir, 'src/main/assets/art/' + source.name.substring(0, source.name.length() - 4))
+            output.parentFile.mkdirs()
+            output.bytes = source.text.trim().decodeBase64()
+        }
+    }
+}
+tasks.named('preBuild').configure { dependsOn unpackRiftArt }
+
