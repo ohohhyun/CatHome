@@ -3,11 +3,11 @@ android {
     namespace 'com.cathome.game'
     compileSdk 35
     defaultConfig {
-        applicationId 'com.cathome.game'
+        applicationId 'com.ashenrift.game'
         minSdk 23
         targetSdk 35
-        versionCode 9
-        versionName '2.0-persistent-rpg'
+        versionCode 10
+        versionName '2.0.1-separate-app'
     }
     signingConfigs {
         debug {

@@ -68,10 +68,30 @@ jobs:
         run: |
           "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --print-certs app/build/outputs/apk/debug/app-debug.apk
           "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging app/build/outputs/apk/debug/app-debug.apk
-          cp app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/AshenRift-2.0.apk
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging app/build/outputs/apk/debug/app-debug.apk | rg -F "package: name='com.ashenrift.game'"
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging app/build/outputs/apk/debug/app-debug.apk | rg -F "launchable-activity: name='com.cathome.game.MainActivity'"
+          cp app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/AshenRift-2.0.1-Separate.apk
       - uses: actions/upload-artifact@v4
         with:
-          name: CatHome-AshenRift-APK
-          path: app/build/outputs/apk/debug/AshenRift-2.0.apk
+          name: AshenRift-Separate-APK
+          path: app/build/outputs/apk/debug/AshenRift-2.0.1-Separate.apk
+          if-no-files-found: error
+          retention-days: 30
+      - name: Prepare original CatHome recovery build
+        run: python tools/prepare-original-restore.py "$RUNNER_TEMP/cathome-restore"
+      - name: Build preserved original CatHome APK
+        run: bash "$RUNNER_TEMP/cathome-restore/gradlew" -p "$RUNNER_TEMP/cathome-restore" assembleDebug --no-daemon
+        env:
+          CATHOME_DEBUG_KEYSTORE: ${{ github.workspace }}/.signing/debug.keystore
+      - name: Verify original CatHome recovery identity
+        run: |
+          RESTORE_APK="$RUNNER_TEMP/cathome-restore/app/build/outputs/apk/debug/app-debug.apk"
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --print-certs "$RESTORE_APK"
+          "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging "$RESTORE_APK" | rg -F "package: name='com.cathome.game' versionCode='10'"
+          cp "$RESTORE_APK" "$RUNNER_TEMP/CatHome-0.7-Restore.apk"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: CatHome-Original-Restore-APK
+          path: ${{ runner.temp }}/CatHome-0.7-Restore.apk
           if-no-files-found: error
           retention-days: 30

@@ -25,6 +25,7 @@ for(let d=0;d<24;d++)for(let diff=0;diff<4;diff++){
 {const p=E.player(0,'<script>',99,999,{vit:999,atk:999,focus:999});assert.equal(p.cls,3);assert.equal(p.level,60);assert(!p.name.includes('<'));assert(p.focus<=20);}
 for(const file of ['index.html','rpg.js','engine.js','app.js','town.js','game.css','town.css','art/fighters.webp','art/enemies.webp','art/sanctum.webp'])assert(fs.statSync('app/src/main/assets/'+file).size>100);
 const manifest=fs.readFileSync('app/src/main/AndroidManifest.xml','utf8');assert(manifest.includes('android.permission.INTERNET'));assert(manifest.includes('sensorLandscape'));
+const build=fs.readFileSync('app/build.gradle','utf8');assert(build.includes("applicationId 'com.ashenrift.game'"),'new game must never replace original CatHome');
 // Party count and difficulty affect population, both HP pools, aggression and rewards.
 for(let diff=0;diff<4;diff++){
  let previous=0;for(let n=1;n<=4;n++){const s=E.create(0,diff);s.players=Array.from({length:n},(_,i)=>E.player(i,'동료'+i));E.start(s);assert(s.enemies.length>previous);previous=s.enemies.length;const b=E.balance(n,diff);assert(b.bossHp>=b.normalHp);assert(b.reward>=1);if(n>1)assert(b.bossAdds>=2);}

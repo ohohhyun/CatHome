@@ -17,3 +17,7 @@ CI is configured to additionally verify:
 Consult the matching workflow result before claiming CI passed for a particular commit. Actual Android installation, native Wi-Fi on physical phones, Android SharedPreferences behavior on-device, long-session performance and human pacing/balance remain unverified here. The browser bridge test does not emulate Android networking or storage internals.
 
 Only ohohhyun/CatHome is in scope. The original CatHome v0.7 source remains in legacy/cathome-0.7/.
+
+## App identity separation correction
+
+The new game now uses com.ashenrift.game. Original CatHome remains com.cathome.game on main. CI verifies the compiled package name and launch activity, and also builds an optional original-game recovery APK from the untouched legacy/cathome-0.7 snapshot in a temporary directory with a higher versionCode. Previous 1.0/2.0 AshenRift APKs used the original app ID and could replace it on a phone; do not distribute those as coexistence builds. A separate package does not automatically import the previous shared package's save data. Physical coexistence/recovery/data restoration remains unverified on a real phone.

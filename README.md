@@ -2,13 +2,22 @@
 
 CatHome Android 프로젝트의 **영구 성장형 횡스크롤 액션 RPG**입니다. 마을에서 의뢰와 장비를 정비하고, 던전을 탐험해 전리품을 모으고, 새로운 지역과 직업 능력을 해금한 뒤 만렙 원정으로 이어집니다. 짧은 원정이 끝나도 캐릭터·장비·퀘스트·숙련 기록이 유지됩니다.
 
-## 설치용 업데이트 APK
+## 별도로 설치하는 APK · 기존 게임 유지
 
-**Actions → Build installable APK → codex/ashen-rift-apk의 최신 성공 실행 → Artifacts → CatHome-AshenRift-APK**를 받으면 `AshenRift-2.0.apk`가 들어 있습니다. Android 6.0 이상과 최신 Android System WebView를 권장합니다. GitHub Artifact 다운로드에는 로그인이 필요합니다.
+**잿빛 균열은 별도 앱 `com.ashenrift.game`입니다. ‘집사 사절!’의 `com.cathome.game`을 대체하지 않습니다.** 두 게임을 함께 설치할 수 있습니다. GitHub main의 기존 게임도 변경하지 않았으며 새 게임은 전용 브랜치와 PR에 있습니다.
 
-앱 ID `com.cathome.game`, versionCode **9**, 기존 테스트 서명 캐시를 사용합니다. 기존 앱과 서명이 같으면 업데이트 설치할 수 있습니다. 이전 1.0의 캐릭터 레벨·골드·능력 강화는 새 저장 형식으로 이전합니다. 캐릭터별 초반 장비를 지급하며 새 메인 퀘스트는 처음부터 시작합니다. 캐릭터 레벨을 초기화하지 않습니다. 기존 고양이 게임 v0.7 전체 소스는 `legacy/cathome-0.7/`에 별도로 보관합니다.
+Actions → Build installable APK → codex/ashen-rift-apk의 최신 성공 실행에서:
 
-테스트용으로 서명된 APK이며 Play 스토어용 서명은 아닙니다. 기존 서명 캐시가 삭제된 경우 업데이트 서명이 달라질 수 있습니다. 앱을 삭제하면 기기 저장 기록도 삭제되므로, 업데이트 설치가 가능한 상황에서 기존 앱을 먼저 삭제하지 마세요.
+- **AshenRift-Separate-APK**: `AshenRift-2.0.1-Separate.apk`. 새 게임을 별도로 설치합니다.
+- **CatHome-Original-Restore-APK**: `CatHome-0.7-Restore.apk`. 이전에 잘못된 공유 앱 ID의 1.0/2.0 APK를 설치해 ‘집사 사절!’이 바뀐 경우 사용하는 기존 게임 복구 파일입니다. 해당 파일은 원본 게임과 같은 앱 ID·서명, 더 높은 설치 버전 번호를 사용합니다.
+
+**이전에 제공한 AshenRift-1.0.apk / AshenRift-2.0.apk는 같은 com.cathome.game을 사용하므로 더 이상 설치하지 마세요.** 이미 설치한 경우 앱을 먼저 삭제하지 마세요. 기존 게임 데이터가 남아 있을 때 복구 APK를 업데이트 설치하면 원본 코드가 그 저장을 읽을 수 있습니다. 기기에서 이미 삭제했거나 데이터가 지워진 기록의 복구는 보장하지 않습니다.
+
+분리된 새 앱은 Android의 다른 저장 공간을 사용하므로 이전 공유 ID의 잿빛 균열 저장을 자동으로 가져오지 않습니다. 새 앱 내부에서는 영구 저장과 저장 형식 이전을 계속 지원합니다. 다른 앱의 기록을 덮어쓰거나 읽지 않습니다.
+
+새 게임 versionCode 10 / versionName 2.0.1-separate-app. 복구 파일은 보관된 CatHome v0.7 전체 소스에서 화면·로직·앱 ID를 유지하고 임시 빌드 사본의 versionCode만 10으로 올려 빌드합니다. 보관 소스와 main은 변경하지 않습니다. 원본은 `legacy/cathome-0.7/`에 있습니다.
+
+Android 6.0 이상과 최신 Android System WebView를 권장합니다. GitHub Artifact 다운로드에는 로그인이 필요하며 파일 앱의 ‘알 수 없는 앱 설치’ 허용이 필요할 수 있습니다. 테스트 서명 APK이며 Play 스토어용 서명은 아닙니다.
 
 ## 계속 이어지는 플레이
 
