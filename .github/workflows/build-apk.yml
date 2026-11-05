@@ -49,10 +49,21 @@ jobs:
       - name: Preserve test APK signing key
         uses: actions/cache@v4
         with:
-          path: ~/.android/debug.keystore
-          key: cathome-debug-signing-v1
+          path: .signing/debug.keystore
+          key: cathome-debug-signing-explicit-v1
+      - name: Prepare reusable test signing key
+        run: |
+          mkdir -p .signing
+          if [ ! -f .signing/debug.keystore ]; then
+            keytool -genkeypair -keystore .signing/debug.keystore -alias androiddebugkey -storepass android -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
+          fi
       - name: Build APK
         run: bash gradlew assembleDebug --no-daemon
+        env:
+          CATHOME_DEBUG_KEYSTORE: ${{ github.workspace }}/.signing/debug.keystore
+      - name: Verify installable APK and signer
+        run: '"$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --print-certs app/build/outputs/apk/debug/app-debug.apk'
+
       - uses: actions/upload-artifact@v4
         with:
           name: CatHome-APK
