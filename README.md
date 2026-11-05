@@ -2,6 +2,8 @@
 
 CatHome Android 프로젝트를 횡스크롤 던전 액션 게임으로 전환한 버전입니다. 앱 ID `com.cathome.game`와 기존 테스트 서명 캐시를 유지합니다. 다른 저장소나 서비스는 변경하지 않습니다.
 
+작업 중 추가된 기존 고양이 게임 v0.7의 전체 소스는 `legacy/cathome-0.7/`에 보관합니다. 새 APK의 versionCode는 8이며 기존 v0.7보다 높습니다. 기본 브랜치를 직접 덮어쓰지 않고 전용 브랜치와 PR로 제공합니다.
+
 ## 설치용 APK
 
 **Actions → Build installable APK → 이 브랜치의 최신 성공 실행 → Artifacts → CatHome-AshenRift-APK**를 다운로드하고 압축을 풀어 `AshenRift-1.0.apk`를 설치하세요. Android 6.0 이상, 최신 Android System WebView를 권장합니다. GitHub Artifact 다운로드에는 GitHub 로그인이 필요합니다.
@@ -68,4 +70,4 @@ GitHub Actions에서 전투 검사, 실제 TCP 소켓 4인 통신 검사, 브라
 
 현재 결과물은 플레이 가능한 프로토타입입니다. 캐릭터는 고해상도 2D 아트의 이동·기울기·점프 및 공격 이펙트로 표현하며 상용 격투 게임의 프레임별 전신 애니메이션, 방대한 콘텐츠 분량과 같은 수준으로 완성·검증된 상태는 아닙니다. 던전은 공통 성역 배경에 색조와 전투 구성을 달리합니다.
 
-아트와 UI 폰트 원본은 `art-source/*.b64`에 있으며 Gradle 빌드가 WebP 파일로 자동 복원해 APK에 포함합니다. 별도 웹 미리보기나 테스트 전에는 `node tools/unpack-art.cjs`를 한 번 실행하세요. 기존 `tests/performance.test.cjs`와 `tests/preview.cjs`는 이전 고양이 게임용 자료이며 새 게임 검사에는 사용하지 않습니다. Gradle 8.9 / Android Gradle Plugin 8.7.3 / compile·target SDK 35 / min SDK 23입니다.
+아트와 UI 폰트 원본은 `art-source/*.b64`에 있으며 Gradle 빌드가 WebP와 OTF 파일로 자동 복원해 APK에 포함합니다. 별도 웹 미리보기나 테스트 전에는 `node tools/unpack-art.cjs`를 한 번 실행하세요. 기존 고양이 게임의 테스트와 미리보기 도구는 `legacy/cathome-0.7/`에 보관합니다. Gradle 8.9 / Android Gradle Plugin 8.7.3 / compile·target SDK 35 / min SDK 23입니다.
