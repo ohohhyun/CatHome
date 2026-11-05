@@ -6,8 +6,8 @@ android {
         applicationId 'com.cathome.game'
         minSdk 23
         targetSdk 35
-        versionCode 8
-        versionName '1.0-ashen-rift-lan'
+        versionCode 9
+        versionName '2.0-persistent-rpg'
     }
     signingConfigs {
         debug {

@@ -18,7 +18,9 @@ jobs:
       - name: Unpack bundled offline game art
         run: node tools/unpack-art.cjs
       - name: Check combat and campaign
-        run: node tests/game.test.cjs
+        run: |
+          node tests/game.test.cjs
+          node tests/rpg.test.cjs
       - name: Test native four-player LAN transport
         run: |
           mkdir -p build/lan-test
@@ -66,10 +68,10 @@ jobs:
         run: |
           "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --print-certs app/build/outputs/apk/debug/app-debug.apk
           "$ANDROID_HOME/build-tools/35.0.0/aapt" dump badging app/build/outputs/apk/debug/app-debug.apk
-          cp app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/AshenRift-1.0.apk
+          cp app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/AshenRift-2.0.apk
       - uses: actions/upload-artifact@v4
         with:
           name: CatHome-AshenRift-APK
-          path: app/build/outputs/apk/debug/AshenRift-1.0.apk
+          path: app/build/outputs/apk/debug/AshenRift-2.0.apk
           if-no-files-found: error
           retention-days: 30
