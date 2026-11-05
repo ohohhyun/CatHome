@@ -5,7 +5,7 @@ try{
   const p=await browser.newPage({viewport:{width:960,height:480},deviceScaleFactor:1,hasTouch:true});pages.push(p);p.on('pageerror',e=>errors.push(e.message));
   await p.exposeFunction('nativeSend',async raw=>{let body=JSON.parse(raw);if(i===0){for(let j=1;j<pages.length;j++)await pages[j].evaluate(b=>window.onNativeEvent({kind:'packet',peer:0,body:b}),body);}else await pages[0].evaluate(({peer,body})=>window.onNativeEvent({kind:'packet',peer,body}),{peer:i,body});});
   await p.addInitScript(({id})=>{window.RiftNative={send:s=>window.nativeSend(s),disconnect:()=>{},localIp:()=> '192.168.1.20',vibrate:()=>{},host:()=>setTimeout(()=>window.onNativeEvent({kind:'hosting',peer:0,message:'192.168.1.20|1234'}),10),join:()=>setTimeout(()=>window.onNativeEvent({kind:'connected',peer:id,message:''}),10)};},{id:i});
-  await p.goto('file://'+path.resolve('app/src/main/assets/index.html'));await p.waitForFunction(()=>window.RiftApp);await p.locator('.char-card').nth(i).click();
+  await p.goto('file://'+path.resolve('app/src/main/assets/index.html'));await p.waitForFunction(()=>window.RiftApp);await p.evaluate(()=>document.fonts.ready);await p.locator('.char-card').nth(i).click();
  }
  await pages[0].screenshot({path:'build/previews/01-menu.png'});await pages[0].locator('#solo').click();await pages[0].waitForFunction(()=>RiftApp.getMode()==='playing');await pages[0].screenshot({path:'build/previews/02-combat.png'});await pages[0].locator('#pause').click();await pages[0].locator('#exit').click();
  await pages[0].locator('#guide-open').click();assert.equal(await pages[0].locator('.skill-catalog>div').count(),6);await pages[0].locator('[data-close="guide-screen"]').click();

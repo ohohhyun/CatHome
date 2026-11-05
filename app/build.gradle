@@ -28,7 +28,7 @@ def unpackRiftArt = tasks.register('unpackRiftArt') {
     inputs.dir rootProject.file('art-source')
     outputs.dir file('src/main/assets/art')
     doLast {
-        rootProject.fileTree('art-source').matching { include '*.webp.b64' }.each { source ->
+        rootProject.fileTree('art-source').matching { include '*.webp.b64', '*.otf.b64' }.each { source ->
             def output = new File(projectDir, 'src/main/assets/art/' + source.name.substring(0, source.name.length() - 4))
             output.parentFile.mkdirs()
             output.bytes = source.text.trim().decodeBase64()

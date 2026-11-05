@@ -72,7 +72,7 @@ function updateHud(){const p=game.players.find(p=>p.id===myId);if(!p)return;cons
 function loadImage(key,path){const img=new Image();img.onload=()=>images[key]=img;img.onerror=()=>console.warn('Asset unavailable:',path);img.src=path;}
 loadImage('background','art/sanctum.webp');loadImage('fighters','art/fighters.webp');loadImage('enemies','art/enemies.webp');
 function path(points,fill,stroke='#080d17',width=4){ctx.beginPath();points.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.closePath();ctx.fillStyle=fill;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=width;ctx.stroke();}}
-function text(t,x,y,size=18,color='#f4dfb5',align='center'){ctx.font='700 '+size+'px Arial,sans-serif';ctx.textAlign=align;ctx.fillStyle=color;ctx.shadowColor='#070910';ctx.shadowBlur=4;ctx.fillText(t,x,y);ctx.shadowBlur=0;}
+function text(t,x,y,size=18,color='#f4dfb5',align='center'){ctx.font='700 '+size+'px \"Rift UI\",Arial,sans-serif';ctx.textAlign=align;ctx.fillStyle=color;ctx.shadowColor='#070910';ctx.shadowBlur=4;ctx.fillText(t,x,y);ctx.shadowBlur=0;}
 function ellipse(x,y,rx,ry,color){ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();}
 function background(){const bg=images.background;ctx.fillStyle='#16212f';ctx.fillRect(0,0,1600,800);if(bg){const h=1600*bg.height/bg.width;ctx.drawImage(bg,0,0,bg.width,bg.height,-35-camera*.035,800-h,1670,h);}if(game.dungeon===1){ctx.fillStyle='#a34d1029';ctx.fillRect(0,0,1600,800);}if(game.dungeon===2){ctx.fillStyle='#5a2c9b35';ctx.fillRect(0,0,1600,800);}
  const shade=ctx.createLinearGradient(0,0,0,800);shade.addColorStop(0,'#080d2080');shade.addColorStop(.45,'#07132308');shade.addColorStop(1,'#080d1b80');ctx.fillStyle=shade;ctx.fillRect(0,0,1600,800);
