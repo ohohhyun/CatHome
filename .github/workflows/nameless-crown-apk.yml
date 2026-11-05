@@ -31,6 +31,7 @@ jobs:
           python-version: '3.12'
       - name: Run offline data and route checks
         run: |
+          python3 -m pip install --quiet Pillow
           python3 NamelessCrown/game/qa/audit.py
           python3 NamelessCrown/game/qa/source_syntax_audit.py
           python3 NamelessCrown/game/qa/route_model_audit.py
