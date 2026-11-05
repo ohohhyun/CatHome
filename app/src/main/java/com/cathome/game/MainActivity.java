@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
         game.loadUrl("file:///android_asset/index.html");
     }
     @Override protected void onPause() {
-        game.evaluateJavascript("if(state==='play')panel('pause');", null);
+        game.evaluateJavascript("if(state==='play')panel('pause');flushSave();", null);
         game.onPause();
         super.onPause();
     }

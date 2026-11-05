@@ -40,6 +40,15 @@ const {pathToFileURL}=require('node:url');
    await page.locator('#select').click();assert.equal(await page.locator('#levelgrid button').count(),20);
    await page.locator('#levelgrid button').last().click();
    assert.deepEqual(await page.evaluate(()=>({mode,level})),{mode:'story',level:19});
+   await page.evaluate(()=>{start(5);elapsed=5;layoutLanes()});
+   assert.notDeepEqual(await page.evaluate(()=>Array.from(lanes)),[112,192,272]);
+   assert.equal(await page.evaluate(()=>spriteCache.size),10);
+   await page.locator('#sound').click();
+   assert.equal(await page.evaluate(()=>Object.keys(soundBuffers).length),6);
+   await page.evaluate(()=>{for(let i=0;i<30;i++)sfx('coin')});
+   assert(await page.evaluate(()=>activeVoices<=4));
+   await page.evaluate(()=>{state='pause';cats=CAT_SKINS.map((skin,i)=>({skin,lane:i,x:lanes[i],base:lanes[i],y:py()-125-i*38,age:1,type:0}));render()});
+   await page.screenshot({path:path.join(output,`moving-lanes-cats-${width}.png`)});
    assert.deepEqual(errors,[],`Browser exceptions at ${width}x${height}`);
    await context.close();console.log(`PASS browser ${width}x${height}: mode menu, stage 10 unlock, normal 11, independent endless, normal 20 ending and scrollable stage map`);
   }

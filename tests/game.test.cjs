@@ -22,7 +22,7 @@ run("panel('pause');let before=elapsed;update(1);if(elapsed!==before)throw Error
 run('start(0);cats=[{x:240,passed:false}];combo=4;award(cats[0])');assert.equal(run('combo'),5);assert.equal(run('near'),1);assert.equal(run('score'),60);
 for(let l=0;l<20;l++){
  run(`start(${l});elapsed=STAGES[level][2]-.01;cats=[];update(.02)`);
- assert.equal(run('state'),l===19?'win':'clear');assert.equal(+storage.catCleared,l+1);assert.equal(run(`medals[${l}]`),3);
+ assert.equal(run('state'),l===19?'win':'clear');assert.equal(JSON.parse(storage.catHomeSave).cleared,l+1);assert.equal(run(`medals[${l}]`),3);
  assert.equal(element('endless').disabled,l<9,'unlock at stage 10, not stage 20');
  if(l===8){assert.equal(run("start(0,'endless')"),false);assert.equal(run('state'),'clear')}
  if(l===9){assert.equal(element('unlock').classList.contains('hidden'),false);assert.equal(run('unlocked'),11)}
@@ -30,9 +30,9 @@ for(let l=0;l<20;l++){
 }
 element('next').click();assert.equal(run('state'),'menu','stage 20 ends at mode selection');
 element('endless').click();assert.equal(run('mode'),'endless');assert.equal(run('endlessRound()'),1);
-run('elapsed=19.99;cats=[];update(.02)');assert.equal(run('endlessRound()'),2);assert.equal(run('state'),'play');assert.match(element('stage').textContent,/무한 모드.*2구간/);assert.equal(+storage.catInfiniteRound,2);
+run('elapsed=19.99;cats=[];update(.02)');assert.equal(run('endlessRound()'),2);assert.equal(run('state'),'play');assert.match(element('stage').textContent,/무한 모드.*2구간/);assert.equal(JSON.parse(storage.catHomeSave).bestRound,2);
 run('elapsed=39.99;cats=[];update(.02)');assert.equal(run('endlessRound()'),3);
-run("score=1234;panel('fail')");assert.equal(+storage.catInfiniteBest,1234);element('next').click();assert.equal(run('mode'),'endless');assert.equal(run('endlessRound()'),1);assert.equal(run('score'),0);assert.equal(run('bestRound'),3);
+run("score=1234;panel('fail')");assert.equal(JSON.parse(storage.catHomeSave).best,1234);element('next').click();assert.equal(run('mode'),'endless');assert.equal(run('endlessRound()'),1);assert.equal(run('score'),0);assert.equal(run('bestRound'),3);
 run('dash()');assert.equal(run('dashTime'),.32);assert.equal(run('cooldown'),9);
 const reload=boot(storage);assert.equal(reload.run('cleared'),20);assert.equal(reload.run('best'),1234);assert.equal(reload.run('bestRound'),3);assert.equal(reload.element('endless').disabled,false);
 // Existing players who completed the old 10-stage game can choose either mode immediately.
@@ -65,5 +65,20 @@ for(const h of [590,720,900]){
 run("cleared=20;start(0,'endless')");for(const e of [0,20,100,1000,100000]){run(`elapsed=${e}`);assert(run('difficulty().speed')<=600);assert(run('difficulty().interval')>=.38)}
 for(let l=0;l<20;l++)run(`mode='story';level=${l};render()`);
 for(const s of ['menu','play','fail','win'])run(`state='${s}';render()`);
-console.log('PASS: all 20 normal stages, stage-10-only unlock, independent start-screen mode choices, stage 11 normal continuation, old save migration, endless isolation/retry/records, difficulty progression, idle failure and playable maximum-difficulty routes at 3 screen sizes.');
+// Cached artwork stays bounded; all three requested coats actually spawn.
+const smooth=boot({catCleared:'20'});assert.equal(smooth.run('spriteCache.size'),10);assert.equal(smooth.run('buildingCache.size'),60);
+smooth.run('start(19)');const skins=new Set();for(let n=0;n<12;n++){smooth.run('cats=[];wave()');for(const skin of smooth.run('cats.map(c=>c.skin)'))skins.add(skin)}assert.deepEqual([...skins].sort(),['calico','cheese','tuxedo']);
+for(let n=0;n<100;n++)smooth.run('render()');assert.equal(smooth.run('spriteCache.size'),10);assert.equal(smooth.run('buildingCache.size'),60);
+smooth.run('burst(100,100,"#fff",1000)');assert(smooth.run('particles.length')<=96);for(let n=0;n<100;n++)smooth.run('float("+10",100,100)');assert.equal(smooth.run('floaters.length'),12);
+smooth.run('start(0);elapsed=5;layoutLanes()');assert.deepEqual(Array.from(smooth.run('lanes')),[112,192,272]);
+smooth.run('start(5);elapsed=5;layoutLanes()');assert.notDeepEqual(Array.from(smooth.run('lanes')),[112,192,272]);
+for(let n=0;n<240;n++){smooth.run(`elapsed=${n};layoutLanes()`);assert(smooth.run('lanes[1]-lanes[0]>=70&&lanes[2]-lanes[1]>=70'))}
+// Fixed-step loop advances consistently on a 120Hz display and stops during pause.
+smooth.run('start(0);last=0;frameAccumulator=0;frame(1000)');for(let n=1;n<=120;n++)smooth.run(`frame(${1000+n*1000/120})`);assert(Math.abs(smooth.run('elapsed')-61/60)<.02);
+smooth.run("panel('pause');let held=elapsed;frame(3000);if(elapsed!==held)throw Error('paused frame advances')");
+// Save writes can wait until idle; lifecycle flushing preserves the most recent data.
+const asyncSave=boot(),idleTasks=[];asyncSave.env.window.requestIdleCallback=cb=>idleTasks.push(cb);
+asyncSave.run('cleared=10;save();cleared=11;save()');assert.equal(idleTasks.length,1);assert.equal(asyncSave.storage.catHomeSave,undefined);asyncSave.run('flushSave()');assert.equal(JSON.parse(asyncSave.storage.catHomeSave).cleared,11);idleTasks[0]();
+assert.equal(boot(asyncSave.storage).run('cleared'),11);
+console.log('PASS: 20-stage campaign and independent endless mode; coat variants; moving lane geometry; cached artwork bounds; bounded effects; 120Hz fixed-step timing; deferred saves; migration; maximum-difficulty route simulations.');
 module.exports={boot};
