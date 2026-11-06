@@ -1,3 +1,22 @@
+# 2.9 verified presentation release
+
+Final source: `2c655234b41c1dbbb13e60705b0e2899e9c6920a`. Successful build: [42236159924](https://github.com/ohohhyun/CatHome/actions/runs/42236159924). Direct signed APK: [DungeonCrush-2.9.apk](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9/DungeonCrush-2.9.apk).
+
+Published by [release workflow 42237289644](https://github.com/ohohhyun/CatHome/actions/runs/42237289644). The public release APK size and SHA256 digest match the locally verified signed artifact.
+
+- CI passed eight JavaScript suites, the real native TCP host plus three clients, and ten Chromium presentation/protocol scenarios. The layout suite covers ten landscape/tablet sizes including the reported 1280×591 clipping case, compact controls, safe-area insets and Korean text.
+- All seven principal motions per class use 24 unique authored crops. Runtime drawing includes 704 character poses, 192 monster poses, 192 retained individual spell cels, 32 new ultimate cels, 24 painted skill icons and 30 equipment/resource icons.
+- All 101 new runtime atlases and their 101 original PNG sources were checked by SHA256 and Git blob identity. Alpha encoding is exact; opaque RGB PSNR is at least 35 dB, with lossless fallback below that threshold. Bounded crops, contact timing and immutable LAN presentation are checked.
+- New and old four-class motion comparison, all real held combos, all 24 skills, jump, running, ranged collisions, enemy telegraphs and recorded combat passed in Chromium. The title/footer now both display 2.9.
+- Four browser peers passed shared kill XP persistence/reload/settlement deduplication, own-only dealt damage text, remote short-tap potions, 50% maximum HP healing, 180-second cooldown, readable HP, illustrated inventory/forge and 14 decoded combat Foley clips.
+- Android build, ZIP CRC, compiled package/activity/label/version, exact packaged image/script hashes and apksigner verification passed. Version code is 20; package is `com.dungeoncrush.game`; label is `던전크러시!`; certificate SHA256 is `e43fedd9099e7b5df82eccfa3e92fc020d429ad99795463abbe40e2af4880708`, matching 2.8.
+- The installed APK was reconstructed from six individually checksummed artifact chunks for local verification. It is the original signed build output, without rebuilding or repacking. Final APK: 109022767 bytes; SHA256 `e3120a47911a8c3ff9da1c6bb57f285bc999add3d678ca41751b90b2da81db61`.
+- Original app/legacy/tests Git subtrees and 38 protected original files match the pre-patch snapshot. Changes are limited to Dungeon Crush and its two dedicated workflows. Main was not merged or updated by this task.
+
+Actual physical Android installation, phone-to-phone Wi-Fi, device audio hardware and long-session performance were not exercised in this environment. Frame counts and automated tests do not establish an objective percentage of Dungeon & Fighter's commercial production quality. The supplied comparison and combat recordings are browser captures.
+
+---
+
 # 2.1 validation
 
 Local checks passed:
