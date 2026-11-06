@@ -43,6 +43,8 @@ jobs:
         run: npm install --prefix "$RUNNER_TEMP/cathome-ui" --no-package-lock --no-audit --no-fund playwright@1.56.1
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
+      - name: Install video encoder for real combat capture
+        run: node "$RUNNER_TEMP/cathome-ui/node_modules/playwright/cli.js" install ffmpeg
       - name: Test four-player game protocol and mobile layout
         run: |
           node tests/generated-presentation.test.cjs
