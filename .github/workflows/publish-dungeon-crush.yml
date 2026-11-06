@@ -94,7 +94,18 @@ jobs:
             cmp apk/DungeonCrush-2.9.1.apk existing/DungeonCrush-2.9.1.apk
             gh release upload dungeon-crush-v2.9.1 "$DUNGEON_PREVIEW_FILE" DungeonCrush-2.9.1-Share.zip --clobber
           else
-            gh release create dungeon-crush-v2.9.1 apk/DungeonCrush-2.9.1.apk "$DUNGEON_PREVIEW_FILE" --target "$GITHUB_SHA" --title '던전크러시! 2.9.1 — 달리기·스킬·사후 공격 수정' --notes-file release-notes.md --prerelease
+            gh release create dungeon-crush-v2.9.1 apk/DungeonCrush-2.9.1.apk "$DUNGEON_PREVIEW_FILE" DungeonCrush-2.9.1-Share.zip --target "$GITHUB_SHA" --title '던전크러시! 2.9.1 — 달리기·스킬·사후 공격 수정' --notes-file release-notes.md --prerelease
           fi
       - name: Confirm release assets
-        run: gh release view dungeon-crush-v2.9.1 --json url,tagName,assets
+        run: |
+          gh release view dungeon-crush-v2.9.1 --json url,tagName,assets
+          gh api "repos/$GITHUB_REPOSITORY/releases/tags/dungeon-crush-v2.9.1" > release-assets.json
+          python3 - <<'PY'
+          from pathlib import Path
+          from hashlib import sha256
+          import json,os
+          release=json.loads(Path('release-assets.json').read_text());assets={a['name']:a for a in release['assets']}
+          for name in ['apk/DungeonCrush-2.9.1.apk','DungeonCrush-2.9.1-Share.zip',os.environ['DUNGEON_PREVIEW_FILE']]:
+              p=Path(name);a=assets[p.name];assert a['size']==p.stat().st_size;assert a['digest']=='sha256:'+sha256(p.read_bytes()).hexdigest(),p.name
+          print('Verified published APK, mandatory share ZIP and recording against local signed/checked bytes.')
+          PY
