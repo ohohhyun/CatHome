@@ -5,17 +5,18 @@ function pixels(png){const zlib=require('node:zlib');let offset=8,w,h,channels,c
 try{for(let cls=0;cls<4;cls++){
  await p.goto('file://'+path.resolve('app/src/main/assets/index.html'));await p.waitForFunction(()=>window.DungeonClient);await p.locator('#game-start').click();await p.evaluate(cls=>RiftApp.choose(cls),cls);await p.locator('#enter-character').click();await p.waitForFunction(()=>DungeonClient.phase()==='town'&&DungeonActors.ready(RiftApp.getClass()));
  assert.equal(await p.evaluate(()=>DungeonActors.status().preloadMode),false);
+ await p.evaluate(()=>{window.coherentAudit=[];const draw=DungeonActors.actor;DungeonActors.actor=(...a)=>{const ok=draw(...a),h=a[6];if(ok&&h.id===0&&(h.jump>0||h.dashTime>0))coherentAudit.push({jump:h.jump,dash:h.dashTime||0,pose:DungeonActors.status().lastPose[h.id]});return ok;};});
  for(const mode of ['town','battle']){
   if(mode==='battle'){await p.evaluate(()=>{RiftApp.solo();const g=RiftApp.getState();g.enemies=[{id:900,type:'knight',x:2400,y:550,hp:1e9,maxHp:1e9,dir:-1,at:999,cd:999,stun:0}];});await p.locator('#loading-screen').waitFor({state:'hidden'});assert(await p.evaluate(()=>RiftApp.assetsReady()));}
   for(const direction of ['KeyD','KeyA']){
    await p.evaluate(mode=>{const h=mode==='town'?DungeonClient.getTown().hero:RiftApp.getState().players[0];Object.assign(h,{x:900,y:550,at:0,jump:0,dashTime:0,dodgeCd:0,jumpHeld:false});},mode);
-   await p.keyboard.down(direction);await p.waitForTimeout(220);await p.keyboard.down('Space');await p.waitForTimeout(120);
-   let state=await p.evaluate(mode=>{const h=mode==='town'?DungeonClient.getTown().hero:RiftApp.getState().players[0];return {jump:h.jump,pose:DungeonActors.status().lastPose[h.id]};},mode);
-   assert(state.jump>0);assert.equal(state.pose.bank,'jump',cls+'/'+mode+'/'+direction+' first moving jump is a jump cel');assert(state.pose.source.endsWith('-mobility.webp'));
+   await p.keyboard.down(direction);await p.waitForTimeout(220);await p.evaluate(()=>coherentAudit=[]);await p.keyboard.down('Space');await p.waitForFunction(()=>coherentAudit.some(s=>s.jump>0),{},{timeout:10000});
+   let state=await p.evaluate(()=>coherentAudit.find(s=>s.jump>0));
+   assert.equal(state.pose.bank,'jump',cls+'/'+mode+'/'+direction+' first moving jump is a jump cel');assert(state.pose.source.endsWith('-mobility.webp'));await p.waitForTimeout(100);
    if(direction==='KeyD')await p.screenshot({path:'build/previews/coherent-'+mode+'-jump-'+cls+'.png'});
-   await p.keyboard.up('Space');await p.waitForTimeout(700);await p.keyboard.down('ShiftLeft');await p.waitForTimeout(80);
-   state=await p.evaluate(mode=>{const h=mode==='town'?DungeonClient.getTown().hero:RiftApp.getState().players[0];return {dash:h.dashTime,pose:DungeonActors.status().lastPose[h.id]};},mode);
-   assert(state.dash>0);assert.equal(state.pose.bank,'dash',cls+'/'+mode+'/'+direction+' first moving dash is a dash cel');assert(state.pose.source.endsWith('-mobility.webp'));
+   await p.keyboard.up('Space');await p.waitForTimeout(700);await p.evaluate(()=>coherentAudit=[]);await p.keyboard.down('ShiftLeft');await p.waitForFunction(()=>coherentAudit.some(s=>s.dash>0),{},{timeout:10000});
+   state=await p.evaluate(()=>coherentAudit.find(s=>s.dash>0));
+   assert.equal(state.pose.bank,'dash',cls+'/'+mode+'/'+direction+' first moving dash is a dash cel');assert(state.pose.source.endsWith('-mobility.webp'));await p.waitForTimeout(60);
    if(direction==='KeyD')await p.screenshot({path:'build/previews/coherent-'+mode+'-dash-'+cls+'.png'});
    await p.keyboard.up('ShiftLeft');await p.keyboard.up(direction);await p.waitForTimeout(220);
   }
