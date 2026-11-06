@@ -1,0 +1,58 @@
+name: Publish Dungeon Crush direct APK
+on:
+  workflow_dispatch:
+  push:
+    branches: [codex/ashen-rift-apk]
+    paths: ['.github/workflows/publish-dungeon-crush.yml']
+permissions:
+  contents: read
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      actions: read
+      contents: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - name: Download the already verified 2.6 APK
+        run: gh run download 42170216359 --name DungeonCrush-APK --dir apk
+      - name: Verify exact APK bytes and archive integrity
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from hashlib import sha256
+          from zipfile import ZipFile
+          p = Path('apk/DungeonCrush-2.6.apk')
+          assert p.stat().st_size == 17736843
+          assert sha256(p.read_bytes()).hexdigest() == '03e1e243f2ed896db3cb17d25685beafeb68791e3d1cffa79f6aba3a61df6d2b'
+          with ZipFile(p) as z:
+              assert z.testzip() is None
+              assert 'AndroidManifest.xml' in z.namelist()
+              assert len([n for n in z.namelist() if n.startswith('assets/art/generated/') and n.endswith('.png')]) == 7
+          print('Verified original signed Dungeon Crush 2.6 APK; no rebuild or repackaging.')
+          PY
+      - name: Prepare install notes
+        run: |
+          cat > release-notes.md <<'EOF'
+          던전크러시! 2.6 Android 설치 파일입니다.
+
+          아래 Assets에서 DungeonCrush-2.6.apk를 받아 파일을 눌러 설치하세요. 압축을 풀 필요가 없습니다.
+
+          네 직업의 GPT 생성 전신 동작 80프레임과 공격/광역/보호막·회복 이펙트 48프레임을 포함합니다. 기존 집사 사절과 다른 앱이며, 이전 던전크러시와 같은 설치 서명입니다.
+
+          검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42170216359
+          APK SHA256: 03e1e243f2ed896db3cb17d25685beafeb68791e3d1cffa79f6aba3a61df6d2b
+          EOF
+      - name: Publish the APK as a direct release download
+        run: |
+          if gh release view dungeon-crush-v2.6 >/dev/null 2>&1; then
+            gh release download dungeon-crush-v2.6 --pattern DungeonCrush-2.6.apk --dir existing
+            cmp apk/DungeonCrush-2.6.apk existing/DungeonCrush-2.6.apk
+          else
+            gh release create dungeon-crush-v2.6 apk/DungeonCrush-2.6.apk --target 9c1de418762516ff0ab84b783bf7fa2913bffe4d --title '던전크러시! 2.6' --notes-file release-notes.md --prerelease
+          fi
+      - name: Confirm release asset
+        run: gh release view dungeon-crush-v2.6 --json url,tagName,assets
