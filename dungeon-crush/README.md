@@ -6,11 +6,22 @@ CatHome 저장소의 `dungeon-crush/`에 별도 Android 프로젝트로 보관�
 
 **던전크러시!은 별도 앱 `com.dungeoncrush.game`입니다. ‘집사 사절!’의 `com.cathome.game`을 대체하지 않습니다.** 두 게임을 함께 설치할 수 있습니다. 이번 패치는 전용 브랜치의 던전크러시 파일과 전용 빌드/배포 워크플로에만 적용했습니다. 기존 게임의 원본 앱·루트 빌드·복구 APK는 변경하지 않습니다.
 
-[던전크러시 2.9.3 APK 직접 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9.3/DungeonCrush-2.9.3.apk) · [친구 공유용 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9.3/DungeonCrush-2.9.3-Share.zip) · [이동 모션 영상과 릴리스](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.9.3). APK 파일을 눌러 설치하며 압축을 풀 필요가 없습니다. 친구에게 다운로드 링크를 공유할 수 있습니다. 영상은 브라우저에서 자동 조작한 게임 화면입니다.
+[던전크러시 2.9.4 APK 직접 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9.4/DungeonCrush-2.9.4.apk) · [친구 공유용 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9.4/DungeonCrush-2.9.4-Share.zip) · [변경 화면과 릴리스](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.9.4). APK 파일을 눌러 설치하며 압축을 풀 필요가 없습니다. 친구에게 다운로드 링크를 공유할 수 있습니다. 첨부 이미지는 브라우저에서 자동 조작한 검수용 캐릭터 화면입니다.
 
-새 게임 versionCode 23 / versionName 2.9.3-body-scale. 기존 2.9와 같은 서명·앱 ID·프로토콜 6·저장 형식을 유지합니다. 같은 화면을 보려면 파티원 모두 2.9.3로 업데이트를 권장합니다. 이번 전용 워크플로는 던전크러시만 빌드합니다. 집사 사절 코드·빌드·복구 APK는 수정하거나 빌드하지 않습니다. 예전 공유 ID APK는 배포 대상이 아닙니다.
+새 게임 versionCode 24 / versionName 2.9.4-inventory-ui. 기존 2.9와 같은 서명·앱 ID·프로토콜 6·저장 형식을 유지합니다. 같은 화면을 보려면 파티원 모두 2.9.4로 업데이트를 권장합니다. 이번 전용 워크플로는 던전크러시만 빌드합니다. 집사 사절 코드·빌드·복구 APK는 수정하거나 빌드하지 않습니다. 예전 공유 ID APK는 배포 대상이 아닙니다.
 
 Android 6.0 이상과 최신 Android System WebView를 권장합니다. GitHub Artifact 다운로드에는 로그인이 필요하며 파일 앱의 ‘알 수 없는 앱 설치’ 허용이 필요할 수 있습니다. 테스트 서명 APK이며 Play 스토어용 서명은 아닙니다.
+
+## 2.9.4 인벤토리·필터·글씨 수정
+
+- 착용 장비를 왼쪽 전용 목록으로 옮겼습니다. 가방에서도 체크 표시와 밝은 ‘착용 중’ 배지, 다른 카드 배경·테두리로 구분합니다. 장비 그림·상태·이름은 서로 다른 줄을 사용하며 `반지 +3`처럼 강화 수치를 장비 이름에 표시합니다.
+- 부위·등급·착용/미착용 필터, 등급/레벨/강화/획득 기준 정렬과 오름차순·내림차순을 추가했습니다. 빈 필터 결과와 페이지 전환을 처리하며, 보기 순서는 원래 저장된 장비 순서·잠금·착용 정보를 변경하지 않습니다.
+- 큰 화면은 착용 목록·가방·상세를 각각 스크롤하고, 작은 화면은 가방과 상세를 읽을 수 있게 배치합니다. 탭을 바꾸면 처음부터 보여주고 같은 탭에서 장비를 조작할 때는 스크롤을 유지합니다. 최대 +15 장비도 강화 선택 목록에서 확인할 수 있습니다.
+- 긴 이름·숫자·HP·파티 이름을 줄바꿈하고 마을 버전 문구를 바닥 행으로 고정했습니다. 전투 이름표는 서로와 HUD·알림·캐릭터 본체·조작 버튼을 피하며, 전투 알림은 공격/스킬 버튼을 덮거나 터치를 가로채지 않습니다.
+- 기존 524자 글꼴을 한글 음절 11,172자·자모·기존 UI 기호를 포함한 같은 Noto Sans CJK KR 글꼴로 확장했습니다. 등급·정렬·상태·숙련 경험치 같은 문구와 다양한 닉네임이 빠지지 않도록 글꼴 문자표와 모든 UI 한글을 검사합니다. [글꼴 출처·해시](font-sources.json)와 SIL OFL 라이선스를 APK에 포함합니다.
+- 타이틀, 네 직업 선택, 마을, 퀘스트·가방·스킬·공방, 도움말·LAN·설정, 콘텐츠·지역 선택, 4인 HUD·일시정지·정산을 8가지 화면 크기/노치 조건으로 검사합니다. 2048×944 기기 픽셀 화면, 긴 숫자와 닉네임, 글자 간/그림과 글자 간 겹침과 글자 경계를 확인합니다.
+
+검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42292102026 · APK SHA256: `ec0276be6f1cb86ca3e0eadf9524a46f92ddcb2fbf3c43f6af8499269d69b556` · 98660024 bytes. 공유 ZIP SHA256: `62c0bbabd1473288ef12ff51055ee67f19ded407003fd59efae3000397ffe97f` · 98660856 bytes. JavaScript 12개 검사·실제 TCP 4인 연결·Chromium 시나리오 14개·컴파일된 앱 ID/서명·코드/이미지/글꼴 검사를 통과했습니다. 인벤토리 검사는 화면 크기/노치 8가지, 긴 숫자/이름, 실제 강화·필터·정렬·착용 상태를 포함합니다. 릴리스의 Inventory·Equipped·Enhancement·PartyHUD PNG는 최종 빌드의 검수용 캐릭터 화면입니다. 실제 휴대폰 설치·기기간 Wi-Fi·장시간 성능은 별도 검증이 필요합니다.
 
 ## 2.9.3 동작 전환 크기 수정
 
