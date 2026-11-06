@@ -48,15 +48,11 @@ jobs:
         run: node "$RUNNER_TEMP/cathome-ui/node_modules/playwright/cli.js" install ffmpeg
       - name: Test four-player game protocol and mobile layout
         run: |
-          node tests/generated-presentation.test.cjs
-          node tests/exploration.test.cjs
-          node tests/locomotion.test.cjs
-          node tests/ranged-presentation.test.cjs
-          node tests/combat-presentation.test.cjs
-          node tests/layout.test.cjs
-          node tests/presentation.test.cjs
-          node tests/browser.test.cjs
-          node tests/party-recovery-presentation.test.cjs
+          test_status=0
+          for scenario in generated-presentation exploration locomotion ranged-presentation combat-presentation layout presentation browser party-recovery-presentation; do
+            node "tests/$scenario.test.cjs" || test_status=1
+          done
+          exit "$test_status"
         env:
           NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
       - uses: actions/upload-artifact@v4
@@ -70,7 +66,12 @@ jobs:
             dungeon-crush/build/previews/advanced-skill-*-6.png
             dungeon-crush/build/previews/advanced-skill-*-5.png
             dungeon-crush/build/previews/advanced-combat.webm
-            dungeon-crush/build/previews/party-recovery-*.png
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: DungeonCrush-Party-Previews
+          path: dungeon-crush/build/previews/party-recovery-*.png
           if-no-files-found: ignore
       - uses: actions/upload-artifact@v4
         if: always()
