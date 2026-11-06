@@ -416,3 +416,6 @@ body[data-phase=town] #menu .menu-copy { width:calc(92% - var(--safe-left) - var
 }
 /* The absolute town status strip does not occupy a grid row; keep the version in the footer. */
 #menu .build-label{grid-row:3;align-self:end;max-width:100%;line-height:1.5;overflow-wrap:anywhere}
+/* Notices stay clear of the attack/skill controls and never intercept a touch. */
+#toast{pointer-events:none}
+body[data-phase=battle] #toast{top:calc(26% + var(--safe-top));bottom:auto;max-width:52%}
