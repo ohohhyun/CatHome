@@ -6,9 +6,9 @@ CatHome 저장소의 `dungeon-crush/`에 별도 Android 프로젝트로 보관�
 
 **던전크러시!은 별도 앱 `com.dungeoncrush.game`입니다. ‘집사 사절!’의 `com.cathome.game`을 대체하지 않습니다.** 두 게임을 함께 설치할 수 있습니다. GitHub main의 기존 게임도 변경하지 않았으며 새 게임은 전용 브랜치와 PR에 있습니다.
 
-Actions → Build Dungeon Crush APK → codex/ashen-rift-apk의 최신 성공 실행에서 **DungeonCrush-APK**를 누르면 `DungeonCrush-2.1.1.apk`가 담긴 ZIP을 다운로드합니다. GitHub 로그인이 필요합니다.
+Actions → Build Dungeon Crush APK → codex/ashen-rift-apk의 최신 성공 실행에서 **DungeonCrush-APK**를 누르면 `DungeonCrush-2.2.apk`가 담긴 ZIP을 다운로드합니다. GitHub 로그인이 필요합니다.
 
-새 게임 versionCode 12 / versionName 2.1.1-layout-fix. 이번 전용 워크플로는 던전크러시만 빌드합니다. 집사 사절 코드·빌드·복구 APK는 수정하거나 빌드하지 않습니다. 예전 공유 ID APK는 배포 대상이 아닙니다.
+새 게임 versionCode 13 / versionName 2.2-combat-polish. 이번 전용 워크플로는 던전크러시만 빌드합니다. 집사 사절 코드·빌드·복구 APK는 수정하거나 빌드하지 않습니다. 예전 공유 ID APK는 배포 대상이 아닙니다.
 
 Android 6.0 이상과 최신 Android System WebView를 권장합니다. GitHub Artifact 다운로드에는 로그인이 필요하며 파일 앱의 ‘알 수 없는 앱 설치’ 허용이 필요할 수 있습니다. 테스트 서명 APK이며 Play 스토어용 서명은 아닙니다.
 
@@ -111,3 +111,6 @@ GitHub Actions는 전투·RPG 거래·원시 TCP·4인 게임 흐름을 검사�
 
 
 2.1 UI 참고자료와 구현 범위는 [REFERENCES.md](REFERENCES.md), 기존 CC0 음원 출처는 [음원 크레딧](app/src/main/assets/audio/CREDITS.txt)과 [고정 파일 목록](audio-sources.json)에 정리했습니다. 새 캐릭터나 스토리는 추가하지 않습니다. 실제 BGM·효과음을 APK에 넣으며 별도 볼륨 설정과 백그라운드 중지를 제공합니다. Gradle 첫 빌드에는 Python 3와 음원 파일을 받기 위한 인터넷이 필요합니다. 포함 파일은 체크섬을 확인하므로 한 번 준비한 뒤에는 오프라인으로 재빌드할 수 있습니다.
+
+
+2.2 전투 패치: 스킬 HUD를 6칸 한 줄로 줄이고 사용 시에만 스킬명을 표시합니다. 기본 아이콘 크기는 화면 높이에 따라 36~60px이며 640×296에서도 HUD 면적은 화면의 5.5% 이내입니다. Lorc의 기존 게임 아이콘 24개(CC BY 3.0, 출처·변경 내역은 icon-sources.json)를 포함했습니다. 이동 거리 기반 보행·무릎 관절·동작 블렌딩·무기 궤적·직업별 연출을 보완했습니다. 법사 몬스터 예고는 0.6→1.35초, 재시전 간격은 최소 3.4초이며 같은 대상의 동시 시전을 제한하고 공격으로 시전을 끊을 수 있습니다. 피해량·던전/파티 성장 시스템은 유지합니다.
