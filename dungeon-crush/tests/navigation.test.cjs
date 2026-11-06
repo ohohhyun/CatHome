@@ -9,7 +9,7 @@ const before=p.x;E.move(town,p,{x:1,jump:true},1/60);assert(p.x>before&&p.jump>0
 for(let cls=0;cls<4;cls++){
  const state={world:3000,fx:[],nextId:1},hero=E.player(0,'속도',cls);hero.x=800;const start=hero.x;for(let i=0;i<60;i++)E.move(state,hero,{x:1},1/60);assert(hero.x-start>E.CLASSES[cls].speed*.95,'responsive acceleration');for(let i=0;i<12;i++)E.move(state,hero,{},1/60);assert(Math.abs(hero.vx)<1,'no long slide on release');
  for(let i=0;i<100;i++){const v=M.pose({...hero,action:'run',moveBlend:1,gait:i/100*Math.PI*2},0);assert(Object.values(v).filter(x=>typeof x==='number').every(Number.isFinite));assert(v.feet.some(f=>f.stance),'at least one foot is planted');for(const f of v.feet)if(f.stance)assert.equal(f.y,500);}
- const a=M.pose({...hero,action:'run',moveBlend:1,gait:.2},0),b=M.pose({...hero,action:'run',moveBlend:1,gait:2},0);assert(Math.abs(a.left-b.left)>.1);assert(Math.abs(a.armL-b.armL)>.1);
+ const a=M.pose({...hero,action:'run',moveBlend:1,gait:.2},0),b=M.pose({...hero,action:'run',moveBlend:1,gait:2},0);assert(Math.abs(a.left-b.left)>.1);if(cls===1){assert.equal(a.armL,0);assert.equal(b.armR,0,'lancer maintains a two-hand grip');}else assert(Math.abs(a.armL-b.armL)>.1);
 }
 // Dodge covers the same distance at all common tick rates without a teleport.
 for(const hz of [30,60,120]){const state={world:3000,fx:[],nextId:1},hero=E.player(0,'회피');hero.x=800;let last=hero.x;for(let i=0;i<Math.ceil(.22*hz);i++){E.move(state,hero,{dash:i===0,x:1},1/hz);assert(hero.x-last<=950*1.2/hz+.01,'continuous displacement');last=hero.x;}assert(Math.abs(hero.x-1009)<.1,'consistent dash distance');assert(hero.inv>0);}
