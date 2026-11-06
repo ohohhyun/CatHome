@@ -51,6 +51,10 @@ jobs:
         run: node tests/coherent-motion-presentation.test.cjs
         env:
           NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
+      - name: Verify equal anatomical size across action changes
+        run: node tests/actor-size-presentation.test.cjs
+        env:
+          NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
       - name: Test run clarity, extended skills and dead-caster cancellation
         run: node tests/run-skill-presentation.test.cjs
         env:
@@ -127,6 +131,12 @@ jobs:
             dungeon-crush/build/previews/coherent-*.png
             dungeon-crush/build/previews/coherent-gameplay.webm
           if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: DungeonCrush-Size-Previews
+          path: dungeon-crush/build/previews/size-*.png
+          if-no-files-found: ignore
       - uses: android-actions/setup-android@v3
         with:
           packages: platform-tools
@@ -158,11 +168,11 @@ jobs:
           python3 -c "from pathlib import Path; assert 'Signer #1 certificate SHA-256 digest: e43fedd9099e7b5df82eccfa3e92fc020d429ad99795463abbe40e2af4880708' in Path('build/apk-signer.txt').read_text(), 'APK signer changed; preserve update compatibility'"
           python tools/verify-apk-identity.py "$ANDROID_HOME/build-tools/35.0.0/aapt" app/build/outputs/apk/debug/app-debug.apk com.dungeoncrush.game com.dungeoncrush.game.MainActivity "던전크러시!"
           python tools/verify-bundled-art.py app/build/outputs/apk/debug/app-debug.apk
-          cp app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/DungeonCrush-2.9.2.apk
+          cp app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/DungeonCrush-2.9.3.apk
       - uses: actions/upload-artifact@v4
         with:
           name: DungeonCrush-APK
-          path: dungeon-crush/app/build/outputs/apk/debug/DungeonCrush-2.9.2.apk
+          path: dungeon-crush/app/build/outputs/apk/debug/DungeonCrush-2.9.3.apk
           if-no-files-found: error
           retention-days: 30
       - name: Split verified APK for reliable downloads
@@ -171,9 +181,9 @@ jobs:
           from pathlib import Path
           from hashlib import sha256
           import json
-          p=Path('app/build/outputs/apk/debug/DungeonCrush-2.9.2.apk'); data=p.read_bytes(); out=Path('build/apk-parts');out.mkdir(parents=True,exist_ok=True);parts=[]
+          p=Path('app/build/outputs/apk/debug/DungeonCrush-2.9.3.apk'); data=p.read_bytes(); out=Path('build/apk-parts');out.mkdir(parents=True,exist_ok=True);parts=[]
           for n,start in enumerate(range(0,len(data),20*1024*1024),1):
-              chunk=data[start:start+20*1024*1024];name=f'DungeonCrush-2.9.2.apk.part{n:02}';(out/name).write_bytes(chunk);parts.append(dict(name=name,bytes=len(chunk),sha256=sha256(chunk).hexdigest()))
+              chunk=data[start:start+20*1024*1024];name=f'DungeonCrush-2.9.3.apk.part{n:02}';(out/name).write_bytes(chunk);parts.append(dict(name=name,bytes=len(chunk),sha256=sha256(chunk).hexdigest()))
           assert len(parts)<=8
           (out/'manifest.json').write_text(json.dumps(dict(file=p.name,bytes=len(data),sha256=sha256(data).hexdigest(),parts=parts),indent=2))
           PYCODE
