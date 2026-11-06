@@ -94,7 +94,7 @@ const {pathToFileURL}=require('node:url');
    assert(recovery.kinds.includes('roll')&&recovery.kinds.includes('forward'));assert.equal(recovery.hits,1);assert.equal(recovery.round,11);assert.match(recovery.toast,/하트 1개 회복/);
    await page.screenshot({path:path.join(output,`endless-heart-recovery-${width}.png`)});
    await page.evaluate(()=>{goHome();wallet=321;save()});
-   await page.locator('#skin-open').click();assert.equal(await page.locator('#skin-shop').isVisible(),true);
+   await page.locator('#skin-open').click();assert.equal(await page.locator('#skin-shop').isVisible(),true);const shopBounds=await page.evaluate(()=>{const shop=document.getElementById('skin-shop').getBoundingClientRect(),game=document.getElementById('game').getBoundingClientRect();return {offset:Math.abs(shop.top-game.top),height:Math.abs(shop.height-game.height),scroll:document.getElementById('game').scrollTop}});assert(shopBounds.offset<1&&shopBounds.height<1&&shopBounds.scroll===0,'shop covers game viewport without scrolling the game');
    assert.equal(await page.evaluate(()=>window.CatHomeStore.products.length),9);
    for(const category of ['hero','cats','map']){
     await page.locator('#skin-tab-'+category).click();assert.equal(await page.locator('#skin-cards button').count(),3);
