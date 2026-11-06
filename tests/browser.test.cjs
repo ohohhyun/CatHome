@@ -8,7 +8,7 @@ const {pathToFileURL}=require('node:url');
   for(const [width,height] of [[320,568],[390,844],[480,960]]){
    const context=await browser.newContext({viewport:{width,height},isMobile:true,hasTouch:true});
    const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
-   await page.addInitScript(()=>{localStorage.catHomeSave=JSON.stringify({cleared:9,unlocked:10,best:0,bestRound:1,medals:{},wallet:120,inventory:{continue:0,umbrella:0,water:0,fish:0},musicEnabled:true,sound:false})});
+   await page.addInitScript(()=>{if(!localStorage.catHomeSave)localStorage.catHomeSave=JSON.stringify({cleared:9,unlocked:10,best:0,bestRound:1,medals:{},wallet:120,inventory:{continue:0,umbrella:0,water:0,fish:0},musicEnabled:true,sound:false})});
    await page.goto(pathToFileURL(path.resolve(__dirname,'../app/src/main/assets/index.html')).href);
    await page.waitForFunction(()=>typeof STAGES!=='undefined');
    assert.equal(await page.locator('#endless').isDisabled(),true);
