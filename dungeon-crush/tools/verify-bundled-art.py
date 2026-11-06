@@ -16,4 +16,4 @@ with ZipFile(sys.argv[1]) as apk:
             assert name not in apk.namelist(),name+' is superseded'
     for name in ['actors.js','icons.js','engine.js','sprite-art.js','motion.js','effects.js','app.js','client.js','world.js','town.js','sound.js','rpg.js','client.css','town.css','index.html']:
         assert apk.read('assets/'+name)==(root/'app/src/main/assets'/name).read_bytes(),name
-print('Verified 704 character poses, 192 monster poses, 192 spell cels, 32 ultimate cels, 24 painted skill icons, 30 equipment icons and exact final presentation scripts.')
+print('Verified 496 coherent character poses, 192 monster poses, 192 spell cels, 32 ultimate cels, 24 painted skill icons, 30 equipment icons and exact final presentation scripts.')

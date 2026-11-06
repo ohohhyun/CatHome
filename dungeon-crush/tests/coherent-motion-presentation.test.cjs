@@ -1,0 +1,37 @@
+const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+function pixels(png){const zlib=require('node:zlib');let offset=8,w,h,channels,chunks=[];while(offset<png.length){const len=png.readUInt32BE(offset),name=png.toString('ascii',offset+4,offset+8),data=png.subarray(offset+8,offset+8+len);if(name==='IHDR'){w=data.readUInt32BE(0);h=data.readUInt32BE(4);assert.equal(data[8],8);assert.equal(data[12],0);channels=data[9]===6?4:data[9]===2?3:0;assert(channels);}if(name==='IDAT')chunks.push(data);offset+=len+12;}const raw=zlib.inflateSync(Buffer.concat(chunks)),stride=w*channels,out=Buffer.alloc(stride*h);let src=0;const paeth=(a,b,c)=>{const p=a+b-c,pa=Math.abs(p-a),pb=Math.abs(p-b),pc=Math.abs(p-c);return pa<=pb&&pa<=pc?a:pb<=pc?b:c;};for(let y=0;y<h;y++){const filter=raw[src++];for(let x=0;x<stride;x++){const i=y*stride+x,a=x>=channels?out[i-channels]:0,b=y?out[i-stride]:0,c=y&&x>=channels?out[i-stride-channels]:0,v=raw[src++];out[i]=(v+(filter===0?0:filter===1?a:filter===2?b:filter===3?Math.floor((a+b)/2):paeth(a,b,c)))&255;}}return out;}
+
+(async()=>{fs.mkdirSync('build/previews',{recursive:true});const browser=await chromium.launch({executablePath:process.env.CHROME_BIN||'/usr/bin/google-chrome',args:['--no-sandbox']}),context=await browser.newContext({viewport:{width:1280,height:591},hasTouch:true,recordVideo:{dir:'build/previews/coherent-video',size:{width:1280,height:591}}}),errors=[];let firstVideo;
+try{for(let cls=0;cls<4;cls++){
+ const p=await context.newPage();if(cls===0)firstVideo=p.video();p.on('pageerror',e=>errors.push(e.message));await p.goto('file://'+path.resolve('app/src/main/assets/index.html'));await p.waitForFunction(()=>window.DungeonClient);await p.locator('#game-start').click();await p.evaluate(cls=>RiftApp.choose(cls),cls);await p.locator('#enter-character').click();await p.waitForFunction(()=>DungeonClient.phase()==='town'&&DungeonActors.ready(RiftApp.getClass()));
+ assert.equal(await p.evaluate(()=>DungeonActors.status().preloadMode),false);
+ for(const mode of ['town','battle']){
+  if(mode==='battle'){await p.evaluate(()=>{RiftApp.solo();const g=RiftApp.getState();g.enemies=[{id:900,type:'knight',x:2400,y:550,hp:1e9,maxHp:1e9,dir:-1,at:999,cd:999,stun:0}];});await p.locator('#loading-screen').waitFor({state:'hidden'});assert(await p.evaluate(()=>RiftApp.assetsReady()));}
+  for(const direction of ['KeyD','KeyA']){
+   await p.evaluate(mode=>{const h=mode==='town'?DungeonClient.getTown().hero:RiftApp.getState().players[0];Object.assign(h,{x:900,y:550,at:0,jump:0,dashTime:0,dodgeCd:0,jumpHeld:false});},mode);
+   await p.keyboard.down(direction);await p.waitForTimeout(220);await p.keyboard.down('Space');await p.waitForTimeout(120);
+   let state=await p.evaluate(mode=>{const h=mode==='town'?DungeonClient.getTown().hero:RiftApp.getState().players[0];return {jump:h.jump,pose:DungeonActors.status().lastPose[h.id]};},mode);
+   assert(state.jump>0);assert.equal(state.pose.bank,'jump',cls+'/'+mode+'/'+direction+' first moving jump is a jump cel');assert(state.pose.source.endsWith('-mobility.webp'));
+   if(direction==='KeyD')await p.screenshot({path:'build/previews/coherent-'+mode+'-jump-'+cls+'.png'});
+   await p.keyboard.up('Space');await p.waitForTimeout(700);await p.keyboard.down('ShiftLeft');await p.waitForTimeout(80);
+   state=await p.evaluate(mode=>{const h=mode==='town'?DungeonClient.getTown().hero:RiftApp.getState().players[0];return {dash:h.dashTime,pose:DungeonActors.status().lastPose[h.id]};},mode);
+   assert(state.dash>0);assert.equal(state.pose.bank,'dash',cls+'/'+mode+'/'+direction+' first moving dash is a dash cel');assert(state.pose.source.endsWith('-mobility.webp'));
+   if(direction==='KeyD')await p.screenshot({path:'build/previews/coherent-'+mode+'-dash-'+cls+'.png'});
+   await p.keyboard.up('ShiftLeft');await p.keyboard.up(direction);await p.waitForTimeout(220);
+  }
+ }
+ // Screenshot the actual authored compositor. At zero velocity no intentional lean/bob can mask source jitter.
+ await p.evaluate(()=>{RiftApp.home();const cv=document.createElement('canvas');cv.id='coherent-pixel-review';cv.width=600;cv.height=450;Object.assign(cv.style,{position:'fixed',left:'0',top:'0',width:'600px',height:'450px',zIndex:'99999'});document.body.append(cv);});
+ let upper;const lower=new Set();for(let i=0;i<8;i++){
+  await p.evaluate(({cls,i})=>{const cv=document.getElementById('coherent-pixel-review'),c=cv.getContext('2d'),h=Rift.player(1000+i,'',cls);Object.assign(h,{action:'run',vx:0,vy:0,gait:(i+.05)/8*Math.PI*2*320/210});c.fillStyle='#20354a';c.fillRect(0,0,600,450);if(!DungeonActors.actor(c,cls,300,400,300,1,h,100+i))throw Error('Missing run cel');}, {cls,i});
+  const raw=pixels(await p.locator('#coherent-pixel-review').screenshot()),channels=raw.length/(600*450),split=600*230*channels,top=raw.subarray(0,split),bottom=raw.subarray(split);if(!upper){upper=top;assert(new Set(top).size>100,'upper-body artwork is visibly present');}else assert(upper.equals(top),'actual upper-body pixels are fixed across the complete run cycle '+cls+'/'+i);lower.add(crypto.createHash('sha256').update(bottom).digest('hex'));
+  if(i===0||i===4)await p.locator('#coherent-pixel-review').screenshot({path:'build/previews/coherent-torso-'+cls+'-'+i+'.png'});
+ }
+ assert(lower.size>=6,'legs visibly change while the torso stays fixed');await p.evaluate(()=>document.getElementById('coherent-pixel-review').remove());
+ const misses=await p.evaluate(()=>DungeonActors.status().poseMisses);assert.equal(misses.jump||0,0,'no first-use jump fallback');assert.equal(misses.dash||0,0,'no first-use dash fallback');await p.close();
+ }
+ // All four party classes remain resident when other monster and combat art applies cache pressure.
+ const p=await context.newPage();await p.goto('file://'+path.resolve('app/src/main/assets/index.html'));await p.waitForFunction(()=>window.DungeonActors);await p.evaluate(()=>{DungeonActors.setActiveClasses([0,1,2,3]);for(let c=0;c<4;c++)DungeonActors.warmCombat(c);DungeonActors.prepareEnemies();});await p.waitForFunction(()=>DungeonActors.status().pending===0,{},{timeout:90000});await p.waitForTimeout(500);
+ assert(await p.evaluate(()=>[0,1,2,3].every(c=>DungeonActors.ready(c))),'cache pressure preserves all four core banks');
+ const pressure=await p.evaluate(()=>{const cv=document.createElement('canvas'),c=cv.getContext('2d');for(let cls=0;cls<4;cls++){const h=Rift.player(600+cls,'',cls);Object.assign(h,{action:'run',jump:.4});if(!DungeonActors.actor(c,cls,300,400,300,1,h,10))throw Error('evicted jump');h.dashTime=.16;if(!DungeonActors.actor(c,cls,300,400,300,-1,h,10.05))throw Error('evicted dash');}return DungeonActors.status();});assert.equal(pressure.preloadMode,false);assert(pressure.criticalReady);assert.deepEqual(pressure.failures,[]);assert.deepEqual(errors,[]);await p.close();console.log('PASS: cold moving jump/dash in town and battle for all four classes/both directions, exact stable torso pixels with changing legs, four-class pinned movement under enemy/combat cache pressure; production loader only.');
+}finally{await context.close();if(firstVideo)fs.copyFileSync(await firstVideo.path(),'build/previews/coherent-gameplay.webm');await browser.close();}})().catch(e=>{console.error(e);process.exit(1);});

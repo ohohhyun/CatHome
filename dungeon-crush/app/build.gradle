@@ -6,8 +6,8 @@ android {
         applicationId 'com.dungeoncrush.game'
         minSdk 23
         targetSdk 35
-        versionCode 21
-        versionName '2.9.1-run-fix'
+        versionCode 22
+        versionName '2.9.2-coherent-motion'
     }
     signingConfigs {
         debug {
@@ -20,7 +20,7 @@ android {
             }
         }
     }
-    androidResources { ignoreAssetsPattern = 'kael.png:rin.png:bane.png:sera.png:attack.png:area.png:support.png:kael-move.webp:kael-combat.webp:rin-move.webp:rin-combat.webp:bane-move.webp:bane-combat.webp:sera-move.webp:sera-combat.webp:enemy-motion.webp' }
+    androidResources { ignoreAssetsPattern = 'kael.png:rin.png:bane.png:sera.png:attack.png:area.png:support.png:kael-move.webp:kael-combat.webp:rin-move.webp:rin-combat.webp:bane-move.webp:bane-combat.webp:sera-move.webp:sera-combat.webp:enemy-motion.webp:kael-run16.webp:rin-run16.webp:bane-run16.webp:sera-run16.webp:kael-run-between.webp:rin-run-between.webp:bane-run-between.webp:sera-run-between.webp:kael-jump-between.webp:kael-dash-between.webp:rin-jump-between.webp:rin-dash-between.webp:bane-jump-between.webp:bane-dash-between.webp:sera-jump-between.webp:sera-dash-between.webp' }
     buildTypes { release { minifyEnabled false } }
 }
 

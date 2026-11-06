@@ -1,9 +1,9 @@
 {
-  "version": "2.9.1",
+  "version": "2.9.2",
   "generator": "OpenAI image_gen",
   "characterFrames": 272,
   "effectFrames": 240,
-  "notes": "2.9 uses complete high-resolution character action clips with 24-pose motion constructed from eight key drawings and sixteen additionally authored intermediate drawings. Original PNG outputs are preserved. Runtime WebP retains exact alpha; opaque RGB compression error is recorded. Legacy body atlases and 2.8 enemy atlas remain source-only. Physics/EXP/potion correctness is regression tested. 2.9.1 reorders the existing run crops into one eight-phase stride with 24 registered crops and removes locomotion echoes. Original/runtime image bytes are unchanged.",
+  "notes": "2.9.2 replaces mixed locomotion with single-atlas eight-pose runs, eight dedicated jump poses and four held dash poses. Upper-body run layer remains fixed. Incompatible locomotion intermediates remain source-only. Critical movement atlases are prepared and pinned before play. Combat clips and 2.9.1 skill/death-cast fixes remain.",
   "assets": [
     {
       "id": "kael",
@@ -409,7 +409,8 @@
       "generated": "2026-11-06",
       "encoding": "WebP quality 99; source PNG preserved; alpha verified exact",
       "opaqueRgbPSNR": 37.28,
-      "reference": null
+      "reference": null,
+      "packaged": false
     },
     {
       "id": "rin-run16",
@@ -426,7 +427,8 @@
       "generated": "2026-11-06",
       "encoding": "WebP quality 99; source PNG preserved; alpha verified exact",
       "opaqueRgbPSNR": 35.92,
-      "reference": null
+      "reference": null,
+      "packaged": false
     },
     {
       "id": "bane-run16",
@@ -443,7 +445,8 @@
       "generated": "2026-11-06",
       "encoding": "WebP quality 99; source PNG preserved; alpha verified exact",
       "opaqueRgbPSNR": 35.5,
-      "reference": null
+      "reference": null,
+      "packaged": false
     },
     {
       "id": "sera-run16",
@@ -460,7 +463,8 @@
       "generated": "2026-11-06",
       "encoding": "WebP quality 99; source PNG preserved; alpha verified exact",
       "opaqueRgbPSNR": 37.11,
-      "reference": null
+      "reference": null,
+      "packaged": false
     },
     {
       "id": "kael-combo1",
@@ -1089,7 +1093,8 @@
       "generated": "2026-11-06",
       "encoding": "WebP quality 99; source PNG preserved; alpha verified exact",
       "opaqueRgbPSNR": 39.28,
-      "reference": "kael-run16"
+      "reference": "kael-run16",
+      "packaged": false
     },
     {
       "id": "rin-run-between",
@@ -1106,7 +1111,8 @@
       "generated": "2026-11-06",
       "encoding": "WebP quality 99; source PNG preserved; alpha verified exact",
       "opaqueRgbPSNR": 35.65,
-      "reference": "rin-run16"
+      "reference": "rin-run16",
+      "packaged": false
     },
     {
       "id": "bane-run-between",
@@ -1123,7 +1129,8 @@
       "generated": "2026-11-06",
       "encoding": "lossless WebP; decoded RGBA identical",
       "opaqueRgbPSNR": 99,
-      "reference": "bane-run16"
+      "reference": "bane-run16",
+      "packaged": false
     },
     {
       "id": "sera-run-between",
@@ -1140,7 +1147,8 @@
       "generated": "2026-11-06",
       "encoding": "WebP quality 99; source PNG preserved; alpha verified exact",
       "opaqueRgbPSNR": 37.9,
-      "reference": "sera-run16"
+      "reference": "sera-run16",
+      "packaged": false
     },
     {
       "id": "kael-jump-between",
@@ -1157,7 +1165,8 @@
       "generated": "2026-11-06",
       "encoding": "WebP quality 99; source PNG preserved; alpha verified exact",
       "opaqueRgbPSNR": 37.31,
-      "reference": "kael-mobility"
+      "reference": "kael-mobility",
+      "packaged": false
     },
     {
       "id": "kael-dash-between",
@@ -1174,7 +1183,8 @@
       "generated": "2026-11-06",
       "encoding": "WebP quality 99; source PNG preserved; alpha verified exact",
       "opaqueRgbPSNR": 37.94,
-      "reference": "kael-mobility"
+      "reference": "kael-mobility",
+      "packaged": false
     },
     {
       "id": "rin-jump-between",
@@ -1191,7 +1201,8 @@
       "generated": "2026-11-06",
       "encoding": "WebP quality 99; source PNG preserved; alpha verified exact",
       "opaqueRgbPSNR": 35.74,
-      "reference": "rin-mobility"
+      "reference": "rin-mobility",
+      "packaged": false
     },
     {
       "id": "rin-dash-between",
@@ -1208,7 +1219,8 @@
       "generated": "2026-11-06",
       "encoding": "WebP quality 99; source PNG preserved; alpha verified exact",
       "opaqueRgbPSNR": 36.19,
-      "reference": "rin-mobility"
+      "reference": "rin-mobility",
+      "packaged": false
     },
     {
       "id": "bane-jump-between",
@@ -1225,7 +1237,8 @@
       "generated": "2026-11-06",
       "encoding": "lossless WebP; decoded RGBA identical",
       "opaqueRgbPSNR": 99,
-      "reference": "bane-mobility"
+      "reference": "bane-mobility",
+      "packaged": false
     },
     {
       "id": "bane-dash-between",
@@ -1242,7 +1255,8 @@
       "generated": "2026-11-06",
       "encoding": "lossless WebP; decoded RGBA identical",
       "opaqueRgbPSNR": 99,
-      "reference": "bane-mobility"
+      "reference": "bane-mobility",
+      "packaged": false
     },
     {
       "id": "sera-jump-between",
@@ -1259,7 +1273,8 @@
       "generated": "2026-11-06",
       "encoding": "WebP quality 99; source PNG preserved; alpha verified exact",
       "opaqueRgbPSNR": 36.05,
-      "reference": "sera-mobility"
+      "reference": "sera-mobility",
+      "packaged": false
     },
     {
       "id": "sera-dash-between",
@@ -1276,7 +1291,8 @@
       "generated": "2026-11-06",
       "encoding": "WebP quality 99; source PNG preserved; alpha verified exact",
       "opaqueRgbPSNR": 36.52,
-      "reference": "sera-mobility"
+      "reference": "sera-mobility",
+      "packaged": false
     },
     {
       "id": "kael-combo1-between-a",
@@ -2110,9 +2126,73 @@
       "encoding": "lossless WebP; decoded RGBA identical",
       "opaqueRgbPSNR": 99,
       "reference": null
+    },
+    {
+      "id": "kael-run292",
+      "file": "art/motion292/kael-run.webp",
+      "width": 1774,
+      "height": 887,
+      "columns": 4,
+      "rows": 2,
+      "frames": 8,
+      "sha256": "4f0d6c0817e2620e64a0fd98761887de7e2147204b6848c7d512fe379c9eb221",
+      "originalFile": "art-source/gpt-2.9.2/kael-run.png",
+      "originalSha256": "0b24189ccd0f1ebeba01a8fcf5b8b6d528d19e4a44cd9b34e24e1fb81d4c9bf2",
+      "generator": "OpenAI image_gen",
+      "generated": "2026-11-07",
+      "encoding": "lossless WebP; decoded RGBA identical",
+      "opaqueRgbPSNR": 99
+    },
+    {
+      "id": "rin-run292",
+      "file": "art/motion292/rin-run.webp",
+      "width": 1774,
+      "height": 887,
+      "columns": 4,
+      "rows": 2,
+      "frames": 8,
+      "sha256": "c7c74cdaee1dc1d3a24e001488b4163607ba63aa7de46a96c553afe15e233d15",
+      "originalFile": "art-source/gpt-2.9.2/rin-run.png",
+      "originalSha256": "4fa9a84ed47caa3352bdc14b60efa608ac992adabebfc3448c4ff94d5fdef14f",
+      "generator": "OpenAI image_gen",
+      "generated": "2026-11-07",
+      "encoding": "lossless WebP; decoded RGBA identical",
+      "opaqueRgbPSNR": 99
+    },
+    {
+      "id": "bane-run292",
+      "file": "art/motion292/bane-run.webp",
+      "width": 1774,
+      "height": 887,
+      "columns": 4,
+      "rows": 2,
+      "frames": 8,
+      "sha256": "c9967ead528b9a8b3d757a99782e3b1e7a5ed0740c7ed0ca62386e04762f18d3",
+      "originalFile": "art-source/gpt-2.9.2/bane-run.png",
+      "originalSha256": "7e0628f65570068dde80045ae0106f698b94d62bde4dd8b301ae4dbd8d384dc9",
+      "generator": "OpenAI image_gen",
+      "generated": "2026-11-07",
+      "encoding": "lossless WebP; decoded RGBA identical",
+      "opaqueRgbPSNR": 99
+    },
+    {
+      "id": "sera-run292",
+      "file": "art/motion292/sera-run.webp",
+      "width": 1774,
+      "height": 887,
+      "columns": 4,
+      "rows": 2,
+      "frames": 8,
+      "sha256": "231c793e109783a34fe4210c673e5d4cabf45eb7b84a6ab2096b6612e3caa856",
+      "originalFile": "art-source/gpt-2.9.2/sera-run.png",
+      "originalSha256": "cfdbed62f109f3a309b706f2d245ba5bc4222e37483ae037f7c52c792cc57c43",
+      "generator": "OpenAI image_gen",
+      "generated": "2026-11-07",
+      "encoding": "lossless WebP; decoded RGBA identical",
+      "opaqueRgbPSNR": 99
     }
   ],
-  "activeCharacterFrames": 704,
+  "activeCharacterFrames": 496,
   "individualSkillFrames": 192,
   "newCharacterFrames": 192,
   "newSkillFrames": 192,
