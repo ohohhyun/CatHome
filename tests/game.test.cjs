@@ -1,12 +1,12 @@
 const fs=require('fs'),vm=require('vm'),assert=require('node:assert/strict');
 const html=fs.readFileSync(__dirname+'/../app/src/main/assets/index.html','utf8');
-function boot(storage={},seed=12345){
+function boot(storage={},seed=12345,checkoutMode='preview'){
  const rng=Object.create(Math);rng.random=()=>{seed=(Math.imul(1664525,seed)+1013904223)>>>0;return seed/4294967296};
  const elements=new Map(),events={};const noop=()=>{};
  const context=new Proxy({createLinearGradient:()=>({addColorStop:noop})},{get:(o,k)=>o[k]||noop,set:(o,k,v)=>(o[k]=v,true)});
  function element(id){if(!elements.has(id)){const classes=new Set(['hidden']);elements.set(id,{style:{},textContent:'',innerHTML:'',disabled:false,children:[],firstElementChild:{textContent:''},classList:{toggle(k,v){if(v)classes.add(k);else classes.delete(k)},add:k=>classes.add(k),remove:k=>classes.delete(k),contains:k=>classes.has(k)},getContext:()=>context,getBoundingClientRect:()=>({width:384,height:720,left:0}),addEventListener:(name,cb)=>{events[id+':'+name]=cb},setPointerCapture:noop,setAttribute:noop,replaceChildren(){this.children=[]},append(b){this.children.push(b)},click(){if(!this.disabled)this.onclick?.()}})}return elements.get(id)}
  const env={console,Math:rng,performance:{now:()=>0},localStorage:storage,requestAnimationFrame:noop,document:{getElementById:element,addEventListener:(e,f)=>events[e]=f,createElement:()=>element('new'+Math.random()),hidden:false},window:{addEventListener:(e,f)=>events[e]=f}};
- vm.createContext(env);vm.runInContext(html.match(/<script>([\s\S]*)<\/script>/)[1],env);return {env,element,events,storage,run:code=>vm.runInContext(code,env)};
+ vm.createContext(env);vm.runInContext(html.match(/<script>([\s\S]*)<\/script>/)[1].replace("const SKIN_CHECKOUT_MODE='preview'","const SKIN_CHECKOUT_MODE='"+checkoutMode+"'"),env);return {env,element,events,storage,run:code=>vm.runInContext(code,env)};
 }
 
 const {run,element,storage,events}=boot();

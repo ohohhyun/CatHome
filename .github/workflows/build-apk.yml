@@ -18,7 +18,7 @@ jobs:
           distribution: temurin
           java-version: '17'
       - name: Check game logic
-        run: node tests/game.test.cjs
+        run: node tests/skins.test.cjs
       - name: Install browser test library
         run: npm install --prefix "$RUNNER_TEMP/cathome-ui" --no-package-lock --no-audit --no-fund playwright@1.56.1
         env:
@@ -27,6 +27,7 @@ jobs:
         run: node tests/browser.test.cjs
         env:
           NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
+          SKIN_REVIEW: '1'
       - name: Compare render workload with v0.4
         run: node tests/performance.test.cjs
         env:
