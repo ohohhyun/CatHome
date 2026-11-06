@@ -133,10 +133,10 @@ for(const height of [590,720,900])for(let seed=1;seed<=4;seed++){
   assert.equal(paired.run('cats.length'),2);
   assert(paired.run("{const roll=cats.find(c=>c.kind==='roll'),other=cats.find(c=>c.rollBlocker);Math.abs(roll.rollPair[0]-roll.rollPair[1])===1&&roll.rollPair.includes(roll.fromLane)&&roll.rollPair.includes(roll.lane)&&roll.safe===roll.fromLane&&!!other&&!roll.rollPair.includes(other.lane)&&other.kind==='straight'&&other.type===0&&other.row===roll.row&&other.y===roll.y}"));
   paired.run("var shuttle=cats.find(c=>c.kind==='roll'),blocker=cats.find(c=>c.rollBlocker)");
-  const positions=[];for(let i=0;i<=100;i++)positions.push(paired.run(`shuttle.y=-42+(py()+42)*${i}/100;positionCat(shuttle);shuttle.x`));
+  const positions=[];for(let i=0;i<=100;i++)positions.push(paired.run(`shuttle.age=shuttle.rollArrival-2+10*${i}/100;positionCat(shuttle);shuttle.x`));
   let changes=0,lastDirection=0;for(let i=1;i<positions.length;i++){const direction=Math.sign(positions[i]-positions[i-1]);if(direction&&lastDirection&&direction!==lastDirection)changes++;if(direction)lastDirection=direction}assert(changes>=4,'must roll back and forth repeatedly, not cross once');
   for(let i=0;i<=10;i++){
-   paired.run(`shuttle.y=py()-collisionHalfY()+2*collisionHalfY()*${i}/10;blocker.y=shuttle.y;positionCat(shuttle);positionCat(blocker)`);
+   paired.run(`shuttle.y=py()-collisionHalfY()+2*collisionHalfY()*${i}/10;blocker.y=shuttle.y;shuttle.age=shuttle.rollArrival+(shuttle.y-py())/(difficulty().speed*travelScale());positionCat(shuttle);positionCat(blocker)`);
    assert(paired.run('Math.abs(shuttle.x-lanes[shuttle.fromLane])>29&&Math.abs(blocker.x-lanes[shuttle.fromLane])>29'),'a free cell inside the rolling pair must exist at passage time');
    assert(paired.run('Math.abs(blocker.x-lanes[blocker.lane])<.001'),'third lane must actually be occupied');
    assert(paired.run('shuttle.x>=lanes[shuttle.rollPair[0]]-.001&&shuttle.x<=lanes[shuttle.rollPair[1]]+.001'),'roller never enters the third lane');
@@ -144,6 +144,18 @@ for(const height of [590,720,900])for(let seed=1;seed<=4;seed++){
  }
 }
 assert(rollingRows>20);
+// One crossing takes two seconds, independent of stage speed and screen height.
+for(const h of [590,720,900])for(const round of [11,51,100,200]){
+ const slow=boot({catCleared:'10'});slow.run(`H=${h};start(0,'endless');elapsed=(${round}-1)*20;cats=[];waveIndex=0;var roller;for(let n=0;n<12&&!roller;n++){cats=[];wave();roller=cats.find(c=>c.kind==='roll')}`);
+ assert(slow.run('!!roller'));
+ for(let step=0;step<=16;step++){
+  const ratio=slow.run(`roller.age=roller.rollArrival-2+${step}/2;positionCat(roller);(roller.x-lanes[roller.fromLane])/(lanes[roller.lane]-lanes[roller.fromLane])`);
+  const expected=(1-Math.cos(step/2*Math.PI/2))/2;
+  assert(Math.abs(ratio-expected)<1e-8,'fixed two-second crossing at all speeds');
+ }
+ slow.run('cats=[roller];spawn=999;state="pause";var frozenAge=roller.age;update(1)');assert(slow.run('roller.age===frozenAge'),'pause freezes rolling');
+}
+
 
 const endlessNewCats=boot({catCleared:'10'});endlessNewCats.run("start(0,'endless')");
 for(let r=1;r<=10;r++){endlessNewCats.run(`elapsed=(${r}-1)*20;cats=[];wave()`);assert(endlessNewCats.run("cats.every(c=>c.kind!=='roll'&&c.kind!=='forward')"))}
