@@ -58,3 +58,11 @@ Unit coverage checks shared town/combat movement, simultaneous move+jump/dodge, 
 - Browser checks cover the real portal flow and independent two-finger controls, centred dungeon spawn/reversal/dodge and actual scrolling pixels. Four-class contact/passing/flight/jump previews are uploaded with navigation previews.
 - Ranged attacks, slow non-homing enemy projectiles, difficulty/party counts, deterministic combat and saves retain their existing regression suites. Protocol 4 requires the same 2.5 build on every party phone.
 - Existing artwork remains a runtime cutout rig; there are no new hand-drawn animation frames. Physical phone play, subjective animation quality and sustained frame rate still need on-device evaluation.
+
+
+## 2.6 generated artwork regression
+
+- Seven original image_gen PNG outputs are tracked without pixel edits. Their SHA-256 hashes, dimensions, frame counts and provenance are recorded in generated-art-sources.json. All 80 actor crop rectangles fit their actual source image; uniform scaling and authored foot baselines avoid stretching and neighboring-cell fragments.
+- Frame selection is tested for running by distance, basic/skill timers, jump/landing and down state. The four original class designs have 20 full-body frames each; three VFX flipbooks have 16 frames each.
+- Browser CI verifies all seven images decode, generated bodies and painted effects are actually drawn in live combat, four basic attacks/four area skills/healing and five four-class pose previews. Dedicated GPT-Art previews are uploaded.
+- Existing camera, touch, ranged travel/collision, slow enemy windups/orbs, deterministic combat, save progression and native/browser four-player suites remain required. Source and asset hashes are checked again against the downloadable APK. Actual phone performance/appearance and physical Wi-Fi play remain outside this environment's verification.

@@ -31,6 +31,7 @@ jobs:
           node tests/caster.test.cjs
           node tests/ranged.test.cjs
           node tests/navigation.test.cjs
+          node tests/generated-art.test.cjs
           node tests/rpg.test.cjs
       - name: Test native four-player LAN transport
         run: |
@@ -43,6 +44,7 @@ jobs:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
       - name: Test four-player game protocol and mobile layout
         run: |
+          node tests/generated-presentation.test.cjs
           node tests/exploration.test.cjs
           node tests/locomotion.test.cjs
           node tests/ranged-presentation.test.cjs
@@ -52,6 +54,12 @@ jobs:
           node tests/browser.test.cjs
         env:
           NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: DungeonCrush-GPT-Art-Previews
+          path: dungeon-crush/build/previews/gpt-*.png
+          if-no-files-found: ignore
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -100,10 +108,10 @@ jobs:
         run: |
           "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --print-certs app/build/outputs/apk/debug/app-debug.apk
           python tools/verify-apk-identity.py "$ANDROID_HOME/build-tools/35.0.0/aapt" app/build/outputs/apk/debug/app-debug.apk com.dungeoncrush.game com.dungeoncrush.game.MainActivity "던전크러시!"
-          cp app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/DungeonCrush-2.5.apk
+          cp app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/DungeonCrush-2.6.apk
       - uses: actions/upload-artifact@v4
         with:
           name: DungeonCrush-APK
-          path: dungeon-crush/app/build/outputs/apk/debug/DungeonCrush-2.5.apk
+          path: dungeon-crush/app/build/outputs/apk/debug/DungeonCrush-2.6.apk
           if-no-files-found: error
           retention-days: 30

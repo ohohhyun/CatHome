@@ -1,0 +1,160 @@
+{
+  "version": "2.6",
+  "generator": "OpenAI image_gen",
+  "characterFrames": 80,
+  "effectFrames": 48,
+  "notes": "Generated on explicit user request. Original PNG outputs are preserved. Images are copied unchanged; metadata defines frame crops and foot baselines. Character designs reference existing Dungeon Crush art. VFX RGB black is intentional for screen blending.",
+  "assets": [
+    {
+      "id": "kael",
+      "file": "art/generated/kael.png",
+      "width": 793,
+      "height": 1983,
+      "sha256": "edb8b14f8dafeaaa368533c083de974bcd73bd2f769ed4bb4c1c598ff44fcec9",
+      "columns": 4,
+      "rows": 5,
+      "tool": "OpenAI image_gen",
+      "generated": "2026-11-06",
+      "originalOutput": "exec-648e872e-1bcf-4ff3-9000-c0dd43b85fd8.png",
+      "reference": "art/fighters.webp",
+      "blend": "source-over",
+      "states": [
+        "idle",
+        "run",
+        "attack",
+        "skill",
+        "jump"
+      ],
+      "frames": 20
+    },
+    {
+      "id": "rin",
+      "file": "art/generated/rin.png",
+      "width": 1122,
+      "height": 1402,
+      "sha256": "eb5a1774034bbafcc9fffd50655a15186aaa775a78b3dd15097acbb650d66652",
+      "columns": 4,
+      "rows": 5,
+      "tool": "OpenAI image_gen",
+      "generated": "2026-11-06",
+      "originalOutput": "exec-9b838b3a-b424-4098-bb80-65759bb34929.png",
+      "reference": "art/fighters.webp",
+      "blend": "source-over",
+      "states": [
+        "idle",
+        "run",
+        "attack",
+        "skill",
+        "jump"
+      ],
+      "frames": 20
+    },
+    {
+      "id": "bane",
+      "file": "art/generated/bane.png",
+      "width": 1122,
+      "height": 1402,
+      "sha256": "6408d7daf5876d070ae770fec1e4794c1afcdcd2c8cbd0d52fab3054018258e0",
+      "columns": 4,
+      "rows": 5,
+      "tool": "OpenAI image_gen",
+      "generated": "2026-11-06",
+      "originalOutput": "exec-1cadcc78-5fa4-4b06-8602-5bda7e7eff97.png",
+      "reference": "art/fighters.webp",
+      "blend": "source-over",
+      "states": [
+        "idle",
+        "run",
+        "attack",
+        "skill",
+        "jump"
+      ],
+      "frames": 20
+    },
+    {
+      "id": "sera",
+      "file": "art/generated/sera.png",
+      "width": 1122,
+      "height": 1402,
+      "sha256": "cc432f5b9b10f1cbcde44f5877f52b216f6874c2a6fc7d5662f469e00e1b2666",
+      "columns": 4,
+      "rows": 5,
+      "tool": "OpenAI image_gen",
+      "generated": "2026-11-06",
+      "originalOutput": "exec-b54cebef-2337-4a68-9af6-09a3486af767.png",
+      "reference": "art/fighters.webp",
+      "blend": "source-over",
+      "states": [
+        "idle",
+        "run",
+        "attack",
+        "skill",
+        "jump"
+      ],
+      "frames": 20
+    },
+    {
+      "id": "attack",
+      "file": "art/generated/attack.png",
+      "width": 1263,
+      "height": 1245,
+      "sha256": "b4d940fe8f836c4aee1ab49e1d597f9d3577e7110181fea1ca96c39c310e5e71",
+      "columns": 4,
+      "rows": 4,
+      "tool": "OpenAI image_gen",
+      "generated": "2026-11-06",
+      "originalOutput": "exec-dc3c1c58-3919-41d8-b6d7-8ae94ce98afe.png",
+      "reference": null,
+      "blend": "screen",
+      "states": [
+        "gather",
+        "release",
+        "impact",
+        "dissipate"
+      ],
+      "frames": 16
+    },
+    {
+      "id": "area",
+      "file": "art/generated/area.png",
+      "width": 1261,
+      "height": 1247,
+      "sha256": "a6ff34f4b1151d6f880ed1c6539af3f6d0ccb0ee5ce9e119917f94bcdbd91ed8",
+      "columns": 4,
+      "rows": 4,
+      "tool": "OpenAI image_gen",
+      "generated": "2026-11-06",
+      "originalOutput": "exec-a29c3566-9782-491e-9f75-faf521c88025.png",
+      "reference": null,
+      "blend": "screen",
+      "states": [
+        "gather",
+        "release",
+        "impact",
+        "dissipate"
+      ],
+      "frames": 16
+    },
+    {
+      "id": "support",
+      "file": "art/generated/support.png",
+      "width": 1263,
+      "height": 1246,
+      "sha256": "4f9dbbba529aa391752b2cc8ff1c03e62e8b6d710f480b6f8b472f1b20651820",
+      "columns": 4,
+      "rows": 4,
+      "tool": "OpenAI image_gen",
+      "generated": "2026-11-06",
+      "originalOutput": "exec-83f0c2d7-3397-4147-9358-39abf985eb7f.png",
+      "reference": null,
+      "blend": "screen",
+      "states": [
+        "gather",
+        "release",
+        "impact",
+        "dissipate"
+      ],
+      "frames": 16
+    }
+  ]
+}
