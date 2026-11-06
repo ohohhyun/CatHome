@@ -1,3 +1,23 @@
+# 2.9.1 run and cast fixes
+
+Published by [release workflow 42252938506](https://github.com/ohohhyun/CatHome/actions/runs/42252938506). ZIP SHA256: `16f0ba6ac027e1ff6e180fdafb46405235e9d2682f6b3460932a9328fc9be077`.
+
+Source `d13dd641b9e76096e7aa1035153f133514fecce0`; [successful build 42251175699](https://github.com/ohohhyun/CatHome/actions/runs/42251175699). Signed APK versionCode 21 / versionName 2.9.1-run-fix; package, activity, app label and signing certificate remain the dedicated Dungeon Crush identity.
+
+- Nine JavaScript suites, real native TCP host plus three clients, and eleven Chromium scenarios passed. Existing ten-size layout, party XP persistence, potion, ranged collision, campaign and deterministic combat regressions remain covered.
+- Running now groups the existing 24 registered crops into one stride with two footfalls per 320 world units. Registered head/root coordinates stay stable across source sheets. Acceleration lean, cruise and stop recovery, heading during reversal and immutable display state are checked.
+- Production browser tests cover all four classes during start/cruise/stop/reverse/dodge. They assert one body render per frame, no invulnerability opacity strobe, normal on-demand loading, no page errors and a recorded actual gameplay video.
+- Wider regular skill images, 0.9-second regular spell effects and 1.8-second ultimates are checked. Actual browser screenshots retain the ultimate over one second after release. A crowded FX list cannot immediately evict the ultimate.
+- Real knight/caster/brute/boss casts are killed during windup in unit tests. Pending warnings, owned enemy projectiles and source windup graphics disappear; player HP does not drop later. Stale serialized casts with absent owners cannot fire. The browser repeats boss/caster deaths during real casts.
+- All approved source/runtime artwork bytes are unchanged from 2.9. APK CRC, exact script/image bytes, compiled identity, version and apksigner checks passed. Certificate SHA256: e43fedd9099e7b5df82eccfa3e92fc020d429ad99795463abbe40e2af4880708.
+- Original app/legacy/tests Git subtrees and 38 protected files remain unchanged. Only Dungeon Crush and its dedicated workflows are patched; main is not merged or updated.
+
+APK: 109023951 bytes, SHA256 ce53438ce46971d57f2b7a8ad4e99f4bbf2d1e4edd9763632667233535dccc98. The share ZIP contains exactly that signed APK and installation instructions; ZIP CRC and embedded APK hash are verified. Public release digests match the locally checked files.
+
+Physical phone installation, phone-to-phone Wi-Fi, perceived frame pacing and long-session performance still require device testing. The supplied recording is automated browser gameplay.
+
+---
+
 # 2.9 verified presentation release
 
 Final source: `2c655234b41c1dbbb13e60705b0e2899e9c6920a`. Successful build: [42236159924](https://github.com/ohohhyun/CatHome/actions/runs/42236159924). Direct signed APK: [DungeonCrush-2.9.apk](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9/DungeonCrush-2.9.apk).

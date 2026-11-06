@@ -9,3 +9,7 @@ Each main motion has 24 authored pose crops. Running uses eight alternating key 
 Large source atlases are cropped into bounded runtime canvases on demand. Production uses an LRU cache with a 128 MiB target; the exhaustive presentation tests deliberately preload all poses. Superseded 2.8 body atlases remain in source for comparison tests and are excluded from the APK.
 
 No Dungeon & Fighter or Guilty Gear game assets were copied. These are dedicated Dungeon Crush character drawings and effects. A frame count is not a percentage score against a commercial game's animation quality.
+
+## 2.9.1 run registration correction
+
+Inspection found that each run sheet repeated the same eight gait phases twice. Runtime now groups 24 distinct existing crops into one eight-phase left/right stride, registers their head/root positions and advances the stride once per 320 world units. No artwork bytes were edited. Running/dodging draw one body per frame; acceleration/stop lean and footfall dust provide motion cues without duplicate bodies.
