@@ -3,7 +3,7 @@
 const cache=new Map(),enemySheets=new Map(),blends=new Map(),TAU=Math.PI*2;
 const rect=(x,y,w,h)=>[[x,y],[x+w,y],[x+w,y+h],[x,y+h]];
 const rigs=[
- {hip:[143,285],split:290,left:[[0,290],[138,284],[140,347],[64,496],[0,512]],right:[[139,288],[205,285],[256,512],[168,512],[165,382]],arms:[[[48,139],[100,126],[124,228],[153,235],[128,261],[61,218]],[[123,224],[139,132],[232,0],[256,0],[230,119],[170,225],[106,297],[83,295]]],pivots:[[100,147],[134,231]]},
+ {hip:[143,285],split:290,left:[[0,290],[138,284],[140,347],[64,496],[0,512]],right:[[139,288],[205,285],[256,512],[168,512],[165,382]],arms:[[[48,139],[100,126],[124,228],[153,235],[128,261],[61,218]],[[100,268],[126,218],[155,163],[177,115],[187,74],[226,0],[256,0],[256,66],[219,137],[188,202],[148,259],[115,292],[90,292]]],pivots:[[100,147],[134,231]]},
  {hip:[145,291],split:301,left:[[0,300],[145,287],[145,341],[79,512],[31,512]],right:[[145,286],[190,284],[256,512],[211,512],[173,383]],arms:[[[98,145],[127,144],[125,206],[143,252],[112,272],[68,219]],[[0,436],[128,265],[232,0],[256,0],[189,174],[142,275],[0,460]]],pivots:[[121,157],[142,265]]},
  {hip:[143,287],split:302,left:[[0,302],[145,287],[150,337],[70,512],[0,512]],right:[[144,290],[205,286],[256,512],[175,512],[159,365]],arms:[[[0,147],[78,139],[94,211],[112,270],[45,288],[0,253]],[[193,146],[256,145],[256,268],[213,268],[180,222]]],pivots:[[77,153],[192,163]]},
  {hip:[146,282],split:293,left:[[0,293],[145,280],[154,325],[92,512],[0,512]],right:[[145,279],[197,287],[256,512],[185,512],[164,352]],arms:[[[0,71],[52,97],[85,136],[91,194],[61,239],[34,220],[30,140],[0,121]],[[182,150],[221,111],[256,93],[256,160],[224,169],[197,231],[170,214]]],pivots:[[83,155],[183,162]]}
@@ -35,7 +35,7 @@ function pose(p,time,enemy=false){
  }
  if(attack){const wind=q<.2?-ease(q/.2):q<.46?-1+2*ease((q-.2)/.26):1-ease((q-.46)/.54),flip=p.combo%2===0?-1:1;body+=wind*.11*flip;armL+=wind*(p.cls===2?.55:.35)*flip;armR+=wind*(p.cls===0?.78:p.cls===1?.62:.4)*flip;left=-.1;right=.12;leftKnee=.1;rightKnee=.06;x=wind*(p.cls===2?24:15);y-=Math.sin(q*Math.PI)*3;}
  if(p.action==='dash'&&p.at>0){const t=Math.max(0,Math.min(1,1-p.at/.22));body=.26-Math.sin(t*Math.PI)*.04;armL=-.35;armR=-.26;left=.34;right=-.3;leftKnee=.65;rightKnee=.12;y=8+Math.sin(t*Math.PI)*3;}
- if(p.jump>0){const t=Math.max(0,Math.min(1,1-p.jump/.7)),arc=Math.sin(t*Math.PI);y-=arc*185;left=.16+arc*.22;right=-.2;leftKnee=.25+arc*.55;rightKnee=.18+arc*.38;armL=-.15-arc*.1;armR=.16;body=-.05+Math.sin(t*TAU)*.025;stretch=1;}
+ if(p.jump>0){const t=Math.max(0,Math.min(1,1-p.jump/.7)),arc=Math.sin(t*Math.PI);y-=arc*185;left=.16+arc*.22;right=-.2;leftKnee=.25+arc*.55;rightKnee=.18+arc*.38;armL=0;armR=0;body=-.05+Math.sin(t*TAU)*.025;stretch=1;}
  if(p.landing>0&&!p.jump){const squash=Math.sin(p.landing/.14*Math.PI);y+=squash*7;body+=squash*.025;leftKnee+=squash*.16;rightKnee+=squash*.12;}
  if(hurt){const a=enemy?Math.min(1,p.stun/.4):Math.min(1,p.hurt/.28);body=-.15*a;armL=-.25*a;armR=.2*a;left=-.1*a;right=.13*a;y+=3*a;x=-8*a;}
  if(p.hp<=0){body=-1.3;left=.2;right=.1;armL=.4;armR=.3;y+=8;}
