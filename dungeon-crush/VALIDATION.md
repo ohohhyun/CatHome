@@ -1,3 +1,25 @@
+# 2.9.2 coherent movement — verified APK
+
+Published by [release workflow 42265363981](https://github.com/ohohhyun/CatHome/actions/runs/42265363981). Public APK, share ZIP and motion recording byte counts and SHA256 digests match the locally verified files. [Download share ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9.2/DungeonCrush-2.9.2-Share.zip).
+
+Source `3c349808e78f76f5a9f81da84200f9cf6e052a19`; [successful build 42264284734](https://github.com/ohohhyun/CatHome/actions/runs/42264284734). Nine JavaScript suites, native TCP host plus three clients, twelve Chromium scenarios and APK identity/art/signer checks passed.
+
+APK: versionCode 22 / versionName 2.9.2-coherent-motion, 97297283 bytes, SHA256 `bcfb46ded4606ad6b627b67224de3401f4ad1aa7fefb1563f633b062b4094b8b`. Dedicated package/activity/label and signing certificate are unchanged. Locally reconstructed parts match the build manifest; ZIP CRC, embedded exact scripts/art and compiled Android identity are verified. Share ZIP: 97298024 bytes, SHA256 `070dee3f94971f9e3e800d80f57d86f84592b36c0326e3b257486dbded0e5f7c`, exactly the verified APK and UTF-8 installation notes. The movement recording is 50.88 seconds, 6412739 bytes, SHA256 `e27802a8188a3fe0c60e33bec156a9cac2f9ba414331e326972e9ca5316be06d`.
+
+Original app/legacy/tests Git subtrees and 38 protected local files remain unchanged. Root CatHome settings and main are untouched.
+
+This supersedes the ineffective 2.9.1 run registration. A single eight-pose source atlas per class replaces mixed run sources, with one fixed upper-body layer and animated lower body. Dedicated original eight-pose jump and four held dash poses replace mixed intermediates. Display state follows actual dash/jump timers. Per-render finite-difference acceleration has been removed.
+
+Participating classes' run/jump/dash and all idle/reaction banks are prepared and pinned. The own character's starter combo/cast banks are pinned too, so eviction cannot close the input-readiness gate. Battle reveal waits for critical assets and pauses simulation during loading. The old animated player rig is no longer used during a missing authored pose.
+
+The active pose count is 496, not 704. Incorrect/interleaved locomotion poses have been removed rather than counted as quality. Four new original PNGs are preserved unchanged; runtime lossless WebP decodes identically. Sixteen superseded locomotion atlases are archived but excluded from the APK. Existing combat/effect timings and saved progression remain.
+
+New production-mode Chromium checks exercise the first moving jump and dash for every class in town and battle, facing both directions. Actual rendered upper-body screenshot pixels are identical across all eight running phases while lower-body pixels change. A four-class enemy/combat cache-pressure case checks critical retention. These tests do not call preloadAll(). Existing real combat, dead-caster cancellation, four-player protocol, ranged collisions, potion, XP and mobile layout regressions also remain mandatory.
+
+Physical Android installation, phone-to-phone Wi-Fi, frame pacing and long sessions require device testing. The provided recording is automated browser gameplay.
+
+---
+
 # 2.9.1 run and cast fixes
 
 Published by [release workflow 42252938506](https://github.com/ohohhyun/CatHome/actions/runs/42252938506). ZIP SHA256: `16f0ba6ac027e1ff6e180fdafb46405235e9d2682f6b3460932a9328fc9be077`.
