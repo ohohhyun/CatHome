@@ -5,8 +5,8 @@ function tick(s,n=1,input={}){for(let i=0;i<n;i++)E.step(s,{0:input},1/60);}
 assert.equal(E.CLASSES.length,4);assert.equal(E.DUNGEONS.length,24);assert.equal(new Set(E.CLASSES.flatMap(c=>c.skills.map(s=>s.name))).size,24);
 for(let cls=0;cls<4;cls++){
  const s=arena(cls),p=s.players[0];assert.equal(p.hp,p.maxHp);assert.equal(p.cd.length,7);
- let hp=s.enemies[0].hp;assert(E.attack(s,p,0));assert.equal(E.attack(s,p,0),false);if(cls===3){assert.equal(s.enemies[0].hp,hp,'ranged damage waits for a real projectile');tick(s,75);}assert(s.enemies[0].hp<hp);
- for(let sk=1;sk<=6;sk++){p.mp=100;p.rage=100;p.at=0;p.cd.fill(0);p.x=330;s.enemies[0].x=410;s.projectiles=[];let before=s.enemies[0].hp;assert(E.attack(s,p,sk),'class '+cls+' skill '+sk);if(cls===3&&sk<=3)tick(s,90);if(sk===5){if(cls===3)assert(p.hp>0);else assert(p.shield>0);}else assert(s.enemies[0].hp<before,'damaging skill hits');assert(p.mp>=0&&p.mp<=100);assert(p.rage>=0&&p.rage<=100);}
+ let hp=s.enemies[0].hp;assert(E.attack(s,p,0));assert.equal(E.attack(s,p,0),false);assert.equal(s.enemies[0].hp,hp,'all attacks respect their drawn windup');tick(s,cls===3?75:Math.ceil(p.impactTime*60)+1);assert(s.enemies[0].hp<hp);
+ for(let sk=1;sk<=6;sk++){p.mp=100;p.rage=100;p.at=0;p.pending=null;p.rushTime=0;p.dashTime=0;p.cd.fill(0);p.x=330;s.enemies[0].x=410;s.projectiles=[];let before=s.enemies[0].hp;assert(E.attack(s,p,sk),'class '+cls+' skill '+sk);tick(s,cls===3&&sk<=3?90:Math.ceil(p.impactTime*60)+1);if(sk===5){if(cls===3)assert(p.hp>0);else assert(p.shield>0);}else assert(s.enemies[0].hp<before,'damaging skill hits');assert(p.mp>=0&&p.mp<=100);assert(p.rage>=0&&p.rage<=100);}
  p.at=0;p.mp=0;p.cd.fill(0);assert.equal(E.attack(s,p,1),false);p.rage=99;assert.equal(E.attack(s,p,6),false);p.hp=0;p.mp=100;assert.equal(E.attack(s,p,0),false);
 }
 // Telegraphed hits respect jump, dodge invulnerability, shields and deaths.

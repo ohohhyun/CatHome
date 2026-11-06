@@ -5,7 +5,7 @@ const chars=$('characters');$('character-slot').append(chars);$('menu').querySel
 function el(tag,cls,text){const n=document.createElement(tag);n.className=cls;if(text!==undefined)n.textContent=text;return n;}
 function hero(){return A.getSave().chars[A.getClass()];}
 const TOWN_WORLD=3000,PORTAL_X=2740;let townScene=null;
-function enterTown(reset){if(!townScene||reset||townScene.hero.cls!==A.getClass()){const hero=E.player(0,E.CLASSES[A.getClass()].name,A.getClass(),R.level(heroData()),R.profile(A.getSave(),A.getClass()));Object.assign(hero,{x:360,y:580,dir:1});townScene={hero,state:{world:TOWN_WORLD,fx:[],nextId:1},camera:DungeonWorld.cameraAt(hero.x,TOWN_WORLD),anchor:800};}}
+function enterTown(reset){root.DungeonArt?.ensure(A.getClass());if(!townScene||reset||townScene.hero.cls!==A.getClass()){const hero=E.player(0,E.CLASSES[A.getClass()].name,A.getClass(),R.level(heroData()),R.profile(A.getSave(),A.getClass()));Object.assign(hero,{x:360,y:580,dir:1});townScene={hero,state:{world:TOWN_WORLD,fx:[],nextId:1},camera:DungeonWorld.cameraAt(hero.x,TOWN_WORLD),anchor:800};}}
 function heroData(){return A.getSave().chars[A.getClass()];}
 function townActive(){return phase==='town'&&A.getMode()==='menu'&&!document.hidden&&['rpg-screen','lan-screen','guide-screen','forge-screen','settings-screen'].every(id=>$(id).hidden);}
 function nearPortal(){return !!townScene&&Math.abs(townScene.hero.x-PORTAL_X)<195;}

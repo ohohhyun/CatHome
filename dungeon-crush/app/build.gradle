@@ -6,8 +6,8 @@ android {
         applicationId 'com.dungeoncrush.game'
         minSdk 23
         targetSdk 35
-        versionCode 17
-        versionName '2.6-gpt-animation-effects'
+        versionCode 18
+        versionName '2.7-combo-impact'
     }
     signingConfigs {
         debug {
@@ -20,6 +20,7 @@ android {
             }
         }
     }
+    androidResources { ignoreAssetsPattern = 'attack.png:area.png:support.png' }
     buildTypes { release { minifyEnabled false } }
 }
 

@@ -66,3 +66,11 @@ Unit coverage checks shared town/combat movement, simultaneous move+jump/dodge, 
 - Frame selection is tested for running by distance, basic/skill timers, jump/landing and down state. The four original class designs have 20 full-body frames each; three VFX flipbooks have 16 frames each.
 - Browser CI verifies all seven images decode, generated bodies and painted effects are actually drawn in live combat, four basic attacks/four area skills/healing and five four-class pose previews. Dedicated GPT-Art previews are uploaded.
 - Existing camera, touch, ranged travel/collision, slow enemy windups/orbs, deterministic combat, save progression and native/browser four-player suites remain required. Source and asset hashes are checked again against the downloadable APK. Actual phone performance/appearance and physical Wi-Fi play remain outside this environment's verification.
+
+
+## 2.7 combat timing and presentation
+
+- Original PNGs and lossless WebP counterparts are hashed; local authoring compares decoded RGBA byte-for-byte. Atlas bounds cover 208 active character cels and 24 distinct eight-frame skill flipbooks. Browser tests preload/decode all banks; production lazily loads role banks and caches only idle rows.
+- Deterministic tests verify damage/muzzle release waits for windup, no repeated hit per frame, three distinct combo stages, released-tap buffering, dodge cancellation and one-time resource cost, continuous skill rush, knockback/contact hold, split-damage two-barrel finisher, serialized pending/buffer state and non-mutating client animation interpolation.
+- Full browser input runs capture movement/jumps, held three-stage combos and all 24 skills, including defenses/healing. A live combat WebM is recorded. Whole-pose transitions check stale afterimages never address another sheet's frame bounds.
+- Existing campaign/save/scaling/caster/ranged/navigation/multitouch/mobile layout/native TCP/browser four-player checks remain required. APK verification checks all packaged asset hashes and scripts against source, exact app identity/install version and signature. Physical phone performance and subjective smoothness remain outside this environment's checks.

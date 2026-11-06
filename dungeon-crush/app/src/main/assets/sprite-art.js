@@ -1,59 +1,73 @@
-/* GPT-generated, complete animation cels and painted VFX. Original PNGs are bundled offline. */
+/* Complete authored 8-frame motion, three combo clips, and 24 individual spell flipbooks. */
 (function(root){'use strict';
-const ACTORS=[{"id":"kael","src":"art/generated/kael.png","reference":298.8,"frames":[[6,26,179,332,93.0,332],[202,26,179,332,95.0,332],[398,25,181,333,97.5,333],[604,31,182,327,90.0,327],[6,462,192,266,93.0,267],[198,452,198,271,99.0,277],[396,469,199,260,99.5,260],[596,466,195,262,98.0,263],[3,821,176,291,96.0,291],[198,886,190,225,99.0,226],[396,906,199,206,99.5,206],[607,846,176,266,87.0,266],[7,1317,182,193,92.0,193],[205,1247,187,254,92.0,263],[396,1190,183,313,99.5,320],[599,1231,188,272,95.0,279],[4,1733,184,194,95.0,194],[198,1598,198,227,99.0,227],[396,1616,196,276,99.5,276],[595,1698,192,229,99.0,229]]},{"id":"rin","src":"art/generated/rin.png","reference":244.8,"frames":[[71,12,179,254,69.0,255],[344,11,184,256,76.5,256],[617,8,182,256,84.5,259],[899,14,180,252,83.0,253],[28,326,240,212,112.0,212],[314,318,232,220,106.5,220],[598,311,221,203,103.5,227],[868,326,236,210,114.0,212],[38,582,210,228,102.0,235],[304,604,247,204,116.5,213],[572,611,270,198,129.5,206],[877,569,209,248,105.0,248],[42,914,226,182,98.0,182],[312,890,238,203,108.5,206],[590,841,222,251,111.5,255],[890,845,190,250,92.0,251],[34,1211,230,169,106.0,169],[326,1122,195,199,94.5,199],[592,1122,203,229,109.5,229],[861,1219,241,159,121.0,159]]},{"id":"bane","src":"art/generated/bane.png","reference":265.0,"frames":[[62,15,170,263,78.0,263],[339,13,170,265,81.5,265],[615,13,167,265,86.5,265],[882,13,171,265,100.0,265],[38,304,204,232,102.0,234],[329,300,199,227,91.5,238],[610,320,169,218,91.5,218],[889,303,191,222,93.0,235],[37,572,202,248,103.0,248],[310,567,216,253,110.5,253],[582,571,247,249,119.5,249],[875,564,192,256,107.0,256],[31,904,201,202,109.0,202],[308,899,214,206,112.5,207],[591,841,197,265,110.5,265],[861,929,213,173,121.0,177],[64,1214,151,175,76.0,175],[330,1122,170,210,90.5,210],[599,1134,183,219,102.5,219],[874,1217,175,172,108.0,172]]},{"id":"sera","src":"art/generated/sera.png","reference":266.5,"frames":[[56,9,183,267,84.0,267],[325,9,182,267,95.5,267],[594,10,182,266,107.5,266],[857,10,187,266,125.0,266],[25,309,214,243,115.0,243],[299,305,213,246,121.5,247],[578,308,214,244,123.5,244],[857,300,220,244,125.0,252],[37,570,201,261,103.0,261],[299,571,245,260,121.5,260],[570,570,208,261,131.5,261],[842,570,219,261,140.0,261],[46,853,192,258,94.0,258],[300,852,222,259,120.5,259],[562,852,260,259,139.5,259],[850,851,203,260,132.0,260],[44,1178,174,216,96.0,216],[317,1122,199,216,103.5,216],[580,1123,214,260,121.5,260],[857,1161,198,233,125.0,233]]}],TAU=Math.PI*2,clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),pictures=new Map(),failures=[];
+const ACTORS=[{"id":"kael","move":{"src":"art/advanced/kael-move.webp","reference":309.0,"frames":[[7,26,215,364,104.0,365],[230,53,214,338,103.0,338],[452,43,213,345,102.5,348],[666,31,221,346,110.0,360],[898,51,211,337,100.0,340],[1115,62,215,328,104.5,329],[1338,47,214,343,103.0,344],[1555,18,219,356,108.0,373],[7,572,215,283,104.0,283],[226,498,218,357,107.0,357],[452,457,213,347,102.5,347],[665,445,222,261,111.0,261],[896,444,213,236,102.0,236],[1117,478,213,332,102.5,332],[1330,516,218,339,111.0,339],[1552,507,209,348,111.0,348]]},"combat":{"src":"art/advanced/kael-combat.webp","reference":185.5,"frames":[[39,4,155,211,72.0,211],[252,24,149,191,81.0,191],[448,20,182,194,106.5,195],[679,37,208,178,97.0,178],[897,49,212,166,101.0,166],[1129,57,196,158,90.5,158],[1354,44,195,171,87.0,171],[1590,28,167,187,73.0,187],[33,254,178,182,78.0,183],[248,259,177,178,85.0,178],[459,259,171,177,95.5,178],[686,244,186,192,90.0,193],[909,230,184,207,89.0,207],[1127,222,175,215,92.5,215],[1351,231,185,206,90.0,206],[1572,248,186,189,91.0,189],[32,470,176,189,79.0,190],[241,499,174,160,92.0,161],[444,473,187,187,110.5,187],[665,447,186,213,111.0,213],[898,453,187,207,100.0,207],[1127,524,203,136,92.5,136],[1362,533,190,127,79.0,127],[1588,506,168,154,75.0,154],[38,695,146,187,73.0,187],[245,717,154,165,88.0,165],[455,746,157,136,99.5,136],[675,678,175,204,101.0,204],[899,678,179,204,99.0,204],[1123,701,206,181,96.5,181],[1353,718,199,164,88.0,164],[1585,700,151,182,78.0,182]]},"skills":{"src":"art/advanced/kael-skills.webp","columns":8,"rows":6},"idle":{"src":"art/generated/kael.png","reference":289.0,"frames":[[6,26,179,332,93.0,332],[202,26,179,332,95.0,332],[398,25,181,333,97.5,333],[604,31,182,327,90.0,327]],"cacheHeight":358}},{"id":"rin","move":{"src":"art/advanced/rin-move.webp","reference":281.0,"frames":[[8,25,262,294,128.0,294],[295,33,244,280,112.5,286],[557,19,257,297,121.5,300],[830,8,256,281,120.0,311],[1106,31,252,285,116.0,288],[1383,32,245,286,110.5,287],[1655,21,245,295,109.5,298],[1926,6,246,283,110.0,313],[15,460,244,252,121.0,252],[292,406,243,305,115.5,305],[555,374,248,270,123.5,270],[832,362,237,235,118.0,235],[1099,362,240,213,123.0,213],[1378,376,247,295,115.5,295],[1642,418,245,295,122.5,295],[1928,400,240,312,108.0,312]]},"combat":{"src":"art/advanced/rin-combat.webp","reference":201.0,"frames":[[31,2,178,216,80.0,216],[234,21,206,196,99.0,197],[444,38,221,178,110.5,180],[677,50,210,165,99.0,168],[904,67,205,148,94.0,151],[1109,49,221,166,110.5,169],[1330,36,217,180,111.0,182],[1586,1,176,217,77.0,217],[30,223,179,216,81.0,216],[222,247,202,190,111.0,192],[444,258,206,179,110.5,181],[665,263,222,175,111.0,176],[896,271,211,168,102.0,168],[1109,266,191,172,110.5,173],[1354,256,193,183,87.0,183],[1586,223,176,216,77.0,216],[30,444,179,216,81.0,216],[235,498,168,162,98.0,162],[453,507,175,153,101.5,153],[668,492,206,168,108.0,168],[909,444,187,216,89.0,216],[1132,444,169,216,87.5,216],[1360,473,174,187,81.0,187],[1586,444,176,216,77.0,216],[8,727,209,155,103.0,156],[231,722,212,160,102.0,161],[465,703,191,179,89.5,180],[665,688,195,195,111.0,195],[887,666,200,217,111.0,217],[1130,691,191,191,89.5,192],[1351,713,201,169,90.0,170],[1586,665,176,218,77.0,218]]},"skills":{"src":"art/advanced/rin-skills.webp","columns":8,"rows":6},"idle":{"src":"art/generated/rin.png","reference":234.0,"frames":[[71,12,179,254,69.0,255],[344,11,184,256,76.5,256],[617,8,182,256,84.5,259],[899,14,180,252,83.0,253]],"cacheHeight":267}},{"id":"bane","move":{"src":"art/advanced/bane-move.webp","reference":329.0,"frames":[[6,89,206,321,105.0,322],[222,108,211,303,111.0,303],[444,94,212,317,110.5,317],[665,68,222,324,111.0,343],[888,110,202,299,110.0,301],[1109,120,200,290,110.5,291],[1330,88,216,322,111.0,323],[1556,70,210,309,107.0,341],[6,606,204,254,105.0,254],[232,534,192,326,101.0,326],[458,498,201,284,96.5,284],[682,466,195,240,94.0,240],[900,468,199,224,98.0,224],[1119,495,193,331,100.5,331],[1330,587,210,275,111.0,275],[1553,530,214,332,110.0,332]]},"combat":{"src":"art/advanced/bane-combat.webp","reference":202.5,"frames":[[50,9,143,209,61.0,209],[272,12,144,205,61.0,206],[492,16,148,202,62.5,202],[712,24,168,193,64.0,194],[932,25,177,192,66.0,193],[1155,22,157,195,64.5,196],[1380,14,145,204,61.0,204],[1602,10,144,208,61.0,208],[50,235,144,204,61.0,204],[270,237,146,202,63.0,202],[492,238,145,201,62.5,201],[703,239,168,200,73.0,200],[926,238,183,201,72.0,201],[1148,236,175,203,71.5,203],[1378,234,147,205,63.0,205],[1602,233,144,206,61.0,206],[50,456,143,204,61.0,205],[266,506,151,155,67.0,155],[475,519,161,142,79.5,142],[711,483,152,178,65.0,178],[928,444,146,217,70.0,217],[1161,451,132,210,58.5,210],[1373,469,152,192,68.0,192],[1594,508,151,153,69.0,153],[50,677,144,206,61.0,206],[260,699,144,184,73.0,184],[450,711,158,171,104.5,172],[665,726,190,156,111.0,157],[887,713,202,170,111.0,170],[1135,673,170,210,84.5,210],[1371,679,159,204,70.0,204],[1601,680,146,203,62.0,203]]},"skills":{"src":"art/advanced/bane-skills.webp","columns":8,"rows":6},"idle":{"src":"art/generated/bane.png","reference":260.5,"frames":[[62,15,170,263,78.0,263],[339,13,170,265,81.5,265],[615,13,167,265,86.5,265],[882,13,171,265,100.0,265]],"cacheHeight":278}},{"id":"sera","move":{"src":"art/advanced/sera-move.webp","reference":306.0,"frames":[[8,32,264,309,128.0,310],[282,39,261,301,125.5,303],[546,21,268,310,132.5,321],[816,10,270,295,134.0,332],[1088,41,270,299,134.0,301],[1369,47,260,290,124.5,295],[1633,35,267,307,131.5,307],[1900,11,272,291,136.0,331],[1,491,252,226,135.0,226],[277,437,247,280,130.5,280],[551,394,245,268,127.5,268],[817,364,248,230,133.0,230],[1091,362,238,220,131.0,220],[1358,383,235,303,135.5,303],[1629,454,242,263,135.5,263],[1913,409,230,308,123.0,308]]},"combat":{"src":"art/advanced/sera-combat.webp","reference":216.0,"frames":[[34,3,147,217,77.0,217],[258,3,159,217,75.0,217],[482,3,177,217,72.5,217],[696,3,186,217,80.0,217],[914,5,195,215,84.0,215],[1136,5,172,215,83.5,215],[1364,3,153,217,77.0,217],[1587,3,146,217,76.0,217],[33,224,148,218,78.0,218],[257,225,149,217,76.0,217],[474,225,157,217,80.5,217],[690,225,189,217,86.0,217],[908,225,201,217,90.0,217],[1144,227,153,215,75.5,215],[1366,225,151,217,75.0,217],[1586,224,148,218,77.0,218],[34,446,147,218,77.0,218],[253,448,165,216,80.0,216],[472,448,167,216,82.5,216],[686,449,176,215,90.0,215],[903,449,199,215,95.0,215],[1119,449,189,215,100.5,215],[1361,448,166,216,80.0,216],[1586,446,151,218,77.0,218],[34,668,147,217,77.0,218],[249,672,169,213,84.0,214],[464,673,176,212,90.5,213],[670,665,192,221,106.0,221],[891,672,215,214,107.0,214],[1123,672,185,214,96.5,214],[1356,671,173,214,85.0,215],[1590,668,148,217,73.0,218]]},"skills":{"src":"art/advanced/sera-skills.webp","columns":8,"rows":6},"idle":{"src":"art/generated/sera.png","reference":263.5,"frames":[[56,9,183,267,84.0,267],[325,9,182,267,95.5,267],[594,10,182,266,107.5,266],[857,10,187,266,125.0,266]],"cacheHeight":276}}],TAU=Math.PI*2,clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),pictures=new Map(),loading=new Set(),failed=new Set(),histories=new Map();
 let actorDraws=0,effectDraws=0;
-function load(key,src){const im=new Image();im.onload=()=>pictures.set(key,im);im.onerror=()=>failures.push(src);im.src=src;}
-ACTORS.forEach((a,i)=>load('actor'+i,a.src));for(const key of ['attack','area','support'])load(key,'art/generated/'+key+'.png');
+function load(key,src,top=0){if(pictures.has(key)||loading.has(key)||failed.has(src))return;loading.add(key);const im=new Image();im.onload=()=>{let value=im;if(top){value=document.createElement('canvas');value.width=im.naturalWidth||im.width;value.height=top;value.getContext('2d').drawImage(im,0,0);}pictures.set(key,value);loading.delete(key);};im.onerror=()=>{failed.add(src);loading.delete(key);};im.src=src;}
+ACTORS.forEach((a,i)=>load('idle'+i,a.idle.src,a.idle.cacheHeight));
+function ensureSkills(cls){if(ACTORS[cls])load('skills'+cls,ACTORS[cls].skills.src);}
+function ensure(cls){if(!ACTORS[cls])return;for(const bank of ['move','combat'])load(bank+cls,ACTORS[cls][bank].src);ensureSkills(cls);}
+function hasActor(cls){return pictures.has('move'+cls)&&pictures.has('combat'+cls);}
+function ready(cls=root.RiftApp?.getClass?.()??0){return hasActor(cls)&&pictures.has('skills'+cls)&&ACTORS.every((_,i)=>pictures.has('idle'+i));}
+function preloadAll(){ACTORS.forEach((_,i)=>ensure(i));}
+function animationPhase(p){let q=clamp(1-p.at/(p.actionDuration||.45),0,1),hit=clamp((p.impactTime||.13)/(p.actionDuration||.45),.08,.8);const contact=p.cls===0&&p.action==='basic'&&p.comboStage===2?.66:.54;if(p.poseHold>0)return p.posePhase??contact;return q<hit?q/hit*contact:contact+(q-hit)/(1-hit)*(1-contact);}
 function frame(p,time){
- let row=0,col=((Math.floor(time*3)%4)+4)%4,state='idle',rise=0,tilt=0,offset=0;
- if(p.hp<=0){row=4;col=3;state='down';tilt=-1.35;}
- else if(p.jump>0){const t=clamp(1-p.jump/.7,0,1);row=4;col=t<.1?0:t<.53?1:t<.9?2:3;state='jump';rise=-Math.sin(t*Math.PI)*.34;}
- else if(p.action==='dash'&&p.at>0){row=1;col=1+((p.at<.11)?2:0);state='dash';tilt=.09;}
- else if(p.at>0&&!['idle','run'].includes(p.action)){const t=clamp(1-p.at/(p.actionDuration||.45),0,1);row=p.action==='basic'?2:3;col=t<.12?0:t<.43?1:t<.78?2:3;state='attack';offset=Math.sin(t*Math.PI)*(p.cls===2?8:4);}
- else if(p.landing>0){row=4;col=3;state='landing';}
- else if(p.action==='run'){row=1;const cycle=Number.isFinite(p.gait)?p.gait:time*12;col=Math.floor(((cycle/TAU)%1+1)%1*4);state='run';}
- if(p.hurt>0){tilt-=.07;offset-=Math.min(1,p.hurt/.28)*5;}
- return {row,col,index:row*4+col,state,rise,tilt,offset};
+ let bank='idle',index=((Math.floor(time*2.5)%4)+4)%4,row=0,col=index,state='idle',rise=0,tilt=0,offset=0,phase=0;
+ if(p.hp<=0){bank='move';index=14;row=4;col=6;state='down';tilt=-1.3;}
+ else if(p.jump>0){const t=clamp(1-p.jump/.7,0,.999),flight=clamp((t-.08)/.82,0,1);bank='move';col=Math.min(7,Math.floor(t*8));index=8+col;row=4;state='jump';rise=-4*flight*(1-flight)*.5;}
+ else if(p.action==='dash'&&p.at>0){bank='move';col=p.at>.11?3:7;index=col;row=1;state='dash';tilt=.08;}
+ else if(p.at>0&&!['idle','run'].includes(p.action)){
+  bank='combat';phase=animationPhase(p);col=Math.min(7,Math.floor(phase*8));const clip=p.action==='basic'?clamp(p.comboStage||0,0,2):3;index=clip*8+col;row=p.action==='basic'?2:3;state='attack';offset=Math.sin(phase*Math.PI)*3;
+ }
+ else if(p.landing>0){bank='move';col=7;index=15;row=4;state='landing';}
+ else if(p.action==='run'){bank='move';const cycle=Number.isFinite(p.gait)?p.gait:time*12;col=Math.floor(((cycle/TAU)%1+1)%1*8);index=col;row=1;state='run';}
+ if(p.hurt>0){tilt-=.08;offset-=Math.min(1,p.hurt/.28)*5;if(state==='idle')state='hurt';}
+ return {bank,index,row,col,state,rise,tilt,offset,phase};
 }
+function drawCel(c,im,a,f,height,alpha){const r=a.frames[f.index],scale=height/a.reference;c.save();c.globalAlpha*=alpha;c.drawImage(im,r[0],r[1],r[2],r[3],-r[4]*scale,-r[5]*scale,r[2]*scale,r[3]*scale);c.restore();}
 function actor(c,cls,x,y,height,dir,p,time,alpha=1){
- const im=pictures.get('actor'+cls);if(!im)return false;const a=ACTORS[cls],f=frame(p,time),r=a.frames[f.index],scale=height/a.reference;
+ if(!ACTORS[cls])return false;const f=frame(p,time);if(f.bank!=='idle')ensure(cls);const im=pictures.get(f.bank+cls);if(!im)return false;const a=ACTORS[cls][f.bank];
+ if(p.shield>0&&alpha>=.45)cell(c,cls,4,4+(Math.floor(time*2)%2),x,y-height*.48,height*1.03,height*1.35,{alpha:.16});
  c.save();c.translate(x+f.offset*dir,y+f.rise*height);c.scale(dir,1);c.rotate(f.tilt);c.globalAlpha*=alpha*(p.hp<=0?.55:1);c.imageSmoothingEnabled=true;
- c.drawImage(im,r[0],r[1],r[2],r[3],-r[4]*scale,-r[5]*scale,r[2]*scale,r[3]*scale);c.restore();actorDraws++;return true;
+ const key=cls+':'+p.id+':'+Math.round(height),previous=histories.get(key),id=f.bank+':'+f.index;
+ if(alpha>=.45){if(previous&&previous.id!==id&&previous.frame.bank===f.bank&&time-previous.time<.16&&['run','attack'].includes(f.state))previous.ghost={frame:previous.frame,at:time};const ghost=previous?.ghost;if(ghost&&ghost.frame.bank===f.bank&&['run','attack'].includes(f.state)&&time-ghost.at<.045)drawCel(c,im,a,ghost.frame,height,.08*(1-(time-ghost.at)/.045));histories.set(key,{id,frame:f,time,ghost:previous?.frame.bank===f.bank?previous.ghost:undefined});if(histories.size>64)for(const [k,h]of histories)if(time-h.time>2)histories.delete(k);}
+ drawCel(c,im,a,f,height,1);c.restore();actorDraws++;return true;
 }
-function cell(c,key,row,col,x,y,w,h,options={}){
- const im=pictures.get(key);if(!im)return false;const sx=Math.round(im.width*col/4),sy=Math.round(im.height*row/4),sw=Math.round(im.width*(col+1)/4)-sx,sh=Math.round(im.height*(row+1)/4)-sy;
+function cell(c,cls,row,col,x,y,w,h,options={}){
+ ensureSkills(cls);const im=pictures.get('skills'+cls);if(!im)return false;const sx=Math.round(im.width*col/8),sy=Math.round(im.height*row/6),sw=Math.round(im.width*(col+1)/8)-sx,sh=Math.round(im.height*(row+1)/6)-sy;
  c.save();c.translate(x,y);c.rotate(options.angle||0);c.scale(options.dir||1,1);c.globalCompositeOperation='screen';c.globalAlpha*=options.alpha??1;
  c.drawImage(im,sx,sy,sw,sh,-w*(options.anchorX??.5),-h*(options.anchorY??.5),w,h);c.restore();effectDraws++;return true;
 }
-function classOf(f){if(Number.isInteger(f.cls)&&f.cls>=0&&f.cls<4)return f.cls;const index=root.Rift?.CLASSES.findIndex(p=>p.color===f.color);return index>=0?index:0;}
+function classOf(f){if(Number.isInteger(f.cls)&&f.cls>=0&&f.cls<4)return f.cls;const i=root.Rift?.CLASSES.findIndex(p=>p.color===f.color);return i>=0?i:0;}
 function effect(c,f,camera,time){
  if(['text','windup'].includes(f.type))return false;
- const cls=classOf(f),life=f.duration||(f.type==='ultimate'?1.15:f.type==='muzzle'?.18:.55),t=clamp(1-f.life/life,0,.999),col=Math.min(3,Math.floor(t*4)),dir=f.dir||1,x=f.x-camera,y=f.y,range=f.range||160,alpha=Math.min(1,f.life/.1),o={dir,alpha};
- if(['basic','cone','lift','line'].includes(f.type)){
-  const w=Math.min(560,(f.type==='basic'?240:range*.85+180)),h=f.type==='line'?w*.45:w*.7;
-  if(cls===1&&f.type==='line'&&f.index===4)cell(c,'area',1,col,x+dir*Math.min(420,range*.6),y-125,440,370,{alpha:alpha*.85});
-  return cell(c,'attack',cls,col,x+dir*w*.25,y-[125,165,190,190][cls],w,h,{...o,angle:f.type==='lift'?-dir*.8:f.type==='cone'&&f.combo%2===0?dir*.12:0});
+ const cls=classOf(f),life=f.duration||(f.type==='ultimate'?1.15:f.type==='muzzle'?.18:.55),t=clamp(1-f.life/life,0,.999),col=f.type==='playerwind'?Math.min(3,Math.floor(t*4)):Math.min(7,4+Math.floor(t*4)),dir=f.dir||1,x=f.x-camera,y=f.y,range=f.range||160,alpha=Math.min(1,f.life/.08),index=clamp((f.index||1)-1,0,5),o={dir,alpha};
+ if(f.type==='playerwind'){const support=f.index===5;return cell(c,cls,index,col,x+(cls===3&&!support?dir*36:0),y-(support?130:[135,165,185,190][cls]),support?230:155,support?300:180,{alpha:.34,dir});}
+ if(f.type==='chain'&&f.points){const pts=f.points;for(let i=1;i<pts.length;i++){const a=pts[i-1],b=pts[i],dx=b.x-a.x,dy=b.y-a.y;cell(c,3,3,col,(a.x+b.x)/2-camera,(a.y+b.y)/2-145,Math.max(160,Math.hypot(dx,dy)*1.6),180,{alpha,angle:Math.atan2(dy,dx)});}return true;}
+ if(['shield','heal'].includes(f.type))return cell(c,cls,4,col,x,y-135,300,350,{alpha});
+ if(f.type==='muzzle')return cell(c,f.caster?3:cls,f.caster?2:0,4,x,y-(f.caster?135:[135,165,185,190][cls]),110,95,{...o,alpha:alpha*.8});
+ if(['hit','hurt','death','impact'].includes(f.type)){
+  const w=f.type==='impact'?210:f.type==='death'?180:105+(f.stage===2?35:0);return cell(c,f.caster?3:cls,f.caster?1:cls===2?1:0,col,x,y-85,w,w*.8,{...o,alpha:alpha*(f.type==='hurt'?.55:1)});
  }
- if(f.type==='chain'&&f.points){for(const pt of f.points.slice(1))cell(c,'area',3,col,pt.x-camera,pt.y-95,240,240,{alpha:alpha*.8});return false;}
- if(['circle','pull','ultimate'].includes(f.type)){
-  const w=Math.min(f.type==='ultimate'?880:680,range*1.1+180),h=w*(cls===0?.85:.72);
-  const drawn=cell(c,'area',cls,col,x,y-h*.32,w,h,{alpha,angle:f.type==='pull'&&cls===3?t*.35:0});
-  if(f.type==='ultimate'&&drawn){for(const side of [-1,1])cell(c,'area',cls,(col+1)%4,x+side*w*.33,y-h*.1,w*.52,h*.58,{alpha:alpha*.5});}
+ if(f.type==='dash')return cell(c,cls,cls===0?2:0,col,x+dir*25,y-105,300,210,{...o,alpha:alpha*.45});
+ if(['basic','cone','lift','line','rush','circle','pull','ultimate'].includes(f.type)){
+  let row=f.type==='basic'?(f.stage===1?1:0):index;
+  let w=f.type==='basic'?250:Math.min(f.type==='ultimate'?850:650,range*.95+170),h=f.type==='basic'?190:w*.72,xx=x,yy=y-h*.32,angle=0;
+  if(['basic','cone','line','rush'].includes(f.type)){xx+=dir*w*.27;yy=y-[135,165,185,190][cls];h=cls===1&&row===0?w*.40:w*.7;}
+  if(f.type==='lift'){xx+=dir*70;w=320;h=390;yy=y-145;}
+  if(cls===1&&index===3&&f.type!=='basic'){xx=x+dir*Math.min(430,range*.57);yy=y-125;w=460;h=390;}
+  if(f.type==='rush'&&cls===1){xx=x+dir*range*.5;yy=y-115;w=410;h=400;}
+  if(f.type==='basic'&&cls===2&&f.stage===2){row=1;angle=-dir*1.1;xx=x+dir*10;yy=y-180;w=270;h=230;}
+  if(f.type==='basic'&&cls===0&&f.stage===2){angle=dir*.6;yy=y-110;}
+  const drawn=cell(c,cls,row,col,xx,yy,w,h,{...o,angle});
+  if(f.type==='ultimate'&&drawn)for(const side of [-1,1])cell(c,cls,5,col,xx+side*w*.30,yy+40,w*.55,h*.70,{alpha:alpha*.5});
   return drawn;
  }
- if(['shield','heal'].includes(f.type))return cell(c,'support',f.type==='heal'?3:Math.min(2,cls),col,x,y-135,300,350,{alpha});
- if(f.type==='muzzle')return cell(c,'attack',f.caster?3:cls,0,x,y-(f.caster?135:[125,165,190,190][cls]),110,95,{...o,alpha:alpha*.9});
- if(['hit','hurt','death','impact'].includes(f.type)){
-  const w=f.type==='impact'?260:f.type==='death'?190:130;
-  return cell(c,'attack',cls,t<.45?2:3,x,y-85,w,w*.8,{...o,alpha:alpha*(f.type==='hurt'?.6:1)});
- }
- if(['rush','dash'].includes(f.type))return cell(c,'attack',cls,Math.min(2,col),x+dir*25,y-105,340,220,{...o,alpha:alpha*.55});
  return false;
 }
-function projectile(c,q,x,y,time){
- const a=Math.atan2(q.vy,q.vx);
- if(q.team==='player'&&q.kind==='bullet')return cell(c,'attack',3,1,x,y-190,q.index===1?190:145,q.index===1?95:76,{angle:a,anchorX:.77,alpha:.95});
- return cell(c,'area',3,Math.floor(time*8)%3,x,y-(q.team==='enemy'?135:190),q.team==='enemy'?92:110,q.team==='enemy'?92:110,{angle:a,alpha:q.team==='enemy'?.8:.95});
-}
-root.DungeonArt={actor,effect,projectile,frame,actors:ACTORS,cell,ready:()=>pictures.size===7,status:()=>({actors:ACTORS.filter((_,i)=>pictures.has('actor'+i)).length,effects:['attack','area','support'].filter(n=>pictures.has(n)).length,actorDraws,effectDraws,failures:[...failures]})};
+function projectile(c,q,x,y,time){const angle=Math.atan2(q.vy,q.vx);if(q.team==='enemy')return cell(c,3,2,3+(Math.floor(time*5)%3),x,y-135,88,88,{alpha:.8,angle});
+ if(q.kind==='bullet')return cell(c,3,0,3+(Math.floor(time*8)%3),x,y-190,q.index===1?185:140,q.index===1?95:76,{angle,anchorX:.77,alpha:.95});
+ return cell(c,3,q.kind==='pull'?2:1,3+(Math.floor(time*5)%3),x,y-190,110,110,{angle,alpha:.95});}
+function presentation(p,elapsed){const dt=clamp(Number(elapsed)||0,0,.14),v={...p};for(const k of ['at','jump','landing','poseHold'])v[k]=Math.max(0,(p[k]||0)-dt);if(p.action==='run')v.gait=(p.gait||0)+Math.hypot(p.vx||0,p.vy||0)/210*TAU*dt;return v;}
+ensure(0);
+root.DungeonArt={actor,effect,projectile,frame,animationPhase,presentation,actors:ACTORS,cell,ensure,ensureSkills,hasActor,preloadAll,ready,readyAll:()=>ACTORS.every((_,i)=>ready(i)),status:()=>({actors:ACTORS.filter((_,i)=>hasActor(i)).length,effects:ACTORS.filter((_,i)=>pictures.has('skills'+i)).length,idles:ACTORS.filter((_,i)=>pictures.has('idle'+i)).length,actorFrames:208,skillFrames:192,actorDraws,effectDraws,failures:[...failed],loading:loading.size})};
 })(window);
