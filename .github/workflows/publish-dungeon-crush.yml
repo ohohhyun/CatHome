@@ -9,7 +9,7 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 8
     permissions:
       actions: read
       contents: write
@@ -17,42 +17,61 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
     steps:
-      - name: Download the already verified 2.6 APK
-        run: gh run download 42170216359 --name DungeonCrush-APK --dir apk
+      - name: Download the already verified 2.7 APK
+        run: gh run download 42199590005 --name DungeonCrush-APK --dir apk
       - name: Verify exact APK bytes and archive integrity
         run: |
           python3 - <<'PY'
           from pathlib import Path
           from hashlib import sha256
           from zipfile import ZipFile
-          p = Path('apk/DungeonCrush-2.6.apk')
-          assert p.stat().st_size == 17736843
-          assert sha256(p.read_bytes()).hexdigest() == '03e1e243f2ed896db3cb17d25685beafeb68791e3d1cffa79f6aba3a61df6d2b'
+          p = Path('apk/DungeonCrush-2.7.apk')
+          assert p.stat().st_size == 30157359
+          assert sha256(p.read_bytes()).hexdigest() == 'ccbcca82e567d6477ceef7d48ce426e0b4c44c3ff2b71f7a4ac71651e4230118'
           with ZipFile(p) as z:
               assert z.testzip() is None
               assert 'AndroidManifest.xml' in z.namelist()
-              assert len([n for n in z.namelist() if n.startswith('assets/art/generated/') and n.endswith('.png')]) == 7
-          print('Verified original signed Dungeon Crush 2.6 APK; no rebuild or repackaging.')
+              assert len([n for n in z.namelist() if n.startswith('assets/art/advanced/') and n.endswith('.webp')]) == 12
+              assert len([n for n in z.namelist() if n.startswith('assets/art/generated/') and n.endswith('.png')]) == 4
+          print('Verified original signed Dungeon Crush 2.7 APK; no rebuild or repackaging.')
           PY
+      - name: Download real combat recording
+        run: gh run download 42199590005 --name DungeonCrush-Advanced-Previews --dir previews
+      - name: Prepare a playable preview
+        run: |
+          if command -v ffmpeg >/dev/null 2>&1; then
+            ffmpeg -hide_banner -loglevel error -y -i previews/advanced-combat.webm -vf 'scale=1280:-2' -c:v libx264 -preset veryfast -crf 24 -pix_fmt yuv420p -movflags +faststart -an DungeonCrush-2.7-combat.mp4
+            echo 'DUNGEON_PREVIEW_FILE=DungeonCrush-2.7-combat.mp4' >> "$GITHUB_ENV"
+          else
+            cp previews/advanced-combat.webm DungeonCrush-2.7-combat.webm
+            echo 'DUNGEON_PREVIEW_FILE=DungeonCrush-2.7-combat.webm' >> "$GITHUB_ENV"
+          fi
       - name: Prepare install notes
         run: |
           cat > release-notes.md <<'EOF'
-          던전크러시! 2.6 Android 설치 파일입니다.
+          던전크러시! 2.7 Android 설치 파일입니다.
 
-          아래 Assets에서 DungeonCrush-2.6.apk를 받아 파일을 눌러 설치하세요. 압축을 풀 필요가 없습니다.
+          Assets에서 DungeonCrush-2.7.apk를 받아 파일을 눌러 설치하세요. 압축을 풀 필요가 없습니다. 기존 2.6과 같은 서명이며 파티원 모두 2.7을 설치해야 합니다.
 
-          네 직업의 GPT 생성 전신 동작 80프레임과 공격/광역/보호막·회복 이펙트 48프레임을 포함합니다. 기존 집사 사절과 다른 앱이며, 이전 던전크러시와 같은 설치 서명입니다.
+          - 달리기·점프 8프레임, 서로 다른 3단 기본 공격 각 8프레임과 8프레임 시전 동작
+          - 24개 스킬 각각 전용 8프레임 이펙트
+          - 준비 뒤 실제 타격/발사, 짧은 입력 기억, 회피 취소, 타격 순간의 프레임 정지와 연속 밀려남
+          - 중앙 카메라·빠른 이동·원거리 전투·느린 몬스터 예고·성장·최대 4인 Wi-Fi 협동 유지
 
-          검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42170216359
-          APK SHA256: 03e1e243f2ed896db3cb17d25685beafeb68791e3d1cffa79f6aba3a61df6d2b
+          함께 올린 영상은 자동으로 실제 게임을 조작해 녹화한 약 40초의 검증 영상입니다. 실제 휴대폰에서 촬영한 영상은 아닙니다.
+
+          집사 사절은 변경하지 않았습니다.
+          검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42199590005
+          APK SHA256: ccbcca82e567d6477ceef7d48ce426e0b4c44c3ff2b71f7a4ac71651e4230118
           EOF
-      - name: Publish the APK as a direct release download
+      - name: Publish direct install and combat preview downloads
         run: |
-          if gh release view dungeon-crush-v2.6 >/dev/null 2>&1; then
-            gh release download dungeon-crush-v2.6 --pattern DungeonCrush-2.6.apk --dir existing
-            cmp apk/DungeonCrush-2.6.apk existing/DungeonCrush-2.6.apk
+          if gh release view dungeon-crush-v2.7 >/dev/null 2>&1; then
+            gh release download dungeon-crush-v2.7 --pattern DungeonCrush-2.7.apk --dir existing
+            cmp apk/DungeonCrush-2.7.apk existing/DungeonCrush-2.7.apk
+            gh release upload dungeon-crush-v2.7 "$DUNGEON_PREVIEW_FILE" --clobber
           else
-            gh release create dungeon-crush-v2.6 apk/DungeonCrush-2.6.apk --target 9c1de418762516ff0ab84b783bf7fa2913bffe4d --title '던전크러시! 2.6' --notes-file release-notes.md --prerelease
+            gh release create dungeon-crush-v2.7 apk/DungeonCrush-2.7.apk "$DUNGEON_PREVIEW_FILE" --target 1d1454e4f1ce45059cd3ca015f7cd5f61cdffc9b --title '던전크러시! 2.7 — 콤보·스킬 연출 개선' --notes-file release-notes.md --prerelease
           fi
-      - name: Confirm release asset
-        run: gh release view dungeon-crush-v2.6 --json url,tagName,assets
+      - name: Confirm release assets
+        run: gh release view dungeon-crush-v2.7 --json url,tagName,assets
