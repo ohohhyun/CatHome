@@ -47,10 +47,14 @@ jobs:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
       - name: Install video encoder for real combat capture
         run: node "$RUNNER_TEMP/cathome-ui/node_modules/playwright/cli.js" install ffmpeg
+      - name: Test run clarity, extended skills and dead-caster cancellation
+        run: node tests/run-skill-presentation.test.cjs
+        env:
+          NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
       - name: Test four-player game protocol and mobile layout
         run: |
           test_status=0
-          for scenario in run-skill-presentation motion24-presentation generated-presentation exploration locomotion ranged-presentation combat-presentation layout presentation browser party-recovery-presentation; do
+          for scenario in motion24-presentation generated-presentation exploration locomotion ranged-presentation combat-presentation layout presentation browser party-recovery-presentation; do
             node "tests/$scenario.test.cjs" || test_status=1
           done
           exit "$test_status"
