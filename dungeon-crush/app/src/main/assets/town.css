@@ -8,3 +8,6 @@
 @media(max-height:380px){.equipment-slot{min-height:84px}.equipment-slot .item-art{width:44px;height:44px}.gear-item .item-art{width:48px;height:48px}.gear-item{min-height:82px!important}.item-art-large{width:76px;height:76px}}
 
 #town-currency{display:flex;gap:8px;flex-wrap:wrap;align-items:center;justify-content:flex-end}.currency-amount{display:inline-flex;align-items:center;gap:3px;white-space:nowrap}
+
+.forge-selection{display:grid;grid-template-columns:84px minmax(0,1fr);column-gap:14px;row-gap:6px}.forge-selection>.item-art{grid-column:1;grid-row:1/6;width:84px;height:84px;margin:0;align-self:center}.forge-selection>:not(.item-art){grid-column:2}.forge-selection h3,.forge-selection p{margin:0!important}.forge-selection select{width:100%;min-width:0}.forge-selection button{max-width:320px}
+@media(max-height:450px){.equipment-slots{grid-template-columns:repeat(6,minmax(0,1fr))!important;gap:5px}.equipment-slot{min-height:82px;padding:5px!important}.equipment-slot .item-art{width:40px;height:40px}.equipment-slot b{font-size:9px!important}.forge-selection{grid-template-columns:64px minmax(0,1fr);column-gap:10px}.forge-selection>.item-art{width:64px;height:64px}.forge-selection h3{font-size:12px}.forge-selection p{font-size:10px}.forge-selection select{padding:7px;font-size:11px}}
