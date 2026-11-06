@@ -52,6 +52,14 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
+          name: DungeonCrush-Ranged-Previews
+          path: |
+            dungeon-crush/build/previews/ranged-*.png
+            dungeon-crush/build/previews/enemy-slow-orb.png
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
           name: DungeonCrush-Previews
           path: dungeon-crush/build/previews/*.png
           if-no-files-found: ignore
