@@ -13,6 +13,7 @@ const {pathToFileURL}=require('node:url');
    await page.waitForFunction(()=>typeof STAGES!=='undefined');
    assert.equal(await page.locator('#endless').isDisabled(),true);
    assert.match(await page.locator('#story-detail').textContent(),/1~30/);
+   assert.match(await page.locator('#home .subtitle').textContent(),/길냥이들의 집사 모집!/);
    const output=path.resolve(process.env.PREVIEW_DIR||'build/previews');fs.mkdirSync(output,{recursive:true});
    await page.locator('#shop-open').click();
    for(const kind of ['continue','umbrella','water','fish'])await page.locator('#buy-'+kind).click();
@@ -60,11 +61,18 @@ const {pathToFileURL}=require('node:url');
    await page.evaluate(()=>{start(29);cats=[];elapsed=STAGES[29][2]-.001;update(.02)});assert.equal(await page.evaluate(()=>state),'win');
    await page.locator('#next').click();await page.locator('#select').click();assert.equal(await page.locator('#levelgrid button').count(),30);
    await page.locator('#levelgrid button').last().click();assert.equal(await page.evaluate(()=>level),29);
-   assert.equal(await page.evaluate(()=>spriteCache.size),16);
+   assert.equal(await page.evaluate(()=>spriteCache.size),20);
    await page.evaluate(()=>{elapsed=5;layoutLanes();state='pause';cats=['diagonal','pounce','feint'].map((kind,i)=>{const c={skin:['siamese','silver','black'][i],kind,lane:i,fromLane:2-i,x:lanes[i],y:py()-160-i*45,age:1,type:0};positionCat(c);return c});render()});
    await page.screenshot({path:path.join(output,`jump-patterns-${width}.png`)});
+   const newKinds=await page.evaluate(()=>{start(10);wave();wave();return cats.map(c=>c.kind)});
+   assert(newKinds.includes('roll'));assert(newKinds.includes('forward'));
+   await page.evaluate(()=>{state='pause';const roll={lane:2,fromLane:0,kind:'roll',skin:'chonky',y:35+Math.max(110,py()-175)*.35,age:1,type:0};const jump={lane:2,fromLane:2,kind:'forward',skin:'bruiser',y:45+Math.max(120,py()-190)*.65,age:1,type:0};positionCat(roll);positionCat(jump);cats=[roll,jump];render()});
+   await page.screenshot({path:path.join(output,`chonky-bruiser-${width}.png`)});
+   const expertStats=await page.evaluate(()=>{start(0,'endless');elapsed=99*20;sync();wave();return {stage:document.getElementById('stage').textContent,label:document.getElementById('mode-label').textContent,speed:difficulty().speed,gap:nextWaveDelay(difficulty())}});
+   assert.match(expertStats.stage,/100탄/);assert.match(expertStats.label,/EXPERT/);assert.equal(expertStats.speed,840);assert(expertStats.gap>=.24&&expertStats.gap<=.27);
+   await page.screenshot({path:path.join(output,`expert-stage-100-${width}.png`)});
    assert.deepEqual(errors,[],`Browser exceptions at ${width}x${height}`);
-   await context.close();console.log(`PASS browser ${width}x${height}: 24-coin shop, non-overlapping HUD guide, controls +7.4px, throw-time fish snapshot, BGM, existing items, 30 stages`);
+   await context.close();console.log(`PASS browser ${width}x${height}: new menu text, chonky roll/bruiser jump at stage 11, stage 100 expert tier, plus shop/items/30 stages`);
   }
  }finally{await browser.close()}
 })().catch(e=>{console.error(e);process.exit(1)});

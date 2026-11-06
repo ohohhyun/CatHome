@@ -30,7 +30,7 @@ for(let l=0;l<30;l++){
 }
 element('next').click();assert.equal(run('state'),'menu','stage 20 ends at mode selection');
 element('endless').click();assert.equal(run('mode'),'endless');assert.equal(run('endlessRound()'),1);
-run('elapsed=19.99;cats=[];update(.02)');assert.equal(run('endlessRound()'),2);assert.equal(run('state'),'play');assert.match(element('stage').textContent,/무한 모드.*2구간/);assert.equal(JSON.parse(storage.catHomeSave).bestRound,2);
+run('elapsed=19.99;cats=[];update(.02)');assert.equal(run('endlessRound()'),2);assert.equal(run('state'),'play');assert.match(element('stage').textContent,/무한 모드.*2탄/);assert.equal(JSON.parse(storage.catHomeSave).bestRound,2);
 run('elapsed=39.99;cats=[];update(.02)');assert.equal(run('endlessRound()'),3);
 run("score=1234;panel('fail')");assert.equal(JSON.parse(storage.catHomeSave).best,1234);element('next').click();assert.equal(run('mode'),'endless');assert.equal(run('endlessRound()'),1);assert.equal(run('score'),0);assert.equal(run('bestRound'),3);
 run('dash()');assert.equal(run('dashTime'),.32);assert.equal(run('cooldown'),9);
@@ -62,13 +62,13 @@ for(const h of [590,720,900]){
  for(let n=0;n<3600&&bot.run('state')==='play';n++)bot.run(`{const front=cats.filter(c=>!c.passed&&!c.hit&&c.y<=py()+29).sort((a,b)=>b.y-a.y)[0];if(front&&front.y>py()-160){if(lane<front.safe)move(1);else if(lane>front.safe)move(-1)}update(1/60)}`);
  assert.equal(bot.run('state'),'play','valid route at maximum difficulty');assert.equal(bot.run('hits'),0);
 }
-run("cleared=20;start(0,'endless')");for(const e of [0,20,100,1000,100000]){run(`elapsed=${e}`);assert(run('difficulty().speed')<=600);assert(run('difficulty().interval')>=.38)}
+run("cleared=20;start(0,'endless')");for(const e of [0,20,100,1000,100000]){run(`elapsed=${e}`);assert(run('difficulty().speed')<=900);assert(run('difficulty().interval')>=.22)}
 for(let l=0;l<30;l++)run(`mode='story';level=${l};render()`);
 for(const s of ['menu','play','fail','win'])run(`state='${s}';render()`);
 // Cached artwork stays bounded; all three requested coats actually spawn.
-const smooth=boot({catCleared:'20'});assert.equal(smooth.run('spriteCache.size'),16);assert.equal(smooth.run('buildingCache.size'),60);
-smooth.run('start(19)');const skins=new Set();for(let n=0;n<12;n++){smooth.run('cats=[];wave()');for(const skin of smooth.run('cats.map(c=>c.skin)'))skins.add(skin)}assert.deepEqual([...skins].sort(),['calico','cheese','tuxedo']);
-for(let n=0;n<100;n++)smooth.run('render()');assert.equal(smooth.run('spriteCache.size'),16);assert.equal(smooth.run('buildingCache.size'),60);
+const smooth=boot({catCleared:'20'});assert.equal(smooth.run('spriteCache.size'),20);assert.equal(smooth.run('buildingCache.size'),60);
+smooth.run('start(9)');const skins=new Set();for(let n=0;n<12;n++){smooth.run('cats=[];wave()');for(const skin of smooth.run('cats.map(c=>c.skin)'))skins.add(skin)}assert.deepEqual([...skins].sort(),['calico','cheese','tuxedo']);
+for(let n=0;n<100;n++)smooth.run('render()');assert.equal(smooth.run('spriteCache.size'),20);assert.equal(smooth.run('buildingCache.size'),60);
 smooth.run('burst(100,100,"#fff",1000)');assert(smooth.run('particles.length')<=96);for(let n=0;n<100;n++)smooth.run('float("+10",100,100)');assert.equal(smooth.run('floaters.length'),12);
 smooth.run('start(0);elapsed=5;layoutLanes()');assert.deepEqual(Array.from(smooth.run('lanes')),[112,192,272]);
 smooth.run('start(5);elapsed=5;layoutLanes()');assert.notDeepEqual(Array.from(smooth.run('lanes')),[112,192,272]);
@@ -116,5 +116,25 @@ assert.equal(fish.run('fishThrow'),null);assert.equal(boot(fish.storage).run('in
 const oldStock=boot({catHomeSave:JSON.stringify({cleared:7,unlocked:8,best:300,medals:{},wallet:90,inventory:{continue:2,umbrella:3,water:4}})});
 assert.equal(oldStock.run('wallet'),90);assert.equal(oldStock.run('inventory.water'),4);assert.equal(oldStock.run('inventory.fish'),0);
 assert(!html.includes("text('이동하는 칸'"),'remove the duplicated under-player canvas text');
-console.log('PASS: fish throw-time viewport snapshot, right exit, future cats unaffected, per-run fish limit and saved stock; 24-coin economy; all previous 30-stage/shop/item/timing tests.');
+// Chonky two-lane rolls and forward-jumping bruisers start exactly at normal stage 11.
+assert(html.includes('길냥이들의 집사 모집!'));assert(!html.includes('삼색이·턱시도·치즈냥의 집사 모집!'));
+const newcomers=boot();const newcomersSeen=new Set();
+for(let l=0;l<10;l++)for(let n=0;n<12;n++){newcomers.run(`start(${l});cats=[];wave()`);assert(newcomers.run("cats.every(c=>c.kind!=='roll'&&c.kind!=='forward')"))}
+newcomers.run('start(10)');for(let n=0;n<12;n++){newcomers.run('cats=[];wave()');for(const kind of newcomers.run('cats.map(c=>c.kind)'))newcomersSeen.add(kind);assert(newcomers.run("cats.filter(c=>c.kind==='roll').every(c=>Math.abs(c.fromLane-c.lane)===2&&c.skin==='chonky')"));assert(newcomers.run("cats.filter(c=>c.kind==='forward').every(c=>c.skin==='bruiser')"))}
+assert(newcomersSeen.has('roll'));assert(newcomersSeen.has('forward'));
+newcomers.run("let roller={lane:2,fromLane:0,kind:'roll',y:35,age:0};positionCat(roller);if(roller.x!==lanes[0])throw Error('roll start');roller.y=py()-140;positionCat(roller);if(Math.abs(roller.x-lanes[2])>.01||Math.abs(roller.rollAngle-4*Math.PI)>.01)throw Error('roll end');let bully={lane:1,kind:'forward',y:45+(py()-190)/2,age:0};positionCat(bully);if(catScreenY(bully)<=bully.y||bully.lift<=0)throw Error('forward jump must leap toward player')");
+// Endless now continues scaling beyond the old cap, with a hard tier starting at 51.
+const expert=boot({catCleared:'10'});expert.run("start(0,'endless')");const stats=[];
+for(const r of [50,51,60,75,90,100,150,200])stats.push(expert.run(`elapsed=(${r}-1)*ENDLESS_STAGE_SECONDS;difficulty()`));
+assert.equal(stats[0].expert,false);assert.equal(stats[1].expert,true);
+for(let n=1;n<stats.length;n++){assert(stats[n].speed>stats[n-1].speed);assert(stats[n].interval<stats[n-1].interval)}
+assert.equal(stats[5].speed,840);assert(Math.abs(stats[5].interval-.24)<.000001);assert.equal(stats[7].speed,900);
+for(const r of [51,75,100,200])for(let n=0;n<8;n++)expert.run(`elapsed=(${r}-1)*20;waveIndex=${n};if(nextWaveDelay(difficulty())<.22-1e-8)throw Error('too-short beat')`);
+// A fast, rate-limited input bot must retain a collision-free route without items at stage 100.
+for(const h of [590,720,900])for(const r of [51,75,100,200]){
+ const skilled=boot({catCleared:'10'},h+r);skilled.run(`H=${h};start(0,'endless');elapsed=(${r}-1)*20;invincible=0;let nextTap=0`);
+ for(let n=0;n<(r===100?3600:1200)&&skilled.run('state')==='play';n++)skilled.run(`{const front=cats.filter(c=>!c.passed&&!c.hit&&c.y<=py()+29).sort((a,b)=>b.y-a.y)[0];if(front&&front.y>py()-160&&elapsed>=nextTap){if(lane<front.safe){move(1);nextTap=elapsed+.075}else if(lane>front.safe){move(-1);nextTap=elapsed+.075}}update(1/60)}`);
+ assert.equal(skilled.run('state'),'play',`expert ${r}, height ${h} must have a route`);assert.equal(skilled.run('hits'),0,`expert ${r}, height ${h} must be fair`);
+}
+console.log('PASS: new stage-11 cats, two-lane roll geometry, forward leap, stages 51-100-200 difficulty progression, rate-limited expert routes on 3 screen sizes, and all existing campaign/shop/item/save tests.');
 module.exports={boot};
