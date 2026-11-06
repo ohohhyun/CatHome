@@ -280,14 +280,14 @@ body { font-family:'Rift UI',Arial,sans-serif; }
 body[data-phase=town] #play-controls .skills,body[data-phase=town] #play-controls #attack { display:none; }
 body[data-phase=town] #menu { pointer-events:none; }
 body[data-phase=town] #menu header,body[data-phase=town] #menu .menu-copy button { pointer-events:auto; }
-body[data-phase=town] #menu .menu-copy { position:absolute; display:flex; align-items:center; flex-wrap:wrap; gap:5px 13px; top:calc(var(--safe-top) + var(--page-y) + var(--heading-height) + 10px); left:calc(4% + var(--safe-left)); width:90%; max-width:90%; max-height:none; overflow:visible; padding:0; }
+body[data-phase=town] #menu .menu-copy { position:absolute; display:flex; align-items:center; flex-wrap:wrap; gap:5px 13px; top:var(--town-status-y,calc(var(--safe-top) + var(--page-y) + var(--heading-height) + 10px)); left:calc(4% + var(--safe-left)); width:90%; max-width:90%; max-height:none; overflow:visible; padding:0; }
 body[data-phase=town] #menu .menu-copy>.eyebrow,body[data-phase=town] #menu .menu-copy>h1,body[data-phase=town] #menu .menu-copy>.class-desc,body[data-phase=town] #menu .menu-actions { display:none; }
 body[data-phase=town] #menu .hero-detail { margin:0; gap:6px; }
 body[data-phase=town] #menu .hero-detail strong { font-size:clamp(12px,1.4vw,18px); }
 body[data-phase=town] #menu .hero-detail span,body[data-phase=town] #menu .hero-detail small { font-size:clamp(9px,.9vw,12px); }
 body[data-phase=town] #menu .town-level { width:clamp(110px,16vw,220px); height:14px; margin:0; }
 body[data-phase=town] #menu #tracked-quest { font-size:clamp(9px,.9vw,12px)!important; margin:0; padding:0!important; max-width:36%!important; }
-#town-guide { position:absolute; top:calc(var(--safe-top) + var(--page-y) + var(--heading-height) + 45px); left:calc(4% + var(--safe-left)); max-width:60%; font-size:clamp(9px,1vw,14px); line-height:1.5; color:#ddc79f; text-shadow:0 2px 3px #000; pointer-events:none; }
+#town-guide { position:absolute; top:var(--town-guide-y,calc(var(--safe-top) + var(--page-y) + var(--heading-height) + 45px)); left:calc(4% + var(--safe-left)); max-width:60%; font-size:clamp(9px,1vw,14px); line-height:1.5; color:#ddc79f; text-shadow:0 2px 3px #000; pointer-events:none; }
 #town-portal { position:absolute; z-index:3; background:transparent; border:0; pointer-events:auto; border-radius:45%; touch-action:manipulation; }
 #town-portal.ready:focus-visible { outline:2px solid #f5d58e; outline-offset:3px; }
 #town-portal:disabled { opacity:1; cursor:default; }
@@ -295,3 +295,5 @@ body[data-phase=town] #menu #tracked-quest { font-size:clamp(9px,.9vw,12px)!impo
 
 #play-controls .skill.unready .skill-icon { opacity:.55; }
 #play-controls .skill.locked .skill-icon { opacity:.38; }
+body[data-phase=town] #menu .menu-copy { width:calc(92% - var(--safe-left) - var(--safe-right)); max-width:calc(92% - var(--safe-left) - var(--safe-right)); }
+#menu header #lan-open { min-width:0; min-height:30px; padding:5px 9px; font-size:clamp(9px,1vw,14px); }
