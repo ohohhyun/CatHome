@@ -71,7 +71,7 @@ jobs:
             cmp apk/DungeonCrush-2.7.apk existing/DungeonCrush-2.7.apk
             gh release upload dungeon-crush-v2.7 "$DUNGEON_PREVIEW_FILE" --clobber
           else
-            gh release create dungeon-crush-v2.7 apk/DungeonCrush-2.7.apk "$DUNGEON_PREVIEW_FILE" --target 1d1454e4f1ce45059cd3ca015f7cd5f61cdffc9b --title '던전크러시! 2.7 — 콤보·스킬 연출 개선' --notes-file release-notes.md --prerelease
+            gh release create dungeon-crush-v2.7 apk/DungeonCrush-2.7.apk "$DUNGEON_PREVIEW_FILE" --target "$GITHUB_SHA" --title '던전크러시! 2.7 — 콤보·스킬 연출 개선' --notes-file release-notes.md --prerelease
           fi
       - name: Confirm release assets
         run: gh release view dungeon-crush-v2.7 --json url,tagName,assets
