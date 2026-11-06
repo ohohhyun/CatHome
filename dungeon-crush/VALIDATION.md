@@ -1,3 +1,17 @@
+# 2.9.3 action size normalization — verified APK
+
+Published by [release workflow 42269243724](https://github.com/ohohhyun/CatHome/actions/runs/42269243724). The public APK, share ZIP, recording and all four comparison PNGs have the same byte counts and SHA256 digests as the locally verified files. [Download share ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9.3/DungeonCrush-2.9.3-Share.zip).
+
+Source `e5bdabc767cdf46c796b886ad8cd6a80f2a8e98a`; [successful build 42267804355](https://github.com/ohohhyun/CatHome/actions/runs/42267804355). Nine JavaScript suites, real native TCP host plus three clients, thirteen Chromium scenarios, APK identity/signer and exact embedded presentation bytes passed. Original app/legacy/tests Git subtrees and 38 protected local files remain unchanged.
+
+APK versionCode 23 / versionName 2.9.3-body-scale, 97297331 bytes, SHA256 `929d96f7551f2311da85e2fd4e7100fc43da2c5aa5bcde97a3dc253b7aefbc6d`. Reconstructed download parts match the build manifest. Local APK CRC, compiled package/activity/label, retained signing certificate and every embedded presentation script/image were checked. The share ZIP contains exactly that APK and UTF-8 installation notes, 97298072 bytes, SHA256 `4a5f3b8c56a7a76d54990c39573cbcbcc31f6193425eebffe54cc3788cf8b981`. The movement recording is 65.60 seconds / 7908983 bytes / SHA256 `11591c7198249c7b29e317f091ac253e7e00290f0ee9f140ffb42ab391bde1ad`.
+
+The new 2.9.2 run artwork has larger anatomical head/torso proportions than the retained attack/cast/mobility/reaction art. Equal reference heights therefore did not mean equal character body sizes. The run composite now has reviewed per-class scales of 0.76/0.76/0.78/0.67 about the shared ground origin. Both clipped run layers receive the same transform. Other pose scales stay at 1; movement, gait timing, jump rise and collision state remain unchanged. All original/runtime artwork bytes are retained.
+
+The new Chromium comparison renders all four classes in idle/run/three basic attack stages/cast/jump/dash at the same caller height. It records actual Canvas transforms and grounded origins, and repeats transitions in both directions at every run phase to catch scale leakage/history overshoot. Before/after captures accompany the existing body-pixel, cold mobility, combat, layout and LAN checks. Physical phone testing remains separate.
+
+---
+
 # 2.9.2 coherent movement — verified APK
 
 Published by [release workflow 42265363981](https://github.com/ohohhyun/CatHome/actions/runs/42265363981). Public APK, share ZIP and motion recording byte counts and SHA256 digests match the locally verified files. [Download share ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9.2/DungeonCrush-2.9.2-Share.zip).

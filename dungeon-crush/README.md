@@ -6,11 +6,19 @@ CatHome 저장소의 `dungeon-crush/`에 별도 Android 프로젝트로 보관�
 
 **던전크러시!은 별도 앱 `com.dungeoncrush.game`입니다. ‘집사 사절!’의 `com.cathome.game`을 대체하지 않습니다.** 두 게임을 함께 설치할 수 있습니다. 이번 패치는 전용 브랜치의 던전크러시 파일과 전용 빌드/배포 워크플로에만 적용했습니다. 기존 게임의 원본 앱·루트 빌드·복구 APK는 변경하지 않습니다.
 
-[던전크러시 2.9.2 APK 직접 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9.2/DungeonCrush-2.9.2.apk) · [친구 공유용 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9.2/DungeonCrush-2.9.2-Share.zip) · [이동 모션 영상과 릴리스](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.9.2). APK 파일을 눌러 설치하며 압축을 풀 필요가 없습니다. 친구에게 다운로드 링크를 공유할 수 있습니다. 영상은 브라우저에서 자동 조작한 게임 화면입니다.
+[던전크러시 2.9.3 APK 직접 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9.3/DungeonCrush-2.9.3.apk) · [친구 공유용 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9.3/DungeonCrush-2.9.3-Share.zip) · [이동 모션 영상과 릴리스](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.9.3). APK 파일을 눌러 설치하며 압축을 풀 필요가 없습니다. 친구에게 다운로드 링크를 공유할 수 있습니다. 영상은 브라우저에서 자동 조작한 게임 화면입니다.
 
-새 게임 versionCode 22 / versionName 2.9.2-coherent-motion. 기존 2.9와 같은 서명·앱 ID·프로토콜 6·저장 형식을 유지합니다. 같은 화면을 보려면 파티원 모두 2.9.2로 업데이트를 권장합니다. 이번 전용 워크플로는 던전크러시만 빌드합니다. 집사 사절 코드·빌드·복구 APK는 수정하거나 빌드하지 않습니다. 예전 공유 ID APK는 배포 대상이 아닙니다.
+새 게임 versionCode 23 / versionName 2.9.3-body-scale. 기존 2.9와 같은 서명·앱 ID·프로토콜 6·저장 형식을 유지합니다. 같은 화면을 보려면 파티원 모두 2.9.3로 업데이트를 권장합니다. 이번 전용 워크플로는 던전크러시만 빌드합니다. 집사 사절 코드·빌드·복구 APK는 수정하거나 빌드하지 않습니다. 예전 공유 ID APK는 배포 대상이 아닙니다.
 
 Android 6.0 이상과 최신 Android System WebView를 권장합니다. GitHub Artifact 다운로드에는 로그인이 필요하며 파일 앱의 ‘알 수 없는 앱 설치’ 허용이 필요할 수 있습니다. 테스트 서명 APK이며 Play 스토어용 서명은 아닙니다.
+
+## 2.9.3 동작 전환 크기 수정
+
+- 2.9.2의 새 달리기 그림은 기존 공격·시전·점프 그림보다 머리와 몸통이 크게 그려져 있어 같은 표시 높이에서도 몸이 커졌습니다. 네 직업의 8가지 자세를 같은 기준 높이로 비교하고 달리기 몸체 배율을 카엘 0.76·린 0.76·베인 0.78·세라 0.67로 조정했습니다.
+- 발이 닿는 공통 기준점에서 몸체 전체를 조절합니다. 고정 상체와 움직이는 하체에 같은 배율이 적용되며, 발 주기·이동 속도·점프 높이·피해 판정·다른 동작의 기존 배율은 유지합니다. 자세가 바뀔 때 이전 동작의 배율을 보간하거나 이어받지 않습니다.
+- 실제 Canvas가 그리는 변환과 발 기준점을 검사하고, 네 직업의 대기·달리기·기본 3연타·시전·점프·대시 비교 화면을 확인합니다. 양방향과 달리기 8단계에서 동작을 반복 전환해 크기 보정이 다른 모션에 남지 않는지 검사합니다.
+
+검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42267804355 · APK SHA256: `929d96f7551f2311da85e2fd4e7100fc43da2c5aa5bcde97a3dc253b7aefbc6d` · 97297331 bytes. 공유 ZIP SHA256: `4a5f3b8c56a7a76d54990c39573cbcbcc31f6193425eebffe54cc3788cf8b981` · 97298072 bytes. JavaScript 9개 검사·실제 TCP 4인 연결·Chromium 시나리오 13개·컴파일된 앱 ID/서명·포함 코드/이미지 검사를 통과했습니다. 릴리스의 `size-after-0~3.png`는 카엘·린·베인·세라의 동작별 크기 비교입니다. 영상은 65.60초 자동 브라우저 조작 녹화이며 실제 휴대폰 테스트는 별도입니다.
 
 ## 2.9.2 달리기·점프·대시 재수정
 
