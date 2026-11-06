@@ -292,3 +292,6 @@ body[data-phase=town] #menu #tracked-quest { font-size:clamp(9px,.9vw,12px)!impo
 #town-portal.ready:focus-visible { outline:2px solid #f5d58e; outline-offset:3px; }
 #town-portal:disabled { opacity:1; cursor:default; }
 @media(max-width:900px) { body[data-phase=town] #menu #tracked-quest { display:none; } }
+
+#play-controls .skill.unready .skill-icon { opacity:.55; }
+#play-controls .skill.locked .skill-icon { opacity:.38; }
