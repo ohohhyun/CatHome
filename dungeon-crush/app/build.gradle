@@ -6,8 +6,8 @@ android {
         applicationId 'com.dungeoncrush.game'
         minSdk 23
         targetSdk 35
-        versionCode 14
-        versionName '2.3-ranged-and-dodge'
+        versionCode 15
+        versionName '2.4-town-portal-controls'
     }
     signingConfigs {
         debug {

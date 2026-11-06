@@ -166,5 +166,40 @@
     "license": "CC BY 3.0",
     "source": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/lorc/shining-heart.svg",
     "change": "Removed opaque background path; display colors and size set in CSS."
+  },
+  {
+    "file": "jump-across.svg",
+    "author": "Delapouite",
+    "license": "CC BY 3.0",
+    "source": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/delapouite/jump-across.svg",
+    "change": "Removed opaque background; display colors and size set by runtime."
+  },
+  {
+    "file": "run.svg",
+    "author": "Lorc",
+    "license": "CC BY 3.0",
+    "source": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/lorc/run.svg",
+    "change": "Removed opaque background; display colors and size set by runtime."
+  },
+  {
+    "file": "magic-gate.svg",
+    "author": "Lorc",
+    "license": "CC BY 3.0",
+    "source": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/lorc/magic-gate.svg",
+    "change": "Removed opaque background; display colors and size set by runtime."
+  },
+  {
+    "file": "portal.svg",
+    "author": "Lorc",
+    "license": "CC BY 3.0",
+    "source": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/lorc/portal.svg",
+    "change": "Removed opaque background; display colors and size set by runtime."
+  },
+  {
+    "file": "padlock.svg",
+    "author": "Lorc",
+    "license": "CC BY 3.0",
+    "source": "https://github.com/game-icons/icons/blob/82d948812bfe3f269ef8f731dcdb07b08160edc4/lorc/padlock.svg",
+    "change": "Removed opaque background; display colors and size set by runtime."
   }
 ]

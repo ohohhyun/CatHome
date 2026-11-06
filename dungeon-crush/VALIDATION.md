@@ -45,3 +45,8 @@ The caster suite checks every difficulty and party size: 1.35s fixed warning, mi
 ## 2.3 ranged combat and slower enemy attacks
 
 The ranged suite verifies real projectile flight/collision at 800+ distance in both directions, no instant damage, maximum range, lane aim, first-hit/piercing limits, remote blast/rift/chain/ultimate and remote pull centers. Swept collision and serialized deterministic state are covered. All four enemy types are checked across four difficulties and 1–4 players for minimum warnings and recovery. Caster orbs launch after the warning, travel at a fixed slow speed and never home. Browser tests capture visible bullets and remote spell impacts without moving the shooter; four-client LAN tests verify a guest's projectile and damage arriving through host snapshots. Existing progression/layout/audio tests stay enabled.
+
+
+## 2.4 walkable town, controls and camera
+
+Unit coverage checks shared town/combat movement, simultaneous move+jump/dodge, town bounds without dungeon progression, immediate camera follow and foreground/distant layer offsets. Browser coverage starts at the town entrance, rejects portal entry from afar, uses actual two-finger mobile input and releases the right finger while keeping movement active, walks to and taps the end portal, selects a stage, then repeats movement/jump/dodge in combat. It checks actual ground pixel changes under camera movement and icon-only, nonoverlapping controls at 1280×591, 960×480 and 640×296 with safe-area insets. Older layout/party/ranged suites arrange at the portal for entry; the navigation suite exercises the actual full walk.

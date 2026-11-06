@@ -1,7 +1,10 @@
-Icons made by Lorc · Game-icons.net
+Icons made by Lorc & Delapouite · Game-icons.net
 License: Creative Commons Attribution 3.0 Unported (CC BY 3.0)
 https://creativecommons.org/licenses/by/3.0/
 Author: http://lorcblog.blogspot.com
 Originals: https://github.com/game-icons/icons/tree/82d948812bfe3f269ef8f731dcdb07b08160edc4/lorc
 Changes: removed solid background path; colored and resized in the UI.
-24 individual icon source URLs are in icon-sources.json at the project root.
+Individual icon source URLs are in icon-sources.json at the project root.
+
+Jump Across: Delapouite, https://delapouite.com
+Magic Gate, Portal, Run and Padlock: Lorc

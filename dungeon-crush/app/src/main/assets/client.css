@@ -254,3 +254,41 @@ body { font-family:'Rift UI',Arial,sans-serif; }
 /* Android asset URLs render SVG images directly; CSS masks reject local opaque origins. */
 .skill-icon { background:none; -webkit-mask:none; mask:none; display:inline-flex; align-items:center; justify-content:center; }
 .skill-icon>img { display:block; width:100%; height:100%; object-fit:contain; filter:drop-shadow(0 0 3px var(--accent)); }
+/* Shared left-hand stick and right-hand combat cluster, also usable while walking in town. */
+.visually-hidden { position:absolute!important; width:1px!important; height:1px!important; padding:0!important; margin:-1px!important; overflow:hidden!important; clip:rect(0,0,0,0)!important; white-space:nowrap!important; border:0!important; }
+#play-controls { --skill-size:clamp(36px,7.8vh,60px); padding:0; z-index:6; pointer-events:none; }
+#play-controls button,#play-controls #joystick { pointer-events:auto; }
+#play-controls .movement { position:absolute; left:calc(5% + var(--safe-left)); bottom:calc(9% + var(--safe-bottom)); width:clamp(82px,13vw,155px); height:clamp(82px,13vw,155px); pointer-events:none; }
+#play-controls #joystick { width:100%; height:100%; bottom:0; left:0; }
+#play-controls .skills { position:absolute; width:auto; max-width:none; display:grid; grid-template-columns:repeat(6,var(--skill-size)); grid-template-rows:var(--skill-size); gap:6px; right:calc(17% + var(--safe-right)); bottom:calc(5% + var(--safe-bottom)); }
+#play-controls .skill { width:var(--skill-size); height:var(--skill-size); min-width:0; aspect-ratio:1; padding:4px; border-radius:7px; clip-path:none; background:linear-gradient(150deg,#56465adc,#172033d9); border:1px solid #ddbb8877; box-shadow:inset 0 1px #fff2,0 3px 7px #0007; }
+#play-controls .skill .skill-icon { width:82%; height:82%; }
+#play-controls .skill>small,#play-controls .skill>kbd { display:none; }
+#play-controls .skill>i { display:none; border-radius:6px; background:conic-gradient(from 0deg,#06101de0 calc(var(--remaining,0)*1turn),transparent 0); pointer-events:none; }
+#play-controls .skill.unready>i { display:block; }
+#play-controls .skill.locked .skill-icon { opacity:.38; filter:grayscale(.7); }
+#play-controls .skill.locked:after { content:''; position:absolute; bottom:2px; right:2px; width:12px; height:12px; background:url('icons/padlock.svg') center/contain no-repeat; opacity:.85; }
+#play-controls .skill.ready { box-shadow:0 0 12px #d9ad5480,inset 0 0 8px #f6d9a52d; border-color:#efd09c; }
+#mobility-actions { position:absolute; display:flex; gap:8px; right:calc(17% + var(--safe-right)); bottom:calc(5% + var(--safe-bottom) + var(--skill-size) + 10px); }
+#play-controls #mobility-actions .utility { position:relative; left:auto; bottom:auto; width:max(42px,var(--skill-size)); height:max(42px,var(--skill-size)); min-width:42px; min-height:42px; padding:6px; display:flex; align-items:center; justify-content:center; border-radius:50%; border:1px solid #d7c2959c; background:radial-gradient(circle at 35% 30%,#657387b8,#101b2acc); box-shadow:0 3px 10px #0006,inset 0 0 0 2px #18243888; }
+#mobility-actions .skill-icon { width:85%; height:85%; }
+#play-controls .utility em { display:none; position:absolute; inset:0; border-radius:50%; background:conic-gradient(from 0deg,#06101dd9 calc(var(--remaining,0)*1turn),transparent 0); pointer-events:none; }
+#play-controls .utility.cooling em { display:block; }
+#play-controls #attack { position:absolute; right:calc(4% + var(--safe-right)); bottom:calc(11% + var(--safe-bottom)); width:clamp(60px,10vw,132px); height:clamp(60px,10vw,132px); padding:0; display:flex; align-items:center; justify-content:center; background:radial-gradient(circle at 35% 25%,#796242ed,#1c293be8); border:2px solid #d1b077; border-radius:50%; box-shadow:0 0 0 4px #111b29a8,inset 0 0 18px #c59b342b; }
+#play-controls #attack #attack-icon { position:static; width:55%; height:55%; padding:0; }
+/* The town is a walking space, with information contained in a thin top strip. */
+body[data-phase=town] #play-controls .skills,body[data-phase=town] #play-controls #attack { display:none; }
+body[data-phase=town] #menu { pointer-events:none; }
+body[data-phase=town] #menu header,body[data-phase=town] #menu .menu-copy button { pointer-events:auto; }
+body[data-phase=town] #menu .menu-copy { position:absolute; display:flex; align-items:center; flex-wrap:wrap; gap:5px 13px; top:calc(var(--safe-top) + var(--page-y) + var(--heading-height) + 10px); left:calc(4% + var(--safe-left)); width:90%; max-width:90%; max-height:none; overflow:visible; padding:0; }
+body[data-phase=town] #menu .menu-copy>.eyebrow,body[data-phase=town] #menu .menu-copy>h1,body[data-phase=town] #menu .menu-copy>.class-desc,body[data-phase=town] #menu .menu-actions { display:none; }
+body[data-phase=town] #menu .hero-detail { margin:0; gap:6px; }
+body[data-phase=town] #menu .hero-detail strong { font-size:clamp(12px,1.4vw,18px); }
+body[data-phase=town] #menu .hero-detail span,body[data-phase=town] #menu .hero-detail small { font-size:clamp(9px,.9vw,12px); }
+body[data-phase=town] #menu .town-level { width:clamp(110px,16vw,220px); height:14px; margin:0; }
+body[data-phase=town] #menu #tracked-quest { font-size:clamp(9px,.9vw,12px)!important; margin:0; padding:0!important; max-width:36%!important; }
+#town-guide { position:absolute; top:calc(var(--safe-top) + var(--page-y) + var(--heading-height) + 45px); left:calc(4% + var(--safe-left)); max-width:60%; font-size:clamp(9px,1vw,14px); line-height:1.5; color:#ddc79f; text-shadow:0 2px 3px #000; pointer-events:none; }
+#town-portal { position:absolute; z-index:3; background:transparent; border:0; pointer-events:auto; border-radius:45%; touch-action:manipulation; }
+#town-portal.ready:focus-visible { outline:2px solid #f5d58e; outline-offset:3px; }
+#town-portal:disabled { opacity:1; cursor:default; }
+@media(max-width:900px) { body[data-phase=town] #menu #tracked-quest { display:none; } }
