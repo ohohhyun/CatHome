@@ -102,7 +102,7 @@ function move(s,p,input,dt){
 }
 
 function step(s,inputs,dt){dt=clamp(Number(dt)||0,0,.05);s.tick++;s.fx.forEach(f=>f.life-=dt);s.fx=s.fx.filter(f=>f.life>0);if(s.phase!=='playing')return;resizeParty(s);s.time+=dt;
- for(const p of s.players){if(p.hp<=0)continue;const input=inputs[p.id]||{};move(s,p,input,dt);if(input.potion&&!p.potionHeld)usePotion(s,p);p.potionHeld=!!input.potion;
+ for(const p of s.players){if(p.hp<=0){p.potionCd=Math.max(0,(p.potionCd||0)-dt);continue;}const input=inputs[p.id]||{};move(s,p,input,dt);if(input.potion&&!p.potionHeld)usePotion(s,p);p.potionHeld=!!input.potion;
  if(p.pending){p.pending.wait-=dt;if(p.pending.wait<=.000001){const action=p.pending;p.pending=null;releaseAttack(s,p,action);}}
  const request=Number.isInteger(input.skill)&&input.skill>=1&&input.skill<=6?input.skill:input.attack?0:-1;
  if(request>=0&&p.dashTime<=0){if(!attack(s,p,request)&&p.at>0&&p.at<=.18&&p.cd[request]<=p.at){p.bufferIndex=request;p.bufferTime=.20;}}
