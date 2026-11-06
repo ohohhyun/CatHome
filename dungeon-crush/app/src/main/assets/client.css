@@ -250,3 +250,7 @@ body { font-family:'Rift UI',Arial,sans-serif; }
 #hud #attack { right:calc(4% + var(--safe-right)); bottom:calc(11% + var(--safe-bottom)); }
 #hud .hud-top { left:calc(4% + var(--safe-left)); right:calc(3% + var(--safe-right)); top:calc(4% + var(--safe-top)); }
 #hud .hud-footer { left:calc(4% + var(--safe-left)); right:calc(4% + var(--safe-right)); bottom:calc(2.5% + var(--safe-bottom)); }
+
+/* Android asset URLs render SVG images directly; CSS masks reject local opaque origins. */
+.skill-icon { background:none; -webkit-mask:none; mask:none; display:inline-flex; align-items:center; justify-content:center; }
+.skill-icon>img { display:block; width:100%; height:100%; object-fit:contain; filter:drop-shadow(0 0 3px var(--accent)); }
