@@ -50,3 +50,11 @@ The ranged suite verifies real projectile flight/collision at 800+ distance in b
 ## 2.4 walkable town, controls and camera
 
 Unit coverage checks shared town/combat movement, simultaneous move+jump/dodge, town bounds without dungeon progression, immediate camera follow and foreground/distant layer offsets. Browser coverage starts at the town entrance, rejects portal entry from afar, uses actual two-finger mobile input and releases the right finger while keeping movement active, walks to and taps the end portal, selects a stage, then repeats movement/jump/dodge in combat. It checks actual ground pixel changes under camera movement and icon-only, nonoverlapping controls at 1280×591, 960×480 and 640×296 with safe-area insets. Older layout/party/ranged suites arrange at the portal for entry; the navigation suite exercises the actual full walk.
+
+
+## 2.5 camera and locomotion regression
+
+- Unit checks cover central screen position at town/dungeon spawn and both world edges, movement and reversal, class speed/acceleration/braking, distance-driven stance and swing, finite two-bone poses for all four classes, continuous dodge displacement/distance at 30/60/120 Hz, and jump landing.
+- Browser checks cover the real portal flow and independent two-finger controls, centred dungeon spawn/reversal/dodge and actual scrolling pixels. Four-class contact/passing/flight/jump previews are uploaded with navigation previews.
+- Ranged attacks, slow non-homing enemy projectiles, difficulty/party counts, deterministic combat and saves retain their existing regression suites. Protocol 4 requires the same 2.5 build on every party phone.
+- Existing artwork remains a runtime cutout rig; there are no new hand-drawn animation frames. Physical phone play, subjective animation quality and sustained frame rate still need on-device evaluation.
