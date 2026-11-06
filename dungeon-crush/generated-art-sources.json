@@ -1,9 +1,9 @@
 {
-  "version": "2.9.4",
+  "version": "2.9.5",
   "generator": "OpenAI image_gen",
   "characterFrames": 272,
   "effectFrames": 240,
-  "notes": "2.9.2 replaces mixed locomotion with single-atlas eight-pose runs, eight dedicated jump poses and four held dash poses. Upper-body run layer remains fixed. Incompatible locomotion intermediates remain source-only. Critical movement atlases are prepared and pinned before play. Combat clips and 2.9.1 skill/death-cast fixes remain. 2.9.3 applies reviewed per-class run body scale at the common ground anchor; all other pose scales, movement timing and original artwork bytes stay unchanged. 2.9.4 separates equipped status/art/name layout, adds inventory grade/worn filters and ascending/descending sorting, and audits UI text; all artwork and 2.9.3 motion scales are retained.",
+  "notes": "2.9.2 replaces mixed locomotion with single-atlas eight-pose runs, eight dedicated jump poses and four held dash poses. Upper-body run layer remains fixed. Incompatible locomotion intermediates remain source-only. Critical movement atlases are prepared and pinned before play. Combat clips and 2.9.1 skill/death-cast fixes remain. 2.9.3 applies reviewed per-class run body scale at the common ground anchor; all other pose scales, movement timing and original artwork bytes stay unchanged. 2.9.4 separates equipped status/art/name layout, adds inventory grade/worn filters and ascending/descending sorting, and audits UI text; all artwork and 2.9.3 motion scales are retained. 2.9.5 adds three generated town residents; equipment taps equip/unequip, long presses inspect set-aware comparisons and town residents provide shops, forging and training. Existing combat/motion artwork bytes are retained.",
   "assets": [
     {
       "id": "kael",
@@ -2190,6 +2190,27 @@
       "generated": "2026-11-07",
       "encoding": "lossless WebP; decoded RGBA identical",
       "opaqueRgbPSNR": 99
+    },
+    {
+      "id": "town-npcs",
+      "file": "art/town-npcs.webp",
+      "width": 1536,
+      "height": 1024,
+      "sha256": "da8c8a5cc65b7d0cd675a05b362760eaabd28cfa299fc3d2700e1cc4b76c48d2",
+      "originalFile": "art-source/gpt-2.9.5/town-npcs.png",
+      "originalSha256": "9140da51c45e379c1f355dabd6cd62c898623412eae57c2efbc01f6e7c1710b9",
+      "originalOutput": "exec-ea600bb1-f5cc-4ff2-b938-cbe7dd29d2e2.png",
+      "tool": "OpenAI image_gen",
+      "generated": "2026-11-06",
+      "columns": 3,
+      "rows": 1,
+      "states": [
+        "merchant",
+        "blacksmith",
+        "trainer"
+      ],
+      "frames": 3,
+      "packaged": true
     }
   ],
   "activeCharacterFrames": 496,

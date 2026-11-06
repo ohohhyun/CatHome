@@ -419,3 +419,47 @@ body[data-phase=town] #menu .menu-copy { width:calc(92% - var(--safe-left) - var
 /* Notices stay clear of the attack/skill controls and never intercept a touch. */
 #toast{pointer-events:none}
 body[data-phase=battle] #toast{top:calc(26% + var(--safe-top));bottom:auto;max-width:52%}
+/* Town residents are world-space targets; their artwork is drawn behind the hero. */
+.town-npc{position:absolute;z-index:3;background:transparent;border:0;padding:0;pointer-events:auto;touch-action:manipulation;overflow:visible;filter:none}
+.town-npc .npc-name,.town-npc .npc-service{position:absolute;left:50%;transform:translateX(-50%);width:max-content;max-width:clamp(88px,14vw,180px);white-space:normal;overflow-wrap:anywhere;line-height:1.45;text-align:center;background:#081320e8;padding:3px 7px;border:1px solid #85755380;box-sizing:border-box}
+.town-npc .npc-name{top:-36px;font-size:clamp(10px,1.2vw,17px);color:#f0d49a}
+.town-npc .npc-service{top:-10px;font-size:clamp(9px,.95vw,13px);color:#e6e2d9;border-top:0}
+.town-npc.ready .npc-name,.town-npc.approaching .npc-name{border-color:#a2e7c0;color:#baf4d3;box-shadow:0 0 12px #6fcfa23b}
+.town-npc:focus-visible{outline:2px solid #f0d49a;border-radius:20px}
+.equipment-help,.bag-help,.service-help{font-size:11px;line-height:1.65;color:#c2c6cb;white-space:normal;overflow-wrap:anywhere;margin:0 0 10px}
+.equipment-help{font-size:10px;color:#a7d7c2}
+.gear-cell{min-width:0;display:flex;flex-direction:column;gap:4px}
+.gear-cell>.gear-item{width:100%;flex:1}
+.gear-info{width:100%;min-height:30px;padding:5px 3px;border:1px solid #a4b5c25c;color:#d3e5ef;background:#142333;font-size:10px;line-height:1.5}
+.gear-item,.equipment-slot{-webkit-touch-callout:none;user-select:none;touch-action:pan-y}
+.town-service{margin:2px 0 6px;font-size:11px;line-height:1.6;color:#b7e8cf;overflow-wrap:anywhere;flex-shrink:0}
+#gear-inspect-screen{z-index:15;background:#030813b8}
+.gear-inspect-modal{width:min(840px,100%);text-align:left;padding:20px;overflow:auto;max-height:100%;box-sizing:border-box}
+.inspect-heading{display:flex;align-items:center;gap:16px;min-width:0;padding-right:30px}
+.inspect-heading>.item-art{width:90px;height:90px;flex:0 0 90px}
+.inspect-heading>div{min-width:0;flex:1}
+.inspect-heading h2{color:var(--rarity,#ecd4a6);font-size:clamp(17px,2vw,25px);line-height:1.5;margin:5px 0;overflow-wrap:anywhere}
+.gear-inspect-modal p{font-size:12px;line-height:1.75;margin:8px 0;overflow-wrap:anywhere}
+.gear-inspect-modal .eyebrow{font-size:9px;line-height:1.5}
+.gear-comparison{padding:12px;margin-top:12px}
+.compare-table{width:100%;border-collapse:collapse;font-size:12px;line-height:1.6;table-layout:fixed}
+.compare-table th,.compare-table td{padding:7px 4px;border-bottom:1px solid #8a9db52f;text-align:right;overflow-wrap:anywhere}
+.compare-table th:first-child{text-align:left}
+.compare-totals{display:flex;gap:8px 14px;flex-wrap:wrap;line-height:1.6;font-size:12px}
+.stat-up{color:#9df1bc}.stat-down{color:#ffaaa6}.stat-same{color:#ccd0d6}
+.inspect-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}
+.inspect-actions button{flex:1;min-width:110px;min-height:38px;padding:9px 12px;font-size:12px;line-height:1.5}
+.shop-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.shop-card{display:flex;flex-direction:column;align-items:stretch;gap:5px;min-width:0;border:1px solid #879ab04a;background:#0d1829;padding:12px}
+.shop-card>.item-art{width:86px;height:86px;margin:auto}
+.shop-card h3{font-size:14px;line-height:1.5;margin:5px 0;color:#e6d0a9;overflow-wrap:anywhere}
+.shop-card p{font-size:11px;line-height:1.65;margin:4px 0;overflow-wrap:anywhere}
+.shop-card button,.service-confirm button{min-height:34px;font-size:11px;line-height:1.6;white-space:normal;padding:7px 9px}
+.service-confirm>.item-art{float:left;width:56px;height:56px;margin:0 12px 8px 0}
+.service-confirm{display:flow-root}.service-confirm h4{font-size:14px;line-height:1.5}
+.service-confirm button{margin-right:8px}
+@media(max-height:380px){.town-service{font-size:9px;margin:0 0 3px}.equipment-help,.bag-help{font-size:9px;margin-bottom:6px}.town-npc .npc-name{top:-25px}.town-npc .npc-service{top:-4px}.gear-inspect-modal{padding:12px}.inspect-heading>.item-art{width:64px;height:64px;flex-basis:64px}.inspect-heading{gap:9px}.gear-comparison{padding:8px}.gear-inspect-modal p,.compare-table,.compare-totals{font-size:11px}}
+
+.town-npc .npc-label{position:absolute;left:50%;bottom:100%;transform:translateX(-50%);display:flex;flex-direction:column;width:clamp(92px,13vw,180px);max-width:180px}
+.town-npc .npc-name,.town-npc .npc-service{position:static;transform:none;top:auto;width:100%;max-width:100%}
+body[data-phase=town] #town-guide{top:auto;bottom:calc(8% + var(--safe-bottom));left:30%;width:42%;max-width:42%;text-align:center;background:#07101db0;padding:3px 6px;box-sizing:border-box}
