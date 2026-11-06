@@ -414,3 +414,5 @@ body[data-phase=town] #menu .menu-copy { width:calc(92% - var(--safe-left) - var
  .inventory-bag{grid-area:bag;overflow:visible;padding-right:0}
  .inventory-layout>.gear-detail{grid-area:detail;overflow:visible}
 }
+/* The absolute town status strip does not occupy a grid row; keep the version in the footer. */
+#menu .build-label{grid-row:3;align-self:end;max-width:100%;line-height:1.5;overflow-wrap:anywhere}

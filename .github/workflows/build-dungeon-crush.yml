@@ -35,6 +35,7 @@ jobs:
           node tests/combat-timing.test.cjs
           node tests/rpg.test.cjs
           node tests/inventory.test.cjs
+          node tests/font-coverage.test.cjs
           node tests/party-recovery.test.cjs
           node tests/run-cast-fix.test.cjs
       - name: Test native four-player LAN transport

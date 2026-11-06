@@ -1,0 +1,11 @@
+{
+  "family": "Noto Sans CJK KR",
+  "license": "SIL Open Font License 1.1",
+  "licenseFile": "app/src/main/assets/art/FONT-LICENSE.txt",
+  "upstream": "https://github.com/notofonts/noto-cjk",
+  "file": "art/rift-ui.otf",
+  "sha256": "a5444ac84938025003b520d937476b2df2889d458c12a5abc9981d03e5510018",
+  "bytes": 1905396,
+  "coverage": "all 11172 modern Hangul syllables, Korean Jamo, existing UI symbols and Latin text",
+  "glyphMappings": 11804
+}
