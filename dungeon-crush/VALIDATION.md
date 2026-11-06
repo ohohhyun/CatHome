@@ -40,3 +40,8 @@ The layout suite covers 1280×591 (reported phone screenshot), 1280×580/581, 96
 ## 2.2 combat presentation and caster timing
 
 The caster suite checks every difficulty and party size: 1.35s fixed warning, minimum 3.4s recast, staggered same-target spells, fixed ground markers, walking out, player-hit interruption and delayed damage. It also checks acceleration/braking and distance-driven gait. The presentation suite decodes all 24 real SVG icons, measures one-row skill HUD area (<5.5% at tested sizes), verifies 36px+ controls and attack-button separation, captures running and four class effects, and tests the visible caster warning/dodge. Existing layout, progression and four-client LAN coverage remain enabled. These automated captures do not establish commercial-art animation quality or replace physical-device testing.
+
+
+## 2.3 ranged combat and slower enemy attacks
+
+The ranged suite verifies real projectile flight/collision at 800+ distance in both directions, no instant damage, maximum range, lane aim, first-hit/piercing limits, remote blast/rift/chain/ultimate and remote pull centers. Swept collision and serialized deterministic state are covered. All four enemy types are checked across four difficulties and 1–4 players for minimum warnings and recovery. Caster orbs launch after the warning, travel at a fixed slow speed and never home. Browser tests capture visible bullets and remote spell impacts without moving the shooter; four-client LAN tests verify a guest's projectile and damage arriving through host snapshots. Existing progression/layout/audio tests stay enabled.
