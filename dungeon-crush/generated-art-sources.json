@@ -1,9 +1,9 @@
 {
-  "version": "2.9.3",
+  "version": "2.9.4",
   "generator": "OpenAI image_gen",
   "characterFrames": 272,
   "effectFrames": 240,
-  "notes": "2.9.2 replaces mixed locomotion with single-atlas eight-pose runs, eight dedicated jump poses and four held dash poses. Upper-body run layer remains fixed. Incompatible locomotion intermediates remain source-only. Critical movement atlases are prepared and pinned before play. Combat clips and 2.9.1 skill/death-cast fixes remain. 2.9.3 applies reviewed per-class run body scale at the common ground anchor; all other pose scales, movement timing and original artwork bytes stay unchanged.",
+  "notes": "2.9.2 replaces mixed locomotion with single-atlas eight-pose runs, eight dedicated jump poses and four held dash poses. Upper-body run layer remains fixed. Incompatible locomotion intermediates remain source-only. Critical movement atlases are prepared and pinned before play. Combat clips and 2.9.1 skill/death-cast fixes remain. 2.9.3 applies reviewed per-class run body scale at the common ground anchor; all other pose scales, movement timing and original artwork bytes stay unchanged. 2.9.4 separates equipped status/art/name layout, adds inventory grade/worn filters and ascending/descending sorting, and audits UI text; all artwork and 2.9.3 motion scales are retained.",
   "assets": [
     {
       "id": "kael",
