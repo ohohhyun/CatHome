@@ -6,8 +6,8 @@ android {
         applicationId 'com.dungeoncrush.game'
         minSdk 23
         targetSdk 35
-        versionCode 11
-        versionName '2.1-client-motion-audio'
+        versionCode 12
+        versionName '2.1.1-layout-fix'
     }
     signingConfigs {
         debug {

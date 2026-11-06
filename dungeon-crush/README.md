@@ -6,9 +6,9 @@ CatHome 저장소의 `dungeon-crush/`에 별도 Android 프로젝트로 보관�
 
 **던전크러시!은 별도 앱 `com.dungeoncrush.game`입니다. ‘집사 사절!’의 `com.cathome.game`을 대체하지 않습니다.** 두 게임을 함께 설치할 수 있습니다. GitHub main의 기존 게임도 변경하지 않았으며 새 게임은 전용 브랜치와 PR에 있습니다.
 
-Actions → Build Dungeon Crush APK → codex/ashen-rift-apk의 최신 성공 실행에서 **DungeonCrush-APK**를 누르면 `DungeonCrush-2.1.apk`가 담긴 ZIP을 다운로드합니다. GitHub 로그인이 필요합니다.
+Actions → Build Dungeon Crush APK → codex/ashen-rift-apk의 최신 성공 실행에서 **DungeonCrush-APK**를 누르면 `DungeonCrush-2.1.1.apk`가 담긴 ZIP을 다운로드합니다. GitHub 로그인이 필요합니다.
 
-새 게임 versionCode 11 / versionName 2.1-client-motion-audio. 이번 전용 워크플로는 던전크러시만 빌드합니다. 집사 사절 코드·빌드·복구 APK는 수정하거나 빌드하지 않습니다. 예전 공유 ID APK는 배포 대상이 아닙니다.
+새 게임 versionCode 12 / versionName 2.1.1-layout-fix. 이번 전용 워크플로는 던전크러시만 빌드합니다. 집사 사절 코드·빌드·복구 APK는 수정하거나 빌드하지 않습니다. 예전 공유 ID APK는 배포 대상이 아닙니다.
 
 Android 6.0 이상과 최신 Android System WebView를 권장합니다. GitHub Artifact 다운로드에는 로그인이 필요하며 파일 앱의 ‘알 수 없는 앱 설치’ 허용이 필요할 수 있습니다. 테스트 서명 APK이며 Play 스토어용 서명은 아닙니다.
 
@@ -97,6 +97,7 @@ mkdir -p build/lan-test
 javac -d build/lan-test app/src/main/java/com/dungeoncrush/game/LanTransport.java tests/LanTransportTest.java
 java -cp build/lan-test LanTransportTest
 # Playwright와 Chrome:
+node tests/layout.test.cjs
 node tests/presentation.test.cjs
 node tests/browser.test.cjs
 bash gradlew assembleDebug
