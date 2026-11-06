@@ -1,0 +1,22 @@
+Existing sound recordings, downloaded at build time and packaged offline.
+All selected recordings are distributed as CC0. No new music is composed.
+
+Interface / click, confirm, select, swing:
+Kenney, Interface Sounds (CC0)
+https://kenney.nl/assets/interface-sounds
+Mirror: https://github.com/Calinou/kenney-interface-sounds
+
+Footstep:
+Kenney, Impact Sounds (CC0)
+https://kenney.nl/assets/impact-sounds
+Mirror: https://github.com/Boyquotes/kenney-impact-sounds-for-godot
+
+Town music: Menu Music by wipics (CC0)
+https://opengameart.org/content/menu-music-1
+Battle music: JRPG Epic Rock Battle Theme #1 by HydroGene (CC0)
+https://opengameart.org/content/jrpg-epic-rock-battle-theme-1
+Attack, damage, block, charge SFX: existing CC0 recordings bundled by
+https://github.com/tegnike/aozora-islands (see its README sound credits).
+Only pre-existing selected files are used; generated pack-opening tracks are excluded.
+
+Exact pinned revisions, file paths and Git blob checksums: audio-sources.json.

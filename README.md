@@ -112,3 +112,13 @@ Android 6.0 이상을 대상으로 하며 인터넷 권한, 광고, 계정 또�
 ## 빌드 구성
 
 Gradle 8.9, Android Gradle Plugin 8.7.3, compile/target SDK 35. Gradle Wrapper JAR는 Gradle 공식 저장소의 v8.9.0에서 가져왔으며 JAR 안에 라이선스가 포함되어 있습니다. SHA-256: `498495120a03b9a6ab5d155f5de3c8f0d986a449153702fb80fc80e134484f17`.
+
+
+## 별도 게임 · 던전크러시!
+
+기존 집사 사절! 앱은 이 저장소 루트의 원래 프로젝트로 유지합니다. 새로운 횡스크롤 RPG **던전크러시!**는 [dungeon-crush/](dungeon-crush/)의 독립 Android 프로젝트입니다. 앱 ID가 달라 두 게임을 함께 설치할 수 있습니다.
+
+- 집사 사절!: com.cathome.game / 기존 Build installable APK 워크플로
+- 던전크러시!: com.dungeoncrush.game / Build Dungeon Crush APK 워크플로 / DungeonCrush-APK
+
+앞서 제공된 AshenRift-1.0.apk 및 AshenRift-2.0.apk는 기존 앱 ID를 공유하므로 더 이상 설치하지 마세요. 이미 설치해 기존 게임이 바뀌었다면 앱을 삭제하지 말고 새 워크플로의 CatHome-Original-Restore-APK를 확인하세요. 원래 게임 전체 소스는 legacy/cathome-0.7/에도 보관돼 있습니다.

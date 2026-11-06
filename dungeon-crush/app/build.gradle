@@ -1,0 +1,48 @@
+plugins { id 'com.android.application' }
+android {
+    namespace 'com.dungeoncrush.game'
+    compileSdk 35
+    defaultConfig {
+        applicationId 'com.dungeoncrush.game'
+        minSdk 23
+        targetSdk 35
+        versionCode 12
+        versionName '2.1.1-layout-fix'
+    }
+    signingConfigs {
+        debug {
+            def savedDebugKey = System.getenv('CATHOME_DEBUG_KEYSTORE')
+            if (savedDebugKey) {
+                storeFile file(savedDebugKey)
+                storePassword 'android'
+                keyAlias 'androiddebugkey'
+                keyPassword 'android'
+            }
+        }
+    }
+    buildTypes { release { minifyEnabled false } }
+}
+
+// Art sources are text-encoded for repository transport; decoded files are bundled offline.
+def unpackRiftArt = tasks.register('unpackRiftArt') {
+    inputs.dir rootProject.file('art-source')
+    outputs.dir file('src/main/assets/art')
+    doLast {
+        rootProject.fileTree('art-source').matching { include '*.webp.b64', '*.otf.b64' }.each { source ->
+            def output = new File(projectDir, 'src/main/assets/art/' + source.name.substring(0, source.name.length() - 4))
+            output.parentFile.mkdirs()
+            output.bytes = source.text.trim().decodeBase64()
+        }
+    }
+}
+tasks.named('preBuild').configure { dependsOn unpackRiftArt }
+
+
+// Verified, existing CC0 music/SFX are packaged into the APK, never streamed at play.
+def prepareDungeonAudio = tasks.register('prepareDungeonAudio', Exec) {
+    workingDir rootProject.projectDir
+    commandLine 'python3', 'tools/fetch-audio.py'
+    inputs.file rootProject.file('audio-sources.json')
+    outputs.dir file('src/main/assets/audio')
+}
+tasks.named('preBuild').configure { dependsOn prepareDungeonAudio }
