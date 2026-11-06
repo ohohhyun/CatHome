@@ -214,3 +214,18 @@ body { font-family:'Rift UI',Arial,sans-serif; }
   .stage-entry-actions .difficulty-row button { min-height:28px; padding:5px 2px; }
   .stage-detail .scaling-note { margin-top:5px; font-size:8px; }
 }
+@media(max-height:340px) {
+  .selection-profile { padding-top:2px; }
+  .selection-profile h2 { font-size:22px; margin:2px 0 3px; }
+  .selection-profile>p { font-size:8.5px; margin:5px 0; }
+  #select-skills { gap:4px; margin-top:5px; }
+  .select-skill { font-size:18px; padding:3px 2px; }
+  .stage-information>small { display:none; }
+  .stage-information h2 { font-size:16px; margin:3px 0; }
+  #menu .menu-copy h1 { margin:4px 0; line-height:1.1; }
+  #menu .menu-copy h1 span { margin-top:4px; }
+  #menu .hero-detail { margin:6px 0 4px; }
+  #menu .town-level { margin:5px 0; }
+  #menu #tracked-quest { padding:3px 0!important; }
+  #menu .menu-actions { margin-top:4px; }
+}
