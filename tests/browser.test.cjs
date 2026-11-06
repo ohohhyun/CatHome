@@ -66,13 +66,15 @@ const {pathToFileURL}=require('node:url');
    await page.screenshot({path:path.join(output,`jump-patterns-${width}.png`)});
    const newKinds=await page.evaluate(()=>{start(10);wave();wave();return cats.map(c=>c.kind)});
    assert(newKinds.includes('roll'));assert(newKinds.includes('forward'));
-   await page.evaluate(()=>{state='pause';const roll={lane:2,fromLane:0,kind:'roll',skin:'chonky',y:35+Math.max(110,py()-175)*.35,age:1,type:0};const jump={lane:2,fromLane:2,kind:'forward',skin:'bruiser',y:45+Math.max(120,py()-190)*.65,age:1,type:0};positionCat(roll);positionCat(jump);cats=[roll,jump];render()});
-   await page.screenshot({path:path.join(output,`chonky-bruiser-${width}.png`)});
+   const pairedRoll=await page.evaluate(()=>{cats=[];let found=false;for(let n=0;n<12;n++){cats=[];wave();if(cats.some(c=>c.kind==='roll')){found=true;break}}if(!found)throw Error('no rolling encounter');state='pause';const roll=cats.find(c=>c.kind==='roll'),blocker=cats.find(c=>c.rollBlocker),positions=[];for(let i=0;i<=40;i++){roll.y=-42+(py()+42)*i/40;positionCat(roll);positions.push(roll.x)}roll.y=blocker.y=py()-95;positionCat(roll);positionCat(blocker);render();return {pair:roll.rollPair,blocked:blocker.lane,sameRow:roll.row===blocker.row,sameY:roll.y===blocker.y,positions}});
+   assert.equal(pairedRoll.pair.length,2);assert.equal(Math.abs(pairedRoll.pair[0]-pairedRoll.pair[1]),1);assert(!pairedRoll.pair.includes(pairedRoll.blocked));assert(pairedRoll.sameRow&&pairedRoll.sameY);
+   let rollReversals=0,lastDir=0;for(let n=1;n<pairedRoll.positions.length;n++){const dir=Math.sign(pairedRoll.positions[n]-pairedRoll.positions[n-1]);if(dir&&lastDir&&dir!==lastDir)rollReversals++;if(dir)lastDir=dir}assert(rollReversals>=4,'roller must repeatedly reverse, not cross once');
+   await page.screenshot({path:path.join(output,`paired-shuttle-${width}.png`)});
    const expertStats=await page.evaluate(()=>{start(0,'endless');elapsed=99*20;sync();wave();return {stage:document.getElementById('stage').textContent,label:document.getElementById('mode-label').textContent,speed:difficulty().speed,gap:nextWaveDelay(difficulty())}});
    assert.match(expertStats.stage,/100탄/);assert.match(expertStats.label,/EXPERT/);assert.equal(expertStats.speed,840);assert(expertStats.gap>=.24&&expertStats.gap<=.27);
    await page.screenshot({path:path.join(output,`expert-stage-100-${width}.png`)});
    assert.deepEqual(errors,[],`Browser exceptions at ${width}x${height}`);
-   await context.close();console.log(`PASS browser ${width}x${height}: new menu text, chonky roll/bruiser jump at stage 11, stage 100 expert tier, plus shop/items/30 stages`);
+   await context.close();console.log(`PASS browser ${width}x${height}: repeating adjacent-cell shuttle plus third-cell blocker, stage-11 cats, stage-100 tier, and existing shop/items/30 stages`);
   }
  }finally{await browser.close()}
 })().catch(e=>{console.error(e);process.exit(1)});
