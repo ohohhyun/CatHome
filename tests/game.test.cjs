@@ -94,8 +94,8 @@ items.run('cats=[];spawn=999;update(1)');assert.equal(items.run('umbrellaTime'),
 assert.equal(items.run("useItem('water')"),true);assert.equal(items.run('waterTime'),3);assert.equal(items.run("useItem('water')"),false);
 items.run("cats=[{lane:1,fromLane:0,x:px,base:px,y:py()-90,lift:0,kind:'straight',type:0,age:0,skin:'cheese',hit:false,passed:false,flee:0}];update(.12)");assert(items.run('cats[0].flee')>0,'a water hit makes the cat flee');assert.equal(items.run('hits'),0);assert.equal(items.run('inventory.water'),1);
 items.run('updateWater(3.1)');assert.equal(items.run('waterTime'),0);assert(items.run('shots.length')<=24);
-items.run("elapsed=8;score=321;runCoins=4;hits=3;panel('fail')");assert.equal(items.run("useItem('continue')"),true);assert.equal(items.run('state'),'play');assert.equal(items.run('hits'),0);assert.equal(items.run('elapsed'),8);assert.equal(items.run('score'),321);assert.equal(items.run('runCoins'),4);assert.equal(items.run('inventory.continue'),1);assert.equal(items.run('usedItems.water'),true);assert.equal(items.run('usedItems.umbrella'),true);
-items.run("panel('fail')");assert.equal(items.run("useItem('continue')"),false);items.run('start(0)');assert.equal(items.run('usedItems.continue'),false);
+items.run("elapsed=8;score=321;runCoins=4;hits=3;panel('fail')");assert.equal(items.run("useItem('continue')"),true);assert.equal(items.run('state'),'play');assert.equal(items.run('hits'),0);assert.equal(items.run('elapsed'),8);assert.equal(items.run('score'),321);assert.equal(items.run('runCoins'),4);assert.equal(items.run('inventory.continue'),1);assert.equal(items.run('usedItems.water'),1);assert.equal(items.run('usedItems.umbrella'),1);
+items.run("panel('fail')");assert.equal(items.run("useItem('continue')"),false);items.run('start(0)');assert.equal(items.run('usedItems.continue'),0);
 // Coin pickups are banked as currency, separately from points, even on a failed attempt.
 const money=boot();money.run('start(0);spawn=999;cats=[];coins=[{lane:1,x:px,y:py(),age:0,taken:false}];update(.001)');assert.equal(money.run('wallet'),1);assert.equal(money.run('runCoins'),1);money.run("panel('fail');flushSave()");assert.equal(boot(money.storage).run('wallet'),1);
 // New final ten stages add movement patterns without increasing the stage-20 speed.
@@ -161,5 +161,25 @@ for(const h of [590,720,900])for(const r of [51,75,100,200]){
  for(let n=0;n<(r===100?3600:1200)&&skilled.run('state')==='play';n++)skilled.run(`{const front=cats.filter(c=>!c.passed&&!c.hit&&c.y<=py()+29).sort((a,b)=>b.y-a.y)[0];if(front&&front.y>py()-Math.max(160,.23*difficulty().speed*travelScale())&&elapsed>=nextTap){if(lane<front.safe){move(1);nextTap=elapsed+.075}else if(lane>front.safe){move(-1);nextTap=elapsed+.075}}update(1/60)}`);
  assert.equal(skilled.run('state'),'play',`expert ${r}, height ${h} must have a route`);assert.equal(skilled.run('hits'),0,`expert ${r}, height ${h} must be fair`);
 }
-console.log('PASS: new stage-11 cats, repeating two-cell rolling encounters with blocked third lane, forward leap, stages 51-100-200 difficulty progression, rate-limited expert routes on 3 screen sizes, and all existing campaign/shop/item/save tests.');
+// Endless items: three separate uses of each kind, with one inventory unit consumed each time.
+const multi=boot({catCleared:'10'});multi.run("inventory={continue:5,umbrella:5,water:5,fish:5};start(0,'endless');spawn=999");assert.equal(multi.run('itemUseLimit()'),3);
+for(const key of ['umbrella','water','fish']){
+ for(let use=1;use<=3;use++){
+  assert.equal(multi.run(`useItem('${key}')`),true);assert.equal(multi.run(`usedItems.${key}`),use);assert.equal(multi.run(`inventory.${key}`),5-use);assert.equal(multi.run(`itemUsesLeft('${key}')`),3-use);
+  if(key==='umbrella'){assert.equal(multi.run("useItem('umbrella')"),false,'active umbrella cannot waste another stock');multi.run('cats=[];update(2.01)')}
+  if(key==='water'){assert.equal(multi.run("useItem('water')"),false,'active water cannot waste another stock');multi.run('updateWater(3.01)')}
+ }
+ assert.equal(multi.run(`useItem('${key}')`),false);assert.equal(multi.run(`inventory.${key}`),2,'fourth use must not consume stock');
+}
+for(let use=1;use<=3;use++){
+ multi.run("elapsed=37;score=500;panel('fail')");assert.equal(multi.run("useItem('continue')"),true);assert.equal(multi.run('state'),'play');assert.equal(multi.run('elapsed'),37);assert.equal(multi.run('score'),500);assert.equal(multi.run('usedItems.continue'),use);assert.equal(multi.run('inventory.continue'),5-use);
+ for(const key of ['umbrella','water','fish'])assert.equal(multi.run(`usedItems.${key}`),3,'continue must not refresh other item limits');
+}
+multi.run("panel('fail')");assert.equal(multi.run("useItem('continue')"),false);assert.equal(multi.run('inventory.continue'),2);assert.equal(multi.element('continue-run').disabled,true);
+assert.equal(boot(multi.storage).run('inventory.continue'),2);
+multi.run("start(0,'endless')");for(const key of ['continue','umbrella','water','fish'])assert.equal(multi.run(`usedItems.${key}`),0);
+// Limit is independent of stock, and general mode remains one per kind.
+multi.run("inventory.fish=1;start(0,'endless')");assert.equal(multi.run("useItem('fish')"),true);assert.equal(multi.run("itemUsesLeft('fish')"),2);assert.equal(multi.run("useItem('fish')"),false,'remaining allowance is not free inventory');
+multi.run('inventory.fish=5;start(0)');assert.equal(multi.run('itemUseLimit()'),1);assert.equal(multi.run("useItem('fish')"),true);assert.equal(multi.run("useItem('fish')"),false);
+console.log('PASS: endless three uses per item including continue, independent counters, stock consumption, fourth-use rejection, usage preserved across continues, fresh-run reset, and all previous game tests.');
 module.exports={boot};

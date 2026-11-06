@@ -37,8 +37,8 @@ const {pathToFileURL}=require('node:url');
    assert.equal(await page.evaluate(()=>Object.keys(soundBuffers).length),6);
    await page.locator('#music-toggle').click();assert.equal(await page.evaluate(()=>document.getElementById('bgm').paused),true);
    await page.locator('#music-toggle').click();await page.locator('#settings-close').click();await page.locator('#next').click();
-   await page.locator('#use-umbrella').click();assert.equal(await page.evaluate(()=>usedItems.umbrella),true);assert.equal(await page.evaluate(()=>inventory.umbrella),0);
-   await page.locator('#use-water').click();assert.equal(await page.evaluate(()=>usedItems.water),true);assert.equal(await page.evaluate(()=>inventory.water),0);
+   await page.locator('#use-umbrella').click();assert.equal(await page.evaluate(()=>usedItems.umbrella),1);assert.equal(await page.evaluate(()=>inventory.umbrella),0);
+   await page.locator('#use-water').click();assert.equal(await page.evaluate(()=>usedItems.water),1);assert.equal(await page.evaluate(()=>inventory.water),0);
    await page.evaluate(()=>{shots=[];shotTimer=0;cats=[{lane:1,fromLane:0,x:px,base:px,y:py()-90,lift:0,kind:'straight',type:0,age:0,skin:'cheese',hit:false,passed:false,flee:0}];update(.1)});
    assert(await page.evaluate(()=>cats.some(c=>c.flee>0)),'water hit makes a cat run away');
    await page.evaluate(()=>{waterTime=0;shots=[];spawn=999;cats=[{tag:'now',lane:0,x:112,base:112,y:py()-130,age:0,kind:'straight',type:0,skin:'calico',flee:0,hit:false,passed:false},{tag:'hidden',lane:2,x:272,base:272,y:-350,age:0,kind:'straight',type:0,skin:'tuxedo',flee:0,hit:false,passed:false}]});
@@ -48,7 +48,7 @@ const {pathToFileURL}=require('node:url');
    await page.evaluate(()=>{cats.push({tag:'later',lane:1,x:192,base:192,y:80,age:0,kind:'straight',type:0,skin:'cheese',flee:0,hit:false,passed:false});update(.02)});
    assert.equal(await page.evaluate(()=>cats.find(c=>c.tag==='later').flee),0);
    await page.evaluate(()=>{elapsed=8;hits=3;panel('fail')});await page.locator('#continue-run').click();
-   assert.deepEqual(await page.evaluate(()=>({state,used:usedItems.continue,stock:inventory.continue})),{state:'play',used:true,stock:0});
+   assert.deepEqual(await page.evaluate(()=>({state,used:usedItems.continue,stock:inventory.continue})),{state:'play',used:1,stock:0});
    await page.evaluate(()=>{hits=3;panel('fail')});assert.equal(await page.locator('#continue-run').isDisabled(),true);
    await page.locator('#next').click();
    await page.evaluate(()=>{cats=[];elapsed=STAGES[9][2]-.001;update(.02)});assert.equal(await page.evaluate(()=>state),'clear');
@@ -73,8 +73,25 @@ const {pathToFileURL}=require('node:url');
    const expertStats=await page.evaluate(()=>{start(0,'endless');elapsed=99*20;sync();wave();return {stage:document.getElementById('stage').textContent,label:document.getElementById('mode-label').textContent,speed:difficulty().speed,gap:nextWaveDelay(difficulty())}});
    assert.match(expertStats.stage,/100탄/);assert.match(expertStats.label,/EXPERT/);assert.equal(expertStats.speed,840);assert(expertStats.gap>=.24&&expertStats.gap<=.27);
    await page.screenshot({path:path.join(output,`expert-stage-100-${width}.png`)});
+   await page.evaluate(()=>{start(0,'endless');inventory={continue:4,umbrella:4,water:4,fish:4};cats=[];spawn=999;sync()});
+   for(const kind of ['umbrella','water','fish']){
+    for(let use=1;use<=3;use++){
+     await page.locator('#use-'+kind).click();assert.equal(await page.evaluate(key=>usedItems[key],kind),use);assert.equal(await page.evaluate(key=>inventory[key],kind),4-use);
+     if(use<3)assert.match(await page.locator('#use-'+kind+' small').textContent(),new RegExp((3-use)+'/3'));
+     if(kind==='umbrella')await page.evaluate(()=>{umbrellaTime=0;invincible=0;sync()});
+     if(kind==='water')await page.evaluate(()=>{waterTime=0;shots=[];sync()});
+    }
+    assert.equal(await page.locator('#use-'+kind).isDisabled(),true,'fourth use blocked despite remaining inventory');
+   }
+   for(let use=1;use<=3;use++){
+    await page.evaluate(()=>{hits=3;panel('fail')});assert.equal(await page.locator('#continue-run').isEnabled(),true);assert.match(await page.locator('#continue-run').textContent(),new RegExp((4-use)+'/3'));
+    await page.locator('#continue-run').click();assert.equal(await page.evaluate(()=>usedItems.continue),use);assert.equal(await page.evaluate(()=>inventory.continue),4-use);
+    assert.deepEqual(await page.evaluate(()=>({umbrella:usedItems.umbrella,water:usedItems.water,fish:usedItems.fish})),{umbrella:3,water:3,fish:3});
+   }
+   await page.evaluate(()=>{hits=3;panel('fail')});assert.equal(await page.locator('#continue-run').isDisabled(),true);assert.match(await page.locator('#continue-run').textContent(),/3회 사용 완료/);
+   await page.screenshot({path:path.join(output,`endless-three-item-uses-${width}.png`)});
    assert.deepEqual(errors,[],`Browser exceptions at ${width}x${height}`);
-   await context.close();console.log(`PASS browser ${width}x${height}: repeating adjacent-cell shuttle plus third-cell blocker, stage-11 cats, stage-100 tier, and existing shop/items/30 stages`);
+   await context.close();console.log(`PASS browser ${width}x${height}: three endless uses for each item and continue, per-kind remaining labels, no resets after continue, plus existing 30-stage game`);
   }
  }finally{await browser.close()}
 })().catch(e=>{console.error(e);process.exit(1)});
