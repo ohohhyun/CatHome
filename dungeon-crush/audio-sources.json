@@ -53,5 +53,75 @@
     "name": "step.ogg",
     "url": "https://raw.githubusercontent.com/Boyquotes/kenney-impact-sounds-for-godot/999dd1684873f8b020a3aa5b26e713da21688924/addons/kenney%20impact%20sounds/footstep_concrete_000.ogg",
     "git_sha": "163cc56468f1734fe694351e7ff984699afa8b86"
+  },
+  {
+    "name": "slash1.ogg",
+    "url": "https://raw.githubusercontent.com/Boyquotes/kenney-rpg-audio-for-godot/22eb79bb843bbcadcaa6ed119353a33265ffad11/addons/kenney%20rpg%20audio/knife_slice.ogg",
+    "git_sha": "86338431259517417132d9b1aaa28eb9a9f36d95"
+  },
+  {
+    "name": "slash2.ogg",
+    "url": "https://raw.githubusercontent.com/Boyquotes/kenney-rpg-audio-for-godot/22eb79bb843bbcadcaa6ed119353a33265ffad11/addons/kenney%20rpg%20audio/knife_slice_2.ogg",
+    "git_sha": "cf6098e7395fcfeb537fa83ba41ba9ec0606e362"
+  },
+  {
+    "name": "draw.ogg",
+    "url": "https://raw.githubusercontent.com/Boyquotes/kenney-rpg-audio-for-godot/22eb79bb843bbcadcaa6ed119353a33265ffad11/addons/kenney%20rpg%20audio/draw_knife_1.ogg",
+    "git_sha": "4141dbf41af81a4e7013a09692f4ac9000d885eb"
+  },
+  {
+    "name": "cloth1.ogg",
+    "url": "https://raw.githubusercontent.com/Boyquotes/kenney-rpg-audio-for-godot/22eb79bb843bbcadcaa6ed119353a33265ffad11/addons/kenney%20rpg%20audio/cloth_1.ogg",
+    "git_sha": "b76853a893383a0facfb230a368404d136eff1a3"
+  },
+  {
+    "name": "cloth2.ogg",
+    "url": "https://raw.githubusercontent.com/Boyquotes/kenney-rpg-audio-for-godot/22eb79bb843bbcadcaa6ed119353a33265ffad11/addons/kenney%20rpg%20audio/cloth_2.ogg",
+    "git_sha": "45e783913da1c3022c72a52fdda6e6101f98b8fd"
+  },
+  {
+    "name": "chop.ogg",
+    "url": "https://raw.githubusercontent.com/Boyquotes/kenney-rpg-audio-for-godot/22eb79bb843bbcadcaa6ed119353a33265ffad11/addons/kenney%20rpg%20audio/chop.ogg",
+    "git_sha": "a9d991f2c9d652e25f0b07244267a036204a909f"
+  },
+  {
+    "name": "potion.ogg",
+    "url": "https://raw.githubusercontent.com/Boyquotes/kenney-rpg-audio-for-godot/22eb79bb843bbcadcaa6ed119353a33265ffad11/addons/kenney%20rpg%20audio/handle_small_leather.ogg",
+    "git_sha": "d98f77bed3120196c0d8b97dd875af98868762f6"
+  },
+  {
+    "name": "metal1.ogg",
+    "url": "https://raw.githubusercontent.com/Boyquotes/kenney-impact-sounds-for-godot/999dd1684873f8b020a3aa5b26e713da21688924/addons/kenney%20impact%20sounds/impact_metal_heavy_000.ogg",
+    "git_sha": "d4432f48b6ff5b4a501045ef0b8068963ef5530d"
+  },
+  {
+    "name": "metal2.ogg",
+    "url": "https://raw.githubusercontent.com/Boyquotes/kenney-impact-sounds-for-godot/999dd1684873f8b020a3aa5b26e713da21688924/addons/kenney%20impact%20sounds/impact_metal_heavy_001.ogg",
+    "git_sha": "e510d3eb929c89f58946f9773ae9f0197cd1334f"
+  },
+  {
+    "name": "punch1.ogg",
+    "url": "https://raw.githubusercontent.com/Boyquotes/kenney-impact-sounds-for-godot/999dd1684873f8b020a3aa5b26e713da21688924/addons/kenney%20impact%20sounds/impact_punch_heavy_000.ogg",
+    "git_sha": "55e70b52ca082c89326bac62a02505c0ba750260"
+  },
+  {
+    "name": "punch2.ogg",
+    "url": "https://raw.githubusercontent.com/Boyquotes/kenney-impact-sounds-for-godot/999dd1684873f8b020a3aa5b26e713da21688924/addons/kenney%20impact%20sounds/impact_punch_heavy_001.ogg",
+    "git_sha": "6655951d3bb43d8b06bd23b8ae60580fd7584406"
+  },
+  {
+    "name": "glass.ogg",
+    "url": "https://raw.githubusercontent.com/Boyquotes/kenney-impact-sounds-for-godot/999dd1684873f8b020a3aa5b26e713da21688924/addons/kenney%20impact%20sounds/impact_glass_heavy_000.ogg",
+    "git_sha": "b9cbaad034d2da26dffcfbc0bead1abcf595f560"
+  },
+  {
+    "name": "plate.ogg",
+    "url": "https://raw.githubusercontent.com/Boyquotes/kenney-impact-sounds-for-godot/999dd1684873f8b020a3aa5b26e713da21688924/addons/kenney%20impact%20sounds/impact_plate_heavy_000.ogg",
+    "git_sha": "ac09f229be6ed3bacc23becd7d1394b360b04654"
+  },
+  {
+    "name": "soft.ogg",
+    "url": "https://raw.githubusercontent.com/Boyquotes/kenney-impact-sounds-for-godot/999dd1684873f8b020a3aa5b26e713da21688924/addons/kenney%20impact%20sounds/impact_soft_heavy_000.ogg",
+    "git_sha": "1c321ef698c367144d0d55b52d7a680a4b8e5958"
   }
 ]

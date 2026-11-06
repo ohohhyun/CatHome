@@ -1,9 +1,9 @@
 {
-  "version": "2.7",
+  "version": "2.8",
   "generator": "OpenAI image_gen",
   "characterFrames": 272,
   "effectFrames": 240,
-  "notes": "2.7 adds 8-frame running/jumps, three separate 8-frame basic combos and an 8-frame cast per class, plus 24 individual 8-frame skill flipbooks. Original PNG outputs are preserved; packaged lossless WebP RGBA was verified pixel-identical. Legacy 2.6 PNGs remain for idle/fallback/provenance.",
+  "notes": "2.8 adds 64 monster walk/attack frames and 30 illustrated equipment/resource icons. Idle guard poses reuse combat atlas cels. Original PNGs preserved and runtime WebP RGBA verified pixel-identical.",
   "assets": [
     {
       "id": "kael",
@@ -25,7 +25,8 @@
         "skill",
         "jump"
       ],
-      "frames": 20
+      "frames": 20,
+      "packaged": false
     },
     {
       "id": "rin",
@@ -47,7 +48,8 @@
         "skill",
         "jump"
       ],
-      "frames": 20
+      "frames": 20,
+      "packaged": false
     },
     {
       "id": "bane",
@@ -69,7 +71,8 @@
         "skill",
         "jump"
       ],
-      "frames": 20
+      "frames": 20,
+      "packaged": false
     },
     {
       "id": "sera",
@@ -91,7 +94,8 @@
         "skill",
         "jump"
       ],
-      "frames": 20
+      "frames": 20,
+      "packaged": false
     },
     {
       "id": "attack",
@@ -350,10 +354,42 @@
       "generated": "2026-11-06",
       "encoding": "lossless WebP; decoded RGBA verified identical to original PNG",
       "reference": null
+    },
+    {
+      "id": "equipment",
+      "file": "art/advanced/equipment.webp",
+      "width": 1374,
+      "height": 1145,
+      "columns": 6,
+      "rows": 5,
+      "frames": 30,
+      "sha256": "3764998adc904d83e522e56c647c6eb6c3c105cf586b414603e90e06faa894c6",
+      "originalFile": "art-source/gpt-2.8/equipment.png",
+      "originalSha256": "7657a2dede2558422d882a8f3f482dc2f82903572efa12d4940e5af8ee0f7f33",
+      "generator": "OpenAI image_gen",
+      "generated": "2026-11-06",
+      "encoding": "lossless WebP; decoded RGBA verified identical to original PNG"
+    },
+    {
+      "id": "enemy-motion",
+      "file": "art/advanced/enemy-motion.webp",
+      "width": 1249,
+      "height": 1259,
+      "columns": 8,
+      "rows": 8,
+      "frames": 64,
+      "sha256": "e20770b96e869ca89a49d87130392245ec304d3b6581ba47b352b65fc5732ba1",
+      "originalFile": "art-source/gpt-2.8/enemy-motion.png",
+      "originalSha256": "ac0bb6d31a180ab93e401c8d14b23392b539834ff0dde863e75d82385692616f",
+      "generator": "OpenAI image_gen",
+      "generated": "2026-11-06",
+      "encoding": "lossless WebP; decoded RGBA verified identical to original PNG"
     }
   ],
   "activeCharacterFrames": 208,
   "individualSkillFrames": 192,
   "newCharacterFrames": 192,
-  "newSkillFrames": 192
+  "newSkillFrames": 192,
+  "enemyFrames": 64,
+  "equipmentIcons": 30
 }

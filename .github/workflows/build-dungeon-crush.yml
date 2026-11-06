@@ -34,6 +34,7 @@ jobs:
           node tests/generated-art.test.cjs
           node tests/combat-timing.test.cjs
           node tests/rpg.test.cjs
+          node tests/party-recovery.test.cjs
       - name: Test native four-player LAN transport
         run: |
           mkdir -p build/lan-test
@@ -55,6 +56,7 @@ jobs:
           node tests/layout.test.cjs
           node tests/presentation.test.cjs
           node tests/browser.test.cjs
+          node tests/party-recovery-presentation.test.cjs
         env:
           NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
       - uses: actions/upload-artifact@v4
@@ -68,6 +70,7 @@ jobs:
             dungeon-crush/build/previews/advanced-skill-*-6.png
             dungeon-crush/build/previews/advanced-skill-*-5.png
             dungeon-crush/build/previews/advanced-combat.webm
+            dungeon-crush/build/previews/party-recovery-*.png
           if-no-files-found: ignore
       - uses: actions/upload-artifact@v4
         if: always()
@@ -118,10 +121,10 @@ jobs:
           "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --print-certs app/build/outputs/apk/debug/app-debug.apk
           python tools/verify-apk-identity.py "$ANDROID_HOME/build-tools/35.0.0/aapt" app/build/outputs/apk/debug/app-debug.apk com.dungeoncrush.game com.dungeoncrush.game.MainActivity "던전크러시!"
           python tools/verify-bundled-art.py app/build/outputs/apk/debug/app-debug.apk
-          cp app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/DungeonCrush-2.7.apk
+          cp app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/DungeonCrush-2.8.apk
       - uses: actions/upload-artifact@v4
         with:
           name: DungeonCrush-APK
-          path: dungeon-crush/app/build/outputs/apk/debug/DungeonCrush-2.7.apk
+          path: dungeon-crush/app/build/outputs/apk/debug/DungeonCrush-2.8.apk
           if-no-files-found: error
           retention-days: 30

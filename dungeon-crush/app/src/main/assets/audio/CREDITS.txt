@@ -20,3 +20,12 @@ https://github.com/tegnike/aozora-islands (see its README sound credits).
 Only pre-existing selected files are used; generated pack-opening tracks are excluded.
 
 Exact pinned revisions, file paths and Git blob checksums: audio-sources.json.
+
+2.8 combat foley additions (14 recordings, all CC0):
+Kenney RPG Audio: knife slices, drawing a blade, cloth motion, chop and pouch handling.
+https://kenney.nl/assets/rpg-audio
+Mirror: https://github.com/Boyquotes/kenney-rpg-audio-for-godot
+Kenney Impact Sounds: heavy metal, heavy punches, glass, plate and soft impacts.
+https://kenney.nl/assets/impact-sounds
+Pitch variation, attack-specific layering and party distance attenuation are applied at playback.
+The UI switch recording is no longer used as a weapon swing.

@@ -6,8 +6,8 @@ android {
         applicationId 'com.dungeoncrush.game'
         minSdk 23
         targetSdk 35
-        versionCode 18
-        versionName '2.7-combo-impact'
+        versionCode 19
+        versionName '2.8-party-combat'
     }
     signingConfigs {
         debug {
@@ -20,7 +20,7 @@ android {
             }
         }
     }
-    androidResources { ignoreAssetsPattern = 'attack.png:area.png:support.png' }
+    androidResources { ignoreAssetsPattern = 'kael.png:rin.png:bane.png:sera.png:attack.png:area.png:support.png' }
     buildTypes { release { minifyEnabled false } }
 }
 
