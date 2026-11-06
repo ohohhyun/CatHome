@@ -6,8 +6,8 @@ android {
         applicationId 'com.dungeoncrush.game'
         minSdk 23
         targetSdk 35
-        versionCode 19
-        versionName '2.8-party-combat'
+        versionCode 20
+        versionName '2.9-motion-overhaul'
     }
     signingConfigs {
         debug {
@@ -20,7 +20,7 @@ android {
             }
         }
     }
-    androidResources { ignoreAssetsPattern = 'kael.png:rin.png:bane.png:sera.png:attack.png:area.png:support.png' }
+    androidResources { ignoreAssetsPattern = 'kael.png:rin.png:bane.png:sera.png:attack.png:area.png:support.png:kael-move.webp:kael-combat.webp:rin-move.webp:rin-combat.webp:bane-move.webp:bane-combat.webp:sera-move.webp:sera-combat.webp:enemy-motion.webp' }
     buildTypes { release { minifyEnabled false } }
 }
 

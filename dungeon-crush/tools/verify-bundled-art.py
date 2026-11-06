@@ -14,6 +14,6 @@ with ZipFile(sys.argv[1]) as apk:
             assert sha256(apk.read(name)).hexdigest()==asset['sha256'],name
         else:
             assert name not in apk.namelist(),name+' is superseded'
-    for name in ['engine.js','sprite-art.js','motion.js','effects.js','app.js','client.js','world.js','town.js','sound.js','rpg.js','client.css','town.css','index.html']:
+    for name in ['actors.js','icons.js','engine.js','sprite-art.js','motion.js','effects.js','app.js','client.js','world.js','town.js','sound.js','rpg.js','client.css','town.css','index.html']:
         assert apk.read('assets/'+name)==(root/'app/src/main/assets'/name).read_bytes(),name
-print('Verified combat guard idle poses, 192 motion/combo cels, 192 individual spell cels, 64 monster cels and 30 illustrated icons and final game scripts.')
+print('Verified 704 character poses, 192 monster poses, 192 spell cels, 32 ultimate cels, 24 painted skill icons, 30 equipment icons and exact final presentation scripts.')
