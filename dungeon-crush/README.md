@@ -6,7 +6,7 @@ CatHome 저장소의 `dungeon-crush/`에 별도 Android 프로젝트로 보관�
 
 **던전크러시!은 별도 앱 `com.dungeoncrush.game`입니다. ‘집사 사절!’의 `com.cathome.game`을 대체하지 않습니다.** 두 게임을 함께 설치할 수 있습니다. GitHub main의 기존 게임도 변경하지 않았으며 새 게임은 전용 브랜치와 PR에 있습니다.
 
-Actions → Build Dungeon Crush APK → codex/ashen-rift-apk의 최신 성공 실행에서 **DungeonCrush-APK**를 누르면 `DungeonCrush-2.7.apk`가 담긴 ZIP을 다운로드합니다. GitHub 로그인이 필요합니다.
+[던전크러시 2.7 APK 직접 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.7/DungeonCrush-2.7.apk) · [약 40초 실제 게임 조작 녹화](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.7/DungeonCrush-2.7-combat.webm). APK 파일을 눌러 설치하며 압축을 풀 필요가 없습니다. 녹화는 자동 조작한 브라우저 게임 화면입니다.
 
 새 게임 versionCode 18 / versionName 2.7-combo-impact. 파티원 모두 2.7(프로토콜 5)이 필요하며 기존 저장 형식은 유지합니다. 이번 전용 워크플로는 던전크러시만 빌드합니다. 집사 사절 코드·빌드·복구 APK는 수정하거나 빌드하지 않습니다. 예전 공유 ID APK는 배포 대상이 아닙니다.
 
