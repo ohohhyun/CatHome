@@ -202,3 +202,15 @@ body { font-family:'Rift UI',Arial,sans-serif; }
   .settings-modal h2 { font-size:20px; margin:7px 0; }
   .settings-modal>label { margin:10px 0 5px; font-size:11px; }
 }
+
+/* Keep difficulty selection beside the persistent entry actions on short screens. */
+#menu .logo small { font-family:'Rift UI',Arial,sans-serif; }
+.stage-entry-actions .difficulty-row { margin:5px 0 7px; }
+.stage-entry-actions #stage-condition { margin:5px 0 8px; font-size:clamp(9px,1vw,13px); }
+.stage-entry-actions #rift-tier-wrap { margin:5px 0; }
+@media(max-height:380px) {
+  .stage-entry-actions { padding-top:6px; }
+  .stage-entry-actions label { font-size:9px; }
+  .stage-entry-actions .difficulty-row button { min-height:28px; padding:5px 2px; }
+  .stage-detail .scaling-note { margin-top:5px; font-size:8px; }
+}
