@@ -1,0 +1,26 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
+const manifest=JSON.parse(fs.readFileSync('generated-art-sources.json','utf8')),assets=new Map(manifest.assets.map(a=>[a.file,a]));
+const c={document:{createElement:()=>({width:0,height:0,getContext:()=>({drawImage(){}})})},Image:class{set src(path){const a=assets.get(path);assert(a,path);this.width=this.naturalWidth=a.width;this.height=this.naturalHeight=a.height;this.onload?.();}}};c.window=c;vm.createContext(c);for(const name of ['rpg','engine','actors','sprite-art'])vm.runInContext(fs.readFileSync('app/src/main/assets/'+name+'.js','utf8'),c);const E=c.Rift,A=c.DungeonActors;A.preloadAll();c.DungeonArt.preloadAll();
+function canvas(){const draws=[],gradient={addColorStop(){}};return {draws,context:new Proxy({globalAlpha:1,drawImage(...a){draws.push(a);},createLinearGradient(){return gradient;}},{get:(o,k)=>k in o?o[k]:()=>{}})};}
+for(let cls=0;cls<4;cls++){
+ const p=E.player(0,'run',cls),bank=A.actors[cls].run;assert.equal(bank.frames.length,24);assert.equal(bank.cycles,1);assert.equal(bank.contactFrames.length,2);
+ const xs=[],ys=[];for(let i=0;i<24;i++){const r=bank.frames[i],head=bank.headLandmarks[i];xs.push((head[0]-r[5])/r[7]);ys.push((head[1]-r[6])/r[7]);}assert(Math.max(...xs)-Math.min(...xs)<.001,'no horizontal root jitter');assert(Math.max(...ys)-Math.min(...ys)<.001,'no vertical root jitter between source sheets');
+ let old=null,peak=0;const state={world:5000,fx:[],nextId:1};p.x=800;for(let i=0;i<60;i++){E.move(state,p,{x:1},1/60);old=A.locomotion(p,old,i/60);peak=Math.max(peak,old.lean);}assert(peak>.07,'visible forward acceleration lean');assert(old.lean>.04&&old.lean<.075,'settled cruise lean');
+ const cruise=old;for(let i=0;i<20;i++){E.move(state,p,{},1/60);old=A.locomotion(p,old,1+i/60);}assert(Math.abs(old.lean)<.02,'body settles after stopping');assert(Math.abs(p.vx)<1,'no long input slide');
+ Object.assign(p,{action:'run',vx:E.CLASSES[cls].speed,vy:0,hp:100,jump:0,at:0,hurt:0});let phase=A.runPhase(p),contacts=0;for(let i=0;i<320;i++){p.gait+=Math.PI*2/210;const next=A.runPhase(p);if(Math.floor(next*2)!==Math.floor(phase*2))contacts++;phase=next;}assert.equal(contacts,2,'exactly two footfalls in one 320-unit stride');
+ for(const action of ['run','dash']){Object.assign(p,{action,at:action==='dash'?.1:0,inv:1});const {context,draws}=canvas();assert(A.actor(context,cls,800,570,260,1,p,10));assert.equal(draws.length,1,'one body per render, including invulnerable dash');}
+ const original=JSON.stringify(p),prior=JSON.stringify(cruise);A.locomotion(p,cruise,3);assert.equal(JSON.stringify(p),original);assert.equal(JSON.stringify(cruise),prior,'presentation never mutates network state');
+}
+function arena(type){const s=E.create(),p=E.player(0,'slayer',0,60,{ranks:[1,1,1,1,1,1],advanced:true,awakened:true});s.players=[p];E.start(s);Object.assign(p,{x:860,y:550,inv:0,damage:100000});s.enemies=[{id:99,type,x:925,y:550,hp:100,maxHp:100,dir:-1,at:0,cd:0,stun:0,armor:100,armorMax:100,broken:0}];return s;}
+for(const type of ['knight','caster','brute','boss']){
+ const s=arena(type),p=s.players[0];E.step(s,{},1/60);assert(s.telegraphs.some(t=>t.source===99),type+' begins real cast');assert(s.fx.some(f=>f.type==='windup'&&f.source===99));
+ s.projectiles.push({id:900,team:'enemy',source:99,kind:'orb',x:1200,y:550,vx:-160,vy:0,remaining:1000,age:0,damage:50,color:'#eee',radius:14,height:135,hit:[]});const hp=p.hp;assert(E.attack(s,p,0));for(let i=0;i<12;i++)E.step(s,{},1/60);assert(!s.enemies.some(e=>e.id===99));assert(!s.telegraphs.some(t=>t.source===99));assert(!s.projectiles.some(q=>q.team==='enemy'&&q.source===99));assert(!s.fx.some(f=>f.type==='windup'&&f.source===99));for(let i=0;i<180;i++)E.step(s,{},1/60);assert.equal(p.hp,hp,type+' cannot damage the player after death');
+}
+{const s=arena('knight'),p=s.players[0];s.enemies=[];s.telegraphs=[{source:199,x:p.x,y:p.y,r:150,life:.001,duration:1,damage:50}];const hp=p.hp;E.step(s,{},1/60);assert.equal(p.hp,hp,'stale serialized cast has no living owner');assert.equal(s.telegraphs.length,0);}
+for(let cls=0;cls<4;cls++){
+ const s=arena('knight'),p=E.player(0,'caster',cls,60,{ranks:[1,1,1,1,1,1],advanced:true,awakened:true});Object.assign(p,{x:860,y:550,rage:100});s.players=[p];s.enemies[0].hp=s.enemies[0].maxHp=1e9;s.enemies[0].at=99;
+ assert(E.attack(s,p,6));for(let i=0;i<16;i++)E.step(s,{},1/60);const ult=s.fx.find(f=>f.type==='ultimate');assert(ult);assert.equal(ult.duration,1.8);assert(ult.life>1.7,'full effect survives attack recovery');
+ for(let i=0;i<120;i++)s.fx.push({id:s.nextId++,type:'hit',life:.5,x:800,y:550});p.at=0;p.pending=null;p.cd.fill(0);E.attack(s,p,0);assert(s.fx.length<=100);assert(s.fx.includes(ult),'crowded party hits cannot immediately evict the ultimate');
+}
+{const {context,draws}=canvas();c.DungeonArt.effect(context,{type:'circle',cls:0,x:800,y:550,range:320,life:.45,duration:.9,owner:0},0,1);assert(draws.some(a=>a[7]>=590),'standard skill image covers its wider readable area');}
+console.log('PASS: one stride/two footfalls, registered body anchors, acceleration and stop recovery, one body with no dash echoes, immutable presentation, four real enemy casts cancelled on death, stale cast protection, wider/longer skills and protected ultimate lifetime.');

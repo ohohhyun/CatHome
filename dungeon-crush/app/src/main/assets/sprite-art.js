@@ -15,11 +15,11 @@ function cell(c,cls,row,col,x,y,w,h,options={}){
 function classOf(f){if(Number.isInteger(f.cls)&&f.cls>=0&&f.cls<4)return f.cls;const i=root.Rift?.CLASSES.findIndex(p=>p.color===f.color);return i>=0?i:0;}
 function effect(c,f,camera,time){
  if(['text','windup'].includes(f.type))return false;
- const cls=classOf(f),life=f.duration||(f.type==='ultimate'?1.15:f.type==='muzzle'?.18:.55),t=clamp(1-f.life/life,0,.999),col=f.type==='playerwind'?Math.min(3,Math.floor(t*4)):Math.min(7,4+Math.floor(t*4)),dir=f.dir||1,x=f.x-camera,y=f.y,range=f.range||160,alpha=Math.min(1,f.life/.08),index=clamp((f.index||1)-1,0,5),o={dir,alpha};
+ const cls=classOf(f),life=f.duration||(f.type==='ultimate'?1.8:f.type==='muzzle'?.22:.55),t=clamp(1-f.life/life,0,.999),col=f.type==='playerwind'?Math.min(3,Math.floor(t*4)):Math.min(7,4+Math.floor(t*4)),dir=f.dir||1,x=f.x-camera,y=f.y,range=f.range||160,alpha=Math.min(1,f.life/.08),index=clamp((f.index||1)-1,0,5),o={dir,alpha};
  if(f.type==='playerwind'){const support=f.index===5;return cell(c,cls,index,col,x+(cls===3&&!support?dir*36:0),y-(support?130:[135,165,185,190][cls]),support?230:155,support?300:180,{alpha:.34,dir});}
  if(f.type==='chain'&&f.points){const pts=f.points;for(let i=1;i<pts.length;i++){const a=pts[i-1],b=pts[i],dx=b.x-a.x,dy=b.y-a.y;cell(c,3,3,col,(a.x+b.x)/2-camera,(a.y+b.y)/2-145,Math.max(160,Math.hypot(dx,dy)*1.6),180,{alpha,angle:Math.atan2(dy,dx)});}return true;}
- if(f.type==='ultimate'&&root.DungeonActors.ultimate(c,cls,t,x,y-165,Math.min(1180,range*1.8),680,alpha*.94)){accents(c,f,camera,t);return true;}
- if(['shield','heal'].includes(f.type))return cell(c,cls,4,col,x,y-135,300,350,{alpha});
+ if(f.type==='ultimate'&&root.DungeonActors.ultimate(c,cls,t,x,y-165,Math.min(1320,range*2.2),760,alpha*.94)){accents(c,f,camera,t);return true;}
+ if(['shield','heal'].includes(f.type))return cell(c,cls,4,col,x,y-135,350,410,{alpha});
  if(f.type==='muzzle')return cell(c,f.caster?3:cls,f.caster?2:0,4,x,y-(f.caster?135:[135,165,185,190][cls]),110,95,{...o,alpha:alpha*.8});
  if(['hit','hurt','death','impact'].includes(f.type)){accents(c,f,camera,t);
   const w=f.type==='impact'?210:f.type==='death'?180:105+(f.stage===2?35:0);return cell(c,f.caster?3:cls,f.caster?1:cls===2?1:0,col,x,y-85,w,w*.8,{...o,alpha:alpha*(f.type==='hurt'?.55:1)});
@@ -27,14 +27,14 @@ function effect(c,f,camera,time){
  if(f.type==='dash')return cell(c,cls,cls===0?2:0,col,x+dir*25,y-105,300,210,{...o,alpha:alpha*.45});
  if(['basic','cone','lift','line','rush','circle','pull','ultimate'].includes(f.type)){
   let row=f.type==='basic'?(f.stage===1?1:0):index;
-  let w=f.type==='basic'?250:Math.min(f.type==='ultimate'?850:650,range*.95+170),h=f.type==='basic'?190:w*.72,xx=x,yy=y-h*.32,angle=0;
+  let w=f.type==='basic'?285:Math.min(f.type==='ultimate'?1100:820,(range*.95+170)*1.25),h=f.type==='basic'?190:w*.76,xx=x,yy=y-h*.32,angle=0;
   if(['basic','cone','line','rush'].includes(f.type)){xx+=dir*w*.27;yy=y-[135,165,185,190][cls];h=cls===1&&row===0?w*.40:w*.7;}
   if(f.type==='lift'){xx+=dir*70;w=320;h=390;yy=y-145;}
   if(cls===1&&index===3&&f.type!=='basic'){xx=x+dir*Math.min(430,range*.57);yy=y-125;w=460;h=390;}
   if(f.type==='rush'&&cls===1){xx=x+dir*range*.5;yy=y-115;w=410;h=400;}
   if(f.type==='basic'&&cls===2&&f.stage===2){row=1;angle=-dir*1.1;xx=x+dir*10;yy=y-180;w=270;h=230;}
   if(f.type==='basic'&&cls===0&&f.stage===2){angle=dir*.6;yy=y-110;}
-  const drawn=cell(c,cls,row,col,xx,yy,w,h,{...o,angle,alpha:alpha*.62});accents(c,f,camera,t);
+  const drawn=cell(c,cls,row,col,xx,yy,w,h,{...o,angle,alpha:alpha*(f.owner!==undefined&&f.owner!==(root.RiftApp?.getMyId?.()??0)?.48:.76)});accents(c,f,camera,t);
   if(f.type==='ultimate'&&drawn)for(const side of [-1,1])cell(c,cls,5,col,xx+side*w*.30,yy+40,w*.55,h*.70,{alpha:alpha*.5});
   return drawn;
  }

@@ -1,9 +1,9 @@
 {
-  "version": "2.9",
+  "version": "2.9.1",
   "generator": "OpenAI image_gen",
   "characterFrames": 272,
   "effectFrames": 240,
-  "notes": "2.9 uses complete high-resolution character action clips with 24-pose motion constructed from eight key drawings and sixteen additionally authored intermediate drawings. Original PNG outputs are preserved. Runtime WebP retains exact alpha; opaque RGB compression error is recorded. Legacy body atlases and 2.8 enemy atlas remain source-only. Physics/EXP/potion correctness is regression tested.",
+  "notes": "2.9 uses complete high-resolution character action clips with 24-pose motion constructed from eight key drawings and sixteen additionally authored intermediate drawings. Original PNG outputs are preserved. Runtime WebP retains exact alpha; opaque RGB compression error is recorded. Legacy body atlases and 2.8 enemy atlas remain source-only. Physics/EXP/potion correctness is regression tested. 2.9.1 reorders the existing run crops into one eight-phase stride with 24 registered crops and removes locomotion echoes. Original/runtime image bytes are unchanged.",
   "assets": [
     {
       "id": "kael",
