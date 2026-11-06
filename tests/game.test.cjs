@@ -158,8 +158,21 @@ for(const h of [590,720,900])for(const round of [11,51,100,200]){
 
 
 const endlessNewCats=boot({catCleared:'10'});endlessNewCats.run("start(0,'endless')");
-for(let r=1;r<=10;r++){endlessNewCats.run(`elapsed=(${r}-1)*20;cats=[];wave()`);assert(endlessNewCats.run("cats.every(c=>c.kind!=='roll'&&c.kind!=='forward')"))}
-endlessNewCats.run('elapsed=10*20');const endlessKinds=new Set();for(let i=0;i<12;i++){endlessNewCats.run('cats=[];wave()');for(const k of endlessNewCats.run('cats.map(c=>c.kind)'))endlessKinds.add(k)}assert(endlessKinds.has('roll'));assert(endlessKinds.has('forward'));
+for(let r=1;r<=11;r++){
+ endlessNewCats.run(`elapsed=(${r}-1)*20;waveIndex=0`);const kinds=new Set();
+ for(let n=0;n<12;n++){endlessNewCats.run('cats=[];wave()');for(const k of endlessNewCats.run('cats.map(c=>c.kind)'))kinds.add(k)}
+ assert(kinds.has('roll'),`endless ${r} has chonky`);assert(kinds.has('forward'),`endless ${r} has bruiser`);
+}
+// Heal one hit only upon completing each tenth endless stage, with no extra hearts.
+for(const completed of [5,9,10,11,19,20,30,100])for(const initialHits of [0,1,2]){
+ const heal=boot({catCleared:'10'});heal.run(`start(0,'endless');elapsed=${completed}*20-.01;hits=${initialHits};cats=[];spawn=999;update(.02)`);
+ const expected=Math.max(0,initialHits-(completed%10===0?1:0));
+ assert.equal(heal.run('hits'),expected,`healing at end of ${completed}, hits ${initialHits}`);
+ heal.run('update(.02)');assert.equal(heal.run('hits'),expected,'no duplicate reward on following frame');
+ heal.run('state="pause";update(1)');assert.equal(heal.run('hits'),expected,'pause does not grant healing');
+}
+const noRevive=boot({catCleared:'10'});noRevive.run("start(0,'endless');elapsed=199.99;hits=2;invincible=0;spawn=999;cats=[{x:px,y:py(),lane,kind:'straight',type:0,age:0,warn:0}];update(.02)");assert.equal(noRevive.run('state'),'fail');assert.equal(noRevive.run('hits'),3,'healing cannot revive a failed run');
+const storyNoHeal=boot();storyNoHeal.run('start(0);hits=2;cats=[];spawn=999;update(.02)');assert.equal(storyNoHeal.run('hits'),2);
 // Endless now continues scaling beyond the old cap, with a hard tier starting at 51.
 const expert=boot({catCleared:'10'});expert.run("start(0,'endless')");const stats=[];
 for(const r of [50,51,60,75,90,100,150,200])stats.push(expert.run(`elapsed=(${r}-1)*ENDLESS_STAGE_SECONDS;difficulty()`));

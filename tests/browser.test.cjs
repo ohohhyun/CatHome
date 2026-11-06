@@ -90,6 +90,9 @@ const {pathToFileURL}=require('node:url');
    }
    await page.evaluate(()=>{hits=3;panel('fail')});assert.equal(await page.locator('#continue-run').isDisabled(),true);assert.match(await page.locator('#continue-run').textContent(),/3회 사용 완료/);
    await page.screenshot({path:path.join(output,`endless-three-item-uses-${width}.png`)});
+   const recovery=await page.evaluate(()=>{start(0,'endless');waveIndex=0;const kinds=new Set();for(let n=0;n<12;n++){cats=[];wave();for(const c of cats)kinds.add(c.kind)}cats=[];spawn=999;hits=2;elapsed=199.99;update(.02);state='pause';sync();return {kinds:[...kinds],hits,round:endlessRound(),toast:document.getElementById('toast').textContent}});
+   assert(recovery.kinds.includes('roll')&&recovery.kinds.includes('forward'));assert.equal(recovery.hits,1);assert.equal(recovery.round,11);assert.match(recovery.toast,/하트 1개 회복/);
+   await page.screenshot({path:path.join(output,`endless-heart-recovery-${width}.png`)});
    assert.deepEqual(errors,[],`Browser exceptions at ${width}x${height}`);
    await context.close();console.log(`PASS browser ${width}x${height}: three endless uses for each item and continue, per-kind remaining labels, no resets after continue, plus existing 30-stage game`);
   }
