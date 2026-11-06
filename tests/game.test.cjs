@@ -123,6 +123,9 @@ for(let l=0;l<10;l++)for(let n=0;n<12;n++){newcomers.run(`start(${l});cats=[];wa
 newcomers.run('start(10)');for(let n=0;n<12;n++){newcomers.run('cats=[];wave()');for(const kind of newcomers.run('cats.map(c=>c.kind)'))newcomersSeen.add(kind);assert(newcomers.run("cats.filter(c=>c.kind==='roll').every(c=>Math.abs(c.fromLane-c.lane)===2&&c.skin==='chonky')"));assert(newcomers.run("cats.filter(c=>c.kind==='forward').every(c=>c.skin==='bruiser')"))}
 assert(newcomersSeen.has('roll'));assert(newcomersSeen.has('forward'));
 newcomers.run("let roller={lane:2,fromLane:0,kind:'roll',y:35,age:0};positionCat(roller);if(roller.x!==lanes[0])throw Error('roll start');roller.y=py()-140;positionCat(roller);if(Math.abs(roller.x-lanes[2])>.01||Math.abs(roller.rollAngle-4*Math.PI)>.01)throw Error('roll end');let bully={lane:1,kind:'forward',y:45+(py()-190)/2,age:0};positionCat(bully);if(catScreenY(bully)<=bully.y||bully.lift<=0)throw Error('forward jump must leap toward player')");
+const endlessNewCats=boot({catCleared:'10'});endlessNewCats.run("start(0,'endless')");
+for(let r=1;r<=10;r++){endlessNewCats.run(`elapsed=(${r}-1)*20;cats=[];wave()`);assert(endlessNewCats.run("cats.every(c=>c.kind!=='roll'&&c.kind!=='forward')"))}
+endlessNewCats.run('elapsed=10*20');const endlessKinds=new Set();for(let i=0;i<12;i++){endlessNewCats.run('cats=[];wave()');for(const k of endlessNewCats.run('cats.map(c=>c.kind)'))endlessKinds.add(k)}assert(endlessKinds.has('roll'));assert(endlessKinds.has('forward'));
 // Endless now continues scaling beyond the old cap, with a hard tier starting at 51.
 const expert=boot({catCleared:'10'});expert.run("start(0,'endless')");const stats=[];
 for(const r of [50,51,60,75,90,100,150,200])stats.push(expert.run(`elapsed=(${r}-1)*ENDLESS_STAGE_SECONDS;difficulty()`));
