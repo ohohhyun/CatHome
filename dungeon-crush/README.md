@@ -6,11 +6,20 @@ CatHome 저장소의 `dungeon-crush/`에 별도 Android 프로젝트로 보관�
 
 **던전크러시!은 별도 앱 `com.dungeoncrush.game`입니다. ‘집사 사절!’의 `com.cathome.game`을 대체하지 않습니다.** 두 게임을 함께 설치할 수 있습니다. 이번 패치는 전용 브랜치의 던전크러시 파일과 전용 빌드/배포 워크플로에만 적용했습니다. 기존 게임의 원본 앱·루트 빌드·복구 APK는 변경하지 않습니다.
 
-[던전크러시 2.9.6 APK 직접 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9.6/DungeonCrush-2.9.6.apk) · [친구 공유용 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9.6/DungeonCrush-2.9.6-Share.zip) · [변경 화면과 릴리스](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.9.6). APK 파일을 눌러 설치하며 압축을 풀 필요가 없습니다. 친구에게 다운로드 링크를 공유할 수 있습니다. 첨부 이미지는 브라우저에서 자동 조작한 검수용 캐릭터 화면입니다.
+[던전크러시 2.9.7 APK 직접 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9.7/DungeonCrush-2.9.7.apk) · [친구 공유용 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9.7/DungeonCrush-2.9.7-Share.zip) · [변경 화면과 릴리스](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.9.7). APK 파일을 눌러 설치하며 압축을 풀 필요가 없습니다. 친구에게 다운로드 링크를 공유할 수 있습니다. 첨부 이미지는 브라우저에서 자동 조작한 검수용 캐릭터 화면입니다.
 
-새 게임 versionCode 26 / versionName 2.9.6-split-menus. 기존 2.9와 같은 서명·앱 ID·프로토콜 6·저장 형식을 유지합니다. 같은 화면을 보려면 파티원 모두 2.9.6로 업데이트를 권장합니다. 이번 전용 워크플로는 던전크러시만 빌드합니다. 집사 사절 코드·빌드·복구 APK는 수정하거나 빌드하지 않습니다. 예전 공유 ID APK는 배포 대상이 아닙니다.
+새 게임 versionCode 27 / versionName 2.9.7-equipped-first. 기존 2.9와 같은 서명·앱 ID·프로토콜 6·저장 형식을 유지합니다. 같은 화면을 보려면 파티원 모두 2.9.7로 업데이트를 권장합니다. 이번 전용 워크플로는 던전크러시만 빌드합니다. 집사 사절 코드·빌드·복구 APK는 수정하거나 빌드하지 않습니다. 예전 공유 ID APK는 배포 대상이 아닙니다.
 
 Android 6.0 이상과 최신 Android System WebView를 권장합니다. GitHub Artifact 다운로드에는 로그인이 필요하며 파일 앱의 ‘알 수 없는 앱 설치’ 허용이 필요할 수 있습니다. 테스트 서명 APK이며 Play 스토어용 서명은 아닙니다.
+
+## 2.9.7 착용 장비 최우선 정렬
+
+- 장비 가방은 착용 중인 장비를 무조건 먼저 표시하고, 착용/미착용 각 그룹 안에서 등급순으로 정렬합니다. 미착용 에픽보다 착용 중인 일반 장비가 항상 위에 옵니다.
+- 오름차순·내림차순이나 레벨·강화·획득 기준을 바꿔도 착용 우선과 등급 우선은 유지합니다. 추가 기준은 같은 등급 안에서만 적용되도록 이름을 명확히 했습니다.
+- 강화 대상 목록에도 같은 착용 우선 정렬을 적용했습니다. 장착·해제하면 표시 순서가 즉시 다시 계산됩니다. 보기용 복사본만 정렬하며 저장된 장비 순서·잠금·착용·강화 상태는 바꾸지 않습니다.
+- 205개 장비와 상반된 등급/레벨/강화/ID 조건, 모든 기준과 양방향에서 우선순위를 검사합니다. 실제 가방에서도 저등급 착용 장비 여섯 개가 미착용 에픽보다 먼저 나오는지 검사합니다. 2.9.6의 좌우 메뉴와 나머지 기능은 유지합니다.
+
+검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42330052474 · APK SHA256: `9c3c75249a96b4d5e00f2de516b72c132300f4b5941e8950ea11a86ee33097d4` · 99183156 bytes. 공유 ZIP SHA256: `7f4103732b791f8068f9c5c65cadda76b15bf3bd3d76926f8306a96dc392fdc5` · 99183988 bytes. JavaScript 13개·실제 TCP 4인 연결·Chromium 15개 시나리오와 APK 서명/앱 ID/포함 파일·공개 해시 검증을 통과했습니다. 착용 우선→등급순을 모든 기준과 양방향에서 확인하고, 실제 가방에서 착용 장비 여섯 개가 미착용 에픽보다 먼저 표시되는지 검사했습니다. 첨부 PNG는 검수용 캐릭터 화면이며 실제 휴대폰 검증은 별도입니다.
 
 ## 2.9.6 좌측 설명 · 우측 목록과 퀘스트 개선
 
