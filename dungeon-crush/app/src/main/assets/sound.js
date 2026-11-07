@@ -11,10 +11,10 @@ function sync(){const desired=!unlocked||suspended||settings.music===0?null:scen
 function unlock(){if(!unlocked)for(const key of ['slash1','slash2','punch1','punch2','metal1','metal2','glass','plate','cloth1','cloth2','chop','potion'])pools[key]=[make(key)];unlocked=true;suspended=false;sync();}
 function change(next){scene=next==='battle'?'battle':'town';suspended=false;sync();}
 function observe(game,myId=0){if(lastRun!==game.runId){lastFx=-1;lastRun=game.runId;}const local=game.players.find(p=>p.id===myId);for(const f of game.fx.filter(f=>f.id>lastFx)){lastFx=Math.max(lastFx,f.id);const owner=game.players.find(p=>p.id===f.owner),cls=f.cls??owner?.cls??0,distance=local?Math.abs(f.x-local.x):0,volume=(f.owner===myId?1:.48)*Math.max(.15,1-distance/1800),variation=1+((f.id%5)-2)*.035,heavy=f.stage===2||f.type==='ultimate',index=f.index||0;
- if(f.type==='playerwind'){if(cls===3)play(index>=2?'cloth2':'draw',.30*volume,variation*(index>=2?.72:1.1));else play(f.id%2?'slash1':'slash2',.75*volume,variation*(cls===2?.78:cls===1?1.12:.92));}
- else if(f.type==='muzzle'){if(f.caster)play('cloth2',.38*volume,.68);else{play('punch2',.65*volume,variation*1.3);play('metal2',.24*volume,variation*1.15);}}
- else if(f.type==='hit'){play(cls===2?(heavy?'punch1':'punch2'):cls===3?'glass':f.id%2?'metal1':'metal2',volume*(heavy?.95:.72),variation*(heavy?.78:1));if(heavy||f.crit)play('soft',.55*volume,.78);}
- else if(['basic','cone','line','lift','rush'].includes(f.type)&&cls!==3){if(index>0||heavy)play(cls===2?'punch1':'chop',.65*volume,variation*.82);}
+ if(f.type==='playerwind'){if(cls===4)play('cloth2',.42*volume,variation*.83);else if(cls===3)play(index>=2?'cloth2':'draw',.30*volume,variation*(index>=2?.72:1.1));else play(f.id%2?'slash1':'slash2',.75*volume,variation*(cls===2?.78:cls===1?1.12:.92));}
+ else if(f.type==='muzzle'){if(cls===4&&!f.caster){play('glass',.65*volume,index===1?.75:1.15);play('cloth1',.3*volume,.8);}else if(f.caster)play('cloth2',.38*volume,.68);else{play('punch2',.65*volume,variation*1.3);play('metal2',.24*volume,variation*1.15);}}
+ else if(f.type==='hit'){play(cls===2?(heavy?'punch1':'punch2'):cls>=3?'glass':f.id%2?'metal1':'metal2',volume*(heavy?.95:.72),variation*(heavy?.78:1));if(heavy||f.crit)play('soft',.55*volume,.78);}
+ else if(['basic','cone','line','lift','rush'].includes(f.type)&&cls<3){if(index>0||heavy)play(cls===2?'punch1':'chop',.65*volume,variation*.82);}
  else if(['circle','pull','chain','ultimate'].includes(f.type)){play(cls===2?'punch1':cls===0?'chop':'glass',.85*volume,variation*(f.type==='ultimate'?.62:.83));play('plate',.34*volume,f.type==='ultimate'?.6:.83);}
  else if(f.type==='hurt')play('soft',f.owner===myId?.8:.28,.85);
  else if(f.type==='shield')play('plate',.4*volume,.8);

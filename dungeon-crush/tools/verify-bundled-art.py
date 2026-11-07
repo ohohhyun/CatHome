@@ -17,6 +17,6 @@ with ZipFile(sys.argv[1]) as apk:
     font=json.loads((root/'font-sources.json').read_text())
     assert sha256(apk.read('assets/'+font['file'])).hexdigest()==font['sha256'],'offline Korean font'
     assert apk.read('assets/art/FONT-LICENSE.txt')==(root/font['licenseFile']).read_bytes()
-    for name in ['menus.js','menus.css','ui-layout.js','actors.js','icons.js','engine.js','sprite-art.js','motion.js','effects.js','app.js','client.js','world.js','town.js','sound.js','rpg.js','client.css','town.css','index.html']:
+    for name in ['encounters.js','menus.js','menus.css','ui-layout.js','actors.js','icons.js','engine.js','sprite-art.js','motion.js','effects.js','app.js','client.js','world.js','town.js','sound.js','rpg.js','client.css','town.css','index.html']:
         assert apk.read('assets/'+name)==(root/'app/src/main/assets'/name).read_bytes(),name
-print('Verified 496 coherent character poses, 192 monster poses, 192 spell cels, 32 ultimate cels, 24 painted skill icons, 30 equipment icons and exact final presentation scripts.')
+print('Verified 620 character poses, 768 monster poses, 240 spell cels, 40 ultimate cels, 30 painted skill icons, 36 equipment icons and exact final presentation scripts.')

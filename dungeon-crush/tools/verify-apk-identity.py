@@ -13,7 +13,7 @@ if not activity or activity.group(1) != expected_activity:
     raise SystemExit('Unexpected APK launch activity: ' + badging)
 if label and "application-label:'" + label[0] + "'" not in badging:
     raise SystemExit('Unexpected APK app name: ' + badging)
-if package.group(2) != '28':
-    raise SystemExit('Expected install version 28')
+if package.group(2) != '29':
+    raise SystemExit('Expected install version 29')
 print(badging)
 print('Verified application identity:', expected_package)

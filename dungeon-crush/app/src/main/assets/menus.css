@@ -201,3 +201,17 @@
 /* Close is a fixed vector control, so text scaling cannot spill into the list. */
 .modal .close{display:flex;align-items:center;justify-content:center;line-height:1;padding:0}
 .close-icon{display:block;width:18px;height:18px;flex:0 0 18px;pointer-events:none}
+
+/* Sale confirmation belongs to the selected right-hand item, in normal flow. */
+#rpg-screen .sale-grid{align-items:start}
+#rpg-screen .sale-confirm{min-width:0;max-width:100%;padding:8px;margin:0 0 6px;background:#3b2e1f;border:1px solid #d5b275;overflow-wrap:anywhere}
+#rpg-screen .sale-confirm h3{font-size:13px;line-height:1.6;margin:0 0 6px}
+#rpg-screen .sale-confirm h4,#rpg-screen .sale-confirm p{font-size:11px;line-height:1.7;margin:5px 0}
+#rpg-screen .sale-confirm button{display:block;margin:5px 0 0;width:100%;min-width:0;white-space:normal}
+#rpg-screen .sale-select{background:transparent;border:0;width:100%;gap:6px;padding:0}
+#rpg-screen .sale-name{font-size:12px;line-height:1.6;white-space:normal;overflow-wrap:anywhere}
+
+/* The fifth class uses a scrolling roster; entry controls keep their own row. */
+#character-slot{overflow:auto;overscroll-behavior:contain;scrollbar-width:thin}
+#character-slot .characters{height:auto;min-height:100%;grid-template-rows:none;grid-auto-rows:minmax(clamp(86px,21vh,160px),auto);align-content:start}
+#character-slot .char-card{height:auto;min-height:clamp(86px,21vh,160px);padding-top:max(28px,2.5em);position:relative;overflow:hidden}
