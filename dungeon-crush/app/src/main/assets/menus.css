@@ -1,0 +1,145 @@
+/* Keep the explanation on the left and actionable lists on the right, including short phones. */
+#rpg-screen .rpg-modal{display:grid;grid-template-columns:clamp(160px,27vw,300px) minmax(0,1fr);grid-template-rows:minmax(0,1fr);gap:0;padding:0;width:100%;max-width:1400px;height:100%;max-height:100%;text-align:left;overflow:hidden}
+#town-sidebar,#town-workspace{min-width:0;min-height:0;box-sizing:border-box}
+#town-sidebar{overflow:auto;overscroll-behavior:contain;padding:16px 14px;border-right:1px solid #ac987352;background:linear-gradient(160deg,#192330,#0f1825);scrollbar-width:thin}
+#town-sidebar>.eyebrow{font-size:9px;line-height:1.6;letter-spacing:1.7px;padding:0}
+#town-sidebar>h2{font-size:clamp(17px,2vw,26px);line-height:1.5;margin:7px 0 9px;overflow-wrap:anywhere}
+#town-sidebar .town-service{font-size:11px;line-height:1.6;margin:0 0 10px}
+#rpg-screen #town-tabs{display:flex;flex-direction:column;gap:4px;margin:8px 0 14px;padding:0 0 12px;border-bottom:1px solid #b4a07847}
+#rpg-screen #town-tabs button{text-align:left;width:100%;min-height:32px;padding:7px 10px;font-size:12px;line-height:1.5;white-space:normal;border:1px solid #9dafbf33}
+#rpg-screen #town-tabs button.active{border-color:#d5b275;color:#f0d49c;background:#80643929}
+#town-workspace{display:flex;flex-direction:column;overflow:hidden;background:#0b142066}
+.workspace-wallet{flex:0 0 auto;min-width:0;padding:8px 42px 8px 12px;border-bottom:1px solid #ad997534}
+#town-currency{display:flex;max-width:100%;width:auto;gap:4px 12px;flex-wrap:wrap;justify-content:flex-start;text-align:left;font-size:11px;line-height:1.5}
+#town-currency .currency-amount{min-width:0;gap:4px;line-height:1.5}
+#town-currency .town-currency-icon{width:20px;height:20px}
+#rpg-screen #town-body,#rpg-screen #town-body.inventory-body{display:block;flex:1;min-height:0;min-width:0;overflow:auto;overscroll-behavior:contain;padding:12px;box-sizing:border-box;scrollbar-width:thin}
+#rpg-screen #town-close{z-index:2;right:6px;top:5px;background:#111c2c}
+#town-context{min-width:0}
+#town-context :is(h3,h4){font-size:14px;line-height:1.6;margin:8px 0;color:#ebd2a6;overflow-wrap:anywhere}
+#town-context p{font-size:11px;line-height:1.75;white-space:normal;overflow-wrap:anywhere;margin:7px 0}
+#town-context .town-section{padding:0;border:0;background:none;margin:12px 0}
+#town-context .gear-detail{padding:0;border:0;background:transparent;position:static;overflow:visible;min-width:0}
+#town-context .gear-detail>.item-art,#town-context :is(.shop-explanation,.forge-explanation)>.item-art{width:64px;height:64px;margin:0 0 6px}
+#town-context .gear-detail h3{font-size:15px;line-height:1.5}
+#town-context .inventory-stats{display:grid;grid-template-columns:1fr;gap:3px;font-size:11px;line-height:1.6;margin:12px 0;padding:10px 0;border-top:1px solid #8196b040}
+#town-context .equipment-panel{margin:12px 0;padding:8px;overflow:visible;min-width:0}
+#town-context .equipment-panel .equipment-slots{display:grid!important;grid-template-columns:1fr!important;gap:5px}
+#town-context .equipment-panel .equipment-slot{display:grid;grid-template-columns:28px minmax(0,1fr);gap:3px 6px;padding:6px!important;text-align:left;min-height:0;align-items:center}
+#town-context .equipment-slot>.item-art{grid-row:1/3;width:26px;height:26px}
+#town-context .equipment-slot b{font-size:11px!important;line-height:1.6}
+#town-context .equipment-slot small{font-size:10px;line-height:1.5}
+#town-context .bag-toolbar{display:grid;grid-template-columns:1fr;gap:8px;margin:12px 0}
+#town-context .bag-field{font-size:11px;line-height:1.6;gap:4px}
+#town-context .bag-field select{font-size:12px;line-height:1.5;min-height:34px;padding:6px;max-width:100%}
+#rpg-screen .inventory-layout{display:block;min-width:0;min-height:0}
+#rpg-screen .inventory-bag{overflow:visible;padding:0;min-width:0}
+#rpg-screen .inventory-bag .bag-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(100px,1fr));gap:8px}
+#rpg-screen .inventory-bag .gear-actions{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 10px}
+#rpg-screen .gear-actions button{flex:1 1 78px;min-width:0;font-size:11px;line-height:1.5;padding:6px;min-height:32px}
+#rpg-screen .inventory-bag .gear-visual{height:68px}
+#rpg-screen .inventory-bag .gear-visual>.item-art{width:64px;height:64px}
+#rpg-screen .gear-cell .gear-item{gap:4px;padding:7px 6px;min-width:0}
+#rpg-screen .gear-status .gear-state{font-size:10px;line-height:1.5;padding:3px 5px}
+#rpg-screen .gear-name{font-size:12px;line-height:1.5}
+#rpg-screen .gear-meta{font-size:10px;line-height:1.5}
+#rpg-screen .bag-summary{display:flex;flex-wrap:wrap;gap:5px 12px;font-size:11px;line-height:1.6;margin:0 0 8px}
+#rpg-screen .shop-grid,#rpg-screen .craft-grid,#rpg-screen .forge-item-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px;margin:0 0 12px}
+#rpg-screen .shop-card,#rpg-screen .craft-card,#rpg-screen .forge-item{min-width:0;padding:9px;display:flex;flex-direction:column;gap:6px;background:#101d2e;border:1px solid #8eabc24d;box-sizing:border-box}
+#rpg-screen .shop-card.selected,#rpg-screen .forge-item.selected{border-color:#ebca84;box-shadow:inset 0 0 0 1px #ebca8450}
+#rpg-screen .shop-select{display:flex;flex-direction:column;align-items:center;gap:5px;min-width:0;padding:0;color:inherit;text-align:center}
+#rpg-screen :is(.shop-select,.forge-item,.craft-card)>.item-art{width:72px;height:72px;margin:0 auto}
+#rpg-screen :is(.shop-card,.craft-card) h3,#rpg-screen .forge-item b{font-size:12px;line-height:1.6;margin:4px 0;white-space:normal;overflow-wrap:anywhere}
+#rpg-screen .shop-select small,#rpg-screen .forge-item small{font-size:10px;line-height:1.6}
+#rpg-screen :is(.shop-card,.craft-card) button{font-size:11px;line-height:1.5;white-space:normal;padding:7px 5px;min-height:32px}
+#rpg-screen .forge-controls{display:flex;align-items:stretch;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+#rpg-screen .forge-controls select{flex:1 1 200px;max-width:100%;min-width:0;font:12px/1.6 'Rift UI',Arial,sans-serif;padding:7px}
+#rpg-screen .forge-controls button{flex:0 1 170px;min-width:100px;font-size:12px;line-height:1.5;padding:8px 14px;min-height:36px}
+#town-context .service-confirm{display:block;padding:9px;border:1px solid #c7a36c80;background:#59411f20}
+#town-context .service-confirm>.item-art{float:none;display:block;width:48px;height:48px;margin:0 0 5px}
+#town-context .service-confirm button{display:block;width:100%;white-space:normal;margin:7px 0 0}
+#rpg-screen .skill-tree{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin:0 0 12px}
+#rpg-screen .skill-node{min-width:0;padding:12px}
+#rpg-screen .skill-node h3{font-size:14px;line-height:1.6;margin:7px 0}
+#rpg-screen .skill-node p{font-size:11px;line-height:1.7;margin:6px 0}
+#rpg-screen .skill-node button{font-size:11px;line-height:1.6;min-height:34px;padding:6px 9px}
+#rpg-screen .promotion{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+#rpg-screen .promotion>div{padding:12px;min-width:0}
+#rpg-screen .promotion :is(h3,p,button){line-height:1.6;overflow-wrap:anywhere}
+.service-reset{display:block;margin:0 0 12px;font-size:11px;line-height:1.6;min-height:32px;padding:7px 12px;border:1px solid #99a8b65c}
+.quest-filters{display:flex;flex-direction:column;gap:5px;margin-top:12px}
+.quest-filter{padding:8px 10px;min-height:32px;font-size:12px;line-height:1.6;text-align:left;border:1px solid #829bb64d}
+.quest-filter.active{border-color:#b6e8cb;color:#b6e8cb;background:#193b322d}
+.quest-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;align-items:start}
+.quest-card{min-width:0;padding:14px;display:flex;flex-direction:column;gap:7px;border:1px solid #9eb0c34a;background:#111e30}
+.quest-card.main-quest{border-color:#c4a36580;background:linear-gradient(130deg,#32291f5c,#111e30)}
+.quest-card h3{font-size:16px;line-height:1.6;margin:3px 0;color:#f0d4a4;overflow-wrap:anywhere}
+.quest-card p,.quest-log{font-size:12px;line-height:1.75;margin:4px 0;overflow-wrap:anywhere}
+.quest-kind{font-size:10px;line-height:1.6;color:#b2c2d5}
+.quest-state{width:fit-content;max-width:100%;font-size:11px;line-height:1.6;padding:3px 8px;border:1px solid #829cb44d;background:#1a2839;color:#c2c9d1}
+.quest-state.ready{border-color:#91d1ad;color:#b7f3ce;background:#1b4132}
+.quest-progress{height:7px;border-radius:4px;background:#07111e;border:1px solid #67829a3d;overflow:hidden}
+.quest-progress i{display:block;height:100%;background:linear-gradient(90deg,#a78a4d,#f0d08a)}
+.quest-rewards{display:flex;flex-wrap:wrap;gap:5px 9px}
+.quest-reward{display:flex;align-items:center;gap:4px;min-width:0;font-size:11px;line-height:1.6;color:#e3ce98}
+.quest-reward>.item-art{width:20px;height:20px;flex:0 0 20px}
+.quest-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:4px}
+.quest-actions button{flex:1 1 130px;min-width:0;font-size:11px;line-height:1.6;padding:8px 10px;min-height:34px}
+.modal.split-dialog{display:grid;grid-template-columns:minmax(150px,29%) minmax(0,1fr);grid-template-rows:minmax(0,1fr);gap:0;width:min(1100px,100%);max-width:1100px;height:100%;max-height:100%;padding:0;overflow:hidden;text-align:left}
+.dialog-copy,.dialog-options{min-width:0;min-height:0;overflow:auto;overscroll-behavior:contain;box-sizing:border-box;padding:18px;scrollbar-width:thin}
+.dialog-copy{background:#111c2b;border-right:1px solid #8f9dba40}
+.dialog-options{background:#0c172680;padding-top:38px}
+.dialog-copy :is(h2,h3){font-size:clamp(17px,2vw,26px);line-height:1.6;overflow-wrap:anywhere}
+.dialog-copy p,.dialog-options p{font-size:12px;line-height:1.8;overflow-wrap:anywhere}
+.dialog-copy .eyebrow{font-size:9px;line-height:1.6;letter-spacing:1.5px}
+.split-dialog>.close,.gear-inspect-modal>.close{z-index:2;right:6px;top:5px;background:#111c2c}
+.dialog-options>button{display:block;width:100%;min-height:36px;font-size:12px;line-height:1.6;white-space:normal;padding:9px 12px;margin:9px 0}
+#settings-screen .dialog-options{display:flex;flex-direction:column;gap:10px}
+#settings-screen .dialog-options>label{font-size:13px;line-height:1.6;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+#settings-screen .dialog-options input[type=range]{width:100%;min-width:0;margin:0 0 10px}
+#settings-screen .dialog-options .check-setting{display:flex;align-items:center;justify-content:flex-start}
+#settings-screen .icon-credit{font-size:9px;line-height:1.7;margin-top:18px}
+#guide-screen .dialog-options>.guide,#guide-screen .dialog-options>.skill-catalog{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px}
+#guide-screen .dialog-options :is(p,b,small){line-height:1.75;white-space:normal;overflow-wrap:anywhere}
+#lan-screen .dialog-options :is(input,button,select){max-width:100%;min-width:0;box-sizing:border-box}
+#pause-screen .split-dialog{width:min(850px,100%);height:min(440px,100%)}
+#results .dialog-copy .rank{font-size:64px;line-height:1.2;margin:12px 0}
+#results .dialog-options .rewards{white-space:normal;overflow-wrap:anywhere;line-height:1.7}
+#gear-inspect-screen .gear-inspect-modal{display:block;padding:0;width:min(1100px,100%);height:100%;max-height:100%;overflow:hidden}
+#gear-inspect-body{display:grid;grid-template-columns:minmax(160px,32%) minmax(0,1fr);height:100%;min-height:0}
+#gear-inspect-body .inspect-heading{display:block;padding:0}
+#gear-inspect-body .inspect-heading>.item-art{width:70px;height:70px;margin:0 0 10px}
+#gear-inspect-body .inspect-heading h2{font-size:18px;line-height:1.6}
+#gear-inspect-body .gear-comparison{margin:0;padding:12px}
+#gear-inspect-body .inspect-actions{display:flex;flex-wrap:wrap}
+@media(max-width:740px){
+ #rpg-screen .rpg-modal{grid-template-columns:clamp(145px,27vw,190px) minmax(0,1fr)}
+ #town-sidebar{padding:10px}#town-sidebar>h2{font-size:17px}
+ #rpg-screen #town-tabs button{font-size:11px;min-height:30px;padding:6px 8px}
+ #rpg-screen #town-body{padding:9px}.workspace-wallet{padding:6px 38px 6px 9px}
+ #town-currency{font-size:10px;gap:3px 7px}#town-currency .town-currency-icon{width:17px;height:17px}
+ #rpg-screen .shop-grid,#rpg-screen .craft-grid,#rpg-screen .forge-item-grid{grid-template-columns:repeat(auto-fill,minmax(105px,1fr));gap:7px}
+ #rpg-screen .skill-tree{grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+ .quest-list{grid-template-columns:1fr}.quest-card{padding:11px}
+ .modal.split-dialog{grid-template-columns:minmax(145px,28%) minmax(0,1fr)}
+ .dialog-copy,.dialog-options{padding:12px}.dialog-options{padding-top:36px}
+ #lan-screen .lan-columns{grid-template-columns:1fr}
+ #gear-inspect-body{grid-template-columns:minmax(145px,31%) minmax(0,1fr)}
+ .compare-table{font-size:11px}.compare-table th,.compare-table td{padding:6px 3px}
+}
+
+@media(max-height:380px){
+ #town-sidebar{padding:8px 10px}#town-sidebar>.eyebrow,#town-sidebar>.town-service{display:none!important}
+ #town-sidebar>h2{font-size:16px;line-height:1.5;margin:0 0 7px}
+ #rpg-screen #town-tabs{gap:3px;margin:0 0 9px;padding:0 0 7px}
+ #rpg-screen #town-tabs button{font-size:10px;min-height:24px;padding:4px 7px;line-height:1.5}
+ #town-context .gear-detail>.item-art,#town-context :is(.shop-explanation,.forge-explanation)>.item-art{display:none}
+ #town-context :is(h3,h4){font-size:12px;line-height:1.6;margin:5px 0}
+ #town-context p{font-size:10px;line-height:1.65;margin:5px 0}
+ #rpg-screen #town-body{padding:8px}#rpg-screen .gear-visual{height:60px}
+ #rpg-screen .inventory-bag .gear-visual>.item-art{width:58px;height:58px}
+ .quest-card{padding:10px}.quest-card h3{font-size:14px}.quest-card p{font-size:11px}
+ .dialog-copy h2{font-size:17px;margin:6px 0}.dialog-copy p{font-size:11px;line-height:1.7}
+ #gear-inspect-body .inspect-heading>.item-art{width:48px;height:48px;margin-bottom:5px}
+ #gear-inspect-body .inspect-heading h2{font-size:16px}
+}
