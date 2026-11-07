@@ -147,3 +147,35 @@
 .split-dialog>.dialog-options,#gear-inspect-body>.dialog-options{margin-top:40px;padding-top:12px}
 .workspace-wallet{min-height:40px;box-sizing:border-box}
 #rpg-screen :is(.shop-card,.craft-card) button{min-width:0;max-width:100%;width:100%;box-sizing:border-box}
+
+/* Expedition screens use the same reading direction as town menus. */
+#content-screen .content-layout,#stage-screen .stage-layout{display:grid;grid-template-columns:clamp(160px,27vw,300px) minmax(0,1fr);gap:0;min-height:0;overflow:hidden;border:1px solid #8e9fb43d}
+#content-screen .content-copy,#stage-screen .stage-detail{display:block;min-width:0;min-height:0;overflow:auto;padding:16px;box-sizing:border-box;border:0;border-right:1px solid #8e9fb43d;background:#101c2c}
+#content-screen .content-copy h3{font-size:18px;line-height:1.6;margin:0 0 12px;color:#e9d0a3}
+#content-screen .content-copy p{font-size:12px;line-height:1.8;margin:9px 0;overflow-wrap:anywhere}
+#content-screen .content-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));grid-auto-rows:minmax(240px,1fr);min-height:0;overflow:auto;margin:0;padding:12px;gap:12px}
+#content-screen .content-card{min-width:0;min-height:240px;overflow:hidden;height:auto}
+#stage-screen .stage-options{display:flex;flex-direction:column;min-width:0;min-height:0;overflow:hidden;padding:10px;gap:8px;background:#0d1728cc}
+#stage-screen .stage-list{flex:1;min-height:0;min-width:0;overflow:auto;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;align-content:start}
+#stage-screen .stage-entry{min-width:0;padding:10px;font-size:12px;line-height:1.6;height:auto}
+#stage-screen .stage-entry :is(strong,span,small){white-space:normal;overflow-wrap:anywhere;line-height:1.6}
+#stage-screen .stage-information{padding:0;overflow:visible;min-height:0}
+#stage-screen .stage-information h2{font-size:clamp(17px,2vw,26px);line-height:1.6;margin:6px 0 12px}
+#stage-screen .stage-information p,#stage-screen .stage-detail>p,#stage-screen .stage-detail>.scaling-note{font-size:12px;line-height:1.8;white-space:normal;overflow-wrap:anywhere;display:block}
+#stage-screen .stage-facts{display:flex;flex-direction:column;gap:7px;font-size:11px;line-height:1.7;margin:12px 0}
+#stage-screen .stage-facts span{display:flex;flex-wrap:wrap;gap:3px 8px;min-width:0}
+#stage-screen .stage-entry-actions{flex:0 0 auto;padding:8px 0 0;border-top:1px solid #8e9fb43d;display:flex;align-items:center;flex-wrap:wrap;gap:7px;min-width:0}
+#stage-screen .stage-entry-actions>label{font-size:11px;line-height:1.6}
+#stage-screen #stage-difficulties{display:flex;flex-wrap:wrap;gap:5px;flex:1;min-width:0}
+#stage-screen #stage-difficulties button{flex:1;min-width:45px;min-height:30px;font-size:11px;line-height:1.6;padding:5px}
+#stage-screen .stage-buttons{display:flex;gap:7px;width:100%;margin:0}
+#stage-screen .stage-buttons button{flex:1;min-width:0;min-height:32px;padding:7px;font-size:11px;line-height:1.6;white-space:normal}
+#stage-screen #rift-tier-wrap{max-width:100%;min-width:0;font-size:11px;line-height:1.6}
+#stage-screen #rift-tier{min-width:0;max-width:100%;width:72px;padding:5px}
+@media(max-width:740px){
+ #content-screen .content-layout,#stage-screen .stage-layout{grid-template-columns:clamp(145px,27vw,190px) minmax(0,1fr)}
+ #content-screen .content-copy,#stage-screen .stage-detail{padding:10px}
+ #content-screen .content-copy p,#stage-screen .stage-information p,#stage-screen .stage-detail>p,#stage-screen .stage-detail>.scaling-note{font-size:11px;line-height:1.75}
+ #content-screen .content-grid{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));padding:8px;gap:8px}
+ #stage-screen .stage-options{padding:8px}.stage-entry-actions{gap:5px}
+}
