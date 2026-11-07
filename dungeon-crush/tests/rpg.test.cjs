@@ -2,18 +2,18 @@ const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/st
 const env={};vm.createContext(env);vm.runInContext(fs.readFileSync('app/src/main/assets/rpg.js','utf8'),env);const R=env.RiftRPG;
 function config(dungeon=0,kind='story',tier=1){return {dungeon,kind,tier,difficulty:0};}
 function win(s,cls,id,dungeon=0,extra={}){return R.settle(s,cls,{id,win:true,dungeon,difficulty:0,kind:'story',kills:40,party:false,...extra},()=>.5,new Date(2026,10,6));}
-assert.equal(R.DUNGEONS.length,24);assert.equal(R.REGIONS.length,8);assert.equal(R.CAP,60);
+assert.equal(R.DUNGEONS.length,36);assert.equal(R.REGIONS.length,12);assert.equal(R.CAP,100);
 // v1 migration preserves character level, currency and trained attributes.
 {const s=R.sanitize({version:1,gold:13579,chars:[{xp:180*29**2,atk:7,vit:5,focus:3}]});assert.equal(s.version,2);assert.equal(s.gold,13579);assert.equal(R.level(s.chars[0]),30);assert.equal(s.chars[0].atk,7);assert.equal(s.chars[0].items.length,6);assert(R.profile(s,0).gearAtk>0);const reload=R.sanitize(JSON.parse(JSON.stringify(s)));assert.equal(JSON.stringify(reload),JSON.stringify(s));}
 {const s=R.sanitize({version:2,gold:-99,chars:[{xp:'bad',items:[],ledger:{bad:true},log:44,day:{key:'today',claimed:{a:1}}}]});assert.equal(s.gold,0);assert.equal(R.level(s.chars[0]),1);assert.equal(s.chars[0].items.length,6);}
 // All 24 main quests require a real dungeon clear; rewards unlock the next level gate.
 const campaign=R.sanitize(null);let advances=0;
-for(let i=0;i<24;i++){
+for(let i=0;i<36;i++){
  assert(R.entry(campaign,0,config(i)).ok,'entry '+i);const q=R.quest(campaign,0);assert.equal(q.id,i);assert.equal(q.ready,false);assert.equal(R.claimQuest(campaign,0).ok,false);
  assert(win(campaign,0,'story-'+i,i).ok);assert(R.quest(campaign,0).ready);assert(R.claimQuest(campaign,0).ok);assert.equal(campaign.chars[0].story,i+1);
  if(i===7){assert(R.promote(campaign,0).ok);advances++;}if(i===16){assert(R.promote(campaign,0,true).ok);advances++;}
 }
-assert.equal(advances,2);assert.equal(R.level(campaign.chars[0]),60);assert.equal(R.quest(campaign,0),null);assert(R.entry(campaign,0,config(23,'rift',1)).ok);assert(R.entry(campaign,0,config(23,'raid')).ok);
+assert.equal(advances,2);assert.equal(R.level(campaign.chars[0]),100);assert.equal(R.quest(campaign,0),null);assert(R.entry(campaign,0,config(23,'rift',1)).ok);assert(R.entry(campaign,0,config(23,'raid')).ok);
 // Run IDs are idempotent; no duplicate loot, XP or currency after reload/replayed state.
 {const s=R.sanitize(null);const first=win(s,0,'only-once');assert(first.ok);const before=JSON.stringify(s);assert.equal(win(s,0,'only-once').duplicate,true);assert.equal(JSON.stringify(s),before);const reloaded=R.sanitize(JSON.parse(before));assert(win(reloaded,0,'only-once').duplicate);}
 // Endgame is repeatable; rift unlocks one tier at a time and mastery keeps growing at cap.

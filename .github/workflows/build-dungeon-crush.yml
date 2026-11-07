@@ -11,7 +11,7 @@ permissions:
 jobs:
   apk:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     defaults:
       run:
         working-directory: dungeon-crush
@@ -41,6 +41,7 @@ jobs:
           node tests/party-recovery.test.cjs
           node tests/run-cast-fix.test.cjs
           node tests/new-content.test.cjs
+          node tests/expansion.test.cjs
       - name: Test native four-player LAN transport
         run: |
           mkdir -p build/lan-test
@@ -62,6 +63,10 @@ jobs:
           NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
       - name: Verify new mage, regional bosses and right-item sale confirmation
         run: node tests/new-content-presentation.test.cjs
+        env:
+          NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
+      - name: Verify configurable skill slots, anchored dialogs and four-peer free-for-all
+        run: node tests/expansion-presentation.test.cjs
         env:
           NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
       - name: Verify cold jump/dash and actual run torso pixels
@@ -218,11 +223,11 @@ jobs:
           python3 -c "from pathlib import Path; assert 'Signer #1 certificate SHA-256 digest: e43fedd9099e7b5df82eccfa3e92fc020d429ad99795463abbe40e2af4880708' in Path('build/apk-signer.txt').read_text(), 'APK signer changed; preserve update compatibility'"
           python tools/verify-apk-identity.py "$ANDROID_HOME/build-tools/35.0.0/aapt" app/build/outputs/apk/debug/app-debug.apk com.dungeoncrush.game com.dungeoncrush.game.MainActivity "던전크러시!"
           python tools/verify-bundled-art.py app/build/outputs/apk/debug/app-debug.apk
-          cp app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/DungeonCrush-2.9.9.apk
+          cp app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/DungeonCrush-2.10.0.apk
       - uses: actions/upload-artifact@v4
         with:
           name: DungeonCrush-APK
-          path: dungeon-crush/app/build/outputs/apk/debug/DungeonCrush-2.9.9.apk
+          path: dungeon-crush/app/build/outputs/apk/debug/DungeonCrush-2.10.0.apk
           if-no-files-found: error
           retention-days: 30
       - name: Split verified APK for reliable downloads
@@ -231,10 +236,10 @@ jobs:
           from pathlib import Path
           from hashlib import sha256
           import json
-          p=Path('app/build/outputs/apk/debug/DungeonCrush-2.9.9.apk'); data=p.read_bytes(); out=Path('build/apk-parts');out.mkdir(parents=True,exist_ok=True);parts=[]
+          p=Path('app/build/outputs/apk/debug/DungeonCrush-2.10.0.apk'); data=p.read_bytes(); out=Path('build/apk-parts');out.mkdir(parents=True,exist_ok=True);parts=[]
           for n,start in enumerate(range(0,len(data),20*1024*1024),1):
-              chunk=data[start:start+20*1024*1024];name=f'DungeonCrush-2.9.9.apk.part{n:02}';(out/name).write_bytes(chunk);parts.append(dict(name=name,bytes=len(chunk),sha256=sha256(chunk).hexdigest()))
-          assert len(parts)<=8
+              chunk=data[start:start+20*1024*1024];name=f'DungeonCrush-2.10.0.apk.part{n:02}';(out/name).write_bytes(chunk);parts.append(dict(name=name,bytes=len(chunk),sha256=sha256(chunk).hexdigest()))
+          assert len(parts)<=16
           (out/'manifest.json').write_text(json.dumps(dict(file=p.name,bytes=len(data),sha256=sha256(data).hexdigest(),parts=parts),indent=2))
           PYCODE
       - uses: actions/upload-artifact@v4
@@ -281,4 +286,44 @@ jobs:
         with:
           name: DungeonCrush-APK-Part-08
           path: dungeon-crush/build/apk-parts/*.part08
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: DungeonCrush-APK-Part-09
+          path: dungeon-crush/build/apk-parts/*.part09
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: DungeonCrush-APK-Part-10
+          path: dungeon-crush/build/apk-parts/*.part10
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: DungeonCrush-APK-Part-11
+          path: dungeon-crush/build/apk-parts/*.part11
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: DungeonCrush-APK-Part-12
+          path: dungeon-crush/build/apk-parts/*.part12
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: DungeonCrush-APK-Part-13
+          path: dungeon-crush/build/apk-parts/*.part13
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: DungeonCrush-APK-Part-14
+          path: dungeon-crush/build/apk-parts/*.part14
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: DungeonCrush-APK-Part-15
+          path: dungeon-crush/build/apk-parts/*.part15
+          if-no-files-found: ignore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: DungeonCrush-APK-Part-16
+          path: dungeon-crush/build/apk-parts/*.part16
           if-no-files-found: ignore

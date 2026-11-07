@@ -2,7 +2,7 @@ const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/st
 const context={console};vm.createContext(context);vm.runInContext(fs.readFileSync('app/src/main/assets/rpg.js','utf8'),context);vm.runInContext(fs.readFileSync('app/src/main/assets/engine.js','utf8'),context);const E=context.Rift;
 function arena(cls=0){const s=E.create();s.players=[E.player(0,'테스터',cls,60,{ranks:[1,1,1,1,1,1],advanced:true,awakened:true})];E.start(s);s.enemies=[{id:99,type:'knight',x:410,y:570,hp:10000,maxHp:10000,dir:-1,cd:10,stun:0,at:0}];return s;}
 function tick(s,n=1,input={}){for(let i=0;i<n;i++)E.step(s,{0:input},1/60);}
-assert.equal(E.CLASSES.length,5);assert.equal(E.DUNGEONS.length,24);assert.equal(new Set(E.CLASSES.flatMap(c=>c.skills.map(s=>s.name))).size,30);
+assert.equal(E.CLASSES.length,6);assert.equal(E.DUNGEONS.length,36);assert.equal(new Set(E.CLASSES.flatMap(c=>c.skills.map(s=>s.name))).size,36);
 for(let cls=0;cls<4;cls++){
  const s=arena(cls),p=s.players[0];assert.equal(p.hp,p.maxHp);assert.equal(p.cd.length,7);
  let hp=s.enemies[0].hp;assert(E.attack(s,p,0));assert.equal(E.attack(s,p,0),false);assert.equal(s.enemies[0].hp,hp,'all attacks respect their drawn windup');tick(s,cls===3?75:Math.ceil(p.impactTime*60)+1);assert(s.enemies[0].hp<hp);
@@ -22,7 +22,7 @@ for(let d=0;d<24;d++)for(let diff=0;diff<4;diff++){
 {const s=arena();s.players[0].hp=0;tick(s);assert.equal(s.phase,'defeat');const before=s.time;tick(s,30);assert.equal(s.time,before);}
 // Identical inputs have identical authoritative outcomes independent of renderer.
 {const a=arena(2),b=arena(2);for(let i=0;i<600;i++){const v={x:i%120<60?1:-1,attack:i%3===0,skill:i%70===0?1:0};tick(a,1,v);tick(b,1,v);}assert.equal(JSON.stringify(a),JSON.stringify(b));assert(a.fx.length<=100);}
-{const p=E.player(0,'<script>',99,999,{vit:999,atk:999,focus:999});assert.equal(p.cls,4);assert.equal(p.level,60);assert(!p.name.includes('<'));assert(p.focus<=20);}
+{const p=E.player(0,'<script>',99,999,{vit:999,atk:999,focus:999});assert.equal(p.cls,5);assert.equal(p.level,100);assert(!p.name.includes('<'));assert(p.focus<=20);}
 for(const file of ['index.html','rpg.js','engine.js','app.js','town.js','game.css','town.css','art/fighters.webp','art/enemies.webp','art/sanctum.webp'])assert(fs.statSync('app/src/main/assets/'+file).size>100);
 const manifest=fs.readFileSync('app/src/main/AndroidManifest.xml','utf8');assert(manifest.includes('android.permission.INTERNET'));assert(manifest.includes('sensorLandscape'));
 const build=fs.readFileSync('app/build.gradle','utf8');assert(build.includes("applicationId 'com.dungeoncrush.game'"),'new game must never replace original CatHome');
