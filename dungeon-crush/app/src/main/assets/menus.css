@@ -197,3 +197,7 @@
 .client-screen>.client-heading{height:auto;min-height:var(--heading-height);align-items:center}
 .client-heading h2{min-width:0;white-space:normal;word-break:keep-all;overflow-wrap:anywhere}
 #stage-screen #stage-condition,#stage-screen .scaling-note{word-break:keep-all;overflow-wrap:break-word}
+
+/* Close is a fixed vector control, so text scaling cannot spill into the list. */
+.modal .close{display:flex;align-items:center;justify-content:center;line-height:1;padding:0}
+.close-icon{display:block;width:18px;height:18px;flex:0 0 18px;pointer-events:none}
