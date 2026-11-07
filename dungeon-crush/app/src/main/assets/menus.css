@@ -179,3 +179,12 @@
  #content-screen .content-grid{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));padding:8px;gap:8px}
  #stage-screen .stage-options{padding:8px}.stage-entry-actions{gap:5px}
 }
+@media(max-height:380px){
+ #content-screen .content-grid{grid-auto-rows:max-content}
+ #content-screen .content-card{min-height:0;justify-content:flex-start;padding:10px;overflow:visible}
+ #content-screen .content-card .content-index{font-size:8px;line-height:1.6}
+ #content-screen .content-card h3{font-size:15px;line-height:1.4;margin:6px 0}
+ #content-screen .content-card p{font-size:10px;line-height:1.6;margin:0 0 6px}
+ #content-screen .content-card>small{font-size:9px;line-height:1.5}
+ #content-screen .content-card>b{font-size:10px;line-height:1.5;margin-top:6px;padding-top:6px}
+}
