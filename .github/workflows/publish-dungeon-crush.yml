@@ -17,19 +17,18 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
     steps:
-      - name: Download verified 2.9.5 APK and reviewed UI screens
+      - name: Download verified 2.9.6 APK and reviewed UI screens
         run: |
-          gh run download 42320234613 --name DungeonCrush-APK --dir apk
-          gh run download 42320234613 --name DungeonCrush-Inventory-Previews --dir previews
-          gh run download 42320234613 --name DungeonCrush-Town-Previews --dir town-previews
+          gh run download 42328011453 --name DungeonCrush-APK --dir apk
+          gh run download 42328011453 --name DungeonCrush-Menu-Previews --dir previews
       - name: Verify unchanged signed APK bytes and full offline Korean font
         run: |
           python3 - <<'PY'
           from pathlib import Path
           from hashlib import sha256
           from zipfile import ZipFile
-          p=Path('apk/DungeonCrush-2.9.5.apk');data=p.read_bytes()
-          assert len(data)==99174988 and sha256(data).hexdigest()=='85bc369b6197324d6a3a08a68a7b6147bb3057ad50b42edafb4c329289262431'
+          p=Path('apk/DungeonCrush-2.9.6.apk');data=p.read_bytes()
+          assert len(data)==99183081 and sha256(data).hexdigest()=='f4dd62e7e893d8cd7da6a92a5479db55456392b2d4ff94e972b21ec0e4e8b1e8'
           with ZipFile(p) as z:
               assert z.testzip() is None and 'AndroidManifest.xml' in z.namelist()
               assert len([n for n in z.namelist() if n.startswith('assets/art/motion29/') and n.endswith('.webp')])==85
@@ -42,14 +41,14 @@ jobs:
           PY
       - name: Package verified APK as a shareable ZIP
         run: |
-          python3 - apk/DungeonCrush-2.9.5.apk DungeonCrush-2.9.5-Share.zip <<'PY'
+          python3 - apk/DungeonCrush-2.9.6.apk DungeonCrush-2.9.6-Share.zip <<'PY'
           from pathlib import Path
           from zipfile import ZipFile,ZipInfo,ZIP_STORED
           from hashlib import sha256
           import sys
-          apk=Path(sys.argv[1]);output=Path(sys.argv[2]);data=apk.read_bytes();expected='85bc369b6197324d6a3a08a68a7b6147bb3057ad50b42edafb4c329289262431'
-          assert len(data)==99174988 and sha256(data).hexdigest()==expected
-          notes='던전크러시! 2.9.5 설치 및 공유 안내\r\n\r\n1. ZIP 압축을 풉니다.\r\n2. DungeonCrush-2.9.5.apk 파일을 눌러 기존 던전크러시에 업데이트 설치합니다.\r\n3. 기존 캐릭터 기록을 유지하려면 앱을 삭제하지 마세요.\r\n4. 친구도 같은 2.9.5 버전을 설치하세요.\r\n5. 같은 Wi-Fi에 연결하고 한 명이 방을 만든 뒤 친구는 방장 IP와 4자리 코드로 참가합니다.\r\n\r\n집사 사절과 별도로 설치되는 던전크러시 앱입니다.\r\nAPK SHA256: '+expected+'\r\n'
+          apk=Path(sys.argv[1]);output=Path(sys.argv[2]);data=apk.read_bytes();expected='f4dd62e7e893d8cd7da6a92a5479db55456392b2d4ff94e972b21ec0e4e8b1e8'
+          assert len(data)==99183081 and sha256(data).hexdigest()==expected
+          notes='던전크러시! 2.9.6 설치 및 공유 안내\r\n\r\n1. ZIP 압축을 풉니다.\r\n2. DungeonCrush-2.9.6.apk 파일을 눌러 기존 던전크러시에 업데이트 설치합니다.\r\n3. 기존 캐릭터 기록을 유지하려면 앱을 삭제하지 마세요.\r\n4. 친구도 같은 2.9.6 버전을 설치하세요.\r\n5. 같은 Wi-Fi에 연결하고 한 명이 방을 만든 뒤 친구는 방장 IP와 4자리 코드로 참가합니다.\r\n\r\n집사 사절과 별도로 설치되는 던전크러시 앱입니다.\r\nAPK SHA256: '+expected+'\r\n'
           with ZipFile(output,'w',compression=ZIP_STORED) as z:
               for name,content in [(apk.name,data),('INSTALL-KO.txt',b'\xef\xbb\xbf'+notes.encode('utf-8'))]:
                   item=ZipInfo(name,date_time=(2026,11,7,0,0,0));item.create_system=3;item.external_attr=0o100644<<16;item.compress_type=ZIP_STORED;z.writestr(item,content)
@@ -61,48 +60,50 @@ jobs:
       - name: Prepare reviewed inventory and HUD images
         run: |
           mkdir ui
-          cp previews/inventory-ui-equipped-filter.png ui/DungeonCrush-2.9.5-Equipment.png
-          cp town-previews/town-services-residents.png ui/DungeonCrush-2.9.5-Town.png
-          cp town-previews/town-services-comparison.png ui/DungeonCrush-2.9.5-Comparison.png
-          cp town-previews/town-services-shop.png ui/DungeonCrush-2.9.5-Shop.png
-          cp town-previews/town-services-forge.png ui/DungeonCrush-2.9.5-Forge.png
+          cp previews/menu-split-1280-inventory.png ui/DungeonCrush-2.9.6-Inventory.png
+          cp previews/menu-split-1280-shop.png ui/DungeonCrush-2.9.6-Shop.png
+          cp previews/menu-split-1280-quests.png ui/DungeonCrush-2.9.6-Quests.png
+          cp previews/menu-split-1280-forge.png ui/DungeonCrush-2.9.6-Forge.png
+          cp previews/menu-split-1280-skills.png ui/DungeonCrush-2.9.6-Skills.png
+          cp previews/menu-split-640-shop.png ui/DungeonCrush-2.9.6-Compact.png
       - name: Prepare install notes
         run: |
           cat > release-notes.md <<'EOF'
-          던전크러시! 2.9.5 장비 장착·해제·상세 비교와 마을 NPC 패치입니다.
+          던전크러시! 2.9.6 좌측 설명·우측 목록 메뉴 개선 APK입니다.
 
-          바로 설치: DungeonCrush-2.9.5.apk를 누르세요.
-          공유용 ZIP은 압축을 푼 뒤 안의 APK를 설치하세요. 기존 앱을 삭제하지 않고 업데이트하면 기록이 유지됩니다.
+          설치: DungeonCrush-2.9.6.apk를 눌러 기존 앱에 업데이트하세요. 기존 앱을 삭제하지 않으면 캐릭터 기록이 유지됩니다.
+          공유: ZIP 압축을 푼 뒤 안의 APK를 설치하세요.
 
-          - 왼쪽 착용 칸을 짧게 누르면 해제합니다. 가방 장비를 짧게 누르면 장착·교체하며 기존 장비는 가방에 남습니다.
-          - 길게 누르거나 상세·비교를 누르면 장착 상태를 바꾸지 않고 장비 설명과 비교를 봅니다. 공격력·최대 HP·집중·전투력 변화는 세트 효과까지 반영합니다.
-          - 마을 상인·대장장이·교관 NPC를 눌러 기능을 이용합니다. 가까이 이동한 뒤 대화창이 열리며 직접 움직이면 접근을 취소합니다.
-          - 상인: 현재 레벨의 일반·마법 장비 구매와 미착용 장비 판매. 대장장이: 기존 강화·제작·분해. 교관: 기존 전직·각성·스킬 정비.
-          - 착용·잠금 장비 판매/분해를 막고 판매 금액 확인 후 확정합니다. 빈 착용 칸도 재시작 후 유지됩니다.
-          - 기존 글꼴·필터·모션 크기·전투·파티 경험치·물약·같은 Wi-Fi 협동은 유지합니다. 집사 사절은 변경하지 않았습니다.
+          - 상점·가방·강화·제작·스킬·퀘스트를 좌측 메뉴/설명과 우측 목록/선택으로 나눴습니다. 짧은 휴대폰 화면에서도 위아래로 바뀌지 않으며 양쪽을 따로 스크롤합니다.
+          - 가방 필터·착용 정보·장비 설명을 왼쪽으로 모으고 오른쪽에는 장비 목록과 선택 동작을 배치했습니다. 기존 탭 장착/해제·교체와 길게 눌러 비교를 유지합니다.
+          - 상점 아이템 그림을 선택하면 왼쪽에서 옵션·가격을 확인하고 오른쪽에서 구매합니다. 강화 대상과 제작은 각각 독립된 목록에서 선택합니다.
+          - 퀘스트는 메인·일일·기록 필터, 진행 상태와 목표 막대, 보상 아이콘과 보고/수령 버튼을 갖춘 카드 목록으로 정리했습니다.
+          - 원정 종류·던전 선택·장비 비교·도움말·설정·파티·일시정지·정산도 설명은 왼쪽, 비교/설정/행동은 오른쪽으로 배치했습니다.
+          - 큰 재화 수치를 만·억 단위로 표시하며 정확한 수치는 접근성 정보와 설명에 유지합니다.
+          - 기존 NPC·그래픽·모션·전투·성장·파티 경험치·물약·같은 Wi-Fi 협동과 서명·앱 ID·저장 형식을 유지합니다. 집사 사절은 변경하지 않았습니다.
 
-          JavaScript 13개, 실제 TCP 4인 연결, Chromium 시나리오 15개를 검사했습니다. 장비 설명·비교와 주요 메뉴를 8가지 화면/노치 조건에서 검수했습니다. 첨부 PNG는 자동 조작한 검수 캐릭터 화면입니다. 실제 휴대폰 설치·기기간 Wi-Fi·장시간 성능 검증은 별도입니다.
-          검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42320234613
-          APK SHA256: 85bc369b6197324d6a3a08a68a7b6147bb3057ad50b42edafb4c329289262431
+          JavaScript 13개·실제 TCP 4인 연결·Chromium 15개 시나리오, 8가지 화면/노치 조건의 글씨/그림 겹침·좌우 배치·독립 스크롤과 실제 퀘스트 보상 전환을 검사했습니다. 첨부 이미지는 검수용 캐릭터 자동 조작 화면입니다. 실제 휴대폰·장시간 성능 검증은 별도입니다.
+          검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42328011453
+          APK SHA256: f4dd62e7e893d8cd7da6a92a5479db55456392b2d4ff94e972b21ec0e4e8b1e8
           EOF
       - name: Publish direct install, share ZIP and UI comparisons
         run: |
-          if gh release view dungeon-crush-v2.9.5 >/dev/null 2>&1; then
-            gh release download dungeon-crush-v2.9.5 --pattern DungeonCrush-2.9.5.apk --dir existing
-            cmp apk/DungeonCrush-2.9.5.apk existing/DungeonCrush-2.9.5.apk
-            gh release upload dungeon-crush-v2.9.5 DungeonCrush-2.9.5-Share.zip ui/*.png --clobber
+          if gh release view dungeon-crush-v2.9.6 >/dev/null 2>&1; then
+            gh release download dungeon-crush-v2.9.6 --pattern DungeonCrush-2.9.6.apk --dir existing
+            cmp apk/DungeonCrush-2.9.6.apk existing/DungeonCrush-2.9.6.apk
+            gh release upload dungeon-crush-v2.9.6 DungeonCrush-2.9.6-Share.zip ui/*.png --clobber
           else
-            gh release create dungeon-crush-v2.9.5 apk/DungeonCrush-2.9.5.apk DungeonCrush-2.9.5-Share.zip ui/*.png --target "$GITHUB_SHA" --title '던전크러시! 2.9.5 — 장비 장착·비교·마을 NPC' --notes-file release-notes.md --prerelease
+            gh release create dungeon-crush-v2.9.6 apk/DungeonCrush-2.9.6.apk DungeonCrush-2.9.6-Share.zip ui/*.png --target "$GITHUB_SHA" --title '던전크러시! 2.9.6 — 좌측 설명·우측 목록과 퀘스트 개선' --notes-file release-notes.md --prerelease
           fi
       - name: Verify every public download against checked files
         run: |
-          gh api "repos/$GITHUB_REPOSITORY/releases/tags/dungeon-crush-v2.9.5" > release-assets.json
+          gh api "repos/$GITHUB_REPOSITORY/releases/tags/dungeon-crush-v2.9.6" > release-assets.json
           python3 - <<'PY'
           from pathlib import Path
           from hashlib import sha256
           import json
-          release=json.loads(Path('release-assets.json').read_text());assets={a['name']:a for a in release['assets']};images=list(Path('ui').glob('*.png'));assert len(images)==5
-          for p in [Path('apk/DungeonCrush-2.9.5.apk'),Path('DungeonCrush-2.9.5-Share.zip'),*images]:
+          release=json.loads(Path('release-assets.json').read_text());assets={a['name']:a for a in release['assets']};images=list(Path('ui').glob('*.png'));assert len(images)==6
+          for p in [Path('apk/DungeonCrush-2.9.6.apk'),Path('DungeonCrush-2.9.6-Share.zip'),*images]:
               a=assets[p.name];assert a['size']==p.stat().st_size and a['digest']=='sha256:'+sha256(p.read_bytes()).hexdigest(),p.name
           print('Verified published original APK, mandatory share ZIP and all reviewed UI images.')
           PY
