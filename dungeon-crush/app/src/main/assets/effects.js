@@ -33,7 +33,7 @@ function overlay(c,camera,images){c.save();c.globalCompositeOperation='lighter';
  c.save();c.font='700 '+fontSize+'px "Rift UI",sans-serif';const metrics=c.measureText(cutin.name),w=Math.max(460,Math.ceil(metrics.width+190)),h=92;
  const selectors='#hud .player-panel,#hud .area,#hud .hud-tools,#hud .minimap,#hud .hud-footer,#hud .combat-xp,#toast,#play-controls button,#play-controls #joystick';
  const panels=root.document?[...root.document.querySelectorAll(selectors)].map(n=>{const r=n.getBoundingClientRect();return {x:r.left*1600/viewportWidth,y:r.top*800/viewportHeight,w:r.width*1600/viewportWidth,h:r.height*800/viewportHeight};}).filter(r=>r.w>0&&r.h>0):[];
- const obstacles=[...panels,...(root.RiftApp?.getView?.().nameplates||[])].map(r=>({x:r.x-12,y:r.y-12,w:r.w+24,h:r.h+24}));
+ const view=root.RiftApp?.getView?.()||{},obstacles=[...panels,...(view.nameplates||[]),...(view.enemyLabels||[])].map(r=>({x:r.x-12,y:r.y-12,w:r.w+24,h:r.h+24}));
  const preferred={id:-1,x:(1600-w)/2,y:210,w,h},box=root.DungeonUILayout?.nameplates([preferred],obstacles)[0]||preferred,{x,y}=box,tx=x+155,baseline=y+57;
  c.globalAlpha=Math.min(1,cutin.life*4);c.fillStyle='#0a101eed';c.beginPath();c.moveTo(x,y);c.lineTo(x+w,y);c.lineTo(x+w-20,y+h);c.lineTo(x,y+h);c.fill();c.fillStyle=cutin.color;c.fillRect(x,y+h-2,w-20,2);
  if(images.fighters){const im=cutin.cls===4&&images.magePortrait?images.magePortrait:images.fighters,sw=cutin.cls===4&&images.magePortrait?im.width:im.width/4;c.save();c.beginPath();c.rect(x,y,135,h-2);c.clip();c.drawImage(im,cutin.cls===4?0:sw*cutin.cls,0,sw,im.height,x-10,y-90,160,320);c.restore();}
