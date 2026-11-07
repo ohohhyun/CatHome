@@ -143,3 +143,7 @@
  #gear-inspect-body .inspect-heading>.item-art{width:48px;height:48px;margin-bottom:5px}
  #gear-inspect-body .inspect-heading h2{font-size:16px}
 }
+/* The close control owns a fixed area above independently scrolling choices. */
+.split-dialog>.dialog-options,#gear-inspect-body>.dialog-options{margin-top:40px;padding-top:12px}
+.workspace-wallet{min-height:40px;box-sizing:border-box}
+#rpg-screen :is(.shop-card,.craft-card) button{min-width:0;max-width:100%;width:100%;box-sizing:border-box}
