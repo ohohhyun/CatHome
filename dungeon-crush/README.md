@@ -6,11 +6,22 @@ CatHome 저장소의 `dungeon-crush/`에 별도 Android 프로젝트로 보관�
 
 **던전크러시!은 별도 앱 `com.dungeoncrush.game`입니다. ‘집사 사절!’의 `com.cathome.game`을 대체하지 않습니다.** 두 게임을 함께 설치할 수 있습니다. 이번 패치는 전용 브랜치의 던전크러시 파일과 전용 빌드/배포 워크플로에만 적용했습니다. 기존 게임의 원본 앱·루트 빌드·복구 APK는 변경하지 않습니다.
 
-[던전크러시 2.9.4 APK 직접 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9.4/DungeonCrush-2.9.4.apk) · [친구 공유용 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9.4/DungeonCrush-2.9.4-Share.zip) · [변경 화면과 릴리스](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.9.4). APK 파일을 눌러 설치하며 압축을 풀 필요가 없습니다. 친구에게 다운로드 링크를 공유할 수 있습니다. 첨부 이미지는 브라우저에서 자동 조작한 검수용 캐릭터 화면입니다.
+[던전크러시 2.9.5 APK 직접 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9.5/DungeonCrush-2.9.5.apk) · [친구 공유용 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9.5/DungeonCrush-2.9.5-Share.zip) · [변경 화면과 릴리스](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.9.5). APK 파일을 눌러 설치하며 압축을 풀 필요가 없습니다. 친구에게 다운로드 링크를 공유할 수 있습니다. 첨부 이미지는 브라우저에서 자동 조작한 검수용 캐릭터 화면입니다.
 
-새 게임 versionCode 24 / versionName 2.9.4-inventory-ui. 기존 2.9와 같은 서명·앱 ID·프로토콜 6·저장 형식을 유지합니다. 같은 화면을 보려면 파티원 모두 2.9.4로 업데이트를 권장합니다. 이번 전용 워크플로는 던전크러시만 빌드합니다. 집사 사절 코드·빌드·복구 APK는 수정하거나 빌드하지 않습니다. 예전 공유 ID APK는 배포 대상이 아닙니다.
+새 게임 versionCode 25 / versionName 2.9.5-town-equipment. 기존 2.9와 같은 서명·앱 ID·프로토콜 6·저장 형식을 유지합니다. 같은 화면을 보려면 파티원 모두 2.9.5로 업데이트를 권장합니다. 이번 전용 워크플로는 던전크러시만 빌드합니다. 집사 사절 코드·빌드·복구 APK는 수정하거나 빌드하지 않습니다. 예전 공유 ID APK는 배포 대상이 아닙니다.
 
 Android 6.0 이상과 최신 Android System WebView를 권장합니다. GitHub Artifact 다운로드에는 로그인이 필요하며 파일 앱의 ‘알 수 없는 앱 설치’ 허용이 필요할 수 있습니다. 테스트 서명 APK이며 Play 스토어용 서명은 아닙니다.
+
+## 2.9.5 장비 장착·해제·비교와 마을 주민
+
+- 왼쪽 착용 칸을 짧게 누르면 해제하고, 가방의 장비를 짧게 누르면 장착·교체합니다. 교체된 장비는 가방에 남고, 해제한 빈 칸도 재시작 후 유지됩니다. 착용 레벨 조건과 기존 캐릭터별 장비·잠금·강화 기록을 유지합니다.
+- 길게 누르거나 ‘상세·비교’를 누르면 장착 상태를 바꾸지 않고 설명을 봅니다. 현재 장비와 선택 장비의 공격력·최대 HP·집중을 비교하고, 세트 효과가 바뀌는 것까지 반영한 실제 교체 후 능력 변화·전투력을 표시합니다. Android 뒤로가기는 상세 창부터 닫습니다.
+- 마을의 상인 레아, 대장장이 볼트, 교관 이리스를 누르면 가까이 이동한 뒤 서비스 창을 엽니다. 직접 이동·점프·회피하면 자동 접근을 취소합니다. NPC 이미지는 새로 생성한 투명 원화를 오프라인으로 포함하며 캐릭터보다 뒤에 그립니다.
+- 상인은 현재 레벨의 일반·마법 장비 구매와 미착용 장비 판매를 맡습니다. 구매는 가방에 보관하고 자동으로 착용하지 않으며, 판매는 금액 확인 후 확정합니다. 착용·잠금 장비 판매와 중복 판매를 막습니다.
+- 대장장이는 기존 장비 강화·제작·분해, 교관은 기존 전직·각성·스킬 기능을 제공합니다. 가방의 강화·분해 안내도 해당 NPC로 연결합니다. 장비 그림·착용 배지·필터·정렬, 기존 전투·경험치·50% 물약·모션 크기·같은 Wi-Fi 협동을 유지합니다.
+- 검사는 실제 터치 길게 누르기와 놓기, 짧은 탭 장착·해제·교체, 실제 재시작, NPC 접근·취소, 구매·판매 확인·강화, 세트 변경과 읽기 전용 비교, 8가지 화면/노치 조건의 설명·비교와 주요 메뉴를 포함합니다. 실제 휴대폰 검증은 별도입니다.
+
+검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42320234613 · APK SHA256: `85bc369b6197324d6a3a08a68a7b6147bb3057ad50b42edafb4c329289262431` · 99174988 bytes. 공유 ZIP SHA256: `4b4afcb6fa99ab353dd59ac2dd580dcfaf39343c73c422e84ffced864e55f584` · 99175820 bytes. JavaScript 13개·실제 TCP 4인 연결·Chromium 시나리오 15개와 APK 서명/앱 ID/포함 파일·공개 다운로드 검증을 통과했습니다. 실제 터치 길게 누르기, 장착·해제·교체·재시작, 세트 효과 비교, NPC 접근·취소, 구매·판매 확정·강화, 8가지 화면/노치 조건의 주요 메뉴·장비 설명·비교를 포함합니다. 첨부 PNG는 검수 캐릭터의 자동 조작 화면이며 실제 휴대폰 검증은 별도입니다.
 
 ## 2.9.4 인벤토리·필터·글씨 수정
 
