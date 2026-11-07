@@ -6,11 +6,21 @@ CatHome 저장소의 `dungeon-crush/`에 별도 Android 프로젝트로 보관�
 
 **던전크러시!은 별도 앱 `com.dungeoncrush.game`입니다. ‘집사 사절!’의 `com.cathome.game`을 대체하지 않습니다.** 두 게임을 함께 설치할 수 있습니다. 이번 패치는 전용 브랜치의 던전크러시 파일과 전용 빌드/배포 워크플로에만 적용했습니다. 기존 게임의 원본 앱·루트 빌드·복구 APK는 변경하지 않습니다.
 
-[던전크러시 2.9.7 APK 직접 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9.7/DungeonCrush-2.9.7.apk) · [친구 공유용 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9.7/DungeonCrush-2.9.7-Share.zip) · [변경 화면과 릴리스](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.9.7). APK 파일을 눌러 설치하며 압축을 풀 필요가 없습니다. 친구에게 다운로드 링크를 공유할 수 있습니다. 첨부 이미지는 브라우저에서 자동 조작한 검수용 캐릭터 화면입니다.
+[던전크러시 2.9.8 APK 직접 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9.8/DungeonCrush-2.9.8.apk) · [친구 공유용 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9.8/DungeonCrush-2.9.8-Share.zip) · [변경 화면과 릴리스](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.9.8). APK 파일을 눌러 설치하며 압축을 풀 필요가 없습니다. 친구에게 다운로드 링크를 공유할 수 있습니다. 첨부 이미지는 브라우저에서 자동 조작한 검수용 캐릭터 화면입니다.
 
-새 게임 versionCode 27 / versionName 2.9.7-equipped-first. 기존 2.9와 같은 서명·앱 ID·프로토콜 6·저장 형식을 유지합니다. 같은 화면을 보려면 파티원 모두 2.9.7로 업데이트를 권장합니다. 이번 전용 워크플로는 던전크러시만 빌드합니다. 집사 사절 코드·빌드·복구 APK는 수정하거나 빌드하지 않습니다. 예전 공유 ID APK는 배포 대상이 아닙니다.
+새 게임 versionCode 28 / versionName 2.9.8-text-fit. 기존 2.9와 같은 서명·앱 ID·프로토콜 6·저장 형식을 유지합니다. 같은 화면을 보려면 파티원 모두 2.9.8로 업데이트를 권장합니다. 이번 전용 워크플로는 던전크러시만 빌드합니다. 집사 사절 코드·빌드·복구 APK는 수정하거나 빌드하지 않습니다. 예전 공유 ID APK는 배포 대상이 아닙니다.
 
 Android 6.0 이상과 최신 Android System WebView를 권장합니다. GitHub Artifact 다운로드에는 로그인이 필요하며 파일 앱의 ‘알 수 없는 앱 설치’ 허용이 필요할 수 있습니다. 테스트 서명 APK이며 Play 스토어용 서명은 아닙니다.
+
+## 2.9.8 글씨 겹침·잘림 수정
+
+- 던전 카드의 장·지역명·레벨/상태 세 줄이 카드 안에 들어가도록 세로 배치와 내용에 맞춰 늘어나는 행 높이를 적용했습니다. 글씨를 숨기거나 작게 줄이는 방식으로 처리하지 않습니다.
+- 입장 조건은 단어 중간에서 끊어지지 않도록 줄바꿈을 조정하고, 제목은 줄 수에 맞춰 화면 헤더가 늘어나게 했습니다.
+- 확대 글씨에서 닫기 ‘×’가 버튼 밖으로 넘쳐 강화 목록과 겹치는 문제도 확인했습니다. 모든 닫기 버튼을 기존 접근성 이름이 있는 고정 벡터 아이콘으로 교체했습니다.
+- 기존 검사가 놓치던 소속 버튼·카드 밖으로 넘치는 글씨까지 검사합니다. 가방·상점·퀘스트·강화·제작·스킬·장비 비교·가이드·설정·LAN·전투·일시정지·결과 화면과 던전의 잠김/진행/정복 상태를 검사합니다.
+- 착용 장비 최우선→등급순 정렬, 기존 성장 기록·전투·모션·파티 기능을 유지합니다. 원본 집사 사절은 변경하지 않았습니다.
+
+검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42336220129 · APK SHA256: `b078efd8293c2caf77ec8305230b88c794966ef4c4c0e6980a5962af153a9fa8` · 99183748 bytes. 공유 ZIP SHA256: `04527f23ff101e2e31497381aaa4a67d62646b628a4d789801e73f0e61ebe76b` · 99184580 bytes. JavaScript 13개·실제 TCP 4인 연결·Chromium 15개 시나리오 및 APK 서명/앱 ID/포함 파일·공개 해시 검증을 통과했습니다. 화면 8조건과 진행 단계 5종 × 화면 3종 × 글씨 크기 3종, 확대 메뉴와 스크롤 끝까지 검사했습니다. 확대 글씨는 CSS로 재현한 검사 조건이며 실제 휴대폰/WebView 검증은 별도입니다.
 
 ## 2.9.7 착용 장비 최우선 정렬
 
