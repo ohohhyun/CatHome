@@ -6,11 +6,24 @@ CatHome 저장소의 `dungeon-crush/`에 별도 Android 프로젝트로 보관�
 
 **던전크러시!은 별도 앱 `com.dungeoncrush.game`입니다. ‘집사 사절!’의 `com.cathome.game`을 대체하지 않습니다.** 두 게임을 함께 설치할 수 있습니다. 이번 패치는 전용 브랜치의 던전크러시 파일과 전용 빌드/배포 워크플로에만 적용했습니다. 기존 게임의 원본 앱·루트 빌드·복구 APK는 변경하지 않습니다.
 
-[던전크러시 2.9.8 APK 직접 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9.8/DungeonCrush-2.9.8.apk) · [친구 공유용 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9.8/DungeonCrush-2.9.8-Share.zip) · [변경 화면과 릴리스](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.9.8). APK 파일을 눌러 설치하며 압축을 풀 필요가 없습니다. 친구에게 다운로드 링크를 공유할 수 있습니다. 첨부 이미지는 브라우저에서 자동 조작한 검수용 캐릭터 화면입니다.
+[던전크러시 2.9.9 APK 직접 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9.9/DungeonCrush-2.9.9.apk) · [친구 공유용 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9.9/DungeonCrush-2.9.9-Share.zip) · [변경 화면과 릴리스](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.9.9). APK 파일을 눌러 설치하며 압축을 풀 필요가 없습니다. 친구에게 다운로드 링크를 공유할 수 있습니다. 첨부 이미지는 브라우저에서 자동 조작한 검수용 캐릭터 화면입니다.
 
-새 게임 versionCode 28 / versionName 2.9.8-text-fit. 기존 2.9와 같은 서명·앱 ID·프로토콜 6·저장 형식을 유지합니다. 같은 화면을 보려면 파티원 모두 2.9.8로 업데이트를 권장합니다. 이번 전용 워크플로는 던전크러시만 빌드합니다. 집사 사절 코드·빌드·복구 APK는 수정하거나 빌드하지 않습니다. 예전 공유 ID APK는 배포 대상이 아닙니다.
+새 게임 versionCode 29 / versionName 2.9.9-aria-regions. 기존 버전과 같은 서명·앱 ID·저장 형식을 유지하며 다섯 번째 캐릭터를 추가합니다. LAN 프로토콜 7을 사용하므로 파티원 모두 2.9.9로 업데이트해야 합니다. 이번 전용 워크플로는 던전크러시만 빌드합니다. 집사 사절 코드·빌드·복구 APK는 수정하거나 빌드하지 않습니다. 예전 공유 ID APK는 배포 대상이 아닙니다.
 
 Android 6.0 이상과 최신 Android System WebView를 권장합니다. GitHub Artifact 다운로드에는 로그인이 필요하며 파일 앱의 ‘알 수 없는 앱 설치’ 허용이 필요할 수 있습니다. 테스트 서명 APK이며 Play 스토어용 서명은 아닙니다.
+
+## 2.9.9 아리아 · 지역별 적 · 판매 확인 개선
+
+- 원소 마법사 아리아를 다섯 번째 캐릭터로 추가했습니다. 원거리 기본 마법과 화염구·빙창·낙뢰·소용돌이·장벽·궁극기, 전용 장비/스킬 아이콘과 124개 모션 프레임을 포함합니다.
+- 몬스터 8종·보스 8종을 지역별로 배치하고 24개 던전의 보스 이름과 공격 패턴을 구분했습니다. 신규 적 모션은 576프레임입니다. 레이드와 균열에도 지역 구성이 적용됩니다.
+- 판매 대상 선택 시 가격·판매 확정·취소가 오른쪽 해당 아이템 바로 위에 나타납니다. 선택/취소는 골드와 아이템을 변경하지 않습니다.
+- 스킬 그림의 크기와 지속 시간을 늘리고 큰 스킬의 빛 효과를 강화했습니다. 시전 경고와 실제 공격 범위를 맞췄으며 시전자 사망 시 남은 시전과 투사체를 취소합니다.
+- 이름표와 적 안내 글씨를 큰 스킬 효과 위에 그려 가려지지 않도록 했습니다.
+- 궁극기 이름과 보스 시전·BREAK 안내는 HP·지역 정보·조작 버튼·파티원 이름과 겹치지 않도록 배치합니다. 적의 안내 글씨는 작은 화면에서 크기를 보정합니다.
+- 작은 화면과 확대 글씨에서 다섯 캐릭터 선택, 판매 확인과 장비 설명을 추가 검수합니다. 캐릭터 카드의 상단 레벨 정보와 하단 이름/직업이 별도 공간을 사용하고 목록은 독립적으로 스크롤합니다.
+- 기존 네 캐릭터의 저장 기록, 착용 우선 정렬과 4인 파티 한도를 유지합니다. 클래스 추가로 LAN 프로토콜은 7이며 파티원 모두 2.9.9를 설치해야 합니다. 기존 앱을 삭제하지 말고 업데이트 설치하세요.
+
+검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42354101717 · APK SHA256: `ef91777a7b685684ed01711b9fff194f8a0dbd2dc71bb2c10af4c361576a873a` · 141110192 bytes. 공유 ZIP SHA256: `e7c5953a8b20990ea0828fa1a42e8a4fb3a545d34d64e218223cc69daa8e8313` · 141111024 bytes. JavaScript 14개·실제 TCP 4인 연결·Chromium 16개 시나리오와 APK 서명/앱 ID/포함 파일·공개 해시 검증을 통과했습니다. 글씨 겹침·잘림 검사는 오류 0건이며, 화면 8조건, 진행 단계 5종 × 화면 3종 × 글씨 크기 3종, 다섯 캐릭터의 글씨 130/140% 확대와 스크롤 끝, 두 직업의 확대 메뉴 및 활성 판매 확인을 포함합니다. 확대 글씨는 CSS로 재현한 검사이며 실제 휴대폰/WebView 검증은 별도입니다.
 
 ## 2.9.8 글씨 겹침·잘림 수정
 
