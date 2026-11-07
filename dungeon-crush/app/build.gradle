@@ -6,8 +6,8 @@ android {
         applicationId 'com.dungeoncrush.game'
         minSdk 23
         targetSdk 35
-        versionCode 26
-        versionName '2.9.6-split-menus'
+        versionCode 27
+        versionName '2.9.7-equipped-first'
     }
     signingConfigs {
         debug {
