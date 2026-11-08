@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 82b0fe8
+          ref: 82b0fe80686c3108d9607d9a6d674c4ac68e67d8
       - name: Verify completed build and download its unchanged signed APK
         run: |
           test "$(gh api repos/$GH_REPO/actions/runs/42460800665 --jq .conclusion)" = success
