@@ -96,3 +96,11 @@
 - APK: `DungeonCrush-2.10.1.apk`, 237,657,135 bytes, versionCode **33**, versionName `2.10.1-motion-audit`.
 - APK SHA256: `222ea3c54e8b1a6fa3f917d9da97d81c4fd88f00b21b35b4396ecae324f2c605`. 기존 설치 서명 검증 통과.
 - 집사 사절 보호 트리·루트 파일 미변경. 앱을 삭제하지 않고 위 수정 APK를 업데이트 설치합니다. 실제 휴대폰의 프레임률/체감은 별도 확인 대상입니다.
+
+## 고정 ZIP 다운로드 (채팅 임시 링크 대체)
+
+- 공개 다운로드 페이지: https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.10.1-motion-audit
+- 파일: `DungeonCrush-MotionFix-33.zip` (APK·설치 안내·인수인계 포함).
+- 전용 배포 작업: https://github.com/ohohhyun/CatHome/actions/runs/42465613789 (완료). 검증 빌드 42460800665의 APK를 재빌드 없이 그대로 사용하고 SHA/크기/ZIP CRC와 공개 asset digest를 확인했습니다.
+- 공개 ZIP SHA256: `03484af930d4aaa30d3fd45bac544d06f58e4991e9d0ea4d9303edef5f629cae`, 237,669,677 bytes.
+- 채팅의 임시 OAI 링크와 로그인 필요한 Actions artifact 대신 위 공개 릴리스 페이지의 Assets에서 ZIP을 받습니다.
