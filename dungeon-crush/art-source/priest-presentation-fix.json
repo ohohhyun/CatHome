@@ -1,0 +1,39 @@
+{
+  "generator": "OpenAI image_gen",
+  "purpose": "Remove white/beige backgrounds without changing frame layout; retain full-body priest running cells.",
+  "assets": [
+    {
+      "file": "art/motion210/elian-skills.webp",
+      "bytes": 2201262,
+      "sha256": "03435934e2783f46523b94cce066a8ecf2d9c05e35fa9ce44470eecd2845a641",
+      "width": 1536,
+      "height": 1024,
+      "generator": "OpenAI image_gen",
+      "sourceImage": "exec-02782051-41f7-448a-b089-a6c4fe974be5.png",
+      "originalSha256": "8a55391286fe59a23bac8c04320f8b62d1fb60152db2ddca19a56e2288eeef3c",
+      "packaged": true
+    },
+    {
+      "file": "art/motion210/elian-growth-skills.webp",
+      "bytes": 2477402,
+      "sha256": "c060d77fd4b65442740020b45e84963043700f1b98de3eab8cfb284660b83616",
+      "width": 2172,
+      "height": 724,
+      "generator": "OpenAI image_gen",
+      "sourceImage": "exec-688c7f26-c9d9-483e-8377-7b439b44c55b.png",
+      "originalSha256": "164236cdfb0d6bd23474c43470d7877cb5f5c7b762ffa3370d96aeb800a6644f",
+      "packaged": true
+    },
+    {
+      "file": "art/motion210/elian-ultimate.webp",
+      "bytes": 2187326,
+      "sha256": "c4346354d2a5e4c51d6a4a3abc0cda1dae233e8de3069db1ea31c8a9deb50d81",
+      "width": 1774,
+      "height": 887,
+      "generator": "OpenAI image_gen",
+      "sourceImage": "exec-77492151-2a06-41a4-9363-32767af790fc.png",
+      "originalSha256": "626827ebb48addd317eb9a8b59b408d97e002e1f7bca5594375ea021355c1122",
+      "packaged": true
+    }
+  ]
+}
