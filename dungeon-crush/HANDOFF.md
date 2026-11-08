@@ -66,3 +66,14 @@
 - 프리스트 기본/성장/궁극기 3개 VFX 시트의 흰색·베이지 배경을 image_gen으로 제거했습니다. 프레임 크기/배치와 손실 없는 alpha를 유지하고 두 원화 manifest를 갱신했습니다. 출처: `art-source/priest-presentation-fix.json`.
 - `tests/priest-presentation.cjs`는 기존 hotfix Chrome 검사에서 실행됩니다. 양방향 8프레임을 전신 원본과 비교하고, 3개 스킬 시트의 실제 alpha와 어두운 배경 합성을 검사합니다.
 - 집사 사절 원본과 루트 워크플로는 수정하지 않습니다. APK는 기존 서명 보존 Actions에서 빌드하며 artifact 파일명은 기존 `DungeonCrush-2.10.1.apk`를 사용합니다.
+
+### 프리스트 수정판 검증 완료
+
+- 검증 소스: `382ffdde539bbb7961f5d5e7df8732fcfd48a06b`.
+- 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42447699140 (JavaScript 16개·Java TCP 4인·Chrome 18개, 총 35개 검사와 신규 프리스트 픽셀/alpha 검사 통과).
+- 설치 파일 ZIP: https://github.com/ohohhyun/CatHome/actions/runs/42447699140/artifacts/13603829434
+- APK: `DungeonCrush-2.10.1.apk`, 238,741,207 bytes, versionCode 32.
+- APK SHA256: `374d349c122eb9cd74e56fffb3c5dc35fbaa2526ead220471b274aef0db99b2c`. 기존 서명 `e43fedd9099e7b5df82eccfa3e92fc020d429ad99795463abbe40e2af4880708` 검증 통과.
+- `tools/verify-apk-identity.py`의 기대 설치 버전도 32로 갱신했습니다.
+- ZIP을 풀고 APK를 기존 앱에 업데이트 설치합니다. 앱을 삭제하지 않습니다. 수정판은 위 Actions artifact이며 기존 공개 2.10.1 릴리스 APK는 versionCode 31입니다.
+- 집사 사절 보호 트리(app/legacy/tests)와 루트 파일은 변경하지 않았습니다. 실제 휴대폰에서의 체감 확인은 별도입니다.
