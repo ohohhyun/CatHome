@@ -1,3 +1,23 @@
+# 2.10.0 최종 검증
+
+소스 `d67541aa5e7eb1308d6e0076a12a1c3be4d1fb97`의 [전체 빌드](https://github.com/ohohhyun/CatHome/actions/runs/42426416837)와 [배포 검증](https://github.com/ohohhyun/CatHome/actions/runs/42428203105)이 성공했습니다.
+
+- **33개 시나리오:** JavaScript 15개, Java 실제 TCP 4인 연결 1개, Chrome 17개. 기존 모션·장비·상점·퀘스트·파티 경험치·물약·캔버스 이름표를 포함합니다.
+- 새 UI: 던전/개인전용 가로 6칸, 해제·빈칸·위치 교환·재접속 저장, 3번 칸에서 100레벨 궁극기 사용, 누른 위치에 뜨는 판매·구매·강화 확인창을 실제 조작했습니다.
+- 네 독립 브라우저가 실제 네이티브 브리지 패킷을 교환했습니다. 레벨 29 제한과 30 해제, 4인 개인전 보정, 다른 세 명 공격, 자기만 치유, 물약 제한, 메뉴 중 계속 진행, 이탈·라운드·전적과 PvE 기록 보존을 검증했습니다.
+- 전체 글씨: 작은 가로 화면·태블릿·안전 영역, 6개 캐릭터, 130%/140% 확대 글씨, 여러 스크롤 위치와 모든 메뉴를 검사했습니다. 정지 메인/선택과 기존 달리기·점프·대시·몸 크기·24포즈 공격 검사도 유지했습니다.
+- 새 런타임 WebP 85개. 캐릭터 744포즈, 적 1,664포즈, 스킬 이펙트 432셀, 궁극기 48셀, 스킬 아이콘 54개. 등재된 260개 중 228개는 APK에 포함하며 32개 대체 자산은 의도적으로 제외합니다. 새 이미지의 불투명 RGB PSNR은 35dB 이상입니다.
+- 설치 패키지 `com.dungeoncrush.game`, Activity `com.dungeoncrush.game.MainActivity`, 앱 이름 `던전크러시!`, 설치 버전 30을 컴파일된 APK에서 확인했습니다. 기존 서명과 전체 한글 글꼴을 유지합니다.
+- APK: **238,656,266 bytes**, SHA-256 `e8b2331339132ef7d0fb62b8e5f08125981a922a8f764167aced5c2bb19d1a15`. 기존 서명 `e43fedd9099e7b5df82eccfa3e92fc020d429ad99795463abbe40e2af4880708`.
+- Share ZIP: **238,657,103 bytes**, SHA-256 `d61971eb0ac5d6eaa76b206975554a497505d79da81560f6c027053eda251ff6`. 일반 ZIP_STORED, UTF-8 BOM 한글 안내문, CRC와 **실제 압축 해제 후 APK 해시 일치**를 확인했습니다. 12개 전송 아카이브와 각 조각도 검증했습니다.
+- 공개 APK·ZIP·검수 화면 7개의 크기와 SHA-256이 배포 과정에서 확인되었습니다. 공개 APK·ZIP은 로컬 검증 파일과도 일치합니다.
+- 집사 사절 원본 38개 파일과 원본 app/legacy/tests 트리 및 main 브랜치를 변경하지 않았습니다. 변경은 독립 dungeon-crush와 전용 workflow에 한정합니다.
+- 물리 휴대폰/공유기 하드웨어에서의 프레임률·터치 감각은 이 환경에서 검증하지 못했습니다.
+
+---
+
+이하 이전 버전 검증 기록입니다.
+
 # 2.9.9 mage, regional encounters and text audit — verified APK
 
 Source `737ab4c029d1f984649bf8469982a409bf9188a7`; [build 42354101717](https://github.com/ohohhyun/CatHome/actions/runs/42354101717) and [publisher 42355289178](https://github.com/ohohhyun/CatHome/actions/runs/42355289178) passed. [Share ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.9.9/DungeonCrush-2.9.9-Share.zip): 141111024 bytes, SHA256 `e7c5953a8b20990ea0828fa1a42e8a4fb3a545d34d64e218223cc69daa8e8313`. APK: 141110192 bytes, SHA256 `ef91777a7b685684ed01711b9fff194f8a0dbd2dc71bb2c10af4c361576a873a`. VersionCode 29 / 2.9.9-aria-regions; com.dungeoncrush.game, label 던전크러시!, unchanged signer e43fedd9099e7b5df82eccfa3e92fc020d429ad99795463abbe40e2af4880708.
