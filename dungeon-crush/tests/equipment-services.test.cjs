@@ -13,3 +13,4 @@ for(const [slot,rarity]of [[-1,0],[6,0],[1,4],[1,NaN],[1.5,0]]){const old=JSON.s
 save.gold=0;const count=c.items.length;assert(!R.buyGear(save,0,0,0).ok);assert.equal(c.items.length,count);save.gold=1e6;while(c.items.length<200)c.items.push({...c.items[0],id:save.nextId++});assert(!R.buyGear(save,0,0,0).ok);assert.equal(c.items.length,200);
 const low=R.sanitize(R.fresh()),item=low.chars[0].items[0];item.level=60;const lowBefore=JSON.stringify(low);assert(!R.equip(low,0,item.id).ok);assert.equal(JSON.stringify(low),lowBefore);
 console.log('PASS: six-slot unequip/reload, one-tap replacement preserving old items, immutable set-aware comparison matching the actual resulting build, level limits, shop gold/bag/rarity guards and worn/locked/double-sale protection.');
+require('./bulk-sale.cjs')(R);
