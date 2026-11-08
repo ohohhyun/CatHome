@@ -1,0 +1,627 @@
+{
+  "version": 1,
+  "convention": "1 = original artwork faces right; -1 = original artwork faces left. World e.dir stays unchanged.",
+  "review": "All 72 original walk/attack banks visually checked; bind each review to the exact source WebP SHA-256.",
+  "enemies": [
+    {
+      "id": "knight",
+      "walk": 1,
+      "attack": 1,
+      "sourceSha256": {
+        "art/motion29/knight-walk.webp": "2d19d6ed43838b9768c9a7ed0899ba5a2c360db30a91003269d67506450f6f7e",
+        "art/motion29/knight-walk-between-a.webp": "00592f4f89f0d1c3b146548e5fd6655ceaa45289e995fa94ab05d07d11c7866a",
+        "art/motion29/knight-walk-between-b.webp": "6d338eae2935fd55574796b33654672258d0f502f040b60a0f870f7b5b8eea11",
+        "art/motion29/knight-attack.webp": "9dfb099658b2aa573c5575e3c55f5f1ab033b317293f9883c10c1aa1d3674f44",
+        "art/motion29/knight-attack-between-a.webp": "1af453ad2d59108db1b9b1766a705cab35d7f9f7705975b6b30d582d7bcae019",
+        "art/motion29/knight-attack-between-b.webp": "0f6d8bf4c1aee2f22c8c62123bc98dfad587c96dce0e5fb1f43c6b8cf162ff40"
+      }
+    },
+    {
+      "id": "caster",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion29/caster-walk.webp": "50c5c741d5c4c3583e3048b2ea24422b8a4e2ea9c5ed96231827a69e703fb6e2",
+        "art/motion29/caster-walk-between-a.webp": "abc0c76e6bf7f4c4f88700349724c237409a375ad0484962fed38761f6a7736a",
+        "art/motion29/caster-walk-between-b.webp": "14943633e793d7933512471d377b1703ee4d3ab4b41c5af4e544868e068f1c8c",
+        "art/motion29/caster-attack.webp": "19dfaedd401603eeabb42c03926ac664d40de86f7198fcc854999a9a0be4dfef",
+        "art/motion29/caster-attack-between-a.webp": "447465510918ac4caa727442cc8b6e916d7061601ba7355c2bb63900bea72c1c",
+        "art/motion29/caster-attack-between-b.webp": "7824734b980e344a2ab2ab41cbdb490f5d4333fb2302f4765590b5a15eceeb82"
+      }
+    },
+    {
+      "id": "brute",
+      "walk": 1,
+      "attack": 1,
+      "sourceSha256": {
+        "art/motion29/brute-walk.webp": "7b86aac734e5a0e257bb9e35932dbe197eceb4410e80907886dfb221d4c52e4f",
+        "art/motion29/brute-walk-between-a.webp": "29cafdf602e16849ed9f1285ad832ec1700f841de3e73203a09bfd80f36536f1",
+        "art/motion29/brute-walk-between-b.webp": "fc6cc1f51488c00e8ebc11240fa6ac9e12bd28f3ea01a0dcb203bd17470d4856",
+        "art/motion29/brute-attack.webp": "7ea7e164613ec4275693451f501fd9abd90a3f9ad6d4450d46fa2e49e728aecd",
+        "art/motion29/brute-attack-between-a.webp": "83be17841bcdd3790f58136879b5c91d66785032350b358da24942cddd464397",
+        "art/motion29/brute-attack-between-b.webp": "82394021deb83d323fe9377bbab6a5e3258bb21a5f626a88a59c6be1cd7968da"
+      }
+    },
+    {
+      "id": "boss",
+      "walk": 1,
+      "attack": 1,
+      "sourceSha256": {
+        "art/motion29/boss-walk.webp": "42c431bb3c4238796fb1cb43eb32e44ded237984ee477f930e3beddd20e73603",
+        "art/motion29/boss-walk-between-a.webp": "019db5695d9c6b31461c1b63e6977667066e605aa29d54e666dcb77f3c570713",
+        "art/motion29/boss-walk-between-b.webp": "f86dfcc8b7ff8ffb34baabe06ed293b1812d459d80915bee63cd4fc7c36d12eb",
+        "art/motion29/boss-attack.webp": "c182e6110a40673d87e163f9b242af427f74d261dbee8101b1efb4a31bf3b062",
+        "art/motion29/boss-attack-between-a.webp": "49413a03bc3342e65a2e508f5c15cb40d7890fe34909e9a7806d50bc2b0cfddd",
+        "art/motion29/boss-attack-between-b.webp": "9a6ea0e415aba1b9ef088295eda026ac0d6691864fbd6c1c4c1d57420119495a"
+      }
+    },
+    {
+      "id": "automaton",
+      "walk": 1,
+      "attack": 1,
+      "sourceSha256": {
+        "art/motion299/automaton.webp": "efc02a9f13441a463d2ab765dc959d76cfb07d6f72e8dd45d317b04581085de3",
+        "art/motion299/automaton-between-a.webp": "5c2776c57c550db5fb8cd0f4e711b79e1f4df69568526f03111a780caf4eea2e",
+        "art/motion299/automaton-between-b.webp": "ec2c1972d1b2ebe8046704d6fe85c51158c8221cb24c56c8ce12f02154f894c0"
+      }
+    },
+    {
+      "id": "thornwolf",
+      "walk": 1,
+      "attack": 1,
+      "sourceSha256": {
+        "art/motion299/thornwolf.webp": "f01c6edf683e4779b58938cc4c4978ed56f982e2fab13b94b51ad2c37a4a0603",
+        "art/motion299/thornwolf-between-a.webp": "b10b9ea7cd54d9c04e57afdc5cc4e888286b56285f7dd67c8e16299f12d0d3fa",
+        "art/motion299/thornwolf-between-b.webp": "a121b45e3ad99d766d55dd96da524baa6b454bda6290e45ab7553dd33bff89c8"
+      }
+    },
+    {
+      "id": "sandscorpion",
+      "walk": 1,
+      "attack": 1,
+      "sourceSha256": {
+        "art/motion299/sandscorpion.webp": "74ef9970017d88b08016cc7104fedbf303c7b12218fc7048042af3f849f9a3ed",
+        "art/motion299/sandscorpion-between-a.webp": "fa9408075d8a33ac9ca49153fa0901bfa4dbf6e3f816538c87c15462f59e5438",
+        "art/motion299/sandscorpion-between-b.webp": "d1f6ff2f180b525b2abb03d5c6f24301c50b84c9cd8be53e84ead9d0c0ef65c7"
+      }
+    },
+    {
+      "id": "drownedwraith",
+      "walk": 1,
+      "attack": 1,
+      "sourceSha256": {
+        "art/motion299/drownedwraith.webp": "97b00b6376789e6fc0e9ebc0368043eb8cfce9df00d25ac8a7453bf3e9a4da11",
+        "art/motion299/drownedwraith-between-a.webp": "c532238f3bc214e45698f53d562ef1af0c418db9ed4f9df61c0f3c0217e53861",
+        "art/motion299/drownedwraith-between-b.webp": "4a512dfdcb0fc910a4b13a91c15517c5f21895824f0b682354988d7869589a29"
+      }
+    },
+    {
+      "id": "runepuppet",
+      "walk": 1,
+      "attack": 1,
+      "sourceSha256": {
+        "art/motion299/runepuppet.webp": "d6fd041029468217a2d4e9f020a273ca6baa76ef380b9b46b261d3e47b0c547b",
+        "art/motion299/runepuppet-between-a.webp": "9e0e839273978032bac63ca6b66026f71e3c474df964c2c3a9816bf69fe525e4",
+        "art/motion299/runepuppet-between-b.webp": "a60345fbce1eb3cf10f25ea905778aa9be7be7b100c608b8c6bc32140504ad14"
+      }
+    },
+    {
+      "id": "forgewarden",
+      "walk": 1,
+      "attack": 1,
+      "sourceSha256": {
+        "art/motion299/forgewarden.webp": "52f838195eb21585aaadc8476e0b938e4a4f5ec176267b0810b75b8953c1aec3",
+        "art/motion299/forgewarden-between-a.webp": "6afa02bc2ab73d5159e395c05e0d9d195785fe3d87ab4aafa41e0042c2835525",
+        "art/motion299/forgewarden-between-b.webp": "0f4042d55bff79948c8614c869940737098918b375ea5836cc02d13ee5c20a1d"
+      }
+    },
+    {
+      "id": "thornqueen",
+      "walk": 1,
+      "attack": 1,
+      "sourceSha256": {
+        "art/motion299/thornqueen.webp": "ab3fcdae043c8c61b0cac9f4671e75331ae02bdcb0e91171b2a83d7a915a99c4",
+        "art/motion299/thornqueen-between-a.webp": "0b61523265791ff6141783a7f5956bea53b8b359a4ad67e16bbb7dd659839015",
+        "art/motion299/thornqueen-between-b.webp": "b82ff63d2a54c77cf440295334fac2c548de7e053372f54cf3f15767bb78e07d"
+      }
+    },
+    {
+      "id": "crystalcolossus",
+      "walk": 1,
+      "attack": 1,
+      "sourceSha256": {
+        "art/motion299/crystalcolossus.webp": "3193502f30eee0bc4fceff579ca8fe8f7afde80ee76c2815804544bb1e242aee",
+        "art/motion299/crystalcolossus-between-a.webp": "01eab5224894e318251315e10609969d90e4353075b5fa3225f80eafac0e23ad",
+        "art/motion299/crystalcolossus-between-b.webp": "fffd18864672c7a2b3e078d10556ce0e6a9070911c2b2d898e9a13f9ff6b821b"
+      }
+    },
+    {
+      "id": "tideking",
+      "walk": 1,
+      "attack": 1,
+      "sourceSha256": {
+        "art/motion299/tideking.webp": "0a38a32479c514940bc6699644d24c7866fcd2f510c227323a2fab4f064f804c",
+        "art/motion299/tideking-between-a.webp": "15902e9247a319bf1f45dc5c76813a2d60cde42c568553a158920e684902dc23",
+        "art/motion299/tideking-between-b.webp": "947a0e865409dc6177e7c8d6aeb5b0b5425e71d69a4b4c41b49b8c56b64df08e"
+      }
+    },
+    {
+      "id": "stormharpy",
+      "walk": 1,
+      "attack": 1,
+      "sourceSha256": {
+        "art/motion299/stormharpy.webp": "22c6d3685d14e276cf250828c22de4f4765fe2da2a1ff9d19eb9b68bbac34694",
+        "art/motion299/stormharpy-between-a.webp": "ebba4dec9c8153ed5b25a9f33e629604b04e66857d29a339296b373add6ce68e",
+        "art/motion299/stormharpy-between-b.webp": "d3d28d743279a50e116295624331cfc488530b205f7fd34d847213bc78a27a92"
+      }
+    },
+    {
+      "id": "chronoscribe",
+      "walk": 1,
+      "attack": 1,
+      "sourceSha256": {
+        "art/motion299/chronoscribe.webp": "92bdecb398096d113f75091182223877a37b170890e1e84cd5f841f7c1188c04",
+        "art/motion299/chronoscribe-between-a.webp": "32276693aa3280e2827121c97726da95b592142a7741fc2432bb1a1032faf207",
+        "art/motion299/chronoscribe-between-b.webp": "e555bd73384bc7d484c0131dc17d14925cf000b2a67e6a36ae475ecf58a26815"
+      }
+    },
+    {
+      "id": "eclipseruler",
+      "walk": 1,
+      "attack": 1,
+      "sourceSha256": {
+        "art/motion299/eclipseruler.webp": "2fef6c24b2df592da9d41a0032971637cb6d3ca878c720efe1a2f39b2f574957",
+        "art/motion299/eclipseruler-between-a.webp": "b14ce4b8d7fce2520e6eb1122fcd9707b25bfc43631fa6425a3c9a78bfee0c2c",
+        "art/motion299/eclipseruler-between-b.webp": "79870ef45bd5658c703395e23f3da0352fe3157e70d721f7fc24770898b68cab"
+      }
+    },
+    {
+      "id": "ash-acolyte",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/ash-acolyte.webp": "57ae4998622e0842fba0a5f8ef626102701b6762da976bd9d63bf5889a0056df"
+      }
+    },
+    {
+      "id": "sanctum-judge",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/sanctum-judge.webp": "bfea044c05d5484087f54feb505fe991d50bb1e8590c0f127f21e1bdb18f18ea"
+      }
+    },
+    {
+      "id": "ash-hound",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/ash-hound.webp": "8c6a30d53c833cde4d5972d4e9bf0dec5143885e7213c1f1920c1050b8394a98"
+      }
+    },
+    {
+      "id": "fallen-sentinel",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/fallen-sentinel.webp": "f62d4407ae4256434732f279e48db46cdaa3645c0f34ab25708d98f0edb97017"
+      }
+    },
+    {
+      "id": "bolt-drone",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/bolt-drone.webp": "93aeca74650f9c2878f2f55757765f2fdbd65daacbce551225d93573819de667"
+      }
+    },
+    {
+      "id": "steam-jailer",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/steam-jailer.webp": "85f81de6657fe6799d27347d6479dfd064c4e5823e090b323ac25add1c5abf05"
+      }
+    },
+    {
+      "id": "foundry-salamander",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/foundry-salamander.webp": "c0aa12cd12a563feb9f2b89c22da59606ad301bc59b62504bac976ef196e8f3b"
+      }
+    },
+    {
+      "id": "furnace-serpent",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion211/furnace-serpent-clean.webp": "6d944621e11f89b06011f60c8b55423f6b6fe9d3a004f963aa316ab923c4ab2c"
+      }
+    },
+    {
+      "id": "mushroom-shaman",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion211/mushroom-shaman-clean.webp": "224dd61867debacdb200b6dd41d5c1ea40e0d33b1db35a2deccea5997f0ece55"
+      }
+    },
+    {
+      "id": "vine-warden",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/vine-warden.webp": "3d1b3e1e7204f4d8b478878a3c1617068393cb1219cd8595b5e86857a53177a9"
+      }
+    },
+    {
+      "id": "bark-archer",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/bark-archer.webp": "040e07a404911b3f4f581b9e43bc9e4cc61f95647377b91b51f0b0f09d5306e9"
+      }
+    },
+    {
+      "id": "moon-spider",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/moon-spider.webp": "630afbf74237f5f59ff71153f4b45a7d061e92b81565f3ab7e3a91624ac65517"
+      }
+    },
+    {
+      "id": "dune-raider",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion211/dune-raider-clean.webp": "ce49ce0aabaff543f8af3577e139841442215f76a22be04ae461809e69b39bba"
+      }
+    },
+    {
+      "id": "obsidian-manticore",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/obsidian-manticore.webp": "f204779f504835909ce76a2109c0600c2c9363262f099653d3a7591be100dd43"
+      }
+    },
+    {
+      "id": "mirror-gargoyle",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/mirror-gargoyle.webp": "2d73d3d870697dc62cd87571219d4a146d467b90fd285f295d5e654b71357aa1"
+      }
+    },
+    {
+      "id": "glass-pharaoh",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/glass-pharaoh.webp": "cfe07eb923105940064bf5d12eae8f9e4ef5cd3c581868681d6f46234a56e045"
+      }
+    },
+    {
+      "id": "drowned-marauder",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/drowned-marauder.webp": "10fe02e3fff33d00b0ea5c262506801e2133cceafc8f656d6009bee09c8e7236"
+      }
+    },
+    {
+      "id": "anchor-executioner",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/anchor-executioner.webp": "be238158af4f44408880e83b1eed45a080b8d3939ff0b00fd037d83011828197"
+      }
+    },
+    {
+      "id": "lantern-jelly",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/lantern-jelly.webp": "6f8d9c9f12ccc9e3cd67db6f92a23037d7aa841ed823f65a60dad31a41521551"
+      }
+    },
+    {
+      "id": "abyss-leviathan",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/abyss-leviathan.webp": "351ffdad4fdf862225aacbf54827b2cdbc7d2f7a84905e0e52138ad8404153d4"
+      }
+    },
+    {
+      "id": "clockwing-scout",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/clockwing-scout.webp": "ccdc51c73b80a61ba50752fd04f109a967264860a8006c403deb83f9a0883d8f"
+      }
+    },
+    {
+      "id": "thunder-drake",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/thunder-drake.webp": "8cf2b1353c5ccfe3ab09bfe9fca3ff8cf2e37497b9b30088a98bb5a342befda3"
+      }
+    },
+    {
+      "id": "storm-elemental",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/storm-elemental.webp": "93edb693d18bdcd11b1bf7daaed051f0a9a6eb2b6df566db5f91d5d7edef39d7"
+      }
+    },
+    {
+      "id": "tempest-valkyrie",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/tempest-valkyrie.webp": "4a60421365d7df65acb3459e092dc0b307279e6b92bbcaf43c4c6aa3e59202ca"
+      }
+    },
+    {
+      "id": "living-quill",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/living-quill.webp": "c93f8516d5a7b20b5b9505dd4c16f56f5db5cf23956621e72fddc7fc6387842c"
+      }
+    },
+    {
+      "id": "hourglass-golem",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/hourglass-golem.webp": "c81c09c9ae7cc3da4602c3d94b84d8b2019677a47d76283c28d72d0810831da4"
+      }
+    },
+    {
+      "id": "book-wisp",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/book-wisp.webp": "616e4eb500b38ffa27581cd5f104d724c836600251a2bedb8413c0f47a29ceb8"
+      }
+    },
+    {
+      "id": "grimoire-devourer",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/grimoire-devourer.webp": "16d2fec032870dff50cb32af9db73175ec6657ec7353de88c7329c9095aaebbc"
+      }
+    },
+    {
+      "id": "eclipse-reaper",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/eclipse-reaper.webp": "3a583f5ee974e39e887dca32d94b24e8a52d0a81cbe1be65bfe483d48562221e"
+      }
+    },
+    {
+      "id": "immortal-regent",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/immortal-regent.webp": "ba82fbc7b0974ea64d356c7a0ced6e870192581994ab7a2f31fc53480b72c5c8"
+      }
+    },
+    {
+      "id": "royal-praetorian",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/royal-praetorian.webp": "7785bdca0492ea5addac15a9fa008c2fbc0a4530af61b9957101c60cb5e6e763"
+      }
+    },
+    {
+      "id": "void-archon",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/void-archon.webp": "090c58351198e7d94a890398c1d0e3920066c2eb29c4430602a61c00c4dfde96"
+      }
+    },
+    {
+      "id": "frost-wolf",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/frost-wolf.webp": "2dfb4e39dbd92ecfbaf62936a8264a7042b0d9b3a5a2d1e410bc8733d714c24e"
+      }
+    },
+    {
+      "id": "frozen-matriarch",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/frozen-matriarch.webp": "6e01ae92b618af7684f45fd51917a7a6d2525bb854452dd6dabfc95aefbf859b"
+      }
+    },
+    {
+      "id": "armor-yeti",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/armor-yeti.webp": "e1fcdd173378631df0c949d967ac57832da0fe176374acdd2ef6c3669ffa77da"
+      }
+    },
+    {
+      "id": "blizzard-behemoth",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/blizzard-behemoth.webp": "2c62c3256a72afeb467e5e0d9643f6d61e207583a28c6c87b4741354ce0d23e4"
+      }
+    },
+    {
+      "id": "glacier-witch",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/glacier-witch.webp": "a7e7f8bb0b1415ee78e0b7e0e97409fde9509477cde384032695272be44fabc3"
+      }
+    },
+    {
+      "id": "ice-titan",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/ice-titan.webp": "8591a52da00484865a538a1561dce06d5bd206fd936eb73ec571a1ef257498cb"
+      }
+    },
+    {
+      "id": "cinder-bat",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/cinder-bat.webp": "11ad08d09a2a96a0e5357f7cae1d658ffa5406887dfd0376f58cd33d716ec1e6"
+      }
+    },
+    {
+      "id": "lava-dragon",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/lava-dragon.webp": "6bd956ad6cdd2547dbaa2ab1df5c8b51f601df0f3d3f72f832152186270cf814"
+      }
+    },
+    {
+      "id": "obsidian-orc",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/obsidian-orc.webp": "3c42670fee7a7f7e06a61f6d638c2e90993c9535c3f087ff79ecccab97c1962f"
+      }
+    },
+    {
+      "id": "basalt-warlord",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/basalt-warlord.webp": "269ffd456b13a6b6de1a839cb9a042c2f3cad2b0c1fa018449fb28b60b9418d6"
+      }
+    },
+    {
+      "id": "lava-imp",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/lava-imp.webp": "3bc07cb86079cbf1ddb6fbaad96d76c397756d668f0fe1f24b2b1967169103b8"
+      }
+    },
+    {
+      "id": "demon-smith",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/demon-smith.webp": "f88eb0896bc73adaca090fb487306853dd2b39217e2e0d24c651aedb62a45533"
+      }
+    },
+    {
+      "id": "comet-hound",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion211/comet-hound-clean.webp": "b815a822810359e37bf52f00daad23a36dcc0b77bc94a83d3ab224d4bf22387c"
+      }
+    },
+    {
+      "id": "star-golem",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/star-golem.webp": "84089661499e008d7cef1682b3e62b063163f46ed574103227a5c20d70e8943d"
+      }
+    },
+    {
+      "id": "void-bishop",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/void-bishop.webp": "1c70f48ead3b800d937d9f6d98c5a93d2ce17861f1cd14bec7875d99ba796e73"
+      }
+    },
+    {
+      "id": "cosmic-moth",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/cosmic-moth.webp": "2babcdf9d24541289d71041d8496485d1f1186f1105db3ee1615d4e625b60f70"
+      }
+    },
+    {
+      "id": "orbit-sentinel",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/orbit-sentinel.webp": "d01717d5344caae38b6f8c7a0b53a144d6d8317aefdfe9540606c87d312f5e7c"
+      }
+    },
+    {
+      "id": "astral-judge",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/astral-judge.webp": "ae5ee17e05e51917b6a39a2c5b6c63e615d34b81ae7d85f0632077121c4f5127"
+      }
+    },
+    {
+      "id": "rift-knight",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/rift-knight.webp": "7e7414fda25f9c4cc60beb7906afbf9a156c3eaf2e239d873e326fdf914d5ccc"
+      }
+    },
+    {
+      "id": "dark-seraph",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/dark-seraph.webp": "7c5ae0a57053c19fc5bc3f169d737257cf07978a447b113bf7f61700fd8739eb"
+      }
+    },
+    {
+      "id": "starless-reaper",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/starless-reaper.webp": "e21bf8d92071e0fc28bd7437a2dc9bde520cc5481c9272cf53b6a73c8f671d31"
+      }
+    },
+    {
+      "id": "void-kraken",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/void-kraken.webp": "0b404216b87801977316ef1ad73f0ae24b934addd31abf2126cb3d1d35682d31"
+      }
+    },
+    {
+      "id": "void-cult-mage",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/void-cult-mage.webp": "24599052c812ac2bec6d012d0f362045094bfd394692b6c74e21a80206abaa5f"
+      }
+    },
+    {
+      "id": "abyss-dragon",
+      "walk": -1,
+      "attack": -1,
+      "sourceSha256": {
+        "art/motion210/abyss-dragon.webp": "f596019c670931dddc59b94f6d6c42e243a9318b8ccc5e4d1517b45ee539e4f3"
+      }
+    }
+  ]
+}

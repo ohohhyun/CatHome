@@ -1,5 +1,5 @@
 {
-  "version": "2.10.0",
+  "version": "2.10.1",
   "generator": "OpenAI image_gen",
   "characterFrames": 272,
   "effectFrames": 240,
@@ -2141,7 +2141,9 @@
       "generator": "OpenAI image_gen",
       "generated": "2026-11-07",
       "encoding": "lossless WebP; decoded RGBA identical",
-      "opaqueRgbPSNR": 99
+      "opaqueRgbPSNR": 99,
+      "packaged": false,
+      "supersededBy": "art/motion211/kael-run-consistent.webp"
     },
     {
       "id": "rin-run292",
@@ -2157,7 +2159,9 @@
       "generator": "OpenAI image_gen",
       "generated": "2026-11-07",
       "encoding": "lossless WebP; decoded RGBA identical",
-      "opaqueRgbPSNR": 99
+      "opaqueRgbPSNR": 99,
+      "packaged": false,
+      "supersededBy": "art/motion211/rin-run-consistent.webp"
     },
     {
       "id": "bane-run292",
@@ -2173,7 +2177,9 @@
       "generator": "OpenAI image_gen",
       "generated": "2026-11-07",
       "encoding": "lossless WebP; decoded RGBA identical",
-      "opaqueRgbPSNR": 99
+      "opaqueRgbPSNR": 99,
+      "packaged": false,
+      "supersededBy": "art/motion211/bane-run-consistent.webp"
     },
     {
       "id": "sera-run292",
@@ -2189,7 +2195,9 @@
       "generator": "OpenAI image_gen",
       "generated": "2026-11-07",
       "encoding": "lossless WebP; decoded RGBA identical",
-      "opaqueRgbPSNR": 99
+      "opaqueRgbPSNR": 99,
+      "packaged": false,
+      "supersededBy": "art/motion211/sera-run-consistent.webp"
     },
     {
       "id": "town-npcs",
@@ -3039,7 +3047,8 @@
       "sourceImage": "exec-77242aab-af4e-45df-bcab-7253d11e357a.png",
       "originalSha256": "38cb58175164d60343634cc56de6c27f167092819e31918e1d7aed04c0372d70",
       "opaqueRgbPSNR": 35.43,
-      "packaged": true
+      "packaged": false,
+      "supersededBy": "art/motion211/furnace-serpent-clean.webp"
     },
     {
       "file": "art/motion210/mushroom-shaman.webp",
@@ -3051,7 +3060,8 @@
       "sourceImage": "exec-9dac7190-22e1-4848-a45e-2f2f063b50b8.png",
       "originalSha256": "13bc9e7d792977c28f83e1fb9c3a4967b08e32cb73dbfb5e2bc2e2ad75549add",
       "opaqueRgbPSNR": 36.935,
-      "packaged": true
+      "packaged": false,
+      "supersededBy": "art/motion211/mushroom-shaman-clean.webp"
     },
     {
       "file": "art/motion210/vine-warden.webp",
@@ -3099,7 +3109,8 @@
       "sourceImage": "exec-b592ad15-be33-43bb-96d0-84b17e1ceef4.png",
       "originalSha256": "d9fa6734b7c674e07cef39bc8464df757ba3361b04a12dec1135b0aa27915f71",
       "opaqueRgbPSNR": 36.762,
-      "packaged": true
+      "packaged": false,
+      "supersededBy": "art/motion211/dune-raider-clean.webp"
     },
     {
       "file": "art/motion210/obsidian-manticore.webp",
@@ -3483,7 +3494,8 @@
       "sourceImage": "exec-f5fa1a1f-29d8-42b3-a169-dfc292eab8c5.png",
       "originalSha256": "4ed5982d560a2a2474fc2e127d2211f6e16b6c52b2c7fe670c3086d8f6e2bdfb",
       "opaqueRgbPSNR": 35.413,
-      "packaged": true
+      "packaged": false,
+      "supersededBy": "art/motion211/comet-hound-clean.webp"
     },
     {
       "file": "art/motion210/star-golem.webp",
@@ -3808,6 +3820,118 @@
       "originalSha256": "60dcd37794294af89160e380d921804c8334a7aa711c5c0a1aa53d214a4bdb9c",
       "opaqueRgbPSNR": 37.711,
       "packaged": true
+    },
+    {
+      "file": "art/motion211/dune-raider-clean.webp",
+      "bytes": 688776,
+      "sha256": "ce49ce0aabaff543f8af3577e139841442215f76a22be04ae461809e69b39bba",
+      "width": 1254,
+      "height": 1254,
+      "generator": "OpenAI image_gen",
+      "sourceImage": "exec-6c0cdb36-761a-44bc-8d01-20f78d6578eb.png",
+      "originalSha256": "fb1d8f7e6cab66748a0b0baf2b9c4db04a92f6c2e7ca1dd4e6016c784434cc20",
+      "opaqueRgbPSNR": 35.81,
+      "transparentFraction": 0.6806,
+      "packaged": true,
+      "repair": "remove white/grey sprite matte"
+    },
+    {
+      "file": "art/motion211/mushroom-shaman-clean.webp",
+      "bytes": 879446,
+      "sha256": "224dd61867debacdb200b6dd41d5c1ea40e0d33b1db35a2deccea5997f0ece55",
+      "width": 1254,
+      "height": 1254,
+      "generator": "OpenAI image_gen",
+      "sourceImage": "exec-1045ab68-c51f-4427-953b-d794a40a7988.png",
+      "originalSha256": "a3d891290d31de0d307b539928a7e1b6061afdae47c99da136933935f4ac1e46",
+      "opaqueRgbPSNR": 35.313,
+      "transparentFraction": 0.6402,
+      "packaged": true,
+      "repair": "remove white/grey sprite matte"
+    },
+    {
+      "file": "art/motion211/furnace-serpent-clean.webp",
+      "bytes": 1775776,
+      "sha256": "6d944621e11f89b06011f60c8b55423f6b6fe9d3a004f963aa316ab923c4ab2c",
+      "width": 1254,
+      "height": 1254,
+      "generator": "OpenAI image_gen",
+      "sourceImage": "exec-f613e34a-7b05-4fd2-9202-8b8aeb0d49e3.png",
+      "originalSha256": "33df5996fe347b4a08eb057bb57e80fd6caab8bbd8d89aa1454f16ffe34f2a79",
+      "opaqueRgbPSNR": 100,
+      "transparentFraction": 0.5618,
+      "packaged": true,
+      "repair": "remove white/grey sprite matte"
+    },
+    {
+      "file": "art/motion211/comet-hound-clean.webp",
+      "bytes": 1522880,
+      "sha256": "b815a822810359e37bf52f00daad23a36dcc0b77bc94a83d3ab224d4bf22387c",
+      "width": 1254,
+      "height": 1254,
+      "generator": "OpenAI image_gen",
+      "sourceImage": "exec-1d90af02-4430-41d7-a24a-532eaf0ff6ee.png",
+      "originalSha256": "2506bfbf9579125f95d0c9ee41b6db0010f541a17130a460749962f95f53b85c",
+      "opaqueRgbPSNR": 100,
+      "transparentFraction": 0.6895,
+      "packaged": true,
+      "repair": "remove white/grey sprite matte"
+    },
+    {
+      "file": "art/motion211/rin-run-consistent.webp",
+      "bytes": 1736442,
+      "sha256": "34db96455f4e6d1160d38465aef15acfa0f2da568d3edb7daf00a8dc4f7c3de0",
+      "width": 1774,
+      "height": 887,
+      "generator": "OpenAI image_gen",
+      "sourceImage": "exec-48e4d0ec-3fc9-4139-8f47-bd4032e74a57.png",
+      "originalSha256": "6c4c6431e462de9db0373782773b3c3339b5bd88f577aab6c9cb471c8c5dd325",
+      "opaqueRgbPSNR": 100,
+      "transparentFraction": 0.6184,
+      "packaged": true,
+      "repair": "canonical run appearance"
+    },
+    {
+      "file": "art/motion211/sera-run-consistent.webp",
+      "bytes": 1380982,
+      "sha256": "9df319aeb918914644c1f95450bc6395e544d6a0bbe419cb2a9b0a19762ebf95",
+      "width": 1774,
+      "height": 887,
+      "generator": "OpenAI image_gen",
+      "sourceImage": "exec-2efe486f-eab6-41ed-97b8-6f1bd138cf79.png",
+      "originalSha256": "cd1c87c2d5c0ce4f0f2d96835370eea4db07f0c2f4beaa93e3ce55050363f2ab",
+      "opaqueRgbPSNR": 100,
+      "transparentFraction": 0.6419,
+      "packaged": true,
+      "repair": "canonical run appearance"
+    },
+    {
+      "file": "art/motion211/bane-run-consistent.webp",
+      "bytes": 1271082,
+      "sha256": "b7848a7d00047ebd5fbd879a4c7efb894bf8f85bc54e8b7426e79e156db47116",
+      "width": 1774,
+      "height": 887,
+      "generator": "OpenAI image_gen",
+      "sourceImage": "exec-d3dcc375-d0df-4353-a32b-7d723f50bf3e.png",
+      "originalSha256": "8d0755b119ccf59863fef40c66ebb495a50ebddebff936715e3790dec767c8cd",
+      "opaqueRgbPSNR": 100,
+      "transparentFraction": 0.6436,
+      "packaged": true,
+      "repair": "canonical run appearance"
+    },
+    {
+      "file": "art/motion211/kael-run-consistent.webp",
+      "bytes": 615024,
+      "sha256": "79dbe73d84ac27d98fe9162c41c06de791012f2ce58f5c20d5e2592497529294",
+      "width": 1774,
+      "height": 887,
+      "generator": "OpenAI image_gen",
+      "sourceImage": "exec-72840b73-a972-4ea0-86b1-f080db492628.png",
+      "originalSha256": "d317438e1af08ec99e223bd2fc77298755c447dd2fa47f34bf00e4718921f5a9",
+      "opaqueRgbPSNR": 35.992,
+      "transparentFraction": 0.6549,
+      "packaged": true,
+      "repair": "canonical run appearance"
     }
   ],
   "activeCharacterFrames": 744,
