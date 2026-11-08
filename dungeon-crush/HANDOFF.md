@@ -42,9 +42,19 @@
 - 사용자가 반복 권한 확인에 불편을 호소했습니다. 이미 허용된 범위와 연결 앱을 재사용하고, 꼭 필요한 요청은 한 번에 묶으세요.
 - 큰 Actions APK 다운로드는 환경에서 Azure redirect가 차단될 수 있습니다. APK manifest와 20MiB 조각 artifact를 GitHub 도구로 받아 SHA/CRC 검증 후 재조립합니다.
 - APK 서명 SHA256은 `e43fedd9099e7b5df82eccfa3e92fc020d429ad99795463abbe40e2af4880708`을 유지합니다. 기존 앱을 삭제하지 않고 업데이트합니다.
+- 새 APK는 기존 서명을 유지하는 GitHub Actions 빌드를 사용하세요. 별도 로컬 debug keystore로 서명을 바꾸면 업데이트 설치가 깨집니다. 빌드 명령과 전체 검사 순서는 `.github/workflows/build-dungeon-crush.yml`에 있습니다.
 - 배포는 전용 `.github/workflows/publish-dungeon-crush.yml`에서 검증 빌드와 APK 크기/SHA를 고정하고, ZIP_STORED 공유 ZIP을 만듭니다. 압축 해제 후 APK 해시를 확인하고 공개 assets의 크기/SHA도 비교하세요.
 - 실제 휴대폰/공유기의 프레임률·조작감은 이 환경에서 검증하지 못했습니다. 사용자의 특정 저장 데이터에서 스킬이 사라졌던 정확한 절차는 재현되지 않았으므로, 재발하면 직업·스킬명·업데이트 버전과 저장 배치를 먼저 확인하세요.
 
 ## 완료 기록
 
-BUILD_AND_RELEASE_RECORD_PENDING
+- 버전: **2.10.1-facing-tempo**, versionCode **31**, 프로토콜 **8**.
+- 검증 소스: `5501e808bc9a02f3b8b709a09891c348df6f7631`.
+- 자동 검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42441280165 (35개 시나리오 통과).
+- 배포: https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.10.1
+- APK: `DungeonCrush-2.10.1.apk`, 238,992,846 bytes.
+- APK SHA256: `a4e4bb85eeb904f25323a973cdbc516a7489cf9635e7f4f388af569c0cdddff7`.
+- 공유 ZIP: `DungeonCrush-2.10.1-Share.zip` (APK·설치 안내·이 인수인계 문서 포함).
+- APK 서명/패키지·압축 CRC·최종 원화 228개·스크립트·한글 글꼴 검사 완료. 원본 집사 사절 파일은 변경하지 않았습니다.
+
+새 채팅에서는 이 문서와 릴리스부터 읽고 작업 브랜치 최신 HEAD를 확인하세요. 로컬 도구 상태에 의존하지 말고 GitHub의 소스를 기준으로 이어가세요.

@@ -1,4 +1,24 @@
-# 던전크러시! 2.10.0 — 6직업 · 100레벨 · 최대 4인 개인전
+# 던전크러시! 2.10.1 — 방향·기본 공격·달리기 외형 수정
+
+[공유용 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.10.1/DungeonCrush-2.10.1-Share.zip) · [설치용 APK](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.10.1/DungeonCrush-2.10.1.apk) · [새 채팅 인수인계](HANDOFF.md) · [릴리스](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.10.1)
+
+기존 던전크러시를 삭제하지 않고 업데이트 설치하세요. 같은 Wi-Fi 참가자는 모두 2.10.1을 설치하세요. 집사 사절 원본은 변경하지 않았습니다.
+
+- 몬스터 72종의 서로 다른 원화 방향을 각각 보정했습니다.
+- 일반 적 이동 40%, 보스 25%를 올리고 접근·재공격 간격을 조정했습니다. 공격 예고 시간과 사망 시 시전 취소는 유지합니다.
+- 기본 공격은 고정 무기 버튼입니다. 새 스킬 학습·장착과 빈 칸은 6칸 스킬 영역에서 처리하며 기존 배치를 보존합니다. 빈 칸/남은 입력 혼동도 보완했습니다.
+- 기존 배치가 비어 있으면 마을 스킬 메뉴의 **스킬 슬롯 기본 배치 복구**를 누르세요. 습득 랭크와 SP는 유지됩니다.
+- 보스·몬스터 4종의 흰 배경을 투명 처리하고, 금색 선택/비활성 버튼의 글자를 진하게 바꿨습니다. 일괄 분해는 왼쪽 상단에 표시합니다.
+- 달릴 때 상체 색과 크기를 대기 자세와 통일하고 8포즈 다리 동작을 유지했습니다.
+- 6직업·100레벨·36던전·30레벨 해금 최대 4인 개인전과 별도 던전/개인전 스킬 배치를 유지합니다.
+
+**35개 자동 검사 통과**, 기존 앱 서명·패키지·최종 그림 228개·전체 한글 글꼴·스크립트 일치 확인, 공유 ZIP 실제 압축 해제 확인을 마쳤습니다. 실제 휴대폰의 프레임률·조작감은 별도 확인이 필요합니다.
+
+새 채팅에서는 **HANDOFF.md를 읽고 지정 브랜치의 던전크러시만 이어서 작업해 달라**고 요청하세요. 이 문서는 공유 ZIP과 릴리스 첨부에도 들어 있습니다.
+
+---
+
+## 던전크러시! 2.10.0 — 6직업 · 100레벨 · 최대 4인 개인전
 
 [공유용 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.10.0/DungeonCrush-2.10.0-Share.zip) · [설치용 APK](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.10.0/DungeonCrush-2.10.0.apk) · [릴리스와 화면](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.10.0)
 

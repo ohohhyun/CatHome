@@ -1,4 +1,26 @@
-# 2.10.0 최종 검증
+# 2.10.1 최종 검증
+
+검증 소스 `5501e808bc9a02f3b8b709a09891c348df6f7631`의 [전체 빌드](https://github.com/ohohhyun/CatHome/actions/runs/42441280165)와 [배포 검증](https://github.com/ohohhyun/CatHome/actions/runs/42442430463)이 성공했으며 공개 APK·ZIP·인수인계 파일의 크기와 SHA를 로컬 검증본과 비교했습니다.
+
+- **35개 통과:** JavaScript 16개, 실제 Java TCP 4인 연결 1개, Chrome 18개. 로그의 PASS 줄도 35개입니다.
+- 실제 원화를 디코딩하여 72종 walk/attack 방향을 양쪽 및 idle/walk/windup/recover에서 검사했습니다. 원화 해시와 방향 기록을 함께 보존합니다.
+- 투명 처리/달리기 교체 자산 8개의 실제 alpha를 확인했습니다. 기존 4직업의 대기/달리기 상체 색과 크기는 8포즈 픽셀 비교, 전환 크기는 실제 Canvas 변환으로 확인했습니다.
+- 6직업의 스킬 학습·장착·해제·기본 배치 복구·재접속과 실제 두 손가락 스킬/기본 공격 입력을 검사했습니다. 기본 공격은 code 0, 6칸은 별도입니다. 사용자가 경험한 특정 저장 데이터의 전체 배치 소실 절차는 재현되지 않아 빈 칸과 잔류 입력 경로를 보완했으며, 재발 시 직업/스킬/저장 배치를 확인해야 합니다.
+- 선택/비활성 금색 버튼의 글자 대비와 왼쪽 일괄 분해를 1280×591, 740×360, 640×296에서 확인했습니다. 기존 작은 화면·확대 글씨·긴 이름·상점·가방·퀘스트·NPC 검사도 통과했습니다.
+- 일반 적/보스 이동과 재공격 템포, 원거리 보스의 교전 거리, 초반 정지 플레이어 피격, 경고 시간 유지와 동시 법사 위협 상한을 확인했습니다. 회피/사망 시 시전 취소/PvP 보정도 보존합니다.
+- 기존 파티 EXP/저장/클리어·자기 피해 수치만 표시·HP·50%/180초 물약·실제 4개 브라우저 개인전 검사를 통과했습니다.
+- 독립 바이너리 AndroidManifest 검사: `com.dungeoncrush.game`, `com.dungeoncrush.game.MainActivity`, 이름 던전크러시!, versionCode 31, versionName `2.10.1-facing-tempo`.
+- 기존 서명 SHA256: `e43fedd9099e7b5df82eccfa3e92fc020d429ad99795463abbe40e2af4880708`. CI apksigner 검증과 별도 APK 서명 블록 인증서 검사를 수행했습니다.
+- 원화 manifest 268개 중 최종 228개 포함·40개 제외, 그림/스크립트/전체 한글 글꼴 SHA 일치 및 APK CRC를 확인했습니다.
+- APK **238,992,846 bytes**, SHA256 `a4e4bb85eeb904f25323a973cdbc516a7489cf9635e7f4f388af569c0cdddff7`.
+- 공유 ZIP **239,000,751 bytes**, SHA256 `8e0cc4a8e8fa769e437e848562da22d2d594a3e7697b4264dcf8047906a205b5`. APK·UTF-8 BOM 설치 안내·완성된 HANDOFF.md를 classic ZIP_STORED로 포장하고 실제 압축 해제 후 APK 해시를 비교했습니다.
+- 원본 38개 파일의 SHA와 root app/legacy/tests 트리가 그대로입니다. main 병합은 수행하지 않았습니다.
+
+[공개 릴리스](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.10.1) · [새 채팅 인수인계](HANDOFF.md). 물리 휴대폰/실제 공유기에서의 프레임률·터치 감각은 미검증입니다.
+
+---
+
+## 2.10.0 최종 검증
 
 소스 `d67541aa5e7eb1308d6e0076a12a1c3be4d1fb97`의 [전체 빌드](https://github.com/ohohhyun/CatHome/actions/runs/42426416837)와 [배포 검증](https://github.com/ohohhyun/CatHome/actions/runs/42428203105)이 성공했습니다.
 
