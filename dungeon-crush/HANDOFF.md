@@ -87,3 +87,12 @@
 - 전투 참가 직업의 1/2/3타와 시전 이미지를 모두 미리 로딩·고정하고 준비가 끝나야 전투 조작을 엽니다. 전투 타일은 256px 기준으로 제한하고 캐시 한도는 160MiB입니다.
 - 기존의 '상체 픽셀을 강제로 고정'하던 검사는 전신 셀 대조 검사로 교체했습니다. `tests/all-hero-motion.cjs`가 744개 실제 렌더링을 비교하고, `tests/all-hero-combat.cjs`는 작은 터치 화면에서 6직업 실제 3연타·스킬과 도중 로딩/누락/되감김을 검사합니다. 두 검사는 기존 hotfix Chrome 시나리오에 포함됩니다.
 - 집사 사절 원본·루트 파일은 수정하지 않습니다.
+
+### 6직업 모션 수정판 검증 완료
+
+- 검증 소스: `ba7434c06747cb3d90dcf617dc8b9c927bcd2613`.
+- 검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42460800665 (기존 35개 검사와 744개 전신 포즈 대조·6직업 실제 첫 3연타/시전·18개 공격 타임라인 검사 통과).
+- 수정 APK ZIP: https://github.com/ohohhyun/CatHome/actions/runs/42460800665/artifacts/13609808268
+- APK: `DungeonCrush-2.10.1.apk`, 237,657,135 bytes, versionCode **33**, versionName `2.10.1-motion-audit`.
+- APK SHA256: `222ea3c54e8b1a6fa3f917d9da97d81c4fd88f00b21b35b4396ecae324f2c605`. 기존 설치 서명 검증 통과.
+- 집사 사절 보호 트리·루트 파일 미변경. 앱을 삭제하지 않고 위 수정 APK를 업데이트 설치합니다. 실제 휴대폰의 프레임률/체감은 별도 확인 대상입니다.
