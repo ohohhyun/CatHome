@@ -114,3 +114,11 @@
 - 확인창은 선택 장비 목록과 총액을 표시하고 명시적 확정 후에만 저장합니다. 확인창을 연 뒤 장착/잠금 상태가 바뀌는 경우도 재검증합니다.
 - `tests/bulk-sale.cjs`는 기존 장비 서비스 테스트에서, `tests/bulk-sale-ui.cjs`는 기존 마을 서비스 Chrome 검사에서 실행됩니다. 체크/취소 무변경·확정 중 상태 변경·현재 장비 보호·정확한 판매 금액·중복/오래된 ID·작은 화면·재시작 저장을 검사합니다.
 - 이미 판매된 과거 장비의 원본 기록은 저장되어 있지 않으므로 이 패치는 과거 판매 장비를 추정 복원하지 않습니다.
+
+### 체크 판매 수정판 검증·배포 완료
+
+- 검증 소스: `b68d1185048a64b3c417bd85293cdba1ce824c5a`. 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42467263908 (기존 35개 검사와 신규 6직업 원자적 판매/실제 체크·취소·확정/확인 도중 장착 변경/작은 화면 버튼 노출/재시작 검사 통과).
+- 공개 다운로드: https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.10.1-safe-sale
+- ZIP: `DungeonCrush-SafeSale-34.zip`. 배포 작업: https://github.com/ohohhyun/CatHome/actions/runs/42468199947 (성공).
+- APK: 237,659,167 bytes, SHA256 `d8478806635a922de54f3078a1d3dc56577d1cb6e4fa4fc83d2cdde42eb0e556`, versionCode **34**. 기존 설치 서명 검증 통과. 앱을 삭제하지 않고 업데이트 설치합니다.
+- 집사 사절 보호 트리는 변경하지 않았습니다.
