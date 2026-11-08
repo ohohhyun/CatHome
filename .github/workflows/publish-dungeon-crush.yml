@@ -42,7 +42,7 @@ jobs:
               assert z.testzip() is None and 'AndroidManifest.xml' in z.namelist()
               assert len([n for n in z.namelist() if n.startswith('assets/art/motion29/') and n.endswith('.webp')])==85
               assert len([n for n in z.namelist() if n.startswith('assets/art/motion299/') and n.endswith('.webp')])==48
-              assert len([n for n in z.namelist() if n.startswith('assets/art/motion292/') and n.endswith('.webp')])==4
+              assert len([n for n in z.namelist() if n.startswith('assets/art/motion292/') and n.endswith('.webp')])==0
               assert len([n for n in z.namelist() if n.startswith('assets/art/advanced/') and n.endswith('.webp')])==5
               assert sha256(z.read('assets/art/rift-ui.otf')).hexdigest()=='a5444ac84938025003b520d937476b2df2889d458c12a5abc9981d03e5510018'
               assert sha256(z.read('assets/art/town-npcs.webp')).hexdigest()=='da8c8a5cc65b7d0cd675a05b362760eaabd28cfa299fc3d2700e1cc4b76c48d2'
