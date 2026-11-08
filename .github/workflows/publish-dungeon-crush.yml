@@ -17,20 +17,27 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
     steps:
-      - name: Download the exact verified 2.10.0 APK and reviewed screens
+      - name: Preserve the completed fresh-chat handoff
         run: |
-          test "$(gh api repos/$GH_REPO/actions/runs/42426416837 --jq .conclusion)" = success
-          test "$(gh api repos/$GH_REPO/actions/runs/42426416837 --jq .head_sha)" = d67541aa5e7eb1308d6e0076a12a1c3be4d1fb97
-          gh run download 42426416837 --name DungeonCrush-APK --dir apk
-          gh run download 42426416837 --name DungeonCrush-Previews --dir previews
+          python3 - <<'PY'
+          from pathlib import Path
+          import base64
+          Path('HANDOFF.md').write_bytes(base64.b64decode('IyDrjZjsoITtgazrn6zsi5wg7IOIIOyxhO2MhSDsnbjsiJjsnbjqs4QKCuydtCDtjIzsnbzsnYQg66i87KCAIOydveqzoCBgZHVuZ2Vvbi1jcnVzaC9g66eMIOydtOyWtOyEnCDsnpHsl4XtlZjshLjsmpQuIOyCrOyaqeyekOyXkOqyjOuKlCDtlZzqta3slrQg7KG064yT66eQ7J2EIOyCrOyaqe2VmOyEuOyalC4KCiMjIO2UhOuhnOygne2KuOyZgCDquIjsp4Ag67KU7JyECgotIEdpdEh1YjogaHR0cHM6Ly9naXRodWIuY29tL29ob2hoeXVuL0NhdEhvbWUKLSDsnpHsl4Ug67iM656c7LmYOiBgY29kZXgvYXNoZW4tcmlmdC1hcGtgLCBQUiAjMS4gbWFpbuyXkCDrs5HtlantlZjsp4Ag7JWK7Iq164uI64ukLgotIOqyjOyehCDshozsiqTripQgYGR1bmdlb24tY3J1c2gvYCwgQW5kcm9pZCDtjKjtgqTsp4DripQgYGNvbS5kdW5nZW9uY3J1c2guZ2FtZWDsnoXri4jri6QuCi0g7KeR7IKsIOyCrOygiCDsm5Drs7jsnbgg66Oo7Yq4IGBhcHAvYCwgYGxlZ2FjeS9gLCDro6jtirggR3JhZGxlL1JFQURNRS90ZXN0cywgR3JvdW5kwrdCaXpSb29064qUIOyImOygle2VmOyngCDslYrsirXri4jri6QuCi0g7JuQ67O4IOuztO2YuCDtirjrpqw6IGFwcCBgYTcwNTY0YWI3ODIxMDBiNjFjZjA3MDc3ZTUyNzUzMzcwZTE5OTA0NWAsIGxlZ2FjeSBgOGJiNGNkMTZmOTVjZTY0MWIzZmEzMTI5NmIwMjFkOGY5NzZjYjdlNmAsIHRlc3RzIGAwN2VlYTY0ZWU5NTVmNTU4MGExM2E5ZjIzNzQ5MGQzNDZjZWVmZTdhYC4KLSBtYWluIOq4sOykgCBTSEE6IGAzNjUxZTNkNzM0ZTc1NGExYTA4ZjdiZDYyZDAzMWY0MGU0ZWVmNzBjYC4KCiMjIO2YhOyerCDqsozsnoQKCjbsp4Hsl4Uo7Lm07JeYwrfrprDCt+uyoOyduMK37IS46528wrfslYTrpqzslYTCt+2UhOumrOyKpO2KuCDsl5jrpqzslYgpLCDstZzrjIAgMTAw66CI67KoLCAxMuyxle2EsMK3MzbrjZjsoIQsIOuNmOyghOuzhCDrqqzsiqTthLAv67O07IqkIOyZuO2YlSwgNjAvODAvMTAw66CI67KoIOyKpO2CrCAxOOyiheyeheuLiOuLpC4gMTAw66CI67KoIOydtO2bhCDsoITsp4HsnYAg7JWE7KeBIOunjOuTpOyngCDslYrsirXri4jri6QuCuqwmeydgCBXaS1GaSDtmJHrj5nqs7wgMzDroIjrsqjrtoDthLAgMn407J24IOqwnOyduOyghOydhCDsp4Dsm5Dtlanri4jri6QuIOqwnOyduOyghOydgCDtjIAg7JeG7J20IOuKpeugpey5mMK37J6l67mEwrfquLDrs7gg7Iqk7YKs7J2EIOuztOygle2VmOqzoCAz65287Jq065OcIOykkSAy65287Jq065OcIOyEoOyKueydtOupsCwg67Cp7J6lIOyXsOqysCDsooXro4wg7IucIOy3qOyGjO2VqeuLiOuLpC4g7ZSE66Gc7Yag7L2c7J2AIDjsnoXri4jri6QuCuyKpO2CrOydgCDqsIDroZwgNuy5uOyXkCDsp4HsoJEg7J6l7LCpwrftlbTsoJzCt+q1kOyytO2VqeuLiOuLpC4g642Y7KCE7Jqp6rO8IOqwnOyduOyghOyaqSDrsLDsuZjripQg67OE64+E7J6F64uI64ukLiDquLDrs7gg6rO16rKp7J2AIOydtCA27Lm46rO8IOuzhOuPhOydtOupsCDsmIHqtawg6rOg7KCV7J6F64uI64ukLiDqsIHsooUg7ZmV7J247LC97J2AIOuIhOuluCDrsoTtirwv7JWE7J207YWcIOyVnuyXkCDrnLnri4jri6QuCgojIyAyLjEwLjEg7Yyo7LmYIOuylOychAoKMS4g7JuQ67O4IOq3uOumvOydtCDsoowv7Jqw66GcIOyEnuyduCDrqqzsiqTthLAgNzLsooXsnYQg7ZmV7J247ZWY6rOgIHdhbGsvYXR0YWNrIOydgO2WieuniOuLpCBgZmFjaW5nYOydhCDsp4DsoJXtlojsirXri4jri6QuIOyblOuTnCBgZS5kaXJg7J2AIOuzgOqyve2VmOyngCDslYrqs6Ag66CM642U65+s7JeQ7IScIOuwqe2WpeydhCDrs7TsoJXtlanri4jri6QuIOybkO2ZlCBTSEHsmYAg67Cp7ZalIOqygOyImOuKlCBgYXJ0LXNvdXJjZS9lbmVteS1mYWNpbmctcmV2aWV3Lmpzb25g7J6F64uI64ukLgoyLiBQdkUg7J2867CYIOyggSDsnbTrj5kgNDAlLCDrs7TsiqQg7J2064+ZIDI1JeulvCDsmKzrpqzqs6Ag7ZqM67O1L+yerOqzteqyqSDqsITqsqnqs7wg7KCR6re8L+qzteqyqSDqsbDrpqzrpbwg7KGw7KCV7ZaI7Iq164uI64ukLiDstIjrsJgg7J2867CYIOyggSDrsLDsuZjrpbwg6rCA6rmd6rKMIO2VmOqzoCDsm5DqsbDrpqwg67O07IqkIO2MqO2EtOuPhCDrqYDrpqzshJwg7Iuc7J6R7ZWp64uI64ukLiDqs7Xqsqkg7JiI6rOgIOyLnOqwhOydgCDsnKDsp4DtlZjqs6Ag67KV7IKsIOychO2YkeydgCDtlIzroIjsnbTslrTri7kg7LWc64yAIDLqsJzroZwg7KCc7ZWc7ZWp64uI64ukLiDsgqzrp50g7IucIOykgOu5hCDspJEg6rO16rKpwrfshozsnKAg7Yis7IKs7LK0IOy3qOyGjOyZgCBQdlAg67O07KCV7J2AIOycoOyngO2VqeuLiOuLpC4KMy4g67mIIOyKpO2CrCDsubjsnZggMOydhCDquLDrs7gg6rO16rKpIDDsnLzroZwg7Zi864+Z7ZWY642YIOqyveuhnOulvCDrtoTrpqztlojsirXri4jri6QuIOyDiCDsiqTtgqwg7ZWZ7Iq17J2AIOq4sOyhtCDsnqXssKnsnYQg67O07KG07ZWp64uI64ukLiDquLDrs7gg6rO16rKp7J2AIOqzoOyglSDrrLTquLAg7JWE7J207L2Y7J2066mwLCDriIzroIDsnYQg65WMIOuCqOyVhCDsnojrjZgg7Iqk7YKsIOyeheugpS/rsoTtjbzrpbwg7KeA7JuB64uI64ukLiDsiqTtgqwg7Iqs66GvIOq4sOuzuCDrsLDsuZgg67O16rWs64qUIOyKteuTnSDrnq3tgawvU1Drpbwg6rG065Oc66as7KeAIOyViuyKteuLiOuLpC4KNC4g7Z2wL+2ajOyDiSDrsLDqsr3snbQg64Ko7JWY642YIGZ1cm5hY2Utc2VycGVudCwgbXVzaHJvb20tc2hhbWFuLCBkdW5lLXJhaWRlciwgY29tZXQtaG91bmTrpbwgaW1hZ2VfZ2Vu7Jy866GcIO2IrOuqhSDsspjrpqztlojsirXri4jri6QuCjUuIOq4iOyDiSDshKDtg50v67mE7Zmc7ISxIOuyhO2KvOydmCDquIDsnpAg64yA67mE66W8IOuztOqwle2VmOqzoCwg7J6l67mEIOydvOq0hCDrtoTtlbTrpbwg7Jm87Kq9IOyDgeuLqCDqs6DsoJUg7JiB7Jet7Jy866GcIOyYruqyvOyKteuLiOuLpC4KNi4g64us66a0IOuVjCDquLDsobQgNOyngeyXheydmCDsg4nqs7wg7LK07ZiV7J20IOuLrOudvOyngOuNmCDrrLjsoJzrpbwg7IiY7KCV7ZaI7Iq164uI64ukLiDri6TrpqzripQg7IOIIO2MlOugiO2KuOydmCA47Y+s7KaI66W8IOyCrOyaqe2VmOqzoCDsg4HssrTripQg6rCZ7J2AIOy6kOumre2EsOydmCBjYW5vbmljYWwgcmVhY3Rpb24g7J2A7ZaJ7J2EIOyCrOyaqe2VqeuLiOuLpC4gYGJvZHlTY2FsZWDsnYAgMeuhnCDthrXsnbztlanri4jri6QuIOqwgOydtO2KuC847Y+s7KaIL+q4sOyhtCDsoJDtlITCt+uMgOyLnMK36rO16rKpIOuqqOyFmOydgCDsnKDsp4Dtlanri4jri6QuCgojIyDspJHsmpTtlZwg7L2U65Oc7JmAIOqygOymnQoKLSBgYXBwL3NyYy9tYWluL2Fzc2V0cy9hY3RvcnMuanNgOiDrqqjshZgg642w7J207YSwwrftg4Dsnbwg7LqQ7IucwrfrqqzsiqTthLAg67Cp7Zalwrfqs6DsoJUg7IOB7LK0IO2VqeyEsS4KLSBgZW5naW5lLmpzYDog7KCE7YisL0FJL+yeheugpS4gYHJwZy5qc2A6IOyggOyepcK37J6l67mEwrfsiqTtgqwg67Cw7LmYLiBgYXBwLmpzYDogSFVEwrfrqYDti7DthLDsuZjCt0xBTi4gYHRvd24uanNgLCBgZXhwYW5zaW9uLmNzc2A6IE5QQyDrqZTribTCt+2ZleyduOywvcK36rCA64+F7ISxLgotIOyDiCDsnbTrr7jsp4A6IGBhcnQvbW90aW9uMjExL2AsIOybkOuzuC/slZXstpUg7KCV67O0IGBhcnQtc291cmNlL21vdGlvbjIxMS1zb3VyY2VzLmpzb25gLiA46rCcIOuMgOyytCDsnpDsgrDsnYAgR3JhZGxl7JeQ7IScIOyYiOyghCDtjIzsnbzsnYQg7KCc7Jm47ZWp64uI64ukLiBtYW5pZmVzdCAyNjjqsJwg7KSRIEFQS+yXkOuKlCAyMjjqsJzrpbwg7Y+s7ZWo7ZWp64uI64ukLgotIGB0ZXN0cy9ob3RmaXgudGVzdC5janNgOiA3MuyihSDrsKntlqXCt+q4sOuzuCDqs7Xqsqkv67mI7Lm4L+uzteq1rMK3QUkg7IaN64+EwrfstIjrsJgg7KCE7YisLgotIGB0ZXN0cy9ob3RmaXgtcHJlc2VudGF0aW9uLnRlc3QuY2pzYDog7Iuk7KCcIOydtOuvuOyngCDrlJTsvZTrlKkvYWxwaGHCt+uwqe2WpcK3aWRsZS9ydW4g7IOB7LK0IO2UveyFgMK37YSw7LmYIOyeheugpcK36riA7J6QL+uyhO2KvMK37J286rSEIOu2hO2VtCDsnITsuZguCi0g6riw7KG0IEphdmFTY3JpcHQgMTXqsJzCt0phdmEgVENQIDTsnbjCt0Nocm9tZSAxN+qwnOyXkCDsg4gg6rKA7IKsIDLqsJzrpbwg642U7ZW0IOy0nSAzNeqwnOulvCDsi6Ttlontlanri4jri6QuIOu5jOuTnC/rsLDtj6wg7KCV67O064qUIOyVhOuemCDsmYTro4wg6riw66Gd6rO8IOumtOumrOyKpOulvCDtmZXsnbjtlZjshLjsmpQuCgojIyDsnpHsl4Ug7ZmY6rK9IO2MgQoKLSDroZzsu6wg7LK07YGs7JWE7JuD7JeQIGAuZ2l0YOydtCDsl4bsnYQg7IiYIOyeiOyKteuLiOuLpC4gR2l0SHViIGJsb2IvdHJlZS9jb21taXQvcmVmIOuPhOq1rOuhnCDsp4DsoJUg67iM656c7LmY66eMIOqwseyLoO2VtCDsmZTsirXri4jri6QuCi0g67iM65287Jqw7KCAIOyLpO2WieydgCDquLDrs7gg7IOM65Oc67CV7Iqk7JeQ7IScIENyYXNocGFkIHNvY2tldCDqtoztlZwg7Jik66WY6rCAIOuCoCDsiJgg7J6I7Iq164uI64ukLiDtjIzsnbwgVVJM7J2AIOq0gOumrCBDaHJvbWUg7KCV7LGF7JeQIOunie2ekCDsiJgg7J6I7Jy866+A66GcIOuhnOy7rCBIVFRQ66W8IOyTsOqxsOuCmCBHaXRIdWIgQWN0aW9ucyBDaHJvbWUg6rKA7IKs66W8IOydtOyaqe2VqeuLiOuLpC4KLSDsgqzsmqnsnpDqsIAg67CY67O1IOq2jO2VnCDtmZXsnbjsl5Ag67aI7Y647J2EIO2YuOyGjO2WiOyKteuLiOuLpC4g7J2066+4IO2XiOyaqeuQnCDrspTsnITsmYAg7Jew6rKwIOyVseydhCDsnqzsgqzsmqntlZjqs6AsIOq8rSDtlYTsmpTtlZwg7JqU7LKt7J2AIO2VnCDrsojsl5Ag66y27Jy87IS47JqULgotIO2BsCBBY3Rpb25zIEFQSyDri6TsmrTroZzrk5zripQg7ZmY6rK97JeQ7IScIEF6dXJlIHJlZGlyZWN06rCAIOywqOuLqOuQoCDsiJgg7J6I7Iq164uI64ukLiBBUEsgbWFuaWZlc3TsmYAgMjBNaUIg7KGw6rCBIGFydGlmYWN066W8IEdpdEh1YiDrj4TqtazroZwg67Cb7JWEIFNIQS9DUkMg6rKA7KadIO2bhCDsnqzsobDrpr3tlanri4jri6QuCi0gQVBLIOyEnOuqhSBTSEEyNTbsnYAgYGU0M2ZlZGQ5MDk5ZTdiNWRmODJlY2NmYTNlOTJmYzAyMGQ0MjlhZDk5Nzk1NDYzYWJiZTQwZTJhZjQ4ODA3MDhg7J2EIOycoOyngO2VqeuLiOuLpC4g6riw7KG0IOyVseydhCDsgq3soJztlZjsp4Ag7JWK6rOgIOyXheuNsOydtO2KuO2VqeuLiOuLpC4KLSDsg4ggQVBL64qUIOq4sOyhtCDshJzrqoXsnYQg7Jyg7KeA7ZWY64qUIEdpdEh1YiBBY3Rpb25zIOu5jOuTnOulvCDsgqzsmqntlZjshLjsmpQuIOuzhOuPhCDroZzsu6wgZGVidWcga2V5c3RvcmXroZwg7ISc66qF7J2EIOuwlOq+uOuptCDsl4XrjbDsnbTtirgg7ISk7LmY6rCAIOq5qOynkeuLiOuLpC4g67mM65OcIOuqheugueqzvCDsoITssrQg6rKA7IKsIOyInOyEnOuKlCBgLmdpdGh1Yi93b3JrZmxvd3MvYnVpbGQtZHVuZ2Vvbi1jcnVzaC55bWxg7JeQIOyeiOyKteuLiOuLpC4KLSDrsLDtj6zripQg7KCE7JqpIGAuZ2l0aHViL3dvcmtmbG93cy9wdWJsaXNoLWR1bmdlb24tY3J1c2gueW1sYOyXkOyEnCDqsoDspp0g67mM65Oc7JmAIEFQSyDtgazquLAvU0hB66W8IOqzoOygle2VmOqzoCwgWklQX1NUT1JFRCDqs7XsnKAgWklQ7J2EIOunjOuTreuLiOuLpC4g7JWV7LaVIO2VtOygnCDtm4QgQVBLIO2VtOyLnOulvCDtmZXsnbjtlZjqs6Ag6rO16rCcIGFzc2V0c+ydmCDtgazquLAvU0hB64+EIOu5hOq1kO2VmOyEuOyalC4KLSDsi6TsoJwg7Zy064yA7Y+wL+qzteycoOq4sOydmCDtlITroIjsnoTrpaDCt+yhsOyekeqwkOydgCDsnbQg7ZmY6rK97JeQ7IScIOqygOymne2VmOyngCDrqrvtlojsirXri4jri6QuIOyCrOyaqeyekOydmCDtirnsoJUg7KCA7J6lIOuNsOydtO2EsOyXkOyEnCDsiqTtgqzsnbQg7IKs65287KGM642YIOygle2Zle2VnCDsoIjssKjripQg7J6s7ZiE65CY7KeAIOyViuyVmOycvOuvgOuhnCwg7J6s67Cc7ZWY66m0IOyngeyXhcK37Iqk7YKs66qFwrfsl4XrjbDsnbTtirgg67KE7KCE6rO8IOyggOyepSDrsLDsuZjrpbwg66i87KCAIO2ZleyduO2VmOyEuOyalC4KCiMjIOyZhOujjCDquLDroZ0KCi0g67KE7KCEOiAqKjIuMTAuMS1mYWNpbmctdGVtcG8qKiwgdmVyc2lvbkNvZGUgKiozMSoqLCDtlITroZzthqDsvZwgKio4KiouCi0g6rKA7KadIOyGjOyKpDogYDU1MDFlODA4YmM5YTAyZjNiOGI3MDlhMDk4OTFjMzQ4ZGY2Zjc2MzFgLgotIOyekOuPmSDqsoDspp0g67mM65OcOiBodHRwczovL2dpdGh1Yi5jb20vb2hvaGh5dW4vQ2F0SG9tZS9hY3Rpb25zL3J1bnMvNDI0NDEyODAxNjUgKDM16rCcIOyLnOuCmOumrOyYpCDthrXqs7wpLgotIOuwsO2PrDogaHR0cHM6Ly9naXRodWIuY29tL29ob2hoeXVuL0NhdEhvbWUvcmVsZWFzZXMvdGFnL2R1bmdlb24tY3J1c2gtdjIuMTAuMQotIEFQSzogYER1bmdlb25DcnVzaC0yLjEwLjEuYXBrYCwgMjM4LDk5Miw4NDYgYnl0ZXMuCi0gQVBLIFNIQTI1NjogYGE0ZTRiYjg1ZWViOTA0ZjI1MzIzYTk3M2NkYmM1MTZhNzQ4OWNmOTYzNWU3ZjRmMzg4YWY1NjljMGNkZGRmZjdgLgotIOqzteycoCBaSVA6IGBEdW5nZW9uQ3J1c2gtMi4xMC4xLVNoYXJlLnppcGAgKEFQS8K37ISk7LmYIOyViOuCtMK37J20IOyduOyImOyduOqzhCDrrLjshJwg7Y+s7ZWoKS4KLSBBUEsg7ISc66qFL+2MqO2CpOyngMK37JWV7LaVIENSQ8K37LWc7KKFIOybkO2ZlCAyMjjqsJzCt+yKpO2BrOumve2KuMK37ZWc6riAIOq4gOq8tCDqsoDsgqwg7JmE66OMLiDsm5Drs7gg7KeR7IKsIOyCrOygiCDtjIzsnbzsnYAg67OA6rK97ZWY7KeAIOyViuyVmOyKteuLiOuLpC4KCuyDiCDssYTtjIXsl5DshJzripQg7J20IOusuOyEnOyZgCDrprTrpqzsiqTrtoDthLAg7J296rOgIOyekeyXhSDruIzrnpzsuZgg7LWc7IugIEhFQUTrpbwg7ZmV7J247ZWY7IS47JqULiDroZzsu6wg64+E6rWsIOyDge2DnOyXkCDsnZjsobTtlZjsp4Ag66eQ6rOgIEdpdEh1YuydmCDshozsiqTrpbwg6riw7KSA7Jy866GcIOydtOyWtOqwgOyEuOyalC4K'))
+          PY
+      - name: Download the exact verified 2.10.1 APK and reviewed screens
+        run: |
+          test "$(gh api repos/$GH_REPO/actions/runs/42441280165 --jq .conclusion)" = success
+          test "$(gh api repos/$GH_REPO/actions/runs/42441280165 --jq .head_sha)" = 5501e808bc9a02f3b8b709a09891c348df6f7631
+          gh run download 42441280165 --name DungeonCrush-APK --dir apk
+          gh run download 42441280165 --name DungeonCrush-Previews --dir previews
       - name: Verify unchanged signed APK bytes and full offline Korean font
         run: |
           python3 - <<'PY'
           from pathlib import Path
           from hashlib import sha256
           from zipfile import ZipFile
-          p=Path('apk/DungeonCrush-2.10.0.apk');data=p.read_bytes()
-          assert len(data)==238656266 and sha256(data).hexdigest()=='e8b2331339132ef7d0fb62b8e5f08125981a922a8f764167aced5c2bb19d1a15'
+          p=Path('apk/DungeonCrush-2.10.1.apk');data=p.read_bytes()
+          assert len(data)==238992846 and sha256(data).hexdigest()=='a4e4bb85eeb904f25323a973cdbc516a7489cf9635e7f4f388af569c0cdddff7'
           with ZipFile(p) as z:
               assert z.testzip() is None and 'AndroidManifest.xml' in z.namelist()
               assert len([n for n in z.namelist() if n.startswith('assets/art/motion29/') and n.endswith('.webp')])==85
@@ -40,79 +47,85 @@ jobs:
               assert sha256(z.read('assets/art/rift-ui.otf')).hexdigest()=='a5444ac84938025003b520d937476b2df2889d458c12a5abc9981d03e5510018'
               assert sha256(z.read('assets/art/town-npcs.webp')).hexdigest()=='da8c8a5cc65b7d0cd675a05b362760eaabd28cfa299fc3d2700e1cc4b76c48d2'
               assert 'assets/encounters.js' in z.namelist()
-              assert len([n for n in z.namelist() if n.startswith('assets/art/motion210/') and n.endswith('.webp')])==85
+              assert len([n for n in z.namelist() if n.startswith('assets/art/motion210/') and n.endswith('.webp')])==81
+              assert len([n for n in z.namelist() if n.startswith('assets/art/motion211/') and n.endswith('.webp')])==8
               assert all('assets/'+n in z.namelist() for n in ['arena.js','growth.js','dialogs.js','expansion.css'])
               assert 'assets/ui-layout.js' in z.namelist() and 'assets/art/FONT-LICENSE.txt' in z.namelist()
           print('Verified original signed APK and complete offline Korean font; no rebuild/repackaging.')
           PY
       - name: Package verified APK as a shareable ZIP
         run: |
-          python3 - apk/DungeonCrush-2.10.0.apk DungeonCrush-2.10.0-Share.zip <<'PY'
+          python3 - apk/DungeonCrush-2.10.1.apk DungeonCrush-2.10.1-Share.zip <<'PY'
           from pathlib import Path
           from zipfile import ZipFile,ZipInfo,ZIP_STORED
           from hashlib import sha256
           import sys
-          apk=Path(sys.argv[1]);output=Path(sys.argv[2]);data=apk.read_bytes();expected='e8b2331339132ef7d0fb62b8e5f08125981a922a8f764167aced5c2bb19d1a15'
-          assert len(data)==238656266 and sha256(data).hexdigest()==expected
-          notes='던전크러시! 2.10.0 설치 및 공유 안내\r\n\r\n1. ZIP 압축을 풉니다.\r\n2. DungeonCrush-2.10.0.apk 파일을 눌러 기존 던전크러시에 업데이트 설치합니다.\r\n3. 기존 캐릭터 기록을 유지하려면 앱을 삭제하지 마세요.\r\n4. 친구도 같은 2.10.0 버전을 설치하세요.\r\n5. 같은 Wi-Fi에 연결하고 한 명이 방을 만든 뒤 친구는 방장 IP와 4자리 코드로 참가합니다.\r\n\r\n집사 사절과 별도로 설치되는 던전크러시 앱입니다.\r\nAPK SHA256: '+expected+'\r\n'
+          apk=Path(sys.argv[1]);output=Path(sys.argv[2]);data=apk.read_bytes();expected='a4e4bb85eeb904f25323a973cdbc516a7489cf9635e7f4f388af569c0cdddff7'
+          assert len(data)==238992846 and sha256(data).hexdigest()==expected
+          notes='던전크러시! 2.10.1 설치 및 공유 안내\r\n\r\n1. ZIP 압축을 풉니다.\r\n2. DungeonCrush-2.10.1.apk 파일을 눌러 기존 던전크러시에 업데이트 설치합니다.\r\n3. 기존 캐릭터 기록을 유지하려면 앱을 삭제하지 마세요.\r\n4. 친구도 같은 2.10.1 버전을 설치하세요.\r\n5. 같은 Wi-Fi에 연결하고 한 명이 방을 만든 뒤 친구는 방장 IP와 4자리 코드로 참가합니다.\r\n\r\n집사 사절과 별도로 설치되는 던전크러시 앱입니다.\r\nAPK SHA256: '+expected+'\r\n'
           with ZipFile(output,'w',compression=ZIP_STORED) as z:
-              for name,content in [(apk.name,data),('INSTALL-KO.txt',b'\xef\xbb\xbf'+notes.encode('utf-8'))]:
+              for name,content in [(apk.name,data),('INSTALL-KO.txt',b'\xef\xbb\xbf'+notes.encode('utf-8')),('HANDOFF.md',Path('HANDOFF.md').read_bytes())]:
                   item=ZipInfo(name,date_time=(2026,11,8,0,0,0));item.create_system=3;item.external_attr=0o100644<<16;item.compress_type=ZIP_STORED;z.writestr(item,content)
           with ZipFile(output) as z:
-              assert z.testzip() is None and z.namelist()==[apk.name,'INSTALL-KO.txt']
+              assert z.testzip() is None and z.namelist()==[apk.name,'INSTALL-KO.txt','HANDOFF.md']
               assert sha256(z.read(apk.name)).hexdigest()==expected
           print('Verified share ZIP:',output.name,output.stat().st_size,sha256(output.read_bytes()).hexdigest())
           PY
-      - name: Prepare reviewed cover, priest, skill slots, free-for-all and confirmations
+      - name: Collect current regression screenshots
         run: |
           mkdir ui
-          cp previews/expansion-static-cover.png ui/DungeonCrush-2.10.0-Cover.png
-          cp previews/expansion-priest-selection.png ui/DungeonCrush-2.10.0-Priest.png
-          cp previews/expansion-four-player-ffa-640.png ui/DungeonCrush-2.10.0-FFA.png
-          cp previews/expansion-skill-slots-640.png ui/DungeonCrush-2.10.0-Slots.png
-          cp previews/expansion-anchored-sale-640.png ui/DungeonCrush-2.10.0-Confirm.png
-          cp previews/expansion-priest-growth-ultimate.png ui/DungeonCrush-2.10.0-Ultimate.png
-          cp previews/menu-split-640-inventory.png ui/DungeonCrush-2.10.0-Compact.png
+          cp previews/hotfix-facing-0.png ui/DungeonCrush-2.10.1-Facing.png
+          cp previews/hotfix-facing-18.png ui/DungeonCrush-2.10.1-Regional-Enemies.png
+          cp previews/hotfix-run-0.png ui/DungeonCrush-2.10.1-Run.png
+          cp previews/hotfix-skill-contrast-640.png ui/DungeonCrush-2.10.1-Skills.png
+          cp previews/hotfix-bulk-left-640.png ui/DungeonCrush-2.10.1-Bulk-Left.png
+          cp previews/expansion-static-cover.png ui/DungeonCrush-2.10.1-Cover.png
+          cp previews/expansion-four-player-ffa-640.png ui/DungeonCrush-2.10.1-FFA.png
+      - uses: actions/upload-artifact@v4
+        with:
+          name: DungeonCrush-2.10.1-Reviewed-UI
+          path: ui/*.png
+          if-no-files-found: error
       - name: Prepare install notes
         run: |
           cat > release-notes.md <<'EOF'
-          던전크러시! 2.10.0 — 프리스트·100레벨·36던전·최대 4인 개인전 패치입니다.
+          던전크러시! 2.10.1 — 몬스터 방향·전투 속도·기본 공격·달리기 외형 수정.
           
-          APK를 눌러 기존 던전크러시에 업데이트 설치하세요. 성장 기록을 유지하려면 앱을 삭제하지 마세요.
-          친구에게는 Share.zip 또는 이 릴리스 주소를 보내세요. 모두 2.10.0을 설치하고 같은 Wi-Fi에 연결해야 합니다.
+          APK를 눌러 기존 던전크러시에 업데이트 설치하세요. 캐릭터 기록을 유지하려면 앱을 삭제하지 마세요.
+          친구에게는 Share.zip 또는 이 릴리스 주소를 보내세요. 모두 2.10.1을 설치하고 같은 Wi-Fi에 연결하세요.
           
-          - 신규 여섯 번째 캐릭터 프리스트 엘리안: 망치·성광 공격, 치유와 보호, 고유 장비 그림과 모션을 추가했습니다.
-          - 원거리 캐릭터의 기본 공격 속도와 넉백·경직을 낮춰 몬스터가 접근할 수 있도록 조정했습니다.
-          - 30레벨부터 최대 4인 개인전: 2~4명, 팀 없음, 장비·능력치와 기본 스킬 보정, 물약 불가, 3라운드 중 2라운드 선승입니다. 방장 연결 종료 시 대전은 취소됩니다.
-          - 최대 레벨 100, 12챕터·36던전과 던전별 일반 몬스터·보스 외형을 적용했습니다. 100레벨 이후 신규 전직은 포함하지 않습니다.
-          - 각 직업에 60·80·100레벨 습득 스킬 3종씩 총 18종을 추가했습니다. 전용 그림·아이콘과 커진 이펙트를 적용했습니다.
-          - 가로 6칸 스킬 장착·해제·교체와 빈칸 저장을 지원합니다. 던전용과 개인전용 배치를 따로 저장합니다.
-          - 구매·판매·분해·강화·제작 확인, 장비 비교와 스킬 장착 선택창을 누른 버튼/아이템 앞에 표시하고 원래 버튼을 강조합니다.
-          - 정지된 새 메인 원화를 누르면 메뉴가 표시되며, 캐릭터 선택에서도 움직임을 멈췄습니다.
-          - 착용 장비 우선 정렬, 기존 5개 캐릭터 기록, 기존 설치 패키지/서명을 유지합니다. 집사 사절 원본은 변경하지 않았습니다.
+          - 좌우 원화가 섞인 몬스터 72종의 방향을 각각 보정했습니다.
+          - 일반 적 이동 40%, 보스 25%를 올리고 접근·공격 간격을 조정했습니다. 공격 예고 시간은 유지합니다.
+          - 기본 공격을 무기 아이콘으로 고정하고 빈 스킬 칸/남은 입력을 분리했습니다. 기존 장착을 보존하며 배치 복구 기능을 추가했습니다.
+          - 흰 배경이 남던 보스·몬스터 4종을 투명 처리했습니다.
+          - 금색 선택·비활성 버튼의 글자를 진하게 표시하고, 일괄 분해를 왼쪽 상단으로 옮겼습니다.
+          - 달리기의 상체 색과 크기를 대기 자세와 통일하고 8포즈 다리 동작을 유지했습니다.
+          - 6직업·100레벨·36던전·최대4인 개인전·6칸 장착·기존 기록과 설치 서명을 유지합니다.
+          - 새 채팅에서 작업을 이어가려면 첨부 HANDOFF.md를 먼저 읽도록 요청하세요. ZIP에도 포함했습니다.
           
-          검증: JavaScript 15개, 실제 TCP 4인 연결, Chrome 17개 시나리오, 작은 화면·확대 글씨·가로 6칸·실제 네 브라우저 개인전·APK 서명·포함 원화/전체 한글 글꼴 검사. 물리 휴대폰의 프레임률·터치 감각은 별도 확인이 필요합니다.
-          검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42426416837
-          APK SHA256: e8b2331339132ef7d0fb62b8e5f08125981a922a8f764167aced5c2bb19d1a15
+          검증: JavaScript16개·실제 TCP4인·Chrome18개 시나리오(총35개), 실제 터치 입력, 72종 방향, 달리기 상체 픽셀, 작은 화면 글자 대비, APK 서명·원화·글꼴 검사. 물리 휴대폰의 프레임률과 조작감은 별도 확인이 필요합니다.
+          검증 소스: 5501e808bc9a02f3b8b709a09891c348df6f7631
+          검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42441280165
+          APK SHA256: a4e4bb85eeb904f25323a973cdbc516a7489cf9635e7f4f388af569c0cdddff7
           EOF
       - name: Publish direct install, share ZIP and UI comparisons
         run: |
-          if gh release view dungeon-crush-v2.10.0 >/dev/null 2>&1; then
-            gh release download dungeon-crush-v2.10.0 --pattern DungeonCrush-2.10.0.apk --dir existing
-            cmp apk/DungeonCrush-2.10.0.apk existing/DungeonCrush-2.10.0.apk
-            gh release upload dungeon-crush-v2.10.0 DungeonCrush-2.10.0-Share.zip ui/*.png --clobber
+          if gh release view dungeon-crush-v2.10.1 >/dev/null 2>&1; then
+            gh release download dungeon-crush-v2.10.1 --pattern DungeonCrush-2.10.1.apk --dir existing
+            cmp apk/DungeonCrush-2.10.1.apk existing/DungeonCrush-2.10.1.apk
+            gh release upload dungeon-crush-v2.10.1 DungeonCrush-2.10.1-Share.zip HANDOFF.md ui/*.png --clobber
           else
-            gh release create dungeon-crush-v2.10.0 apk/DungeonCrush-2.10.0.apk DungeonCrush-2.10.0-Share.zip ui/*.png --target "$GITHUB_SHA" --title '던전크러시! 2.10.0 — 6직업·100레벨·4인 개인전' --notes-file release-notes.md --prerelease
+            gh release create dungeon-crush-v2.10.1 apk/DungeonCrush-2.10.1.apk DungeonCrush-2.10.1-Share.zip HANDOFF.md ui/*.png --target "$GITHUB_SHA" --title '던전크러시! 2.10.1 — 방향·기본 공격·달리기 수정' --notes-file release-notes.md --prerelease
           fi
       - name: Verify every public download against checked files
         run: |
-          gh api "repos/$GITHUB_REPOSITORY/releases/tags/dungeon-crush-v2.10.0" > release-assets.json
+          gh api "repos/$GITHUB_REPOSITORY/releases/tags/dungeon-crush-v2.10.1" > release-assets.json
           python3 - <<'PY'
           from pathlib import Path
           from hashlib import sha256
           import json
           release=json.loads(Path('release-assets.json').read_text());assets={a['name']:a for a in release['assets']};images=list(Path('ui').glob('*.png'));assert len(images)==7
-          for p in [Path('apk/DungeonCrush-2.10.0.apk'),Path('DungeonCrush-2.10.0-Share.zip'),*images]:
+          for p in [Path('apk/DungeonCrush-2.10.1.apk'),Path('DungeonCrush-2.10.1-Share.zip'),Path('HANDOFF.md'),*images]:
               a=assets[p.name];assert a['size']==p.stat().st_size and a['digest']=='sha256:'+sha256(p.read_bytes()).hexdigest(),p.name
           print('Verified published original APK, mandatory share ZIP and all reviewed UI images.')
           PY
