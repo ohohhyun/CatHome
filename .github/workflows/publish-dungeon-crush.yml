@@ -16,19 +16,19 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
-      RELEASE_TAG: dungeon-crush-v2.10.1-motion-audit
+      RELEASE_TAG: dungeon-crush-v2.10.1-safe-sale
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 82b0fe80686c3108d9607d9a6d674c4ac68e67d8
+          ref: b68d1185048a64b3c417bd85293cdba1ce824c5a
       - name: Verify completed build and download its unchanged signed APK
         run: |
-          test "$(gh api repos/$GH_REPO/actions/runs/42460800665 --jq .conclusion)" = success
-          test "$(gh api repos/$GH_REPO/actions/runs/42460800665 --jq .head_sha)" = ba7434c06747cb3d90dcf617dc8b9c927bcd2613
+          test "$(gh api repos/$GH_REPO/actions/runs/42467263908 --jq .conclusion)" = success
+          test "$(gh api repos/$GH_REPO/actions/runs/42467263908 --jq .head_sha)" = b68d1185048a64b3c417bd85293cdba1ce824c5a
       - uses: actions/download-artifact@v4
         with:
           name: DungeonCrush-APK
-          run-id: 42460800665
+          run-id: 42467263908
           github-token: ${{ github.token }}
           path: apk
       - name: Verify exact APK and create ALZip compatible share ZIP
@@ -38,14 +38,14 @@ jobs:
           from hashlib import sha256
           from zipfile import ZipFile,ZipInfo,ZIP_STORED
           p=Path('apk/DungeonCrush-2.10.1.apk');data=p.read_bytes()
-          expected='222ea3c54e8b1a6fa3f917d9da97d81c4fd88f00b21b35b4396ecae324f2c605'
-          assert len(data)==237657135 and sha256(data).hexdigest()==expected
+          expected='d8478806635a922de54f3078a1d3dc56577d1cb6e4fa4fc83d2cdde42eb0e556'
+          assert len(data)==237659167 and sha256(data).hexdigest()==expected
           with ZipFile(p) as z:
               assert z.testzip() is None
-              for name in ['actors.js','app.js']:
+              for name in ['actors.js','app.js','rpg.js','town.js','expansion.css']:
                   assert z.read('assets/'+name)==Path('dungeon-crush/app/src/main/assets/'+name).read_bytes()
-          notes='던전크러시! 6직업 모션 수정판 (설치 버전 33)\r\n\r\n1. 압축을 풀고 DungeonCrush-2.10.1.apk를 설치하세요.\r\n2. 캐릭터 기록을 유지하려면 기존 앱을 삭제하지 말고 업데이트 설치하세요.\r\n3. 집사 사절과 별도로 설치되는 던전크러시 앱입니다.\r\n\r\nAPK SHA256: '+expected+'\r\n'
-          output=Path('DungeonCrush-MotionFix-33.zip')
+          notes='던전크러시! 체크 일괄 판매·장착 장비 보호 (설치 버전 34)\r\n\r\n1. 압축을 풀고 DungeonCrush-2.10.1.apk를 설치하세요.\r\n2. 캐릭터 기록을 유지하려면 기존 앱을 삭제하지 말고 업데이트 설치하세요.\r\n3. 집사 사절과 별도로 설치되는 던전크러시 앱입니다.\r\n\r\nAPK SHA256: '+expected+'\r\n'
+          output=Path('DungeonCrush-SafeSale-34.zip')
           with ZipFile(output,'w',compression=ZIP_STORED) as z:
               for name,content in [(p.name,data),('INSTALL-KO.txt',b'\xef\xbb\xbf'+notes.encode()),('HANDOFF.md',Path('dungeon-crush/HANDOFF.md').read_bytes())]:
                   item=ZipInfo(name,date_time=(2026,11,8,0,0,0));item.create_system=3;item.external_attr=0o100644<<16;item.compress_type=ZIP_STORED;z.writestr(item,content)
@@ -56,23 +56,26 @@ jobs:
       - name: Publish persistent direct download
         run: |
           cat > release-notes.md <<'EOF'
-          던전크러시! 6직업 전체 모션 수정판 (versionCode 33).
+          던전크러시! 체크 일괄 판매·장착 장비 보호 (versionCode 34).
           
-          아래 DungeonCrush-MotionFix-33.zip을 받고 압축을 푼 뒤 APK를 설치하세요. 기존 앱을 삭제하지 말고 업데이트 설치하세요.
+          아래 DungeonCrush-SafeSale-34.zip을 받고 압축을 푼 뒤 APK를 설치하세요. 기존 앱을 삭제하지 말고 업데이트 설치하세요.
           
-          - 6직업의 상하체 잘림, 세라의 걷기 체형과 허벅지 비율을 수정했습니다.
-          - 공격 3연타를 사전 로딩하고 모션 되감김을 제거했으며 프레임 사이를 부드럽게 전환합니다.
-          - 기존 35개 자동 검사, 전체 744개 포즈, 6직업 실제 3연타와 스킬, APK 기존 서명 검증을 통과했습니다.
-          - 집사 사절 원본은 수정하지 않았습니다.
+          - 체크한 장비만 일괄 판매하며 선택 개수·목록·합계 골드를 확인한 뒤 확정합니다.
+          - 장착 중/잠금 장비는 판매 불가로 표시하고 체크를 막습니다.
+          - 판매 확정 시 다시 검증하며 장착·잠금·삭제된 장비가 섞여 있으면 전체 판매를 중단합니다.
+          - 선택/취소만으로는 장비와 골드가 바뀌지 않습니다. 중복 판매와 중복 골드 지급도 막습니다.
+          - 이전 6직업 모션 수정과 프리스트 스킬 투명 배경 수정도 포함합니다.
+          - 기존 35개 검사와 6직업 판매 보호·작은 화면·장착 중 상태 변경 검사를 통과했습니다.
+          - 집사 사절 원본은 수정하지 않았습니다. 과거에 이미 판매한 장비를 자동 복구하는 패치는 아닙니다.
           
-          검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42460800665
-          APK SHA256: 222ea3c54e8b1a6fa3f917d9da97d81c4fd88f00b21b35b4396ecae324f2c605
+          검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42467263908
+          APK SHA256: d8478806635a922de54f3078a1d3dc56577d1cb6e4fa4fc83d2cdde42eb0e556
           EOF
           if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
-            gh release upload "$RELEASE_TAG" DungeonCrush-MotionFix-33.zip --clobber
+            gh release upload "$RELEASE_TAG" DungeonCrush-SafeSale-34.zip --clobber
             gh release edit "$RELEASE_TAG" --draft=false --prerelease --latest=false --notes-file release-notes.md
           else
-            gh release create "$RELEASE_TAG" DungeonCrush-MotionFix-33.zip --target ba7434c06747cb3d90dcf617dc8b9c927bcd2613 --title '던전크러시! 6직업 전체 모션 수정판' --notes-file release-notes.md --prerelease --latest=false
+            gh release create "$RELEASE_TAG" DungeonCrush-SafeSale-34.zip --target b68d1185048a64b3c417bd85293cdba1ce824c5a --title '던전크러시! 체크 일괄 판매·장착 장비 보호' --notes-file release-notes.md --prerelease --latest=false
           fi
       - name: Verify public ZIP size and SHA256
         run: |
@@ -81,7 +84,7 @@ jobs:
           from pathlib import Path
           from hashlib import sha256
           import json
-          p=Path('DungeonCrush-MotionFix-33.zip');r=json.loads(Path('release-assets.json').read_text())
+          p=Path('DungeonCrush-SafeSale-34.zip');r=json.loads(Path('release-assets.json').read_text())
           assert not r['draft']
           a=next(a for a in r['assets'] if a['name']==p.name)
           assert a['size']==p.stat().st_size and a['digest']=='sha256:'+sha256(p.read_bytes()).hexdigest()
