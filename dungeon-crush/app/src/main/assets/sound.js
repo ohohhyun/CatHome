@@ -1,7 +1,8 @@
 /* Offline CC0 foley: attacks never use interface switch/confirmation recordings. */
 (function(root){'use strict';
 const files={click:'click.wav',confirm:'confirm.wav',select:'select.wav',swing:'slash1.ogg',town:'town.ogg',battle:'battle.mp3',hit:'metal1.ogg',hurt:'soft.ogg',block:'plate.ogg',charge:'glass.ogg',step:'step.ogg',slash1:'slash1.ogg',slash2:'slash2.ogg',draw:'draw.ogg',cloth1:'cloth1.ogg',cloth2:'cloth2.ogg',chop:'chop.ogg',punch1:'punch1.ogg',punch2:'punch2.ogg',metal1:'metal1.ogg',metal2:'metal2.ogg',glass:'glass.ogg',plate:'plate.ogg',soft:'soft.ogg',potion:'potion.ogg'};
-let settings={music:.38,sfx:.7,shake:true};try{settings={...settings,...JSON.parse(localStorage.getItem('dungeonCrushAudio')||'{}')};}catch{}for(const k of ['music','sfx'])settings[k]=Math.max(0,Math.min(1,Number(settings[k])||0));
+let settings={music:.38,sfx:.7,shake:true,reducedEffects:false};try{settings={...settings,...JSON.parse(localStorage.getItem('dungeonCrushAudio')||'{}')};}catch{}for(const k of ['music','sfx'])settings[k]=Math.max(0,Math.min(1,Number(settings[k])||0));
+settings.reducedEffects=settings.reducedEffects===true;
 let unlocked=false,suspended=false,scene='town',track=null,played=0,lastFx=-1,lastRun='',lastStep=0;const pools={},times={},music={},heard=[];
 function make(key){const a=new Audio('audio/'+files[key]);a.preload='auto';return a;}
 for(const k of ['town','battle']){music[k]=make(k);music[k].loop=true;}
@@ -24,6 +25,6 @@ function observe(game,myId=0){if(lastRun!==game.runId){lastFx=-1;lastRun=game.ru
  }
  if(local?.action==='run'&&performance.now()-lastStep>270){lastStep=performance.now();play('step',.25,1+(local.id%3)*.04);}}
 function pause(value=true){suspended=value;if(value)for(const pool of Object.values(pools))for(const a of pool)a.pause();sync();}
-function set(key,value){if(key==='shake')settings[key]=!!value;else if(['music','sfx'].includes(key))settings[key]=Math.max(0,Math.min(1,Number(value)||0));save();if(key==='sfx')for(const pool of Object.values(pools))for(const a of pool)a.volume=settings.sfx;sync();}
-root.DungeonSound={unlock,play,scene:change,observe,pause,set,settings:()=>({...settings}),state:()=>({unlocked,suspended,track,played,currentTime:track?music[track].currentTime:0,ready:music[scene].readyState,duration:music[scene].duration,heard:[...heard],combatSamples:14})};
+function set(key,value){if(['shake','reducedEffects'].includes(key))settings[key]=!!value;else if(['music','sfx'].includes(key))settings[key]=Math.max(0,Math.min(1,Number(value)||0));save();if(key==='sfx')for(const pool of Object.values(pools))for(const a of pool)a.volume=settings.sfx;sync();}
+root.DungeonSound={isReducedEffects:()=>settings.reducedEffects,unlock,play,scene:change,observe,pause,set,settings:()=>({...settings}),state:()=>({unlocked,suspended,track,played,currentTime:track?music[track].currentTime:0,ready:music[scene].readyState,duration:music[scene].duration,heard:[...heard],combatSamples:14})};
 })(window);

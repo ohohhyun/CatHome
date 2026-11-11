@@ -11,19 +11,19 @@ function preloadAll(){root.DungeonActors.preloadAll();ACTORS.forEach((_,i)=>ensu
 function cell(c,cls,row,col,x,y,w,h,options={}){
  ensureSkills(cls);const grown=Number.isInteger(options.growth)&&options.growth>=0,im=pictures.get((grown?'growth':'skills')+cls),rows=grown?3:6;if(!im)return false;const sx=Math.round(im.width*col/8)+1,sy=Math.round(im.height*row/rows)+1,sw=Math.round(im.width*(col+1)/8)-sx-1,sh=Math.round(im.height*(row+1)/rows)-sy-1;
  c.save();c.translate(x,y);c.rotate(options.angle||0);c.scale(options.dir||1,1);c.globalCompositeOperation='screen';c.globalAlpha*=options.alpha??1;
- if(options.bloom&&Math.max(w,h)>=260){const a=c.globalAlpha;c.globalAlpha*=.15;c.drawImage(im,sx,sy,sw,sh,-w*(options.anchorX??.5)-w*.08,-h*(options.anchorY??.5)-h*.08,w*1.16,h*1.16);c.globalAlpha=a;}c.drawImage(im,sx,sy,sw,sh,-w*(options.anchorX??.5),-h*(options.anchorY??.5),w,h);c.restore();effectDraws++;return true;
+ if(options.bloom&&!root.DungeonSound?.isReducedEffects?.()&&Math.max(w,h)>=260){const a=c.globalAlpha;c.globalAlpha*=.15;c.drawImage(im,sx,sy,sw,sh,-w*(options.anchorX??.5)-w*.08,-h*(options.anchorY??.5)-h*.08,w*1.16,h*1.16);c.globalAlpha=a;}c.drawImage(im,sx,sy,sw,sh,-w*(options.anchorX??.5),-h*(options.anchorY??.5),w,h);c.restore();effectDraws++;return true;
 }
 function classOf(f){if(Number.isInteger(f.cls)&&f.cls>=0&&f.cls<ACTORS.length)return f.cls;const i=root.Rift?.CLASSES.findIndex(p=>p.color===f.color);return i>=0?i:0;}
 function effect(c,f,camera,time){
  if(['text','windup'].includes(f.type))return false;
  const cls=classOf(f),life=f.duration||(f.type==='ultimate'?1.8:f.type==='muzzle'?.22:.55),t=clamp(1-f.life/life,0,.999),col=f.type==='playerwind'?Math.min(3,Math.floor(t*4)):Math.min(7,4+Math.floor(t*4)),dir=f.dir||1,x=f.x-camera,y=f.y,range=f.range||160,alpha=Math.min(1,f.life/.08),index=cls===4?([0,1,2,3,2,4,5][f.index||0]??0):clamp((f.index||1)-1,0,5),o={dir,alpha,bloom:true};
- if(Number.isInteger(f.growth)&&f.growth>=0&&!['text','windup','hit','hurt','death','impact','muzzle','dash'].includes(f.type)){const large=f.type==='ultimate',warm=f.type==='playerwind',scale=1+(f.tier||0)*.065,w=warm?235:Math.min(large?1800:1500,(range*1.65+310)*scale),h=warm?255:large?980:w*.70,xx=x+(['line','cone','rush'].includes(f.type)?dir*w*.18:0),yy=y-(warm?170:large?190:145);const result=cell(c,cls,f.growth,col,xx,yy,w,h,{dir,alpha:alpha*(warm?.35:f.owner!==undefined&&f.owner!==(root.RiftApp?.getMyId?.()??0)?.40:.82),growth:f.growth,bloom:true});accents(c,f,camera,t);return result;}
+ if(Number.isInteger(f.growth)&&f.growth>=0&&!['text','windup','hit','hurt','death','impact','muzzle','dash'].includes(f.type)){const large=f.type==='ultimate',warm=f.type==='playerwind',scale=1+(f.tier||0)*.065,w=warm?235:Math.min(large?1800:1500,(range*1.65+310)*scale),h=warm?255:large?980:w*.70,xx=x+(['line','cone','rush'].includes(f.type)?dir*w*.18:0),yy=y-(warm?170:large?190:145);const result=cell(c,cls,f.growth,col,xx,yy,w,h,{dir,alpha:alpha*(warm?.35:f.owner!==undefined&&f.owner!==(root.RiftApp?.getMyId?.()??0)?.40:.82),growth:f.growth,bloom:true});if(!root.DungeonSound?.isReducedEffects?.())accents(c,f,camera,t);return result;}
  if(f.type==='playerwind'){const support=f.index===5;return cell(c,cls,index,col,x+([3,4].includes(cls)&&!support?dir*36:0),y-(support?130:[135,165,185,190,180,175][cls]),support?290:195,support?350:220,{alpha:.38,dir,bloom:true});}
  if(f.type==='chain'&&f.points){const pts=f.points;for(let i=1;i<pts.length;i++){const a=pts[i-1],b=pts[i],dx=b.x-a.x,dy=b.y-a.y;cell(c,cls,3,col,(a.x+b.x)/2-camera,(a.y+b.y)/2-145,Math.max(190,Math.hypot(dx,dy)*1.6),225,{alpha,angle:Math.atan2(dy,dx),bloom:true});}return true;}
- if(f.type==='ultimate'&&root.DungeonActors.ultimate(c,cls,t,x,y-165,Math.min(1460,range*2.6),900,alpha*.94)){accents(c,f,camera,t);return true;}
+ if(f.type==='ultimate'&&root.DungeonActors.ultimate(c,cls,t,x,y-165,Math.min(1460,range*2.6),900,alpha*.94)){if(!root.DungeonSound?.isReducedEffects?.())accents(c,f,camera,t);return true;}
  if(['shield','heal'].includes(f.type))return cell(c,cls,cls===5&&f.type==='heal'?2:4,col,x,y-135,410,470,{alpha,bloom:true});
  if(f.type==='muzzle')return cell(c,f.caster?3:cls,f.caster?2:0,4,x,y-(f.caster?135:[135,165,185,190,180,175][cls]),110,95,{...o,alpha:alpha*.8});
- if(['hit','hurt','death','impact'].includes(f.type)){accents(c,f,camera,t);
+ if(['hit','hurt','death','impact'].includes(f.type)){if(!root.DungeonSound?.isReducedEffects?.())accents(c,f,camera,t);
   const w=f.type==='impact'?210:f.type==='death'?180:105+(f.stage===2?35:0);return cell(c,f.caster?3:cls,f.caster?1:cls===2?1:0,col,x,y-85,w,w*.8,{...o,alpha:alpha*(f.type==='hurt'?.55:1)});
  }
  if(f.type==='dash')return cell(c,cls,cls===0?2:0,col,x+dir*25,y-105,300,210,{...o,alpha:alpha*.45});
@@ -37,7 +37,7 @@ function effect(c,f,camera,time){
   if(f.type==='basic'&&cls===2&&f.stage===2){row=1;angle=-dir*1.1;xx=x+dir*10;yy=y-180;w=270;h=230;}
   if(f.type==='basic'&&cls===0&&f.stage===2){angle=dir*.6;yy=y-110;}
   if(cls===4&&f.type!=='basic')row=index;
-  const drawn=cell(c,cls,row,col,xx,yy,w,h,{...o,angle,alpha:alpha*(f.owner!==undefined&&f.owner!==(root.RiftApp?.getMyId?.()??0)?.48:.76)});accents(c,f,camera,t);
+  const drawn=cell(c,cls,row,col,xx,yy,w,h,{...o,angle,alpha:alpha*(f.owner!==undefined&&f.owner!==(root.RiftApp?.getMyId?.()??0)?.48:.76)});if(!root.DungeonSound?.isReducedEffects?.())accents(c,f,camera,t);
   if(f.type==='ultimate'&&drawn)for(const side of [-1,1])cell(c,cls,5,col,xx+side*w*.30,yy+40,w*.55,h*.70,{alpha:alpha*.5});
   return drawn;
  }
