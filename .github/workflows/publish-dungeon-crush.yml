@@ -16,19 +16,19 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
-      RELEASE_TAG: dungeon-crush-v2.10.1-safe-sale
+      RELEASE_TAG: dungeon-crush-v2.10.2-rc1
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: b68d1185048a64b3c417bd85293cdba1ce824c5a
+          ref: f685dbbf27308ac08c59d0c5aadca017635b7c8b
       - name: Verify completed build and download its unchanged signed APK
         run: |
-          test "$(gh api repos/$GH_REPO/actions/runs/42467263908 --jq .conclusion)" = success
-          test "$(gh api repos/$GH_REPO/actions/runs/42467263908 --jq .head_sha)" = b68d1185048a64b3c417bd85293cdba1ce824c5a
+          test "$(gh api repos/$GH_REPO/actions/runs/42957696478 --jq .conclusion)" = success
+          test "$(gh api repos/$GH_REPO/actions/runs/42957696478 --jq .head_sha)" = f685dbbf27308ac08c59d0c5aadca017635b7c8b
       - uses: actions/download-artifact@v4
         with:
           name: DungeonCrush-APK
-          run-id: 42467263908
+          run-id: 42957696478
           github-token: ${{ github.token }}
           path: apk
       - name: Verify exact APK and create ALZip compatible share ZIP
@@ -37,18 +37,19 @@ jobs:
           from pathlib import Path
           from hashlib import sha256
           from zipfile import ZipFile,ZipInfo,ZIP_STORED
-          p=Path('apk/DungeonCrush-2.10.1.apk');data=p.read_bytes()
-          expected='d8478806635a922de54f3078a1d3dc56577d1cb6e4fa4fc83d2cdde42eb0e556'
-          assert len(data)==237659167 and sha256(data).hexdigest()==expected
+          p=Path('apk/DungeonCrush-2.10.2.apk');data=p.read_bytes()
+          expected='243e8dc58ebb77f9eaa9a4b879cc23a3e4ce45f27a99ca69d1bb34574fad8315'
+          assert len(data)==237670859 and sha256(data).hexdigest()==expected
           with ZipFile(p) as z:
               assert z.testzip() is None
-              for name in ['actors.js','app.js','rpg.js','town.js','expansion.css']:
+              for name in ['actors.js','app.js','rpg.js','town.js','progress.js','release.js','client.js','index.html']:
                   assert z.read('assets/'+name)==Path('dungeon-crush/app/src/main/assets/'+name).read_bytes()
-          notes='던전크러시! 체크 일괄 판매·장착 장비 보호 (설치 버전 34)\r\n\r\n1. 압축을 풀고 DungeonCrush-2.10.1.apk를 설치하세요.\r\n2. 캐릭터 기록을 유지하려면 기존 앱을 삭제하지 말고 업데이트 설치하세요.\r\n3. 집사 사절과 별도로 설치되는 던전크러시 앱입니다.\r\n\r\nAPK SHA256: '+expected+'\r\n'
-          output=Path('DungeonCrush-SafeSale-34.zip')
+          notes='던전크러시! 2.10.2 출시 후보 (설치 버전 35)\r\n\r\n1. 압축을 풀고 DungeonCrush-2.10.2.apk를 설치하세요.\r\n2. 기존 앱을 삭제하지 말고 업데이트 설치하세요. 설치 후 설정에서 성장 기록을 파일로 백업하세요.\r\n3. 집사 사절과 별도 앱입니다.\r\n4. 상점의 최근 판매 1회 되돌리기와 설정의 파일 백업/복원을 지원합니다.\r\n5. 이 APK는 기존 설치와 호환되는 테스트 서명입니다. 정식 스토어 제출에는 운영 업로드 키와 실제 단말 검수가 필요합니다.\r\n\r\nAPK SHA256: '+expected+'\r\n'
+          handoff=Path('dungeon-crush/HANDOFF.md').read_text()+'\n\n## 2.10.2 RC1 검증 배포\n\n- 검증 소스: `f685dbbf27308ac08c59d0c5aadca017635b7c8b`.\n- 성공 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42957696478 (37개 검사, APK/AAB, Android lint, 서명/원화 일치 검사).\n- 배포 페이지: https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.10.2-rc1\n- APK SHA256: `'+expected+'`.\n- versionCode 35, versionName 2.10.2, 기존 APK 서명 유지. 원본 집사 사절 트리 유지.\n- 정식 스토어 제출에는 운영 업로드 키와 실기기 검수가 별도로 필요합니다.\n'
+          output=Path('DungeonCrush-2.10.2-RC1.zip')
           with ZipFile(output,'w',compression=ZIP_STORED) as z:
-              for name,content in [(p.name,data),('INSTALL-KO.txt',b'\xef\xbb\xbf'+notes.encode()),('HANDOFF.md',Path('dungeon-crush/HANDOFF.md').read_bytes())]:
-                  item=ZipInfo(name,date_time=(2026,11,8,0,0,0));item.create_system=3;item.external_attr=0o100644<<16;item.compress_type=ZIP_STORED;z.writestr(item,content)
+              for name,content in [(p.name,data),('INSTALL-KO.txt',b'\xef\xbb\xbf'+notes.encode()),('HANDOFF.md',handoff.encode())]+[(name,Path('dungeon-crush/release/'+name).read_bytes()) for name in ['RELEASE-CHECKLIST.md','PRIVACY-KO.md','STORE-LISTING-KO.md']]:
+                  item=ZipInfo(name,date_time=(2026,11,11,0,0,0));item.create_system=3;item.external_attr=0o100644<<16;item.compress_type=ZIP_STORED;z.writestr(item,content)
           with ZipFile(output) as z:
               assert z.testzip() is None and sha256(z.read(p.name)).hexdigest()==expected
           print('Verified exact signed APK and share ZIP:',output.stat().st_size,sha256(output.read_bytes()).hexdigest())
@@ -56,26 +57,29 @@ jobs:
       - name: Publish persistent direct download
         run: |
           cat > release-notes.md <<'EOF'
-          던전크러시! 체크 일괄 판매·장착 장비 보호 (versionCode 34).
+          던전크러시! 2.10.2 출시 후보 (versionCode 35).
           
-          아래 DungeonCrush-SafeSale-34.zip을 받고 압축을 푼 뒤 APK를 설치하세요. 기존 앱을 삭제하지 말고 업데이트 설치하세요.
+          아래 Assets에서 DungeonCrush-2.10.2-RC1.zip을 받아 압축을 풀고 APK를 설치하세요. 기존 앱을 삭제하지 말고 업데이트 설치하세요. 설치 후 설정에서 성장 기록을 파일로 백업하세요.
           
-          - 체크한 장비만 일괄 판매하며 선택 개수·목록·합계 골드를 확인한 뒤 확정합니다.
-          - 장착 중/잠금 장비는 판매 불가로 표시하고 체크를 막습니다.
-          - 판매 확정 시 다시 검증하며 장착·잠금·삭제된 장비가 섞여 있으면 전체 판매를 중단합니다.
-          - 선택/취소만으로는 장비와 골드가 바뀌지 않습니다. 중복 판매와 중복 골드 지급도 막습니다.
-          - 이전 6직업 모션 수정과 프리스트 스킬 투명 배경 수정도 포함합니다.
-          - 기존 35개 검사와 6직업 판매 보호·작은 화면·장착 중 상태 변경 검사를 통과했습니다.
-          - 집사 사절 원본은 수정하지 않았습니다. 과거에 이미 판매한 장비를 자동 복구하는 패치는 아닙니다.
+          - 저장 실패/작업 실패 시 원상 복구하고, 이전 정상 저장 기록 자동 복구와 손상 기록 덮어쓰기 방지를 추가했습니다.
+          - 설정에서 파일 백업/복원, 파일 검사, 6직업 요약과 교체 확인을 제공합니다. Android 시스템 파일 선택기를 사용합니다.
+          - 체크 일괄 판매와 장착/잠금 장비 판매 금지를 유지합니다. 최근 판매 1회는 판매 대금을 반환해 되돌릴 수 있습니다.
+          - 전투 그래픽 로딩 실패 시 재시도/마을 복귀를 제공합니다. 전투 시작 전 취소한 심연 입장료는 반환합니다.
+          - 100레벨/9개 스킬/6칸 선택 장착 도움말, Android 16/API 36, 뒤로가기와 노치 영역 처리를 보완했습니다.
+          - 기존 6직업 전신 모션과 프리스트 스킬 투명 배경 수정을 포함합니다.
+          - 37개 자동 검사, Android 네이티브 LAN, release AAB/Android lint, 기존 APK 서명과 포함 리소스 검증을 통과했습니다.
+          - 집사 사절 원본은 수정하지 않았습니다. 과거 버전에서 이미 사라진 장비를 소급 복원하지는 않습니다.
           
-          검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42467263908
-          APK SHA256: d8478806635a922de54f3078a1d3dc56577d1cb6e4fa4fc83d2cdde42eb0e556
+          이 파일은 기존 테스트 APK를 업데이트하는 출시 후보입니다. 스토어용 AAB는 빌드의 DungeonCrush-Unsigned-Store-AAB 산출물이며 서명 전 번들입니다. 실제 기기 검수, 운영 서명과 Play Console 등록은 별도입니다. ZIP 안의 RELEASE-CHECKLIST.md를 확인하세요.
+          
+          검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42957696478
+          APK SHA256: 243e8dc58ebb77f9eaa9a4b879cc23a3e4ce45f27a99ca69d1bb34574fad8315
           EOF
           if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
-            gh release upload "$RELEASE_TAG" DungeonCrush-SafeSale-34.zip --clobber
-            gh release edit "$RELEASE_TAG" --draft=false --prerelease --latest=false --notes-file release-notes.md
+            gh release upload "$RELEASE_TAG" DungeonCrush-2.10.2-RC1.zip --clobber
+            gh release edit "$RELEASE_TAG" --target f685dbbf27308ac08c59d0c5aadca017635b7c8b --draft=false --prerelease --latest=false --notes-file release-notes.md
           else
-            gh release create "$RELEASE_TAG" DungeonCrush-SafeSale-34.zip --target b68d1185048a64b3c417bd85293cdba1ce824c5a --title '던전크러시! 체크 일괄 판매·장착 장비 보호' --notes-file release-notes.md --prerelease --latest=false
+            gh release create "$RELEASE_TAG" DungeonCrush-2.10.2-RC1.zip --target f685dbbf27308ac08c59d0c5aadca017635b7c8b --title '던전크러시! 2.10.2 출시 후보 · 저장 복구와 안전 판매' --notes-file release-notes.md --prerelease --latest=false
           fi
       - name: Verify public ZIP size and SHA256
         run: |
@@ -84,7 +88,7 @@ jobs:
           from pathlib import Path
           from hashlib import sha256
           import json
-          p=Path('DungeonCrush-SafeSale-34.zip');r=json.loads(Path('release-assets.json').read_text())
+          p=Path('DungeonCrush-2.10.2-RC1.zip');r=json.loads(Path('release-assets.json').read_text())
           assert not r['draft']
           a=next(a for a in r['assets'] if a['name']==p.name)
           assert a['size']==p.stat().st_size and a['digest']=='sha256:'+sha256(p.read_bytes()).hexdigest()
