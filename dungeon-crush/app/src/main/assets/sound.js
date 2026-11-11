@@ -6,7 +6,7 @@ for(const name of effects)files[name]=name+'.ogg';
 const roles=['kael','rin','bane','sera','aria','elian'],voiceCounts=[4,3,4,3,3,4];
 for(let cls=0;cls<6;cls++)for(let n=1;n<=voiceCounts[cls];n++)files['voice-'+roles[cls]+'-'+n]='voice-'+roles[cls]+'-'+n+'.ogg';
 const classEffects=[['blade-wave','fire-cast'],['spear-wind','ice-break'],['fist-crack','earth-break'],['gun-shot','gun-blast','arc-chain'],['fire-cast','ice-break','arc-chain','arcane-wave'],['holy-cast','holy-hit','holy-heal']];
-let settings={music:.38,sfx:.7,voice:.55,shake:true,reducedEffects:false};
+let settings={music:.38,sfx:.7,voice:.25,shake:true,reducedEffects:false};
 try{settings={...settings,...JSON.parse(localStorage.getItem('dungeonCrushAudio')||'{}')};}catch{}
 for(const k of ['music','sfx','voice'])settings[k]=Math.max(0,Math.min(1,Number(settings[k])||0));
 settings.reducedEffects=settings.reducedEffects===true;
@@ -40,7 +40,7 @@ function sync(){
  if(!desired){for(const a of Object.values(music)){a.pause();a.volume=0;}track=null;return;}
  const starts=Object.fromEntries(Object.entries(music).map(([k,a])=>[k,a.volume])),started=performance.now();
  track=desired;if(music[desired].paused)music[desired].play().catch(()=>{});
- function fade(){const t=Math.min(1,(performance.now()-started)/550),gain=settings.music*(performance.now()<duckUntil?.7:1);for(const [k,a]of Object.entries(music)){const goal=k===desired?gain:0;a.volume=Math.max(0,Math.min(1,starts[k]+(goal-starts[k])*t));if(t===1&&k!==desired)a.pause();}if(t<1)fadeTimer=setTimeout(fade,20);}
+ function fade(){const t=Math.min(1,(performance.now()-started)/550),gain=settings.music*(performance.now()<duckUntil?.85:1);for(const [k,a]of Object.entries(music)){const goal=k===desired?gain:0;a.volume=Math.max(0,Math.min(1,starts[k]+(goal-starts[k])*t));if(t===1&&k!==desired)a.pause();}if(t<1)fadeTimer=setTimeout(fade,20);}
  fade();
 }
 function warmClass(cls){if(!unlocked||!Number.isInteger(cls)||cls<0||cls>5)return;const keys=[...classEffects[cls],'ward-rise','ultimate-burst'];for(let i=1;i<=voiceCounts[cls];i++)keys.push('voice-'+roles[cls]+'-'+i);for(const key of keys)if(!pools[key]){trimCache();pools[key]=[make(key)];}}
@@ -56,7 +56,7 @@ function effort(f,owner,myId,volume){
  const activeVoices=Object.values(pools).flat().filter(a=>a._channel==='voice'&&active(a));
  if(activeVoices.some(a=>a._owner===myId)||now-lastVoiceAt<900&&lastVoiceOwner===myId)return;
  if(local)for(const a of activeVoices)a.pause();else if(activeVoices.length)return;
- const cls=owner.cls,key=chooseVoice(cls),gain=local?[.86,.76,1,.72,.66,.74][cls]:.25*volume;
+ const cls=owner.cls,key=chooseVoice(cls),gain=local?[.78,.72,.82,.7,.62,.7][cls]:.25*volume;
  if(play(key,gain,1+(Math.random()-.5)*.018,owner.id)){voiceTimes.set(owner.id,now);lastVoiceAt=now;lastVoiceOwner=owner.id;duckUntil=now+1000;clearTimeout(duckTimer);sync();duckTimer=setTimeout(sync,1020);}
 }
 function skillEffect(f,cls,volume,variation){const type=f.type,index=f.index||0;
