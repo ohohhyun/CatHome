@@ -19,14 +19,21 @@ import android.webkit.WebViewClient;
 import org.json.JSONObject;
 import java.net.*;
 import java.util.Enumeration;
+import java.util.Map;
+import java.util.HashMap;
 import java.util.concurrent.*;
 
 public class MainActivity extends Activity {
  private static final int EXPORT_BACKUP=401,IMPORT_BACKUP=402;
  private String pendingBackup;
+ private RankingHttpClient rankingClient;
+ private final ExecutorService rankingRequests=Executors.newFixedThreadPool(2);
+ private static final class RankingCall {volatile boolean cancelled;volatile javax.net.ssl.HttpsURLConnection connection;}
+ private final ConcurrentMap<String,RankingCall> rankingCalls=new ConcurrentHashMap<>();
  private WebView game;private volatile LanTransport lan;private volatile boolean destroyed;
  private final ExecutorService connections=Executors.newSingleThreadExecutor();
  @Override public void onCreate(Bundle state){super.onCreate(state);getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);immersive();
+  try(InputStream in=getAssets().open("ranking-config.js");ByteArrayOutputStream out=new ByteArrayOutputStream()){byte[] bytes=new byte[1024];int n;while((n=in.read(bytes))!=-1)out.write(bytes,0,n);String source=new String(out.toByteArray(),StandardCharsets.UTF_8);JSONObject config=new JSONObject(source.substring(source.indexOf('{'),source.lastIndexOf('}')+1));if(config.optBoolean("enabled",false))rankingClient=new RankingHttpClient(config.getString("endpoint"));}catch(Exception ignored){rankingClient=null;}
   game=new WebView(this);game.setBackgroundColor(0xff101218);WebSettings s=game.getSettings();s.setJavaScriptEnabled(true);s.setDomStorageEnabled(true);s.setMediaPlaybackRequiresUserGesture(false);s.setAllowFileAccess(false);s.setAllowContentAccess(false);s.setSupportZoom(false);
   game.setWebViewClient(new WebViewClient(){@Override public boolean shouldOverrideUrlLoading(WebView v,WebResourceRequest r){return true;}@Override public boolean shouldOverrideUrlLoading(WebView v,String u){return true;}});
   game.setOnApplyWindowInsetsListener((view,insets)->{int left,top,right,bottom;if(Build.VERSION.SDK_INT>=30){Insets safe=insets.getInsets(WindowInsets.Type.systemBars()|WindowInsets.Type.displayCutout());left=safe.left;top=safe.top;right=safe.right;bottom=safe.bottom;}else{left=insets.getSystemWindowInsetLeft();top=insets.getSystemWindowInsetTop();right=insets.getSystemWindowInsetRight();bottom=insets.getSystemWindowInsetBottom();if(Build.VERSION.SDK_INT>=28&&insets.getDisplayCutout()!=null){left=Math.max(left,insets.getDisplayCutout().getSafeInsetLeft());top=Math.max(top,insets.getDisplayCutout().getSafeInsetTop());right=Math.max(right,insets.getDisplayCutout().getSafeInsetRight());bottom=Math.max(bottom,insets.getDisplayCutout().getSafeInsetBottom());}}view.setPadding(left,top,right,bottom);return insets;});
@@ -43,6 +50,8 @@ public class MainActivity extends Activity {
   @JavascriptInterface public void exportBackup(String text,String name){if(text==null||text.length()>2000000)return;runOnUiThread(()->{if(destroyed||pendingBackup!=null)return;pendingBackup=text;try{Intent intent=new Intent(Intent.ACTION_CREATE_DOCUMENT);intent.addCategory(Intent.CATEGORY_OPENABLE);intent.setType("application/json");intent.putExtra(Intent.EXTRA_TITLE,name!=null&&name.matches("[A-Za-z0-9_.-]{1,100}")?name:"DungeonCrush-backup.json");startActivityForResult(intent,EXPORT_BACKUP);}catch(Exception e){pendingBackup=null;backupEvent("error","파일 저장 화면을 열지 못했습니다.");}});}
   @JavascriptInterface public void importBackup(){runOnUiThread(()->{if(destroyed)return;try{Intent intent=new Intent(Intent.ACTION_OPEN_DOCUMENT);intent.addCategory(Intent.CATEGORY_OPENABLE);intent.setType("*/*");startActivityForResult(intent,IMPORT_BACKUP);}catch(Exception e){backupEvent("error","파일 선택 화면을 열지 못했습니다.");}});}
   @JavascriptInterface public void requestExit(){runOnUiThread(()->{if(!destroyed)new AlertDialog.Builder(MainActivity.this).setMessage("던전크러시를 종료할까요?").setPositiveButton("종료",(dialog,which)->finish()).setNegativeButton("취소",null).show();});}
+  @JavascriptInterface public void requestRanking(String id,String url,String headerJson){if(id==null||!id.matches("[A-Za-z0-9_-]{1,80}")||destroyed)return;if(rankingClient==null){rankingResult(id,null,"disabled");return;}if(url==null||url.length()>4096||headerJson==null||headerJson.length()>16384||rankingCalls.size()>=8){rankingResult(id,null,"invalid_request");return;}RankingCall call=new RankingCall();if(rankingCalls.putIfAbsent(id,call)!=null){rankingResult(id,null,"invalid_request");return;}rankingRequests.execute(()->{try{if(call.cancelled)return;JSONObject object=new JSONObject(headerJson);Map<String,String> headers=new HashMap<>();java.util.Iterator<String> keys=object.keys();while(keys.hasNext()){String key=keys.next();headers.put(key,object.getString(key));}String response=rankingClient.get(url,headers,connection->{call.connection=connection;if(call.cancelled)throw new IllegalStateException("Ranking request cancelled");});if(!call.cancelled)rankingResult(id,response,null);}catch(Exception e){if(!call.cancelled)rankingResult(id,null,"request_failed");}finally{rankingCalls.remove(id);}});}
+  @JavascriptInterface public void cancelRanking(String id){if(id==null)return;RankingCall call=rankingCalls.get(id);if(call!=null){call.cancelled=true;if(call.connection!=null)call.connection.disconnect();}}
   @JavascriptInterface public String localIp(){return ip();}
   @JavascriptInterface public void host(){connections.execute(()->{stopLan();try{LanTransport f=new LanTransport((k,p,b)->event(k,p,b));lan=f;String code=f.host();event("hosting",0,ip()+"|"+code);}catch(Exception e){event("error",0,"방을 열지 못했습니다. Wi-Fi 연결과 실행 중인 방을 확인하세요.");}});}
   @JavascriptInterface public void join(String address,String code){if(address==null||code==null||!address.matches("(?:[0-9]{1,3}\\.){3}[0-9]{1,3}")||!code.matches("[0-9]{4}")){event("error",0,"방장 IP와 4자리 코드를 확인하세요.");return;}connections.execute(()->{stopLan();try{LanTransport f=new LanTransport((k,p,b)->event(k,p,b));lan=f;f.join(address,code);}catch(Exception e){stopLan();event("error",0,"접속 실패: 같은 Wi-Fi, 방장 IP, 코드와 공유기 기기 간 통신 설정을 확인하세요.");}});}
@@ -50,6 +59,7 @@ public class MainActivity extends Activity {
   @JavascriptInterface public void disconnect(){connections.execute(()->stopLan());}
   @JavascriptInterface public void vibrate(){runOnUiThread(()->{if(!destroyed)game.performHapticFeedback(android.view.HapticFeedbackConstants.KEYBOARD_TAP);});}
  }
+ private void rankingResult(String id,String response,String error){if(destroyed)return;runOnUiThread(()->{if(destroyed)return;try{JSONObject event=new JSONObject();event.put("id",id);if(error!=null)event.put("error",error);else event.put("text",response);game.evaluateJavascript("window.onRankingHttpResult&&window.onRankingHttpResult("+event.toString()+")",null);}catch(Exception ignored){}});}
  private boolean nonnegativeNumber(Object value){if(!(value instanceof Number))return false;double number=((Number)value).doubleValue();return !Double.isNaN(number)&&!Double.isInfinite(number)&&number>=0;}
  private boolean validProgress(JSONObject o){try{if(o.optInt("version")!=2||!nonnegativeNumber(o.opt("gold"))||!nonnegativeNumber(o.opt("revision"))||o.optJSONArray("chars")==null||o.optJSONArray("chars").length()!=6)return false;for(int i=0;i<6;i++){JSONObject character=o.getJSONArray("chars").getJSONObject(i);if(!nonnegativeNumber(character.opt("xp"))||character.optJSONArray("items")==null||character.getJSONArray("items").length()>220)return false;for(int j=0;j<character.getJSONArray("items").length();j++){JSONObject item=character.getJSONArray("items").getJSONObject(j);double id=item.optDouble("id");if(!nonnegativeNumber(item.opt("id"))||id<=0||id!=Math.rint(id)||id>9007199254740991d)return false;}}return true;}catch(Exception e){return false;}}
  private boolean validProgress(String value){try{return validProgress(new JSONObject(value));}catch(Exception e){return false;}}
@@ -60,5 +70,5 @@ public class MainActivity extends Activity {
  @Override protected void onResume(){super.onResume();if(game!=null){game.onResume();game.evaluateJavascript("window.appResume&&window.appResume()",null);}immersive();}
  @Override public void onBackPressed(){game.evaluateJavascript("window.appBack&&window.appBack()",null);}
  @Override public void onWindowFocusChanged(boolean focus){super.onWindowFocusChanged(focus);if(focus)immersive();}
- @Override protected void onDestroy(){destroyed=true;stopLan();connections.shutdownNow();game.removeJavascriptInterface("RiftNative");game.destroy();super.onDestroy();}
+ @Override protected void onDestroy(){destroyed=true;stopLan();connections.shutdownNow();rankingRequests.shutdownNow();for(RankingCall call:rankingCalls.values()){call.cancelled=true;if(call.connection!=null)call.connection.disconnect();}rankingCalls.clear();game.removeJavascriptInterface("RiftNative");game.destroy();super.onDestroy();}
 }

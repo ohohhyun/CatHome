@@ -8,7 +8,7 @@
 - 검푸른 배경·브론즈/금색 강조, 메인 행동 버튼, 캐릭터 카드·콘텐츠 카드·던전 선택 프레임과 키보드 포커스를 정리했습니다.
 - [랭킹 서버 연결 인터페이스](release/RANKING-INTEGRATION.md) · [참고한 게임 UI와 적용 내용](release/UI-REFERENCES.md)
 
-이번 버전은 전체 검증 및 배포 후 다운로드 정보를 갱신합니다. 이전 검증 버전: [2.10.3 APK/ZIP](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.10.3-rc1).
+**추후 연결 준비:** `ranking-config.js` 한 곳에 연결 설정을 모았으며 현재는 꺼져 있습니다. 서버를 준비한 뒤 주소와 인증 설정을 적용해 연결할 수 있게 했습니다. 이번 버전은 전체 검증 및 배포 후 다운로드 정보를 갱신합니다. 이전 검증 버전: [2.10.3 APK/ZIP](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.10.3-rc1).
 
 ---
 

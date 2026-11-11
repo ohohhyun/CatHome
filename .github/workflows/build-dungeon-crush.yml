@@ -62,6 +62,7 @@ jobs:
           node tests/equipment-services.test.cjs
           node tests/release.test.cjs
           node tests/rankings.test.cjs
+          node tests/ranking-client.test.cjs
           node tests/font-coverage.test.cjs
           node tests/ui-layout.test.cjs
           node tests/party-recovery.test.cjs
@@ -74,6 +75,8 @@ jobs:
           mkdir -p build/lan-test
           javac -d build/lan-test app/src/main/java/com/dungeoncrush/game/LanTransport.java tests/LanTransportTest.java
           java -cp build/lan-test LanTransportTest
+          javac -d build/lan-test app/src/main/java/com/dungeoncrush/game/RankingHttpClient.java tests/RankingHttpClientTest.java
+          java -cp build/lan-test RankingHttpClientTest
       - name: Install UI test library
         run: npm install --prefix "$RUNNER_TEMP/cathome-ui" --no-package-lock --no-audit --no-fund playwright@1.56.1
         env:

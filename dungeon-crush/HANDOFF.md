@@ -189,6 +189,13 @@
 - `ranking-ui.js`는 독립 modal입니다. 메인·마을·선택 화면의 랭킹 버튼, 전체 랭킹/내 기록, 종목/직업 필터, 프로필, 요약, 새로고침, Back/Escape/Tab 조작을 제공합니다. 열려 있는 동안 마을 이동을 중지하고 원정 시작 시 닫습니다.
 - 전체 랭킹 기본 provider는 null입니다. ‘서버 연결 전’으로 안내하며 가짜 전역 순위·샘플 이용자를 앱에 넣지 않습니다. `DungeonRankingUI.setProvider({load(query)})`가 추후 읽기 어댑터의 연결점입니다. 응답 유효성/텍스트 표시/10초 시간 제한/로딩·빈 결과·오류/오래된 응답·닫힌 창 응답 무시를 준비했습니다. 실제 인증/제출/서버 검증/시즌/운영 기능은 포함하지 않습니다.
 - `refinement.css`로 메인 보조 메뉴, 헤더 행동, 캐릭터/콘텐츠/던전 카드, 선택선, 메뉴 프레임·포커스와 명예의 전당 화면을 정리했습니다. 다른 게임의 이미지/로고를 복사하지 않았습니다. 참고 자료는 `release/UI-REFERENCES.md`입니다.
-- 새 검사 `tests/rankings.test.cjs`, `tests/rankings-presentation.test.cjs`. 전체 workflow는 JS 18, TCP 1, Chrome 20 = **39개**입니다. 기존 8개 화면/확대 글자 감사도 실행합니다.
+- 새 검사 `tests/rankings.test.cjs`, `tests/rankings-presentation.test.cjs`. 전체 workflow는 JS 19, 네이티브 2, Chrome 20 = **41개**입니다. 기존 8개 화면/확대 글자 감사도 실행합니다.
 - versionName 2.11.0 / versionCode 37. API 36, 기존 앱 서명, 프로토콜 8, 저장 형식 유지. 집사 사절 app/legacy/tests를 변경하지 않습니다.
 - 새 파일 `rankings.js`, `ranking-ui.js`, `refinement.css`도 APK 포함 바이트 검사에 추가했습니다. 이전 네트워크·모션·판매 보호·저장 재시도 기능을 유지합니다.
+
+
+- 후속 사용자 재확인: **‘연결해 하면 연결되게만 만들어놓으라고’**. 지금 서버 생성·연결은 금지하고 나중에 연결을 켤 수 있는 구조만 준비합니다.
+- `ranking-config.js`가 단일 연결 설정입니다. JSON 호환 객체이며 enabled=false, endpoint/publicKey 빈 값으로 배포합니다. `ranking-client.js`는 설정을 켰을 때만 HTTPS GET, 종목/직업/조회 수, 공개 키/런타임 세션 토큰, 응답 크기·형식·상태·취소를 처리합니다.
+- 일반 브라우저는 fetch, Android는 `RankingHttpClient`/Bridge의 읽기 전용 HTTPS 전송을 준비했습니다. Android도 같은 설정을 읽어 활성화된 호스트/포트/경로와 허용 쿼리만 조회합니다. 기본 설정에서는 네이티브 클라이언트도 생성하지 않습니다. 범용 파일 접근이나 저장소 출처 변경은 하지 않습니다.
+- 네이티브 요청은 별도 실행기, 최대 8개 활성/대기 작업, 5초 연결/읽기 시간 제한, 리다이렉트 금지, 256KiB 응답 제한을 둡니다. 결과는 JSON으로 인코딩하고 취소/종료 시 연결을 닫습니다. 장기 토큰/운영 비밀 키는 앱 설정에 넣지 않습니다.
+- 새 연결 검사 `tests/ranking-client.test.cjs`, `tests/RankingHttpClientTest.java`와 실제 화면의 설정 켜기/끄기-요청 규격 시험을 추가했습니다. 모든 원격 응답은 테스트 안에서만 대체하며 실제 서버 호출은 하지 않습니다. 성공 빌드 전에는 검증 완료로 표시하지 않습니다.

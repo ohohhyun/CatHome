@@ -11,19 +11,32 @@
 - 같은 기준 값은 공동 순위(1, 1, 3)입니다. 같은 순위 내 표시 순서는 직업 ID로 고정합니다.
 - 직업 필터, 상세보기, 선택 캐릭터 요약, 새로고침, 뒤로가기/키보드 조작을 제공합니다.
 
-## 서버 조회 어댑터
+## 나중에 “연결해”라고 할 때 바꿀 설정
 
-서버가 준비되면 앱 초기화 후 아래 인터페이스를 연결합니다. 공개 배포된 앱의 기본 상태는 미연결입니다.
+연결 설정은 `app/src/main/assets/ranking-config.js` 한 곳에 모았습니다. 현재는 `enabled:false`, endpoint와 공개 키는 빈 값입니다. 서버가 아래 API 규격을 구현하면 해당 파일에 최종 HTTPS 조회 주소와 공개 키를 넣고 `enabled:true`로 바꿔 빌드합니다. 지금은 이 설정을 켜지 않습니다.
 
 ```js
-DungeonRankingUI.setProvider({
-  async load({ metric, cls, limit, signal }) {
-    // 인증/HTTPS/서버별 API 호출은 구현 시 추가합니다.
-    // 서버가 계산한 전역 순위와 공개 프로필만 반환합니다.
-    return { entries: [], total: 0, updatedAt: '2026-11-11T00:00:00Z' };
-  }
+window.DungeonRankingConfig = Object.freeze({
+  "enabled": false,
+  "endpoint": "",
+  "publicKey": ""
 });
 ```
+
+이 객체는 Android도 읽으므로 **JSON 호환 값과 따옴표를 유지**합니다. 비밀 키/고정 access token을 넣지 않습니다. 로그인 세션이 필요한 서버라면 초기화 시 런타임 토큰 공급자만 추가합니다.
+
+```js
+DungeonRankingUI.configureConnection({
+  ...DungeonRankingConfig,
+  getAccessToken: async ({signal}) => /* 로그인 SDK의 현재 단기 토큰 */ ''
+});
+```
+
+연결기를 켜더라도 랭킹 화면을 열기 전에는 조회하지 않습니다. 일반 브라우저에서는 fetch를 사용하고, Android에서는 같은 설정의 HTTPS 주소만 허용하는 읽기 전용 네이티브 전송을 준비했습니다. 파일 기반 WebView의 저장소 출처를 바꾸거나 범용 파일 접근 권한을 열지 않습니다. Android 설정 변경은 재빌드가 필요합니다.
+
+GET 요청 쿼리는 `metric`, `cls`, `limit`입니다. `Accept: application/json`, 선택적 `apikey`, 런타임 `Authorization: Bearer ...`를 보냅니다. 쿠키/리다이렉트/임의 헤더는 사용하지 않으며 응답은 256KiB 이내입니다. Android는 설정된 호스트·포트·경로와 허용한 쿼리만 조회합니다. 인증 실패/요청 제한/형식·크기 오류/취소를 처리합니다. 일반 브라우저 연결 시 서버 CORS도 허용해야 합니다.
+
+다른 조회 프로토콜의 서버를 연결할 때는 기존 사용자 정의 `DungeonRankingUI.setProvider({async load(query){...}})` 인터페이스도 쓸 수 있습니다.
 
 `metric`: `power | growth | rift | clears | arena`, `cls`: -1(모든 직업) 또는 0~5, `limit`: 50, `signal`: AbortSignal.
 
