@@ -95,6 +95,10 @@ jobs:
         run: node tests/rankings-presentation.test.cjs
         env:
           NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
+      - name: Verify town shortcuts, menu flows and enlarged text
+        run: node tests/navigation-presentation.test.cjs
+        env:
+          NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
       - name: Audit inventory controls and text throughout the game
         run: node tests/inventory-ui.test.cjs
         env:
