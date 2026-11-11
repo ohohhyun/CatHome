@@ -25,6 +25,30 @@ jobs:
         run: node tools/unpack-art.cjs
       - name: Package verified existing CC0 music and effects
         run: python3 tools/fetch-audio.py
+      - uses: android-actions/setup-android@v3
+        with:
+          packages: platform-tools
+          log-accepted-android-sdk-licenses: false
+      - name: Install Android SDK
+        run: sdkmanager "platforms;android-36" "build-tools;35.0.0"
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Verify Gradle Wrapper
+        run: echo '498495120a03b9a6ab5d155f5de3c8f0d986a449153702fb80fc80e134484f17  gradle/wrapper/gradle-wrapper.jar' | sha256sum --check
+      - name: Preserve test APK signing key
+        uses: actions/cache@v4
+        with:
+          path: .signing/debug.keystore
+          key: cathome-debug-signing-explicit-v1
+      - name: Prepare reusable test signing key
+        run: |
+          mkdir -p "$GITHUB_WORKSPACE/.signing"
+          if [ ! -f "$GITHUB_WORKSPACE/.signing/debug.keystore" ]; then
+            keytool -genkeypair -keystore "$GITHUB_WORKSPACE/.signing/debug.keystore" -alias androiddebugkey -storepass android -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
+          fi
+      - name: Build APK
+        run: bash gradlew assembleDebug bundleRelease lintRelease --no-daemon
+        env:
+          CATHOME_DEBUG_KEYSTORE: ${{ github.workspace }}/.signing/debug.keystore
       - name: Check combat and campaign
         run: |
           node tests/game.test.cjs
@@ -202,30 +226,6 @@ jobs:
             dungeon-crush/build/previews/new-content-*.json
             dungeon-crush/build/previews/new-content-aria-combat.webm
           if-no-files-found: ignore
-      - uses: android-actions/setup-android@v3
-        with:
-          packages: platform-tools
-          log-accepted-android-sdk-licenses: false
-      - name: Install Android SDK
-        run: sdkmanager "platforms;android-36" "build-tools;35.0.0"
-      - uses: gradle/actions/setup-gradle@v4
-      - name: Verify Gradle Wrapper
-        run: echo '498495120a03b9a6ab5d155f5de3c8f0d986a449153702fb80fc80e134484f17  gradle/wrapper/gradle-wrapper.jar' | sha256sum --check
-      - name: Preserve test APK signing key
-        uses: actions/cache@v4
-        with:
-          path: .signing/debug.keystore
-          key: cathome-debug-signing-explicit-v1
-      - name: Prepare reusable test signing key
-        run: |
-          mkdir -p "$GITHUB_WORKSPACE/.signing"
-          if [ ! -f "$GITHUB_WORKSPACE/.signing/debug.keystore" ]; then
-            keytool -genkeypair -keystore "$GITHUB_WORKSPACE/.signing/debug.keystore" -alias androiddebugkey -storepass android -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
-          fi
-      - name: Build APK
-        run: bash gradlew assembleDebug bundleRelease lintRelease --no-daemon
-        env:
-          CATHOME_DEBUG_KEYSTORE: ${{ github.workspace }}/.signing/debug.keystore
       - uses: actions/upload-artifact@v4
         with:
           name: DungeonCrush-Unsigned-Store-AAB

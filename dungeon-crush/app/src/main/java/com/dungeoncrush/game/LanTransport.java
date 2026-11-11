@@ -3,7 +3,6 @@ import java.io.*;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.security.SecureRandom;
-import java.util.Map;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -12,7 +11,7 @@ public final class LanTransport implements AutoCloseable {
  public interface Listener { void event(String kind,int peer,String body); }
  public static final int PORT=47655,MAX_PACKET=262144;
  private final Listener listener;
- private final Map<Integer,Peer> peers=new ConcurrentHashMap<>();
+ private final ConcurrentMap<Integer,Peer> peers=new ConcurrentHashMap<>();
  private final AtomicInteger ids=new AtomicInteger(1);
  private final ExecutorService threads=Executors.newCachedThreadPool();
  private final Semaphore slots=new Semaphore(6);

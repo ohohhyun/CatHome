@@ -137,3 +137,5 @@
 - 아래 검증 기록에 명시된 성공 빌드만 배포해야 합니다. 실행 중 검사나 실제 단말 성능을 완료로 표현하지 않습니다.
 
 - Android `SharedPreferences.commit()` 실패가 메모리에도 새 값을 남기는 점을 처리합니다. 실패 시 현재/백업 값을 기존 값으로 되돌리고, 손상된 필드를 정상 백업으로 순환시키지 않도록 숫자·캐릭터 구조를 확인합니다.
+
+- Android lint가 기존 LAN의 `Map.remove(key,value)` API 24 요구를 발견했습니다. 원래 구현인 ConcurrentHashMap의 타입을 API 1부터 지원하는 `ConcurrentMap`으로 선언해 원자적 조건부 제거를 유지하면서 Android 6(API 23) 호환성을 복구했습니다. CI는 Android 컴파일/정적 검사를 UI 검사보다 먼저 실행하여 호환성 오류를 먼저 검출합니다.
