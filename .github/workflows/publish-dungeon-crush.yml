@@ -16,19 +16,19 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
-      RELEASE_TAG: dungeon-crush-v2.10.3-rc1
+      RELEASE_TAG: dungeon-crush-v2.11.0-rc1
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 5ee46c9c4963ea9161b1ac1643e80546e356cfb6
+          ref: ed53dc8ad26d1b2b082f0a44d9d4e9925176dc2e
       - name: Verify completed build and download its unchanged signed APK
         run: |
-          test "$(gh api repos/$GH_REPO/actions/runs/42973385498 --jq .conclusion)" = success
-          test "$(gh api repos/$GH_REPO/actions/runs/42973385498 --jq .head_sha)" = 5ee46c9c4963ea9161b1ac1643e80546e356cfb6
+          test "$(gh api repos/$GH_REPO/actions/runs/42997397968 --jq .conclusion)" = success
+          test "$(gh api repos/$GH_REPO/actions/runs/42997397968 --jq .head_sha)" = ed53dc8ad26d1b2b082f0a44d9d4e9925176dc2e
       - uses: actions/download-artifact@v4
         with:
           name: DungeonCrush-APK
-          run-id: 42973385498
+          run-id: 42997397968
           github-token: ${{ github.token }}
           path: apk
       - name: Verify exact APK and create ALZip compatible share ZIP
@@ -37,18 +37,20 @@ jobs:
           from pathlib import Path
           from hashlib import sha256
           from zipfile import ZipFile,ZipInfo,ZIP_STORED
-          p=Path('apk/DungeonCrush-2.10.3.apk');data=p.read_bytes()
-          expected='92426eb61c2d38f182b5334631b31124373fdcabc4adce59d069549a6daee702'
-          assert len(data)==237672394 and sha256(data).hexdigest()==expected
+          p=Path('apk/DungeonCrush-2.11.0.apk');data=p.read_bytes()
+          expected='8e884109b29dbcbc5e9f4c5d22ca2ffb2b4969c047d1a18079854bdcc05d5592'
+          assert len(data)==237697239 and sha256(data).hexdigest()==expected
           with ZipFile(p) as z:
               assert z.testzip() is None
-              for name in ['actors.js','app.js','rpg.js','town.js','progress.js','release.js','client.js','index.html','effects.js','sound.js','sprite-art.js','client.css']:
+              for name in ['actors.js','app.js','rpg.js','town.js','progress.js','release.js','client.js','index.html','effects.js','sound.js','sprite-art.js','client.css','rankings.js','ranking-ui.js','refinement.css','ranking-config.js','ranking-client.js','navigation.js']:
                   assert z.read('assets/'+name)==Path('dungeon-crush/app/src/main/assets/'+name).read_bytes()
-          notes='던전크러시! 2.10.3 출시 후보 (설치 버전 36)\r\n\r\n1. 압축을 풀고 DungeonCrush-2.10.3.apk를 설치하세요.\r\n2. 기존 앱을 삭제하지 말고 업데이트 설치하세요. 설치 후 설정에서 성장 기록을 파일로 백업하세요.\r\n3. 집사 사절과 별도 앱입니다.\r\n4. 전투 중 게임 설정, 이펙트 간소화, 원정 나가기 확인, 결과 화면에서 보상 저장 재시도를 지원합니다.\r\n5. 이 APK는 기존 설치와 호환되는 테스트 서명입니다. 정식 스토어 제출에는 운영 업로드 키와 실제 단말 검수가 필요합니다.\r\n\r\nAPK SHA256: '+expected+'\r\n'
-          handoff=Path('dungeon-crush/HANDOFF.md').read_text()+'\n\n## 2.10.3 RC1 검증 배포\n\n- 검증 소스: `5ee46c9c4963ea9161b1ac1643e80546e356cfb6`.\n- 성공 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42973385498 (37개 검사, APK/AAB, Android lint, 서명/원화 일치 검사).\n- 배포 페이지: https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.10.3-rc1\n- APK SHA256: `'+expected+'`.\n- versionCode 36, versionName 2.10.3, 기존 APK 서명 유지. 원본 집사 사절 트리 유지.\n- 정식 스토어 제출에는 운영 업로드 키와 실기기 검수가 별도로 필요합니다.\n'
-          output=Path('DungeonCrush-2.10.3-RC1.zip')
+          notes='던전크러시! 2.11.0 출시 후보 (설치 버전 37)\r\n\r\n1. 압축을 풀고 DungeonCrush-2.11.0.apk를 설치하세요.\r\n2. 기존 앱을 삭제하지 말고 업데이트 설치하세요. 설치 후 설정에서 성장 기록을 파일로 백업하세요.\r\n3. 집사 사절과 별도 앱입니다.\r\n4. 마을 오른쪽 아래에서 원정·가방·스킬·상점·랭킹·메뉴를 바로 여세요.\r\n5. 메인/마을/선택 화면의 랭킹 메뉴에서 내 기록과 직업별 필터를 확인하세요. 전체 랭킹은 서버 연결 전 상태입니다.\r\n6. 이 APK는 기존 설치와 호환되는 테스트 서명입니다. 정식 스토어 제출에는 운영 업로드 키와 실제 단말 검수가 필요합니다.\r\n\r\nAPK SHA256: '+expected+'\r\n'
+          handoff=Path('dungeon-crush/HANDOFF.md').read_text()+'\n\n## 2.11.0 RC1 검증 배포\n\n- 검증 소스: `ed53dc8ad26d1b2b082f0a44d9d4e9925176dc2e`.\n- 성공 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42997397968 (42개 검사, APK/AAB, Android lint, 서명/원화 일치 검사).\n- 마을 6개 바로가기, 전체 메뉴, 직접 원정·정비, 전체 글자 감사/확대 랭킹 보완을 포함합니다.\n- 배포 페이지: https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.11.0-rc1\n- APK SHA256: `'+expected+'`.\n- versionCode 37, versionName 2.11.0, 기존 APK 서명 유지. 원본 집사 사절 트리 유지.\n- 정식 스토어 제출에는 운영 업로드 키와 실기기 검수가 별도로 필요합니다.\n'
+          output=Path('DungeonCrush-2.11.0-RC1.zip')
           with ZipFile(output,'w',compression=ZIP_STORED) as z:
-              for name,content in [(p.name,data),('INSTALL-KO.txt',b'\xef\xbb\xbf'+notes.encode()),('HANDOFF.md',handoff.encode())]+[(name,Path('dungeon-crush/release/'+name).read_bytes()) for name in ['RELEASE-CHECKLIST.md','PRIVACY-KO.md','STORE-LISTING-KO.md']]:
+              for name,content in [(p.name,data),('INSTALL-KO.txt',b'\xef\xbb\xbf'+notes.encode()),('HANDOFF.md',handoff.encode())]+[(name,Path('dungeon-crush/release/'+name).read_bytes()) for name in ['RELEASE-CHECKLIST.md','PRIVACY-KO.md','STORE-LISTING-KO.md','RANKING-INTEGRATION.md','UI-REFERENCES.md']]:
+                  if name=='PRIVACY-KO.md':
+                      content=content.decode().replace('적용 버전: 2.10.3','적용 버전: 2.11.0').encode()+('\n\n## 랭킹 메뉴\n\n이 버전의 전체 랭킹 연결은 꺼져 있습니다. 내 기록은 기기의 6캐릭터 기록을 읽으며 랭킹 서버로 정보를 보내지 않습니다. 실제 온라인 랭킹 연결을 제공할 때 수집 항목과 처리 내용을 안내에 반영합니다.\n').encode()
                   item=ZipInfo(name,date_time=(2026,11,11,0,0,0));item.create_system=3;item.external_attr=0o100644<<16;item.compress_type=ZIP_STORED;z.writestr(item,content)
           with ZipFile(output) as z:
               assert z.testzip() is None and sha256(z.read(p.name)).hexdigest()==expected
@@ -57,29 +59,31 @@ jobs:
       - name: Publish persistent direct download
         run: |
           cat > release-notes.md <<'EOF'
-          던전크러시! 2.10.3 출시 후보 (versionCode 36).
+          던전크러시! 2.11.0 출시 후보 (versionCode 37).
 
-          아래 Assets에서 DungeonCrush-2.10.3-RC1.zip을 받아 압축을 풀고 APK를 설치하세요. 기존 앱을 삭제하지 말고 업데이트 설치하세요. 설치 후 설정에서 성장 기록을 파일로 백업하세요.
+          아래 Assets에서 DungeonCrush-2.11.0-RC1.zip을 받아 압축을 풀고 APK를 설치하세요. 기존 앱을 삭제하지 말고 업데이트 설치하세요. 설치 후 설정에서 성장 기록을 파일로 백업하세요.
 
-          - 이펙트 간소화 옵션으로 빛·잔상·전체 화면 연출을 줄입니다. 공격 경고·모션·공격 판정은 유지합니다.
-          - 일시정지 화면에서 게임 설정을 열고 닫은 뒤 계속할 수 있습니다. 개인전 등 전투가 계속되는 상황은 안내하고 입력을 중립으로 만듭니다.
-          - 원정 나가기 확인을 추가하고, 개인전 메뉴에서 뒤로가기로 닫히지 않던 동작을 고쳤습니다.
-          - 완료 보상·개인전 전적 저장 실패 시 결과 화면에서 다시 저장할 수 있습니다. 같은 보상을 재시도하며 중복 지급·재추첨을 막습니다.
-          - 저장 실패 상태에서 결과 화면을 떠나지 않도록 보호합니다. 앱이 강제 종료된 미저장 결과를 복원하는 기능은 포함하지 않습니다.
-          - 기존 체크 일괄 판매·장착/잠금 보호·최근 판매 되돌리기·파일 백업/복원·6직업 전신 모션·프리스트 투명 배경 수정을 포함합니다.
-          - 37개 자동 검사에 새 설정/효과 예산/경고 픽셀/나가기/보상 재시도/개인전 검사를 추가해 통과했습니다. Android lint·APK/AAB 빌드·기존 서명과 포함 리소스도 검증했습니다.
+          - 사용자 요청대로 서버를 만들거나 연결하지 않고 랭킹 메뉴와 기능부터 준비했습니다. 전체 랭킹은 서버 연결 전으로 안내하며 가짜 이용자·순위를 넣지 않습니다.
+          - 내 기록은 기기에 저장된 6캐릭터로 동작합니다. 전투력·성장·균열·원정·개인전 5종목, 직업 필터, 공동 순위, 상세보기, 새로고침을 제공합니다.
+          - 메인·마을·캐릭터/콘텐츠/던전 선택에서 랭킹을 열 수 있습니다. 열려 있는 동안 마을 이동을 멈추고 원정 시작 시 닫습니다.
+          - 마을의 큰 원정·가방·스킬·상점·랭킹·메뉴 바로가기와 11개 기능의 전체 메뉴를 추가했습니다. 원정과 정비를 바로 시작하고 NPC와 포탈도 계속 이용할 수 있습니다.
+          - 중복 상단 메뉴와 마을의 전투용 버튼을 정리하고 안내문을 이동했습니다. 9개 화면/가장자리 여백과 1.4배 글자에서 버튼 접근·겹침·잘림을 검사했습니다. 확대 글씨에서도 랭킹 한 줄을 읽도록 스크롤을 보완했습니다.
+          - 메인 버튼·보조 메뉴, 캐릭터/콘텐츠/던전 카드, 선택선·프레임·포커스를 다듬었습니다. 디아블로 이모탈·PoE의 정보 배치를 참고하고 원화·로고를 복사하지 않았습니다.
+          - 추후 서버 조회 어댑터와 로딩/빈 결과/오류/지연 응답 처리 구조를 준비했습니다. 현재 실제 서버 조회/업로드나 계정 생성은 하지 않습니다.
+          - 기존 체크 판매·장착/잠금 보호·판매 되돌리기·파일 백업/복원·보상 저장 재시도·이펙트 간소화·6직업 모션을 유지합니다.
+          - 42개 자동 검사, Android lint·APK/AAB 빌드, 기존 서명·포함 리소스 검증을 통과했습니다. 작은 화면·확대 글자·키보드/뒤로가기·저장 무변경도 확인했습니다.
           - 집사 사절 원본은 수정하지 않았습니다.
 
           이 파일은 기존 테스트 APK를 업데이트하는 출시 후보입니다. 스토어용 AAB는 빌드의 DungeonCrush-Unsigned-Store-AAB 산출물이며 서명 전 번들입니다. 실제 기기 검수, 운영 서명과 Play Console 등록은 별도입니다. ZIP 안의 RELEASE-CHECKLIST.md를 확인하세요.
 
-          검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42973385498
-          APK SHA256: 92426eb61c2d38f182b5334631b31124373fdcabc4adce59d069549a6daee702
+          검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42997397968
+          APK SHA256: 8e884109b29dbcbc5e9f4c5d22ca2ffb2b4969c047d1a18079854bdcc05d5592
           EOF
           if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
-            gh release upload "$RELEASE_TAG" DungeonCrush-2.10.3-RC1.zip --clobber
+            gh release upload "$RELEASE_TAG" DungeonCrush-2.11.0-RC1.zip --clobber
             gh release edit "$RELEASE_TAG" --draft=false --prerelease --latest=false --notes-file release-notes.md
           else
-            gh release create "$RELEASE_TAG" DungeonCrush-2.10.3-RC1.zip --target 5ee46c9c4963ea9161b1ac1643e80546e356cfb6 --title '던전크러시! 2.10.3 · 전투 편의와 보상 저장 개선' --notes-file release-notes.md --prerelease --latest=false
+            gh release create "$RELEASE_TAG" DungeonCrush-2.11.0-RC1.zip --target ed53dc8ad26d1b2b082f0a44d9d4e9925176dc2e --title '던전크러시! 2.11.0 · 랭킹 메뉴와 UI 개선' --notes-file release-notes.md --prerelease --latest=false
           fi
       - name: Verify public ZIP size and SHA256
         run: |
@@ -88,7 +92,7 @@ jobs:
           from pathlib import Path
           from hashlib import sha256
           import json
-          p=Path('DungeonCrush-2.10.3-RC1.zip');r=json.loads(Path('release-assets.json').read_text())
+          p=Path('DungeonCrush-2.11.0-RC1.zip');r=json.loads(Path('release-assets.json').read_text())
           assert not r['draft']
           a=next(a for a in r['assets'] if a['name']==p.name)
           assert a['size']==p.stat().st_size and a['digest']=='sha256:'+sha256(p.read_bytes()).hexdigest()
