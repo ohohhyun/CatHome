@@ -18,7 +18,9 @@ jobs:
           distribution: temurin
           java-version: '17'
       - name: Check game logic
-        run: node tests/skins.test.cjs
+        run: |
+          node tests/skins.test.cjs
+          node tests/crazy.test.cjs
       - name: Install Korean preview fonts
         run: |
           sudo apt-get update -qq
@@ -28,7 +30,9 @@ jobs:
         env:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
       - name: Check mobile mode selection in browser
-        run: node tests/browser.test.cjs
+        run: |
+          node tests/browser.test.cjs
+          node tests/crazy-browser.test.cjs
         env:
           NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
           SKIN_REVIEW: '1'
