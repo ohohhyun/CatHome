@@ -2,6 +2,13 @@
 
 이 파일을 먼저 읽고 `dungeon-crush/`만 이어서 작업하세요. 사용자에게는 한국어 존댓말을 사용하세요.
 
+## 최신 검증 버전: 2.11.0 RC1
+
+- [APK ZIP 공개 다운로드](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.11.0-rc1) → Assets → DungeonCrush-2.11.0-RC1.zip. versionCode 37. 기존 앱을 지우지 않고 업데이트합니다.
+- 검증 소스 `ed53dc8ad26d1b2b082f0a44d9d4e9925176dc2e`, [전체 42개 검사 성공](https://github.com/ohohhyun/CatHome/actions/runs/42997397968).
+- 마을 6개 바로가기/전체 메뉴/원정·정비 바로 열기/글자 잘림·겹침 및 확대 랭킹 보완을 포함합니다.
+- 전체 이용자 랭킹은 서버 연결을 꺼 두었습니다. 단일 연결 설정과 전송 규격만 준비했으며 서버·DB·계정은 생성하지 않았습니다. 내 기록은 실제 6캐릭터 데이터입니다.
+
 ## 프로젝트와 금지 범위
 
 - GitHub: https://github.com/ohohhyun/CatHome
@@ -210,3 +217,12 @@
 - 전체 workflow: JavaScript 19 + 네이티브 2 + Chrome 21 = 42개. `navigation.js`도 APK 포함 바이트 검사에 추가했습니다. 실제 휴대폰의 FPS/발열을 측정했다는 뜻은 아닙니다.
 
 - 추가로 640×296 + 가장자리 여백 + 1.4배 글자에서 랭킹 목록 공간이 한 줄보다 작아지는 경우를 보완했습니다. 짧은 화면의 랭킹 본문은 필요한 만큼 스크롤되고 목록은 최소 높이를 확보합니다. 글로벌/개인 기록 모두 실제 글자 경계 감사로 검증합니다.
+
+
+## 2.11.0 RC1 검증 배포 완료
+
+- 검증 소스 `ed53dc8ad26d1b2b082f0a44d9d4e9925176dc2e`. [검증 빌드](https://github.com/ohohhyun/CatHome/actions/runs/42997397968): JavaScript 19개 + 네이티브 2개 + Chrome 21개 = **42개 자동 검사 통과**. Android lint, APK/AAB 빌드, 기존 서명과 포함 리소스도 확인했습니다. [ZIP 공개 검증](https://github.com/ohohhyun/CatHome/actions/runs/42999740790) 성공.
+- APK `DungeonCrush-2.11.0.apk`: 237,697,239 bytes, SHA256 `8e884109b29dbcbc5e9f4c5d22ca2ffb2b4969c047d1a18079854bdcc05d5592`. versionCode 37, 기존 서명 `e43fedd9099e7b5df82eccfa3e92fc020d429ad99795463abbe40e2af4880708` 유지.
+- ZIP: [공개 다운로드](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.11.0-rc1), 237,747,748 bytes, SHA256 `1db02a3c201a362819cead19dc6dadf93aafd3fd686dd82c419b4de84194ca8b`. APK/설치 안내/인수인계/출시 점검표/개인정보/스토어 설명/랭킹 연결 규격/UI 참고 자료를 포함합니다. ZIP 내부 APK와 공개 asset 크기·digest 확인 성공.
+- 실제 휴대폰 FPS·발열과 스토어 운영 서명·등록은 별도입니다. API 36 AAB는 서명 전 번들입니다.
+- 집사 사절 원본 app/legacy/tests의 보호 트리 변경 없음.

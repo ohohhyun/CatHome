@@ -7,6 +7,9 @@
 - 추후 서버 조회 어댑터는 로딩/빈 결과/오류/지연 응답/닫기/종목·직업 변경을 처리합니다. 실제 서버 연결 전까지 외부 요청은 발생하지 않습니다.
 - 마을 6개 바로가기/전체 메뉴, 직접 원정 진입, 상점·대장간·스킬의 서비스 문맥과 착용 장비 판매 보호, NPC 접근 취소, 뒤로가기·입력 중립을 확인합니다.
 - 새 메뉴는 9개 화면/가장자리 여백과 1.4배 글자에서 검사합니다. 기존 전체 화면 8개 크기 감사도 수행합니다.
+- [검증 빌드](https://github.com/ohohhyun/CatHome/actions/runs/42997397968): JavaScript 19개 + 네이티브 2개 + Chrome 21개 = **42개 자동 검사 통과**. Android lint, APK/AAB 빌드, 기존 서명과 포함 리소스도 확인했습니다. [ZIP 공개 검증](https://github.com/ohohhyun/CatHome/actions/runs/42999740790) 성공.
+- APK SHA256 `8e884109b29dbcbc5e9f4c5d22ca2ffb2b4969c047d1a18079854bdcc05d5592`. ZIP SHA256 `1db02a3c201a362819cead19dc6dadf93aafd3fd686dd82c419b4de84194ca8b`. [공개 ZIP](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.11.0-rc1).
+- 실제 단말에서는 기존 versionCode 36 → 37 업데이트 후 기록 유지, 6직업 모션·메뉴/글자·Wi-Fi·뒤로가기·노치, 30분 플레이를 확인합니다.
 - package com.dungeoncrush.game, versionCode 37, versionName 2.11.0. 아래는 이전 버전의 공통 배포 기준입니다.
 
 # 2.10.3 출시 후보 점검
