@@ -58,9 +58,9 @@ jobs:
         run: |
           cat > release-notes.md <<'EOF'
           던전크러시! 2.10.2 출시 후보 (versionCode 35).
-          
+
           아래 Assets에서 DungeonCrush-2.10.2-RC1.zip을 받아 압축을 풀고 APK를 설치하세요. 기존 앱을 삭제하지 말고 업데이트 설치하세요. 설치 후 설정에서 성장 기록을 파일로 백업하세요.
-          
+
           - 저장 실패/작업 실패 시 원상 복구하고, 이전 정상 저장 기록 자동 복구와 손상 기록 덮어쓰기 방지를 추가했습니다.
           - 설정에서 파일 백업/복원, 파일 검사, 6직업 요약과 교체 확인을 제공합니다. Android 시스템 파일 선택기를 사용합니다.
           - 체크 일괄 판매와 장착/잠금 장비 판매 금지를 유지합니다. 최근 판매 1회는 판매 대금을 반환해 되돌릴 수 있습니다.
@@ -69,15 +69,15 @@ jobs:
           - 기존 6직업 전신 모션과 프리스트 스킬 투명 배경 수정을 포함합니다.
           - 37개 자동 검사, Android 네이티브 LAN, release AAB/Android lint, 기존 APK 서명과 포함 리소스 검증을 통과했습니다.
           - 집사 사절 원본은 수정하지 않았습니다. 과거 버전에서 이미 사라진 장비를 소급 복원하지는 않습니다.
-          
+
           이 파일은 기존 테스트 APK를 업데이트하는 출시 후보입니다. 스토어용 AAB는 빌드의 DungeonCrush-Unsigned-Store-AAB 산출물이며 서명 전 번들입니다. 실제 기기 검수, 운영 서명과 Play Console 등록은 별도입니다. ZIP 안의 RELEASE-CHECKLIST.md를 확인하세요.
-          
+
           검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42957696478
           APK SHA256: 243e8dc58ebb77f9eaa9a4b879cc23a3e4ce45f27a99ca69d1bb34574fad8315
           EOF
           if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
             gh release upload "$RELEASE_TAG" DungeonCrush-2.10.2-RC1.zip --clobber
-            gh release edit "$RELEASE_TAG" --target f685dbbf27308ac08c59d0c5aadca017635b7c8b --draft=false --prerelease --latest=false --notes-file release-notes.md
+            gh release edit "$RELEASE_TAG" --draft=false --prerelease --latest=false --notes-file release-notes.md
           else
             gh release create "$RELEASE_TAG" DungeonCrush-2.10.2-RC1.zip --target f685dbbf27308ac08c59d0c5aadca017635b7c8b --title '던전크러시! 2.10.2 출시 후보 · 저장 복구와 안전 판매' --notes-file release-notes.md --prerelease --latest=false
           fi
