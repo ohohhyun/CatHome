@@ -42,6 +42,8 @@ button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid 
 @media(max-height:380px){.ranking-caption{display:contents}.ranking-caption h3{display:none}.ranking-caption #ranking-refresh{position:absolute;top:10px;right:80px;min-height:26px;font-size:9px;padding:5px 8px}.ranking-season{display:none}}
 
 .ranking-row{cursor:pointer}.ranking-position{overflow-wrap:anywhere}
+/* Enlarged text must leave room for a complete record on short phones. */
+@media(max-height:380px){.ranking-main{grid-template-rows:auto auto minmax(90px,1fr) auto;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin}}
 
 /* Town navigation keeps frequent actions within one tap. */
 body[data-phase=town] #menu .nav>[data-town=quests],body[data-phase=town] #menu .nav>[data-town=inventory],body[data-phase=town] #menu .nav>.ranking-open{display:none}
