@@ -135,3 +135,5 @@
 - 신규 검사: `tests/release.test.cjs`, `tests/release-presentation.test.cjs`. 정확한 rollback, 복제본/손상/용량 문제, 실제 다운로드 파일, 복원 취소/확정, 최근 판매 되돌리기, 3개 화면 크기, 리소스 실패 후 재시도, 심연 입장료 반환을 검증합니다.
 - CI는 기존 모든 검사 + 새 검사 + release AAB + lintRelease를 실행합니다. `DungeonCrush-Unsigned-Store-AAB`는 서명 전 번들이며 업로드할 수 없습니다. 실제 운영 키/Play Console과 물리 단말 검증은 `release/RELEASE-CHECKLIST.md`에 기록했습니다. 개인정보 안내와 스토어 설명 초안도 같은 폴더에 있습니다.
 - 아래 검증 기록에 명시된 성공 빌드만 배포해야 합니다. 실행 중 검사나 실제 단말 성능을 완료로 표현하지 않습니다.
+
+- Android `SharedPreferences.commit()` 실패가 메모리에도 새 값을 남기는 점을 처리합니다. 실패 시 현재/백업 값을 기존 값으로 되돌리고, 손상된 필드를 정상 백업으로 순환시키지 않도록 숫자·캐릭터 구조를 확인합니다.
