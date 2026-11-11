@@ -36,6 +36,7 @@ jobs:
           node tests/rpg.test.cjs
           node tests/inventory.test.cjs
           node tests/equipment-services.test.cjs
+          node tests/release.test.cjs
           node tests/font-coverage.test.cjs
           node tests/ui-layout.test.cjs
           node tests/party-recovery.test.cjs
@@ -56,6 +57,10 @@ jobs:
         run: node "$RUNNER_TEMP/cathome-ui/node_modules/playwright/cli.js" install ffmpeg
       - name: Verify equipment taps, comparisons and town NPC services
         run: node tests/town-services.test.cjs
+        env:
+          NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
+      - name: Verify backup recovery and launch safety
+        run: node tests/release-presentation.test.cjs
         env:
           NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
       - name: Audit inventory controls and text throughout the game
@@ -202,7 +207,7 @@ jobs:
           packages: platform-tools
           log-accepted-android-sdk-licenses: false
       - name: Install Android SDK
-        run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
+        run: sdkmanager "platforms;android-36" "build-tools;35.0.0"
       - uses: gradle/actions/setup-gradle@v4
       - name: Verify Gradle Wrapper
         run: echo '498495120a03b9a6ab5d155f5de3c8f0d986a449153702fb80fc80e134484f17  gradle/wrapper/gradle-wrapper.jar' | sha256sum --check
@@ -218,9 +223,15 @@ jobs:
             keytool -genkeypair -keystore "$GITHUB_WORKSPACE/.signing/debug.keystore" -alias androiddebugkey -storepass android -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
           fi
       - name: Build APK
-        run: bash gradlew assembleDebug --no-daemon
+        run: bash gradlew assembleDebug bundleRelease lintRelease --no-daemon
         env:
           CATHOME_DEBUG_KEYSTORE: ${{ github.workspace }}/.signing/debug.keystore
+      - uses: actions/upload-artifact@v4
+        with:
+          name: DungeonCrush-Unsigned-Store-AAB
+          path: dungeon-crush/app/build/outputs/bundle/release/app-release.aab
+          if-no-files-found: error
+          retention-days: 30
       - name: Verify installable APK and signer
         run: |
           "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --print-certs app/build/outputs/apk/debug/app-debug.apk
@@ -228,11 +239,11 @@ jobs:
           python3 -c "from pathlib import Path; assert 'Signer #1 certificate SHA-256 digest: e43fedd9099e7b5df82eccfa3e92fc020d429ad99795463abbe40e2af4880708' in Path('build/apk-signer.txt').read_text(), 'APK signer changed; preserve update compatibility'"
           python tools/verify-apk-identity.py "$ANDROID_HOME/build-tools/35.0.0/aapt" app/build/outputs/apk/debug/app-debug.apk com.dungeoncrush.game com.dungeoncrush.game.MainActivity "던전크러시!"
           python tools/verify-bundled-art.py app/build/outputs/apk/debug/app-debug.apk
-          cp app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/DungeonCrush-2.10.1.apk
+          cp app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/DungeonCrush-2.10.2.apk
       - uses: actions/upload-artifact@v4
         with:
           name: DungeonCrush-APK
-          path: dungeon-crush/app/build/outputs/apk/debug/DungeonCrush-2.10.1.apk
+          path: dungeon-crush/app/build/outputs/apk/debug/DungeonCrush-2.10.2.apk
           if-no-files-found: error
           retention-days: 30
       - name: Split verified APK for reliable downloads
@@ -241,9 +252,9 @@ jobs:
           from pathlib import Path
           from hashlib import sha256
           import json
-          p=Path('app/build/outputs/apk/debug/DungeonCrush-2.10.1.apk'); data=p.read_bytes(); out=Path('build/apk-parts');out.mkdir(parents=True,exist_ok=True);parts=[]
+          p=Path('app/build/outputs/apk/debug/DungeonCrush-2.10.2.apk'); data=p.read_bytes(); out=Path('build/apk-parts');out.mkdir(parents=True,exist_ok=True);parts=[]
           for n,start in enumerate(range(0,len(data),20*1024*1024),1):
-              chunk=data[start:start+20*1024*1024];name=f'DungeonCrush-2.10.1.apk.part{n:02}';(out/name).write_bytes(chunk);parts.append(dict(name=name,bytes=len(chunk),sha256=sha256(chunk).hexdigest()))
+              chunk=data[start:start+20*1024*1024];name=f'DungeonCrush-2.10.2.apk.part{n:02}';(out/name).write_bytes(chunk);parts.append(dict(name=name,bytes=len(chunk),sha256=sha256(chunk).hexdigest()))
           assert len(parts)<=16
           (out/'manifest.json').write_text(json.dumps(dict(file=p.name,bytes=len(data),sha256=sha256(data).hexdigest(),parts=parts),indent=2))
           PYCODE

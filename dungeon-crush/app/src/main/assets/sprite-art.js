@@ -1,7 +1,7 @@
 /* Dedicated spell flipbooks with authored motion banks and structured impact accents. */
 (function(root){'use strict';
-const ACTORS=root.DungeonActors.actors,TAU=Math.PI*2,clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),pictures=new Map(),loading=new Set(),failed=new Set();let actorDraws=0,effectDraws=0;
-function loadPicture(key,src){if(pictures.has(key)||loading.has(key)||failed.has(key))return;loading.add(key);const im=new Image();im.onload=()=>{pictures.set(key,im);loading.delete(key);};im.onerror=()=>{failed.add(key);loading.delete(key);};im.src=src;}
+const ACTORS=root.DungeonActors.actors,TAU=Math.PI*2,clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),pictures=new Map(),sources=new Map(),loading=new Set(),failed=new Set();let actorDraws=0,effectDraws=0;
+function loadPicture(key,src){sources.set(key,src);if(pictures.has(key)||loading.has(key)||failed.has(key))return;loading.add(key);const im=new Image();im.onload=()=>{pictures.set(key,im);loading.delete(key);};im.onerror=()=>{failed.add(key);loading.delete(key);};im.src=src;}
 function ensureSkills(cls){if(!ACTORS[cls])return;loadPicture('skills'+cls,cls===4?'art/motion299/aria-skills.webp':cls===5?'art/motion210/elian-skills.webp':'art/advanced/'+ACTORS[cls].id+'-skills.webp');loadPicture('growth'+cls,'art/motion210/'+root.DungeonGrowth.ids[cls]+'-growth-skills.webp');}
 function ensure(cls){root.DungeonActors.ensure(cls);ensureSkills(cls);}
 function actor(...args){const ok=root.DungeonActors.actor(...args);if(ok)actorDraws++;return ok;}
@@ -55,5 +55,6 @@ function accents(c,f,camera,t){const cls=classOf(f),color=f.color||root.Rift.CLA
  else if(f.type==='line'&&cls===1){const reach=f.range||470;c.globalAlpha=a*.7;const g=c.createLinearGradient(0,0,reach,0);g.addColorStop(0,'#74e8f400');g.addColorStop(.5,color);g.addColorStop(1,'#f0ffff');c.strokeStyle=g;c.lineWidth=3;c.beginPath();c.moveTo(0,0);c.lineTo(reach,0);c.stroke();}
  c.restore();}
 ensure(0);
-root.DungeonArt={actor,effect,projectile,frame:(...a)=>root.DungeonActors.frame(...a),animationPhase:(...a)=>root.DungeonActors.animationPhase(...a),presentation:(...a)=>root.DungeonActors.presentation(...a),actors:ACTORS,cell,ensure,ensureSkills,hasActor,preloadAll,ready,readyAll:()=>root.DungeonActors.readyAll()&&ACTORS.every((_,i)=>pictures.has('skills'+i)&&pictures.has('growth'+i)),status:()=>({...root.DungeonActors.status(),effects:ACTORS.filter((_,i)=>pictures.has('skills'+i)).length,actorFrames:root.DungeonActors.status().actorFrames,skillFrames:ACTORS.length*72,actorDraws,effectDraws,failures:[...failed,...root.DungeonActors.status().failures],loading:loading.size+root.DungeonActors.status().pending})};
+function retryFailed(){const keys=[...failed];failed.clear();for(const key of keys)loadPicture(key,sources.get(key));root.DungeonActors.retryFailed();}
+root.DungeonArt={retryFailed,actor,effect,projectile,frame:(...a)=>root.DungeonActors.frame(...a),animationPhase:(...a)=>root.DungeonActors.animationPhase(...a),presentation:(...a)=>root.DungeonActors.presentation(...a),actors:ACTORS,cell,ensure,ensureSkills,hasActor,preloadAll,ready,readyAll:()=>root.DungeonActors.readyAll()&&ACTORS.every((_,i)=>pictures.has('skills'+i)&&pictures.has('growth'+i)),status:()=>({...root.DungeonActors.status(),effects:ACTORS.filter((_,i)=>pictures.has('skills'+i)).length,actorFrames:root.DungeonActors.status().actorFrames,skillFrames:ACTORS.length*72,actorDraws,effectDraws,failures:[...failed,...root.DungeonActors.status().failures],loading:loading.size+root.DungeonActors.status().pending})};
 })(window);

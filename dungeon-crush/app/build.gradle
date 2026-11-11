@@ -1,13 +1,13 @@
 plugins { id 'com.android.application' }
 android {
     namespace 'com.dungeoncrush.game'
-    compileSdk 35
+    compileSdk 36
     defaultConfig {
         applicationId 'com.dungeoncrush.game'
         minSdk 23
-        targetSdk 35
-        versionCode 34
-        versionName '2.10.1-safe-sale'
+        targetSdk 36
+        versionCode 35
+        versionName '2.10.2'
     }
     signingConfigs {
         debug {

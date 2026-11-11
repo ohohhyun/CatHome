@@ -122,3 +122,16 @@
 - ZIP: `DungeonCrush-SafeSale-34.zip`. 배포 작업: https://github.com/ohohhyun/CatHome/actions/runs/42468199947 (성공).
 - APK: 237,659,167 bytes, SHA256 `d8478806635a922de54f3078a1d3dc56577d1cb6e4fa4fc83d2cdde42eb0e556`, versionCode **34**. 기존 설치 서명 검증 통과. 앱을 삭제하지 않고 업데이트 설치합니다.
 - 집사 사절 보호 트리는 변경하지 않았습니다.
+
+
+## 2.10.2 출시 후보 보완
+
+- 집사 사절 보호 범위를 유지하고 `dungeon-crush/`와 전용 빌드/배포 workflow만 수정합니다.
+- `progress.js`를 `app.js` 전에 로드합니다. 저장소 4개 복제본(브라우저/Android 현재+이전 정상)에서 최신 revision을 고르고, 전부 손상되면 덮어쓰기를 막습니다. `transaction` 실패/예외/저장 실패는 JSON 원본으로 복구하며 캐릭터 선택/목적지 변경도 저장 실패 시 되돌립니다.
+- `release.js`는 설정의 백업 파일 내보내기·검사·6직업 요약·확정 복원을 담당합니다. Android Bridge는 SAF를 사용합니다. 파일 최대 2MB. 백업은 암호화되지 않으며 체크섬은 우발적 손상 확인용입니다.
+- `RiftRPG.lastSale`은 마지막 판매 1회만 보관합니다. `buybackPreview`/`undoSale`은 동일 직업·골드·가방 여유·ID 충돌을 확인하고 원래 아이템을 되돌립니다. 이전 버전의 판매를 소급 복원하지 않습니다.
+- 로딩 실패 재시도와 마을 복귀를 제공합니다. `cancelLoading`은 실제 전투 시간 0인 심연만 입장료를 반환합니다. 반환 저장 실패 시 복귀하지 않고 재시도할 수 있습니다.
+- versionCode 35 / versionName 2.10.2, compile/target API 36, AGP 8.10.1 / Gradle 8.11.1. 기존 APK 테스트 서명은 유지합니다. API 33+ 뒤로가기 콜백과 시스템 영역 여백을 적용합니다.
+- 신규 검사: `tests/release.test.cjs`, `tests/release-presentation.test.cjs`. 정확한 rollback, 복제본/손상/용량 문제, 실제 다운로드 파일, 복원 취소/확정, 최근 판매 되돌리기, 3개 화면 크기, 리소스 실패 후 재시도, 심연 입장료 반환을 검증합니다.
+- CI는 기존 모든 검사 + 새 검사 + release AAB + lintRelease를 실행합니다. `DungeonCrush-Unsigned-Store-AAB`는 서명 전 번들이며 업로드할 수 없습니다. 실제 운영 키/Play Console과 물리 단말 검증은 `release/RELEASE-CHECKLIST.md`에 기록했습니다. 개인정보 안내와 스토어 설명 초안도 같은 폴더에 있습니다.
+- 아래 검증 기록에 명시된 성공 빌드만 배포해야 합니다. 실행 중 검사나 실제 단말 성능을 완료로 표현하지 않습니다.
