@@ -21,6 +21,7 @@ jobs:
         run: |
           node tests/skins.test.cjs
           node tests/crazy.test.cjs
+          node tests/prototype.test.cjs
       - name: Install Korean preview fonts
         run: |
           sudo apt-get update -qq
