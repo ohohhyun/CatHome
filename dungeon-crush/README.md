@@ -7,7 +7,11 @@
 - 원정 나가기 확인창을 추가하고, 개인전 메뉴에서 뒤로가기로 닫히지 않던 흐름을 고쳤습니다.
 - 보상·개인전 전적 저장 실패 시 **보상 저장 다시 시도**를 제공합니다. 결과 화면을 유지하는 동안 같은 보상을 재시도하며 중복 지급·다시 추첨을 막습니다.
 
-아래 자동 검증 기록과 공개 파일은 성공 빌드가 나온 뒤 갱신합니다. 이전 검증 버전: [2.10.2 RC1 APK/ZIP](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.10.2-rc1).
+**[2.10.3 APK 알집 다운로드 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.10.3-rc1)** → Assets → **DungeonCrush-2.10.3-RC1.zip**. 기존 앱을 삭제하지 말고 업데이트 설치하세요.
+
+[검증 빌드](https://github.com/ohohhyun/CatHome/actions/runs/42973385498): 37개 자동 검사와 신규 편의/보상 재시도 검증, Android lint, APK/AAB 빌드, 기존 서명·포함 리소스 확인 통과. [ZIP 공개 검증](https://github.com/ohohhyun/CatHome/actions/runs/42975875688)도 성공했습니다.
+
+이펙트 간소화는 **일시정지 → 게임 설정**에서 켭니다. 실제 휴대폰의 프레임률·발열은 별도 검수 대상입니다. 이전 검증 버전: [2.10.2 RC1](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.10.2-rc1).
 
 기존 기능:
 

@@ -167,3 +167,16 @@
 - 보상 재시도는 결과 화면을 유지하는 동안 가능합니다. 저장 공간이 없어 정산이 실패한 뒤 OS가 앱을 강제 종료한 경우까지 보상을 영구 보존하는 기능은 아닙니다. UI에서 화면을 유지하도록 안내합니다.
 - `tests/polish-presentation.cjs`를 기존 release Chrome 검사에서 실행합니다. 실제 설정 체크/저장·중립 입력·경고 픽셀 동일성·효과 예산·나가기 취소/확정·여러 차례 저장 실패 후 같은 보상 1회 지급·재실행·개인전 메뉴 Back과 전적 재시도를 검사합니다.
 - versionName 2.10.3, versionCode 36. API 36·기존 설치 서명·프로토콜 8·저장 형식은 유지합니다. 집사 사절 app/legacy/tests를 변경하지 않습니다.
+
+
+### 2.10.3 검증·공개 배포 완료
+
+- 검증 소스: `5ee46c9c4963ea9161b1ac1643e80546e356cfb6`. 후속 배포·문서 커밋은 앱 코드를 바꾸지 않습니다.
+- 성공 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42973385498 — 37개 검사(17 JavaScript, 실제 TCP LAN 1, Chrome 19)와 신규 polish 검사, Android lintRelease, APK/AAB 빌드, 기존 서명 및 최종 리소스 일치 확인 통과.
+- 신규 실제 브라우저 검증: 설정 체크/저장·일시정지/입력 초기화/재개, 원정 나가기 취소/확정, 간소화 시 입자 48개 이하/추가 발광 제거/공격 경고 픽셀 동일, 저장 실패 반복 후 동일 보상·골드·경험치 1회 지급, 재실행 유지, 개인전 메뉴 Back·설정 중 경기 종료·전적 저장 재시도.
+- APK: `DungeonCrush-2.10.3.apk`, 237,672,394 bytes, SHA256 `92426eb61c2d38f182b5334631b31124373fdcabc4adce59d069549a6daee702`. versionCode **36**, versionName **2.10.3**, targetSdk **36**. 기존 `com.dungeoncrush.game` 및 서명 유지.
+- 공개 다운로드: https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.10.3-rc1 — Assets → `DungeonCrush-2.10.3-RC1.zip`. 익명 페이지 HTTP 200과 파일 링크 확인.
+- ZIP: 237,707,325 bytes, SHA256 `d32332e90cf6996f5644d0c72e384ad60cf15f2893f6deacd1c0161ab7a347a0`. APK·설치 안내·인수인계·출시 점검표·개인정보 안내·스토어 설명 초안 포함.
+- 성공 배포 및 ZIP 검증: https://github.com/ohohhyun/CatHome/actions/runs/42975875688. owner 권한으로 검증 SHA의 태그/draft를 먼저 만들고 Actions에서 업로드/공개했습니다.
+- 보상 재시도는 결과 화면을 유지하는 동안의 기능입니다. 저장 공간이 없는 상태에서 앱이 강제 종료된 미저장 결과까지 복원하지는 않습니다. 실기기 FPS/발열, Android 파일 선택기, 운영 서명·Play Console 등록은 별도입니다.
+- 집사 사절 app/legacy/tests 보호 트리 변경 없음. 아래 해시는 이전 기록과 같습니다.
