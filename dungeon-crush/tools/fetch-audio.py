@@ -1,5 +1,6 @@
 """Package existing CC0 audio from pinned revisions; no runtime downloads."""
 import concurrent.futures
+import base64
 import hashlib
 import json
 import time
@@ -30,3 +31,14 @@ def fetch(entry):
 with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
     for name in pool.map(fetch, json.loads((root / 'audio-sources.json').read_text())):
         print('Verified audio:', name)
+
+# New recordings and authored short effects are committed as checksum-verified
+# text sources, so a build does not depend on their original download hosts.
+for entry in json.loads((root/'combat-audio-sources.json').read_text())['assets']:
+    data=base64.b64decode((root/'audio-source'/entry['source']).read_text().strip(),validate=True)
+    if len(data)!=entry['bytes'] or hashlib.sha256(data).hexdigest()!=entry['sha256']:
+        raise ValueError('Combat audio integrity mismatch: '+entry['file'])
+    path=target/entry['file']
+    if not path.exists() or path.read_bytes()!=data:
+        path.write_bytes(data)
+    print('Verified combat audio:',entry['file'])

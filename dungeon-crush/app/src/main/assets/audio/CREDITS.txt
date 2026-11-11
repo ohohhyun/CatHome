@@ -29,3 +29,23 @@ Kenney Impact Sounds: heavy metal, heavy punches, glass, plate and soft impacts.
 https://kenney.nl/assets/impact-sounds
 Pitch variation, attack-specific layering and party distance attenuation are applied at playback.
 The UI switch recording is no longer used as a weapon swing.
+
+2.12 combat voices (21 short, nonverbal attack takes):
+Brandon Song (wolfwoot), Voice Clip Pack - Male Adventurer RPG, CC0.
+https://opengameart.org/content/voice-clip-pack-male-adventurer-rpg
+cicifyre, Female RPG Voice Starter Pack (three voice tones), CC0.
+https://opengameart.org/content/female-rpg-voice-starter-pack
+Only attack effort recordings are used, not spoken English spell names or death screams.
+Processing: mono, noise-band filtering, silence margins, constant gain/short edge fades,
+Ogg Vorbis encoding. Original voice pitch is preserved during playback.
+These are licensed human recordings, not cloned or synthesized voices.
+
+Boss music: Juhani Junkala / SubspaceAudio, Epic Boss Battle [Seamlessly Looping], CC0.
+https://opengameart.org/content/boss-battle-music
+Processing: constant gain 0.7, Ogg Vorbis encoding. Source loop length is retained.
+
+15 new weapon/elemental/holy effect transients: original Dungeon Crush sound design,
+CC0. Recipe: tools/render-combat-audio.py (noise, filtered swishes, impacts and chimes).
+These are sound effects; no new music or speech was composed/synthesized.
+Exact packaged SHA256s, original archive checksums, entries and processing details:
+combat-audio-sources.json. No runtime network access is used to play these sounds.
