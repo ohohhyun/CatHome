@@ -7,7 +7,11 @@
 - 음원은 APK에 포함됩니다. 플레이 중 음원을 내려받거나 음성을 합성하지 않습니다. [음원 출처·적용 내용](release/AUDIO-NOTES.md)
 - versionCode 38 / versionName 2.12.0. 집사 사절 원본과 랭킹 서버 연결 설정은 변경하지 않았습니다.
 
-현재 검증 및 APK 배포 준비 중입니다. 이전 검증 버전: [2.11.0 APK ZIP](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.11.0-rc1).
+**[2.12.0 APK 알집 다운로드 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.12.0-rc1)** → Assets → **DungeonCrush-2.12.0-RC1.zip**. 기존 앱을 삭제하지 말고 업데이트 설치하세요.
+
+[검증 빌드](https://github.com/ohohhyun/CatHome/actions/runs/43007690959): JavaScript 20 + 네이티브 2 + Chrome 22 = **44개 자동 검사 통과**. Android lint, APK/AAB, 기존 서명·최종 원화/음원/스크립트 확인도 통과했습니다. [ZIP 공개 검증](https://github.com/ohohhyun/CatHome/actions/runs/43009990794) 성공.
+
+APK: 239,928,970 bytes, SHA256 `d635ae849384be7c537da0c1feb554a6eb7b552016bbb26dc0c79e8414160ad6`. ZIP: 239,990,265 bytes, SHA256 `f88722237d479e44110897273e3611d491cb89cf26d86ed1f95d5f3abe78f635`.
 
 ---
 

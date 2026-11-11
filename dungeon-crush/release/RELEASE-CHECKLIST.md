@@ -1,5 +1,7 @@
 # 2.12.0 사운드 보완 점검
 
+- [검증 빌드](https://github.com/ohohhyun/CatHome/actions/runs/43007690959): JavaScript 20 + 네이티브 2 + Chrome 22 = **44개 자동 검사 통과**. Android lint, APK/AAB, 기존 서명·최종 원화/음원/스크립트 확인도 통과했습니다. [ZIP 공개 검증](https://github.com/ohohhyun/CatHome/actions/runs/43009990794) 성공.
+- APK SHA256 `d635ae849384be7c537da0c1feb554a6eb7b552016bbb26dc0c79e8414160ad6`, ZIP SHA256 `f88722237d479e44110897273e3611d491cb89cf26d86ed1f95d5f3abe78f635`. [공개 다운로드](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.12.0-rc1).
 - package com.dungeoncrush.game, versionCode 38, versionName 2.12.0, minSdk 23, targetSdk 36.
 - 6직업 실제 공격 기합, 직업별 스킬 효과음, 보스 루프곡을 실제 APK 포함 바이트/해시와 함께 확인합니다.
 - 목소리 반복 간격·같은 소리 연속 방지·내 캐릭터 우선·4인 동시 재생 상한, 음높이 보존, 기존 게임 기록 불변을 확인합니다.

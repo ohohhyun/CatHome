@@ -2,12 +2,12 @@
 
 이 파일을 먼저 읽고 `dungeon-crush/`만 이어서 작업하세요. 사용자에게는 한국어 존댓말을 사용하세요.
 
-## 최신 검증 버전: 2.11.0 RC1
+## 최신 검증 버전: 2.12.0 RC1
 
-- [APK ZIP 공개 다운로드](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.11.0-rc1) → Assets → DungeonCrush-2.11.0-RC1.zip. versionCode 37. 기존 앱을 지우지 않고 업데이트합니다.
-- 검증 소스 `ed53dc8ad26d1b2b082f0a44d9d4e9925176dc2e`, [전체 42개 검사 성공](https://github.com/ohohhyun/CatHome/actions/runs/42997397968).
-- 마을 6개 바로가기/전체 메뉴/원정·정비 바로 열기/글자 잘림·겹침 및 확대 랭킹 보완을 포함합니다.
-- 전체 이용자 랭킹은 서버 연결을 꺼 두었습니다. 단일 연결 설정과 전송 규격만 준비했으며 서버·DB·계정은 생성하지 않았습니다. 내 기록은 실제 6캐릭터 데이터입니다.
+- [APK ZIP 공개 다운로드](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.12.0-rc1) → Assets → DungeonCrush-2.12.0-RC1.zip. versionCode 38. 기존 앱을 지우지 않고 업데이트합니다.
+- 검증 소스 `e75c2b59ba2a51f89a2f2445f4e87d11647236cf`, [전체 44개 검사 성공](https://github.com/ohohhyun/CatHome/actions/runs/43007690959).
+- 6직업 기합 녹음 21개·새 효과음 15개·보스 루프곡·기본 25%의 독립 목소리 음량·보스 음악 전환/재개를 포함합니다.
+- 마을 바로가기/UI, 착용 판매 보호, 기존 모션·성장·백업 기능을 유지합니다. 집사 사절 원본과 서버/DB를 변경하지 않았습니다. 랭킹 연결은 꺼져 있습니다.
 
 ## 프로젝트와 금지 범위
 
@@ -241,3 +241,11 @@
 - 기존 APK 서명/API 36/프로토콜 8/저장 형식 2를 유지합니다. 랭킹 연결은 enabled=false 그대로이며 서버/DB를 만들지 않습니다. 집사 사절 app/legacy/tests 보호 트리를 변경하지 않습니다.
 
 - 후속 사용자 지시 ‘기합소리를 좀 작게’: 기본 목소리를 25%로 낮추고 직업별 믹스도 줄였습니다. 기본 실제 재생 gain은 0.21 이하이며, 특히 베인의 큰 기합을 줄였습니다. 음성 중 음악 감소도 15%만 적용합니다. 목소리 슬라이더는 독립적으로 유지합니다.
+
+
+## 2.12.0 RC1 검증 배포 완료
+
+- 검증 소스 `e75c2b59ba2a51f89a2f2445f4e87d11647236cf`. [검증 빌드](https://github.com/ohohhyun/CatHome/actions/runs/43007690959): JavaScript 20 + 네이티브 2 + Chrome 22 = **44개 자동 검사 통과**. Android lint, APK/AAB, 기존 서명·최종 원화/음원/스크립트 확인도 통과했습니다. [ZIP 공개 검증](https://github.com/ohohhyun/CatHome/actions/runs/43009990794) 성공.
+- APK `DungeonCrush-2.12.0.apk`: 239,928,970 bytes, SHA256 `d635ae849384be7c537da0c1feb554a6eb7b552016bbb26dc0c79e8414160ad6`. versionCode 38 / versionName 2.12.0, 기존 서명 `e43fedd9099e7b5df82eccfa3e92fc020d429ad99795463abbe40e2af4880708` 유지.
+- [공개 ZIP](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.12.0-rc1): 239,990,265 bytes, SHA256 `f88722237d479e44110897273e3611d491cb89cf26d86ed1f95d5f3abe78f635`. ZIP 내부 APK CRC/해시와 GitHub 공개 asset 크기·digest 일치 확인. 설치/인수인계/출시 점검/개인정보/스토어 설명/랭킹 연결/UI 참고/음원 출처 문서를 포함합니다.
+- 실제 휴대폰 음향·Bluetooth 지연·FPS/발열과 운영 서명/Play 등록은 별도입니다. 집사 사절 app/legacy/tests 보호 트리를 유지했습니다.
