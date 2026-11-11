@@ -29,7 +29,7 @@ CI의 `DungeonCrush-Unsigned-Store-AAB`는 release 모드의 **서명되지 않�
 - 이전 versionCode 34 설치에 35를 덮어 설치하여 6직업 레벨/장비/스킬 유지 확인
 - 시스템 파일 선택기로 로컬/선택한 드라이브에 백업, 취소, 잘못된 파일, 정상 복원 확인
 - 앱 전환·전화·화면 잠금 후 싱글 일시정지와 입력 초기화, LAN 종료 안내 확인
-- Android 13/16 뒤로가기와 종료 확인, 노치·제스처 영역, 작은 휴대폰·태블릿·분할 화면 확인
+- 최소 지원 Android 6(API 23, 업데이트된 System WebView) 및 Android 13/16에서 실행, 뒤로가기와 종료 확인, 노치·제스처 영역, 작은 휴대폰·태블릿·분할 화면 확인
 - 보급형/중급형 단말에서 30분 플레이, 4인 스킬 동시 사용 시 프레임률·메모리·발열 확인
 - 서로 다른 실제 기기 2~4대로 협동/개인전, 참가·이탈·방장 종료·공유기 격리 환경 확인
 - Play Console 내부 테스트, 사전 출시 보고서, 대상 연령/콘텐츠 등급·데이터 보안 설문 확인
@@ -39,3 +39,8 @@ CI의 `DungeonCrush-Unsigned-Store-AAB`는 release 모드의 **서명되지 않�
 `STORE-LISTING-KO.md`에 설명 초안, `PRIVACY-KO.md`에 개인정보 안내를 준비했습니다. 개발자 지원 연락처와 안내의 최종 공개 URL을 확정하고 제출합니다. 스토어용 이미지에는 실제 최종 버전 화면을 사용합니다.
 
 공식 정책 확인: https://support.google.com/googleplay/android-developer/answer/11926878 (신규/업데이트 앱 API 36 요구), https://developer.android.com/build/releases/agp-8-10-0-release-notes (빌드 도구 호환성). 제출 당일 Console의 정책 안내를 다시 확인합니다.
+
+
+## 이번 후보의 자동 검증 결과
+
+성공 소스: `f685dbbf27308ac08c59d0c5aadca017635b7c8b`. [빌드 42957696478](https://github.com/ohohhyun/CatHome/actions/runs/42957696478)에서 37개 검사, Android lintRelease, API 36 APK 및 release AAB 빌드와 기존 APK 서명·최종 리소스 일치 확인이 통과했습니다. [공개 배포와 ZIP 검증](https://github.com/ohohhyun/CatHome/actions/runs/42959541040)도 성공했습니다. 실제 기기 체크리스트는 여전히 별도로 수행해야 합니다.

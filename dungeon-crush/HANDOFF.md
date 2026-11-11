@@ -141,3 +141,18 @@
 - Android lint가 기존 LAN의 `Map.remove(key,value)` API 24 요구를 발견했습니다. 원래 구현인 ConcurrentHashMap의 타입을 API 1부터 지원하는 `ConcurrentMap`으로 선언해 원자적 조건부 제거를 유지하면서 Android 6(API 23) 호환성을 복구했습니다. CI는 Android 컴파일/정적 검사를 UI 검사보다 먼저 실행하여 호환성 오류를 먼저 검출합니다.
 
 - 저장 파일의 장비 배열 구조와 ID도 검사합니다. 배열에 null 항목 등이 있으면 정상 백업으로 순환시키지 않으며, 변환에 실패하는 복제본은 건너뛰어 다음 정상 기록을 찾습니다. 모든 복제본이 손상된 경우 원본을 덮어쓰지 않습니다. 해당 실패 형태를 회귀 검사에 포함했습니다.
+
+
+## 2.10.2 RC1 검증 완료 · 공개 다운로드
+
+- 실제 검증한 소스는 `f685dbbf27308ac08c59d0c5aadca017635b7c8b`입니다. 뒤의 배포/문서 커밋은 앱 구현을 변경하지 않습니다.
+- 빌드: https://github.com/ohohhyun/CatHome/actions/runs/42957696478 (**성공**). JavaScript 17개, 실제 TCP LAN 1개, Chrome 19개 = 37개 검사와 Android lintRelease, APK 및 release 모드 AAB 빌드가 통과했습니다.
+- APK: `DungeonCrush-2.10.2.apk`, 237,670,859 bytes. SHA256 `243e8dc58ebb77f9eaa9a4b879cc23a3e4ce45f27a99ca69d1bb34574fad8315`.
+- 패키지 `com.dungeoncrush.game`, versionCode **35**, versionName **2.10.2**, targetSdk **36**. 기존 APK 서명 SHA256 `e43fedd9099e7b5df82eccfa3e92fc020d429ad99795463abbe40e2af4880708` 검증 통과.
+- 공개 페이지: https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.10.2-rc1 — Assets에서 `DungeonCrush-2.10.2-RC1.zip`을 선택합니다. 익명 HTTP 200과 파일 링크를 확인했습니다. 사용자에게 임시 signed URL을 주지 않습니다.
+- ZIP: 237,699,602 bytes. SHA256 `099b2de94efcfc73d023adaa308a6347283648812a47b31ec420596da565287e`. APK/설치 안내/인수인계/출시 점검표/개인정보 안내/스토어 설명 초안을 포함합니다.
+- 성공 배포: https://github.com/ohohhyun/CatHome/actions/runs/42959541040. ZIP을 다시 열어 APK 해시를 검사하고 GitHub 공개 asset의 크기·SHA256이 같은지 확인했습니다.
+- CI의 `DungeonCrush-Unsigned-Store-AAB`는 서명 전 release 번들입니다. 그대로 스토어에 업로드하지 않습니다. 운영 업로드 키, 지원 이메일/개인정보 안내 공개 URL, 실제 휴대폰 검수 및 Play Console 등록이 남아 있습니다. `release/RELEASE-CHECKLIST.md`를 참조하세요.
+- 첫 정적 검사에서 발견한 Android 6의 Map.remove API 호환성 오류는 ConcurrentMap으로 수정했습니다. 오류를 숨기거나 최소 지원 버전을 올리지 않았습니다.
+- 배포 자동화: 검증 소스에 workflow 변경이 포함되면 GITHUB_TOKEN의 릴리스 공개 전환이 403이 될 수 있습니다. owner 권한으로 검증 SHA의 태그와 draft를 먼저 만들고, Actions는 이미 정해진 target을 다시 쓰지 않은 채 upload/publish합니다. 현재 태그는 위 검증 소스를 가리킵니다.
+- 집사 사절 보호 트리 유지: app `a70564ab782100b61cf07077e52753370e199045`, legacy `8bb4cd16f95ce641b3fa31296b021d8f976cb7e6`, 원본 tests `07eea64ee955f5580a13a9f237490d346ceefe7a`.
