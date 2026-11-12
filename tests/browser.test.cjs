@@ -95,9 +95,9 @@ const {pathToFileURL}=require('node:url');
    await page.screenshot({path:path.join(output,`endless-heart-recovery-${width}.png`)});
    await page.evaluate(()=>{goHome();wallet=321;save()});
    await page.locator('#skin-open').click();assert.equal(await page.locator('#skin-shop').isVisible(),true);const shopBounds=await page.evaluate(()=>{const shop=document.getElementById('skin-shop').getBoundingClientRect(),game=document.getElementById('game').getBoundingClientRect();return {offset:Math.abs(shop.top-game.top),height:Math.abs(shop.height-game.height),scroll:document.getElementById('game').scrollTop}});assert(shopBounds.offset<1&&shopBounds.height<1&&shopBounds.scroll===0,'shop covers game viewport without scrolling the game');
-   assert.equal(await page.evaluate(()=>window.CatHomeStore.products.length),9);
+   assert.equal(await page.evaluate(()=>window.CatHomeStore.products.length),12);
    for(const category of ['hero','cats','map']){
-    await page.locator('#skin-tab-'+category).click();assert.equal(await page.locator('#skin-cards button').count(),3);
+    await page.locator('#skin-tab-'+category).click();assert.equal(await page.locator('#skin-cards button').count(),4);
     const products=await page.evaluate(c=>SKIN_CATALOG.filter(p=>p.category===c).map(p=>p.id),category);
     for(const id of products){
      await page.locator('#skin-card-'+id.replace('.','-')).click();assert.equal(await page.locator('#skin-price').textContent(),'₩1,100');
@@ -109,12 +109,12 @@ const {pathToFileURL}=require('node:url');
     if(width===390&&process.env.SKIN_REVIEW==='1')console.log('SKIN_REVIEW_'+category+' '+shot.toString('base64'));
     const previewHash=await page.locator('#skin-preview').evaluate(c=>c.toDataURL());assert(previewHash.length>2000,'preview has rendered artwork');
     await page.locator('#skin-reset').click();assert.equal(await page.evaluate(c=>equippedSkins[c],category),'default');
-    await page.locator('#skin-buy').click();assert.equal(await page.evaluate(c=>equippedSkins[c],category),products[2]);
+    await page.locator('#skin-buy').click();assert.equal(await page.evaluate(c=>equippedSkins[c],category),products.at(-1));
    }
    await page.locator('#skin-close').click();assert.equal(await page.locator('#skin-shop').isVisible(),false);
    await page.reload();await page.waitForFunction(()=>typeof SKIN_CATALOG!=='undefined');
-   assert.deepEqual(await page.evaluate(()=>({...equippedSkins})),{hero:'hero.duck',cats:'cats.bakery',map:'map.snow'});
-   assert.equal(await page.evaluate(()=>Object.keys(skinOwnership).length),9);assert.equal(await page.evaluate(()=>wallet),321);
+   assert.deepEqual(await page.evaluate(()=>({...equippedSkins})),{hero:'hero.santa',cats:'cats.rudolph',map:'map.christmas'});
+   assert.equal(await page.evaluate(()=>Object.keys(skinOwnership).length),12);assert.equal(await page.evaluate(()=>wallet),321);
    const physics=await page.evaluate(()=>{start(0,'endless');spawn=999;invincible=999;const first={...difficulty()};for(let n=0;n<60;n++)update(1/60);return {hits,elapsed,first,cache:spriteCache.size,buildings:buildingCache.size}});
    assert.equal(physics.hits,0);assert(Math.abs(physics.elapsed-1)<1e-7);assert.equal(physics.first.speed,400);assert(physics.cache<=100&&physics.buildings<=78,'bounded artwork caches');
    await page.screenshot({path:path.join(output,`skins-equipped-game-${width}.png`)});

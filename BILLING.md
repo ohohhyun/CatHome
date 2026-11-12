@@ -51,3 +51,13 @@ window.CatHomeStore.registerBillingAdapter({
 현재 Android Billing SDK/서버 연결은 여전히 미구현입니다. 버튼은 연결 없을 때 결제 준비 중 안내만 표시하며 무료 부활을 지급하지 않습니다. 실제 출시 시 `registerBillingAdapter`에 `purchaseConsumable(productId)`를 추가하고 Play 상품 조회 가격을 표시해야 합니다. 서버에서 토큰·상품·앱·구매 상태를 검증하고 중복 거래를 차단한 뒤 consume 및 영수증 처리 결과를 `{status:'purchased',productId,entitlementVerified:true,consumed:true,transactionId}`로 반환해야 합니다. 취소·승인 대기·검증 실패 시 지급하지 않습니다. 이 인터페이스만으로 실제 결제가 작동하지 않습니다.
 
 실제 연결 시 서버에 미지급 거래/재시도 원장을 두어 앱 종료·네트워크 끊김·다른 판 시작 시 결제 후 미지급이 발생하지 않게 해야 합니다. 현재 APK는 실제 결제를 시작하지 않습니다.
+
+## v0.17 크리스마스 컬렉션 (비소모성, 각 1,100원)
+
+| 상품 | 상품 ID | 유형 |
+|---|---|---|
+| 산타의 퇴근길 | cathome.hero.santa | 캐릭터 의상 |
+| 루돌프냥 | cathome.cats.rudolph | 전 품종 고양이 스킨 |
+| 크리스마스 선물 골목 | cathome.map.christmas | 맵 외형 |
+
+기존 구매·복원 어댑터에 같은 방식으로 등록됩니다. 상점은 크리스마스 상품을 먼저 선택하며 총 12종, 종류별 4종입니다. 신규 상품은 실제 Play Console 등록·영수증 검증·라이선스 테스터 검사를 거쳐야 유료 출시할 수 있습니다. 현재 APK는 전체 해금 체험판으로 실제 청구하지 않습니다. 날짜에 따른 판매 중단이나 자동 배포는 설정하지 않았습니다.
