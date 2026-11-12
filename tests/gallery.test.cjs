@@ -1,0 +1,10 @@
+const {boot}=require('./game.test.cjs'),assert=require('node:assert/strict');
+const g=boot({},1,'preview',true),r=g.run;
+r('openGallery()');assert.equal(g.element('gallery-grid').children.filter(c=>!c.disabled).length,0,'all-access mode does not unlock gallery');assert.equal(r('viewGalleryScene(0)'),false);
+r("equipSkin('hero','hero.santa');equipSkin('cats','cats.rudolph');start(0);hits=3;panel('fail')");
+const first=r('butlerSceneIndex'),id=r('BUTLER_SCENES[butlerSceneIndex].id');assert.equal(r('Object.keys(butlerDiscoveries).length'),1);assert.equal(r(`butlerDiscoveries['${id}'].look.hero`),'hero.santa');
+for(let n=0;n<5;n++)r("panel('fail')");assert.equal(r('butlerSceneIndex'),first);assert.equal(r('Object.keys(butlerDiscoveries).length'),1);
+r("inventory.continue=1;useItem('continue');hits=3;panel('fail')");assert.notEqual(r('butlerSceneIndex'),first);assert.equal(r('Object.keys(butlerDiscoveries).length'),2,'a new actual death earns one image');
+r("goHome();equipSkin('hero','default');equipSkin('cats','default');openGallery()");assert.equal(g.element('gallery-grid').children.filter(c=>!c.disabled).length,2);assert.equal(r(`viewGalleryScene(${first})`),true);assert.equal(r(`butlerDiscoveries['${id}'].look.hero`),'hero.santa');
+r('save();flushSave()');const loaded=boot(g.storage,1,'preview',true);loaded.run('openGallery()');assert.equal(loaded.element('gallery-grid').children.filter(c=>!c.disabled).length,2);assert.equal(loaded.run('Object.keys(butlerDiscoveries).length'),2);
+console.log('PASS gallery: empty start, locked denial, one unlock per death, stable failure redraw, continue/new death, first-encounter skins, persistence and no prototype bypass');
