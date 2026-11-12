@@ -87,6 +87,7 @@ jobs:
       - name: Inspect premium store, all outfit motions and pets
         run: node tests/premium-presentation.test.cjs
         env:
+          DUNGEON_PREMIUM_VIDEO: '1'
           NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
       - name: Inspect premium alpha, effects, multiplayer and asset recovery
         run: node tests/premium-rendering.test.cjs

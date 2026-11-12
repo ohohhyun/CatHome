@@ -5087,9 +5087,9 @@
         1280,
         1536
       ],
-      "sha256": "ac998ef62fd907a4c98603cf549be541ffbae35eca07b642a96edec053d58446",
-      "originalOutput": "exec-93d4f0d2-7f0b-42dd-93d6-f19ef124156b.png",
-      "originalSha256": "39a369a80df25804372c4af7bcbe81b52a872f49267b83f82b44ba60103c72f5",
+      "sha256": "b07de7e0d1b65c09d40d88c96d2029c25b32654feb7c614aed29d47138f6ef00",
+      "originalOutput": "exec-78258ad7-2928-4de2-990d-89257126fbd0.png",
+      "originalSha256": "d08ae880d0ac5c14202f48fcb85b51e42a6efe206a17b9f804fc8fba715e9e13",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -5307,9 +5307,9 @@
         1552,
         1774
       ],
-      "sha256": "350eabc58ddb2f1ff9a0a1acee6d0c3846ab756bd25679177d9202df3a44dbf3",
-      "originalOutput": "exec-e2930589-e70b-49a3-a7cf-9c2885c94d68.png",
-      "originalSha256": "c28b144347567b702f04c9f58c8dfa2355a2b75522d0ca8d6d674962bed54fba",
+      "sha256": "23ea52dc57fc500e295b47f851bd96a7a920c74e5393a494fb10775c9b7fee1a",
+      "originalOutput": "exec-68a3c0fc-280c-45f3-9664-68cfc759f9a3.png",
+      "originalSha256": "0a9fb89a7dc55bf10a160c2d317bd8ca1220fd291cd0ff03228cf9623d02d54d",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -5477,9 +5477,9 @@
         1280,
         1536
       ],
-      "sha256": "0fe0823e32c0682302c817fdec67eded9af22dbd4ff8685e610d6f201700ca66",
-      "originalOutput": "exec-b620fa44-9d01-40cc-aeb5-8e6bdb00b014.png",
-      "originalSha256": "1f3a24c40ae2372351f29d4bfc09c934e5458d3f00a0cd296fd77cc93fa6385e",
+      "sha256": "349abcebb5d4ec29f1372cc20404305b9abfcbab83a7bf5f4189331e2bf37891",
+      "originalOutput": "exec-b1fa419b-2d51-4f32-97eb-0e10ad5079e2.png",
+      "originalSha256": "ba9ebbefa0cc1eacef594ba42b30c880554f7e7c7f82a31bfed8b34506355e08",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -5697,9 +5697,9 @@
         1552,
         1774
       ],
-      "sha256": "376dc23aa1b05313837aab7adea012e6774f367b27c4fefa2f1e7d7dc82ce105",
-      "originalOutput": "exec-63ef2f67-f377-4260-9de2-a794df638012.png",
-      "originalSha256": "1fba85bf56388432b55a57677702e0f4974532b43ff32ea925b2075d8a4e3258",
+      "sha256": "6ee2d9d5900d0e29313e41ba6c3fcd244408c137453fb7aa96c1ebc3ec52ee4d",
+      "originalOutput": "exec-25deed63-4c17-43e3-9328-74c90172123f.png",
+      "originalSha256": "ad82f9f8be488f20419c75fc713d1871568ef68c9468315366f44c9b06c6047f",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -5867,9 +5867,9 @@
         1280,
         1536
       ],
-      "sha256": "e526673a6ca5a5ab08bcf0146a78dd37d4e475078f63d30c87c6c89922defd12",
-      "originalOutput": "exec-7655d376-26a9-44ff-9ce9-2ce2b76ec7a8.png",
-      "originalSha256": "e23c36577968310109a768cfc45dbfb61673b438160760f2b5209ca11409a964",
+      "sha256": "c7adb579667397b8b4a3fac8a483d51dccef0bf82950f2bf4a604d89fa9da4bf",
+      "originalOutput": "exec-db3d0749-373d-4780-9e68-ff2a82514a37.png",
+      "originalSha256": "ccd14d7a2009e7e15615c5cbc1626aa7a20e5e37e2c50724a2884d1e1bbfe637",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -6087,9 +6087,9 @@
         1552,
         1774
       ],
-      "sha256": "482e05477587404bbb4bfde1bc1b37e4e0dffb9fa209762be5156bdc2084f26a",
-      "originalOutput": "exec-cac9eb3d-e428-4115-ba07-6f5e55fb78f6.png",
-      "originalSha256": "7673edaf5dd87423794aca92184f49f8c7b63eee52c3d45b5fd1acfe140dd409",
+      "sha256": "9245d84ae0effb5d50ac9d6af4375fb47d7758613db89c4dafb2acd98fec6942",
+      "originalOutput": "exec-a0c62bb2-1e7e-4101-a7ac-711ee5521a4f.png",
+      "originalSha256": "652b6014351d1726212877cb828a9f28ce8bfac96c2b970cf84f1b6c70811e12",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -6257,9 +6257,9 @@
         1280,
         1536
       ],
-      "sha256": "18cfe313793a8c04a4027f07c2e3d843f9f8430e550372f55b404957d616e611",
-      "originalOutput": "exec-83969a94-9d4f-4e05-9be6-35db41ca5735.png",
-      "originalSha256": "3ffaa2c1225c0927c4c1f811ea9a5902a3d33cb50db2e0b9961d9128af608818",
+      "sha256": "779d96aa3948822786cb61a70dec9bebc1027882f667e5734c8bd2564d99e753",
+      "originalOutput": "exec-c8facb0e-3824-4b28-bb4e-345711eaedc5.png",
+      "originalSha256": "1be0ef91cd20268b57e35ef333b1395f7dff0597923b3ad8cfa9c8794674cc22",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -6477,9 +6477,9 @@
         1552,
         1774
       ],
-      "sha256": "3a4da2ad7cb5e51ac7e57aee946d741b6e86abec73214e611e4460a7b0a7f47f",
-      "originalOutput": "exec-9259ed18-0945-4e52-a754-393a0854a16c.png",
-      "originalSha256": "c5858afec860cd8f35b041dc6ae7100d7de2df6c354f8c4ecdc17c5be9c1c487",
+      "sha256": "c641d96560273e0dd74cf1e523b251b77faa59839ecf7e465e476b70b8998893",
+      "originalOutput": "exec-1f8b0eba-52a7-4248-a477-bc608932d29c.png",
+      "originalSha256": "632fee1c52e5141d6188ac785f8d71dc565c03713a1d2db8bee948d6c5eb4481",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -7037,9 +7037,9 @@
         1280,
         1536
       ],
-      "sha256": "2a3b150b9a0bcadb2a8de0bca83eb32dd187605166a8f53e937c94846ccc3b3e",
-      "originalOutput": "exec-9a17b442-21d3-4b4f-918f-0f6efd9419d2.png",
-      "originalSha256": "750fb959dd9304e97137816192dfb37c06f16dedb6ac1fce09604acbaa4131d8",
+      "sha256": "7afe6cc4de5e99bf5e90118162e0554ed27a4fc794a2334d7132be408be5ae7e",
+      "originalOutput": "exec-59f6620a-56df-4e2c-8f32-eefdde73ca5c.png",
+      "originalSha256": "c9598cfb8f245e775a4a986ae872d43392a1bd0a2bf6cd547f1b865c9d71cb5e",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -7257,9 +7257,9 @@
         1552,
         1774
       ],
-      "sha256": "ab3573db071434237257d599a637e73f8f5a2c5dd9bf2bcf84ac593ed0666394",
-      "originalOutput": "exec-b85f0997-4b5a-434d-8830-ea1708b42cb9.png",
-      "originalSha256": "2e3d5845c809302243b52c9529d28741587eb2750bf34612a7ca760539192393",
+      "sha256": "da3f9cec2d66d07bdd27ab8e3057d9f00d15f422eda114bcff34d08f941055c2",
+      "originalOutput": "exec-2863f012-2b41-4fb6-a717-0c233d3399d5.png",
+      "originalSha256": "3df16f14630e4d7e3fd55fae941d40ddb8b98ccd52a6859d5b768c13ebb99c47",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -7427,9 +7427,9 @@
         1280,
         1536
       ],
-      "sha256": "13b36c3c5fe073a999d91f2a3171b85edcad7f7968b54f592224a6f142301ce6",
-      "originalOutput": "exec-8ee9cab2-2e22-423b-b244-fece8cd5bb6e.png",
-      "originalSha256": "b0a8fd77741a66bc91d781b17e40c0acdc0283d61d9e3e2746069bb4dd31f4d2",
+      "sha256": "16fe4b74f565fa3041e01c96fb6ad65950e6b6077c7d49139b75ca74076cce83",
+      "originalOutput": "exec-86076d9b-349e-49bd-bf9f-b317f231bb9c.png",
+      "originalSha256": "43895a9101b3461e3c642e4616ca323102a5e7e72a21fa1b667a4857d21936b0",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -7647,9 +7647,9 @@
         1552,
         1774
       ],
-      "sha256": "2bdf38f4a51e79489e6d5e85088e08ad52a733f166128bf4e593f8240acd0f27",
-      "originalOutput": "exec-4c97d1eb-db5c-4ed3-a091-3989e93504a1.png",
-      "originalSha256": "71f55abffe13faaa508e51aa9ef77f1c7e7417faf82232fb9ad41a779bd73dd9",
+      "sha256": "67ebb7e5f26c6904b7c0107d25b6764f40d78b6e9ec465e919bb7379d3950338",
+      "originalOutput": "exec-6e070b9a-edc2-4d85-a9dd-4e35eb1acfa9.png",
+      "originalSha256": "08b6cfd21dd332b26e3d846a4d553f43b5dfd06d7e4ce4c0189c7d447bc6556e",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -7817,9 +7817,9 @@
         1280,
         1536
       ],
-      "sha256": "66e2cd3fff532bddfd9bff86c0d0758a42ebb68f2684e0f5787ce5d92d9458dd",
-      "originalOutput": "exec-e8dc6b6c-fa13-4817-84e2-e730128edfa4.png",
-      "originalSha256": "91ae9faaad894906f81329a555fc2746e31357175e089de9aa598e9d9de6c9d5",
+      "sha256": "918486a990bde76a1a53057b31dc6fb86a8690486ac0265ebce1027d0583027d",
+      "originalOutput": "exec-5911ec35-d2a6-47da-a6a0-e6f6688a5e7c.png",
+      "originalSha256": "260d00362c73b35ea13c84ec763ef6167b3e90476496342df22c5cbc54ecdf55",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -8037,9 +8037,9 @@
         1552,
         1774
       ],
-      "sha256": "b8029f04665a3fa3d4883417dcd068d2d7febe12bc368aede7b5528bed8b8bfd",
-      "originalOutput": "exec-4f35bb64-7e27-43d7-9273-668d6394cb26.png",
-      "originalSha256": "c9b84ea971966e42faa7a4f8fe344ac0f463508fcdb44156613d051e1684f0d4",
+      "sha256": "a71944dc3209ce61c1a9460d0de30ea02dcc2e02234511001c7658a0811d9b6f",
+      "originalOutput": "exec-7a634121-3c9b-4eba-9c6e-f454db452d0d.png",
+      "originalSha256": "1786a5866977a24235042be016af17344b5fc8a852b234f95413086650f10c85",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -8207,9 +8207,9 @@
         1280,
         1536
       ],
-      "sha256": "e70fa493328e47b604387fe3f6961e9df36fcc0ec1769222f3278fd7ea53e560",
-      "originalOutput": "exec-07544982-fefe-4f42-8a42-960d59e71e1f.png",
-      "originalSha256": "ec50b7fa93f35d3c7a03ff8922c25722c94fb0ea4de516ff574f7c36851866c3",
+      "sha256": "b27ab4fbdc385ed2c93385425a457812bded09f73bff790228cd1dded5bbda23",
+      "originalOutput": "exec-399fc8bc-a68c-473a-8b69-e397f6221a60.png",
+      "originalSha256": "ff4bf1e1c891ecb02824ca16c2bffdb592bf9126d3be6ee237f3af75414fb28c",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -8427,9 +8427,9 @@
         1552,
         1774
       ],
-      "sha256": "8745fce91ce8f6e0af70da020b271e0643196d5e18e426d45e5a71d75f817a7e",
-      "originalOutput": "exec-5bdf4e4e-ae66-46bb-9236-ac5a32fbae75.png",
-      "originalSha256": "55d71ec427d5fe3e42d12e3825f8b11f56462579a9969230b54c5d35d22b72e2",
+      "sha256": "27194b8b5ec7ae5d5cef618fd3ed08dac4811a6c9b104894aa92416cb1c71bb6",
+      "originalOutput": "exec-26bfedc6-e0a4-461e-939c-dc2a896d19b3.png",
+      "originalSha256": "128e76d76d6970dd0e46d2a8e59e1d9085d4f420bcea1431e55d8af1fdd0691d",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -8987,9 +8987,9 @@
         1280,
         1536
       ],
-      "sha256": "cbbc9de1216d4fc3e5039946b05a29e8411588f5db89f51889b0692921ce4cea",
-      "originalOutput": "exec-2eee5dca-4583-40f2-998c-f4834a022ba2.png",
-      "originalSha256": "fa61ccdd3e44b1490a9162eac805b38005c21ba869025b790127c6dddec1b831",
+      "sha256": "d56556f93ce607b2cd25bc5218171e7961988c09f40080399025afca6e8268be",
+      "originalOutput": "exec-a720effb-561c-496f-843b-d7ed2e67b671.png",
+      "originalSha256": "9f54598f743b6790e210b89cc65c5023ea52051b70c7f69d7a22f17a9f3a981f",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -9207,9 +9207,9 @@
         1552,
         1774
       ],
-      "sha256": "6bbb93e7611e84829c7df6e26cd531b0987cca4c555dece5b3d3b5ef66bf6c3d",
-      "originalOutput": "exec-a46e7ab2-4c31-4c1f-a015-33c3737e67bd.png",
-      "originalSha256": "aa4c4b2e0e7adc44de832fbe76d953b5fce8ffba4f36ac98b90bd158bc02b3fb",
+      "sha256": "d3882d9d4abcf6cafd82db83fd0494f4ae9dbb7458768a2516b13e6bf1294bb2",
+      "originalOutput": "exec-901db98c-a08d-403c-b2a5-aa4807e8573f.png",
+      "originalSha256": "9d03049bddb938218d693a86baa6f50694065c8d71f85deb4b3fb5cce923f5bf",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -9377,9 +9377,9 @@
         1280,
         1536
       ],
-      "sha256": "a2005e5a607f4419443c10a17094c4b9b1546d5f1199ba01c9aa3199c0b3e911",
-      "originalOutput": "exec-89a158ed-ba8d-425e-ad86-fd5080a71cb2.png",
-      "originalSha256": "1d99caa25313ebcf65291a898d96d9c0abc1a884713153078e23d511d5fb83dd",
+      "sha256": "56e9e24b387958aac21e5b949cae032938e86d45a62702b25b36c403f5f370a7",
+      "originalOutput": "exec-e1ca2970-0650-4462-8230-5a45e10c9854.png",
+      "originalSha256": "aa72eb3a36d7688f6eeb59b36a6b818edc35faefc8199e25134373edc7ea4776",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -9597,9 +9597,9 @@
         1552,
         1774
       ],
-      "sha256": "0e076713e1dcb8ae66af97eb5afa0c52ede2d0333c5aa2fa0455cd160bba85e0",
-      "originalOutput": "exec-881cde97-fcf0-4a86-91da-a954db529802.png",
-      "originalSha256": "196e36fbd26cae81ce3de44d338c07efb1ac8c8c170bfe66171eae1a5bbc0ff6",
+      "sha256": "7bedc4f15b4d9672f4e4390aad25448666baa97df56254cfe3a20e2624ab036b",
+      "originalOutput": "exec-760c77e3-dff3-4257-b82e-40c364911473.png",
+      "originalSha256": "1134f564f35d75eecd4ca9faf6f01fd5f6c70ab646042b458d8628f054910903",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -9767,9 +9767,9 @@
         1280,
         1536
       ],
-      "sha256": "b3ca1a7d8804dbac0032c24ea66f4253e84e45d9ec2923c255cc70a47ffe181d",
-      "originalOutput": "exec-6521d8e0-5dc3-4274-bd57-69ae56beb515.png",
-      "originalSha256": "39b2e667c0d363ebaabd5e70b78a697bb5cd5bce3cb53cc2acbc41641ab9068f",
+      "sha256": "e2c2fe830d59a16e0ca1abe18ef78dbf79c962bf1e350b081097929e7caa4fbd",
+      "originalOutput": "exec-7a6afc06-db39-4c5a-802f-57302161bb4e.png",
+      "originalSha256": "1c7e92ff97ffc44e0ebd929e7bb8f18d9a8ef9ea33c9074590259dc1dc75586f",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -9987,9 +9987,9 @@
         1552,
         1774
       ],
-      "sha256": "82fb56ceff6c24f8027f1f1f537598320d9e11b55b1012af474990d8b2ca7a19",
-      "originalOutput": "exec-841ac2b3-a3e9-46e1-8b73-331acb8f7506.png",
-      "originalSha256": "c019e5f0b60aec94cf9fdf8c32a4dbe19bc9177f8c781f5a860ae546fcd44389",
+      "sha256": "071f8a6ba982be153a6b847265650acfee54f9fbdffaaa65de2ff90cadd0922e",
+      "originalOutput": "exec-39600e7d-41fc-4a6c-a7db-df4b2dcab73c.png",
+      "originalSha256": "8898e18312f4c330e5b00c09b3f321967db3fc8e3969f2ea6d4eb3b6905c5a2e",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -10157,9 +10157,9 @@
         1280,
         1536
       ],
-      "sha256": "ecb28ee8ab96d987f36450e4fb260d879d91daa68da508f5bffc3e442cf52160",
-      "originalOutput": "exec-6937fc02-c335-48f2-ae13-47a28ff03595.png",
-      "originalSha256": "a2693b2233988a418e356368ad905dc3f71dbc849862293c7986a1db8320f590",
+      "sha256": "32d8fba3d93b5afb42965a7baa79a498f38f63f58b8f55da1f9f2022201a2744",
+      "originalOutput": "exec-f42bbbdf-6fd1-4518-a01f-7455d01a59d7.png",
+      "originalSha256": "8d6c2f3b6820ead9a8b8c654115910add49eb4447fdd1c7dceb01b9b6c68722a",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -10377,9 +10377,9 @@
         1552,
         1774
       ],
-      "sha256": "5958bc19244984e010b45925a65822ff9ea918a9ff3aae4bce4ae51d51cdb7d6",
-      "originalOutput": "exec-e08361b8-3b31-4358-bd78-617453712212.png",
-      "originalSha256": "3a2fa2f62c36caaab5faab2717ae517b87dd063e0987286f7667c7d0e505225f",
+      "sha256": "4b7375758be4c8123955d60ef5561f9794981a30c3c32e3632a803a4d91d7024",
+      "originalOutput": "exec-e18a5b08-4d00-458b-9731-c67be4aec142.png",
+      "originalSha256": "d765b0f98286c389ae17f25f118017909d92b71b1eb59df3765e0914b832808b",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -10937,9 +10937,9 @@
         1280,
         1536
       ],
-      "sha256": "7486c6e00ec238c75987364021f7cf4874e586b3531159f57414fcde6d2f33f8",
-      "originalOutput": "exec-28e0e9f8-5fec-496d-9c7c-6188a4e2d775.png",
-      "originalSha256": "1c20248a19c6a119de1099f03248c2df0f1b3a9af4a57592f374169e141677f2",
+      "sha256": "832bc23c0c48c610ab7c8f1322b2028cfad821c6a44f228c9d0d35b54afc34bd",
+      "originalOutput": "exec-86821906-600b-4f92-87eb-2839941b7771.png",
+      "originalSha256": "94771289d6bc5d0ac5b7204c461dd2891468d488f1dd66ade45083dadad2079d",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -11157,9 +11157,9 @@
         1552,
         1774
       ],
-      "sha256": "32a146f8dab9f52c81a359dcca9ec7430428aeb10c7172eaa52a0a5efaea2fe6",
-      "originalOutput": "exec-51d6c9c8-53d6-4da2-bdfd-86be312efda3.png",
-      "originalSha256": "7f1a1a00da45c33c8efa51aed9f13a22e30c2f6fb2fd9b3fc91ea65c71136317",
+      "sha256": "e14d23a21a14dfd2524e3a92006a45d0301eec8543f61aa3b5e957fe805002a9",
+      "originalOutput": "exec-a1364b56-b290-4896-8f35-53f405fd7791.png",
+      "originalSha256": "bef0bd5ff0dd207d129414a7d0525715d030f342aae82e94a723953504661cbb",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -11327,9 +11327,9 @@
         1280,
         1536
       ],
-      "sha256": "f23408d6b35ce8223ac07d10dfcb395ed50e42e6c896bcf962f5a278cc69d921",
-      "originalOutput": "exec-6be7604b-30aa-4618-9ce4-19f491d0ff73.png",
-      "originalSha256": "9e85be993af277dfcc76beff69dd8378d98f7ea1252fadc73675a300356f819a",
+      "sha256": "09b33e8e19e0995bb8bc9c9b30dc6a677252daf0a32e21bd0993d07dabdc53f5",
+      "originalOutput": "exec-58d75d90-7487-47c3-b3d8-7c5a4cc20923.png",
+      "originalSha256": "1a2395639aee9170d0c24150bbfecf1f8ba7f23974eb1e18de8507658c7f6203",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -11547,9 +11547,9 @@
         1552,
         1774
       ],
-      "sha256": "0fb003a3958befa17c313845cbd1607aa7c90c5d750902ed813f73b798ab09fd",
-      "originalOutput": "exec-1e26fa04-a784-4912-af30-73ae868174e1.png",
-      "originalSha256": "d4f5ce9988efb78a5216aa258a95dcc4c87c29427e37a02d6c48c1c7f88e6d44",
+      "sha256": "b1e621a08d5f838268081c89526ff32117c994d07aac75f512e706298c39853c",
+      "originalOutput": "exec-139b721e-6016-4ee0-a2c7-d14f8f7ab813.png",
+      "originalSha256": "2661f665bcc70ac56ca2566949383336a8679d23f251b6057bffc535440637f9",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -11717,9 +11717,9 @@
         1280,
         1536
       ],
-      "sha256": "b469045a37b24800bab8a9c93005d7ee0fc41fd3efb9cf651bf21ef4877e1f53",
-      "originalOutput": "exec-f5471fba-bdf9-4484-abc8-3d184e7ad022.png",
-      "originalSha256": "46bc1497abdd18a44149fdccf64999d0977dbe09fb01fe2fc945173468f6d2f1",
+      "sha256": "087dbae017b884ebd74b90a591342acf48256011abfcaf67f9082f97395198fa",
+      "originalOutput": "exec-72eb280f-b50e-4ee8-abf9-d51bcd0936a5.png",
+      "originalSha256": "c8cdb9cb694656f78c8bdd46455611105edf14a585697d25ab8f5a776ff65ffd",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -11937,9 +11937,9 @@
         1552,
         1774
       ],
-      "sha256": "1aa590e046b5f07c80a57d9f3453eafc4a75af20597798675d8930d6bcf2b44f",
-      "originalOutput": "exec-b85cb38b-9d61-41ef-869f-58d33e0d79db.png",
-      "originalSha256": "4cbd6ba7c50bfee3e6337d10a285dd99089d2a06fb0af7aaef2759d1a7bbf764",
+      "sha256": "f0fecc144b60b29112daa7b5ea2812282c4c5aead57c99f5f33bd210fdff34c6",
+      "originalOutput": "exec-f3e9a94b-1998-451e-a0ad-4781116ef8df.png",
+      "originalSha256": "7f8bb81ae72cd4c4cec794e88fca040728eba9acd851fd9cfee880d9f4f29a76",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -12107,9 +12107,9 @@
         1280,
         1536
       ],
-      "sha256": "d4c40572a25a726b845bc252f3b0f49c126097bf26f5b28e95082348600c93f6",
-      "originalOutput": "exec-6ba4cb22-38a0-414c-b203-07c20292a881.png",
-      "originalSha256": "acbb7fa7679cfd12ca970fd5cefa94efcb511e4e67954354ffcf05147b264ce2",
+      "sha256": "7164929c449033ed9fbe7961aed79509aa024b2390811865c47f5cd99ac5b3be",
+      "originalOutput": "exec-d57f1e12-76aa-4fe1-b27f-2098b42de838.png",
+      "originalSha256": "4b44fd34b9df26f5d67260fadaa71259c2b6efe63da9aa01bfa314cb22049957",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -12327,9 +12327,9 @@
         1552,
         1774
       ],
-      "sha256": "20738226bac99078e5d84ee6e48e2a26841b920ab8c5d1987fcb88b43d4427ac",
-      "originalOutput": "exec-09bb780d-0a9d-4312-bc78-9eb9b8c8bbab.png",
-      "originalSha256": "83c9e6c029327379e2131643c9dd9c67d81d930c63232a5582ce2df0d2dd948a",
+      "sha256": "d2a3979037ae5fa08ee9e7fc7fd92bb244d0c05029fb503cd09ee4ce596895b6",
+      "originalOutput": "exec-cf89458a-8696-4021-9f07-bd34160dd849.png",
+      "originalSha256": "f84d417090ec20e90b9bbb26ca2bac00d79464cf73aeba2278129bca29c08915",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -12887,9 +12887,9 @@
         1280,
         1536
       ],
-      "sha256": "a07265ba2230474d7ef377ca1cc46ec2b4a6e944692108e441030a6e658c9ecf",
-      "originalOutput": "exec-bd09ad73-7d58-4278-90ed-6286b57fb7ee.png",
-      "originalSha256": "832d8fe4c1d8700b91192c28504ee33df2dc302f20b01818485486a74b82cac3",
+      "sha256": "69338d2b4d5c464cf3e68ea9b632e6753cadf375fc2231328dab631248250c37",
+      "originalOutput": "exec-cc0b5b4e-bb9b-4eb5-ba10-eea72f4e9f94.png",
+      "originalSha256": "515f78dd58bb1b7267a0684fb3b6b599b767dc4e93c7ffb123ebe0b42bc334f1",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -12897,8 +12897,8 @@
     {
       "id": "aria-ember-combat",
       "file": "art/premium/aria-ember-combat.webp",
-      "width": 887,
-      "height": 1774,
+      "width": 1086,
+      "height": 1448,
       "columns": 4,
       "rows": 8,
       "frames": 32,
@@ -12906,210 +12906,210 @@
         [
           0,
           0,
-          222,
-          222
+          272,
+          181
         ],
         [
-          222,
+          272,
           0,
-          222,
-          222
+          271,
+          181
         ],
         [
-          444,
+          543,
           0,
-          221,
-          222
+          271,
+          181
         ],
         [
-          665,
+          814,
           0,
-          222,
-          222
-        ],
-        [
-          0,
-          222,
-          222,
-          222
-        ],
-        [
-          222,
-          222,
-          222,
-          222
-        ],
-        [
-          444,
-          222,
-          221,
-          222
-        ],
-        [
-          665,
-          222,
-          222,
-          222
+          272,
+          181
         ],
         [
           0,
-          444,
-          222,
-          221
+          181,
+          272,
+          181
         ],
         [
-          222,
-          444,
-          222,
-          221
+          272,
+          181,
+          271,
+          181
         ],
         [
-          444,
-          444,
-          221,
-          221
+          543,
+          181,
+          271,
+          181
         ],
         [
-          665,
-          444,
-          222,
-          221
-        ],
-        [
-          0,
-          665,
-          222,
-          222
-        ],
-        [
-          222,
-          665,
-          222,
-          222
-        ],
-        [
-          444,
-          665,
-          221,
-          222
-        ],
-        [
-          665,
-          665,
-          222,
-          222
+          814,
+          181,
+          272,
+          181
         ],
         [
           0,
-          887,
-          222,
-          222
+          362,
+          272,
+          181
         ],
         [
-          222,
-          887,
-          222,
-          222
+          272,
+          362,
+          271,
+          181
         ],
         [
-          444,
-          887,
-          221,
-          222
+          543,
+          362,
+          271,
+          181
         ],
         [
-          665,
-          887,
-          222,
-          222
-        ],
-        [
-          0,
-          1109,
-          222,
-          221
-        ],
-        [
-          222,
-          1109,
-          222,
-          221
-        ],
-        [
-          444,
-          1109,
-          221,
-          221
-        ],
-        [
-          665,
-          1109,
-          222,
-          221
+          814,
+          362,
+          272,
+          181
         ],
         [
           0,
-          1330,
-          222,
-          222
+          543,
+          272,
+          181
         ],
         [
-          222,
-          1330,
-          222,
-          222
+          272,
+          543,
+          271,
+          181
         ],
         [
-          444,
-          1330,
-          221,
-          222
+          543,
+          543,
+          271,
+          181
         ],
         [
-          665,
-          1330,
-          222,
-          222
+          814,
+          543,
+          272,
+          181
         ],
         [
           0,
-          1552,
-          222,
-          222
+          724,
+          272,
+          181
         ],
         [
-          222,
-          1552,
-          222,
-          222
+          272,
+          724,
+          271,
+          181
         ],
         [
-          444,
-          1552,
-          221,
-          222
+          543,
+          724,
+          271,
+          181
         ],
         [
-          665,
-          1552,
-          222,
-          222
+          814,
+          724,
+          272,
+          181
+        ],
+        [
+          0,
+          905,
+          272,
+          181
+        ],
+        [
+          272,
+          905,
+          271,
+          181
+        ],
+        [
+          543,
+          905,
+          271,
+          181
+        ],
+        [
+          814,
+          905,
+          272,
+          181
+        ],
+        [
+          0,
+          1086,
+          272,
+          181
+        ],
+        [
+          272,
+          1086,
+          271,
+          181
+        ],
+        [
+          543,
+          1086,
+          271,
+          181
+        ],
+        [
+          814,
+          1086,
+          272,
+          181
+        ],
+        [
+          0,
+          1267,
+          272,
+          181
+        ],
+        [
+          272,
+          1267,
+          271,
+          181
+        ],
+        [
+          543,
+          1267,
+          271,
+          181
+        ],
+        [
+          814,
+          1267,
+          272,
+          181
         ]
       ],
       "rowCuts": [
         0,
-        222,
-        444,
-        665,
-        887,
-        1109,
-        1330,
-        1552,
-        1774
+        181,
+        362,
+        543,
+        724,
+        905,
+        1086,
+        1267,
+        1448
       ],
-      "sha256": "dae739c13440ebd7b87f3b67366fa877771cc04e5502f3124c0181c19165ec59",
-      "originalOutput": "exec-b00fb21a-af0e-404a-8a44-01062614792e.png",
-      "originalSha256": "3438733ffaa607cd6fe55ef8a796a4cf7bd040d2db929a4e521700751a54bc23",
+      "sha256": "aeec852c5214b961f40d6fcd73cadfb018063645f6fdcab484f85329d2bd3434",
+      "originalOutput": "exec-0b1cac05-b0a3-494e-8d0c-bfb9e0a1feed.png",
+      "originalSha256": "bb00bd2e3381dd073f9df6dae539cfeefa3d59a7d5ed4eb68bcae8b5adf9ca44",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -13277,9 +13277,9 @@
         1280,
         1536
       ],
-      "sha256": "d236d8abe0e6b8f71e964b51fea3e4bc8a0238261560586054be538144ec558b",
-      "originalOutput": "exec-9a4af247-a015-4fdc-ba0e-ea8279051267.png",
-      "originalSha256": "22f1c5f897bdd72ace31d6822c386e90a5890d63c81c3e344946276f6773753c",
+      "sha256": "6a13eb5df72135ddcab1fbf39d35aa931865315c7c1097f6df3ea0ca71933d62",
+      "originalOutput": "exec-5a0e80b5-f9be-4203-9851-63f480d21b80.png",
+      "originalSha256": "38cb6ced15f5f1a21a957ecce32ae46fb531121c111b37bc82d39f6c54f6680d",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -13287,6 +13287,396 @@
     {
       "id": "aria-lunar-combat",
       "file": "art/premium/aria-lunar-combat.webp",
+      "width": 1086,
+      "height": 1448,
+      "columns": 4,
+      "rows": 8,
+      "frames": 32,
+      "cells": [
+        [
+          0,
+          0,
+          272,
+          181
+        ],
+        [
+          272,
+          0,
+          271,
+          181
+        ],
+        [
+          543,
+          0,
+          271,
+          181
+        ],
+        [
+          814,
+          0,
+          272,
+          181
+        ],
+        [
+          0,
+          181,
+          272,
+          181
+        ],
+        [
+          272,
+          181,
+          271,
+          181
+        ],
+        [
+          543,
+          181,
+          271,
+          181
+        ],
+        [
+          814,
+          181,
+          272,
+          181
+        ],
+        [
+          0,
+          362,
+          272,
+          181
+        ],
+        [
+          272,
+          362,
+          271,
+          181
+        ],
+        [
+          543,
+          362,
+          271,
+          181
+        ],
+        [
+          814,
+          362,
+          272,
+          181
+        ],
+        [
+          0,
+          543,
+          272,
+          181
+        ],
+        [
+          272,
+          543,
+          271,
+          181
+        ],
+        [
+          543,
+          543,
+          271,
+          181
+        ],
+        [
+          814,
+          543,
+          272,
+          181
+        ],
+        [
+          0,
+          724,
+          272,
+          181
+        ],
+        [
+          272,
+          724,
+          271,
+          181
+        ],
+        [
+          543,
+          724,
+          271,
+          181
+        ],
+        [
+          814,
+          724,
+          272,
+          181
+        ],
+        [
+          0,
+          905,
+          272,
+          181
+        ],
+        [
+          272,
+          905,
+          271,
+          181
+        ],
+        [
+          543,
+          905,
+          271,
+          181
+        ],
+        [
+          814,
+          905,
+          272,
+          181
+        ],
+        [
+          0,
+          1086,
+          272,
+          181
+        ],
+        [
+          272,
+          1086,
+          271,
+          181
+        ],
+        [
+          543,
+          1086,
+          271,
+          181
+        ],
+        [
+          814,
+          1086,
+          272,
+          181
+        ],
+        [
+          0,
+          1267,
+          272,
+          181
+        ],
+        [
+          272,
+          1267,
+          271,
+          181
+        ],
+        [
+          543,
+          1267,
+          271,
+          181
+        ],
+        [
+          814,
+          1267,
+          272,
+          181
+        ]
+      ],
+      "rowCuts": [
+        0,
+        181,
+        362,
+        543,
+        724,
+        905,
+        1086,
+        1267,
+        1448
+      ],
+      "sha256": "10550e5eda5a5066a08a62fb67ff285df532ebfd68ed4485ea6a56dfdbf192ed",
+      "originalOutput": "exec-96452a11-e1c2-43fa-97f7-0b1f4b74a947.png",
+      "originalSha256": "2c2a9f22a4ec580c8f523c40dd9107d8cf36a13860342743aeeb7fefccbe2aed",
+      "tool": "OpenAI image_gen",
+      "encoding": "lossless WebP; exact decoded RGBA preserved",
+      "packaged": true
+    },
+    {
+      "id": "aria-aurora-movement",
+      "file": "art/premium/aria-aurora-movement.webp",
+      "width": 1024,
+      "height": 1536,
+      "columns": 4,
+      "rows": 6,
+      "frames": 24,
+      "cells": [
+        [
+          0,
+          0,
+          256,
+          256
+        ],
+        [
+          256,
+          0,
+          256,
+          256
+        ],
+        [
+          512,
+          0,
+          256,
+          256
+        ],
+        [
+          768,
+          0,
+          256,
+          256
+        ],
+        [
+          0,
+          256,
+          256,
+          256
+        ],
+        [
+          256,
+          256,
+          256,
+          256
+        ],
+        [
+          512,
+          256,
+          256,
+          256
+        ],
+        [
+          768,
+          256,
+          256,
+          256
+        ],
+        [
+          0,
+          512,
+          256,
+          256
+        ],
+        [
+          256,
+          512,
+          256,
+          256
+        ],
+        [
+          512,
+          512,
+          256,
+          256
+        ],
+        [
+          768,
+          512,
+          256,
+          256
+        ],
+        [
+          0,
+          768,
+          256,
+          256
+        ],
+        [
+          256,
+          768,
+          256,
+          256
+        ],
+        [
+          512,
+          768,
+          256,
+          256
+        ],
+        [
+          768,
+          768,
+          256,
+          256
+        ],
+        [
+          0,
+          1024,
+          256,
+          256
+        ],
+        [
+          256,
+          1024,
+          256,
+          256
+        ],
+        [
+          512,
+          1024,
+          256,
+          256
+        ],
+        [
+          768,
+          1024,
+          256,
+          256
+        ],
+        [
+          0,
+          1280,
+          256,
+          256
+        ],
+        [
+          256,
+          1280,
+          256,
+          256
+        ],
+        [
+          512,
+          1280,
+          256,
+          256
+        ],
+        [
+          768,
+          1280,
+          256,
+          256
+        ]
+      ],
+      "rowCuts": [
+        0,
+        256,
+        512,
+        768,
+        1024,
+        1280,
+        1536
+      ],
+      "sha256": "5ef26e40cf4f24c2027ee42f62bab1feb0336a8eaef44ec9d18ff473a0d9472e",
+      "originalOutput": "exec-7c96c029-fba4-4cf2-8a3a-8010ed2cff83.png",
+      "originalSha256": "e86f57e3e681279dd2b85c92743e9e4b1373b02592a299ffa60a5df4474270ba",
+      "tool": "OpenAI image_gen",
+      "encoding": "lossless WebP; exact decoded RGBA preserved",
+      "packaged": true
+    },
+    {
+      "id": "aria-aurora-combat",
+      "file": "art/premium/aria-aurora-combat.webp",
       "width": 887,
       "height": 1774,
       "columns": 4,
@@ -13497,399 +13887,9 @@
         1552,
         1774
       ],
-      "sha256": "2c06efc50feabc995bbcda58af3306ac157263c852564ca6e09af84463891455",
-      "originalOutput": "exec-cf4a14f5-b129-409f-839b-5cd545d105db.png",
-      "originalSha256": "7de79796a64e22be40d46f4e0d971da849ad31f5ee678c70eda0343526726c29",
-      "tool": "OpenAI image_gen",
-      "encoding": "lossless WebP; exact decoded RGBA preserved",
-      "packaged": true
-    },
-    {
-      "id": "aria-aurora-movement",
-      "file": "art/premium/aria-aurora-movement.webp",
-      "width": 1024,
-      "height": 1536,
-      "columns": 4,
-      "rows": 6,
-      "frames": 24,
-      "cells": [
-        [
-          0,
-          0,
-          256,
-          256
-        ],
-        [
-          256,
-          0,
-          256,
-          256
-        ],
-        [
-          512,
-          0,
-          256,
-          256
-        ],
-        [
-          768,
-          0,
-          256,
-          256
-        ],
-        [
-          0,
-          256,
-          256,
-          256
-        ],
-        [
-          256,
-          256,
-          256,
-          256
-        ],
-        [
-          512,
-          256,
-          256,
-          256
-        ],
-        [
-          768,
-          256,
-          256,
-          256
-        ],
-        [
-          0,
-          512,
-          256,
-          256
-        ],
-        [
-          256,
-          512,
-          256,
-          256
-        ],
-        [
-          512,
-          512,
-          256,
-          256
-        ],
-        [
-          768,
-          512,
-          256,
-          256
-        ],
-        [
-          0,
-          768,
-          256,
-          256
-        ],
-        [
-          256,
-          768,
-          256,
-          256
-        ],
-        [
-          512,
-          768,
-          256,
-          256
-        ],
-        [
-          768,
-          768,
-          256,
-          256
-        ],
-        [
-          0,
-          1024,
-          256,
-          256
-        ],
-        [
-          256,
-          1024,
-          256,
-          256
-        ],
-        [
-          512,
-          1024,
-          256,
-          256
-        ],
-        [
-          768,
-          1024,
-          256,
-          256
-        ],
-        [
-          0,
-          1280,
-          256,
-          256
-        ],
-        [
-          256,
-          1280,
-          256,
-          256
-        ],
-        [
-          512,
-          1280,
-          256,
-          256
-        ],
-        [
-          768,
-          1280,
-          256,
-          256
-        ]
-      ],
-      "rowCuts": [
-        0,
-        256,
-        512,
-        768,
-        1024,
-        1280,
-        1536
-      ],
-      "sha256": "a1960169201df300a645a86bcb7e7ed5a140d7b68dd30bc95cc89ff36576a8f7",
-      "originalOutput": "exec-99ce3c4f-74e5-462e-8cc7-fb38004fb9dc.png",
-      "originalSha256": "2023610808875c6b923ad0a10d8f5a3a93449c503ecf101bee7045c1fb24cb38",
-      "tool": "OpenAI image_gen",
-      "encoding": "lossless WebP; exact decoded RGBA preserved",
-      "packaged": true
-    },
-    {
-      "id": "aria-aurora-combat",
-      "file": "art/premium/aria-aurora-combat.webp",
-      "width": 1024,
-      "height": 1536,
-      "columns": 4,
-      "rows": 8,
-      "frames": 32,
-      "cells": [
-        [
-          0,
-          0,
-          256,
-          192
-        ],
-        [
-          256,
-          0,
-          256,
-          192
-        ],
-        [
-          512,
-          0,
-          256,
-          192
-        ],
-        [
-          768,
-          0,
-          256,
-          192
-        ],
-        [
-          0,
-          192,
-          256,
-          192
-        ],
-        [
-          256,
-          192,
-          256,
-          192
-        ],
-        [
-          512,
-          192,
-          256,
-          192
-        ],
-        [
-          768,
-          192,
-          256,
-          192
-        ],
-        [
-          0,
-          384,
-          256,
-          192
-        ],
-        [
-          256,
-          384,
-          256,
-          192
-        ],
-        [
-          512,
-          384,
-          256,
-          192
-        ],
-        [
-          768,
-          384,
-          256,
-          192
-        ],
-        [
-          0,
-          576,
-          256,
-          192
-        ],
-        [
-          256,
-          576,
-          256,
-          192
-        ],
-        [
-          512,
-          576,
-          256,
-          192
-        ],
-        [
-          768,
-          576,
-          256,
-          192
-        ],
-        [
-          0,
-          768,
-          256,
-          192
-        ],
-        [
-          256,
-          768,
-          256,
-          192
-        ],
-        [
-          512,
-          768,
-          256,
-          192
-        ],
-        [
-          768,
-          768,
-          256,
-          192
-        ],
-        [
-          0,
-          960,
-          256,
-          192
-        ],
-        [
-          256,
-          960,
-          256,
-          192
-        ],
-        [
-          512,
-          960,
-          256,
-          192
-        ],
-        [
-          768,
-          960,
-          256,
-          192
-        ],
-        [
-          0,
-          1152,
-          256,
-          192
-        ],
-        [
-          256,
-          1152,
-          256,
-          192
-        ],
-        [
-          512,
-          1152,
-          256,
-          192
-        ],
-        [
-          768,
-          1152,
-          256,
-          192
-        ],
-        [
-          0,
-          1344,
-          256,
-          192
-        ],
-        [
-          256,
-          1344,
-          256,
-          192
-        ],
-        [
-          512,
-          1344,
-          256,
-          192
-        ],
-        [
-          768,
-          1344,
-          256,
-          192
-        ]
-      ],
-      "rowCuts": [
-        0,
-        192,
-        384,
-        576,
-        768,
-        960,
-        1152,
-        1344,
-        1536
-      ],
-      "sha256": "2f2c8c44ea718a9e1d1e725da8dc45184dbad6eee051614ae94efe6f718ae5e4",
-      "originalOutput": "exec-def96457-585b-41f9-a324-83af519607e1.png",
-      "originalSha256": "36800250141bcca6ee25b9ff96b3429bb8dfeaa933b71def01c4fb2a71cf7f78",
+      "sha256": "4c09ee36e553a99b97e72fb1badb23ec9d62b6329db4e2bf13846cecc46eab89",
+      "originalOutput": "exec-631e65b5-9cd0-4f80-8597-bc87789ff39a.png",
+      "originalSha256": "825587ce7650f2d18ae34a314dbe7a519ac6d7aa43dc60dde9cb031d1f826400",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -14057,9 +14057,9 @@
         1280,
         1536
       ],
-      "sha256": "804af56d2b9168b7767a40ef307e946d89ba1e2cd2307f494baaac99c2752669",
-      "originalOutput": "exec-20b55c69-bf39-450d-840d-5a2ff15ac548.png",
-      "originalSha256": "387a56118075b0dc12e6fb327dc9eb19f016ff0a94eb563db052abbfb512d577",
+      "sha256": "4aac95fb0364ab1fca4d7c75c06fd2ff64390ee42b21528d2c5d95d75f9debb8",
+      "originalOutput": "exec-86606372-de43-4e1f-8397-a758103bc416.png",
+      "originalSha256": "32e81bb5916255523fb892e3eb5bc53b530ce1065be5dd800d16200243a572c2",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -14067,8 +14067,8 @@
     {
       "id": "aria-abyss-combat",
       "file": "art/premium/aria-abyss-combat.webp",
-      "width": 1024,
-      "height": 1536,
+      "width": 887,
+      "height": 1774,
       "columns": 4,
       "rows": 8,
       "frames": 32,
@@ -14076,210 +14076,210 @@
         [
           0,
           0,
-          256,
-          192
+          222,
+          222
         ],
         [
-          256,
+          222,
           0,
-          256,
-          192
+          222,
+          222
         ],
         [
-          512,
+          444,
           0,
-          256,
-          192
+          221,
+          222
         ],
         [
-          768,
+          665,
           0,
-          256,
-          192
-        ],
-        [
-          0,
-          192,
-          256,
-          192
-        ],
-        [
-          256,
-          192,
-          256,
-          192
-        ],
-        [
-          512,
-          192,
-          256,
-          192
-        ],
-        [
-          768,
-          192,
-          256,
-          192
+          222,
+          222
         ],
         [
           0,
-          384,
-          256,
-          192
+          222,
+          222,
+          222
         ],
         [
-          256,
-          384,
-          256,
-          192
+          222,
+          222,
+          222,
+          222
         ],
         [
-          512,
-          384,
-          256,
-          192
+          444,
+          222,
+          221,
+          222
         ],
         [
-          768,
-          384,
-          256,
-          192
-        ],
-        [
-          0,
-          576,
-          256,
-          192
-        ],
-        [
-          256,
-          576,
-          256,
-          192
-        ],
-        [
-          512,
-          576,
-          256,
-          192
-        ],
-        [
-          768,
-          576,
-          256,
-          192
+          665,
+          222,
+          222,
+          222
         ],
         [
           0,
-          768,
-          256,
-          192
+          444,
+          222,
+          221
         ],
         [
-          256,
-          768,
-          256,
-          192
+          222,
+          444,
+          222,
+          221
         ],
         [
-          512,
-          768,
-          256,
-          192
+          444,
+          444,
+          221,
+          221
         ],
         [
-          768,
-          768,
-          256,
-          192
-        ],
-        [
-          0,
-          960,
-          256,
-          192
-        ],
-        [
-          256,
-          960,
-          256,
-          192
-        ],
-        [
-          512,
-          960,
-          256,
-          192
-        ],
-        [
-          768,
-          960,
-          256,
-          192
+          665,
+          444,
+          222,
+          221
         ],
         [
           0,
-          1152,
-          256,
-          192
+          665,
+          222,
+          222
         ],
         [
-          256,
-          1152,
-          256,
-          192
+          222,
+          665,
+          222,
+          222
         ],
         [
-          512,
-          1152,
-          256,
-          192
+          444,
+          665,
+          221,
+          222
         ],
         [
-          768,
-          1152,
-          256,
-          192
+          665,
+          665,
+          222,
+          222
         ],
         [
           0,
-          1344,
-          256,
-          192
+          887,
+          222,
+          222
         ],
         [
-          256,
-          1344,
-          256,
-          192
+          222,
+          887,
+          222,
+          222
         ],
         [
-          512,
-          1344,
-          256,
-          192
+          444,
+          887,
+          221,
+          222
         ],
         [
-          768,
-          1344,
-          256,
-          192
+          665,
+          887,
+          222,
+          222
+        ],
+        [
+          0,
+          1109,
+          222,
+          221
+        ],
+        [
+          222,
+          1109,
+          222,
+          221
+        ],
+        [
+          444,
+          1109,
+          221,
+          221
+        ],
+        [
+          665,
+          1109,
+          222,
+          221
+        ],
+        [
+          0,
+          1330,
+          222,
+          222
+        ],
+        [
+          222,
+          1330,
+          222,
+          222
+        ],
+        [
+          444,
+          1330,
+          221,
+          222
+        ],
+        [
+          665,
+          1330,
+          222,
+          222
+        ],
+        [
+          0,
+          1552,
+          222,
+          222
+        ],
+        [
+          222,
+          1552,
+          222,
+          222
+        ],
+        [
+          444,
+          1552,
+          221,
+          222
+        ],
+        [
+          665,
+          1552,
+          222,
+          222
         ]
       ],
       "rowCuts": [
         0,
-        192,
-        384,
-        576,
-        768,
-        960,
-        1152,
-        1344,
-        1536
+        222,
+        444,
+        665,
+        887,
+        1109,
+        1330,
+        1552,
+        1774
       ],
-      "sha256": "275de80a8a4fae8c5e7ddf687a9d9f923cc682063e5811772c3325d6098fb694",
-      "originalOutput": "exec-88edebdb-bfbf-4172-8afe-6c172f395d19.png",
-      "originalSha256": "018838fdb66bdf7a3f236e2a865c4c6b8de6d033d0fd58def32e04e13f3d865a",
+      "sha256": "259d3b38c03e63403d3226c71382bdcd0d8120886f88a79ef58af73c2db68ac9",
+      "originalOutput": "exec-040a5517-0a6e-41c8-a376-3740182556e6.png",
+      "originalSha256": "dff105ce1dba10e08ec903ba5c0129163cf153c48da225c94cca303cd754ccc0",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -14837,9 +14837,9 @@
         1280,
         1536
       ],
-      "sha256": "214943824ca92c39d5a7900d0bb399b6eafe585a71d1c001527e9c949d03010d",
-      "originalOutput": "exec-ed53b492-9ce4-4bf4-9af4-2b6a527db46c.png",
-      "originalSha256": "cbae43d34eaa10b68a7dd786205530ad9ab1f32d4e251ca1e5ab18595251f0fd",
+      "sha256": "a4697d65e35e8bb61a6f9763918023527fc565b8c4bd8c4c8dbdf4e239e3302b",
+      "originalOutput": "exec-12a09724-37fa-488c-b5f2-24f220b28b6c.png",
+      "originalSha256": "cf87ec51be32a0131936e8bcd45242ef057b57ad212f58b63d6257184e01d5ba",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -14847,8 +14847,8 @@
     {
       "id": "elian-ember-combat",
       "file": "art/premium/elian-ember-combat.webp",
-      "width": 1024,
-      "height": 1536,
+      "width": 887,
+      "height": 1774,
       "columns": 4,
       "rows": 8,
       "frames": 32,
@@ -14856,210 +14856,210 @@
         [
           0,
           0,
-          256,
-          192
+          222,
+          222
         ],
         [
-          256,
+          222,
           0,
-          256,
-          192
+          222,
+          222
         ],
         [
-          512,
+          444,
           0,
-          256,
-          192
+          221,
+          222
         ],
         [
-          768,
+          665,
           0,
-          256,
-          192
-        ],
-        [
-          0,
-          192,
-          256,
-          192
-        ],
-        [
-          256,
-          192,
-          256,
-          192
-        ],
-        [
-          512,
-          192,
-          256,
-          192
-        ],
-        [
-          768,
-          192,
-          256,
-          192
+          222,
+          222
         ],
         [
           0,
-          384,
-          256,
-          192
+          222,
+          222,
+          222
         ],
         [
-          256,
-          384,
-          256,
-          192
+          222,
+          222,
+          222,
+          222
         ],
         [
-          512,
-          384,
-          256,
-          192
+          444,
+          222,
+          221,
+          222
         ],
         [
-          768,
-          384,
-          256,
-          192
-        ],
-        [
-          0,
-          576,
-          256,
-          192
-        ],
-        [
-          256,
-          576,
-          256,
-          192
-        ],
-        [
-          512,
-          576,
-          256,
-          192
-        ],
-        [
-          768,
-          576,
-          256,
-          192
+          665,
+          222,
+          222,
+          222
         ],
         [
           0,
-          768,
-          256,
-          192
+          444,
+          222,
+          221
         ],
         [
-          256,
-          768,
-          256,
-          192
+          222,
+          444,
+          222,
+          221
         ],
         [
-          512,
-          768,
-          256,
-          192
+          444,
+          444,
+          221,
+          221
         ],
         [
-          768,
-          768,
-          256,
-          192
-        ],
-        [
-          0,
-          960,
-          256,
-          192
-        ],
-        [
-          256,
-          960,
-          256,
-          192
-        ],
-        [
-          512,
-          960,
-          256,
-          192
-        ],
-        [
-          768,
-          960,
-          256,
-          192
+          665,
+          444,
+          222,
+          221
         ],
         [
           0,
-          1152,
-          256,
-          192
+          665,
+          222,
+          222
         ],
         [
-          256,
-          1152,
-          256,
-          192
+          222,
+          665,
+          222,
+          222
         ],
         [
-          512,
-          1152,
-          256,
-          192
+          444,
+          665,
+          221,
+          222
         ],
         [
-          768,
-          1152,
-          256,
-          192
+          665,
+          665,
+          222,
+          222
         ],
         [
           0,
-          1344,
-          256,
-          192
+          887,
+          222,
+          222
         ],
         [
-          256,
-          1344,
-          256,
-          192
+          222,
+          887,
+          222,
+          222
         ],
         [
-          512,
-          1344,
-          256,
-          192
+          444,
+          887,
+          221,
+          222
         ],
         [
-          768,
-          1344,
-          256,
-          192
+          665,
+          887,
+          222,
+          222
+        ],
+        [
+          0,
+          1109,
+          222,
+          221
+        ],
+        [
+          222,
+          1109,
+          222,
+          221
+        ],
+        [
+          444,
+          1109,
+          221,
+          221
+        ],
+        [
+          665,
+          1109,
+          222,
+          221
+        ],
+        [
+          0,
+          1330,
+          222,
+          222
+        ],
+        [
+          222,
+          1330,
+          222,
+          222
+        ],
+        [
+          444,
+          1330,
+          221,
+          222
+        ],
+        [
+          665,
+          1330,
+          222,
+          222
+        ],
+        [
+          0,
+          1552,
+          222,
+          222
+        ],
+        [
+          222,
+          1552,
+          222,
+          222
+        ],
+        [
+          444,
+          1552,
+          221,
+          222
+        ],
+        [
+          665,
+          1552,
+          222,
+          222
         ]
       ],
       "rowCuts": [
         0,
-        192,
-        384,
-        576,
-        768,
-        960,
-        1152,
-        1344,
-        1536
+        222,
+        444,
+        665,
+        887,
+        1109,
+        1330,
+        1552,
+        1774
       ],
-      "sha256": "dce719e9649b6e5846116e2e2baed815478ede61c969e067282410e74367de5d",
-      "originalOutput": "exec-394f7849-4989-49db-aecb-55b5048ccf0c.png",
-      "originalSha256": "4c3e2c58d75d02971df89898499645d005b30bdc87ea1a0c55b347e6e244e789",
+      "sha256": "77d0d05355e47020c9e56b63deb8dc07453c18d8645ff35c19ce52451847b3c1",
+      "originalOutput": "exec-f38d80d5-adcf-4c3b-ab5b-972a57d3df32.png",
+      "originalSha256": "67fec11062dc97b02d6b27883cff64bc2b85113781edaefd9de89adc52672f8e",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -15227,9 +15227,9 @@
         1280,
         1536
       ],
-      "sha256": "78f095f63866df28700a7cd5264537db73b0e818ac1cfdfd26d36fc868eddb74",
-      "originalOutput": "exec-c58ff372-126c-4d78-8d5c-3338f46a3b6a.png",
-      "originalSha256": "0f00cbc07d25400771823e9b347aee5cdce68f728eb0db28c46ed65cd18cc629",
+      "sha256": "96b382dd583c1f6c65fa6a458e489ab149f324778a6ac4d0935c52e01e714e9d",
+      "originalOutput": "exec-bd013403-ffed-4ec5-bf90-8e5de1c31e35.png",
+      "originalSha256": "5670c50f8eaa0f57009e44735d123130e3d36569a0b03f545e22c64bdc408b13",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -15237,8 +15237,8 @@
     {
       "id": "elian-lunar-combat",
       "file": "art/premium/elian-lunar-combat.webp",
-      "width": 1024,
-      "height": 1536,
+      "width": 887,
+      "height": 1774,
       "columns": 4,
       "rows": 8,
       "frames": 32,
@@ -15246,210 +15246,210 @@
         [
           0,
           0,
-          256,
-          192
+          222,
+          222
         ],
         [
-          256,
+          222,
           0,
-          256,
-          192
+          222,
+          222
         ],
         [
-          512,
+          444,
           0,
-          256,
-          192
+          221,
+          222
         ],
         [
-          768,
+          665,
           0,
-          256,
-          192
-        ],
-        [
-          0,
-          192,
-          256,
-          192
-        ],
-        [
-          256,
-          192,
-          256,
-          192
-        ],
-        [
-          512,
-          192,
-          256,
-          192
-        ],
-        [
-          768,
-          192,
-          256,
-          192
+          222,
+          222
         ],
         [
           0,
-          384,
-          256,
-          192
+          222,
+          222,
+          222
         ],
         [
-          256,
-          384,
-          256,
-          192
+          222,
+          222,
+          222,
+          222
         ],
         [
-          512,
-          384,
-          256,
-          192
+          444,
+          222,
+          221,
+          222
         ],
         [
-          768,
-          384,
-          256,
-          192
-        ],
-        [
-          0,
-          576,
-          256,
-          192
-        ],
-        [
-          256,
-          576,
-          256,
-          192
-        ],
-        [
-          512,
-          576,
-          256,
-          192
-        ],
-        [
-          768,
-          576,
-          256,
-          192
+          665,
+          222,
+          222,
+          222
         ],
         [
           0,
-          768,
-          256,
-          192
+          444,
+          222,
+          221
         ],
         [
-          256,
-          768,
-          256,
-          192
+          222,
+          444,
+          222,
+          221
         ],
         [
-          512,
-          768,
-          256,
-          192
+          444,
+          444,
+          221,
+          221
         ],
         [
-          768,
-          768,
-          256,
-          192
-        ],
-        [
-          0,
-          960,
-          256,
-          192
-        ],
-        [
-          256,
-          960,
-          256,
-          192
-        ],
-        [
-          512,
-          960,
-          256,
-          192
-        ],
-        [
-          768,
-          960,
-          256,
-          192
+          665,
+          444,
+          222,
+          221
         ],
         [
           0,
-          1152,
-          256,
-          192
+          665,
+          222,
+          222
         ],
         [
-          256,
-          1152,
-          256,
-          192
+          222,
+          665,
+          222,
+          222
         ],
         [
-          512,
-          1152,
-          256,
-          192
+          444,
+          665,
+          221,
+          222
         ],
         [
-          768,
-          1152,
-          256,
-          192
+          665,
+          665,
+          222,
+          222
         ],
         [
           0,
-          1344,
-          256,
-          192
+          887,
+          222,
+          222
         ],
         [
-          256,
-          1344,
-          256,
-          192
+          222,
+          887,
+          222,
+          222
         ],
         [
-          512,
-          1344,
-          256,
-          192
+          444,
+          887,
+          221,
+          222
         ],
         [
-          768,
-          1344,
-          256,
-          192
+          665,
+          887,
+          222,
+          222
+        ],
+        [
+          0,
+          1109,
+          222,
+          221
+        ],
+        [
+          222,
+          1109,
+          222,
+          221
+        ],
+        [
+          444,
+          1109,
+          221,
+          221
+        ],
+        [
+          665,
+          1109,
+          222,
+          221
+        ],
+        [
+          0,
+          1330,
+          222,
+          222
+        ],
+        [
+          222,
+          1330,
+          222,
+          222
+        ],
+        [
+          444,
+          1330,
+          221,
+          222
+        ],
+        [
+          665,
+          1330,
+          222,
+          222
+        ],
+        [
+          0,
+          1552,
+          222,
+          222
+        ],
+        [
+          222,
+          1552,
+          222,
+          222
+        ],
+        [
+          444,
+          1552,
+          221,
+          222
+        ],
+        [
+          665,
+          1552,
+          222,
+          222
         ]
       ],
       "rowCuts": [
         0,
-        192,
-        384,
-        576,
-        768,
-        960,
-        1152,
-        1344,
-        1536
+        222,
+        444,
+        665,
+        887,
+        1109,
+        1330,
+        1552,
+        1774
       ],
-      "sha256": "76a519bf4bb3eec60f95e42e8444bad06eb1ad2e76147680b2b4447e7f346e73",
-      "originalOutput": "exec-9da348f9-830a-442c-9abc-7fea4770774e.png",
-      "originalSha256": "b9e8374c818bf59ba6b184933ae75cdbec55029dbf3c12e0b80b2c72b66c04ac",
+      "sha256": "3cfe22ef16973c9ddf5fca79c6b57c7581d64589a43fa2217ca2fe6548495bb9",
+      "originalOutput": "exec-3e43375d-3774-46dd-93f4-19d17951ee2b.png",
+      "originalSha256": "fb6bfb1c1feb8a61b08236c61f6cc6eb53a3b21acaa4e99195461a4953396d58",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -15617,9 +15617,9 @@
         1280,
         1536
       ],
-      "sha256": "361f864c1afb51356b138cff3db1e87cef97e814542097e9a5653d4f7ed138da",
-      "originalOutput": "exec-26ca7abe-f545-4345-9699-a1761618effd.png",
-      "originalSha256": "77e9a22d1472f2ca2a3d3bf67eb97e837fa0d43b0fac74f30c9e2dc13215a045",
+      "sha256": "5c773dc4fb70843ef1d60fdee9ca3fa3b58ec9c3ff735f5a64b4402f7d836e68",
+      "originalOutput": "exec-3bb08132-7a14-4eb2-a8c9-e09b0564bf02.png",
+      "originalSha256": "d4e174278561a847817c74a1bd734d4423d831096d32f1283bfa7809149d68db",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -15627,8 +15627,8 @@
     {
       "id": "elian-aurora-combat",
       "file": "art/premium/elian-aurora-combat.webp",
-      "width": 1024,
-      "height": 1536,
+      "width": 887,
+      "height": 1774,
       "columns": 4,
       "rows": 8,
       "frames": 32,
@@ -15636,210 +15636,210 @@
         [
           0,
           0,
-          256,
-          192
+          222,
+          222
         ],
         [
-          256,
+          222,
           0,
-          256,
-          192
+          222,
+          222
         ],
         [
-          512,
+          444,
           0,
-          256,
-          192
+          221,
+          222
         ],
         [
-          768,
+          665,
           0,
-          256,
-          192
-        ],
-        [
-          0,
-          192,
-          256,
-          192
-        ],
-        [
-          256,
-          192,
-          256,
-          192
-        ],
-        [
-          512,
-          192,
-          256,
-          192
-        ],
-        [
-          768,
-          192,
-          256,
-          192
+          222,
+          222
         ],
         [
           0,
-          384,
-          256,
-          192
+          222,
+          222,
+          222
         ],
         [
-          256,
-          384,
-          256,
-          192
+          222,
+          222,
+          222,
+          222
         ],
         [
-          512,
-          384,
-          256,
-          192
+          444,
+          222,
+          221,
+          222
         ],
         [
-          768,
-          384,
-          256,
-          192
-        ],
-        [
-          0,
-          576,
-          256,
-          192
-        ],
-        [
-          256,
-          576,
-          256,
-          192
-        ],
-        [
-          512,
-          576,
-          256,
-          192
-        ],
-        [
-          768,
-          576,
-          256,
-          192
+          665,
+          222,
+          222,
+          222
         ],
         [
           0,
-          768,
-          256,
-          192
+          444,
+          222,
+          221
         ],
         [
-          256,
-          768,
-          256,
-          192
+          222,
+          444,
+          222,
+          221
         ],
         [
-          512,
-          768,
-          256,
-          192
+          444,
+          444,
+          221,
+          221
         ],
         [
-          768,
-          768,
-          256,
-          192
-        ],
-        [
-          0,
-          960,
-          256,
-          192
-        ],
-        [
-          256,
-          960,
-          256,
-          192
-        ],
-        [
-          512,
-          960,
-          256,
-          192
-        ],
-        [
-          768,
-          960,
-          256,
-          192
+          665,
+          444,
+          222,
+          221
         ],
         [
           0,
-          1152,
-          256,
-          192
+          665,
+          222,
+          222
         ],
         [
-          256,
-          1152,
-          256,
-          192
+          222,
+          665,
+          222,
+          222
         ],
         [
-          512,
-          1152,
-          256,
-          192
+          444,
+          665,
+          221,
+          222
         ],
         [
-          768,
-          1152,
-          256,
-          192
+          665,
+          665,
+          222,
+          222
         ],
         [
           0,
-          1344,
-          256,
-          192
+          887,
+          222,
+          222
         ],
         [
-          256,
-          1344,
-          256,
-          192
+          222,
+          887,
+          222,
+          222
         ],
         [
-          512,
-          1344,
-          256,
-          192
+          444,
+          887,
+          221,
+          222
         ],
         [
-          768,
-          1344,
-          256,
-          192
+          665,
+          887,
+          222,
+          222
+        ],
+        [
+          0,
+          1109,
+          222,
+          221
+        ],
+        [
+          222,
+          1109,
+          222,
+          221
+        ],
+        [
+          444,
+          1109,
+          221,
+          221
+        ],
+        [
+          665,
+          1109,
+          222,
+          221
+        ],
+        [
+          0,
+          1330,
+          222,
+          222
+        ],
+        [
+          222,
+          1330,
+          222,
+          222
+        ],
+        [
+          444,
+          1330,
+          221,
+          222
+        ],
+        [
+          665,
+          1330,
+          222,
+          222
+        ],
+        [
+          0,
+          1552,
+          222,
+          222
+        ],
+        [
+          222,
+          1552,
+          222,
+          222
+        ],
+        [
+          444,
+          1552,
+          221,
+          222
+        ],
+        [
+          665,
+          1552,
+          222,
+          222
         ]
       ],
       "rowCuts": [
         0,
-        192,
-        384,
-        576,
-        768,
-        960,
-        1152,
-        1344,
-        1536
+        222,
+        444,
+        665,
+        887,
+        1109,
+        1330,
+        1552,
+        1774
       ],
-      "sha256": "faef965e2d36486cb39af1342a696dee68394a7dea0dd0948ae9c7b21e4abfdf",
-      "originalOutput": "exec-9db0c4f6-ea3c-47f4-bdcc-08b5c10fa68c.png",
-      "originalSha256": "4184221f5351c5ad1b0cd416244bda3284983ddc34be68f2c3076d868353f54c",
+      "sha256": "465ab1a5ff3919edc576f9a8be12e030d08450f035fbf1be01ec2383e68a2f25",
+      "originalOutput": "exec-6c082dbc-81ed-4c76-9e4a-84de39d43a53.png",
+      "originalSha256": "65ca081ec61116eef4fe4e9c70b772959e1c14b7c3605171879aae4a7f22c01c",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -16007,9 +16007,9 @@
         1280,
         1536
       ],
-      "sha256": "f303e9a524b1795b8e0a9b945e01f0cfb07c07ec8edb9d1216305ac1283552c8",
-      "originalOutput": "exec-53425b23-99f8-4d52-9f6b-12cdc146e2fd.png",
-      "originalSha256": "ea7ead4076e6375dbd802ade4c7994529d347991978ecbe45d34c20944cde4bd",
+      "sha256": "23cdf114f7d7b0decbe0a19eda95834de6ca4deb20b81b49e461c4bab595e286",
+      "originalOutput": "exec-87a40d6b-0494-41df-b9ba-f7894d633fe7.png",
+      "originalSha256": "826a4369eafb5370bc96a5a6dc06a512d57bcdb1efae67617cfe455e1a1905b1",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true
@@ -16017,8 +16017,8 @@
     {
       "id": "elian-abyss-combat",
       "file": "art/premium/elian-abyss-combat.webp",
-      "width": 1024,
-      "height": 1536,
+      "width": 887,
+      "height": 1774,
       "columns": 4,
       "rows": 8,
       "frames": 32,
@@ -16026,210 +16026,210 @@
         [
           0,
           0,
-          256,
-          192
+          222,
+          222
         ],
         [
-          256,
+          222,
           0,
-          256,
-          192
+          222,
+          222
         ],
         [
-          512,
+          444,
           0,
-          256,
-          192
+          221,
+          222
         ],
         [
-          768,
+          665,
           0,
-          256,
-          192
-        ],
-        [
-          0,
-          192,
-          256,
-          192
-        ],
-        [
-          256,
-          192,
-          256,
-          192
-        ],
-        [
-          512,
-          192,
-          256,
-          192
-        ],
-        [
-          768,
-          192,
-          256,
-          192
+          222,
+          222
         ],
         [
           0,
-          384,
-          256,
-          192
+          222,
+          222,
+          222
         ],
         [
-          256,
-          384,
-          256,
-          192
+          222,
+          222,
+          222,
+          222
         ],
         [
-          512,
-          384,
-          256,
-          192
+          444,
+          222,
+          221,
+          222
         ],
         [
-          768,
-          384,
-          256,
-          192
-        ],
-        [
-          0,
-          576,
-          256,
-          192
-        ],
-        [
-          256,
-          576,
-          256,
-          192
-        ],
-        [
-          512,
-          576,
-          256,
-          192
-        ],
-        [
-          768,
-          576,
-          256,
-          192
+          665,
+          222,
+          222,
+          222
         ],
         [
           0,
-          768,
-          256,
-          192
+          444,
+          222,
+          221
         ],
         [
-          256,
-          768,
-          256,
-          192
+          222,
+          444,
+          222,
+          221
         ],
         [
-          512,
-          768,
-          256,
-          192
+          444,
+          444,
+          221,
+          221
         ],
         [
-          768,
-          768,
-          256,
-          192
-        ],
-        [
-          0,
-          960,
-          256,
-          192
-        ],
-        [
-          256,
-          960,
-          256,
-          192
-        ],
-        [
-          512,
-          960,
-          256,
-          192
-        ],
-        [
-          768,
-          960,
-          256,
-          192
+          665,
+          444,
+          222,
+          221
         ],
         [
           0,
-          1152,
-          256,
-          192
+          665,
+          222,
+          222
         ],
         [
-          256,
-          1152,
-          256,
-          192
+          222,
+          665,
+          222,
+          222
         ],
         [
-          512,
-          1152,
-          256,
-          192
+          444,
+          665,
+          221,
+          222
         ],
         [
-          768,
-          1152,
-          256,
-          192
+          665,
+          665,
+          222,
+          222
         ],
         [
           0,
-          1344,
-          256,
-          192
+          887,
+          222,
+          222
         ],
         [
-          256,
-          1344,
-          256,
-          192
+          222,
+          887,
+          222,
+          222
         ],
         [
-          512,
-          1344,
-          256,
-          192
+          444,
+          887,
+          221,
+          222
         ],
         [
-          768,
-          1344,
-          256,
-          192
+          665,
+          887,
+          222,
+          222
+        ],
+        [
+          0,
+          1109,
+          222,
+          221
+        ],
+        [
+          222,
+          1109,
+          222,
+          221
+        ],
+        [
+          444,
+          1109,
+          221,
+          221
+        ],
+        [
+          665,
+          1109,
+          222,
+          221
+        ],
+        [
+          0,
+          1330,
+          222,
+          222
+        ],
+        [
+          222,
+          1330,
+          222,
+          222
+        ],
+        [
+          444,
+          1330,
+          221,
+          222
+        ],
+        [
+          665,
+          1330,
+          222,
+          222
+        ],
+        [
+          0,
+          1552,
+          222,
+          222
+        ],
+        [
+          222,
+          1552,
+          222,
+          222
+        ],
+        [
+          444,
+          1552,
+          221,
+          222
+        ],
+        [
+          665,
+          1552,
+          222,
+          222
         ]
       ],
       "rowCuts": [
         0,
-        192,
-        384,
-        576,
-        768,
-        960,
-        1152,
-        1344,
-        1536
+        222,
+        444,
+        665,
+        887,
+        1109,
+        1330,
+        1552,
+        1774
       ],
-      "sha256": "9a2891b98b7c487090a9fc30e9fbac17c28e500482f6d6548374921a8c936b75",
-      "originalOutput": "exec-1baf2704-4537-42d4-a4dd-4f3473874742.png",
-      "originalSha256": "94fc7f1a8f20dba70bbc8e9e08e2fec8f6c5045f23ea30e114ba8a282c1e9790",
+      "sha256": "620fc590a6f5f57cf9575dc4e86dbbccf1bb8fbc12aa2dc92049fff2653c53fb",
+      "originalOutput": "exec-02ccb3d0-8740-4de9-b92f-1915cb794480.png",
+      "originalSha256": "952c511e83e31875fada17056461feaffe8ae9423a70e4ba986a8cc2129dfd3e",
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact decoded RGBA preserved",
       "packaged": true

@@ -1,0 +1,77 @@
+/* Phone landscape: readable text, finger-sized controls and independent scrolling. */
+.premium-commerce{display:contents}
+@media(max-height:550px){
+ #rpg-screen :is(button,select),.split-dialog :is(button,input:not([type=checkbox]),select),#quick-menu-screen button,#ranking-screen :is(button,select){min-height:44px!important;min-width:44px;box-sizing:border-box}
+ #rpg-screen button,#rpg-screen select,.split-dialog button{font-size:12px;line-height:1.6}
+ #rpg-screen #town-close,.split-dialog>.close,.gear-inspect-modal>.close{min-width:44px;min-height:44px}
+ #town-sidebar{padding:10px 12px;scroll-padding:10px}
+ #town-sidebar>h2{font-size:19px;line-height:1.4}
+ #rpg-screen #town-tabs button{min-height:44px;font-size:12px;padding:8px 10px}
+ #town-context :is(h3,h4){font-size:14px;line-height:1.6}
+ #town-context p,#town-context .inventory-stats,#town-context .bag-field,#town-context .equipment-slot small{font-size:12px;line-height:1.75}
+ #town-context .equipment-slot b{font-size:12px!important}
+ #rpg-screen #town-body{padding:10px;scroll-padding:10px}
+ #rpg-screen .inventory-bag .bag-grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:9px}
+ #rpg-screen .gear-name,#rpg-screen :is(.shop-card,.craft-card) h3,#rpg-screen .forge-item b{font-size:13px;line-height:1.6}
+ #rpg-screen .gear-meta,#rpg-screen .gear-status .gear-state,#rpg-screen .bag-summary,#town-currency{font-size:11px;line-height:1.6}
+ #rpg-screen :is(.shop-select,.forge-item) small{font-size:12px;line-height:1.6}
+ #rpg-screen :is(.shop-grid,.craft-grid,.forge-item-grid){grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:10px}
+ #rpg-screen .skill-node p,.quest-card p,.quest-log,.quest-reward{font-size:12px;line-height:1.75}
+ #rpg-screen .skill-loadout .loadout-slot{min-height:100px;font-size:12px;line-height:1.6}
+ #rpg-screen .skill-loadout .loadout-slot small{font-size:11px;line-height:1.6}
+ .dialog-copy p,.dialog-options p,.dialog-options label{font-size:12px;line-height:1.75}
+ #settings-screen .dialog-options input[type=range]{height:44px;margin:0;flex-shrink:0}
+ #settings-screen .check-setting{min-height:44px;padding:6px 0}
+ #quick-menu-grid strong{font-size:13px;line-height:1.6}
+ .quick-menu-heading button{min-width:64px}
+ #quick-menu-grid{scroll-padding:8px}
+ #town-shortcuts strong{font-size:12px;line-height:1.5}
+ body[data-phase=town] #menu .nav button{min-height:44px}
+ body[data-phase=town] #menu .nav #audio{width:44px;height:44px}
+ #hud #pause{width:44px;height:44px;flex-shrink:0}
+ .ranking-tools{display:grid;grid-template-columns:minmax(0,1fr) minmax(100px,125px);gap:8px;padding:8px 0}
+ .ranking-categories{flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scrollbar-width:thin;min-width:0}
+ .ranking-category{flex:0 0 auto;font-size:12px}
+ .ranking-filter{width:100%;margin:0}
+ .ranking-filter select{min-width:0;width:100%;font-size:12px}
+ #ranking-screen .ranking-main{overflow-y:auto;scroll-padding:8px}
+ .ranking-profile-open{font-size:13px}.ranking-level,.ranking-name small{font-size:11px}
+ #ranking-screen #ranking-refresh{min-height:44px;top:4px;font-size:11px}
+ /* The preview keeps its height; trade buttons stay outside the scrolling catalogue. */
+ #premium-screen .premium-shell{grid-template-rows:auto minmax(0,1fr)}
+ #premium-screen .premium-footer{display:none}
+ #premium-screen .premium-heading{gap:8px;padding:5px 10px}
+ #premium-screen .premium-heading h2{font-size:17px}
+ #premium-screen .premium-heading small{display:none}
+ #premium-screen #premium-claim-all{font-size:10px;line-height:1.45;max-width:92px;min-width:78px;padding:5px 8px;color:#e0d1b6;background:#1c2b3d;border:1px solid #a58b5966;border-radius:4px}
+ #premium-screen .premium-commerce{display:grid;grid-template-rows:minmax(0,1fr) auto;min-width:0;min-height:0;background:#101b2a}
+ #premium-screen .premium-catalog{padding:8px;scroll-padding:8px;overflow:auto}
+ #premium-screen .premium-commerce>.premium-purchase-actions{display:flex;width:auto;gap:6px;padding:7px 8px;border-top:1px solid #bca26b66;background:#101b2a}
+ #premium-screen .premium-commerce>.premium-purchase-actions button{flex:1;min-width:0;min-height:44px;font-size:11px;line-height:1.5;padding:5px}
+ #premium-screen .premium-products{height:auto;min-height:0;overflow:visible;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ #premium-screen .premium-product{min-height:146px}
+ #premium-screen .premium-product canvas{height:90px}
+ #premium-screen .premium-product-copy strong{font-size:12px;line-height:1.6}
+ #premium-screen .premium-product-copy small{font-size:11px;line-height:1.6}
+ #premium-screen .premium-detail-copy p{font-size:12px;line-height:1.75}
+ #premium-screen .premium-filters{flex-wrap:wrap;gap:4px}
+ #premium-screen .premium-filters>label{font-size:10px;gap:3px}
+ #premium-screen .premium-filters select{font-size:11px;max-width:100px;padding:4px}
+ #premium-screen .premium-owned{font-size:11px;gap:4px}
+ #premium-screen .premium-preview-options select{font-size:12px}
+ #premium-screen .premium-preview-options button{font-size:11px}
+ #premium-screen .premium-preview-header strong{font-size:12px;line-height:1.6}
+}
+@media(max-height:550px){
+ #action-popover .popover-actions button,#action-popover .skill-slot-choices button{min-height:44px;font-size:12px;line-height:1.6}
+ #rpg-screen .sale-pick{min-height:44px;display:flex;align-items:center;gap:6px;padding:6px}
+ .workspace-wallet{padding-right:54px}
+}
+@media(max-height:550px){
+ #quick-menu-grid button{height:auto;min-height:76px!important;align-self:start;align-items:flex-start;padding:12px 9px}
+ #quick-menu-grid button>span{flex:1;min-width:0;height:auto}
+}
+@media(max-height:550px) and (max-width:740px){#quick-menu-grid button{min-height:56px!important;align-items:center;padding:9px}}
+
+.premium-cosmetic-note{display:none}
+@media(max-height:550px){#premium-screen .premium-cosmetic-note{display:block;color:#b9ccbf;font-size:12px;line-height:1.75}}
