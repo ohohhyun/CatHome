@@ -60,7 +60,7 @@
 
 6직업별 대기·달리기·3단 공격의 실제 렌더 크기를 비교하고, 30벌의 6동작과 9스킬을 연속 재생해 `premium-motion-review.webm`으로 기록합니다. 4인 모두 같은 직업에 서로 다른 외형·펫을 장착한 경우도 별도로 표시하여 96MiB 캐시 상한을 확인합니다. 휴대폰 구매 버튼은 상품 목록을 끝까지 스크롤한 상태에서 실제 화면의 가림 여부까지 검사합니다.
 
-최종 자동 검증·APK·공개 ZIP 결과는 완료 후 이 문서에 기록합니다. 실기기 장시간 FPS/발열, 실제 유료 결제와 Play 등록은 이 테스트 상점의 자동 검사에 포함되지 않습니다.
+전체 **51개 자동 검사**와 APK/AAB·Android lint·기존 서명·리소스 검증 성공: https://github.com/ohohhyun/CatHome/actions/runs/43292372306. 공개 ZIP CRC/내부 APK/공개 digest 검증 성공: https://github.com/ohohhyun/CatHome/actions/runs/43297288266. APK SHA256 `8df16c4326ca22e1450ec449b5f3b0b2ae78fefe6b82f5c79532b1897b555bc0`. ZIP SHA256 `6cbd5e15a64ed237f3ee1a94d15ababd388fff5a6106f3c564e209b6ce9e9637`. [공개 다운로드](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.14.0-rc1). 실기기 장시간 FPS/발열, 실제 유료 결제와 Play 등록은 이 테스트 상점의 자동 검사에 포함되지 않습니다.
 
 ## 원화 포장 유지보수
 

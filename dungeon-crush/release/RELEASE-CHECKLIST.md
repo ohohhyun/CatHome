@@ -1,4 +1,4 @@
-# 2.14.0 외형 · 펫 상점 점검 (진행 중)
+# 2.14.0 외형 · 펫 상점 점검
 
 - package com.dungeoncrush.game, versionCode 40, versionName 2.14.0, minSdk 23, targetSdk 36, Wi-Fi 프로토콜 10.
 - 6직업×5외형, 크리스마스 6벌, 10펫, 40개 고유 SKU와 상품별 예정가 9,900원. 실제 결제 없이 무료 테스트 보유권으로만 동작해야 합니다.
@@ -12,7 +12,7 @@
 - 모든 검사 후 APK/AAB·Android lint·기존 서명·포함 리소스를 확인하고, 통과한 소스로만 ZIP을 공개합니다.
 - 실제 단말에서 39→40 업데이트, 저장 보존, 동일 버전 Wi-Fi 파티, 외형/펫 전환과 장시간 FPS·발열·조작감을 별도로 확인합니다.
 
-최종 자동 검증·APK·공개 ZIP 결과는 완료 후 이 문서에 기록합니다.
+전체 **51개 자동 검사**와 APK/AAB·Android lint·기존 서명·리소스 검증 성공: https://github.com/ohohhyun/CatHome/actions/runs/43292372306. 공개 ZIP CRC/내부 APK/공개 digest 검증 성공: https://github.com/ohohhyun/CatHome/actions/runs/43297288266. APK SHA256 `8df16c4326ca22e1450ec449b5f3b0b2ae78fefe6b82f5c79532b1897b555bc0`. ZIP SHA256 `6cbd5e15a64ed237f3ee1a94d15ababd388fff5a6106f3c564e209b6ce9e9637`. [공개 다운로드](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.14.0-rc1).
 
 # 2.13.0 지역 확장 점검
 
