@@ -9,94 +9,91 @@ permissions:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 8
+    timeout-minutes: 10
     permissions:
       actions: read
       contents: write
     env:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
-      RELEASE_TAG: dungeon-crush-v2.12.0-rc1
+      RELEASE_TAG: dungeon-crush-v2.13.0-rc1
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: e75c2b59ba2a51f89a2f2445f4e87d11647236cf
-      - name: Verify completed build and download its unchanged signed APK
+          ref: 7b3813ff519ec52effd1c201daae939835be333c
+      - name: Verify completed precision checks and build
         run: |
-          test "$(gh api repos/$GH_REPO/actions/runs/43007690959 --jq .conclusion)" = success
-          test "$(gh api repos/$GH_REPO/actions/runs/43007690959 --jq .head_sha)" = e75c2b59ba2a51f89a2f2445f4e87d11647236cf
+          test "$(gh api repos/$GH_REPO/actions/runs/43162834939 --jq .conclusion)" = success
+          test "$(gh api repos/$GH_REPO/actions/runs/43162834939 --jq .head_sha)" = 7b3813ff519ec52effd1c201daae939835be333c
+          test "$(gh api repos/$GH_REPO/git/ref/tags/$RELEASE_TAG --jq .object.sha)" = 7b3813ff519ec52effd1c201daae939835be333c
+          test "$(gh release view "$RELEASE_TAG" --json isDraft --jq .isDraft)" = true
       - uses: actions/download-artifact@v4
         with:
           name: DungeonCrush-APK
-          run-id: 43007690959
+          run-id: 43162834939
           github-token: ${{ github.token }}
           path: apk
-      - name: Verify exact APK and create ALZip compatible share ZIP
+      - name: Verify exact signed APK and package compatible ZIP
         run: |
           python3 - <<'PY'
           from pathlib import Path
           from hashlib import sha256
           from zipfile import ZipFile,ZipInfo,ZIP_STORED
-          import json
-          root=Path('dungeon-crush');p=Path('apk/DungeonCrush-2.12.0.apk');data=p.read_bytes()
-          expected='d635ae849384be7c537da0c1feb554a6eb7b552016bbb26dc0c79e8414160ad6'
-          assert len(data)==239928970 and sha256(data).hexdigest()==expected
+          import json,re
+          root=Path('dungeon-crush');p=Path('apk/DungeonCrush-2.13.0.apk');data=p.read_bytes();expected='3576db3cb9ebfe12c080a5042b51e24732152e4326f09bd80e56f6e0c6578721'
+          assert len(data)==311026186 and sha256(data).hexdigest()==expected
           with ZipFile(p) as z:
               assert z.testzip() is None
-              for name in ['actors.js','app.js','rpg.js','town.js','progress.js','release.js','client.js','index.html','effects.js','sound.js','sprite-art.js','client.css','rankings.js','ranking-ui.js','refinement.css','ranking-config.js','ranking-client.js','navigation.js','engine.js']:
-                  assert z.read('assets/'+name)==(root/'app/src/main/assets'/name).read_bytes()
-              for entry in json.loads((root/'combat-audio-sources.json').read_text())['assets']:
-                  assert sha256(z.read('assets/audio/'+entry['file'])).hexdigest()==entry['sha256']
-              assert z.read('assets/audio/CREDITS.txt')==(root/'app/src/main/assets/audio/CREDITS.txt').read_bytes()
-          notes='던전크러시! 2.12.0 출시 후보 (설치 버전 38)\r\n\r\n1. 압축을 풀고 DungeonCrush-2.12.0.apk를 설치하세요.\r\n2. 기존 앱을 삭제하지 말고 업데이트 설치하세요. 설치 후 설정에서 성장 기록을 파일로 백업하세요.\r\n3. 집사 사절과 별도 앱입니다.\r\n4. 6직업 기합·직업별 효과음·보스전 음악을 추가했습니다.\r\n5. 기합은 기본 25%로 작게 설정했습니다. 설정의 기합·목소리 음량은 별도로 조절하며 0%로 끌 수 있습니다. 배경 음악/효과음과 분리됩니다.\r\n6. 보스 구역에서 전용 음악으로 전환하며, 일시정지/음소거 후 같은 위치에서 이어집니다.\r\n7. 랭킹 서버는 연결 전 상태입니다. 기존 마을 바로가기·판매 보호·백업 기능을 유지합니다.\r\n8. 기존 설치와 호환되는 테스트 서명입니다. 스토어 제출에는 운영 서명과 실제 단말 검수가 필요합니다.\r\n\r\nAPK SHA256: '+expected+'\r\n'
-          handoff=(root/'HANDOFF.md').read_text()+'\n\n## 2.12.0 RC1 검증 배포\n\n- 검증 소스 `e75c2b59ba2a51f89a2f2445f4e87d11647236cf`.\n- 성공 빌드: https://github.com/ohohhyun/CatHome/actions/runs/43007690959 (JavaScript 20 + 네이티브 2 + Chrome 22 = 44개 검사, APK/AAB, Android lint, 기존 서명과 원화/음원/스크립트 확인).\n- 공개 다운로드: https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.12.0-rc1\n- APK SHA256: `'+expected+'`. versionCode 38 / versionName 2.12.0.\n- 21개 실제 녹음 기합, 15개 효과음, 보스 루프곡과 독립 목소리 음량을 포함합니다.\n- 원본 집사 사절 트리는 변경하지 않았습니다. 랭킹 연결은 꺼져 있습니다. 실기기 음향/FPS와 운영 서명·스토어 등록은 별도입니다.\n'
-          output=Path('DungeonCrush-2.12.0-RC1.zip')
-          docs=['RELEASE-CHECKLIST.md','PRIVACY-KO.md','STORE-LISTING-KO.md','RANKING-INTEGRATION.md','UI-REFERENCES.md','AUDIO-NOTES.md']
+              for name in ['actors.js','app.js','rpg.js','town.js','progress.js','release.js','client.js','index.html','effects.js','sound.js','sprite-art.js','client.css','rankings.js','ranking-ui.js','refinement.css','ranking-config.js','ranking-client.js','navigation.js','engine.js','encounters.js','backgrounds.js','enemy-fx.js']:
+                  assert z.read('assets/'+name)==(root/'app/src/main/assets'/name).read_bytes(),name
+              for a in json.loads((root/'generated-art-sources.json').read_text())['assets']:
+                  if a.get('packaged',True):assert sha256(z.read('assets/'+a['file'])).hexdigest()==a['sha256'],a['file']
+              for a in json.loads((root/'combat-audio-sources.json').read_text())['assets']:
+                  assert sha256(z.read('assets/audio/'+a['file'])).hexdigest()==a['sha256'],a['file']
+              config=json.loads(re.search(r'Object.freeze\((.*)\)',z.read('assets/ranking-config.js').decode()).group(1))
+              assert config==dict(enabled=False,endpoint='',publicKey='')
+          notes='던전크러시! 2.13.0 출시 후보 (설치 버전 39)\r\n\r\n1. 압축을 풀고 DungeonCrush-2.13.0.apk를 설치하세요.\r\n2. 기존 앱을 삭제하지 말고 업데이트 설치하세요. 설정에서 성장 기록을 파일로 백업할 수 있습니다.\r\n3. 16챕터·48던전, 100레벨 정예 레이드 4개, 새 몬스터 20종, 실제 전투 배경 24장을 포함합니다.\r\n4. 새 의뢰는 기존 36개 완료 다음부터 이어갑니다. 최대 레벨은 100을 유지합니다.\r\n5. 같은 Wi-Fi의 파티원 모두 이번 버전으로 업데이트하세요. 프로토콜은 9입니다.\r\n6. 기합 기본 음량 25%, 판매 보호·되돌리기·백업 기능을 유지합니다. 랭킹 서버는 연결 전 상태입니다.\r\n7. 집사 사절과 별도 앱이며 원본을 수정하지 않았습니다.\r\n8. 기존 설치와 같은 테스트 서명입니다. 실기기 FPS/발열·조작감과 스토어 운영 서명·등록은 별도입니다.\r\n\r\nAPK SHA256: '+expected+'\r\n'
+          summary='## 최신 검증 버전: 2.13.0 RC1\n\n- 검증 소스 `7b3813ff519ec52effd1c201daae939835be333c`.\n- 전체 47개 검사 후 APK/AAB 빌드, Android lint 및 서명·리소스 검증 성공: https://github.com/ohohhyun/CatHome/actions/runs/43162834939\n- 공개 다운로드: https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.13.0-rc1\n- versionCode 39 / Wi-Fi 프로토콜 9 / 저장 형식 2.\n- APK SHA256 `'+expected+'`.\n- 변경 내용은 release/FRONTIER-NOTES.md. 집사 사절 원본과 서버/DB는 변경하지 않았습니다.\n\n'
+          handoff=(root/'HANDOFF.md').read_text();handoff=re.sub(r'## 진행 중: 2\.13\.0 지역 확장.*?(?=## 최신 검증 버전: 2\.12)',lambda _:summary,handoff,flags=re.S).replace('## 최신 검증 버전: 2.12.0 RC1','## 이전 검증 버전: 2.12.0 RC1')
+          output=Path('DungeonCrush-2.13.0-RC1.zip');docs=['RELEASE-CHECKLIST.md','PRIVACY-KO.md','STORE-LISTING-KO.md','RANKING-INTEGRATION.md','UI-REFERENCES.md','AUDIO-NOTES.md','FRONTIER-NOTES.md']
           with ZipFile(output,'w',compression=ZIP_STORED) as z:
               for name,content in [(p.name,data),('INSTALL-KO.txt',b'\xef\xbb\xbf'+notes.encode()),('HANDOFF.md',handoff.encode())]+[(name,(root/'release'/name).read_bytes()) for name in docs]:
-                  if name=='AUDIO-NOTES.md':
-                      content=content.decode().replace('앞뒤 여백, 음량과 짧은 경계 페이드만','잡음 대역 필터, 앞뒤 여백, 음량과 짧은 경계 페이드').encode()
-                  item=ZipInfo(name,date_time=(2026,11,11,0,0,0));item.create_system=3;item.external_attr=0o100644<<16;item.compress_type=ZIP_STORED;z.writestr(item,content)
+                  if name=='RELEASE-CHECKLIST.md':content=content.decode().replace('최종 자동 검증·APK·공개 ZIP 결과는 완료 후 이 문서에 기록합니다.', '전체 47개 검사 후 APK/AAB 빌드·Android lint·서명/리소스 확인 성공: https://github.com/ohohhyun/CatHome/actions/runs/43162834939 · APK SHA256 '+expected).encode()
+                  item=ZipInfo(name,date_time=(2026,11,12,0,0,0));item.create_system=3;item.external_attr=0o100644<<16;item.compress_type=ZIP_STORED;z.writestr(item,content)
           with ZipFile(output) as z:
               assert z.testzip() is None and sha256(z.read(p.name)).hexdigest()==expected
-          print('Verified exact signed APK and share ZIP:',output.stat().st_size,sha256(output.read_bytes()).hexdigest())
+          print('ZIP:',output.stat().st_size,sha256(output.read_bytes()).hexdigest())
           PY
-      - name: Publish persistent direct download
+      - name: Publish verified persistent download
         run: |
-          cat > release-notes.md <<'EOF'
-          던전크러시! 2.12.0 출시 후보 (versionCode 38).
+          cat > release-notes.md <<'NOTES'
+          던전크러시! 2.13.0 출시 후보 (versionCode 39).
 
-          아래 Assets에서 DungeonCrush-2.12.0-RC1.zip을 받아 압축을 풀고 APK를 설치하세요. 기존 앱을 삭제하지 말고 업데이트 설치하세요. 설치 후 설정에서 성장 기록을 파일로 백업하세요.
+          아래 Assets에서 **DungeonCrush-2.13.0-RC1.zip**을 받아 압축을 풀고 APK를 설치하세요. 기존 앱을 삭제하지 말고 업데이트 설치하세요.
 
-          - 6직업에 어울리는 짧은 실제 녹음 기합 21개를 추가했습니다. 스킬과 강한 연계 동작에 맞추며, 같은 소리 연속 반복과 목소리 겹침을 줄였습니다.
-          - 검격·창·격투·총성·불/얼음/번개·성광/치유/방어·궁극의 효과음 15개를 추가했습니다. 시전/발사/적중 시점을 구분합니다.
-          - 보스 구역에서 전용 루프 음악으로 부드럽게 전환합니다. 매 프레임 재시작하지 않고, 일시정지·음소거 후 위치를 이어가며 마을에서는 마을 음악으로 돌아갑니다.
-          - 기합 기본 음량은 25%로 낮게 맞추고 큰 기합도 줄였습니다. 설정의 기합·목소리 음량을 별도로 조절합니다. 0%로 기합만 끌 수 있습니다. 기합 중에는 음악을 잠시 낮추며, 4인 전투의 동시 재생 수와 원격 음량을 제한합니다.
-          - 실제 기합은 Brandon Song/wolfwoot 및 cicifyre의 CC0 녹음, 보스곡은 Juhani Junkala/SubspaceAudio의 CC0 Epic Boss Battle입니다. 전체 출처와 가공 내용은 ZIP의 AUDIO-NOTES.md와 앱 포함 CREDITS.txt에 있습니다. 음원은 오프라인으로 재생됩니다.
-          - 기존 마을 바로가기·글자 가독성·모션·체크 판매·착용/잠금 보호·판매 되돌리기·백업/복원을 유지합니다. 랭킹 서버 연결은 계속 꺼져 있으며 집사 사절 원본은 수정하지 않았습니다.
-          - 44개 자동 검사, Android lint·APK/AAB 빌드, 기존 서명·최종 원화/음원/스크립트 확인을 통과했습니다. 37개 실제 음원 디코딩/피크, 6직업 스킬, 보스 음악 전환/반복/음소거/일시정지, 3개 화면 설정과 4인 재생 상한도 확인했습니다.
+          - 스토리 **16챕터·48던전**으로 확장했습니다. 수로·독늪·태엽 공방·천상궁에 새 던전 12개와 보스 12종, 일반 몬스터 8종을 추가했습니다.
+          - **100레벨 정예 레이드 4개**는 해당 지역 의뢰 완료 후 열립니다. 지역 보스 3종의 5연전, 100레벨 장비와 반복 정복 핵 3개를 제공합니다.
+          - 실제 전투 배경을 5장에서 **24장**으로 늘렸습니다. 초기 공유 지역과 새 던전에 원화 19장을 추가하고 필요한 배경만 준비합니다.
+          - 적 공격을 **16개 지역별 효과**로 구분했습니다. 직선·여러 갈래 광선·십자·고리·시차 장판·독침 부채탄과 실제 판정에 맞는 위험 표시를 추가했습니다.
+          - 기존 저장과 최대 100레벨, 6직업 모션, 작은 기합(기본 25%), 보스 음악, 착용/잠금 판매 보호, 판매 되돌리기와 백업을 유지합니다. 랭킹 서버는 연결 전 상태입니다.
+          - **47개 자동 검사 후** APK/AAB를 빌드했고 Android lint, 기존 설치 서명과 최종 원화·음원·스크립트 검증을 통과했습니다. 실제 2.12 저장 호환, 48개 화면/24개 배경, 새 320포즈, 위험 판정, 로딩 실패/재시도, 작은 화면과 4인 통신도 검사했습니다.
 
-          이 파일은 기존 테스트 APK를 업데이트하는 출시 후보입니다. 스토어용 AAB는 검증 빌드의 DungeonCrush-Unsigned-Store-AAB이며 서명 전 번들입니다. 실제 휴대폰 음향·지연·FPS/발열, 운영 서명과 Play Console 등록은 별도입니다. ZIP의 RELEASE-CHECKLIST.md를 확인하세요.
+          Wi-Fi 파티원 모두 이번 버전으로 업데이트하세요(프로토콜 9). 집사 사절 원본은 수정하지 않았습니다. 실제 단말의 FPS/발열/조작감, 운영 서명과 스토어 등록은 별도입니다.
 
-          검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/43007690959
-          APK SHA256: d635ae849384be7c537da0c1feb554a6eb7b552016bbb26dc0c79e8414160ad6
-          EOF
-          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
-            gh release upload "$RELEASE_TAG" DungeonCrush-2.12.0-RC1.zip --clobber
-            gh release edit "$RELEASE_TAG" --draft=false --prerelease --latest=false --notes-file release-notes.md
-          else
-            gh release create "$RELEASE_TAG" DungeonCrush-2.12.0-RC1.zip --target e75c2b59ba2a51f89a2f2445f4e87d11647236cf --title '던전크러시! 2.12.0 · 기합·스킬 효과음·보스 음악' --notes-file release-notes.md --prerelease --latest=false
-          fi
-      - name: Verify public ZIP size and SHA256
+          검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/43162834939
+          APK SHA256: 3576db3cb9ebfe12c080a5042b51e24732152e4326f09bd80e56f6e0c6578721
+          NOTES
+          gh release upload "$RELEASE_TAG" DungeonCrush-2.13.0-RC1.zip --clobber
+          gh release edit "$RELEASE_TAG" --draft=false --prerelease --latest=false --notes-file release-notes.md
+      - name: Verify public ZIP size and digest
         run: |
           gh api "repos/$GH_REPO/releases/tags/$RELEASE_TAG" > release-assets.json
           python3 - <<'PY'
           from pathlib import Path
           from hashlib import sha256
           import json
-          p=Path('DungeonCrush-2.12.0-RC1.zip');r=json.loads(Path('release-assets.json').read_text())
-          assert not r['draft']
+          p=Path('DungeonCrush-2.13.0-RC1.zip');r=json.loads(Path('release-assets.json').read_text());assert not r['draft']
           a=next(a for a in r['assets'] if a['name']==p.name)
           assert a['size']==p.stat().st_size and a['digest']=='sha256:'+sha256(p.read_bytes()).hexdigest()
-          print('Verified public download:',a['browser_download_url'])
+          print('Verified public ZIP:',a['browser_download_url'])
           PY
