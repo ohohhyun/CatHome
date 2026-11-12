@@ -8,8 +8,8 @@ function resetRound(s){const a=s.arena,list=active(s).sort((p,q)=>p.id-q.id),pos
  for(const [i,p]of list.entries()){const slot=(i+a.round-1)%list.length;clearActions(p);Object.assign(p,{x:positions[slot],y:535+(slot%2)*80,dir:slot<list.length/2?1:-1,hp:p.maxHp,mp:100,rage:0,shield:0,buff:0,inv:.65,cd:Array(7).fill(0),dodgeCd:0,potionCd:0,pvpStun:0,pvpCc:0,potionHeld:false,jumpHeld:false,down:0,gait:0,basicChain:0,comboStage:0});}
 }
 function start(s){if(s.players.length<2||s.players.length>4||s.players.some(p=>p.level<30)){s.phase='ready';return false;}
- const participants=s.players.map(p=>({id:p.id,name:p.name,cls:p.cls,level:p.level,arenaLoadout:p.arenaLoadout}));
- s.players=participants.map(old=>{const p=E.player(old.id,old.name,old.cls,30,{ranks:[1,1,1,1,1,1],advanced:true,awakened:true});p.loadout=old.arenaLoadout||[1,2,3,4,5,6];p.sourceLevel=old.level;p.maxHp=Math.round(1100*E.CLASSES[p.cls].hp/270);p.hp=p.maxHp;p.damage=1.6;p.focus=0;p.aimHeight=165;p.height=260;p.retired=false;return p;});
+ const participants=s.players.map(p=>({id:p.id,name:p.name,cls:p.cls,level:p.level,arenaLoadout:p.arenaLoadout,costume:p.costume,pet:p.pet}));
+ s.players=participants.map(old=>{const p=E.player(old.id,old.name,old.cls,30,{costume:old.costume,pet:old.pet,ranks:[1,1,1,1,1,1],advanced:true,awakened:true});p.loadout=old.arenaLoadout||[1,2,3,4,5,6];p.sourceLevel=old.level;p.maxHp=Math.round(1100*E.CLASSES[p.cls].hp/270);p.hp=p.maxHp;p.damage=1.6;p.focus=0;p.aimHeight=165;p.height=260;p.retired=false;return p;});
  Object.assign(s,{phase:'playing',time:0,tick:0,nextId:1,score:0,gold:0,combatXP:0,enemies:[],telegraphs:[],projectiles:[],fx:[],room:1,roomCount:1,partySize:s.players.length,gate:false});
  s.arena={stage:'countdown',round:1,maxRounds:MAX_ROUNDS,remaining:ROUND_SECONDS,countdown:3,participants,wins:Object.fromEntries(participants.map(p=>[p.id,0])),damage:Object.fromEntries(participants.map(p=>[p.id,0])),winnerId:null,roundWinner:null,canceled:false,reason:''};resetRound(s);return true;
 }

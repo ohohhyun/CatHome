@@ -2,6 +2,15 @@
 
 이 파일을 먼저 읽고 `dungeon-crush/`만 이어서 작업하세요. 사용자에게는 한국어 존댓말을 사용하세요.
 
+## 진행 중: 2.14.0 외형 · 펫 상점
+
+사용자 지시: 직업별 유료 외형 5벌씩/펫 10종, 상품별 9,900원, 결제는 나중에 구축하고 지금은 모두 시험 구매 가능, 크리스마스 외형과 더 크고 화려한 콘셉트 스킬 효과, 장착·해제/모션 정밀 검수입니다. 집사 사절 원본은 절대 수정하지 않습니다.
+
+- 목표 versionCode 40 / 2.14.0 / Wi-Fi 프로토콜 10 / 저장 형식 2. 결제/서버/DB는 구축하지 않습니다. 테스트 구매는 charged:0이며 보유권과 SKU를 저장합니다. 랭킹 연결은 계속 꺼져 있습니다.
+- `premium.js`, `premium-art-data.js`, `premium-art.js`, `premium-fx.js`, `premium-ui.js`, `premium.css`와 기존 렌더/저장/마을/통신에 연결했습니다. 자세한 범위는 release/PREMIUM-SHOP.md와 참고 자료를 확인하세요.
+- 원화는 image_gen으로 제작하고 무손실 WebP로 포장합니다. 75시트/2,080셀의 경계·투명 배경·공격 자세와 30외형의 모든 모션을 로컬에서 검수했습니다. **아직 2.14 검증/새 APK 공개 완료로 보고하지 마세요.**
+- 새 검사는 premium.test.cjs, premium-art.test.cjs, premium-presentation.test.cjs, premium-rendering.test.cjs입니다. 기존 47개와 합쳐 51개입니다. 신규 상점/렌더 검사는 로컬 통과했으며 실제 스킬 발동 300건과 4개 화면의 외형 통신을 포함합니다. 빌드 서버 전체 통과 뒤에만 APK/AAB와 같은 서명의 공개 ZIP을 만듭니다.
+
 ## 최신 검증 버전: 2.13.0 RC1
 
 - [APK ZIP 공개 다운로드](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.13.0-rc1) → Assets → **DungeonCrush-2.13.0-RC1.zip**. versionCode 39. 기존 앱을 삭제하지 않고 업데이트합니다.

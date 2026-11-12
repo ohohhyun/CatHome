@@ -4,7 +4,7 @@ const ACTORS=root.DungeonActors.actors,TAU=Math.PI*2,clamp=(v,a,b)=>Math.max(a,M
 function loadPicture(key,src){sources.set(key,src);if(pictures.has(key)||loading.has(key)||failed.has(key))return;loading.add(key);const im=new Image();im.onload=()=>{pictures.set(key,im);loading.delete(key);};im.onerror=()=>{failed.add(key);loading.delete(key);};im.src=src;}
 function ensureSkills(cls){if(!ACTORS[cls])return;loadPicture('skills'+cls,cls===4?'art/motion299/aria-skills.webp':cls===5?'art/motion210/elian-skills.webp':'art/advanced/'+ACTORS[cls].id+'-skills.webp');loadPicture('growth'+cls,'art/motion210/'+root.DungeonGrowth.ids[cls]+'-growth-skills.webp');}
 function ensure(cls){root.DungeonActors.ensure(cls);ensureSkills(cls);}
-function actor(...args){const ok=root.DungeonActors.actor(...args);if(ok)actorDraws++;return ok;}
+function actor(...args){if(root.DungeonPremiumArt?.actor(...args))return true;const ok=root.DungeonActors.actor(...args);if(ok)actorDraws++;return ok;}
 function hasActor(cls){return root.DungeonActors.hasActor(cls);}
 function ready(cls=root.RiftApp?.getClass?.()??0){return root.DungeonActors.ready(cls)&&pictures.has('skills'+cls)&&pictures.has('growth'+cls);}
 function preloadAll(){root.DungeonActors.preloadAll();ACTORS.forEach((_,i)=>ensureSkills(i));}

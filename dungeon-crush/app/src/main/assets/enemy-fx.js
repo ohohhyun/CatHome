@@ -90,5 +90,6 @@ function projectile(c,q,x,y,time){if(q.team!=='enemy')return false;const p=profi
  c.restore();projectileDraws++;stylesSeen.add(p.id);return true;
 }
 function soundFor(value){return {crescent:'blade-wave',hammer:'earth-break',vines:'spear-wind',prism:'ice-break',surge:'arcane-wave',lightning:'arc-chain',dial:'ward-rise',eclipse:'gun-blast',snow:'ice-break',eruption:'fire-cast',meteor:'arc-chain',tentacle:'gun-blast',current:'arcane-wave',spores:'holy-cast',gears:'earth-break',sun:'holy-hit'}[profile(value).shape];}
-root.DungeonEnemyFX={profiles,profile,contains,warning,effect,projectile,soundFor,stats:()=>({warningDraws,impactDraws,projectileDraws,styles:[...stylesSeen]})};
+function edge(c,t,camera){c.save();c.globalCompositeOperation='source-over';footprint(c,t,camera);c.lineJoin='round';c.strokeStyle='#020712';c.lineWidth=t.life<.28?9:7;c.globalAlpha=.9;c.stroke();c.strokeStyle=t.life<.28?'#fff4d7':profile(t).color;c.lineWidth=t.life<.28?4:2.5;c.globalAlpha=.96;c.stroke();c.restore();}
+root.DungeonEnemyFX={edge,profiles,profile,contains,warning,effect,projectile,soundFor,stats:()=>({warningDraws,impactDraws,projectileDraws,styles:[...stylesSeen]})};
 })(typeof window!=='undefined'?window:globalThis);

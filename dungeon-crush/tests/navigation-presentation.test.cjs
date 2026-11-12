@@ -44,8 +44,8 @@ const sizes=[{width:1280,height:591},{width:1024,height:472},{width:960,height:4
    await p.evaluate(insets=>{for(const edge of ['left','right','top','bottom'])document.documentElement.style.setProperty('--safe-'+edge,(insets[edge]||0)+'px');DungeonClient.go('town');},size.insets||{});
    await fit('#town-shortcuts');
    const targets=await p.locator('#town-shortcuts button').evaluateAll(nodes=>nodes.map(n=>{const b=n.getBoundingClientRect(),c=document.elementFromPoint(b.x+b.width/2,b.y+b.height/2);return {w:b.width,h:b.height,reachable:n.contains(c),left:b.left,right:b.right,top:b.top,bottom:b.bottom};}));
-   assert.equal(targets.length,6);assert(targets.every(v=>v.w>=44&&v.h>=44&&v.reachable&&v.left>=0&&v.top>=0&&v.right<=size.width&&v.bottom<=size.height),'six reachable finger-sized shortcuts');
-   await dock('menu').click();assert.equal(await p.locator('#quick-menu-grid button').count(),12);
+   assert.equal(targets.length,8);assert(targets.every(v=>v.w>=44&&v.h>=44&&v.reachable&&v.left>=0&&v.top>=0&&v.right<=size.width&&v.bottom<=size.height),'eight reachable finger-sized shortcuts');
+   await dock('menu').click();assert.equal(await p.locator('#quick-menu-grid button').count(),13);
    const shell=await p.locator('.quick-menu-shell').boundingBox();assert(shell.x>=0&&shell.y>=0&&shell.x+shell.width<=size.width+1&&shell.y+shell.height<=size.height+1);
    for(const scale of [1,1.4]){
     if(scale!==1)await p.locator('#quick-menu-screen').evaluate(root=>{window.navFonts=[...root.querySelectorAll('strong,small,span,h2,p,button')].filter(n=>[...n.childNodes].some(c=>c.nodeType===3&&c.textContent.trim())).map(n=>[n,n.style.fontSize,n.style.lineHeight,parseFloat(getComputedStyle(n).fontSize)]);for(const[n,,,font]of navFonts){n.style.fontSize=font*1.4+'px';n.style.lineHeight='1.65';}});
@@ -69,7 +69,7 @@ const sizes=[{width:1280,height:591},{width:1024,height:472},{width:960,height:4
   assert.equal(await p.evaluate(()=>JSON.stringify(RiftApp.getSave())),original,'navigation and inspections preserve progress');
   await dock('menu').click();await tile('characters').click();assert.equal(await p.evaluate(()=>DungeonClient.phase()),'characters');await p.locator('#enter-character').click();
   assert.equal(await p.evaluate(()=>DungeonClient.getTown().near),false);await dock('expedition').click();assert.equal(await p.evaluate(()=>DungeonClient.phase()),'contents','expedition no longer requires walking to the distant portal');await p.locator('[data-content=story]').click();assert.equal(await p.evaluate(()=>DungeonClient.phase()),'stages');await p.locator('#stage-start').click();await p.locator('#loading-screen').waitFor({state:'hidden',timeout:40000});assert(await p.locator('#town-shortcuts').isHidden());assert(await p.locator('#mobility-actions').isVisible());assert.equal(await p.evaluate(()=>DungeonNavigation.open()),false,'town menu cannot cover combat');
-  assert.deepEqual(errors,[]);fs.writeFileSync('build/previews/navigation-audit.json',JSON.stringify({passed:true,sizes,scales:[1,1.4],shortcuts:6,functions:11,expeditionDirect:true,serviceContexts:true,readOnlyNavigation:true},null,2));
-  console.log('PASS: six reachable 44px town shortcuts; full menu glyph/overlap audit at nine viewports/insets and 1.4x fonts; service contexts and equipped-sale protection, focus/Back/Escape/input isolation, all menu destinations, read-only navigation, direct expedition and combat controls.');
+  assert.deepEqual(errors,[]);fs.writeFileSync('build/previews/navigation-audit.json',JSON.stringify({passed:true,sizes,scales:[1,1.4],shortcuts:8,functions:12,expeditionDirect:true,serviceContexts:true,readOnlyNavigation:true},null,2));
+  console.log('PASS: eight reachable 44px town shortcuts; full menu glyph/overlap audit at nine viewports/insets and 1.4x fonts; service contexts and equipped-sale protection, focus/Back/Escape/input isolation, all menu destinations, read-only navigation, direct expedition and combat controls.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1);});

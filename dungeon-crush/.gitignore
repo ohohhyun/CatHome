@@ -10,3 +10,4 @@ local.properties
 app/src/main/assets/audio/*.wav
 app/src/main/assets/audio/*.ogg
 app/src/main/assets/audio/*.mp3
+__pycache__/
