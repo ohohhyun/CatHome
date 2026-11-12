@@ -1,10 +1,14 @@
 # 던전크러시! 2.13.0 — 지역·보스·배경 확장
 
-스토리 16챕터·48던전, 신규 몬스터 20종, 100레벨 정예 레이드 4개, 실제 전투 배경 24장을 포함합니다. 적 공격은 16개 지역별 효과와 직선·십자·고리·장판 패턴으로 구분합니다. [변경 내용](release/FRONTIER-NOTES.md)
+- [APK ZIP 공개 다운로드](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.13.0-rc1) → Assets → **DungeonCrush-2.13.0-RC1.zip**. versionCode 39. 기존 앱을 삭제하지 않고 업데이트합니다.
+- 검증 소스 `7b3813ff519ec52effd1c201daae939835be333c`, [전체 47개 검사 성공](https://github.com/ohohhyun/CatHome/actions/runs/43162834939). 코드 22 + Java 통신 2 + Chrome 23개를 통과한 뒤 APK/AAB와 Android lint, 기존 서명·포함 원화/음원/스크립트를 검증했습니다.
+- 16챕터·48던전, 100레벨 정예 레이드 4개, 신규 몬스터 20종/320포즈, 실제 전투 배경 24장, 적 지역별 효과 16계열을 포함합니다. [변경 내용](release/FRONTIER-NOTES.md)
+- 2.12 저장과 최대 100레벨, 6직업 모션, 기합 음량 25%·보스 음악, 판매 보호·되돌리기·백업을 유지합니다. Wi-Fi 프로토콜 9이므로 파티원 모두 업데이트합니다.
+- APK: 311,026,186 bytes, SHA256 `3576db3cb9ebfe12c080a5042b51e24732152e4326f09bd80e56f6e0c6578721`.
+- 공유 ZIP: 311,094,327 bytes, SHA256 `c7c6a7e3f7557510b2bbdb36acdec8b3ed9a01ea7e3cde411cd2c8ecbb479cca`. [공개 배포 검증](https://github.com/ohohhyun/CatHome/actions/runs/43165066976) 성공.
+- 집사 사절 원본과 서버/DB는 수정하지 않았습니다. 랭킹 연결은 꺼져 있고 endpoint/publicKey는 비어 있습니다. 실제 단말 FPS·발열·조작감과 운영 서명·스토어 등록은 별도입니다.
 
-현재 전체 검증 중이며, 검사 통과 후 APK를 만듭니다. versionCode 39 / Wi-Fi 프로토콜 9입니다. 기존 성장 기록·기합 기본 음량 25%·판매 보호·백업을 유지합니다. 집사 사절 원본과 랭킹 서버 설정은 변경하지 않았습니다.
-
-아래는 이전 검증 버전의 기록과 다운로드입니다.
+---
 
 # 던전크러시! 2.12.0 — 기합 · 스킬 효과음 · 보스 음악
 

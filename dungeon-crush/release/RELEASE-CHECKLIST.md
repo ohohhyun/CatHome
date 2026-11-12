@@ -10,7 +10,7 @@
 - 모든 코드/Java/Chrome 검사 후 APK/AAB 빌드와 Android lint, 기존 설치 서명·최종 원화/음원/스크립트 검증을 실행합니다. 통과한 소스로만 공유 ZIP을 만들고 APK/ZIP 해시와 공개 다운로드를 확인합니다.
 - 실제 단말에서는 versionCode 38→39 업데이트 설치 후 성장 기록, Wi-Fi 전원 동일 버전, 신규 12던전과 4개 정예 레이드, 장시간 FPS/발열/조작감을 확인합니다. 자동 검사만으로 실기기 결과를 주장하지 않습니다.
 
-최종 자동 검증·APK·공개 ZIP 결과는 완료 후 이 문서에 기록합니다. 아래는 이전 검증 기록입니다.
+전체 **47개 자동 검사**와 APK/AAB·Android lint·기존 서명·리소스 검증 성공: https://github.com/ohohhyun/CatHome/actions/runs/43162834939. 공개 ZIP CRC/내부 APK/공개 digest 검증 성공: https://github.com/ohohhyun/CatHome/actions/runs/43165066976. APK SHA256 `3576db3cb9ebfe12c080a5042b51e24732152e4326f09bd80e56f6e0c6578721`. ZIP SHA256 `c7c6a7e3f7557510b2bbdb36acdec8b3ed9a01ea7e3cde411cd2c8ecbb479cca`. [공개 다운로드](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.13.0-rc1). 아래는 이전 검증 기록입니다.
 
 # 2.12.0 사운드 보완 점검
 
