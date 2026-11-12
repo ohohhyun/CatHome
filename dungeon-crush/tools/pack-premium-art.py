@@ -3,6 +3,7 @@ from pathlib import Path
 from PIL import Image
 import json,hashlib,statistics,sys,argparse
 from premium_atlas_geometry import cells
+from premium_body_calibration import apply_body_calibration
 parser=argparse.ArgumentParser(description='Pack approved premium art without changing RGBA pixels. Existing approved WebPs fill unmapped keys.');parser.add_argument('--sources',required=True,help='JSON object mapping sheet keys to new image_gen PNG paths');parser.add_argument('--final',action='store_true');args=parser.parse_args()
 root=Path(__file__).resolve().parents[1];assets=root/'app/src/main/assets';dest=assets/'art/premium';dest.mkdir(exist_ok=True)
 plan=json.loads((root/'art-source/premium-plan.json').read_text());m={j['key']:str(dest/(j['key']+'.webp')) for j in plan['jobs'] if (dest/(j['key']+'.webp')).exists()};m.update(json.loads(Path(args.sources).read_text()));oldfile=root/'premium-art-sources.json';old={a['id']:a for a in json.loads(oldfile.read_text()).get('assets',[])} if oldfile.exists() else {};entries=[];banks={};reviews=[]
@@ -49,6 +50,7 @@ for theme in plan['themes']:
    boxes=b['bounds'][row*8:row*8+8];left=max(0,min(v[0] for v in boxes)-12);top=max(0,min(v[1] for v in boxes)-12);right=min(b['frames'][row*8][2],max(v[2] for v in boxes)+12);bottom=min(b['frames'][row*8][3],max(v[3] for v in boxes)+12)
    for f in b['frames'][row*8:row*8+8]:effect_frames.append([f[0]+left,f[1]+top,right-left,bottom-top,(right-left)/2,(bottom-top)/2])
   data['effects'][theme['id']]=dict(src=b['src'],frames=effect_frames,columns=8,rows=6)
+apply_body_calibration(root,data)
 (assets/'premium-art-data.js').write_text('/* Authored premium outfit, companion and spell flipbooks. */\nwindow.DungeonPremiumArtData='+json.dumps(data,separators=(',',':'))+';\n')
 oldfile.write_text(json.dumps(dict(version='2.14.0',generator='OpenAI image_gen',assets=entries),indent=2)+'\n');(root/'premium-art-review.json').write_text(json.dumps(dict(alphaBodyThreshold=100,assets=reviews),indent=2)+'\n')
 if args.final:

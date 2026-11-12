@@ -2,6 +2,14 @@
 
 이 파일을 먼저 읽고 `dungeon-crush/`만 이어서 작업하세요. 사용자에게는 한국어 존댓말을 사용하세요.
 
+## 진행 중: 2.14.1 유료 외형 몸 크기 수정
+
+사용자가 2.14.0에서 스킨 장착 시 캐릭터 크기가 달라지는 문제를 보고했습니다. 스킨끼리만 비교한 기존 검수로는 기본 몸과의 차이를 충분히 확인하지 못했습니다. 전체 그림의 경계 대신 6직업 기본 몸의 기준점을 사용하여 30벌의 대기/연계 공격/시전과 이동 크기를 보정합니다. 상세 내용과 재현·검사는 `release/SKIN-SIZE-NOTES.md`를 확인하세요.
+
+- 목표 2.14.1 / versionCode 41, 프로토콜 10 / 저장 형식 2. 기존 원화 75개와 상품/스킬/전투 수치를 보존합니다.
+- `art-source/premium-body-calibration.json`에 기본 6직업과 30벌×5동작의 검수 기준점 및 원화 SHA를 기록했습니다. `tools/premium_body_calibration.py`와 포장 도구가 같은 보정을 적용합니다.
+- 새 `premium-size-presentation.test.cjs`는 실제 구매/장착/해제와 기본 외형 대비 300건의 Canvas 크기 기준점을 검사합니다. 기존 51개와 합쳐 52개 검사 후 APK를 제작합니다. **새 빌드·APK·ZIP 검증 완료 전에는 2.14.1 완료로 보고하지 마세요.**
+
 ## 최신 검증 버전: 2.14.0 RC1
 
 - [APK ZIP 공개 다운로드](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.14.0-rc1) → Assets → **DungeonCrush-2.14.0-RC1.zip**. versionCode 40. 기존 앱을 삭제하지 않고 업데이트합니다.

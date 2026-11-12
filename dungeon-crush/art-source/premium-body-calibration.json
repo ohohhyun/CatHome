@@ -1,0 +1,2589 @@
+{
+  "version": 1,
+  "method": "Manually reviewed eye-line to grounded boot sole in neutral idle and matching attack recovery poses. Excludes hats, halos, horns, wings, capes and weapons. Uniform scale per animation bank, never per-frame or per axis. Original sprite pixels unchanged.",
+  "base": {
+    "kael": {
+      "cls": 0,
+      "banks": {
+        "reaction": {
+          "src": "art/motion29/kael-reaction.webp",
+          "sha256": "20f60b8faef63a7c5aee2114182822d74472b0899e44b0e170c99b82ba2ef71b",
+          "frame": 0,
+          "rect": [
+            86,
+            3,
+            264,
+            437
+          ],
+          "eyeY": 86,
+          "soleY": 435,
+          "reference": 418.681
+        },
+        "combo0": {
+          "src": "art/motion29/kael-combo1-between-b.webp",
+          "sha256": "e4766e73e652964ec9e2e3574af09b9165866f55aac0fc4b759585bf81a46dea",
+          "frame": 23,
+          "rect": [
+            1401,
+            451,
+            267,
+            431
+          ],
+          "eyeY": 87,
+          "soleY": 429,
+          "reference": 417.582
+        },
+        "combo1": {
+          "src": "art/motion29/kael-combo2-between-b.webp",
+          "sha256": "291a78ec9456109f8ce701f1c470adb9c7d112137cc5f8151d910221b6e150d1",
+          "frame": 23,
+          "rect": [
+            1382,
+            466,
+            302,
+            408
+          ],
+          "eyeY": 65,
+          "soleY": 406,
+          "reference": 430.22
+        },
+        "combo2": {
+          "src": "art/motion29/kael-combo3-between-b.webp",
+          "sha256": "cbd7bdcf1dbea8fc040747b89650a85d3137372f5076b523a2f983d7b8c9542e",
+          "frame": 23,
+          "rect": [
+            1424,
+            453,
+            293,
+            427
+          ],
+          "eyeY": 85,
+          "soleY": 426,
+          "reference": 410.989
+        },
+        "cast": {
+          "src": "art/motion29/kael-cast-between-b.webp",
+          "sha256": "ea711532efb2aa90c2b65ee831dcf14fd0307bb92e80d5a989e17e18d02fbbc1",
+          "frame": 23,
+          "rect": [
+            1398,
+            450,
+            301,
+            437
+          ],
+          "eyeY": 85,
+          "soleY": 436,
+          "reference": 419.78
+        }
+      }
+    },
+    "rin": {
+      "cls": 1,
+      "banks": {
+        "reaction": {
+          "src": "art/motion29/rin-reaction.webp",
+          "sha256": "66a4182b607f2f146b69bdf90001e50ae8c062a01882955b21e9edc3261e074d",
+          "frame": 0,
+          "rect": [
+            88,
+            1,
+            312,
+            437
+          ],
+          "eyeY": 84,
+          "soleY": 435,
+          "reference": 426.923
+        },
+        "combo0": {
+          "src": "art/motion29/rin-combo1-between-b.webp",
+          "sha256": "d19f864c2511b5e6cf61c5ea26dc9192019afb566c35501317946139caef4aef",
+          "frame": 23,
+          "rect": [
+            596,
+            1072,
+            342,
+            361
+          ],
+          "eyeY": 70,
+          "soleY": 359,
+          "reference": 356.593
+        },
+        "combo1": {
+          "src": "art/motion29/rin-combo2-between-b.webp",
+          "sha256": "012821ce50163d0204ed7ca3f06cc32cd3234f8643a1df5aa9f5a7a5949515fc",
+          "frame": 23,
+          "rect": [
+            644,
+            1086,
+            342,
+            361
+          ],
+          "eyeY": 69,
+          "soleY": 359,
+          "reference": 356.593
+        },
+        "combo2": {
+          "src": "art/motion29/rin-combo3-between-b.webp",
+          "sha256": "62d36088df26ec2aa9337a970ffd2379d185950164c37c0ee5e5a08a8f029188",
+          "frame": 23,
+          "rect": [
+            1006,
+            763,
+            276,
+            258
+          ],
+          "eyeY": 44,
+          "soleY": 256,
+          "reference": 255.495
+        },
+        "cast": {
+          "src": "art/motion29/rin-cast-between-b.webp",
+          "sha256": "6765bb8b93e8dc929497afa98a3b9c83fc7264e1288e6fb20b776664a100bad1",
+          "frame": 23,
+          "rect": [
+            1408,
+            465,
+            293,
+            410
+          ],
+          "eyeY": 70,
+          "soleY": 408,
+          "reference": 414.286
+        }
+      }
+    },
+    "bane": {
+      "cls": 2,
+      "banks": {
+        "reaction": {
+          "src": "art/motion29/bane-reaction.webp",
+          "sha256": "5c5cd2ac610aa8e040e505b1768011eee93fb89611e99e24ba7ddf6986a2bea5",
+          "frame": 0,
+          "rect": [
+            87,
+            11,
+            264,
+            423
+          ],
+          "eyeY": 38,
+          "soleY": 422,
+          "reference": 446.703
+        },
+        "combo0": {
+          "src": "art/motion29/bane-combo1-between-b.webp",
+          "sha256": "a421ccb6312944401d73270df80d18dc5179019de837d3d4233bf76f4fff9f44",
+          "frame": 23,
+          "rect": [
+            1411,
+            457,
+            271,
+            402
+          ],
+          "eyeY": 35,
+          "soleY": 400,
+          "reference": 424.176
+        },
+        "combo1": {
+          "src": "art/motion29/bane-combo2-between-b.webp",
+          "sha256": "fe255d2f249efb415ecdf30cb012635cfb8c3428601e8a406cc8d34212239628",
+          "frame": 23,
+          "rect": [
+            1416,
+            464,
+            280,
+            405
+          ],
+          "eyeY": 41,
+          "soleY": 403,
+          "reference": 443.956
+        },
+        "combo2": {
+          "src": "art/motion29/bane-combo3-between-b.webp",
+          "sha256": "a63f4b189548ff2fa87c700d5ce0b8bb7e77539dcf6820a8ffba44e13c5207df",
+          "frame": 23,
+          "rect": [
+            1408,
+            477,
+            252,
+            384
+          ],
+          "eyeY": 36,
+          "soleY": 382,
+          "reference": 435.165
+        },
+        "cast": {
+          "src": "art/motion29/bane-cast-between-b.webp",
+          "sha256": "e17f54e86af082819c11088a6fdda245a68cc4974f63b7e7a1fe6099582f15ea",
+          "frame": 23,
+          "rect": [
+            1406,
+            454,
+            280,
+            417
+          ],
+          "eyeY": 38,
+          "soleY": 415,
+          "reference": 447.253
+        }
+      }
+    },
+    "sera": {
+      "cls": 3,
+      "banks": {
+        "reaction": {
+          "src": "art/motion29/sera-reaction.webp",
+          "sha256": "432832afb9b5d916fdc81b316a5f096e9e6f01b18d097615c75aa5e9dce2474f",
+          "frame": 0,
+          "rect": [
+            80,
+            13,
+            292,
+            420
+          ],
+          "eyeY": 35,
+          "soleY": 419,
+          "reference": 443.956
+        },
+        "combo0": {
+          "src": "art/motion29/sera-combo1-between-b.webp",
+          "sha256": "42fee2452c7f34d7de73322ad2352d5051dfbb8095085a9eb2302135a1c5d9a8",
+          "frame": 23,
+          "rect": [
+            1400,
+            459,
+            299,
+            420
+          ],
+          "eyeY": 40,
+          "soleY": 418,
+          "reference": 450.549
+        },
+        "combo1": {
+          "src": "art/motion29/sera-combo2-between-b.webp",
+          "sha256": "ed4aa1c7d476992e13ddfa662b6b525e690588f31fadf20c2d4b399a98c87815",
+          "frame": 23,
+          "rect": [
+            1419,
+            460,
+            280,
+            415
+          ],
+          "eyeY": 37,
+          "soleY": 414,
+          "reference": 454.945
+        },
+        "combo2": {
+          "src": "art/motion29/sera-combo3-between-b.webp",
+          "sha256": "e0808a1d0f5b00bde3548ea7d4b29778d4fae82af9f3ea2ed264987a8f6fbaf4",
+          "frame": 23,
+          "rect": [
+            1393,
+            459,
+            297,
+            420
+          ],
+          "eyeY": 39,
+          "soleY": 418,
+          "reference": 444.505
+        },
+        "cast": {
+          "src": "art/motion29/sera-cast-between-b.webp",
+          "sha256": "25e8a2b3c05812c44c119f22a90d2808a51768caf8e69951801f46464bdc16c9",
+          "frame": 23,
+          "rect": [
+            1389,
+            458,
+            291,
+            428
+          ],
+          "eyeY": 40,
+          "soleY": 426,
+          "reference": 448.901
+        }
+      }
+    },
+    "aria": {
+      "cls": 4,
+      "banks": {
+        "reaction": {
+          "src": "art/motion299/aria-recovery.webp",
+          "sha256": "9bea9e155688a4764d3307222fef92e39774e70dcaa6ea63c1b121e73ae5881d",
+          "frame": 0,
+          "rect": [
+            40,
+            631,
+            230,
+            298
+          ],
+          "eyeY": 53,
+          "soleY": 291,
+          "reference": 294
+        },
+        "combo0": {
+          "src": "art/motion299/aria-action-between-b.webp",
+          "sha256": "767167cd2e6162ccba1f020a183d9aeed3fe3ac4de849f760dee618405e391a7",
+          "frame": 23,
+          "rect": [
+            949,
+            314,
+            267,
+            305
+          ],
+          "eyeY": 57,
+          "soleY": 298,
+          "reference": 294
+        },
+        "combo1": {
+          "src": "art/motion299/aria-combos23-between-b.webp",
+          "sha256": "c61c28c3b7a589ca3243e04a18567edb590bd57bda3b3fdd81d38c2bc6faba2d",
+          "frame": 23,
+          "rect": [
+            953,
+            315,
+            239,
+            306
+          ],
+          "eyeY": 56,
+          "soleY": 298,
+          "reference": 294
+        },
+        "combo2": {
+          "src": "art/motion299/aria-combos23-between-b.webp",
+          "sha256": "c61c28c3b7a589ca3243e04a18567edb590bd57bda3b3fdd81d38c2bc6faba2d",
+          "frame": 23,
+          "rect": [
+            946,
+            943,
+            236,
+            307
+          ],
+          "eyeY": 62,
+          "soleY": 299,
+          "reference": 294
+        },
+        "cast": {
+          "src": "art/motion299/aria-action-between-b.webp",
+          "sha256": "767167cd2e6162ccba1f020a183d9aeed3fe3ac4de849f760dee618405e391a7",
+          "frame": 23,
+          "rect": [
+            941,
+            945,
+            273,
+            302
+          ],
+          "eyeY": 65,
+          "soleY": 295,
+          "reference": 294
+        }
+      }
+    },
+    "elian": {
+      "cls": 5,
+      "banks": {
+        "reaction": {
+          "src": "art/motion210/elian-recovery.webp",
+          "sha256": "cf2c4714fc2f669073d60951c48165b170dc861447a7a3262c1ff4de2a225f0b",
+          "frame": 0,
+          "rect": [
+            45,
+            314,
+            185,
+            297
+          ],
+          "eyeY": 28,
+          "soleY": 290,
+          "reference": 293
+        },
+        "combo0": {
+          "src": "art/motion210/elian-action-between-b.webp",
+          "sha256": "59bdedbe1efeb2f896edc7288384e04cc791b4a831a267035b9bf78e32a56dfa",
+          "frame": 23,
+          "rect": [
+            975,
+            321,
+            229,
+            296
+          ],
+          "eyeY": 28,
+          "soleY": 288,
+          "reference": 293
+        },
+        "combo1": {
+          "src": "art/motion210/elian-combos23-between-b.webp",
+          "sha256": "473a44683cf541aefc33e9b650feaa38273f07d2e7b71be632c88adfa09194a4",
+          "frame": 23,
+          "rect": [
+            957,
+            340,
+            269,
+            273
+          ],
+          "eyeY": 28,
+          "soleY": 266,
+          "reference": 293
+        },
+        "combo2": {
+          "src": "art/motion210/elian-combos23-between-b.webp",
+          "sha256": "473a44683cf541aefc33e9b650feaa38273f07d2e7b71be632c88adfa09194a4",
+          "frame": 23,
+          "rect": [
+            971,
+            949,
+            215,
+            291
+          ],
+          "eyeY": 29,
+          "soleY": 284,
+          "reference": 293
+        },
+        "cast": {
+          "src": "art/motion210/elian-action-between-b.webp",
+          "sha256": "59bdedbe1efeb2f896edc7288384e04cc791b4a831a267035b9bf78e32a56dfa",
+          "frame": 23,
+          "rect": [
+            978,
+            947,
+            225,
+            297
+          ],
+          "eyeY": 26,
+          "soleY": 290,
+          "reference": 293
+        }
+      }
+    }
+  },
+  "costumes": {
+    "kael-noel": {
+      "cls": 0,
+      "base": "kael",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/kael-noel-movement.webp",
+          "sha256": "e822f43fc22269d350ca8121ec8117e7417580536e4afdfe5d7d235efc36078d",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 73,
+          "soleY": 221
+        },
+        "combo0": {
+          "src": "art/premium/kael-noel-combat.webp",
+          "sha256": "354745fd639084a5d1fe7c69f5c4b7156e873ad8efb5ae9582c080ff5ac83fc6",
+          "frame": 7,
+          "rect": [
+            665,
+            222,
+            222,
+            222
+          ],
+          "eyeY": 85,
+          "soleY": 181
+        },
+        "combo1": {
+          "src": "art/premium/kael-noel-combat.webp",
+          "sha256": "354745fd639084a5d1fe7c69f5c4b7156e873ad8efb5ae9582c080ff5ac83fc6",
+          "frame": 7,
+          "rect": [
+            665,
+            665,
+            222,
+            222
+          ],
+          "eyeY": 75,
+          "soleY": 174
+        },
+        "combo2": {
+          "src": "art/premium/kael-noel-combat.webp",
+          "sha256": "354745fd639084a5d1fe7c69f5c4b7156e873ad8efb5ae9582c080ff5ac83fc6",
+          "frame": 7,
+          "rect": [
+            665,
+            1109,
+            222,
+            221
+          ],
+          "eyeY": 83,
+          "soleY": 172
+        },
+        "cast": {
+          "src": "art/premium/kael-noel-combat.webp",
+          "sha256": "354745fd639084a5d1fe7c69f5c4b7156e873ad8efb5ae9582c080ff5ac83fc6",
+          "frame": 7,
+          "rect": [
+            665,
+            1552,
+            222,
+            222
+          ],
+          "eyeY": 80,
+          "soleY": 175
+        }
+      }
+    },
+    "kael-ember": {
+      "cls": 0,
+      "base": "kael",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/kael-ember-movement.webp",
+          "sha256": "b07de7e0d1b65c09d40d88c96d2029c25b32654feb7c614aed29d47138f6ef00",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 75,
+          "soleY": 235
+        },
+        "combo0": {
+          "src": "art/premium/kael-ember-combat.webp",
+          "sha256": "23ea52dc57fc500e295b47f851bd96a7a920c74e5393a494fb10775c9b7fee1a",
+          "frame": 7,
+          "rect": [
+            665,
+            222,
+            222,
+            222
+          ],
+          "eyeY": 99,
+          "soleY": 190
+        },
+        "combo1": {
+          "src": "art/premium/kael-ember-combat.webp",
+          "sha256": "23ea52dc57fc500e295b47f851bd96a7a920c74e5393a494fb10775c9b7fee1a",
+          "frame": 7,
+          "rect": [
+            665,
+            665,
+            222,
+            222
+          ],
+          "eyeY": 93,
+          "soleY": 185
+        },
+        "combo2": {
+          "src": "art/premium/kael-ember-combat.webp",
+          "sha256": "23ea52dc57fc500e295b47f851bd96a7a920c74e5393a494fb10775c9b7fee1a",
+          "frame": 7,
+          "rect": [
+            665,
+            1109,
+            222,
+            221
+          ],
+          "eyeY": 96,
+          "soleY": 179
+        },
+        "cast": {
+          "src": "art/premium/kael-ember-combat.webp",
+          "sha256": "23ea52dc57fc500e295b47f851bd96a7a920c74e5393a494fb10775c9b7fee1a",
+          "frame": 7,
+          "rect": [
+            665,
+            1552,
+            222,
+            222
+          ],
+          "eyeY": 85,
+          "soleY": 176
+        }
+      }
+    },
+    "kael-lunar": {
+      "cls": 0,
+      "base": "kael",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/kael-lunar-movement.webp",
+          "sha256": "349abcebb5d4ec29f1372cc20404305b9abfcbab83a7bf5f4189331e2bf37891",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 77,
+          "soleY": 227
+        },
+        "combo0": {
+          "src": "art/premium/kael-lunar-combat.webp",
+          "sha256": "6ee2d9d5900d0e29313e41ba6c3fcd244408c137453fb7aa96c1ebc3ec52ee4d",
+          "frame": 7,
+          "rect": [
+            665,
+            222,
+            222,
+            222
+          ],
+          "eyeY": 86,
+          "soleY": 193
+        },
+        "combo1": {
+          "src": "art/premium/kael-lunar-combat.webp",
+          "sha256": "6ee2d9d5900d0e29313e41ba6c3fcd244408c137453fb7aa96c1ebc3ec52ee4d",
+          "frame": 7,
+          "rect": [
+            665,
+            665,
+            222,
+            222
+          ],
+          "eyeY": 83,
+          "soleY": 186
+        },
+        "combo2": {
+          "src": "art/premium/kael-lunar-combat.webp",
+          "sha256": "6ee2d9d5900d0e29313e41ba6c3fcd244408c137453fb7aa96c1ebc3ec52ee4d",
+          "frame": 7,
+          "rect": [
+            665,
+            1109,
+            222,
+            221
+          ],
+          "eyeY": 86,
+          "soleY": 180
+        },
+        "cast": {
+          "src": "art/premium/kael-lunar-combat.webp",
+          "sha256": "6ee2d9d5900d0e29313e41ba6c3fcd244408c137453fb7aa96c1ebc3ec52ee4d",
+          "frame": 7,
+          "rect": [
+            665,
+            1552,
+            222,
+            222
+          ],
+          "eyeY": 88,
+          "soleY": 185
+        }
+      }
+    },
+    "kael-aurora": {
+      "cls": 0,
+      "base": "kael",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/kael-aurora-movement.webp",
+          "sha256": "c7adb579667397b8b4a3fac8a483d51dccef0bf82950f2bf4a604d89fa9da4bf",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 76,
+          "soleY": 235
+        },
+        "combo0": {
+          "src": "art/premium/kael-aurora-combat.webp",
+          "sha256": "9245d84ae0effb5d50ac9d6af4375fb47d7758613db89c4dafb2acd98fec6942",
+          "frame": 7,
+          "rect": [
+            665,
+            222,
+            222,
+            222
+          ],
+          "eyeY": 85,
+          "soleY": 193
+        },
+        "combo1": {
+          "src": "art/premium/kael-aurora-combat.webp",
+          "sha256": "9245d84ae0effb5d50ac9d6af4375fb47d7758613db89c4dafb2acd98fec6942",
+          "frame": 7,
+          "rect": [
+            665,
+            665,
+            222,
+            222
+          ],
+          "eyeY": 79,
+          "soleY": 180
+        },
+        "combo2": {
+          "src": "art/premium/kael-aurora-combat.webp",
+          "sha256": "9245d84ae0effb5d50ac9d6af4375fb47d7758613db89c4dafb2acd98fec6942",
+          "frame": 7,
+          "rect": [
+            665,
+            1109,
+            222,
+            221
+          ],
+          "eyeY": 88,
+          "soleY": 180
+        },
+        "cast": {
+          "src": "art/premium/kael-aurora-combat.webp",
+          "sha256": "9245d84ae0effb5d50ac9d6af4375fb47d7758613db89c4dafb2acd98fec6942",
+          "frame": 7,
+          "rect": [
+            665,
+            1552,
+            222,
+            222
+          ],
+          "eyeY": 80,
+          "soleY": 182
+        }
+      }
+    },
+    "kael-abyss": {
+      "cls": 0,
+      "base": "kael",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/kael-abyss-movement.webp",
+          "sha256": "779d96aa3948822786cb61a70dec9bebc1027882f667e5734c8bd2564d99e753",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 67,
+          "soleY": 229
+        },
+        "combo0": {
+          "src": "art/premium/kael-abyss-combat.webp",
+          "sha256": "c641d96560273e0dd74cf1e523b251b77faa59839ecf7e465e476b70b8998893",
+          "frame": 7,
+          "rect": [
+            665,
+            222,
+            222,
+            222
+          ],
+          "eyeY": 81,
+          "soleY": 195
+        },
+        "combo1": {
+          "src": "art/premium/kael-abyss-combat.webp",
+          "sha256": "c641d96560273e0dd74cf1e523b251b77faa59839ecf7e465e476b70b8998893",
+          "frame": 7,
+          "rect": [
+            665,
+            665,
+            222,
+            222
+          ],
+          "eyeY": 78,
+          "soleY": 189
+        },
+        "combo2": {
+          "src": "art/premium/kael-abyss-combat.webp",
+          "sha256": "c641d96560273e0dd74cf1e523b251b77faa59839ecf7e465e476b70b8998893",
+          "frame": 7,
+          "rect": [
+            665,
+            1109,
+            222,
+            221
+          ],
+          "eyeY": 77,
+          "soleY": 183
+        },
+        "cast": {
+          "src": "art/premium/kael-abyss-combat.webp",
+          "sha256": "c641d96560273e0dd74cf1e523b251b77faa59839ecf7e465e476b70b8998893",
+          "frame": 7,
+          "rect": [
+            665,
+            1552,
+            222,
+            222
+          ],
+          "eyeY": 82,
+          "soleY": 185
+        }
+      }
+    },
+    "rin-noel": {
+      "cls": 1,
+      "base": "rin",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/rin-noel-movement.webp",
+          "sha256": "99cf8a7009a0baf0c74cb547b37dc981c2a4b4675245f3f297d9806d0a36390b",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 58,
+          "soleY": 239
+        },
+        "combo0": {
+          "src": "art/premium/rin-noel-combat.webp",
+          "sha256": "3026fdaa6c3741cabb28fc3e8e12fe847f16fbda810b82140b743d1e11844b61",
+          "frame": 7,
+          "rect": [
+            665,
+            222,
+            222,
+            222
+          ],
+          "eyeY": 74,
+          "soleY": 194
+        },
+        "combo1": {
+          "src": "art/premium/rin-noel-combat.webp",
+          "sha256": "3026fdaa6c3741cabb28fc3e8e12fe847f16fbda810b82140b743d1e11844b61",
+          "frame": 7,
+          "rect": [
+            665,
+            665,
+            222,
+            222
+          ],
+          "eyeY": 74,
+          "soleY": 195
+        },
+        "combo2": {
+          "src": "art/premium/rin-noel-combat.webp",
+          "sha256": "3026fdaa6c3741cabb28fc3e8e12fe847f16fbda810b82140b743d1e11844b61",
+          "frame": 7,
+          "rect": [
+            665,
+            1109,
+            222,
+            221
+          ],
+          "eyeY": 72,
+          "soleY": 195
+        },
+        "cast": {
+          "src": "art/premium/rin-noel-combat.webp",
+          "sha256": "3026fdaa6c3741cabb28fc3e8e12fe847f16fbda810b82140b743d1e11844b61",
+          "frame": 7,
+          "rect": [
+            665,
+            1552,
+            222,
+            222
+          ],
+          "eyeY": 72,
+          "soleY": 197
+        }
+      }
+    },
+    "rin-ember": {
+      "cls": 1,
+      "base": "rin",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/rin-ember-movement.webp",
+          "sha256": "7afe6cc4de5e99bf5e90118162e0554ed27a4fc794a2334d7132be408be5ae7e",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 80,
+          "soleY": 230
+        },
+        "combo0": {
+          "src": "art/premium/rin-ember-combat.webp",
+          "sha256": "da3f9cec2d66d07bdd27ab8e3057d9f00d15f422eda114bcff34d08f941055c2",
+          "frame": 7,
+          "rect": [
+            665,
+            222,
+            222,
+            222
+          ],
+          "eyeY": 80,
+          "soleY": 199
+        },
+        "combo1": {
+          "src": "art/premium/rin-ember-combat.webp",
+          "sha256": "da3f9cec2d66d07bdd27ab8e3057d9f00d15f422eda114bcff34d08f941055c2",
+          "frame": 7,
+          "rect": [
+            665,
+            665,
+            222,
+            222
+          ],
+          "eyeY": 81,
+          "soleY": 200
+        },
+        "combo2": {
+          "src": "art/premium/rin-ember-combat.webp",
+          "sha256": "da3f9cec2d66d07bdd27ab8e3057d9f00d15f422eda114bcff34d08f941055c2",
+          "frame": 7,
+          "rect": [
+            665,
+            1109,
+            222,
+            221
+          ],
+          "eyeY": 78,
+          "soleY": 200
+        },
+        "cast": {
+          "src": "art/premium/rin-ember-combat.webp",
+          "sha256": "da3f9cec2d66d07bdd27ab8e3057d9f00d15f422eda114bcff34d08f941055c2",
+          "frame": 7,
+          "rect": [
+            665,
+            1552,
+            222,
+            222
+          ],
+          "eyeY": 81,
+          "soleY": 201
+        }
+      }
+    },
+    "rin-lunar": {
+      "cls": 1,
+      "base": "rin",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/rin-lunar-movement.webp",
+          "sha256": "16fe4b74f565fa3041e01c96fb6ad65950e6b6077c7d49139b75ca74076cce83",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 72,
+          "soleY": 236
+        },
+        "combo0": {
+          "src": "art/premium/rin-lunar-combat.webp",
+          "sha256": "67ebb7e5f26c6904b7c0107d25b6764f40d78b6e9ec465e919bb7379d3950338",
+          "frame": 7,
+          "rect": [
+            665,
+            222,
+            222,
+            222
+          ],
+          "eyeY": 73,
+          "soleY": 205
+        },
+        "combo1": {
+          "src": "art/premium/rin-lunar-combat.webp",
+          "sha256": "67ebb7e5f26c6904b7c0107d25b6764f40d78b6e9ec465e919bb7379d3950338",
+          "frame": 7,
+          "rect": [
+            665,
+            665,
+            222,
+            222
+          ],
+          "eyeY": 75,
+          "soleY": 205
+        },
+        "combo2": {
+          "src": "art/premium/rin-lunar-combat.webp",
+          "sha256": "67ebb7e5f26c6904b7c0107d25b6764f40d78b6e9ec465e919bb7379d3950338",
+          "frame": 7,
+          "rect": [
+            665,
+            1109,
+            222,
+            221
+          ],
+          "eyeY": 73,
+          "soleY": 205
+        },
+        "cast": {
+          "src": "art/premium/rin-lunar-combat.webp",
+          "sha256": "67ebb7e5f26c6904b7c0107d25b6764f40d78b6e9ec465e919bb7379d3950338",
+          "frame": 7,
+          "rect": [
+            665,
+            1552,
+            222,
+            222
+          ],
+          "eyeY": 75,
+          "soleY": 207
+        }
+      }
+    },
+    "rin-aurora": {
+      "cls": 1,
+      "base": "rin",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/rin-aurora-movement.webp",
+          "sha256": "918486a990bde76a1a53057b31dc6fb86a8690486ac0265ebce1027d0583027d",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 84,
+          "soleY": 225
+        },
+        "combo0": {
+          "src": "art/premium/rin-aurora-combat.webp",
+          "sha256": "a71944dc3209ce61c1a9460d0de30ea02dcc2e02234511001c7658a0811d9b6f",
+          "frame": 7,
+          "rect": [
+            665,
+            222,
+            222,
+            222
+          ],
+          "eyeY": 75,
+          "soleY": 194
+        },
+        "combo1": {
+          "src": "art/premium/rin-aurora-combat.webp",
+          "sha256": "a71944dc3209ce61c1a9460d0de30ea02dcc2e02234511001c7658a0811d9b6f",
+          "frame": 7,
+          "rect": [
+            665,
+            665,
+            222,
+            222
+          ],
+          "eyeY": 73,
+          "soleY": 198
+        },
+        "combo2": {
+          "src": "art/premium/rin-aurora-combat.webp",
+          "sha256": "a71944dc3209ce61c1a9460d0de30ea02dcc2e02234511001c7658a0811d9b6f",
+          "frame": 7,
+          "rect": [
+            665,
+            1109,
+            222,
+            221
+          ],
+          "eyeY": 72,
+          "soleY": 196
+        },
+        "cast": {
+          "src": "art/premium/rin-aurora-combat.webp",
+          "sha256": "a71944dc3209ce61c1a9460d0de30ea02dcc2e02234511001c7658a0811d9b6f",
+          "frame": 7,
+          "rect": [
+            665,
+            1552,
+            222,
+            222
+          ],
+          "eyeY": 71,
+          "soleY": 199
+        }
+      }
+    },
+    "rin-abyss": {
+      "cls": 1,
+      "base": "rin",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/rin-abyss-movement.webp",
+          "sha256": "b27ab4fbdc385ed2c93385425a457812bded09f73bff790228cd1dded5bbda23",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 75,
+          "soleY": 230
+        },
+        "combo0": {
+          "src": "art/premium/rin-abyss-combat.webp",
+          "sha256": "27194b8b5ec7ae5d5cef618fd3ed08dac4811a6c9b104894aa92416cb1c71bb6",
+          "frame": 7,
+          "rect": [
+            665,
+            222,
+            222,
+            222
+          ],
+          "eyeY": 82,
+          "soleY": 195
+        },
+        "combo1": {
+          "src": "art/premium/rin-abyss-combat.webp",
+          "sha256": "27194b8b5ec7ae5d5cef618fd3ed08dac4811a6c9b104894aa92416cb1c71bb6",
+          "frame": 7,
+          "rect": [
+            665,
+            665,
+            222,
+            222
+          ],
+          "eyeY": 82,
+          "soleY": 197
+        },
+        "combo2": {
+          "src": "art/premium/rin-abyss-combat.webp",
+          "sha256": "27194b8b5ec7ae5d5cef618fd3ed08dac4811a6c9b104894aa92416cb1c71bb6",
+          "frame": 7,
+          "rect": [
+            665,
+            1109,
+            222,
+            221
+          ],
+          "eyeY": 79,
+          "soleY": 197
+        },
+        "cast": {
+          "src": "art/premium/rin-abyss-combat.webp",
+          "sha256": "27194b8b5ec7ae5d5cef618fd3ed08dac4811a6c9b104894aa92416cb1c71bb6",
+          "frame": 7,
+          "rect": [
+            665,
+            1552,
+            222,
+            222
+          ],
+          "eyeY": 80,
+          "soleY": 195
+        }
+      }
+    },
+    "bane-noel": {
+      "cls": 2,
+      "base": "bane",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/bane-noel-movement.webp",
+          "sha256": "e296bc1941a16bfa12dccc85fbe3a3119320055cacf017a415f09f96106f8f07",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 88,
+          "soleY": 221
+        },
+        "combo0": {
+          "src": "art/premium/bane-noel-combat.webp",
+          "sha256": "1f9f6281b69bf696fa29ec16f1d3b840da4e808204f9dedfba36033aa7620e7c",
+          "frame": 7,
+          "rect": [
+            665,
+            222,
+            222,
+            222
+          ],
+          "eyeY": 78,
+          "soleY": 208
+        },
+        "combo1": {
+          "src": "art/premium/bane-noel-combat.webp",
+          "sha256": "1f9f6281b69bf696fa29ec16f1d3b840da4e808204f9dedfba36033aa7620e7c",
+          "frame": 7,
+          "rect": [
+            665,
+            665,
+            222,
+            222
+          ],
+          "eyeY": 78,
+          "soleY": 208
+        },
+        "combo2": {
+          "src": "art/premium/bane-noel-combat.webp",
+          "sha256": "1f9f6281b69bf696fa29ec16f1d3b840da4e808204f9dedfba36033aa7620e7c",
+          "frame": 7,
+          "rect": [
+            665,
+            1109,
+            222,
+            221
+          ],
+          "eyeY": 80,
+          "soleY": 208
+        },
+        "cast": {
+          "src": "art/premium/bane-noel-combat.webp",
+          "sha256": "1f9f6281b69bf696fa29ec16f1d3b840da4e808204f9dedfba36033aa7620e7c",
+          "frame": 7,
+          "rect": [
+            665,
+            1552,
+            222,
+            222
+          ],
+          "eyeY": 77,
+          "soleY": 209
+        }
+      }
+    },
+    "bane-ember": {
+      "cls": 2,
+      "base": "bane",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/bane-ember-movement.webp",
+          "sha256": "d56556f93ce607b2cd25bc5218171e7961988c09f40080399025afca6e8268be",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 68,
+          "soleY": 231
+        },
+        "combo0": {
+          "src": "art/premium/bane-ember-combat.webp",
+          "sha256": "d3882d9d4abcf6cafd82db83fd0494f4ae9dbb7458768a2516b13e6bf1294bb2",
+          "frame": 7,
+          "rect": [
+            665,
+            222,
+            222,
+            222
+          ],
+          "eyeY": 59,
+          "soleY": 206
+        },
+        "combo1": {
+          "src": "art/premium/bane-ember-combat.webp",
+          "sha256": "d3882d9d4abcf6cafd82db83fd0494f4ae9dbb7458768a2516b13e6bf1294bb2",
+          "frame": 7,
+          "rect": [
+            665,
+            665,
+            222,
+            222
+          ],
+          "eyeY": 57,
+          "soleY": 209
+        },
+        "combo2": {
+          "src": "art/premium/bane-ember-combat.webp",
+          "sha256": "d3882d9d4abcf6cafd82db83fd0494f4ae9dbb7458768a2516b13e6bf1294bb2",
+          "frame": 7,
+          "rect": [
+            665,
+            1109,
+            222,
+            221
+          ],
+          "eyeY": 55,
+          "soleY": 208
+        },
+        "cast": {
+          "src": "art/premium/bane-ember-combat.webp",
+          "sha256": "d3882d9d4abcf6cafd82db83fd0494f4ae9dbb7458768a2516b13e6bf1294bb2",
+          "frame": 7,
+          "rect": [
+            665,
+            1552,
+            222,
+            222
+          ],
+          "eyeY": 60,
+          "soleY": 207
+        }
+      }
+    },
+    "bane-lunar": {
+      "cls": 2,
+      "base": "bane",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/bane-lunar-movement.webp",
+          "sha256": "56e9e24b387958aac21e5b949cae032938e86d45a62702b25b36c403f5f370a7",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 59,
+          "soleY": 242
+        },
+        "combo0": {
+          "src": "art/premium/bane-lunar-combat.webp",
+          "sha256": "7bedc4f15b4d9672f4e4390aad25448666baa97df56254cfe3a20e2624ab036b",
+          "frame": 7,
+          "rect": [
+            665,
+            222,
+            222,
+            222
+          ],
+          "eyeY": 55,
+          "soleY": 213
+        },
+        "combo1": {
+          "src": "art/premium/bane-lunar-combat.webp",
+          "sha256": "7bedc4f15b4d9672f4e4390aad25448666baa97df56254cfe3a20e2624ab036b",
+          "frame": 7,
+          "rect": [
+            665,
+            665,
+            222,
+            222
+          ],
+          "eyeY": 58,
+          "soleY": 216
+        },
+        "combo2": {
+          "src": "art/premium/bane-lunar-combat.webp",
+          "sha256": "7bedc4f15b4d9672f4e4390aad25448666baa97df56254cfe3a20e2624ab036b",
+          "frame": 7,
+          "rect": [
+            665,
+            1109,
+            222,
+            221
+          ],
+          "eyeY": 58,
+          "soleY": 211
+        },
+        "cast": {
+          "src": "art/premium/bane-lunar-combat.webp",
+          "sha256": "7bedc4f15b4d9672f4e4390aad25448666baa97df56254cfe3a20e2624ab036b",
+          "frame": 7,
+          "rect": [
+            665,
+            1552,
+            222,
+            222
+          ],
+          "eyeY": 51,
+          "soleY": 208
+        }
+      }
+    },
+    "bane-aurora": {
+      "cls": 2,
+      "base": "bane",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/bane-aurora-movement.webp",
+          "sha256": "e2c2fe830d59a16e0ca1abe18ef78dbf79c962bf1e350b081097929e7caa4fbd",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 68,
+          "soleY": 224
+        },
+        "combo0": {
+          "src": "art/premium/bane-aurora-combat.webp",
+          "sha256": "071f8a6ba982be153a6b847265650acfee54f9fbdffaaa65de2ff90cadd0922e",
+          "frame": 7,
+          "rect": [
+            665,
+            222,
+            222,
+            222
+          ],
+          "eyeY": 58,
+          "soleY": 203
+        },
+        "combo1": {
+          "src": "art/premium/bane-aurora-combat.webp",
+          "sha256": "071f8a6ba982be153a6b847265650acfee54f9fbdffaaa65de2ff90cadd0922e",
+          "frame": 7,
+          "rect": [
+            665,
+            665,
+            222,
+            222
+          ],
+          "eyeY": 57,
+          "soleY": 207
+        },
+        "combo2": {
+          "src": "art/premium/bane-aurora-combat.webp",
+          "sha256": "071f8a6ba982be153a6b847265650acfee54f9fbdffaaa65de2ff90cadd0922e",
+          "frame": 7,
+          "rect": [
+            665,
+            1109,
+            222,
+            221
+          ],
+          "eyeY": 58,
+          "soleY": 208
+        },
+        "cast": {
+          "src": "art/premium/bane-aurora-combat.webp",
+          "sha256": "071f8a6ba982be153a6b847265650acfee54f9fbdffaaa65de2ff90cadd0922e",
+          "frame": 7,
+          "rect": [
+            665,
+            1552,
+            222,
+            222
+          ],
+          "eyeY": 58,
+          "soleY": 209
+        }
+      }
+    },
+    "bane-abyss": {
+      "cls": 2,
+      "base": "bane",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/bane-abyss-movement.webp",
+          "sha256": "32d8fba3d93b5afb42965a7baa79a498f38f63f58b8f55da1f9f2022201a2744",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 76,
+          "soleY": 232
+        },
+        "combo0": {
+          "src": "art/premium/bane-abyss-combat.webp",
+          "sha256": "4b7375758be4c8123955d60ef5561f9794981a30c3c32e3632a803a4d91d7024",
+          "frame": 7,
+          "rect": [
+            665,
+            222,
+            222,
+            222
+          ],
+          "eyeY": 75,
+          "soleY": 210
+        },
+        "combo1": {
+          "src": "art/premium/bane-abyss-combat.webp",
+          "sha256": "4b7375758be4c8123955d60ef5561f9794981a30c3c32e3632a803a4d91d7024",
+          "frame": 7,
+          "rect": [
+            665,
+            665,
+            222,
+            222
+          ],
+          "eyeY": 75,
+          "soleY": 211
+        },
+        "combo2": {
+          "src": "art/premium/bane-abyss-combat.webp",
+          "sha256": "4b7375758be4c8123955d60ef5561f9794981a30c3c32e3632a803a4d91d7024",
+          "frame": 7,
+          "rect": [
+            665,
+            1109,
+            222,
+            221
+          ],
+          "eyeY": 74,
+          "soleY": 210
+        },
+        "cast": {
+          "src": "art/premium/bane-abyss-combat.webp",
+          "sha256": "4b7375758be4c8123955d60ef5561f9794981a30c3c32e3632a803a4d91d7024",
+          "frame": 7,
+          "rect": [
+            665,
+            1552,
+            222,
+            222
+          ],
+          "eyeY": 73,
+          "soleY": 210
+        }
+      }
+    },
+    "sera-noel": {
+      "cls": 3,
+      "base": "sera",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/sera-noel-movement.webp",
+          "sha256": "535a75f7c12339fe71ec12f8c68efe02ae08f5e577dd914ddcdd7dde65e0490d",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 67,
+          "soleY": 226
+        },
+        "combo0": {
+          "src": "art/premium/sera-noel-combat.webp",
+          "sha256": "b85cc3fa03949b81a2165ac2bc7c03898dea4b3ccd16d05ded222fbf8829295e",
+          "frame": 7,
+          "rect": [
+            665,
+            222,
+            222,
+            222
+          ],
+          "eyeY": 62,
+          "soleY": 211
+        },
+        "combo1": {
+          "src": "art/premium/sera-noel-combat.webp",
+          "sha256": "b85cc3fa03949b81a2165ac2bc7c03898dea4b3ccd16d05ded222fbf8829295e",
+          "frame": 7,
+          "rect": [
+            665,
+            665,
+            222,
+            222
+          ],
+          "eyeY": 66,
+          "soleY": 213
+        },
+        "combo2": {
+          "src": "art/premium/sera-noel-combat.webp",
+          "sha256": "b85cc3fa03949b81a2165ac2bc7c03898dea4b3ccd16d05ded222fbf8829295e",
+          "frame": 7,
+          "rect": [
+            665,
+            1109,
+            222,
+            221
+          ],
+          "eyeY": 65,
+          "soleY": 213
+        },
+        "cast": {
+          "src": "art/premium/sera-noel-combat.webp",
+          "sha256": "b85cc3fa03949b81a2165ac2bc7c03898dea4b3ccd16d05ded222fbf8829295e",
+          "frame": 7,
+          "rect": [
+            665,
+            1552,
+            222,
+            222
+          ],
+          "eyeY": 66,
+          "soleY": 216
+        }
+      }
+    },
+    "sera-ember": {
+      "cls": 3,
+      "base": "sera",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/sera-ember-movement.webp",
+          "sha256": "832bc23c0c48c610ab7c8f1322b2028cfad821c6a44f228c9d0d35b54afc34bd",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 70,
+          "soleY": 222
+        },
+        "combo0": {
+          "src": "art/premium/sera-ember-combat.webp",
+          "sha256": "e14d23a21a14dfd2524e3a92006a45d0301eec8543f61aa3b5e957fe805002a9",
+          "frame": 7,
+          "rect": [
+            665,
+            222,
+            222,
+            222
+          ],
+          "eyeY": 43,
+          "soleY": 205
+        },
+        "combo1": {
+          "src": "art/premium/sera-ember-combat.webp",
+          "sha256": "e14d23a21a14dfd2524e3a92006a45d0301eec8543f61aa3b5e957fe805002a9",
+          "frame": 7,
+          "rect": [
+            665,
+            665,
+            222,
+            222
+          ],
+          "eyeY": 46,
+          "soleY": 207
+        },
+        "combo2": {
+          "src": "art/premium/sera-ember-combat.webp",
+          "sha256": "e14d23a21a14dfd2524e3a92006a45d0301eec8543f61aa3b5e957fe805002a9",
+          "frame": 7,
+          "rect": [
+            665,
+            1109,
+            222,
+            221
+          ],
+          "eyeY": 41,
+          "soleY": 207
+        },
+        "cast": {
+          "src": "art/premium/sera-ember-combat.webp",
+          "sha256": "e14d23a21a14dfd2524e3a92006a45d0301eec8543f61aa3b5e957fe805002a9",
+          "frame": 7,
+          "rect": [
+            665,
+            1552,
+            222,
+            222
+          ],
+          "eyeY": 47,
+          "soleY": 208
+        }
+      }
+    },
+    "sera-lunar": {
+      "cls": 3,
+      "base": "sera",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/sera-lunar-movement.webp",
+          "sha256": "09b33e8e19e0995bb8bc9c9b30dc6a677252daf0a32e21bd0993d07dabdc53f5",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 49,
+          "soleY": 247
+        },
+        "combo0": {
+          "src": "art/premium/sera-lunar-combat.webp",
+          "sha256": "b1e621a08d5f838268081c89526ff32117c994d07aac75f512e706298c39853c",
+          "frame": 7,
+          "rect": [
+            665,
+            222,
+            222,
+            222
+          ],
+          "eyeY": 56,
+          "soleY": 214
+        },
+        "combo1": {
+          "src": "art/premium/sera-lunar-combat.webp",
+          "sha256": "b1e621a08d5f838268081c89526ff32117c994d07aac75f512e706298c39853c",
+          "frame": 7,
+          "rect": [
+            665,
+            665,
+            222,
+            222
+          ],
+          "eyeY": 56,
+          "soleY": 215
+        },
+        "combo2": {
+          "src": "art/premium/sera-lunar-combat.webp",
+          "sha256": "b1e621a08d5f838268081c89526ff32117c994d07aac75f512e706298c39853c",
+          "frame": 7,
+          "rect": [
+            665,
+            1109,
+            222,
+            221
+          ],
+          "eyeY": 57,
+          "soleY": 213
+        },
+        "cast": {
+          "src": "art/premium/sera-lunar-combat.webp",
+          "sha256": "b1e621a08d5f838268081c89526ff32117c994d07aac75f512e706298c39853c",
+          "frame": 7,
+          "rect": [
+            665,
+            1552,
+            222,
+            222
+          ],
+          "eyeY": 58,
+          "soleY": 213
+        }
+      }
+    },
+    "sera-aurora": {
+      "cls": 3,
+      "base": "sera",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/sera-aurora-movement.webp",
+          "sha256": "087dbae017b884ebd74b90a591342acf48256011abfcaf67f9082f97395198fa",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 90,
+          "soleY": 223
+        },
+        "combo0": {
+          "src": "art/premium/sera-aurora-combat.webp",
+          "sha256": "f0fecc144b60b29112daa7b5ea2812282c4c5aead57c99f5f33bd210fdff34c6",
+          "frame": 7,
+          "rect": [
+            665,
+            222,
+            222,
+            222
+          ],
+          "eyeY": 50,
+          "soleY": 203
+        },
+        "combo1": {
+          "src": "art/premium/sera-aurora-combat.webp",
+          "sha256": "f0fecc144b60b29112daa7b5ea2812282c4c5aead57c99f5f33bd210fdff34c6",
+          "frame": 7,
+          "rect": [
+            665,
+            665,
+            222,
+            222
+          ],
+          "eyeY": 50,
+          "soleY": 204
+        },
+        "combo2": {
+          "src": "art/premium/sera-aurora-combat.webp",
+          "sha256": "f0fecc144b60b29112daa7b5ea2812282c4c5aead57c99f5f33bd210fdff34c6",
+          "frame": 7,
+          "rect": [
+            665,
+            1109,
+            222,
+            221
+          ],
+          "eyeY": 53,
+          "soleY": 203
+        },
+        "cast": {
+          "src": "art/premium/sera-aurora-combat.webp",
+          "sha256": "f0fecc144b60b29112daa7b5ea2812282c4c5aead57c99f5f33bd210fdff34c6",
+          "frame": 7,
+          "rect": [
+            665,
+            1552,
+            222,
+            222
+          ],
+          "eyeY": 51,
+          "soleY": 204
+        }
+      }
+    },
+    "sera-abyss": {
+      "cls": 3,
+      "base": "sera",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/sera-abyss-movement.webp",
+          "sha256": "7164929c449033ed9fbe7961aed79509aa024b2390811865c47f5cd99ac5b3be",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 62,
+          "soleY": 234
+        },
+        "combo0": {
+          "src": "art/premium/sera-abyss-combat.webp",
+          "sha256": "d2a3979037ae5fa08ee9e7fc7fd92bb244d0c05029fb503cd09ee4ce596895b6",
+          "frame": 7,
+          "rect": [
+            665,
+            222,
+            222,
+            222
+          ],
+          "eyeY": 62,
+          "soleY": 209
+        },
+        "combo1": {
+          "src": "art/premium/sera-abyss-combat.webp",
+          "sha256": "d2a3979037ae5fa08ee9e7fc7fd92bb244d0c05029fb503cd09ee4ce596895b6",
+          "frame": 7,
+          "rect": [
+            665,
+            665,
+            222,
+            222
+          ],
+          "eyeY": 63,
+          "soleY": 210
+        },
+        "combo2": {
+          "src": "art/premium/sera-abyss-combat.webp",
+          "sha256": "d2a3979037ae5fa08ee9e7fc7fd92bb244d0c05029fb503cd09ee4ce596895b6",
+          "frame": 7,
+          "rect": [
+            665,
+            1109,
+            222,
+            221
+          ],
+          "eyeY": 59,
+          "soleY": 209
+        },
+        "cast": {
+          "src": "art/premium/sera-abyss-combat.webp",
+          "sha256": "d2a3979037ae5fa08ee9e7fc7fd92bb244d0c05029fb503cd09ee4ce596895b6",
+          "frame": 7,
+          "rect": [
+            665,
+            1552,
+            222,
+            222
+          ],
+          "eyeY": 57,
+          "soleY": 208
+        }
+      }
+    },
+    "aria-noel": {
+      "cls": 4,
+      "base": "aria",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/aria-noel-movement.webp",
+          "sha256": "2e1c6bf7ca554684ca44a58976d360151bc6f9242b20146d7fc8fad38a96d2ba",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 70,
+          "soleY": 213
+        },
+        "combo0": {
+          "src": "art/premium/aria-noel-combat.webp",
+          "sha256": "2c5049360482d69a399c957baf0c139e017034c59925a49d3ee1f20839ddb3c2",
+          "frame": 7,
+          "rect": [
+            665,
+            222,
+            222,
+            222
+          ],
+          "eyeY": 73,
+          "soleY": 193
+        },
+        "combo1": {
+          "src": "art/premium/aria-noel-combat.webp",
+          "sha256": "2c5049360482d69a399c957baf0c139e017034c59925a49d3ee1f20839ddb3c2",
+          "frame": 7,
+          "rect": [
+            665,
+            665,
+            222,
+            222
+          ],
+          "eyeY": 73,
+          "soleY": 193
+        },
+        "combo2": {
+          "src": "art/premium/aria-noel-combat.webp",
+          "sha256": "2c5049360482d69a399c957baf0c139e017034c59925a49d3ee1f20839ddb3c2",
+          "frame": 7,
+          "rect": [
+            665,
+            1109,
+            222,
+            221
+          ],
+          "eyeY": 75,
+          "soleY": 194
+        },
+        "cast": {
+          "src": "art/premium/aria-noel-combat.webp",
+          "sha256": "2c5049360482d69a399c957baf0c139e017034c59925a49d3ee1f20839ddb3c2",
+          "frame": 7,
+          "rect": [
+            665,
+            1552,
+            222,
+            222
+          ],
+          "eyeY": 75,
+          "soleY": 194
+        }
+      }
+    },
+    "aria-ember": {
+      "cls": 4,
+      "base": "aria",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/aria-ember-movement.webp",
+          "sha256": "69338d2b4d5c464cf3e68ea9b632e6753cadf375fc2231328dab631248250c37",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 73,
+          "soleY": 229
+        },
+        "combo0": {
+          "src": "art/premium/aria-ember-combat.webp",
+          "sha256": "aeec852c5214b961f40d6fcd73cadfb018063645f6fdcab484f85329d2bd3434",
+          "frame": 7,
+          "rect": [
+            814,
+            181,
+            272,
+            181
+          ],
+          "eyeY": 45,
+          "soleY": 175
+        },
+        "combo1": {
+          "src": "art/premium/aria-ember-combat.webp",
+          "sha256": "aeec852c5214b961f40d6fcd73cadfb018063645f6fdcab484f85329d2bd3434",
+          "frame": 7,
+          "rect": [
+            814,
+            543,
+            272,
+            181
+          ],
+          "eyeY": 47,
+          "soleY": 176
+        },
+        "combo2": {
+          "src": "art/premium/aria-ember-combat.webp",
+          "sha256": "aeec852c5214b961f40d6fcd73cadfb018063645f6fdcab484f85329d2bd3434",
+          "frame": 7,
+          "rect": [
+            814,
+            905,
+            272,
+            181
+          ],
+          "eyeY": 47,
+          "soleY": 176
+        },
+        "cast": {
+          "src": "art/premium/aria-ember-combat.webp",
+          "sha256": "aeec852c5214b961f40d6fcd73cadfb018063645f6fdcab484f85329d2bd3434",
+          "frame": 7,
+          "rect": [
+            814,
+            1267,
+            272,
+            181
+          ],
+          "eyeY": 46,
+          "soleY": 176
+        }
+      }
+    },
+    "aria-lunar": {
+      "cls": 4,
+      "base": "aria",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/aria-lunar-movement.webp",
+          "sha256": "6a13eb5df72135ddcab1fbf39d35aa931865315c7c1097f6df3ea0ca71933d62",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 89,
+          "soleY": 215
+        },
+        "combo0": {
+          "src": "art/premium/aria-lunar-combat.webp",
+          "sha256": "10550e5eda5a5066a08a62fb67ff285df532ebfd68ed4485ea6a56dfdbf192ed",
+          "frame": 7,
+          "rect": [
+            814,
+            181,
+            272,
+            181
+          ],
+          "eyeY": 88,
+          "soleY": 173
+        },
+        "combo1": {
+          "src": "art/premium/aria-lunar-combat.webp",
+          "sha256": "10550e5eda5a5066a08a62fb67ff285df532ebfd68ed4485ea6a56dfdbf192ed",
+          "frame": 7,
+          "rect": [
+            814,
+            543,
+            272,
+            181
+          ],
+          "eyeY": 75,
+          "soleY": 163
+        },
+        "combo2": {
+          "src": "art/premium/aria-lunar-combat.webp",
+          "sha256": "10550e5eda5a5066a08a62fb67ff285df532ebfd68ed4485ea6a56dfdbf192ed",
+          "frame": 7,
+          "rect": [
+            814,
+            905,
+            272,
+            181
+          ],
+          "eyeY": 56,
+          "soleY": 142
+        },
+        "cast": {
+          "src": "art/premium/aria-lunar-combat.webp",
+          "sha256": "10550e5eda5a5066a08a62fb67ff285df532ebfd68ed4485ea6a56dfdbf192ed",
+          "frame": 7,
+          "rect": [
+            814,
+            1267,
+            272,
+            181
+          ],
+          "eyeY": 57,
+          "soleY": 136
+        }
+      }
+    },
+    "aria-aurora": {
+      "cls": 4,
+      "base": "aria",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/aria-aurora-movement.webp",
+          "sha256": "5ef26e40cf4f24c2027ee42f62bab1feb0336a8eaef44ec9d18ff473a0d9472e",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 64,
+          "soleY": 225
+        },
+        "combo0": {
+          "src": "art/premium/aria-aurora-combat.webp",
+          "sha256": "4c09ee36e553a99b97e72fb1badb23ec9d62b6329db4e2bf13846cecc46eab89",
+          "frame": 7,
+          "rect": [
+            665,
+            222,
+            222,
+            222
+          ],
+          "eyeY": 93,
+          "soleY": 194
+        },
+        "combo1": {
+          "src": "art/premium/aria-aurora-combat.webp",
+          "sha256": "4c09ee36e553a99b97e72fb1badb23ec9d62b6329db4e2bf13846cecc46eab89",
+          "frame": 7,
+          "rect": [
+            665,
+            665,
+            222,
+            222
+          ],
+          "eyeY": 92,
+          "soleY": 199
+        },
+        "combo2": {
+          "src": "art/premium/aria-aurora-combat.webp",
+          "sha256": "4c09ee36e553a99b97e72fb1badb23ec9d62b6329db4e2bf13846cecc46eab89",
+          "frame": 7,
+          "rect": [
+            665,
+            1109,
+            222,
+            221
+          ],
+          "eyeY": 96,
+          "soleY": 196
+        },
+        "cast": {
+          "src": "art/premium/aria-aurora-combat.webp",
+          "sha256": "4c09ee36e553a99b97e72fb1badb23ec9d62b6329db4e2bf13846cecc46eab89",
+          "frame": 7,
+          "rect": [
+            665,
+            1552,
+            222,
+            222
+          ],
+          "eyeY": 94,
+          "soleY": 194
+        }
+      }
+    },
+    "aria-abyss": {
+      "cls": 4,
+      "base": "aria",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/aria-abyss-movement.webp",
+          "sha256": "4aac95fb0364ab1fca4d7c75c06fd2ff64390ee42b21528d2c5d95d75f9debb8",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 61,
+          "soleY": 234
+        },
+        "combo0": {
+          "src": "art/premium/aria-abyss-combat.webp",
+          "sha256": "259d3b38c03e63403d3226c71382bdcd0d8120886f88a79ef58af73c2db68ac9",
+          "frame": 7,
+          "rect": [
+            665,
+            222,
+            222,
+            222
+          ],
+          "eyeY": 70,
+          "soleY": 208
+        },
+        "combo1": {
+          "src": "art/premium/aria-abyss-combat.webp",
+          "sha256": "259d3b38c03e63403d3226c71382bdcd0d8120886f88a79ef58af73c2db68ac9",
+          "frame": 7,
+          "rect": [
+            665,
+            665,
+            222,
+            222
+          ],
+          "eyeY": 65,
+          "soleY": 210
+        },
+        "combo2": {
+          "src": "art/premium/aria-abyss-combat.webp",
+          "sha256": "259d3b38c03e63403d3226c71382bdcd0d8120886f88a79ef58af73c2db68ac9",
+          "frame": 7,
+          "rect": [
+            665,
+            1109,
+            222,
+            221
+          ],
+          "eyeY": 70,
+          "soleY": 209
+        },
+        "cast": {
+          "src": "art/premium/aria-abyss-combat.webp",
+          "sha256": "259d3b38c03e63403d3226c71382bdcd0d8120886f88a79ef58af73c2db68ac9",
+          "frame": 7,
+          "rect": [
+            665,
+            1552,
+            222,
+            222
+          ],
+          "eyeY": 65,
+          "soleY": 210
+        }
+      }
+    },
+    "elian-noel": {
+      "cls": 5,
+      "base": "elian",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/elian-noel-movement.webp",
+          "sha256": "aacdeeb97c5cca1e49134701671b1d2fcb13fe566990aa6dba1da61c04f904eb",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 71,
+          "soleY": 216
+        },
+        "combo0": {
+          "src": "art/premium/elian-noel-combat.webp",
+          "sha256": "c5ecdf75baa4a1bf0b3141c32f17dfc8de90b788250b8700cc31dcadd980b6c8",
+          "frame": 7,
+          "rect": [
+            768,
+            192,
+            256,
+            192
+          ],
+          "eyeY": 72,
+          "soleY": 182
+        },
+        "combo1": {
+          "src": "art/premium/elian-noel-combat.webp",
+          "sha256": "c5ecdf75baa4a1bf0b3141c32f17dfc8de90b788250b8700cc31dcadd980b6c8",
+          "frame": 7,
+          "rect": [
+            768,
+            576,
+            256,
+            192
+          ],
+          "eyeY": 64,
+          "soleY": 180
+        },
+        "combo2": {
+          "src": "art/premium/elian-noel-combat.webp",
+          "sha256": "c5ecdf75baa4a1bf0b3141c32f17dfc8de90b788250b8700cc31dcadd980b6c8",
+          "frame": 7,
+          "rect": [
+            768,
+            960,
+            256,
+            192
+          ],
+          "eyeY": 63,
+          "soleY": 178
+        },
+        "cast": {
+          "src": "art/premium/elian-noel-combat.webp",
+          "sha256": "c5ecdf75baa4a1bf0b3141c32f17dfc8de90b788250b8700cc31dcadd980b6c8",
+          "frame": 7,
+          "rect": [
+            768,
+            1344,
+            256,
+            192
+          ],
+          "eyeY": 64,
+          "soleY": 180
+        }
+      }
+    },
+    "elian-ember": {
+      "cls": 5,
+      "base": "elian",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/elian-ember-movement.webp",
+          "sha256": "a4697d65e35e8bb61a6f9763918023527fc565b8c4bd8c4c8dbdf4e239e3302b",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 46,
+          "soleY": 241
+        },
+        "combo0": {
+          "src": "art/premium/elian-ember-combat.webp",
+          "sha256": "77d0d05355e47020c9e56b63deb8dc07453c18d8645ff35c19ce52451847b3c1",
+          "frame": 7,
+          "rect": [
+            665,
+            222,
+            222,
+            222
+          ],
+          "eyeY": 56,
+          "soleY": 206
+        },
+        "combo1": {
+          "src": "art/premium/elian-ember-combat.webp",
+          "sha256": "77d0d05355e47020c9e56b63deb8dc07453c18d8645ff35c19ce52451847b3c1",
+          "frame": 7,
+          "rect": [
+            665,
+            665,
+            222,
+            222
+          ],
+          "eyeY": 52,
+          "soleY": 206
+        },
+        "combo2": {
+          "src": "art/premium/elian-ember-combat.webp",
+          "sha256": "77d0d05355e47020c9e56b63deb8dc07453c18d8645ff35c19ce52451847b3c1",
+          "frame": 7,
+          "rect": [
+            665,
+            1109,
+            222,
+            221
+          ],
+          "eyeY": 58,
+          "soleY": 205
+        },
+        "cast": {
+          "src": "art/premium/elian-ember-combat.webp",
+          "sha256": "77d0d05355e47020c9e56b63deb8dc07453c18d8645ff35c19ce52451847b3c1",
+          "frame": 7,
+          "rect": [
+            665,
+            1552,
+            222,
+            222
+          ],
+          "eyeY": 59,
+          "soleY": 206
+        }
+      }
+    },
+    "elian-lunar": {
+      "cls": 5,
+      "base": "elian",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/elian-lunar-movement.webp",
+          "sha256": "96b382dd583c1f6c65fa6a458e489ab149f324778a6ac4d0935c52e01e714e9d",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 57,
+          "soleY": 223
+        },
+        "combo0": {
+          "src": "art/premium/elian-lunar-combat.webp",
+          "sha256": "3cfe22ef16973c9ddf5fca79c6b57c7581d64589a43fa2217ca2fe6548495bb9",
+          "frame": 7,
+          "rect": [
+            665,
+            222,
+            222,
+            222
+          ],
+          "eyeY": 85,
+          "soleY": 196
+        },
+        "combo1": {
+          "src": "art/premium/elian-lunar-combat.webp",
+          "sha256": "3cfe22ef16973c9ddf5fca79c6b57c7581d64589a43fa2217ca2fe6548495bb9",
+          "frame": 7,
+          "rect": [
+            665,
+            665,
+            222,
+            222
+          ],
+          "eyeY": 85,
+          "soleY": 198
+        },
+        "combo2": {
+          "src": "art/premium/elian-lunar-combat.webp",
+          "sha256": "3cfe22ef16973c9ddf5fca79c6b57c7581d64589a43fa2217ca2fe6548495bb9",
+          "frame": 7,
+          "rect": [
+            665,
+            1109,
+            222,
+            221
+          ],
+          "eyeY": 86,
+          "soleY": 197
+        },
+        "cast": {
+          "src": "art/premium/elian-lunar-combat.webp",
+          "sha256": "3cfe22ef16973c9ddf5fca79c6b57c7581d64589a43fa2217ca2fe6548495bb9",
+          "frame": 7,
+          "rect": [
+            665,
+            1552,
+            222,
+            222
+          ],
+          "eyeY": 83,
+          "soleY": 195
+        }
+      }
+    },
+    "elian-aurora": {
+      "cls": 5,
+      "base": "elian",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/elian-aurora-movement.webp",
+          "sha256": "5c773dc4fb70843ef1d60fdee9ca3fa3b58ec9c3ff735f5a64b4402f7d836e68",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 66,
+          "soleY": 229
+        },
+        "combo0": {
+          "src": "art/premium/elian-aurora-combat.webp",
+          "sha256": "465ab1a5ff3919edc576f9a8be12e030d08450f035fbf1be01ec2383e68a2f25",
+          "frame": 7,
+          "rect": [
+            665,
+            222,
+            222,
+            222
+          ],
+          "eyeY": 86,
+          "soleY": 193
+        },
+        "combo1": {
+          "src": "art/premium/elian-aurora-combat.webp",
+          "sha256": "465ab1a5ff3919edc576f9a8be12e030d08450f035fbf1be01ec2383e68a2f25",
+          "frame": 7,
+          "rect": [
+            665,
+            665,
+            222,
+            222
+          ],
+          "eyeY": 79,
+          "soleY": 188
+        },
+        "combo2": {
+          "src": "art/premium/elian-aurora-combat.webp",
+          "sha256": "465ab1a5ff3919edc576f9a8be12e030d08450f035fbf1be01ec2383e68a2f25",
+          "frame": 7,
+          "rect": [
+            665,
+            1109,
+            222,
+            221
+          ],
+          "eyeY": 75,
+          "soleY": 185
+        },
+        "cast": {
+          "src": "art/premium/elian-aurora-combat.webp",
+          "sha256": "465ab1a5ff3919edc576f9a8be12e030d08450f035fbf1be01ec2383e68a2f25",
+          "frame": 7,
+          "rect": [
+            665,
+            1552,
+            222,
+            222
+          ],
+          "eyeY": 79,
+          "soleY": 184
+        }
+      }
+    },
+    "elian-abyss": {
+      "cls": 5,
+      "base": "elian",
+      "banks": {
+        "reaction": {
+          "src": "art/premium/elian-abyss-movement.webp",
+          "sha256": "23cdf114f7d7b0decbe0a19eda95834de6ca4deb20b81b49e461c4bab595e286",
+          "frame": 0,
+          "rect": [
+            0,
+            512,
+            256,
+            256
+          ],
+          "eyeY": 57,
+          "soleY": 228
+        },
+        "combo0": {
+          "src": "art/premium/elian-abyss-combat.webp",
+          "sha256": "620fc590a6f5f57cf9575dc4e86dbbccf1bb8fbc12aa2dc92049fff2653c53fb",
+          "frame": 7,
+          "rect": [
+            665,
+            222,
+            222,
+            222
+          ],
+          "eyeY": 62,
+          "soleY": 203
+        },
+        "combo1": {
+          "src": "art/premium/elian-abyss-combat.webp",
+          "sha256": "620fc590a6f5f57cf9575dc4e86dbbccf1bb8fbc12aa2dc92049fff2653c53fb",
+          "frame": 7,
+          "rect": [
+            665,
+            665,
+            222,
+            222
+          ],
+          "eyeY": 62,
+          "soleY": 204
+        },
+        "combo2": {
+          "src": "art/premium/elian-abyss-combat.webp",
+          "sha256": "620fc590a6f5f57cf9575dc4e86dbbccf1bb8fbc12aa2dc92049fff2653c53fb",
+          "frame": 7,
+          "rect": [
+            665,
+            1109,
+            222,
+            221
+          ],
+          "eyeY": 63,
+          "soleY": 203
+        },
+        "cast": {
+          "src": "art/premium/elian-abyss-combat.webp",
+          "sha256": "620fc590a6f5f57cf9575dc4e86dbbccf1bb8fbc12aa2dc92049fff2653c53fb",
+          "frame": 7,
+          "rect": [
+            665,
+            1552,
+            222,
+            222
+          ],
+          "eyeY": 60,
+          "soleY": 204
+        }
+      }
+    }
+  },
+  "review": "All 180 base/outfit landmarks checked again with enlarged face crops and a horizontal eye-line overlay; six live-render comparison sheets include the basic appearance."
+}
