@@ -2,7 +2,7 @@ const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/st
 const context={console};vm.createContext(context);vm.runInContext(fs.readFileSync('app/src/main/assets/rpg.js','utf8'),context);vm.runInContext(fs.readFileSync('app/src/main/assets/engine.js','utf8'),context);const E=context.Rift;
 function arena(cls=0){const s=E.create();s.players=[E.player(0,'테스터',cls,60,{ranks:[1,1,1,1,1,1],advanced:true,awakened:true})];E.start(s);s.enemies=[{id:99,type:'knight',x:410,y:570,hp:10000,maxHp:10000,dir:-1,cd:10,stun:0,at:0}];return s;}
 function tick(s,n=1,input={}){for(let i=0;i<n;i++)E.step(s,{0:input},1/60);}
-assert.equal(E.CLASSES.length,6);assert.equal(E.DUNGEONS.length,36);assert.equal(new Set(E.CLASSES.flatMap(c=>c.skills.map(s=>s.name))).size,36);
+assert.equal(E.CLASSES.length,6);assert.equal(E.DUNGEONS.length,48);assert.equal(new Set(E.CLASSES.flatMap(c=>c.skills.map(s=>s.name))).size,36);
 for(let cls=0;cls<4;cls++){
  const s=arena(cls),p=s.players[0];assert.equal(p.hp,p.maxHp);assert.equal(p.cd.length,7);
  let hp=s.enemies[0].hp;assert(E.attack(s,p,0));assert.equal(E.attack(s,p,0),false);assert.equal(s.enemies[0].hp,hp,'all attacks respect their drawn windup');tick(s,cls===3?75:Math.ceil(p.impactTime*60)+1);assert(s.enemies[0].hp<hp);

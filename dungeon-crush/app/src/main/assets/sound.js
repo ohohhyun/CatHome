@@ -94,7 +94,7 @@ function observe(game,myId=0){
    if(index>0||heavy||['heal','shield','ultimate'].includes(f.type))skillEffect(f,cls,volume,variation);
    else if(cls===5)play('holy-hit',.4*volume,variation);
   }else if(f.type==='hurt')play('soft',f.owner===myId?.6:.2,.85);
-  else if(f.type==='impact')play('earth-break',.33*volume,.9);
+  else if(f.type==='impact')play(f.enemy?root.DungeonEnemyFX?.soundFor(f.vfx)||'earth-break':'earth-break',(f.enemy?.25:.33)*volume,.9);
   else if(f.type==='dash')play('cloth1',.5*volume,1.12);
  }
  if(local?.action==='run'&&performance.now()-lastStep>270){lastStep=performance.now();play('step',.22,1+(local.id%3)*.04);}

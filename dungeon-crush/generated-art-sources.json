@@ -1,5 +1,5 @@
 {
-  "version": "2.10.1",
+  "version": "2.13.0",
   "generator": "OpenAI image_gen",
   "characterFrames": 272,
   "effectFrames": 240,
@@ -3925,16 +3925,634 @@
       "transparentFraction": 0.6549,
       "packaged": true,
       "repair": "canonical run appearance"
+    },
+    {
+      "id": "frontier-region-12",
+      "file": "art/frontier/region-12.webp",
+      "width": 1672,
+      "height": 941,
+      "sha256": "786c28055fab83770e19fbbca4bc1a640ee57514e51d23240879b025d313e92e",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-6fc55701-cc6d-482c-8ec3-6b819f64acdc.png",
+      "originalSha256": "fc38e791444dd9b5fd446d8d32c686793dd5cafa3ae4bcbc05f35c733c21d381",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true
+    },
+    {
+      "id": "frontier-bronze-diver",
+      "file": "art/frontier/bronze-diver.webp",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "0ab5eefd38e8ca1a35c43f7b16787daa0d8ca633fa54d7321b89ba89bcf70b74",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-422e865c-706c-4f29-844e-3bb407e9b95e.png",
+      "originalSha256": "93b0efeb13bf0104f71dff867099b10687189b15f67703f1e992f2f6263910c5",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "states": [
+        "walk",
+        "attack"
+      ]
+    },
+    {
+      "id": "frontier-turbine-jailer",
+      "file": "art/frontier/turbine-jailer.webp",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "472c4b5edc5184b13de7aee9bfc61c22ad8b6f4f1d40743fb8578903109d80ed",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-d300cea0-8ae1-4efe-8d24-aecf2a896c6a.png",
+      "originalSha256": "8c87a60aaa72c80fab8c97c08e01b33f40fdf14595537b6b0fc58c45af285a6a",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "states": [
+        "walk",
+        "attack"
+      ]
+    },
+    {
+      "id": "frontier-region-14",
+      "file": "art/frontier/region-14.webp",
+      "width": 1672,
+      "height": 941,
+      "sha256": "2c06c9b566c6c85f6b45e605472aba3d77f6413bf21ac4bec57304f9c32723f3",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-e81b23ed-5a69-45a9-92ee-dd1a378a0dd0.png",
+      "originalSha256": "af64d2e8ca86be3ab0158fc688d923fd0de4912d5995396822127408fac384ee",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true
+    },
+    {
+      "id": "frontier-region-13",
+      "file": "art/frontier/region-13.webp",
+      "width": 1672,
+      "height": 941,
+      "sha256": "bae9cf43ae5a864d8b56adb6b878a63deb07b5063a5d255f942a54dc51f4bd30",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-9e15244d-c271-48d5-9b88-bc7cc5fb341c.png",
+      "originalSha256": "d0707e7ba123ba83408dc1befdaee88eac57a4cbf2dbe3157e54b04ddc123cdd",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true
+    },
+    {
+      "id": "frontier-region-1",
+      "file": "art/frontier/region-1.webp",
+      "width": 1672,
+      "height": 941,
+      "sha256": "ba9f1c8658ff51a93e04f9910f1a3ae73e5b751e56ded26085143a3523428623",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-6c935c2d-0985-4ab5-bb7a-c9b986eb7d3c.png",
+      "originalSha256": "f01372b51fa4c91a822c35c9e9eccadcce9fab740b37aaf1f40f2ab6255d0c23",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true
+    },
+    {
+      "id": "frontier-region-2",
+      "file": "art/frontier/region-2.webp",
+      "width": 1672,
+      "height": 941,
+      "sha256": "cee871d1a932a9e206fb61798925b21fb3f2c8ed2e337b70033b35271e90cdf1",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-d64969b4-c59c-4a78-bfb3-226c453165e2.png",
+      "originalSha256": "643b3850219f5b19b79336fcad5d2b9e34027506f6dfcd02f9a697c3d1ebaeb7",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true
+    },
+    {
+      "id": "frontier-region-4",
+      "file": "art/frontier/region-4.webp",
+      "width": 1672,
+      "height": 941,
+      "sha256": "af247fabe7955f1610a516415c0ae3d59ae578a4388743c073a28d6c96b82ee9",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-b85d08d1-7e0d-4c1c-a14f-11e20215b839.png",
+      "originalSha256": "e8cd11f60a4db885f44e8c5699acf8a55d9ee0836d1a489a2a4b96fabb93c073",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true
+    },
+    {
+      "id": "frontier-region-3",
+      "file": "art/frontier/region-3.webp",
+      "width": 1672,
+      "height": 941,
+      "sha256": "8e2a4db1a7159b535b372ef39351263ed38c0108ade7fbb34c664ed2a93353d3",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-9ffd055c-93ca-4216-bee7-e120c207b4da.png",
+      "originalSha256": "fc4000843a1d56959e600496964af0651079a178b938304835df55fd80afe353",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true
+    },
+    {
+      "id": "frontier-region-5",
+      "file": "art/frontier/region-5.webp",
+      "width": 1672,
+      "height": 941,
+      "sha256": "8494bf36a7ff09e49cd9b23456bc9dfd5a3eb7b59193ed2c1a1d6a8c7af9b6e4",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-44a6d0e0-98ef-445f-a517-cb8864fc6819.png",
+      "originalSha256": "a2c56ea659f427c51c33e6873f4d0dd44cdefda6419d084103a142df19680296",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true
+    },
+    {
+      "id": "frontier-region-6",
+      "file": "art/frontier/region-6.webp",
+      "width": 1672,
+      "height": 941,
+      "sha256": "7c3871c270b7ad2aa50fcd7604edd5e23c43c7beb26be0e29eda7459268e9009",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-d468812b-254a-4e4d-9149-3487bbe35d1c.png",
+      "originalSha256": "4e5d55bdd1009e66e18958002297c56d7482c24187f2bd2671287cdc213d6e0f",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true
+    },
+    {
+      "id": "frontier-region-7",
+      "file": "art/frontier/region-7.webp",
+      "width": 1672,
+      "height": 941,
+      "sha256": "0efcebf45f29d8e7769e213f8f428eb3f5d05e37113723f55bcd2d424ad9f03f",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-17be559b-20f5-4fc4-bc11-aa1ec84a02bf.png",
+      "originalSha256": "d740826c8c23b2272a27fbc113dac1632949293371f258d9e849cc30fa8d38c1",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true
+    },
+    {
+      "id": "frontier-stage-38",
+      "file": "art/frontier/stage-38.webp",
+      "width": 1672,
+      "height": 941,
+      "sha256": "5c112829f5fb244c2d27ad5c70ddf3babf4b6b7e3721a254c30924c08ba4c44a",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-f3210337-f38b-4fc6-8935-a81460d40d0d.png",
+      "originalSha256": "89b6a5d72b3295815717fb0a8a8d8363dacbf5ef066cedf46647c5fd1ebd2bc6",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true
+    },
+    {
+      "id": "frontier-stage-40",
+      "file": "art/frontier/stage-40.webp",
+      "width": 1672,
+      "height": 941,
+      "sha256": "2d290b3b32b213975a5720c6bde96e32b565084b821c5ae185c3c569ae093251",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-a8759c96-66d8-418b-a17c-391333d9d77b.png",
+      "originalSha256": "fc080110637d054d660aca14ce4001babea252e073fea57a335ef326d2688bf7",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true
+    },
+    {
+      "id": "frontier-region-15",
+      "file": "art/frontier/region-15.webp",
+      "width": 1672,
+      "height": 941,
+      "sha256": "18d4c95430e17816485be5248b46c2369dc8a2c17e354fbedb3fcf58297cef10",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-0c760bb2-e84e-46e2-b109-5f599cd3dc20.png",
+      "originalSha256": "fadbeacda7f77bc1f04a2ffea6a6f5b7318fe159dda3201c4340d704a2a7742f",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true
+    },
+    {
+      "id": "frontier-stage-37",
+      "file": "art/frontier/stage-37.webp",
+      "width": 1672,
+      "height": 941,
+      "sha256": "0d0402dac4b65cd795207c46d892dfa0941fd254b1bdabec404460e6087996b3",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-5285314a-57b5-42b5-a389-35d6d99e51e4.png",
+      "originalSha256": "7046da9a66710e407101cbd264849403102b2e3ab230634195a6544d6efcfcfc",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true
+    },
+    {
+      "id": "frontier-stage-44",
+      "file": "art/frontier/stage-44.webp",
+      "width": 1672,
+      "height": 941,
+      "sha256": "63f31dd6c4942ec2b3ce841254e23deb88855d5f4c732b9ddfd952a5ed75209e",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-906739c2-d5e8-4da4-b7a6-d39b6e476cef.png",
+      "originalSha256": "52d2dab17edd12b6dbefa31a7513196cc66d611db23a9f86a6a1159908956396",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true
+    },
+    {
+      "id": "frontier-stage-41",
+      "file": "art/frontier/stage-41.webp",
+      "width": 1672,
+      "height": 941,
+      "sha256": "ee20190cf600e65ce2b5ff723bdb3daa1d457caf6cedc027cea9f0a55167cd98",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-b42dcc34-e6ce-4e67-92ea-0b22d9ae233a.png",
+      "originalSha256": "d98bd83b0ae40e039f740ef60045019e8f9dcd1358ca6553087831ca93294f37",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true
+    },
+    {
+      "id": "frontier-stage-46",
+      "file": "art/frontier/stage-46.webp",
+      "width": 1672,
+      "height": 941,
+      "sha256": "b7cec7d74d65890a3c630a04edfff7160a5e15c4a04f02c3fdc768ff9953daf4",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-cb97a2a7-828d-41da-a7a8-43aad464078f.png",
+      "originalSha256": "9ad1757d926e1ca985a0cab69f581e86337fa5293199f12f99dae0086996769a",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true
+    },
+    {
+      "id": "frontier-stage-43",
+      "file": "art/frontier/stage-43.webp",
+      "width": 1672,
+      "height": 941,
+      "sha256": "33cc2c07c8a968ba28688c576b18d67dfd586b6134338396cca97525488815dd",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-af2e5b0d-599b-4957-87ef-547103e45c76.png",
+      "originalSha256": "c47e10586c6b20be92545e2c523f1e850fedee50528f52f3baf98e72f8c6718a",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true
+    },
+    {
+      "id": "frontier-stage-47",
+      "file": "art/frontier/stage-47.webp",
+      "width": 1672,
+      "height": 941,
+      "sha256": "55b06ff99709c30c81db2b392869c8ebd98243eceba538ede2924787db76f43d",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-036a5184-f8d8-4c74-87c0-62d1c00c8074.png",
+      "originalSha256": "b7cd25c117dacda8e9c2c0db61b77783deae12d88d61d6f4f64940f1c0637746",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true
+    },
+    {
+      "id": "frontier-abyss-oracle",
+      "file": "art/frontier/abyss-oracle.webp",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "91b65daae7fee8078cf3d3cd34e6ace7e772d125bab55962c048d58e599327da",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-b7217ed0-d54b-4860-ba9d-898512fdefe8.png",
+      "originalSha256": "d06e58e8162ccfa78f0d2a4b1746726806ca73f8d9bd3b54040e4c4593310d60",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "states": [
+        "walk",
+        "attack"
+      ]
+    },
+    {
+      "id": "frontier-coral-leviathan",
+      "file": "art/frontier/coral-leviathan.webp",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "8107ca80901600c0e40a3a25b5601239e01e333357f7587cfca97cc69eb66c8a",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-c7d4569d-47b3-4581-85e2-d998903bb78f.png",
+      "originalSha256": "87c978032ddbe285846bdd8c19a259e07400bdac5e903d2d1e0875ed3ff57e6a",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "states": [
+        "walk",
+        "attack"
+      ]
+    },
+    {
+      "id": "frontier-prism-jelly",
+      "file": "art/frontier/prism-jelly.webp",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "1d714f51555acf1e11e2c8943c00f7a0575403daba2be3c20ae90d7950df5c62",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-197c69e3-e747-48c0-9cca-9fcf7952c766.png",
+      "originalSha256": "d82107133eda911bc41c5c0350bc2d9030e17326d695b4f78b89ea034194d765",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "states": [
+        "walk",
+        "attack"
+      ]
+    },
+    {
+      "id": "frontier-spore-stalker",
+      "file": "art/frontier/spore-stalker.webp",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "6bacc326ef6ea9437b90fbba0b4622822c2c6f26596c65047c7d2ac9df753a78",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-ae70af5e-5b49-4f9b-adae-3db8e7d30b1c.png",
+      "originalSha256": "b4a7b2b5c37ea6f1d8c22ce1f7ae6f6b7cb4d40e387232533abbc18e6e5f175d",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "states": [
+        "walk",
+        "attack"
+      ]
+    },
+    {
+      "id": "frontier-mire-colossus",
+      "file": "art/frontier/mire-colossus.webp",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "08ce63db9c8ca999eec8119e267035304e884fadd781f6db0c6841c8468ff1e7",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-36ccd39e-ae40-4e93-bb5b-eb3644e85129.png",
+      "originalSha256": "1f4e9d2742dbf6124fe6c139c833519b5485b4ac9359c9c5fec08330e9a99e60",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "states": [
+        "walk",
+        "attack"
+      ]
+    },
+    {
+      "id": "frontier-plague-savant",
+      "file": "art/frontier/plague-savant.webp",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "f20bf15865dd5f0c8af5e184ff728761a7d5ea7643cde751cd67c4d2dfdb39aa",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-a3063f26-e7fc-4162-84d4-3890878ef50a.png",
+      "originalSha256": "088f9cf4e221e7a9a14224c991131108dc12aa5057c8e6a6f7b8879e19d5bf71",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "states": [
+        "walk",
+        "attack"
+      ]
+    },
+    {
+      "id": "frontier-brood-queen",
+      "file": "art/frontier/brood-queen.webp",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "f120a0d3838c0e5c13fb059f31842a048fe71a46ce131c118dfe2de558af4827",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-7578e3bd-a2c6-42d9-8925-50f2f3532292.png",
+      "originalSha256": "5d5c4fb7139b388195f1f3e6b2ec75428774c6bd9a9ed391b241f47fca47e1da",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "states": [
+        "walk",
+        "attack"
+      ]
+    },
+    {
+      "id": "frontier-rot-archbishop",
+      "file": "art/frontier/rot-archbishop.webp",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "6f3c6724e2df4e805a4fc70dee183d36fd709ea9613eb04929c005a39c05a1a1",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-0754698b-0a4f-43e9-897f-b63127bfb4db.png",
+      "originalSha256": "a9a7214b96f512a17e85a43554e6f9572f8b1d73ee471124c60c442ea834cca3",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "states": [
+        "walk",
+        "attack"
+      ]
+    },
+    {
+      "id": "frontier-crimson-hound",
+      "file": "art/frontier/crimson-hound.webp",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "06261c78d7aeabdd4f651b91baa1154545fc85fd6cb76b8472d42444b0063394",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-b555509a-3308-4123-9915-c94d51495f2f.png",
+      "originalSha256": "0941e1e92550921a67ceccd43e54762d9f8c38f6ab15a300b7be88582256b3af",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "states": [
+        "walk",
+        "attack"
+      ]
+    },
+    {
+      "id": "frontier-pendulum-reaper",
+      "file": "art/frontier/pendulum-reaper.webp",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "3556b9fa938525031382f9ef5811c85b97fc573f4de067036ebf886f17f9ca00",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-b3854697-0749-48ea-982e-987721b3aa3c.png",
+      "originalSha256": "f7b2ab831b398944a95703311cbeaae7bd1351a510b4d6d70ebcc5b8477d61b7",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "states": [
+        "walk",
+        "attack"
+      ]
+    },
+    {
+      "id": "frontier-clockwork-halberd",
+      "file": "art/frontier/clockwork-halberd.webp",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "14aca0365023bf3906fd299c21e7a50cd6efd831ae322e8dc2328ce7dccc536f",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-ed6cedfd-1877-46fc-89dc-155abf883a26.png",
+      "originalSha256": "21e61a344c3d34594533e2f99901326937a6c4637d44b1012ea055d3cca0b606",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "states": [
+        "walk",
+        "attack"
+      ]
+    },
+    {
+      "id": "frontier-gilded-sentinel",
+      "file": "art/frontier/gilded-sentinel.webp",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "43c762dc94a51cfa3f3e69ca5c7dbf7003a232f1fe28c13ab40a304d19394461",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-fda29323-c7a0-4704-bfa8-044e93d3e5a1.png",
+      "originalSha256": "88cf71ae91d4b795d56c835493220bbbbb75033702a9d423d27e121acc03aa4f",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "states": [
+        "walk",
+        "attack"
+      ]
+    },
+    {
+      "id": "frontier-halo-arcanist",
+      "file": "art/frontier/halo-arcanist.webp",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "881681164041218421f8c785634c4ca49d9d3e7d8394b29bbc021d40925bb750",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-c9d2e0b6-0b71-457d-927b-176707d8d45a.png",
+      "originalSha256": "7875a96b20a72f6eb2343318728b41ca7e9cceff5b6a16205654a5c5ec02d841",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "states": [
+        "walk",
+        "attack"
+      ]
+    },
+    {
+      "id": "frontier-bloodsteel-king",
+      "file": "art/frontier/bloodsteel-king.webp",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "d19fcbbddfc2b69b5400797758c5dee9914d2487239cdcfc58e32941a3223cea",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-91773e3c-f8b6-45f7-840f-f0c36971b089.png",
+      "originalSha256": "da0a80128eb6dfe42be1eee89af6955bae7f6f89fdbbda52c0715ed0705bab65",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "states": [
+        "walk",
+        "attack"
+      ]
+    },
+    {
+      "id": "frontier-clockwork-empress",
+      "file": "art/frontier/clockwork-empress.webp",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "48e34d9bb9aa61867c24a890b3c52b5c6594868a243d092e7de1a8272b6008d9",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-238d47a5-eebe-47ad-beb2-48396644bb03.png",
+      "originalSha256": "5d90b01c11c956a3a2ebc959d87b63b2e3db0011e7670b15bbb2c8fd81592e33",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "states": [
+        "walk",
+        "attack"
+      ]
+    },
+    {
+      "id": "frontier-dawn-usurper",
+      "file": "art/frontier/dawn-usurper.webp",
+      "width": 1263,
+      "height": 1245,
+      "sha256": "7df79dcbfca2991c5340a407c8467c8ca13b62bec404a745a2270a97b66e3791",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-4c34cb16-5608-4966-aa24-1d5ffae23528.png",
+      "originalSha256": "e69c4e087d2cb8a0735dc5d24940b3547fdc409df09a2eb4e27641334faa4d57",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "states": [
+        "walk",
+        "attack"
+      ]
+    },
+    {
+      "id": "frontier-mirror-seraph",
+      "file": "art/frontier/mirror-seraph.webp",
+      "width": 1261,
+      "height": 1247,
+      "sha256": "cc0c908a72a4657e9d8bfcc98c02e22a65492ba0fb8b3f2c6fc5a7c6df1d9c98",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-a6343391-45f3-47c5-8983-0b001cc8497c.png",
+      "originalSha256": "8002da7c519f3a907b4a5497b9878eb346c9f42f754bac1be8b21ced48746922",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "states": [
+        "walk",
+        "attack"
+      ]
+    },
+    {
+      "id": "frontier-oath-judge",
+      "file": "art/frontier/oath-judge.webp",
+      "width": 1261,
+      "height": 1247,
+      "sha256": "f55a0a2f534dc12eb9cca9709c47827d046f4b658919485f4cec8f9d8eee7e66",
+      "tool": "OpenAI image_gen",
+      "originalOutput": "exec-c80f00ef-3c21-47df-9f34-bf7be275abc2.png",
+      "originalSha256": "ba6172ff3629a777351f8fd34d4e8a25b45193df71580adfb27acdb9a66e87c5",
+      "encoding": "lossless WebP; decoded RGBA equals original PNG",
+      "packaged": true,
+      "columns": 4,
+      "rows": 4,
+      "frames": 16,
+      "states": [
+        "walk",
+        "attack"
+      ]
     }
   ],
   "activeCharacterFrames": 744,
   "individualSkillFrames": 432,
   "newCharacterFrames": 192,
   "newSkillFrames": 192,
-  "enemyFrames": 1664,
+  "enemyFrames": 1984,
   "equipmentIcons": 30,
   "newUltimateFrames": 32,
   "paintedSkillIcons": 54,
   "paintedEquipmentIcons": 42,
-  "newContent": "Six characters, 36 dungeon-exclusive normal/boss models and learned level-60/80/100 skills"
+  "newContent": "Six characters, 36 dungeon-exclusive normal/boss models and learned level-60/80/100 skills",
+  "frontierArt": {
+    "version": "2.13.0",
+    "newBackgrounds": 19,
+    "newMonsterSheets": 20,
+    "newEnemyFrames": 320,
+    "conversion": "lossless WebP, exact decoded RGBA equality with image_gen PNG",
+    "frameReview": "frontier-art-review.json",
+    "bodyOpacityThreshold": 100,
+    "fringeOpacityThreshold": 32
+  }
 }

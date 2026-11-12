@@ -2,13 +2,13 @@ const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/st
 const env={};vm.createContext(env);vm.runInContext(fs.readFileSync('app/src/main/assets/rpg.js','utf8'),env);const R=env.RiftRPG;
 function config(dungeon=0,kind='story',tier=1){return {dungeon,kind,tier,difficulty:0};}
 function win(s,cls,id,dungeon=0,extra={}){return R.settle(s,cls,{id,win:true,dungeon,difficulty:0,kind:'story',kills:40,party:false,...extra},()=>.5,new Date(2026,10,6));}
-assert.equal(R.DUNGEONS.length,36);assert.equal(R.REGIONS.length,12);assert.equal(R.CAP,100);
+assert.equal(R.DUNGEONS.length,48);assert.equal(R.REGIONS.length,16);assert.equal(R.CAP,100);
 // v1 migration preserves character level, currency and trained attributes.
 {const s=R.sanitize({version:1,gold:13579,chars:[{xp:180*29**2,atk:7,vit:5,focus:3}]});assert.equal(s.version,2);assert.equal(s.gold,13579);assert.equal(R.level(s.chars[0]),30);assert.equal(s.chars[0].atk,7);assert.equal(s.chars[0].items.length,6);assert(R.profile(s,0).gearAtk>0);const reload=R.sanitize(JSON.parse(JSON.stringify(s)));assert.equal(JSON.stringify(reload),JSON.stringify(s));}
 {const s=R.sanitize({version:2,gold:-99,chars:[{xp:'bad',items:[],ledger:{bad:true},log:44,day:{key:'today',claimed:{a:1}}}]});assert.equal(s.gold,0);assert.equal(R.level(s.chars[0]),1);assert.equal(s.chars[0].items.length,6);}
-// All 24 main quests require a real dungeon clear; rewards unlock the next level gate.
+// All campaign quests require a real dungeon clear; rewards unlock the next level gate.
 const campaign=R.sanitize(null);let advances=0;
-for(let i=0;i<36;i++){
+for(let i=0;i<R.DUNGEONS.length;i++){
  assert(R.entry(campaign,0,config(i)).ok,'entry '+i);const q=R.quest(campaign,0);assert.equal(q.id,i);assert.equal(q.ready,false);assert.equal(R.claimQuest(campaign,0).ok,false);
  assert(win(campaign,0,'story-'+i,i).ok);assert(R.quest(campaign,0).ready);assert(R.claimQuest(campaign,0).ok);assert.equal(campaign.chars[0].story,i+1);
  if(i===7){assert(R.promote(campaign,0).ok);advances++;}if(i===16){assert(R.promote(campaign,0,true).ok);advances++;}
@@ -31,4 +31,4 @@ assert.equal(advances,2);assert.equal(R.level(campaign.chars[0]),100);assert.equ
 // Daily and weekly bonus claims reset by date without limiting ordinary play.
 {const s=R.sanitize(null),today=new Date(2026,10,6),tomorrow=new Date(2026,10,7);for(let i=0;i<3;i++)win(s,0,'daily-'+i,0,{party:true,partySize:4});assert(R.claimDaily(s,0,0,today).ok);assert.equal(R.claimDaily(s,0,0,today).ok,false);assert(R.claimDaily(s,0,1,today).ok);assert(R.claimDaily(s,0,2,today).ok);R.refreshDaily(s.chars[0],tomorrow);assert.equal(s.chars[0].day.clears,0);assert.equal(s.chars[0].day.claimed.length,0);const a=win(s,0,'raid-a',23,{kind:'raid'}),b=win(s,0,'raid-b',23,{kind:'raid'});assert(a.weekly);assert.equal(b.weekly,false);assert.equal(s.mats.core,10);}
 {const one=R.sanitize(null),four=R.sanitize(null);const a=win(one,0,'one'),b=win(four,0,'four',0,{party:true,partySize:4});assert(b.gold>a.gold);assert(b.xp>a.xp);assert.equal(b.loot.length,a.loot.length+1);}
-console.log('PASS: v1 migration and reload, 24 quest gates to level 60, advancement and awakening, idempotent rewards, repeatable rifts and mastery, epic pity, equipment/sets, enhancement, protected dismantling, crafting, skill builds, entry currency, daily/weekly bonuses and party rewards.');
+console.log('PASS: v1 migration and reload, 48 quest gates to level 100, advancement and awakening, idempotent rewards, repeatable rifts and mastery, epic pity, equipment/sets, enhancement, protected dismantling, crafting, skill builds, entry currency, daily/weekly bonuses and party rewards.');
