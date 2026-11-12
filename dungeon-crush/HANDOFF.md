@@ -2,15 +2,18 @@
 
 이 파일을 먼저 읽고 `dungeon-crush/`만 이어서 작업하세요. 사용자에게는 한국어 존댓말을 사용하세요.
 
-## 진행 중: 2.14.1 유료 외형 몸 크기 수정
+## 최신 검증 버전: 2.14.1 RC1
 
-사용자가 2.14.0에서 스킨 장착 시 캐릭터 크기가 달라지는 문제를 보고했습니다. 스킨끼리만 비교한 기존 검수로는 기본 몸과의 차이를 충분히 확인하지 못했습니다. 전체 그림의 경계 대신 6직업 기본 몸의 기준점을 사용하여 30벌의 대기/연계 공격/시전과 이동 크기를 보정합니다. 상세 내용과 재현·검사는 `release/SKIN-SIZE-NOTES.md`를 확인하세요.
+- [APK ZIP 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.14.1-rc1/DungeonCrush-2.14.1-RC1.zip) · [릴리스 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.14.1-rc1). 기존 앱을 삭제하지 않고 업데이트합니다. versionCode **41**, 저장 형식 **2**, Wi-Fi 프로토콜 **10**입니다.
+- [30벌 크기 비교 화면](https://github.com/ohohhyun/CatHome/blob/6905dca217f0ac5d15f652a75b31f136e9e4eee8/dungeon-crush/release/SkinSize-2.14.1-Comparison.png)에서 기본 외형과 함께 확인할 수 있습니다.
+- **유료 외형 30벌의 몸 크기를 기본 6직업과 대조하여 보정했습니다.** 장식·투구·무기 전체 높이로 몸을 추정하던 기준을 없애고, 확대 검수한 눈높이·부츠 접지점을 사용합니다. 대기/연계 공격 3단/시전은 각각 보정하고 이동·점프·대시는 대기 몸 기준을 공유합니다. [수정 내용](release/SKIN-SIZE-NOTES.md)
+- 몸의 가로·세로 비율과 동작 안의 배율을 유지합니다. 원화 75개, 의상·무기·스킬 효과, 전투 수치·판정·속도는 바꾸지 않았습니다. 머리 위나 몸 바깥으로 돌출되는 장식 디자인은 유지합니다.
+- 검증 소스 `4e48719605ffe8f1eecd055f152529ecdfe21e2c`. [전체 **52개 검사 통과**](https://github.com/ohohhyun/CatHome/actions/runs/43311412102): 코드 24 + Java 2 + Chrome 26. 실제 구매/장착/해제 후 30벌×5동작×양방향 몸 기준 300건, 모든 모션과 9스킬·펫·4인 통신·UI·저장을 확인한 뒤 APK/AAB·Android lint·기존 서명·포함 리소스를 검증했습니다.
+- APK: 413,229,894 bytes, SHA256 `a43a0533140a05270115a650d583d78333d1665fd43cb4746d6187bd8b5b13c8`.
+- ZIP: 413,320,142 bytes, SHA256 `264baa3a917d57c00dd66dfd2a6af6bcda592ca7f4e3aeedb0c782c47976da2c`. [공개 배포 검증](https://github.com/ohohhyun/CatHome/actions/runs/43315777693) 성공. 로그인 없이 공개 ZIP 전체를 내려받아 크기·SHA256·CRC와 내부 APK 일치도 확인했습니다.
+- 상품은 계속 무료 테스트 구매이며 실제 결제는 연결하지 않았습니다. 집사 사절 원본과 서버/DB는 수정하지 않았습니다. 실제 단말의 장시간 FPS·발열 검사는 별도입니다.
 
-- 목표 2.14.1 / versionCode 41, 프로토콜 10 / 저장 형식 2. 기존 원화 75개와 상품/스킬/전투 수치를 보존합니다.
-- `art-source/premium-body-calibration.json`에 기본 6직업과 30벌×5동작의 검수 기준점 및 원화 SHA를 기록했습니다. `tools/premium_body_calibration.py`와 포장 도구가 같은 보정을 적용합니다.
-- 새 `premium-size-presentation.test.cjs`는 실제 구매/장착/해제와 기본 외형 대비 300건의 Canvas 크기 기준점을 검사합니다. 기존 51개와 합쳐 52개 검사 후 APK를 제작합니다. **새 빌드·APK·ZIP 검증 완료 전에는 2.14.1 완료로 보고하지 마세요.**
-
-## 최신 검증 버전: 2.14.0 RC1
+## 이전 검증 버전: 2.14.0 RC1
 
 - [APK ZIP 공개 다운로드](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.14.0-rc1) → Assets → **DungeonCrush-2.14.0-RC1.zip**. versionCode 40. 기존 앱을 삭제하지 않고 업데이트합니다.
 - 검증 소스 `e27860f1b70632c0a5edcc3cfc0d70542d4b2613`, [전체 51개 검사 성공](https://github.com/ohohhyun/CatHome/actions/runs/43292372306). 코드 24 + Java 통신 2 + Chrome 25개를 통과한 뒤 APK/AAB와 Android lint, 기존 서명·포함 원화/음원/스크립트를 검증했습니다.

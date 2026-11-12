@@ -1,3 +1,16 @@
+# 던전크러시! 2.14.1 — 외형 몸 크기 수정
+
+- [APK ZIP 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.14.1-rc1/DungeonCrush-2.14.1-RC1.zip) · [릴리스 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.14.1-rc1). 기존 앱을 삭제하지 않고 업데이트합니다. versionCode **41**, 저장 형식 **2**, Wi-Fi 프로토콜 **10**입니다.
+- [30벌 크기 비교 화면](https://github.com/ohohhyun/CatHome/blob/6905dca217f0ac5d15f652a75b31f136e9e4eee8/dungeon-crush/release/SkinSize-2.14.1-Comparison.png)에서 기본 외형과 함께 확인할 수 있습니다.
+- **유료 외형 30벌의 몸 크기를 기본 6직업과 대조하여 보정했습니다.** 장식·투구·무기 전체 높이로 몸을 추정하던 기준을 없애고, 확대 검수한 눈높이·부츠 접지점을 사용합니다. 대기/연계 공격 3단/시전은 각각 보정하고 이동·점프·대시는 대기 몸 기준을 공유합니다. [수정 내용](release/SKIN-SIZE-NOTES.md)
+- 몸의 가로·세로 비율과 동작 안의 배율을 유지합니다. 원화 75개, 의상·무기·스킬 효과, 전투 수치·판정·속도는 바꾸지 않았습니다. 머리 위나 몸 바깥으로 돌출되는 장식 디자인은 유지합니다.
+- 검증 소스 `4e48719605ffe8f1eecd055f152529ecdfe21e2c`. [전체 **52개 검사 통과**](https://github.com/ohohhyun/CatHome/actions/runs/43311412102): 코드 24 + Java 2 + Chrome 26. 실제 구매/장착/해제 후 30벌×5동작×양방향 몸 기준 300건, 모든 모션과 9스킬·펫·4인 통신·UI·저장을 확인한 뒤 APK/AAB·Android lint·기존 서명·포함 리소스를 검증했습니다.
+- APK: 413,229,894 bytes, SHA256 `a43a0533140a05270115a650d583d78333d1665fd43cb4746d6187bd8b5b13c8`.
+- ZIP: 413,320,142 bytes, SHA256 `264baa3a917d57c00dd66dfd2a6af6bcda592ca7f4e3aeedb0c782c47976da2c`. [공개 배포 검증](https://github.com/ohohhyun/CatHome/actions/runs/43315777693) 성공. 로그인 없이 공개 ZIP 전체를 내려받아 크기·SHA256·CRC와 내부 APK 일치도 확인했습니다.
+- 상품은 계속 무료 테스트 구매이며 실제 결제는 연결하지 않았습니다. 집사 사절 원본과 서버/DB는 수정하지 않았습니다. 실제 단말의 장시간 FPS·발열 검사는 별도입니다.
+
+---
+
 # 던전크러시! 2.14.0 — 외형 · 펫 상점
 
 - [APK ZIP 공개 다운로드](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.14.0-rc1) → Assets → **DungeonCrush-2.14.0-RC1.zip**. versionCode 40. 기존 앱을 삭제하지 않고 업데이트합니다.

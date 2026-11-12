@@ -12,4 +12,4 @@
 
 버전은 2.14.1 / versionCode 41입니다. 저장 형식 2와 Wi-Fi 프로토콜 10을 유지하며 기존 앱을 삭제하지 않고 업데이트합니다. 스킨·펫은 여전히 실제 결제 없는 무료 테스트 구매입니다. 집사 사절 원본, 서버와 DB는 수정하지 않습니다.
 
-최종 빌드와 공개 ZIP 검증 결과는 완료 후 기록합니다. 실제 휴대폰 장시간 FPS·발열 검사는 별도입니다.
+[52개 전체 검사 및 APK/AAB·lint·서명·리소스 검증 성공](https://github.com/ohohhyun/CatHome/actions/runs/43311412102). [공개 ZIP 검증 성공](https://github.com/ohohhyun/CatHome/actions/runs/43315777693). 로그인 없이 공개 파일 전체를 내려받아 크기/SHA256/CRC와 내부 APK도 확인했습니다. APK SHA256 `a43a0533140a05270115a650d583d78333d1665fd43cb4746d6187bd8b5b13c8`, ZIP SHA256 `264baa3a917d57c00dd66dfd2a6af6bcda592ca7f4e3aeedb0c782c47976da2c`. [다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.14.1-rc1/DungeonCrush-2.14.1-RC1.zip). 실제 휴대폰 장시간 FPS·발열 검사는 별도입니다.

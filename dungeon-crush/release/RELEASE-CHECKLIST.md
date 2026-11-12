@@ -1,4 +1,4 @@
-# 2.14.1 외형 몸 크기 점검 (진행 중)
+# 2.14.1 외형 몸 크기 점검
 
 - 기본 캐릭터와 유료 외형 30벌을 같은 월드 높이·발 위치로 나란히 표시하고, 장식과 무기를 제외한 몸 기준점을 비교합니다.
 - 대기·3단 공격·시전 5동작/양방향 300건의 실제 렌더 좌표, 달리기·점프·대시 기준 공유, 장착·해제와 저장을 확인합니다.
@@ -6,7 +6,7 @@
 - 기존 모든 검사와 새 몸 크기 검사를 합친 52개 후 APK/AAB·lint·서명·포함 리소스를 검증하고, 공개 ZIP을 실제 다운로드해 크기/SHA/CRC/내부 APK 일치를 확인합니다.
 - 2.14.1 / versionCode 41, 저장 형식 2 / 프로토콜 10. 실제 단말 장시간 FPS·발열은 별도입니다.
 
-최종 빌드와 공개 ZIP 검증 결과는 완료 후 기록합니다.
+[52개 전체 검사 및 APK/AAB·lint·서명·리소스 검증 성공](https://github.com/ohohhyun/CatHome/actions/runs/43311412102). [공개 ZIP 검증 성공](https://github.com/ohohhyun/CatHome/actions/runs/43315777693). 로그인 없이 공개 파일 전체를 내려받아 크기/SHA256/CRC와 내부 APK도 확인했습니다. APK SHA256 `a43a0533140a05270115a650d583d78333d1665fd43cb4746d6187bd8b5b13c8`, ZIP SHA256 `264baa3a917d57c00dd66dfd2a6af6bcda592ca7f4e3aeedb0c782c47976da2c`. [다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.14.1-rc1/DungeonCrush-2.14.1-RC1.zip).
 
 # 2.14.0 외형 · 펫 상점 점검
 
