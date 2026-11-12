@@ -34,6 +34,7 @@ jobs:
         run: |
           node tests/browser.test.cjs
           node tests/crazy-browser.test.cjs
+          node tests/butler-browser.test.cjs
         env:
           NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
           SKIN_REVIEW: '1'
@@ -45,7 +46,7 @@ jobs:
         if: always()
         with:
           name: CatHome-Menu-Previews
-          path: build/previews/*.png
+          path: build/previews/**/*.png
           if-no-files-found: ignore
       - uses: android-actions/setup-android@v3
         with:
