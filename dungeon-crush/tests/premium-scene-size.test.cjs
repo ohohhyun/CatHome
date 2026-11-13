@@ -26,7 +26,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
      if(point&&frame.index===point.frame&&calls.length===1&&calls[0].rect.length===8&&frame.state==='idle'){
       const a=calls[0].rect,m=calls[0].m,b=basic.banks[frame.bank],sourceHeight=point.rect[3];
       const eye=m.f+m.d*(a[5]+point.eyeY*a[7]/sourceHeight),sole=m.f+m.d*(a[5]+point.soleY*a[7]/sourceHeight);
-      eyeError=eye-(y-height*(b.soleY-b.eyeY)/b.reference);soleError=sole-y;
+      eyeError=eye-(y-height*DungeonArt.bodyScale(cls)*(b.soleY-b.eyeY)/b.reference);soleError=sole-y;
      }
      sceneDraws.push({scene:RiftApp.getMode()==='playing'?'battle':'town',id:hero.costume||'base-'+cls,cls,bank:frame.bank,index:frame.index,height,dir,eyeError,soleError,calls:calls.length});
     }

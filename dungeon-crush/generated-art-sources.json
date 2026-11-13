@@ -1,5 +1,5 @@
 {
-  "version": "2.15.0",
+  "version": "2.16.0",
   "generator": "OpenAI image_gen",
   "characterFrames": 272,
   "effectFrames": 240,
@@ -19437,6 +19437,78 @@
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact RGB preserved",
       "packaged": true
+    },
+    {
+      "id": "selection-atrium",
+      "file": "art/selection-atrium.webp",
+      "width": 1672,
+      "height": 941,
+      "sha256": "0a36b0b29719b8dcd3de34ff5082e7466d1bd722cdb06f2c36e5b068e1bbe8c3",
+      "originalFile": "art-source/selection-atrium.png",
+      "originalSha256": "772035fb26db9854b8e5296f675320aabb82bec03537f03e9f901faf9dbd76dc",
+      "tool": "OpenAI image_gen",
+      "encoding": "lossless WebP; source pixels preserved",
+      "packaged": true
+    },
+    {
+      "id": "selection-kael",
+      "file": "art/selection/kael.webp",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "0ce952232db07d278fcf6b8881ab07ec249c146a8e784f1770d5fc7d87580882",
+      "originalFile": "art-source/selection-kael.png",
+      "originalSha256": "cce1e2ae58941723e04aa36c358d1356b39c50b96c48e2e7a6bad88f21daf510",
+      "tool": "OpenAI image_gen",
+      "encoding": "lossless WebP cutout; original key art retained",
+      "packaged": true
+    },
+    {
+      "id": "selection-rin",
+      "file": "art/selection/rin.webp",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "d31a1a62969f7f747bedb37cd127823fa53e35bba9cdf850ae6d014dc4b55033",
+      "originalFile": "art-source/selection-rin.png",
+      "originalSha256": "4dd15aeee4705610381a3ea78d18e72e840f053f6d45dc108c565f354979ef3f",
+      "tool": "OpenAI image_gen",
+      "encoding": "lossless WebP cutout; original key art retained",
+      "packaged": true
+    },
+    {
+      "id": "selection-bane",
+      "file": "art/selection/bane.webp",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "0093692dbd97f2dc424c13da1733403733f11cc4c9299f95fb66fde92539f5b0",
+      "originalFile": "art-source/selection-bane.png",
+      "originalSha256": "3e62d36b7cc2ccec21b057856a3321b539984aa35a96c67106877ebbedc64308",
+      "tool": "OpenAI image_gen",
+      "encoding": "lossless WebP cutout; original key art retained",
+      "packaged": true
+    },
+    {
+      "id": "selection-sera",
+      "file": "art/selection/sera.webp",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "5000eb6a2a9d0bcef6088975b77db30af080511b1ae92518a9f248da75e74cf9",
+      "originalFile": "art-source/selection-sera.png",
+      "originalSha256": "7c4d3ff3520e6b702d020691330a730dc957465d74a908824f5803171c59010e",
+      "tool": "OpenAI image_gen",
+      "encoding": "lossless WebP cutout; original key art retained",
+      "packaged": true
+    },
+    {
+      "id": "selection-aria",
+      "file": "art/selection/aria.webp",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "0fcef11e4d78c60c54f026454b73c8eabd258f30f62c5992a37845c9dade1e73",
+      "originalFile": "art-source/selection-aria.png",
+      "originalSha256": "98b2668e488d034667fcb276eb2f55648e8d5ee1c73794229da33f557450e885",
+      "tool": "OpenAI image_gen",
+      "encoding": "lossless WebP cutout; original key art retained",
+      "packaged": true
     }
   ],
   "activeCharacterFrames": 744,
@@ -19462,5 +19534,7 @@
   "premiumCharacterFrames": 1680,
   "premiumPetFrames": 160,
   "premiumEffectFrames": 240,
-  "keyArtCount": 36
+  "keyArtCount": 36,
+  "selectionBackgrounds": 1,
+  "selectionCutouts": 5
 }

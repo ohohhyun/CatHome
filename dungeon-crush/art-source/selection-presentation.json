@@ -1,0 +1,56 @@
+{
+  "background": "art/selection-atrium.webp",
+  "heightScales": [
+    1,
+    1.08,
+    1.16,
+    0.92,
+    0.84,
+    1.04
+  ],
+  "bodyLandmarks": {
+    "kael": {
+      "src": "art/selection/kael.webp",
+      "eyeY": 145,
+      "soleY": 1438,
+      "width": 1024,
+      "height": 1536
+    },
+    "rin": {
+      "src": "art/selection/rin.webp",
+      "eyeY": 225,
+      "soleY": 1415,
+      "width": 1024,
+      "height": 1536
+    },
+    "bane": {
+      "src": "art/selection/bane.webp",
+      "eyeY": 155,
+      "soleY": 1482,
+      "width": 1024,
+      "height": 1536
+    },
+    "sera": {
+      "src": "art/selection/sera.webp",
+      "eyeY": 191,
+      "soleY": 1445,
+      "width": 1024,
+      "height": 1536
+    },
+    "aria": {
+      "src": "art/selection/aria.webp",
+      "eyeY": 221,
+      "soleY": 1480,
+      "width": 1024,
+      "height": 1536
+    },
+    "elian": {
+      "src": "art/key-art/elian.webp",
+      "eyeY": 111,
+      "soleY": 1500,
+      "width": 1024,
+      "height": 1536
+    }
+  },
+  "scope": "rendering only; simulation and saved profiles unchanged"
+}

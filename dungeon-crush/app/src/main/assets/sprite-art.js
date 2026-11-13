@@ -4,7 +4,18 @@ const ACTORS=root.DungeonActors.actors,TAU=Math.PI*2,clamp=(v,a,b)=>Math.max(a,M
 function loadPicture(key,src){sources.set(key,src);if(pictures.has(key)||loading.has(key)||failed.has(key))return;loading.add(key);const im=new Image();im.onload=()=>{pictures.set(key,im);loading.delete(key);};im.onerror=()=>{failed.add(key);loading.delete(key);};im.src=src;}
 function ensureSkills(cls){if(!ACTORS[cls])return;loadPicture('skills'+cls,cls===4?'art/motion299/aria-skills.webp':cls===5?'art/motion210/elian-skills.webp':'art/advanced/'+ACTORS[cls].id+'-skills.webp');loadPicture('growth'+cls,'art/motion210/'+root.DungeonGrowth.ids[cls]+'-growth-skills.webp');}
 function ensure(cls){root.DungeonActors.ensure(cls);ensureSkills(cls);}
-function actor(...args){if(root.DungeonPremiumArt?.actor(...args))return true;const ok=root.DungeonActors.actor(...args);if(ok)actorDraws++;return ok;}
+// Class identity is a presentation scale; simulation and collision sizes are unchanged.
+const HERO_HEIGHT_SCALES=Object.freeze([1,1.08,1.16,.92,.84,1.04]);
+function heightScale(cls){return HERO_HEIGHT_SCALES[cls]||1;}
+const BASE_BODY_RATIOS=Object.freeze([349/418.681,351/426.923,384/446.703,384/443.956,238/294,262/293]);
+function bodyScale(cls){return heightScale(cls)*BASE_BODY_RATIOS[0]/(BASE_BODY_RATIOS[cls]||BASE_BODY_RATIOS[0]);}
+function actor(c,cls,x,y,height,dir,p,time,alpha=1){
+ const sizedHeight=height*bodyScale(cls),rise=root.DungeonActors.frame(p,time).rise||0;
+ // Preserve the original jump trajectory while changing the body's standing height.
+ const groundY=y+rise*(height-sizedHeight),args=[c,cls,x,groundY,sizedHeight,dir,p,time,alpha];
+ if(root.DungeonPremiumArt?.actor(...args))return true;
+ const ok=root.DungeonActors.actor(...args);if(ok)actorDraws++;return ok;
+}
 function hasActor(cls){return root.DungeonActors.hasActor(cls);}
 function ready(cls=root.RiftApp?.getClass?.()??0){return root.DungeonActors.ready(cls)&&pictures.has('skills'+cls)&&pictures.has('growth'+cls);}
 function preloadAll(){root.DungeonActors.preloadAll();ACTORS.forEach((_,i)=>ensureSkills(i));}
@@ -56,5 +67,5 @@ function accents(c,f,camera,t){const cls=classOf(f),color=f.color||root.Rift.CLA
  c.restore();}
 ensure(0);
 function retryFailed(){const keys=[...failed];failed.clear();for(const key of keys)loadPicture(key,sources.get(key));root.DungeonActors.retryFailed();}
-root.DungeonArt={retryFailed,actor,effect,projectile,frame:(...a)=>root.DungeonActors.frame(...a),animationPhase:(...a)=>root.DungeonActors.animationPhase(...a),presentation:(...a)=>root.DungeonActors.presentation(...a),actors:ACTORS,cell,ensure,ensureSkills,hasActor,preloadAll,ready,readyAll:()=>root.DungeonActors.readyAll()&&ACTORS.every((_,i)=>pictures.has('skills'+i)&&pictures.has('growth'+i)),status:()=>({...root.DungeonActors.status(),effects:ACTORS.filter((_,i)=>pictures.has('skills'+i)).length,actorFrames:root.DungeonActors.status().actorFrames,skillFrames:ACTORS.length*72,actorDraws,effectDraws,failures:[...failed,...root.DungeonActors.status().failures],loading:loading.size+root.DungeonActors.status().pending})};
+root.DungeonArt={retryFailed,heightScale,bodyScale,heightScales:HERO_HEIGHT_SCALES,actor,effect,projectile,frame:(...a)=>root.DungeonActors.frame(...a),animationPhase:(...a)=>root.DungeonActors.animationPhase(...a),presentation:(...a)=>root.DungeonActors.presentation(...a),actors:ACTORS,cell,ensure,ensureSkills,hasActor,preloadAll,ready,readyAll:()=>root.DungeonActors.readyAll()&&ACTORS.every((_,i)=>pictures.has('skills'+i)&&pictures.has('growth'+i)),status:()=>({...root.DungeonActors.status(),effects:ACTORS.filter((_,i)=>pictures.has('skills'+i)).length,actorFrames:root.DungeonActors.status().actorFrames,skillFrames:ACTORS.length*72,actorDraws,effectDraws,failures:[...failed,...root.DungeonActors.status().failures],loading:loading.size+root.DungeonActors.status().pending})};
 })(window);

@@ -47,6 +47,7 @@ jobs:
           fi
       - name: Check combat and campaign
         run: |
+          node tests/hero-height.test.cjs
           node tests/motion-stability.test.cjs
           node tests/premium.test.cjs
           node tests/premium-art.test.cjs
@@ -86,6 +87,10 @@ jobs:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
       - name: Install video encoder for real combat capture
         run: node "$RUNNER_TEMP/cathome-ui/node_modules/playwright/cli.js" install ffmpeg
+      - name: Verify selection hall, cutouts and distinct class heights
+        run: node tests/hero-height-presentation.test.cjs
+        env:
+          NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
       - name: Audit movement and opaque poses across every hero, outfit and monster
         run: node tests/motion-stability-presentation.test.cjs
         env:
@@ -296,6 +301,8 @@ jobs:
             dungeon-crush/build/previews/key-art/**
             dungeon-crush/build/previews/scene-size/**
             dungeon-crush/build/previews/stability/**
+            dungeon-crush/build/previews/hero-height/**
+            dungeon-crush/build/previews/hero-height-audit.json
             dungeon-crush/build/previews/motion-stability-audit.json
             dungeon-crush/build/previews/key-art-*.json
             dungeon-crush/build/previews/premium-scene-size-*.json
@@ -319,11 +326,11 @@ jobs:
           python3 -c "from pathlib import Path; assert 'Signer #1 certificate SHA-256 digest: e43fedd9099e7b5df82eccfa3e92fc020d429ad99795463abbe40e2af4880708' in Path('build/apk-signer.txt').read_text(), 'APK signer changed; preserve update compatibility'"
           python tools/verify-apk-identity.py "$ANDROID_HOME/build-tools/35.0.0/aapt" app/build/outputs/apk/debug/app-debug.apk com.dungeoncrush.game com.dungeoncrush.game.MainActivity "던전크러시!"
           python tools/verify-bundled-art.py app/build/outputs/apk/debug/app-debug.apk
-          cp app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/DungeonCrush-2.15.2.apk
+          cp app/build/outputs/apk/debug/app-debug.apk app/build/outputs/apk/debug/DungeonCrush-2.16.0.apk
       - uses: actions/upload-artifact@v4
         with:
           name: DungeonCrush-APK
-          path: dungeon-crush/app/build/outputs/apk/debug/DungeonCrush-2.15.2.apk
+          path: dungeon-crush/app/build/outputs/apk/debug/DungeonCrush-2.16.0.apk
           if-no-files-found: error
           retention-days: 30
       - name: Split verified APK for reliable downloads
@@ -332,9 +339,9 @@ jobs:
           from pathlib import Path
           from hashlib import sha256
           import json
-          p=Path('app/build/outputs/apk/debug/DungeonCrush-2.15.2.apk'); data=p.read_bytes(); out=Path('build/apk-parts');out.mkdir(parents=True,exist_ok=True);parts=[]
+          p=Path('app/build/outputs/apk/debug/DungeonCrush-2.16.0.apk'); data=p.read_bytes(); out=Path('build/apk-parts');out.mkdir(parents=True,exist_ok=True);parts=[]
           for n,start in enumerate(range(0,len(data),20*1024*1024),1):
-              chunk=data[start:start+20*1024*1024];name=f'DungeonCrush-2.15.2.apk.part{n:02}';(out/name).write_bytes(chunk);parts.append(dict(name=name,bytes=len(chunk),sha256=sha256(chunk).hexdigest()))
+              chunk=data[start:start+20*1024*1024];name=f'DungeonCrush-2.16.0.apk.part{n:02}';(out/name).write_bytes(chunk);parts.append(dict(name=name,bytes=len(chunk),sha256=sha256(chunk).hexdigest()))
           assert len(parts)<=24
           (out/'manifest.json').write_text(json.dumps(dict(file=p.name,bytes=len(data),sha256=sha256(data).hexdigest(),parts=parts),indent=2))
           PYCODE
