@@ -794,6 +794,18 @@
       "log": "keyart-strict-final.log",
       "sha256": "8a4c1ba69fba0bb4ea1a884e9b1127b36eb2a6d9c76ffbbee6991a7a76ce7b39",
       "passed": true
+    },
+    {
+      "log": "run-skill-version-repro.log",
+      "sha256": "56e1ec36eff0902a471f94163c14cc931a5c45b4881d0e9b2eb617b77c6ac96a",
+      "passed": false,
+      "expectedReproduction": true
+    },
+    {
+      "log": "run-skill-version-fixed.log",
+      "sha256": "40a61b050e12a96e001c09a6a6d6696cdcd54ab0380e8d849691aa1b65451bf5",
+      "passed": true,
+      "expectedReproduction": false
     }
   ],
   "investigatedFailures": [
@@ -806,6 +818,11 @@
       "test": "layout/inventory text metrics",
       "cause": "Chromium reports an empty font shorthand for tabular-nums; Canvas retained an unrelated prior font.",
       "resolution": "Rebuild explicit font shorthand from computed font fields; original collision limits retained; all affected consumers rerun."
+    },
+    {
+      "test": "run-skill-presentation version assertion",
+      "cause": "The runtime title correctly showed 2.15.0, but this browser scenario still required the old 2.14.1 literal.",
+      "resolution": "Compare the rendered title with app/build.gradle versionName; keep all motion, alpha, ultimate and dead-caster assertions unchanged. Full local scenario passed."
     }
   ],
   "soak": {
@@ -891,5 +908,15 @@
     "spriteRecoveryInArtView": true,
     "errors": []
   },
-  "strictCodeChecks": 25
+  "strictCodeChecks": 25,
+  "ciAttempts": [
+    {
+      "source": "9aaeda58faaa41574857b283138a0f56752463ff",
+      "run": 43363277676,
+      "conclusion": "failure",
+      "failedStep": "Test run clarity, extended skills and dead-caster cancellation",
+      "apkBuilt": false,
+      "reason": "Stale test version literal; fixed before repeating the complete pipeline."
+    }
+  ]
 }
