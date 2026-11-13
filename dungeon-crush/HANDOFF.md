@@ -2,14 +2,18 @@
 
 이 파일을 먼저 읽고 `dungeon-crush/`만 이어서 작업하세요. 사용자에게는 한국어 존댓말을 사용하세요.
 
-## 진행 중: 2.15.1 미리보기 간소화 · 전 캐릭터/몬스터 떨림 수정
+## 최신 검증 빌드: 2.15.1 완료 · APK 제공
 
-- 사용자 지시: 동작 메뉴를 ‘미리보기’로 단순화하고, 녹색 몬스터의 떨림·잔상을 포함해 전체 캐릭터/몬스터를 검수·개선한 뒤 APK를 만듭니다.
-- [변경과 검증 범위](release/MOTION-STABILITY-NOTES.md). 기본 6직업·외형 30벌·몬스터 92종을 대상으로 추적 초과 이동, 프레임 기준점 흔들림, 전신 crossfade 잔상을 수정했습니다. 원화 픽셀은 유지합니다.
-- 소스 버전 2.15.1 / versionCode 43. 저장 형식 2 / Wi-Fi 프로토콜 10 유지. 전체 57개 검사와 기존 서명의 APK/AAB·lint·리소스 검증을 마친 뒤 결과와 다운로드를 기록합니다.
-- 아직 아래 공개 2.15.0 RC1을 새 APK로 대체했다고 표시하지 않습니다. 실제 단말 장시간 검수는 별도입니다.
+- [검증 APK ZIP 다운로드](https://github.com/ohohhyun/CatHome/actions/runs/43385971872/artifacts/14020027552) (GitHub 로그인 필요, Actions 보관 기간 30일). ZIP 안의 `DungeonCrush-2.15.1.apk`를 기존 앱 위에 업데이트 설치합니다. 앱을 삭제하지 않습니다.
+- 검증 소스 `02c6d87d87bceab7a3175b1fe34d008675aa3c44`. [전체 57개 검사 통과](https://github.com/ohohhyun/CatHome/actions/runs/43385971872): 코드 26 + Java 2 + Chrome 29. APK/AAB·Android lint·기존 설치 서명·최종 포함 리소스까지 통과했습니다.
+- APK 482,246,354 bytes / SHA-256 `fc97b1490514daf165040ef20261875ffa7cb501fdda2987c1ea0ba2f8532773`. 23개 분할 artifact의 CRC·SHA를 검증해 재조립한 APK의 크기·SHA·내부 ZIP CRC·새 미리보기/이동 스크립트 일치를 확인했습니다. 포함 서명 인증서도 기존 `e43fedd9099e7b5df82eccfa3e92fc020d429ad99795463abbe40e2af4880708`입니다.
+- ‘동작’은 **미리보기**로 바꾸고 원화/미리보기 두 탭으로 간소화했습니다. 선택한 외형으로 걷기·달리기·공격·점프·기본 스킬 하나를 자동 반복합니다. 동작/스킬/방향/배율 선택을 제거했습니다.
+- 기본 6직업·외형 30벌·몬스터 92종을 전수 점검했습니다. 추적 초과 이동과 빠른 방향 반전을 막고, 이동/대기 164개 은행의 1,424개 포즈 기준점을 보정했습니다. 전신 crossfade 잔상을 제거하고 로컬 표시 보간과 프레임 내 좌표 일관성을 보완했습니다. 원화 픽셀·몸 배율과 게임 수치는 유지합니다.
+- [변경·검수 기록](release/MOTION-STABILITY-NOTES.md) · [검증 수치](release/MOTION-STABILITY-VERIFICATION.json). 실제 전투 가시 늑대 재현과 128개 캐릭터/몬스터의 양방향 이동/공격 30,720개 렌더 표본, 1,104개 추적 회귀 사례를 통과했습니다. 아래 원본 보호 트리는 그대로입니다.
+- versionCode 43 / 저장 형식 2 / Wi-Fi 프로토콜 10. 서버·DB·실결제는 연결하지 않았습니다. 실제 Android 단말의 장시간 FPS·발열·조작감은 별도입니다.
+- **현재 공개 릴리스는 아래 2.15.0 RC1을 유지합니다.** 2.15.1은 위 검증 빌드 artifact로 제공하며 새 공개 릴리스를 게시하지 않았습니다. 후속 문서/비교 화면 커밋은 앱 코드를 바꾸지 않습니다.
 
-## 최신 검증 버전: 2.15.0 RC1 완료
+## 현재 공개 릴리스: 2.15.0 RC1 완료
 
 - [APK ZIP 바로 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.15.0-rc1/DungeonCrush-2.15.0-RC1.zip) · [릴리스 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.15.0-rc1). 기존 앱을 삭제하지 말고 업데이트 설치합니다. versionCode 42 / 저장 형식 2 / Wi-Fi 프로토콜 10.
 - 검증 소스 `f616e095a66be0d3d31c8e030d9022b3cad536e3`. [전체 55개 검사 통과](https://github.com/ohohhyun/CatHome/actions/runs/43366493827) — 코드 25 + Java 2 + Chrome 28. APK/AAB, Android lint, 기존 서명과 최종 포함 리소스도 통과했습니다.

@@ -1,3 +1,10 @@
+# 2.15.1 모션 안정화 · 미리보기 간소화 검증 완료
+
+- [전체 57개 검사와 APK/AAB·Android lint·기존 서명·포함 리소스 확인 통과](https://github.com/ohohhyun/CatHome/actions/runs/43385971872). 검증 소스 `02c6d87d87bceab7a3175b1fe34d008675aa3c44`.
+- [APK artifact ZIP](https://github.com/ohohhyun/CatHome/actions/runs/43385971872/artifacts/14020027552), GitHub 로그인 후 내려받아 압축을 풉니다. `DungeonCrush-2.15.1.apk`는 482,246,354 bytes / SHA-256 `fc97b1490514daf165040ef20261875ffa7cb501fdda2987c1ea0ba2f8532773`. 분할 CRC·SHA 및 재조립한 APK의 CRC/해시와 포함 스크립트·기존 인증서까지 확인했습니다.
+- versionCode 43, 저장 형식 2, Wi-Fi 프로토콜 10. 기존 앱을 삭제하지 않고 업데이트합니다. 현재 공개 릴리스 2.15.0 RC1은 교체하지 않았습니다.
+- [상세 검수](MOTION-STABILITY-NOTES.md) · [검증 기록](MOTION-STABILITY-VERIFICATION.json). 실제 단말 42→43 업데이트·저장 보존, 2~4대 Wi-Fi, 장시간 FPS/발열/조작감은 별도로 확인합니다. 아래 운영 서명/스토어 제출 기준도 유지합니다.
+
 # 2.15.0 캐릭터 원화 · 외형 미리보기 — 최종 검증 완료
 
 - 기본 6명 + 외형 30벌의 원화 36장 고유 매핑, 해시, 전신 및 디코딩을 확인했습니다. 30벌 실제 장착/해제, 맞는 선택창 원화, 마을·전투 재진입 후 외형 유지, 기본 몸 복귀를 확인했습니다.

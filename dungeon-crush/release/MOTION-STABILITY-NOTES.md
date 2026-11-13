@@ -25,3 +25,8 @@
 - 전체 57개 검사(코드 26 + Java 2 + Chrome 29), APK/AAB·Android lint·기존 서명·최종 포함 리소스가 모두 통과한 소스만 APK로 제공합니다. 실패 또는 실행 중인 검사는 완료로 표기하지 않습니다.
 - 설치 버전은 2.15.1 / versionCode 43입니다. 저장 형식 2와 Wi-Fi 프로토콜 10을 유지합니다. APK는 기존 테스트 서명을 유지하며 기존 앱을 삭제하지 않고 업데이트합니다.
 - 실제 Android 단말의 장시간 FPS·발열·조작감, 시스템 WebView별 표시와 2~4대 Wi-Fi 실측은 여전히 별도 검수입니다. 서버/DB·실결제는 연결하지 않습니다. 집사 사절 원본 및 루트 앱은 수정하지 않습니다.
+
+## 검증 완료 결과
+
+- 검증 소스 `02c6d87d87bceab7a3175b1fe34d008675aa3c44` / [성공 빌드](https://github.com/ohohhyun/CatHome/actions/runs/43385971872). 전체 57개 검사 및 APK/AAB·Android lint·기존 서명·리소스 검증을 통과했습니다.
+- [APK 다운로드](https://github.com/ohohhyun/CatHome/actions/runs/43385971872/artifacts/14020027552) (GitHub 로그인 필요). APK SHA-256 `fc97b1490514daf165040ef20261875ffa7cb501fdda2987c1ea0ba2f8532773`, 482,246,354 bytes. 분할 23개의 CRC/해시와 재조립한 APK의 CRC/해시·내부 새 스크립트·기존 인증서 일치를 확인했습니다. 새 공개 릴리스는 게시하지 않았습니다.
