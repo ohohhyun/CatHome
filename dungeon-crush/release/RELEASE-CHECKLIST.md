@@ -1,3 +1,17 @@
+## 최신 공개 버전: 2.16.0 RC1 · 검증·공개 다운로드 완료
+
+- **[APK 바로 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.16.0-rc1/DungeonCrush-2.16.0.apk)** · [APK+설치 안내 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.16.0-rc1/DungeonCrush-2.16.0-RC1.zip) · [릴리스 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.16.0-rc1). 로그인 없이 내려받을 수 있습니다. 카톡에는 파일 대신 APK 주소를 공유합니다. **기존 앱을 삭제하지 말고 업데이트 설치합니다.**
+- **최신 사용자 지시: 보상은 매주 / 멀티 PK 점수·계급·시즌 전적 초기화는 2주마다.** 월요일 00:00 KST 기준이며, 다음 초기화는 2026-11-23 00:00 KST입니다. 초기화 전에 확정한 미수령 주간 보상·닉네임·유저 ID·성장·기존 랭킹 누적 기록은 유지합니다.
+- 플레이 방식은 싱글 / 와이파이 멀티 / 와이파이 PK / 멀티 PK 4가지입니다. 멀티 PK는 **사용자가 명시 선택한 공유 코드·파일 방식, 서버 미연결 유지**입니다. 가까운 점수(±200)의 실제 유저 스냅샷을 찾아 AI가 조작합니다. 이전 시즌 스냅샷은 새 시즌 매칭에서 제외합니다.
+- 설정에서 닉네임을 저장하고 실제 유저 이름 앞에 브론즈·실버·골드·다이아·마스터·챌린저 계급을 표시합니다. 기존 랭킹 메뉴와 5종 종목은 유지합니다. [게임 참고·대전/보상 규칙](PK-MODES-NOTES.md).
+- 선택창 성채 회랑 배경과 투명 전신 원화 5장을 추가하고 엘리안 기존 원화를 유지했습니다. 눈높이~발바닥 기준 키는 카엘 100%, 린 108%, 베인 116%, 세라 92%, 아리아 84%, 엘리안 104%입니다. 선택·마을·전투·외형 30벌·미리보기에 적용합니다. 원래 점프 높이와 전투 수치를 보존합니다. [변경·검수 범위](CHARACTER-HEIGHT-NOTES.md).
+- 미리보기는 걷기 없이 달리기·공격·점프·스킬 하나를 자동 반복합니다. 기존 모션 안정화도 유지합니다.
+- 검증 소스 `8a864f446b599e352af240d5444f6f960804189e`. [전체 **61개 검사(코드28 + Java2 + Chrome31)**, APK/AAB·Android lint·기존 설치 서명·포함 자원 검증 성공](https://github.com/ohohhyun/CatHome/actions/runs/43421801822). 날짜 경계·주간/2주 분리·재시작/저장 실패·정산 중복·장기 미접속 보존, 실제 두 유저 정보 공유→AI 전투→점수 정산, 전체 캐릭터/몬스터 모션과 UI를 확인했습니다. [검증 기록](2.16.0-VERIFICATION.json).
+- APK **489,853,833 bytes**, SHA-256 `12ee6211943885413c294bd7427c34217497cff8ae7aabd9247807c5c7584ac4`. ZIP **489,854,880 bytes**, SHA-256 `3704f2ee0b8ba2841be1a556596b65731083a7490729451cd5f319c8dc2a6081`. [공개 게시·익명 전체 다운로드 검증 성공](https://github.com/ohohhyun/CatHome/actions/runs/43426684449): APK 전체 크기/해시, ZIP 전체 크기/해시/CRC/내부 APK 일치를 확인했습니다. 별도 익명 HEAD도 두 파일 모두 HTTP 200입니다.
+- versionName 2.16.0 / versionCode 45 / 저장 형식 2 / Wi-Fi 프로토콜 10. 기존 설치 인증서 `e43fedd9099e7b5df82eccfa3e92fc020d429ad99795463abbe40e2af4880708`을 유지합니다.
+- **남은 실기기 검수**: 실제 Android 44→45 업데이트와 저장 보존, 새 PK 파일 선택/클립보드, 2~4대 실제 Wi-Fi 기기, 장시간 FPS·발열·조작감. 실기기 검수를 완료했다고 표현하지 않습니다. 운영 서명/스토어 등록도 별도입니다. 서버·DB·실결제는 연결하지 않았습니다. 로컬 PK 점수·시간·공유 데이터는 서버 검증 기록이 아닙니다.
+- 집사 사절 원본 보호 트리는 그대로입니다: root app `a70564ab782100b61cf07077e52753370e199045`, legacy `8bb4cd16f95ce641b3fa31296b021d8f976cb7e6`, root tests `07eea64ee955f5580a13a9f237490d346ceefe7a`. 이후 배포·문서 커밋은 검증한 앱 소스를 변경하지 않습니다.
+
 ## 2.15.2 RC1 공개 다운로드 완료
 
 - [로그인 없는 APK ZIP 바로 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.15.2-rc1/DungeonCrush-2.15.2-RC1.zip) · [릴리스 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.15.2-rc1). 카톡에는 파일 대신 이 링크를 공유합니다.
