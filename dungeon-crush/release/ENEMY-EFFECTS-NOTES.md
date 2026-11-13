@@ -23,3 +23,9 @@
 - `enemy-effects-presentation.test.cjs`: 92종의 시전/타격/잔류/효과 줄이기 368개 화면, 16속성×4단계×2모드, 실제 픽셀로 확인한 도넛 안전지대·직선 경계, 캔버스 상태 복원, 캐시/장식 예산, 실제 브라우저 4인 전투의 시전→타격과 1280/740/640 화면을 검사합니다. 스크린샷·영상·수치는 CI artifact에 남깁니다.
 - 기존 성장·스킬·UI·모션·랭킹·주간/2주 정산·통신 검사를 합쳐 전체65개(코드30 + Java2 + Chrome33) 통과 후 APK/AAB·Android lint·기존 서명·포함 파일과 공개 전체 다운로드를 검증합니다.
 - 브라우저에서 측정한 그리기 시간은 회귀 자료이며 실기기 FPS/발열로 표현하지 않습니다. 실제 Android 업데이트 설치·장시간 FPS/발열·터치 조작·2~4대 물리 Wi-Fi 기기는 별도입니다.
+
+## 공개 검증 완료
+
+전체65개 검사와 APK/AAB·Android lint·기존 서명·포함 파일 검증: https://github.com/ohohhyun/CatHome/actions/runs/43525483476
+
+공개 APK/ZIP 익명 전체 다운로드·크기·해시·CRC 검증: https://github.com/ohohhyun/CatHome/actions/runs/43529456802

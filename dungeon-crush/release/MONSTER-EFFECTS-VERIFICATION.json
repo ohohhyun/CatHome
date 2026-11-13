@@ -1,0 +1,447 @@
+{
+  "source": "1ae345bc8e5609abeae782a5405faa5dfa5aff2e",
+  "combat": {
+    "skins": 92,
+    "patterns": [
+      "guardian",
+      "bolt",
+      "forge",
+      "eclipse",
+      "fan",
+      "runebolt",
+      "cross",
+      "furnace",
+      "roots",
+      "pounce",
+      "venom",
+      "tide",
+      "crystal",
+      "tidebolt",
+      "chrono",
+      "slam",
+      "storm",
+      "sweep",
+      "pressure",
+      "mirrorLanes",
+      "venomfan",
+      "sporefield",
+      "poisonring",
+      "gearline",
+      "gearring",
+      "bloodcross",
+      "prismcross",
+      "coronaRing",
+      "judgementBeam"
+    ],
+    "pairedSimulations": 552,
+    "unchangedCombat": true,
+    "projectileImpactFamilies": 16,
+    "sourceCancellation": true
+  },
+  "browser": {
+    "skins": 92,
+    "renderedCells": 368,
+    "pixelAudit": [
+      {
+        "style": "sentinel",
+        "reduced": false,
+        "hashes": [
+          "6a7af190fe8d0df7b97740934ab8bae7ad80ebe924a95d0936cccf0bf57fea73",
+          "4754bde1dc45f07de378c95ff0a9c5a5cf13a584cd3c15138c04979f092d62c4",
+          "717556e253f9238b6ff8d9e43b6190ea373fe3f6f112400b377312073bd6c005",
+          "a7cc4db3ac04ac90b8724458c242195d3a2f1dd09a9c97cdda514b4ab5149635"
+        ]
+      },
+      {
+        "style": "forge",
+        "reduced": false,
+        "hashes": [
+          "fc2e8d0073c8b1d43834b45a0771f74304685433b17d256de55309877e032cf5",
+          "18d4388d4658cde853c6143bf05baea60aee898be63ed1f876e2dd41d0d371d2",
+          "e21574adb6c4d5d9392f9ac5adb2da651aa26ba36e444a777d9a28997a22e767",
+          "6dcd6594fc22db98e5a02b37f887167aa27d35cdccc2ed87c61813d32d8a6433"
+        ]
+      },
+      {
+        "style": "roots",
+        "reduced": false,
+        "hashes": [
+          "809e3a65d43156aefdaa0732094360cbb381aa00850be200986938fced191e8f",
+          "c259b952b6f2573e56c5527100246e2dfdafa53d18213e97e7a79f1941c23d06",
+          "59d9809d57b5f34700d5c6323ec5cfa983f873957c532e8932bd251f262654d6",
+          "d88ca0e847f3f010c2283ec4243bc5db0ecc31aa60913ef02ce76d17f90c472f"
+        ]
+      },
+      {
+        "style": "crystal",
+        "reduced": false,
+        "hashes": [
+          "915b4c6cc37b801511821334710d5d941ad553a694453e7bf40e9e764c624a26",
+          "4ff78dac12ea884aba7a8fba6dd5bbd78dd9f7fa0efbcee241f0f96f6e5c7be8",
+          "ad74477cd5d176b8d8c50023eeca2abfff2bb1e7b9d609545e705fee665ec352",
+          "9acab272efbdf094077168b428882591592ee34b60fc708f6a8a4a0026d2bb33"
+        ]
+      },
+      {
+        "style": "tide",
+        "reduced": false,
+        "hashes": [
+          "53b5dca96650cbbb27f06029af36b1d127200e573b3e4f7fe649952b47a1004a",
+          "7d992ce7631f1bbc70c16126578bcc70eda272fd4d330142d4b7f155eb1c28ba",
+          "c2c2005a01a64cce16dfdd2b914919569e2ef8666d8495ad44d56d37ee825ca0",
+          "0927776bc6fae14fe4b2557dd77faff68dff7d8c5e3a408550f5ee3dcd0215fd"
+        ]
+      },
+      {
+        "style": "storm",
+        "reduced": false,
+        "hashes": [
+          "53c504bf1c3fac5fb187cbd2ec37d91c88a06850160341e1db6555b978190006",
+          "867d75a082be375d64800355743d40f13b60a90e72706746a6496e0cea28c49d",
+          "4921ba0604322e8d25db076464fa1610c867a3cdf8772c1b1fdb95ef651cebf7",
+          "bbebaf4c5690ede1c3e972ca8ffebc141f88768c28570561bc11ca696ef96672"
+        ]
+      },
+      {
+        "style": "chrono",
+        "reduced": false,
+        "hashes": [
+          "f382efb3be17edc476437f6aa42da36b997ba9a9e5539ec6b358bd39af9c8795",
+          "d2169997591e952882a53371eb2af5f1fe11c5133c78c928384fda17b8e8cc04",
+          "86b3121d3969b1a4f0165a62f18b8673d28f054b14d2041cdf87324c3810648f",
+          "484059e0f70ddc97de16a029c1c9e0c661b4db805bfafd4d0438c1c72576d7f1"
+        ]
+      },
+      {
+        "style": "eclipse",
+        "reduced": false,
+        "hashes": [
+          "470ab4376f681f8f8aea015c14df45d31cc89febc6cb922371caa0fb5b17d65c",
+          "114737856217078d166d3491541b876f63b1d17c00e34e6f46217c41f059d669",
+          "0f4618a716a8617cae104c612f68f8b0f898e375309edb1ce1e93c81100cf791",
+          "58210fb6eeb36be32394ea801dfc518a5f32cfa550fdd737513d3feda0afc540"
+        ]
+      },
+      {
+        "style": "frost",
+        "reduced": false,
+        "hashes": [
+          "62b56c3e006229bceac2e7a5375e2552a1563ec1ccefd0bd45b4598dae54b2c3",
+          "bf2698dc4924eb8ef241d476d49bb91cd891ef4d0ed80a0712e9078226d5dfb7",
+          "85b606f3bda7d35c6774f190297c732d255c47f96b824517842aa2fd50c2452d",
+          "1838e4b8eee8643e52893b6ad3340307ab5b2ee85798ebbf93e4bb0b7ee77015"
+        ]
+      },
+      {
+        "style": "lava",
+        "reduced": false,
+        "hashes": [
+          "e1d1a4ff0f0ddc1318398bf0c294f0c1834d5d54913f05de4fb70d17f4fa69b3",
+          "9a5727c9eb67eb4f6c3cb6eb30e8677ef597770242aedc6c68bdd48547f0bbb5",
+          "d450d22dd588b2de4beeb4b5fff97e32a3b040602aa405af089b2985fc019b34",
+          "a8b012bb6c897dfa697f61c245ecf657d6201ab732de143b02f4f10448aeb76e"
+        ]
+      },
+      {
+        "style": "astral",
+        "reduced": false,
+        "hashes": [
+          "d4fb006ebfc1c5ac9205b2c841276f963dc46fd5538f357e7cbc7072c4f424a6",
+          "3e5d1c695dfde3338269bdb792c96ce4eb5f3460de6a9967c0e55f0dfc3cbbc7",
+          "3846c80c16a7decdd52bea9ba05e4e020fa9b07958885ca74ef82d0ad7dc80a5",
+          "2e762cacc3fe06ba23201e7ee7c4fc5d348975e6da213548de7fb98ca4c36424"
+        ]
+      },
+      {
+        "style": "void",
+        "reduced": false,
+        "hashes": [
+          "8910ad8f29f45b7aa76da476f8046deeb7eac02029b413777faa1937c82c81b8",
+          "e590a6abc9362ba871eea1b0535d2cc84ba21e9424d67609b8b68a63b3ec3635",
+          "1e80660c3e9b1df5331aa4c4540eb8047b656b21c53b7ad3d51559c0234b4853",
+          "4be206f6e90c49c339f5f5e7387c610f3963ffddf0ea8bc5f9d734e140025f88"
+        ]
+      },
+      {
+        "style": "current",
+        "reduced": false,
+        "hashes": [
+          "a2b44fcc8b9afad507898294662eea485ea2f65afe00ee6d62d18db5a4673312",
+          "b133935b4973f8b0ee3f6171e96490020fef33256de5cd803f8a9f94ae47f3cd",
+          "9ca866b6e1105c37c2e4e479ab1e1c875b4096eca7990b630f406a2c943af7e3",
+          "4e958a7964c7c422eef25127e8e4ba1c984812e1bb43f524606e725c61ab0f03"
+        ]
+      },
+      {
+        "style": "plague",
+        "reduced": false,
+        "hashes": [
+          "9b2479e081fa57e72d602604ef0a6f4b7317849f828e7a6c4056ab6bc2fe05d5",
+          "2efe8d6adfb32937c5e658d310265d8b6f362899d75487f8dfe28a3d386485c1",
+          "b5c9f93454e24c64ff10975e17c8f183cad84c3d4de5503376797025f4176a4c",
+          "100c6dd5b9308561b4d5eac06e88a0e763e7d431f7bee9cf573d716608db11ff"
+        ]
+      },
+      {
+        "style": "clockwork",
+        "reduced": false,
+        "hashes": [
+          "38d79534cbad2a05408d8a9aa338a94ff93cfee6baa1ad7567ca469cbb987f0a",
+          "7f0a574047e73b72c70a586236d907abebded36530a6e4412cb689659b60d6aa",
+          "d4da76f4b179b398f48d0141d830a6d8db5f6d25b0727c075798fc19042a9fe4",
+          "a004365de63deccc2411407d007adcb3350f993e81489d8290328b06bd8cb4e4"
+        ]
+      },
+      {
+        "style": "dawn",
+        "reduced": false,
+        "hashes": [
+          "b524e455fc82b6f410ce92730194d54cf9ae93e94b03ed1e92b789865046c57e",
+          "2e76ebe1a5267a52bdef513521ea22ef7b1a9a827bef76335f9ffc5e1117f3c3",
+          "c127f47bf5ec1dcb6b5b174c7399d9ada413512a1de5b1eae97824cf1564a3cd",
+          "e71b315b4af2bfebb65a8afccc473d1198354c323982c5f423d3a88c5a0e0349"
+        ]
+      },
+      {
+        "style": "sentinel",
+        "reduced": true,
+        "hashes": [
+          "b1e4ae2577db6e6a74e75903ed32764bcca861e90d67905f8f454e70cc469b14",
+          "4f4bda1941429fc4b8c51918deee368578ee7f5b0c59f34454a3f39261e43b20",
+          "119c0bbc9e7c196723993f00a095d2dddfcb79a40e1d32d59be0083d88e025f1",
+          "96f8cc4a1a3701de84436fd6b2107acd6de765753f9b577ef7f8c00f469cf502"
+        ]
+      },
+      {
+        "style": "forge",
+        "reduced": true,
+        "hashes": [
+          "0a854c5b69836d8cc8ef55f2fb27e940b82d1b60d82adceabc7ab9d276c2b13c",
+          "a57877ef86202cd65aa87c44418da37448fda0c884ba22cb342acf6009032d62",
+          "9fb41c4441932b6c90fcded27348dd541919bb21f627bdcc3b56715cf0f13b78",
+          "1020f0d038fd559ca46b7e01b2cac646ab216d196b96f5b028cbf8698f023b3e"
+        ]
+      },
+      {
+        "style": "roots",
+        "reduced": true,
+        "hashes": [
+          "2393358d84d18a6239b4ee7cf4fc555a0f30704948c391f4fee32d395cfc989c",
+          "0a930765f00995b80baf089fce31cc1fd734a2b420c15f17c9d381d892232fd7",
+          "f598b6999e38184d896e48b727cbab78ccc8e7cbec6a650a954ca2703ae38623",
+          "f824a33cc633607f06b4901370eb0ee8da395ffc023a1dd02d156abad7ca1c85"
+        ]
+      },
+      {
+        "style": "crystal",
+        "reduced": true,
+        "hashes": [
+          "2c211a9819ab9dbb8d741be46e3825a1b12d18c9b6af10bb396d6a99afec3ac5",
+          "b4dece475732d8610efec6c7639de54bab4a602a43279a61fe4a5509af0c98ce",
+          "a80aab22771a611ca52f88e474ff54e081b086b7e3b6f61fb274ac0e1377e1c8",
+          "402e8c52ea58f31bd571c5ff6e8449376b68d61605073064b68e3360d58d3ece"
+        ]
+      },
+      {
+        "style": "tide",
+        "reduced": true,
+        "hashes": [
+          "0a49b35d594e0782b3fa8839812bc038d442719fa8532255f31ae2294e1b2c42",
+          "5921505a9a296b9c740098c969fe0121ab20bc237215d01684d468640a075536",
+          "b6491419b272f69d80dd05f0ad6923b33b8037332c46c768b6c58c3dca52a5b1",
+          "bffc93b66da815638ed3d3b42893383428b68e634a6162742d2f651127f0b47d"
+        ]
+      },
+      {
+        "style": "storm",
+        "reduced": true,
+        "hashes": [
+          "9f12d62f0506cb63b955bd74f6eb900f83554f34bdd13bd45e7eb7e88bea5d4f",
+          "0f377cee9461429872d53ac662741268373a2da7e79605eafe5aaa1488143f7e",
+          "4ade4822159b00295dc9dcf309fc360b19774b6cdcb3686ab9798db1f4c1cce2",
+          "570186e47547d0c2dae509d10b20b1f79ad84ba390fc2c74795a06c1958a7655"
+        ]
+      },
+      {
+        "style": "chrono",
+        "reduced": true,
+        "hashes": [
+          "5d6dfa70ca6e95aa41d902124a1f886cf04855f2295b4269b91bb3e14325259c",
+          "c72f0d5aa020a80b0c9a9d8ffcf6428c0a02054e124340941e7ed7c4744251af",
+          "d06cbbab460b3d881b7fc76164500f5d7b2d71be82f1c5f811cf816ab1f6898c",
+          "4debffe2a2f53bcc09cadee1c48a749a06dbdd2df75949598bc431897685f7eb"
+        ]
+      },
+      {
+        "style": "eclipse",
+        "reduced": true,
+        "hashes": [
+          "156be457ff6d5060c8fa157a58592531ce243a6f7251ddab8cf9b822be66fe92",
+          "ee704efef4a35ebce9a9303b321b91c1d7adf19a425e4f2d9d72243cf8ed98c4",
+          "4e537e41dccd361aae4a88ce359aa99b50360924fa431d1d7004891b89de2d08",
+          "f5b20322d41bffb1bd5be3c5efe865dbfb93e31a296286b3cd8aba52517c0bcd"
+        ]
+      },
+      {
+        "style": "frost",
+        "reduced": true,
+        "hashes": [
+          "19a90ecfb35ddf087bd46f25561cf57f9d4ca0af55501d1ac2a6798734310911",
+          "880e54cf82db97148805440f36529bcdd0cef29466e1874758df94fc5aba3f5a",
+          "60b289dd69d455cceffe2424de082fb45fc48dca1cd128d94818ccbc2d53cb74",
+          "22d080b651c6e5cf2e0e20c0e16061b019e627c1bc172c58c1e7b97df7e6752e"
+        ]
+      },
+      {
+        "style": "lava",
+        "reduced": true,
+        "hashes": [
+          "e54c60a63a43b0d5dcf13e22ef492919b9f94a84e1fca910dc50b2e5790472b7",
+          "6d9ec6932baef92abc4368e48ce4f865b907b45e2620a14c2ed45d5e5dd43920",
+          "a79dc85af604bf4a1660b7cffc4c5fa6fafed64208e422fea3b121ca4c4f1fe9",
+          "fe59b7edee3c37f7d85cff87c306f9881d33f6ec2625be85fd983bde2591ea89"
+        ]
+      },
+      {
+        "style": "astral",
+        "reduced": true,
+        "hashes": [
+          "ec1b60cd424b82eee24f343c93f33e2a8a12734d3eb1bf36040d49310a7392de",
+          "e10340f488e00d11419bfbaf5713cbbd0518dd1be2feeae4cc4b2ddb4ac6ae21",
+          "a4f1b8a6111412352e880ac1e2dd9ac861b4473dab55d13870424512e2edb744",
+          "9c55ce3ce4d553de782bdc3448e6dac70d6a93480f32a37acd1375e1a6043718"
+        ]
+      },
+      {
+        "style": "void",
+        "reduced": true,
+        "hashes": [
+          "cf22f303e459aef1bee6e816af063d541fe37f62c8a69b2c2d8484523abcc207",
+          "92bc2cb0eeb895c9f5e59b24a1d737178b28cb65075abe67c21614be2ad582dd",
+          "e83ead8085fd4db8560d440ebc2057ab7aeeceb1fbe96aa714b7eaff8ddf016c",
+          "4d41464ccfad6253730bf6a79a5c2e600a19954bd37dc7037b1b9c1af554bddd"
+        ]
+      },
+      {
+        "style": "current",
+        "reduced": true,
+        "hashes": [
+          "cd31124b1b472e76074db98d2590255f61896897e363aa450f3d97cf4956c97c",
+          "79bb2119fad3db9d53568b9cf97c08d49b5b61c0eddef490340b080f770f5cca",
+          "3c9ec7abe34cd394ada6b2fa891c112f62c26254f5f4880c3ee29bba1e86344c",
+          "c00ebdf9c6e41b5af49641273865fd6eddcdaac73321b7f8cfaf8a876cd132a2"
+        ]
+      },
+      {
+        "style": "plague",
+        "reduced": true,
+        "hashes": [
+          "7dbdb6c6feaf17304e9a57ffd02cb9890bdbf3a1912d5cfa28792164d6f6fd11",
+          "16ab6b7c8010f3d910215b2470acc4e2dfd902a2f70aa10c36f5685e8afbe882",
+          "c8c94220a232ceaa8fb1d546888ad95212648d433dd8994474ab3354a34c2398",
+          "3a43db51ad08ef9d85fbd803fb0fea92754445f780b5bd31196ba86356fb823e"
+        ]
+      },
+      {
+        "style": "clockwork",
+        "reduced": true,
+        "hashes": [
+          "d0cd222e8e08a1ae2ca3046087477a583f782d3a11a6eae5eaca65817fc1f8ee",
+          "49f3c7f613bffc9e21840dd7abacecdf968be6642df6f25c46ed9276dff2f2c1",
+          "f25717a2f61ee60171d2ebfafe7422684a5d791c60faef744d9c974389677a0d",
+          "dfae19fdebc1996e48d03d7d1bd1e014a75779c6da564a556421dc7207f3be63"
+        ]
+      },
+      {
+        "style": "dawn",
+        "reduced": true,
+        "hashes": [
+          "ef224f09a00965eee72db8a54aec70d9a2b0fa1bd1a1b373c1985e412b21b2d7",
+          "3bc0c223e65c8ff998998d8f053fe5880414139e2aa1d22687d41e0125808e11",
+          "72d12f80b888e0a09f01a41359a706e7a9be468c5d529379170ece313ef3e4a9",
+          "c5b1da4c8ecf5a47b56a902d049f4542e468eb4d32a3e5cfc1e5840b5d851c98"
+        ]
+      }
+    ],
+    "budget": {
+      "full": {
+        "warningDraws": 464,
+        "impactDraws": 1428,
+        "projectileDraws": 1360,
+        "windupDraws": 124,
+        "styles": [
+          "sentinel",
+          "forge",
+          "roots",
+          "crystal",
+          "tide",
+          "storm",
+          "chrono",
+          "eclipse",
+          "frost",
+          "lava",
+          "astral",
+          "void",
+          "current",
+          "plague",
+          "clockwork",
+          "dawn"
+        ],
+        "cachedTextures": 48,
+        "cacheBytes": 6291456,
+        "detailUsed": 96,
+        "peakDetail": 96,
+        "detailLimit": 96
+      },
+      "times": [
+        37.300000000046566,
+        66.69999999995343,
+        33.300000000046566,
+        57.199999999953434,
+        29.199999999953434,
+        27.199999999953434,
+        30.600000000093132,
+        31.5,
+        29.5,
+        22.600000000093132,
+        28.399999999906868,
+        27.800000000046566,
+        26.199999999953434,
+        42.10000000009313,
+        28.5,
+        39.800000000046566,
+        29.299999999813735,
+        26.9000000001397,
+        27.300000000046566,
+        19.5999999998603,
+        21,
+        20.4000000001397,
+        19.5,
+        23.799999999813735,
+        57.5,
+        29.4000000001397,
+        22.300000000046566,
+        33.39999999990687,
+        19.100000000093132,
+        20.399999999906868
+      ]
+    },
+    "liveRegions": [
+      2,
+      5,
+      13,
+      15
+    ],
+    "viewports": [
+      1280,
+      740,
+      640
+    ],
+    "errors": []
+  },
+  "scope": "Local browser measurements from the exact tested app source; not physical-device FPS or thermals",
+  "timingSummaryMs": {
+    "median": 28.449999999953434,
+    "max": 66.69999999995343
+  }
+}
