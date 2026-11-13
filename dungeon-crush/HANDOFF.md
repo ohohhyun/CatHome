@@ -2,13 +2,15 @@
 
 이 파일을 먼저 읽고 `dungeon-crush/`만 이어서 작업하세요. 사용자에게는 한국어 존댓말을 사용하세요.
 
-## 진행 중: 2.15.0 원화·실제 장착 화면 검수
+## 최신 검증 버전: 2.15.0 RC1 완료
 
-캐릭터 선택과 외형 상품 상세 원화, 동작별 미리보기 배율 고정, 휴대폰 화면을 수정하고 있습니다. 기본 6명과 외형 30벌을 실제 마을·전투에서 장착/해제하고 영상·크기를 검수했습니다. [검수 내용](release/UI-KEYART-NOTES.md) · [측정 자료](release/UI-KEYART-QA.json).
+- [APK ZIP 바로 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.15.0-rc1/DungeonCrush-2.15.0-RC1.zip) · [릴리스 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.15.0-rc1). 기존 앱을 삭제하지 말고 업데이트 설치합니다. versionCode 42 / 저장 형식 2 / Wi-Fi 프로토콜 10.
+- 검증 소스 `f616e095a66be0d3d31c8e030d9022b3cad536e3`. [전체 55개 검사 통과](https://github.com/ohohhyun/CatHome/actions/runs/43366493827) — 코드 25 + Java 2 + Chrome 28. APK/AAB, Android lint, 기존 서명과 최종 포함 리소스도 통과했습니다.
+- APK: 482231241 bytes, SHA-256 `e8af843d3462e8a28ebed202faeed6d7d787b392a77a22452e544a4aba8369ef`. ZIP: 484004107 bytes, SHA-256 `d463deeefc147a8fa370ab52dbd108fbcf8b61b83e1bd94b295e0b2147dbc49c`. 로그인 없는 전체 다운로드와 ZIP CRC, 안쪽 APK 크기/해시를 검증했습니다. [배포 작업](https://github.com/ohohhyun/CatHome/actions/runs/43379978484).
+- 기본 캐릭터 6명과 외형 30벌 원화 36장을 확인했습니다. 30벌 모두 상점 장착/해제→맞는 선택창 원화→마을/전투 재진입 보존을 실제 UI로 검사하고, 몸 크기·하체·무기 경계와 모션을 비교했습니다. 두 차례 15분 이상 상점 전환 검사도 통과했습니다.
+- 무료 테스트 구매만 지원하며 실제 결제/서버 연결은 없습니다. 실기기 장시간 FPS·발열, 스토어 업로드, 운영 서명은 별도입니다. 집사 사절 원본과 루트 앱은 수정하지 않았습니다.
 
-기본 6명·외형 30벌의 원화 36장 제작과 무손실 포장을 완료했습니다. 전체 55개 검사와 APK/AAB·lint·서명/리소스 검증을 진행합니다. 이 검증 전에는 2.15.0을 배포하지 않습니다. 아래 2.14.1은 이전 공개 버전이며 이번 수정 APK가 아닙니다.
-
-## 최신 검증 버전: 2.14.1 RC1
+## 이전 검증 버전: 2.14.1 RC1
 
 - [APK ZIP 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.14.1-rc1/DungeonCrush-2.14.1-RC1.zip) · [릴리스 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.14.1-rc1). 기존 앱을 삭제하지 않고 업데이트합니다. versionCode **41**, 저장 형식 **2**, Wi-Fi 프로토콜 **10**입니다.
 - [30벌 크기 비교 화면](https://github.com/ohohhyun/CatHome/blob/6905dca217f0ac5d15f652a75b31f136e9e4eee8/dungeon-crush/release/SkinSize-2.14.1-Comparison.png)에서 기본 외형과 함께 확인할 수 있습니다.

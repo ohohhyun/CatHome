@@ -1,13 +1,11 @@
-# 2.15.0 원화 · 실제 장착 점검
+# 2.15.0 캐릭터 원화 · 외형 미리보기 — 최종 검증 완료
 
-- 기본 6명+외형 30벌 원화의 고유 매핑·해시·전신·실제 디코딩. 36장 모두 완성했으며 누락 시 APK 배포를 차단합니다.
-- 실제 구매/장착/해제 → 마을/전투 → 기본 몸 복구, 월드 몸 기준 눈높이/발 접지, 이동·공격·점프·회피를 확인합니다.
-- 모든 외형/모드의 실제 CSS 카메라 배율 고정, 사용자가 선택한 효과 넓게 보기/기본 배율 복귀를 확인합니다.
-- 캐릭터 선택/상품 원화·동작·효과, 노치·좁은 화면·1.4배 글자, 로딩 실패·재시도와 빠른 상품 전환을 확인합니다.
-- [검수 상세](UI-KEYART-NOTES.md) · [자료](UI-KEYART-QA.json). 기존 검사와 새 검사 전체 55개(코드25+Java2+Chrome28), APK/AAB·lint·기존 서명·포함 리소스, 공개 ZIP 전체 다운로드의 크기/SHA/CRC/내부 APK 검증을 수행합니다.
-- 2.15.0 / versionCode 42 / 저장2 / 프로토콜10. 실기기 FPS·발열 결과는 별도입니다.
-
-최종 빌드와 공개 ZIP 검증 결과는 완료 후 기록합니다.
+- 기본 6명 + 외형 30벌의 원화 36장 고유 매핑, 해시, 전신 및 디코딩을 확인했습니다. 30벌 실제 장착/해제, 맞는 선택창 원화, 마을·전투 재진입 후 외형 유지, 기본 몸 복귀를 확인했습니다.
+- 하체/무기 잘림과 몸 비율, 공격·달리기·점프·회피·스킬 미리보기 배율, 상품 전환·로딩 실패 재시도, 좁은 휴대폰·노치·1.4배 글자를 검사했습니다.
+- [검수 상세](UI-KEYART-NOTES.md) · [측정 자료](UI-KEYART-QA.json) · [마을/전투 비교](Appearance-2.15.0-World-Comparison.png).
+- 전체 55개 자동 검사(코드25 + Java2 + Chrome28), APK/AAB, Android lint, 기존 서명과 최종 포함 리소스 검증 통과: [빌드 43366493827](https://github.com/ohohhyun/CatHome/actions/runs/43366493827). 소스 `f616e095a66be0d3d31c8e030d9022b3cad536e3`.
+- APK 482231241 bytes / SHA-256 `e8af843d3462e8a28ebed202faeed6d7d787b392a77a22452e544a4aba8369ef`. [공개 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.15.0-rc1/DungeonCrush-2.15.0-RC1.zip) 484004107 bytes / SHA-256 `d463deeefc147a8fa370ab52dbd108fbcf8b61b83e1bd94b295e0b2147dbc49c`. 로그인 없는 전체 다운로드, HTTP 200·asset 노출·ZIP CRC·안쪽 APK 크기/해시 검증 통과: [게시 작업 43379978484](https://github.com/ohohhyun/CatHome/actions/runs/43379978484).
+- versionCode 42 / 저장 형식 2 / Wi-Fi 프로토콜 10. 실기기 장시간 FPS·발열은 측정하지 않았습니다. 외형/펫은 무료 테스트 구매입니다.
 
 # 2.14.1 외형 몸 크기 점검
 

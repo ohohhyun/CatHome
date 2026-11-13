@@ -1,8 +1,11 @@
-# 진행 중: 2.15.0 — 원화와 외형 실제 화면 검수
+# 던전크러시! 2.15.0 — 캐릭터 원화와 외형 미리보기
 
-캐릭터 선택과 외형 상품 상세 원화, 동작별 미리보기 배율 고정, 휴대폰 화면을 수정하고 있습니다. 기본 6명과 외형 30벌을 실제 마을·전투에서 장착/해제하고 영상·크기를 검수했습니다. [검수 내용](release/UI-KEYART-NOTES.md) · [측정 자료](release/UI-KEYART-QA.json).
-
-기본 6명·외형 30벌의 원화 36장 제작과 무손실 포장을 완료했습니다. 전체 55개 검사와 APK/AAB·lint·서명/리소스 검증을 진행합니다. 이 검증 전에는 2.15.0을 배포하지 않습니다. 아래 2.14.1은 이전 공개 버전이며 이번 수정 APK가 아닙니다.
+- [APK ZIP 바로 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.15.0-rc1/DungeonCrush-2.15.0-RC1.zip) · [릴리스 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.15.0-rc1). 압축을 풀고 `DungeonCrush-2.15.0.apk`를 설치하세요. 기존 앱은 삭제하지 말고 업데이트 설치합니다. versionCode 42, 저장 형식 2, Wi-Fi 프로토콜 10입니다.
+- 캐릭터 선택에 기본 캐릭터 6명과 외형 30벌의 전신 원화를 표시합니다. 상점 상품 상세에서는 원화·동작·스킬 효과를 확인하고 장착/해제할 수 있습니다. 동작별 미리보기 크기와 휴대폰 상점 UI를 정리했습니다.
+- 30벌을 실제 장착해 맞는 선택창 원화, 마을/전투 외형 유지와 해제를 확인했습니다. 외형 크기·하체·무기 잘림, 동작 전환과 로딩 재시도도 검수했습니다.
+- [전체 55개 자동 검사, APK/AAB·Android lint·기존 서명·포함 리소스 검증 성공](https://github.com/ohohhyun/CatHome/actions/runs/43366493827): 코드 25 + Java 2 + Chrome 28. 검증 소스 `f616e095a66be0d3d31c8e030d9022b3cad536e3`.
+- APK: 482,231,241 bytes, SHA-256 `e8af843d3462e8a28ebed202faeed6d7d787b392a77a22452e544a4aba8369ef`. 공개 ZIP: 484,004,107 bytes, SHA-256 `d463deeefc147a8fa370ab52dbd108fbcf8b61b83e1bd94b295e0b2147dbc49c`. 공개 링크에서 로그인 없이 ZIP 전체를 받아 CRC와 ZIP 안의 APK 크기/SHA-256까지 다시 대조했습니다. [게시·asset 검증 작업](https://github.com/ohohhyun/CatHome/actions/runs/43379978484).
+- 외형/펫 구매는 무료 테스트이며 실제 결제가 없습니다. 실기기 장시간 FPS·발열과 Play 스토어 제출은 별도입니다. 집사 사절 원본은 수정하지 않았습니다.
 
 ---
 

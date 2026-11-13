@@ -1,11 +1,11 @@
 {
   "version": "2.15.0",
-  "status": "local_verified_ci_build_pending",
+  "status": "public_download_verified",
   "readyIllustrations": 36,
   "expectedIllustrations": 36,
   "pending": [],
   "environment": "Linux Chromium 740x360 plus automated responsive viewports; no Android device FPS measurement",
-  "releaseGate": "36 illustrations and all 55 CI checks plus Android build/lint/signature/package verification required",
+  "releaseGate": "Passed: all 36 illustrations; all 55 CI checks; APK/AAB, lint, signature and packaged resources; anonymous public ZIP download, size/SHA256/CRC, and inner APK hash.",
   "actualWorld": {
     "passed": true,
     "bases": [
@@ -917,6 +917,40 @@
       "failedStep": "Test run clarity, extended skills and dead-caster cancellation",
       "apkBuilt": false,
       "reason": "Stale test version literal; fixed before repeating the complete pipeline."
+    },
+    {
+      "source": "f616e095a66be0d3d31c8e030d9022b3cad536e3",
+      "run": 43366493827,
+      "conclusion": "success",
+      "apkBuilt": true,
+      "automaticChecks": 55,
+      "apkBytes": 482231241,
+      "apkSha256": "e8af843d3462e8a28ebed202faeed6d7d787b392a77a22452e544a4aba8369ef"
     }
-  ]
+  ],
+  "verifiedSource": "f616e095a66be0d3d31c8e030d9022b3cad536e3",
+  "finalBuild": {
+    "run": 43366493827,
+    "url": "https://github.com/ohohhyun/CatHome/actions/runs/43366493827",
+    "source": "f616e095a66be0d3d31c8e030d9022b3cad536e3",
+    "conclusion": "success",
+    "automaticChecks": 55,
+    "code": 25,
+    "java": 2,
+    "chrome": 28,
+    "apkBuilt": true,
+    "apkBytes": 482231241,
+    "apkSha256": "e8af843d3462e8a28ebed202faeed6d7d787b392a77a22452e544a4aba8369ef"
+  },
+  "publicRelease": {
+    "tag": "dungeon-crush-v2.15.0-rc1",
+    "page": "https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.15.0-rc1",
+    "directZip": "https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.15.0-rc1/DungeonCrush-2.15.0-RC1.zip",
+    "publisherRun": 43379978484,
+    "zipBytes": 484004107,
+    "zipSha256": "d463deeefc147a8fa370ab52dbd108fbcf8b61b83e1bd94b295e0b2147dbc49c",
+    "anonymousFullDownload": true,
+    "zipCrc": true,
+    "innerApkSha256": "e8af843d3462e8a28ebed202faeed6d7d787b392a77a22452e544a4aba8369ef"
+  }
 }
