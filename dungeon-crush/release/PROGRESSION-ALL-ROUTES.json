@@ -1,0 +1,779 @@
+{
+  "source": "d3119de5d5a47114b6196c7c5582db811893a054",
+  "scope": "Additional local deterministic tactical simulations; normal difficulty; six classes; legal ranks learned with actual level/SP gates up to rank 5. Does not replace physical device or human difficulty testing.",
+  "campaign": {
+    "equipment": "on-level magic +6",
+    "cases": 288,
+    "victories": 288,
+    "routes": [
+      {
+        "dungeon": 0,
+        "level": 1,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          152,
+          129,
+          114,
+          287,
+          291,
+          275
+        ]
+      },
+      {
+        "dungeon": 1,
+        "level": 3,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          113,
+          99,
+          84,
+          208,
+          216,
+          179
+        ]
+      },
+      {
+        "dungeon": 2,
+        "level": 5,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          131,
+          99,
+          89,
+          183,
+          221,
+          186
+        ]
+      },
+      {
+        "dungeon": 3,
+        "level": 8,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          157,
+          129,
+          99,
+          210,
+          235,
+          227
+        ]
+      },
+      {
+        "dungeon": 4,
+        "level": 10,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          106,
+          87,
+          86,
+          199,
+          224,
+          170
+        ]
+      },
+      {
+        "dungeon": 5,
+        "level": 12,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          124,
+          102,
+          105,
+          215,
+          228,
+          247
+        ]
+      },
+      {
+        "dungeon": 6,
+        "level": 16,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          115,
+          93,
+          102,
+          203,
+          222,
+          191
+        ]
+      },
+      {
+        "dungeon": 7,
+        "level": 18,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          104,
+          90,
+          90,
+          192,
+          216,
+          179
+        ]
+      },
+      {
+        "dungeon": 8,
+        "level": 20,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          104,
+          93,
+          88,
+          192,
+          211,
+          181
+        ]
+      },
+      {
+        "dungeon": 9,
+        "level": 24,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          109,
+          98,
+          91,
+          191,
+          216,
+          189
+        ]
+      },
+      {
+        "dungeon": 10,
+        "level": 26,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          152,
+          110,
+          108,
+          229,
+          235,
+          246
+        ]
+      },
+      {
+        "dungeon": 11,
+        "level": 28,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          116,
+          94,
+          92,
+          211,
+          224,
+          201
+        ]
+      },
+      {
+        "dungeon": 12,
+        "level": 32,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          108,
+          94,
+          89,
+          196,
+          206,
+          179
+        ]
+      },
+      {
+        "dungeon": 13,
+        "level": 34,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          142,
+          111,
+          110,
+          227,
+          233,
+          252
+        ]
+      },
+      {
+        "dungeon": 14,
+        "level": 36,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          113,
+          91,
+          92,
+          196,
+          212,
+          187
+        ]
+      },
+      {
+        "dungeon": 15,
+        "level": 40,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          174,
+          123,
+          126,
+          272,
+          246,
+          275
+        ]
+      },
+      {
+        "dungeon": 16,
+        "level": 43,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          146,
+          115,
+          105,
+          228,
+          250,
+          253
+        ]
+      },
+      {
+        "dungeon": 17,
+        "level": 46,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          106,
+          98,
+          87,
+          189,
+          212,
+          188
+        ]
+      },
+      {
+        "dungeon": 18,
+        "level": 50,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          185,
+          105,
+          95,
+          208,
+          212,
+          195
+        ]
+      },
+      {
+        "dungeon": 19,
+        "level": 53,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          136,
+          102,
+          114,
+          233,
+          233,
+          239
+        ]
+      },
+      {
+        "dungeon": 20,
+        "level": 56,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          113,
+          92,
+          88,
+          195,
+          207,
+          171
+        ]
+      },
+      {
+        "dungeon": 21,
+        "level": 60,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          105,
+          90,
+          86,
+          198,
+          207,
+          185
+        ]
+      },
+      {
+        "dungeon": 22,
+        "level": 60,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          137,
+          107,
+          110,
+          228,
+          241,
+          265
+        ]
+      },
+      {
+        "dungeon": 23,
+        "level": 60,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          137,
+          117,
+          105,
+          230,
+          227,
+          275
+        ]
+      },
+      {
+        "dungeon": 24,
+        "level": 61,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          112,
+          97,
+          96,
+          201,
+          222,
+          195
+        ]
+      },
+      {
+        "dungeon": 25,
+        "level": 64,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          133,
+          117,
+          111,
+          232,
+          227,
+          268
+        ]
+      },
+      {
+        "dungeon": 26,
+        "level": 67,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          111,
+          95,
+          95,
+          193,
+          210,
+          185
+        ]
+      },
+      {
+        "dungeon": 27,
+        "level": 70,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          105,
+          92,
+          96,
+          200,
+          214,
+          196
+        ]
+      },
+      {
+        "dungeon": 28,
+        "level": 73,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          150,
+          100,
+          109,
+          222,
+          228,
+          246
+        ]
+      },
+      {
+        "dungeon": 29,
+        "level": 76,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          106,
+          98,
+          87,
+          192,
+          201,
+          180
+        ]
+      },
+      {
+        "dungeon": 30,
+        "level": 80,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          117,
+          102,
+          92,
+          204,
+          218,
+          205
+        ]
+      },
+      {
+        "dungeon": 31,
+        "level": 84,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          110,
+          95,
+          90,
+          196,
+          205,
+          189
+        ]
+      },
+      {
+        "dungeon": 32,
+        "level": 88,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          151,
+          104,
+          111,
+          224,
+          256,
+          255
+        ]
+      },
+      {
+        "dungeon": 33,
+        "level": 92,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          147,
+          102,
+          102,
+          233,
+          269,
+          256
+        ]
+      },
+      {
+        "dungeon": 34,
+        "level": 96,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          105,
+          93,
+          88,
+          200,
+          213,
+          183
+        ]
+      },
+      {
+        "dungeon": 35,
+        "level": 100,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          105,
+          95,
+          87,
+          199,
+          207,
+          181
+        ]
+      },
+      {
+        "dungeon": 36,
+        "level": 100,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          138,
+          132,
+          107,
+          222,
+          230,
+          214
+        ]
+      },
+      {
+        "dungeon": 37,
+        "level": 100,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          129,
+          127,
+          109,
+          218,
+          241,
+          216
+        ]
+      },
+      {
+        "dungeon": 38,
+        "level": 100,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          147,
+          126,
+          106,
+          223,
+          242,
+          198
+        ]
+      },
+      {
+        "dungeon": 39,
+        "level": 100,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          104,
+          95,
+          90,
+          187,
+          223,
+          189
+        ]
+      },
+      {
+        "dungeon": 40,
+        "level": 100,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          105,
+          89,
+          96,
+          210,
+          203,
+          185
+        ]
+      },
+      {
+        "dungeon": 41,
+        "level": 100,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          110,
+          88,
+          98,
+          187,
+          208,
+          178
+        ]
+      },
+      {
+        "dungeon": 42,
+        "level": 100,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          116,
+          101,
+          96,
+          211,
+          223,
+          203
+        ]
+      },
+      {
+        "dungeon": 43,
+        "level": 100,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          118,
+          111,
+          97,
+          215,
+          227,
+          208
+        ]
+      },
+      {
+        "dungeon": 44,
+        "level": 100,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          131,
+          103,
+          96,
+          212,
+          206,
+          203
+        ]
+      },
+      {
+        "dungeon": 45,
+        "level": 100,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          134,
+          114,
+          118,
+          224,
+          218,
+          199
+        ]
+      },
+      {
+        "dungeon": 46,
+        "level": 100,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          136,
+          140,
+          102,
+          227,
+          234,
+          218
+        ]
+      },
+      {
+        "dungeon": 47,
+        "level": 100,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          167,
+          119,
+          116,
+          220,
+          229,
+          226
+        ]
+      }
+    ]
+  },
+  "eliteMagic6": {
+    "cases": 24,
+    "victories": 22,
+    "incomplete": [
+      {
+        "kind": "raid",
+        "cls": 3,
+        "dungeon": 39,
+        "level": 100,
+        "build": "trained",
+        "result": "defeat",
+        "room": 4,
+        "seconds": 207,
+        "hp": 0,
+        "hits": 18,
+        "xp": 804,
+        "damage": 16.94,
+        "maxHp": 4954
+      },
+      {
+        "kind": "raid",
+        "cls": 4,
+        "dungeon": 39,
+        "level": 100,
+        "build": "trained",
+        "result": "defeat",
+        "room": 4,
+        "seconds": 205,
+        "hp": 0,
+        "hits": 18,
+        "xp": 804,
+        "damage": 16.94,
+        "maxHp": 4964
+      }
+    ]
+  },
+  "eliteUnique10": {
+    "cases": 24,
+    "victories": 24,
+    "routes": [
+      {
+        "dungeon": 36,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          158,
+          150,
+          132,
+          216,
+          223,
+          265
+        ]
+      },
+      {
+        "dungeon": 39,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          169,
+          152,
+          138,
+          196,
+          191,
+          245
+        ]
+      },
+      {
+        "dungeon": 42,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          184,
+          169,
+          162,
+          224,
+          232,
+          261
+        ]
+      },
+      {
+        "dungeon": 45,
+        "classes": 6,
+        "victories": 6,
+        "clearSeconds": [
+          202,
+          160,
+          155,
+          239,
+          250,
+          271
+        ]
+      }
+    ]
+  },
+  "equivalentReleaseSource": "d57b3b94c2c4f75523b29ceaf5899c3f5d9c32bd",
+  "assetsTree": "4f01901348c523626e2c769624cd8fcf69a4e556"
+}
