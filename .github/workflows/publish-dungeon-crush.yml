@@ -16,83 +16,61 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
-      RELEASE_TAG: dungeon-crush-v2.14.1-rc1
+      RELEASE_TAG: dungeon-crush-v2.15.0-rc1
+      DUNGEON_RELEASE_SOURCE: f616e095a66be0d3d31c8e030d9022b3cad536e3
+      DUNGEON_RELEASE_RUN: '43366493827'
+      DUNGEON_RELEASE_ID: '443896807'
+      DUNGEON_APK_BYTES: '482231241'
+      DUNGEON_APK_SHA256: e8af843d3462e8a28ebed202faeed6d7d787b392a77a22452e544a4aba8369ef
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 4e48719605ffe8f1eecd055f152529ecdfe21e2c
-      - name: Verify completed precision checks and build
+          ref: f616e095a66be0d3d31c8e030d9022b3cad536e3
+      - name: Require the exact successful build and unpublished release
         run: |
-          test "$(gh api repos/$GH_REPO/actions/runs/43311412102 --jq .conclusion)" = success
-          test "$(gh api repos/$GH_REPO/actions/runs/43311412102 --jq .head_sha)" = 4e48719605ffe8f1eecd055f152529ecdfe21e2c
-          test "$(gh api repos/$GH_REPO/git/ref/tags/$RELEASE_TAG --jq .object.sha)" = 4e48719605ffe8f1eecd055f152529ecdfe21e2c
-          test "$(gh release view "$RELEASE_TAG" --json isDraft --jq .isDraft)" = true
+          test "$(gh api repos/$GH_REPO/actions/runs/$DUNGEON_RELEASE_RUN --jq .conclusion)" = success
+          test "$(gh api repos/$GH_REPO/actions/runs/$DUNGEON_RELEASE_RUN --jq .head_sha)" = "$DUNGEON_RELEASE_SOURCE"
+          test "$(gh api repos/$GH_REPO/git/ref/tags/$RELEASE_TAG --jq .object.sha)" = "$DUNGEON_RELEASE_SOURCE"
+          test "$(gh api repos/$GH_REPO/releases/$DUNGEON_RELEASE_ID --jq .tag_name)" = "$RELEASE_TAG"
+          test "$(gh api repos/$GH_REPO/releases/$DUNGEON_RELEASE_ID --jq .draft)" = true
       - uses: actions/download-artifact@v4
         with:
           name: DungeonCrush-APK
-          run-id: 43311412102
+          run-id: 43366493827
           github-token: ${{ github.token }}
           path: apk
-      - name: Verify exact signed APK and package compatible ZIP
-        run: |
-          python3 - <<'PY'
-          from pathlib import Path
-          from hashlib import sha256
-          from zipfile import ZipFile,ZipInfo,ZIP_STORED
-          import json,re
-          root=Path('dungeon-crush');p=Path('apk/DungeonCrush-2.14.1.apk');data=p.read_bytes();expected='a43a0533140a05270115a650d583d78333d1665fd43cb4746d6187bd8b5b13c8'
-          assert len(data)==413229894 and sha256(data).hexdigest()==expected
-          with ZipFile(p) as z:
-              assert z.testzip() is None
-              for name in ['premium.js','premium-art-data.js','premium-art.js','premium-fx.js','premium-ui.js','premium.css','phone.css','actors.js','app.js','rpg.js','town.js','progress.js','release.js','client.js','index.html','effects.js','sound.js','sprite-art.js','client.css','rankings.js','ranking-ui.js','refinement.css','ranking-config.js','ranking-client.js','navigation.js','engine.js','encounters.js','backgrounds.js','enemy-fx.js']:
-                  assert z.read('assets/'+name)==(root/'app/src/main/assets'/name).read_bytes(),name
-              for a in json.loads((root/'generated-art-sources.json').read_text())['assets']:
-                  if a.get('packaged',True):assert sha256(z.read('assets/'+a['file'])).hexdigest()==a['sha256'],a['file']
-              for a in json.loads((root/'combat-audio-sources.json').read_text())['assets']:
-                  assert sha256(z.read('assets/audio/'+a['file'])).hexdigest()==a['sha256'],a['file']
-              config=json.loads(re.search(r'Object.freeze\((.*)\)',z.read('assets/ranking-config.js').decode()).group(1))
-              assert config==dict(enabled=False,endpoint='',publicKey='')
-          assert all(t in (root/'app/src/main/assets/premium.js').read_text() for t in ["mode:'test'",'allowTestPurchases:true','paymentProvider:null'])
-          notes='던전크러시! 2.14.1 유료 외형 몸 크기 수정 (설치 버전 41)\r\n\r\n1. 압축을 풀고 DungeonCrush-2.14.1.apk를 설치하세요.\r\n2. 기존 앱을 삭제하지 말고 업데이트 설치하세요. 성장 기록은 설정에서 파일로 백업할 수 있습니다.\r\n3. 6직업의 스킨 30벌을 기본 몸 크기에 맞춰 보정했습니다. 대기와 연계 공격/시전, 달리기/점프/대시를 검사했습니다.\r\n4. 원화의 가로/세로 비율, 의상/무기, 스킬과 전투 수치를 보존합니다.\r\n5. 외형/펫은 현재 무료 테스트 구매입니다. 실제 결제는 연결하지 않았습니다.\r\n6. Wi-Fi 프로토콜 10과 저장 형식 2를 유지합니다. 집사 사절 원본은 수정하지 않았습니다.\r\n7. 기존 설치와 같은 테스트 서명입니다. 실기기 장시간 FPS/발열과 스토어 등록은 별도입니다.\r\n\r\nAPK SHA256: '+expected+'\r\n'
-          summary='## 최신 검증 버전: 2.14.1 RC1\n\n- 검증 소스 `4e48719605ffe8f1eecd055f152529ecdfe21e2c`.\n- 전체 52개 검사 후 APK/AAB 빌드, Android lint 및 서명·리소스 검증 성공: https://github.com/ohohhyun/CatHome/actions/runs/43311412102\n- 공개 다운로드: https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.14.1-rc1\n- versionCode 41 / Wi-Fi 프로토콜 10 / 저장 형식 2.\n- APK SHA256 `'+expected+'`.\n- 변경 내용은 release/SKIN-SIZE-NOTES.md. 외형 30벌의 몸 크기를 기본 캐릭터에 맞춰 보정했습니다. 현재는 실제 결제 없는 무료 테스트 상점입니다. 집사 사절 원본과 서버/DB는 변경하지 않았습니다.\n\n'
-          handoff=(root/'HANDOFF.md').read_text();handoff=re.sub(r'## 진행 중: 2\.14\.1.*?(?=## 최신 검증 버전: 2\.14\.0)',lambda _:summary,handoff,flags=re.S).replace('## 최신 검증 버전: 2.14.0 RC1','## 이전 검증 버전: 2.14.0 RC1').replace('프로토콜은 9입니다.','프로토콜은 10입니다.')
-          output=Path('DungeonCrush-2.14.1-RC1.zip');docs=['RELEASE-CHECKLIST.md','PRIVACY-KO.md','STORE-LISTING-KO.md','RANKING-INTEGRATION.md','UI-REFERENCES.md','AUDIO-NOTES.md','FRONTIER-NOTES.md','PREMIUM-SHOP.md','PREMIUM-REFERENCES.md','SKIN-SIZE-NOTES.md']
-          with ZipFile(output,'w',compression=ZIP_STORED) as z:
-              for name,content in [(p.name,data),('INSTALL-KO.txt',b'\xef\xbb\xbf'+notes.encode()),('HANDOFF.md',handoff.encode())]+[(name,(root/'release'/name).read_bytes()) for name in docs]:
-                  if name in ['RELEASE-CHECKLIST.md','SKIN-SIZE-NOTES.md']:content=content.decode().replace('# 2.14.1 외형 몸 크기 점검 (진행 중)', '# 2.14.1 외형 몸 크기 점검').replace('최종 빌드와 공개 ZIP 검증 결과는 완료 후 기록합니다.', '전체 52개 검사 후 APK/AAB 빌드·Android lint·서명/리소스 확인 성공: https://github.com/ohohhyun/CatHome/actions/runs/43311412102 · APK SHA256 '+expected).encode()
-                  item=ZipInfo(name,date_time=(2026,11,12,0,0,0));item.create_system=3;item.external_attr=0o100644<<16;item.compress_type=ZIP_STORED;z.writestr(item,content)
-          with ZipFile(output) as z:
-              assert z.testzip() is None and sha256(z.read(p.name)).hexdigest()==expected
-          print('ZIP:',output.stat().st_size,sha256(output.read_bytes()).hexdigest())
-          PY
+      - name: Verify exact signed APK, all 36 illustrations and compatible ZIP
+        run: python3 dungeon-crush/tools/package-release.py
       - name: Publish verified persistent download
         run: |
           cat > release-notes.md <<'NOTES'
-          던전크러시! 2.14.1 외형 몸 크기 수정판 (versionCode 41).
+          던전크러시! 2.15.0 원화 · 외형 미리보기 수정판 (versionCode 42).
 
-          아래 Assets에서 **DungeonCrush-2.14.1-RC1.zip**을 받아 압축을 풀고 APK를 설치하세요. 기존 앱을 삭제하지 말고 업데이트 설치하세요.
+          아래 Assets에서 **DungeonCrush-2.15.0-RC1.zip**을 받아 압축을 풀고 APK를 설치하세요. 기존 앱을 삭제하지 말고 업데이트 설치하세요.
 
-          - 스킨 장착 시 캐릭터가 커지거나 작아지는 문제를 수정했습니다. 6직업의 유료 외형 30벌을 기본 몸 크기와 비교했습니다.
-          - 투구·후광·무기 전체 높이 대신 검수한 눈높이·부츠 접지점을 사용합니다. 대기/연계 공격 3단/시전을 각각 보정하며 이동·점프·대시는 대기 몸 기준을 공유합니다.
-          - 원화 픽셀과 가로·세로 비율, 의상·무기 형태, 스킬 효과·공격 판정·수치·속도를 보존합니다. 장식이 몸 바깥으로 돌출되는 디자인은 유지합니다.
-          - **52개 자동 검사**와 30벌×5동작×양방향 실제 장착 몸 크기 검사 300건, 전 모션/9스킬·펫·4인 통신·UI·저장을 확인한 뒤 APK/AAB·Android lint·기존 서명·포함 리소스를 검증했습니다.
-          - 외형·펫 상품은 여전히 **실제 결제 없는 무료 테스트 구매**입니다. 48던전·4정예 레이드·24배경과 판매 보호·백업을 유지합니다.
+          - 캐릭터 선택과 외형 상품 상세에 기본 6명·외형 30벌의 일러스트 36장을 넣었습니다. 해당 캐릭터의 의상과 무기를 원화에서 확인할 수 있습니다.
+          - 상품 상세에서 원화·동작·스킬 효과를 전환하고 구매·장착·해제합니다. 휴대폰의 상점 너비, 동작 선택, 고정 구매 버튼과 확대 글자 배치를 정리했습니다.
+          - 동작별 자동 카메라 배율 변경을 고쳤습니다. 대기/달리기/공격/점프/회피/스킬이 같은 기본 배율을 사용합니다. 큰 효과는 직접 넓게 보고 기본 배율로 돌아옵니다.
+          - 외형 30벌의 실제 장착·해제 후 마을/전투 몸 크기와 기본 6명을 비교했습니다. 모션 영상을 확인하고 원화/스프라이트 로딩 실패·재시도, 저장과 4인 통신을 검사했습니다.
+          - 전체 **55개 자동 검사**(코드25 + Java2 + Chrome28), APK/AAB·Android lint·기존 서명·최종 포함 리소스 검증을 통과했습니다.
+          - 외형·펫은 실제 결제 없는 무료 테스트 구매입니다. 48던전·4정예 레이드·24배경과 판매 보호·백업을 유지합니다.
 
           저장 형식 2와 Wi-Fi 프로토콜 10을 유지합니다. 집사 사절 원본과 서버/DB는 수정하지 않았습니다. 실기기 장시간 FPS·발열과 스토어 등록은 별도입니다.
-          검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/43311412102
-          APK SHA256: a43a0533140a05270115a650d583d78333d1665fd43cb4746d6187bd8b5b13c8
+          검증 소스: f616e095a66be0d3d31c8e030d9022b3cad536e3
+          검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/43366493827
+          APK SHA256: e8af843d3462e8a28ebed202faeed6d7d787b392a77a22452e544a4aba8369ef
           NOTES
-          gh release upload "$RELEASE_TAG" DungeonCrush-2.14.1-RC1.zip --clobber
+          gh release upload "$RELEASE_TAG" DungeonCrush-2.15.0-RC1.zip --clobber
           gh release edit "$RELEASE_TAG" --draft=false --prerelease --latest=false --notes-file release-notes.md
       - name: Verify public ZIP size and digest
         run: |
-          gh api "repos/$GH_REPO/releases/tags/$RELEASE_TAG" > release-assets.json
-          python3 - <<'PY'
+          gh api "repos/$GH_REPO/releases/$DUNGEON_RELEASE_ID" > release-assets.json
+          python3 - <<'PYCODE'
           from pathlib import Path
           from hashlib import sha256
           import json
-          p=Path('DungeonCrush-2.14.1-RC1.zip');r=json.loads(Path('release-assets.json').read_text());assert not r['draft']
+          p=Path('DungeonCrush-2.15.0-RC1.zip');r=json.loads(Path('release-assets.json').read_text());assert not r['draft']
           a=next(a for a in r['assets'] if a['name']==p.name)
           assert a['size']==p.stat().st_size and a['digest']=='sha256:'+sha256(p.read_bytes()).hexdigest()
           print('Verified public ZIP:',a['browser_download_url'])
-          PY
+          PYCODE
