@@ -1,3 +1,10 @@
+# 2.15.2 미리보기 걷기 제거 · 검증 완료
+
+- 미리보기에서 걷기를 제거하고 달리기·공격·점프·스킬 하나를 자동 재생합니다. 주기는 동작 시간 합계로 계산합니다.
+- [전체 57개 검사와 APK/AAB·Android lint·기존 서명·포함 리소스 확인 통과](https://github.com/ohohhyun/CatHome/actions/runs/43392615202). 검증 소스 `44fddcf235bd1144ad933e1650290d847ae4fa17`.
+- [APK ZIP](https://github.com/ohohhyun/CatHome/actions/runs/43392615202/artifacts/14023301817) (GitHub 로그인 필요). APK 482,246,354 bytes / SHA-256 `33803a1f8dc4d4abd569079d409d084cac0079f294a5140b725850f9ee08d95e`. 설치 버전 44, 저장 형식 2, Wi-Fi 프로토콜 10. 앱을 삭제하지 말고 업데이트 설치합니다.
+- 이전 모션 안정화와 집사 사절 원본 보호를 유지합니다. 실제 단말 장시간 FPS·발열은 별도입니다. 아래는 이전 버전 기록입니다.
+
 # 2.15.1 모션 안정화 · 미리보기 간소화 검증 완료
 
 - [전체 57개 검사와 APK/AAB·Android lint·기존 서명·포함 리소스 확인 통과](https://github.com/ohohhyun/CatHome/actions/runs/43385971872). 검증 소스 `02c6d87d87bceab7a3175b1fe34d008675aa3c44`.
