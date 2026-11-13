@@ -1,3 +1,9 @@
+## 2.15.2 RC1 공개 다운로드 완료
+
+- [로그인 없는 APK ZIP 바로 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.15.2-rc1/DungeonCrush-2.15.2-RC1.zip) · [릴리스 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.15.2-rc1). 카톡에는 파일 대신 이 링크를 공유합니다.
+- 공개 ZIP 482,247,129 bytes / SHA-256 `6c17367f0a6cffbfc1328b568e5c48eee34c2c0e7c47d34eba9b816cd179ebfe`. [배포·익명 전체 다운로드 검증](https://github.com/ohohhyun/CatHome/actions/runs/43398285152) 성공: ZIP 전체 크기·해시·CRC와 내부 APK 해시 일치를 확인했습니다. 별도 익명 HEAD도 HTTP 200입니다.
+- 앱 구현은 검증한 `44fddcf235bd1144ad933e1650290d847ae4fa17` 그대로이며, APK SHA-256은 `33803a1f8dc4d4abd569079d409d084cac0079f294a5140b725850f9ee08d95e`입니다. 버전 2.15.2 / 설치 버전 44 / 기존 서명을 유지합니다. 앱을 삭제하지 말고 업데이트 설치합니다.
+
 # 2.15.2 미리보기 걷기 제거 · 검증 완료
 
 - 미리보기에서 걷기를 제거하고 달리기·공격·점프·스킬 하나를 자동 재생합니다. 주기는 동작 시간 합계로 계산합니다.
