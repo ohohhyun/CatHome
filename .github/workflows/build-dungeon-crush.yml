@@ -92,6 +92,10 @@ jobs:
         run: node tests/pk-presentation.test.cjs
         env:
           NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
+      - name: Verify town shortcuts, menu flows and enlarged text
+        run: node tests/navigation-presentation.test.cjs
+        env:
+          NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
       - name: Verify selection hall, cutouts and distinct class heights
         run: node tests/hero-height-presentation.test.cjs
         env:
@@ -131,10 +135,6 @@ jobs:
           NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
       - name: Verify ranking menu, local records and future server adapter
         run: node tests/rankings-presentation.test.cjs
-        env:
-          NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
-      - name: Verify town shortcuts, menu flows and enlarged text
-        run: node tests/navigation-presentation.test.cjs
         env:
           NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
       - name: Inspect expanded dungeons, elite raids, backgrounds and monster effects
