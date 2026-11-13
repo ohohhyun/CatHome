@@ -1,14 +1,9 @@
 {
   "version": "2.15.0",
-  "status": "authoring_pending_four_illustrations",
-  "readyIllustrations": 32,
+  "status": "local_verified_ci_build_pending",
+  "readyIllustrations": 36,
   "expectedIllustrations": 36,
-  "pending": [
-    "elian-noel",
-    "elian-ember",
-    "elian-aurora",
-    "elian-abyss"
-  ],
+  "pending": [],
   "environment": "Linux Chromium 740x360 plus automated responsive viewports; no Android device FPS measurement",
   "releaseGate": "36 illustrations and all 55 CI checks plus Android build/lint/signature/package verification required",
   "actualWorld": {
@@ -789,6 +784,16 @@
       "log": "soak-optimized.log",
       "sha256": "79bb66792721bcffad9589a37740e615f6be78d7180801aed4346a7e92ab4d39",
       "passed": true
+    },
+    {
+      "log": "code-strict-final.log",
+      "sha256": "a424378b50f849f20aa67322bfdc90b7141ca68bd3b5e19d13d6fd99b4a7d837",
+      "passed": true
+    },
+    {
+      "log": "keyart-strict-final.log",
+      "sha256": "8a4c1ba69fba0bb4ea1a884e9b1127b36eb2a6d9c76ffbbee6991a7a76ce7b39",
+      "passed": true
     }
   ],
   "investigatedFailures": [
@@ -813,5 +818,78 @@
     ],
     "finalDomNodes": 2941,
     "deviceFpsMeasured": false
-  }
+  },
+  "illustrationReview": [
+    {
+      "id": "elian-noel",
+      "originalSha256": "c9c4fcbf2f4811ab219ad3bb491d0365d0c911d9ea194a21ee14d852c788bf09",
+      "packagedSha256": "9f984cafbfee2f64a58f57f2c3a37f334de49542c9fd88f2fcd823ad2a70adee",
+      "inspected": true,
+      "fullBodyAndWeaponVisible": true
+    },
+    {
+      "id": "elian-ember",
+      "originalSha256": "e5c42507dc431e29d514fbe731fcd763f6bc114c66401016e224110a8300d612",
+      "packagedSha256": "1bbb89904183da592c4534374af0e989b6d2fdeed3092cb085a2f0c233c76ffa",
+      "inspected": true,
+      "fullBodyAndWeaponVisible": true
+    },
+    {
+      "id": "elian-aurora",
+      "originalSha256": "dd9c7c3b2e7e406439bf02537fcdb241eb873fbccd9c80e1a2f1bc0772281ac7",
+      "packagedSha256": "9f52e5791d290c39ec599f05d812663a49305e66cb8ef7666fc888f31127d22b",
+      "inspected": true,
+      "fullBodyAndWeaponVisible": true
+    },
+    {
+      "id": "elian-abyss",
+      "originalSha256": "54641859eccecb13a461996aaab45fbb2a093b72cc22654099e729a5354cec3d",
+      "packagedSha256": "129152c110eaa113a2848e23d7bb94f88a72f0c3693eaa296ec813d7c5d2f5e9",
+      "inspected": true,
+      "fullBodyAndWeaponVisible": true
+    }
+  ],
+  "equippedSelectionArts": [
+    "kael-noel",
+    "kael-ember",
+    "kael-lunar",
+    "kael-aurora",
+    "kael-abyss",
+    "rin-noel",
+    "rin-ember",
+    "rin-lunar",
+    "rin-aurora",
+    "rin-abyss",
+    "bane-noel",
+    "bane-ember",
+    "bane-lunar",
+    "bane-aurora",
+    "bane-abyss",
+    "sera-noel",
+    "sera-ember",
+    "sera-lunar",
+    "sera-aurora",
+    "sera-abyss",
+    "aria-noel",
+    "aria-ember",
+    "aria-lunar",
+    "aria-aurora",
+    "aria-abyss",
+    "elian-noel",
+    "elian-ember",
+    "elian-lunar",
+    "elian-aurora",
+    "elian-abyss"
+  ],
+  "keyArtBrowser": {
+    "passed": true,
+    "decoded": 36,
+    "layouts": 5,
+    "classes": 6,
+    "equippedSelectionCount": 30,
+    "recovery": true,
+    "spriteRecoveryInArtView": true,
+    "errors": []
+  },
+  "strictCodeChecks": 25
 }

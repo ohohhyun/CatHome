@@ -376,6 +376,30 @@
       "packaged": true
     },
     {
+      "id": "elian-noel",
+      "file": "art/key-art/elian-noel.webp",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "9f984cafbfee2f64a58f57f2c3a37f334de49542c9fd88f2fcd823ad2a70adee",
+      "originalOutput": "exec-75d9822e-402d-4e68-8b97-6daaa92e6bed.png",
+      "originalSha256": "c9c4fcbf2f4811ab219ad3bb491d0365d0c911d9ea194a21ee14d852c788bf09",
+      "tool": "OpenAI image_gen",
+      "encoding": "lossless WebP; exact RGB preserved",
+      "packaged": true
+    },
+    {
+      "id": "elian-ember",
+      "file": "art/key-art/elian-ember.webp",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "1bbb89904183da592c4534374af0e989b6d2fdeed3092cb085a2f0c233c76ffa",
+      "originalOutput": "exec-088c61fa-5c1e-4fcb-a422-b0a95d9a07de.png",
+      "originalSha256": "e5c42507dc431e29d514fbe731fcd763f6bc114c66401016e224110a8300d612",
+      "tool": "OpenAI image_gen",
+      "encoding": "lossless WebP; exact RGB preserved",
+      "packaged": true
+    },
+    {
       "id": "elian-lunar",
       "file": "art/key-art/elian-lunar.webp",
       "width": 1024,
@@ -386,12 +410,31 @@
       "tool": "OpenAI image_gen",
       "encoding": "lossless WebP; exact RGB preserved",
       "packaged": true
+    },
+    {
+      "id": "elian-aurora",
+      "file": "art/key-art/elian-aurora.webp",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "9f52e5791d290c39ec599f05d812663a49305e66cb8ef7666fc888f31127d22b",
+      "originalOutput": "exec-c3ccf9e1-b4bb-4f6b-963a-c039827af6c1.png",
+      "originalSha256": "dd9c7c3b2e7e406439bf02537fcdb241eb873fbccd9c80e1a2f1bc0772281ac7",
+      "tool": "OpenAI image_gen",
+      "encoding": "lossless WebP; exact RGB preserved",
+      "packaged": true
+    },
+    {
+      "id": "elian-abyss",
+      "file": "art/key-art/elian-abyss.webp",
+      "width": 1024,
+      "height": 1536,
+      "sha256": "129152c110eaa113a2848e23d7bb94f88a72f0c3693eaa296ec813d7c5d2f5e9",
+      "originalOutput": "exec-c3673bc4-947c-4969-abbb-cb9cf9cf16e6.png",
+      "originalSha256": "54641859eccecb13a461996aaab45fbb2a093b72cc22654099e729a5354cec3d",
+      "tool": "OpenAI image_gen",
+      "encoding": "lossless WebP; exact RGB preserved",
+      "packaged": true
     }
   ],
-  "pending": [
-    "elian-noel",
-    "elian-ember",
-    "elian-aurora",
-    "elian-abyss"
-  ]
+  "pending": []
 }

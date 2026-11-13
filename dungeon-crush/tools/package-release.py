@@ -73,7 +73,14 @@ for name in docs:
     content = (root / 'release' / name).read_bytes()
     if name in ['UI-KEYART-NOTES.md', 'RELEASE-CHECKLIST.md']:
         content = content.decode().replace('최종 빌드와 공개 ZIP 검증 결과는 완료 후 기록합니다.', verified + ' 공개 ZIP 전체 다운로드 검증은 배포 후 수행합니다.').encode()
-    entries.append((name, content))
+    if name == 'UI-KEYART-QA.json':
+        review = json.loads(content)
+        assert review['readyIllustrations'] == 36 and review['pending'] == []
+        assert len(review['equippedSelectionArts']) == 30
+        review.update(status='ci_verified', source=source, build=build,
+                      apkBytes=expected_bytes, apkSha256=expected)
+        content = (json.dumps(review, ensure_ascii=False, indent=2) + '\n').encode()
+    entries.append(('release/' + name, content))
 output = Path('DungeonCrush-2.15.0-RC1.zip')
 with ZipFile(output, 'w', compression=ZIP_STORED) as z:
     for name, content in entries:
