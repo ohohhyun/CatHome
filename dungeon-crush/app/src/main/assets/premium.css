@@ -13,3 +13,33 @@
 #premium-screen .premium-heading #premium-close{line-height:1}@media(max-height:550px){#premium-screen .premium-fitting{overflow:auto;overscroll-behavior:contain}}
 #premium-screen .premium-product{height:auto;align-self:start;padding-bottom:10px}#premium-screen .premium-products{grid-auto-rows:max-content}#premium-screen .premium-product canvas{height:clamp(90px,18vh,160px)}@media(max-height:550px){#premium-screen .premium-product canvas{height:80px}}@media(max-height:330px){#premium-screen .premium-product canvas{height:70px}}
 #premium-screen .premium-heading #premium-close{min-height:44px}
+
+.premium-fitting{grid-template-rows:auto auto minmax(0,1fr) auto auto auto auto}
+.premium-view-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;margin:8px 0}
+.premium-view-tabs button{min-height:44px;min-width:44px;padding:5px 2px;font-size:12px;line-height:1.4;background:#142236;color:#e3d4b8;border:1px solid #a58b5954;border-radius:4px}
+.premium-view-tabs button.selected{background:#56432b;color:#ffebc0;border-color:#cba96b}.premium-view-tabs button:disabled{opacity:.45}
+#premium-key-art{width:100%;height:100%;min-height:0;object-fit:contain;position:absolute;inset:0;border-radius:6px}
+#premium-key-art[hidden],#premium-preview[hidden]{display:none}
+#premium-screen[data-preview-view=art] .premium-canvas-wrap>p,#premium-screen[data-preview-view=art] .premium-canvas-wrap>button{display:none}
+#premium-screen[data-preview-view=art] .premium-motion-controls,#premium-screen[data-preview-view=art] #premium-mode-select,#premium-screen[data-preview-view=art] .premium-preview-options{display:none}
+#premium-screen[data-preview-view=art] .premium-fitting{grid-template-rows:auto auto minmax(100px,1fr) auto}
+@media(max-height:550px){#premium-screen .premium-fitting{grid-template-rows:auto auto minmax(110px,1fr) auto auto;gap:3px}.premium-view-tabs{margin:3px 0;gap:3px}.premium-view-tabs button{font-size:10px}#premium-screen[data-preview-view=art] .premium-fitting{grid-template-rows:auto auto minmax(110px,1fr) auto}}
+.key-art-status{position:absolute;left:8%;right:8%;top:38%;text-align:center;font-size:12px;line-height:1.8;padding:10px;color:#e5d6bb;background:#0a1526ed;border-radius:5px}.key-art-status[hidden]{display:none}.key-art-status button{display:block;margin:8px auto 0;min-width:80px;min-height:44px;color:#ead6ae;background:#25364b;border:1px solid #a58b5966;border-radius:4px}
+.premium-product img{width:100%;height:clamp(90px,18vh,160px);object-fit:contain;pointer-events:none;border-radius:4px;flex-shrink:0}@media(max-height:550px){#premium-screen .premium-product img{height:80px}}@media(max-height:330px){#premium-screen .premium-product img{height:70px}}
+#premium-screen{grid-template-columns:minmax(0,1fr);justify-content:stretch}#premium-screen .premium-shell{justify-self:center;width:100%;max-width:1400px}
+#premium-camera-scale{position:absolute;right:7px;bottom:5px;font-size:10px;line-height:1.6;padding:2px 5px;background:#08121dcc;color:#cdbd9d;border-radius:3px;pointer-events:none}#premium-screen[data-preview-view=art] #premium-camera-scale{display:none}
+#premium-fit-effect{display:none}#premium-screen[data-preview-view=effect] #premium-fit-effect{display:block;min-height:44px;font-size:11px;margin:4px 0;background:#172940;color:#e9d7b5;border:1px solid #a58b5966;border-radius:4px}
+#premium-screen .premium-canvas-wrap .key-art-status{display:none}#premium-screen[data-preview-view=art] .premium-canvas-wrap .key-art-status:not([hidden]){display:block}#premium-screen[data-kind=pet] .premium-preview-options label:first-child{display:none}
+/* Reserve the same title space for every outfit; controls never resize the camera. */
+#premium-screen .premium-preview-header strong{min-height:3.2em}#premium-screen .premium-preview-header span{display:none}
+#premium-screen #premium-fit-effect{position:absolute;top:5px;right:5px;left:auto;bottom:auto;transform:none;z-index:2;width:auto;margin:0;padding:5px 8px;background:#172940ed}
+@media(max-height:550px){
+ #premium-screen .premium-heading>.premium-view-tabs{flex:0 0 174px;max-width:27vw;margin:0}
+ #premium-screen .premium-heading>.premium-view-tabs button{padding:5px 3px}
+ #premium-screen .premium-test-badge{max-width:105px;flex-shrink:1}
+ #premium-screen .premium-fitting{grid-template-rows:auto minmax(110px,1fr) auto auto}
+ #premium-screen[data-preview-view=art] .premium-fitting{grid-template-rows:auto minmax(110px,1fr)}
+}
+#premium-screen:not([data-preview-view=art]) #premium-fit-effect:not([hidden]){display:block}
+/* A single motion chooser gives the character more room on every display. */
+#premium-screen .premium-motion-controls{display:none}#premium-mode-select{display:block;width:100%;border:1px solid #bda16a66;background:#142136;color:#f4ddb1;font-size:13px;padding:7px 9px;border-radius:4px}

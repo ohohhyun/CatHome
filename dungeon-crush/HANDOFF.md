@@ -2,6 +2,12 @@
 
 이 파일을 먼저 읽고 `dungeon-crush/`만 이어서 작업하세요. 사용자에게는 한국어 존댓말을 사용하세요.
 
+## 진행 중: 2.15.0 원화·실제 장착 화면 검수
+
+캐릭터 선택과 외형 상품 상세 원화, 동작별 미리보기 배율 고정, 휴대폰 화면을 수정하고 있습니다. 기본 6명과 외형 30벌을 실제 마을·전투에서 장착/해제하고 영상·크기를 검수했습니다. [검수 내용](release/UI-KEYART-NOTES.md) · [측정 자료](release/UI-KEYART-QA.json).
+
+현재 원화 36장 중 32장이 준비됐으며 엘리안 4장의 제작을 기다리고 있습니다. 원화 36장과 전체 55개 검사, APK/AAB·lint·서명/리소스 검증 전에는 2.15.0을 배포하지 않습니다. 아래 2.14.1은 이전 공개 버전이며 이번 수정 APK가 아닙니다.
+
 ## 최신 검증 버전: 2.14.1 RC1
 
 - [APK ZIP 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.14.1-rc1/DungeonCrush-2.14.1-RC1.zip) · [릴리스 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.14.1-rc1). 기존 앱을 삭제하지 않고 업데이트합니다. versionCode **41**, 저장 형식 **2**, Wi-Fi 프로토콜 **10**입니다.

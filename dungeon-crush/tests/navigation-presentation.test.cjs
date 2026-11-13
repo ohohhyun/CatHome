@@ -26,7 +26,7 @@ const sizes=[{width:1280,height:591},{width:1024,height:472},{width:960,height:4
      const walker=document.createTreeWalker(button,NodeFilter.SHOW_TEXT);let node;
      while(node=walker.nextNode()){
       const el=node.parentElement,s=getComputedStyle(el);if(!node.textContent.trim()||!el.getClientRects().length||s.display==='none')continue;
-      ctx.font=s.font;const metrics=ctx.measureText(node.textContent.trim()),range=document.createRange();range.selectNodeContents(node);
+      ctx.font=s.font||[s.fontStyle,s.fontWeight,s.fontSize,s.fontFamily].join(' ');const metrics=ctx.measureText(node.textContent.trim()),range=document.createRange();range.selectNodeContents(node);
       for(const rr of range.getClientRects()){
        const rect={left:rr.left,right:rr.right,top:rr.top+(metrics.fontBoundingBoxAscent||metrics.actualBoundingBoxAscent)-metrics.actualBoundingBoxAscent,bottom:rr.top+(metrics.fontBoundingBoxAscent||metrics.actualBoundingBoxAscent)+metrics.actualBoundingBoxDescent};
        if(rect.left<br.left-2||rect.right>br.right+2||rect.top<br.top-3||rect.bottom>br.bottom+3)issues.push({kind:'glyph escapes button',text:node.textContent,rect,button:{left:br.left,right:br.right,top:br.top,bottom:br.bottom}});

@@ -6,6 +6,8 @@ import json
 import sys
 root=Path(__file__).resolve().parents[1]
 manifest=json.loads((root/'generated-art-sources.json').read_text())
+key_art=json.loads((root/'art-source/key-art-sources.json').read_text())
+assert len(key_art['assets'])==36 and not key_art['pending'],'All 36 commissioned illustrations must be finished before APK verification'
 with ZipFile(sys.argv[1]) as apk:
     assert apk.testzip() is None
     for asset in manifest['assets']:
@@ -20,6 +22,6 @@ with ZipFile(sys.argv[1]) as apk:
     for entry in json.loads((root/'combat-audio-sources.json').read_text())['assets']:
         assert sha256(apk.read('assets/audio/'+entry['file'])).hexdigest()==entry['sha256'],entry['file']
     assert apk.read('assets/audio/CREDITS.txt')==(root/'app/src/main/assets/audio/CREDITS.txt').read_bytes()
-    for name in ['premium.js','premium-art-data.js','premium-art.js','premium-fx.js','premium-ui.js','premium.css','phone.css','backgrounds.js','enemy-fx.js','navigation.js','ranking-config.js','ranking-client.js','rankings.js','ranking-ui.js','refinement.css','progress.js','release.js','arena.js','growth.js','dialogs.js','expansion.css','encounters.js','menus.js','menus.css','ui-layout.js','actors.js','icons.js','engine.js','sprite-art.js','motion.js','effects.js','app.js','client.js','world.js','town.js','sound.js','rpg.js','client.css','town.css','index.html']:
+    for name in ['key-art.js','key-art-catalog.js','premium.js','premium-art-data.js','premium-art.js','premium-fx.js','premium-ui.js','premium.css','phone.css','backgrounds.js','enemy-fx.js','navigation.js','ranking-config.js','ranking-client.js','rankings.js','ranking-ui.js','refinement.css','progress.js','release.js','arena.js','growth.js','dialogs.js','expansion.css','encounters.js','menus.js','menus.css','ui-layout.js','actors.js','icons.js','engine.js','sprite-art.js','motion.js','effects.js','app.js','client.js','world.js','town.js','sound.js','rpg.js','client.css','town.css','index.html']:
         assert apk.read('assets/'+name)==(root/'app/src/main/assets'/name).read_bytes(),name
-print('Verified 30 premium costumes / 1680 outfit poses, 10 pets / 160 poses, 240 premium spell cels, 744 base character poses, 1984 monster poses and 24 battle panoramas, 432 spell cels, 48 ultimate cels, 54 painted skill icons, 42 equipment icons and exact final presentation scripts.')
+print('Verified 36 character/outfit key arts, 30 premium costumes / 1680 outfit poses, 10 pets / 160 poses, 240 premium spell cels, 744 base character poses, 1984 monster poses and 24 battle panoramas, 432 spell cels, 48 ultimate cels, 54 painted skill icons, 42 equipment icons and exact final presentation scripts.')

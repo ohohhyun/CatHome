@@ -1,0 +1,817 @@
+{
+  "version": "2.15.0",
+  "status": "authoring_pending_four_illustrations",
+  "readyIllustrations": 32,
+  "expectedIllustrations": 36,
+  "pending": [
+    "elian-noel",
+    "elian-ember",
+    "elian-aurora",
+    "elian-abyss"
+  ],
+  "environment": "Linux Chromium 740x360 plus automated responsive viewports; no Android device FPS measurement",
+  "releaseGate": "36 illustrations and all 55 CI checks plus Android build/lint/signature/package verification required",
+  "actualWorld": {
+    "passed": true,
+    "bases": [
+      {
+        "cls": 0,
+        "maxEyeError": 0.6449316638107803
+      },
+      {
+        "cls": 1,
+        "maxEyeError": 0.5408902730450791
+      },
+      {
+        "cls": 2,
+        "maxEyeError": 0.4514788145993407
+      },
+      {
+        "cls": 3,
+        "maxEyeError": 0.3842884142050025
+      },
+      {
+        "cls": 4,
+        "maxEyeError": 0.63143298739476
+      },
+      {
+        "cls": 5,
+        "maxEyeError": 0.6974654230241413
+      }
+    ],
+    "records": [
+      {
+        "id": "kael-noel",
+        "cls": 0,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 375,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.05478017120731238
+      },
+      {
+        "id": "kael-ember",
+        "cls": 0,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 457,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.39893517634448017
+      },
+      {
+        "id": "kael-lunar",
+        "cls": 0,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 428,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.39797947292208846
+      },
+      {
+        "id": "kael-aurora",
+        "cls": 0,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 424,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.39893520469763644
+      },
+      {
+        "id": "kael-abyss",
+        "cls": 0,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 451,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.39790249665782085
+      },
+      {
+        "id": "rin-noel",
+        "cls": 1,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 389,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.3924575223782085
+      },
+      {
+        "id": "rin-ember",
+        "cls": 1,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 427,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.39159150182263147
+      },
+      {
+        "id": "rin-lunar",
+        "cls": 1,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 433,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.3925324201434819
+      },
+      {
+        "id": "rin-aurora",
+        "cls": 1,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 431,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.3924572886712667
+      },
+      {
+        "id": "rin-abyss",
+        "cls": 1,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 430,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.39253306884137373
+      },
+      {
+        "id": "bane-noel",
+        "cls": 2,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 392,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.4114074882240857
+      },
+      {
+        "id": "bane-ember",
+        "cls": 2,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 434,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.4114077182263145
+      },
+      {
+        "id": "bane-lunar",
+        "cls": 2,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 429,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.4104215871341239
+      },
+      {
+        "id": "bane-aurora",
+        "cls": 2,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 437,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.4114082461654789
+      },
+      {
+        "id": "bane-abyss",
+        "cls": 2,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 429,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.41140824616530836
+      },
+      {
+        "id": "sera-noel",
+        "cls": 3,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 393,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.4139532407894535
+      },
+      {
+        "id": "sera-ember",
+        "cls": 3,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 434,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.4128816223250169
+      },
+      {
+        "id": "sera-lunar",
+        "cls": 3,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 435,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.41189311188401234
+      },
+      {
+        "id": "sera-aurora",
+        "cls": 3,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 435,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.41296094432988184
+      },
+      {
+        "id": "sera-abyss",
+        "cls": 3,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 434,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.412882424390034
+      },
+      {
+        "id": "aria-noel",
+        "cls": 4,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 392,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.38649883385846806
+      },
+      {
+        "id": "aria-ember",
+        "cls": 4,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 452,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.3864982391989997
+      },
+      {
+        "id": "aria-lunar",
+        "cls": 4,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 439,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.38649886217552876
+      },
+      {
+        "id": "aria-aurora",
+        "cls": 4,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 458,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.38642427634749765
+      },
+      {
+        "id": "aria-abyss",
+        "cls": 4,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 460,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.3864982770097072
+      },
+      {
+        "id": "elian-noel",
+        "cls": 5,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 397,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.42795158356233287
+      },
+      {
+        "id": "elian-ember",
+        "cls": 5,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 464,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.42582023723065276
+      },
+      {
+        "id": "elian-lunar",
+        "cls": 5,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 434,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.4269249347719324
+      },
+      {
+        "id": "elian-aurora",
+        "cls": 5,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 434,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.42795152210374
+      },
+      {
+        "id": "elian-abyss",
+        "cls": 5,
+        "scenes": [
+          "town",
+          "battle"
+        ],
+        "samples": 436,
+        "banks": [
+          "reaction",
+          "run",
+          "combo0",
+          "combo1",
+          "combo2",
+          "jump",
+          "dash"
+        ],
+        "maxEyeError": 0.42692488359966774
+      }
+    ],
+    "errors": []
+  },
+  "previewCamera": {
+    "viewport": [
+      740,
+      360
+    ],
+    "oldCssReferenceHeight": {
+      "idle": 112.5688,
+      "run": 112.5688,
+      "combo": 76.1494,
+      "jump": 76.1494,
+      "skill": 59.5952
+    },
+    "newDefaultCssReferenceHeight": 75.8027,
+    "defaultZoom": 1.3,
+    "manualWideZoom": 0.6,
+    "modes": [
+      "idle",
+      "run",
+      "combo",
+      "jump",
+      "dash",
+      "skill"
+    ]
+  },
+  "manualVisualReview": [
+    {
+      "file": "video-review/class-0-basic.png",
+      "sha256": "25733a29a436e13ed7ddb66b1188b359103fc263b3bacc6311d2dd5e411c3c9c",
+      "inspected": true
+    },
+    {
+      "file": "video-review/class-0-special.png",
+      "sha256": "64f7b21fec4b96809cd92997326593862880ba39740338aba932ac5261e13f6b",
+      "inspected": true
+    },
+    {
+      "file": "video-review/class-1-basic.png",
+      "sha256": "450cda6b6da7f9873c224f9cd820400725ab652c5d84d46ecedfba4695ca6074",
+      "inspected": true
+    },
+    {
+      "file": "video-review/class-1-special.png",
+      "sha256": "fd323fe53d94c23f556d24fb3a7b061395b7e385d0de6a583bd1cba64f09b58b",
+      "inspected": true
+    },
+    {
+      "file": "video-review/class-2-basic.png",
+      "sha256": "346ba32779edb45006e98bbefd5dbf7a7d871ac9393c76e00a3d78e644cd34a4",
+      "inspected": true
+    },
+    {
+      "file": "video-review/class-2-special.png",
+      "sha256": "6dcdbd6c63da0ff151af025fa75909ea1cc21736205e53c0cb8228f0df0d4377",
+      "inspected": true
+    },
+    {
+      "file": "video-review/class-3-basic.png",
+      "sha256": "4a050a22910d3127ea09f29cb44af52544f519540481634a04962bbc0005eeaa",
+      "inspected": true
+    },
+    {
+      "file": "video-review/class-3-special.png",
+      "sha256": "5d95b890b86c30c6cef7af9862f3f0d400c69a166aff624b7fc4de16fd814ee3",
+      "inspected": true
+    },
+    {
+      "file": "video-review/class-4-basic.png",
+      "sha256": "413b8574a94ab2bfd848d03f12a9e40de02460b9436016a25831c7528831eef9",
+      "inspected": true
+    },
+    {
+      "file": "video-review/class-4-special.png",
+      "sha256": "64b3ded6a0d6c69cd2bec0203ef3ea3007d3e1b1a9b1390d7b9fd64f43f985e5",
+      "inspected": true
+    },
+    {
+      "file": "video-review/class-5-basic.png",
+      "sha256": "19bc8eee54a98644d473d639a90ee217b66a44abb231ded3fc467d51bb177f2b",
+      "inspected": true
+    },
+    {
+      "file": "video-review/class-5-special.png",
+      "sha256": "f1bad8f135717ec9db19e7eb2f27234281be6878d2f84335083cbb1f36d9d182",
+      "inspected": true
+    },
+    {
+      "file": "world-review/class-0.png",
+      "sha256": "69d237a3dc677a1c3723747ee8eeeca22e12d25df7ccbc7a19486f9dd41366f4",
+      "inspected": true
+    },
+    {
+      "file": "world-review/class-1.png",
+      "sha256": "5d197fc748142deb5e979b2e77b5cc8c053bcbfe21e9b480a9401251d044173a",
+      "inspected": true
+    },
+    {
+      "file": "world-review/class-2.png",
+      "sha256": "965b89da230467dd383e74dd323c89b95cdc54283570c9155b325dc3a6798631",
+      "inspected": true
+    },
+    {
+      "file": "world-review/class-3.png",
+      "sha256": "1827314a3b25911d9ca6068b799b79d39b4f27bdc74049377b8b54eff454026d",
+      "inspected": true
+    },
+    {
+      "file": "world-review/class-4.png",
+      "sha256": "7e0f796ed5861fb1aa661bd03002c6794dd8c9b8048fe266d677b41c123eeca4",
+      "inspected": true
+    },
+    {
+      "file": "world-review/class-5.png",
+      "sha256": "8a55de8326e52508441ef63cbea8ced14d46f0f6dc360e84c776686e50d819fc",
+      "inspected": true
+    }
+  ],
+  "logs": [
+    {
+      "log": "code-final.log",
+      "sha256": "73b929a43b495b48ffd09c2e304c0b03c493b021e3fb35ce878889964420157d",
+      "passed": true
+    },
+    {
+      "log": "combat-fixed.log",
+      "sha256": "607829d9320bf53f123b0100de9369965fcb43214f3e3349658517e94dd186dc",
+      "passed": true
+    },
+    {
+      "log": "layout-metrics-fixed.log",
+      "sha256": "5d8810390912a27a114c5408505c88d8b8a728dbc5a9b54a3e5d9c945a5ffff2",
+      "passed": true
+    },
+    {
+      "log": "inventory-verified.log",
+      "sha256": "1b7750fdcc7a120c913720f3d321d7baf7d436ed99bd52850cea2c3ed4bc3084",
+      "passed": true
+    },
+    {
+      "log": "character-font-clean.log",
+      "sha256": "62525c15c99bc68715e06fd9989537178ab01997d704d06d828b2ef2dac926e0",
+      "passed": true
+    },
+    {
+      "log": "rankings-final.log",
+      "sha256": "d505df582be382af5425a18abdd4f5f2468441b2fb8feefb4c3ad07d37f0d24a",
+      "passed": true
+    },
+    {
+      "log": "navigation-final.log",
+      "sha256": "b24eabf2afe0d71a7e6ee2be66595f1802e70e1cefaf5740eb71cd8d1d919bed",
+      "passed": true
+    },
+    {
+      "log": "store-current.log",
+      "sha256": "408ea829651264c96cb4217cf5d536e5838d53a9ade74e0b6ea088fb84482038",
+      "passed": true
+    },
+    {
+      "log": "keyart-release-candidate.log",
+      "sha256": "b81f8170ac2e0b3b877fbe9dc159a6c8bbb69e16ea0648bb0661a6b56cd9788b",
+      "passed": true
+    },
+    {
+      "log": "scene-visible-baselines.log",
+      "sha256": "c53db25022d3869f6022f208c1fbfa0835939b489f8be03e348dd8d32330b2dc",
+      "passed": true
+    },
+    {
+      "log": "soak.log",
+      "sha256": "c09e5d3668a4b012286502f778d841f30063951adcac9f9f5b6dce1adcdc255c",
+      "passed": true
+    },
+    {
+      "log": "soak-optimized.log",
+      "sha256": "79bb66792721bcffad9589a37740e615f6be78d7180801aed4346a7e92ab4d39",
+      "passed": true
+    }
+  ],
+  "investigatedFailures": [
+    {
+      "test": "combat-presentation",
+      "cause": "An empty enemy fixture advanced the room during slow screenshots, teleporting the player.",
+      "resolution": "Inactive live dummy plus frozen screenshot capture; strict movement checks passed."
+    },
+    {
+      "test": "layout/inventory text metrics",
+      "cause": "Chromium reports an empty font shorthand for tabular-nums; Canvas retained an unrelated prior font.",
+      "resolution": "Rebuild explicit font shorthand from computed font fields; original collision limits retained; all affected consumers rerun."
+    }
+  ],
+  "soak": {
+    "runs": 2,
+    "minimumDurationMinutes": 15,
+    "products": 40,
+    "postGcHeapMiB": [
+      4,
+      5
+    ],
+    "finalDomNodes": 2941,
+    "deviceFpsMeasured": false
+  }
+}

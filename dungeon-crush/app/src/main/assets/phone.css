@@ -75,3 +75,13 @@
 
 .premium-cosmetic-note{display:none}
 @media(max-height:550px){#premium-screen .premium-cosmetic-note{display:block;color:#b9ccbf;font-size:12px;line-height:1.75}}
+@media(max-height:550px){
+ #character-slot .characters{height:100%;min-height:0;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(2,minmax(0,1fr));grid-auto-rows:minmax(0,1fr)}
+ #character-slot .char-card{height:100%;min-height:44px;padding:7px}
+ #character-slot .char-card strong{font-size:clamp(11px,1.7vw,13px);line-height:1.35}
+ #character-slot .char-card small,#character-slot .char-card .num{display:none}
+ #character-slot .char-card .check{top:2px;left:3px;right:auto;bottom:auto;font-size:11px}
+ #character-slot .char-card:not(.selected) .check{display:none}
+}
+@media(max-height:550px){#character-slot .char-lv{top:2px;right:4px}}
+@media(max-height:550px){#character-slot .char-card .check{display:none}}

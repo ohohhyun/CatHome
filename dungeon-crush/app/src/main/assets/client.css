@@ -468,3 +468,11 @@ body[data-phase=town] #town-guide{top:auto;bottom:calc(8% + var(--safe-bottom));
 /* Settings opened from the pause card stay above that card. */
 #settings-screen{z-index:1095}
 #toast{z-index:1200;pointer-events:none}
+
+/* Full illustrations use one bounded surface for all classes and equipped looks. */
+.select-layout{grid-template-columns:minmax(135px,.68fr) minmax(0,1fr) minmax(210px,1.1fr);gap:2%}
+.selection-profile{width:100%}.selection-art{position:relative;min-width:0;min-height:0;margin:0;display:grid;grid-template-rows:minmax(0,1fr) auto;overflow:hidden;border-radius:8px;background:radial-gradient(ellipse,#34435466,transparent 72%)}
+.selection-art img{height:100%;width:100%;min-height:0;object-fit:contain;filter:drop-shadow(0 12px 18px #0009)}.selection-art figcaption{text-align:center;font-size:9px;letter-spacing:.2em;color:#bca276;line-height:1.8}
+#character-slot .char-card .art{height:100%;top:0;right:0;width:70%;opacity:.65;background-repeat:no-repeat}
+@media(max-height:550px){.select-layout{grid-template-columns:minmax(120px,.7fr) minmax(0,.95fr) minmax(200px,1.1fr);gap:2%}.selection-art figcaption{font-size:8px}}
+#character-slot .char-lv{line-height:1.7}
