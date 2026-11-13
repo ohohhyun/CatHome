@@ -16,17 +16,17 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
-      RELEASE_TAG: dungeon-crush-v2.15.0-rc1
-      DUNGEON_RELEASE_SOURCE: f616e095a66be0d3d31c8e030d9022b3cad536e3
-      DUNGEON_RELEASE_RUN: '43366493827'
-      DUNGEON_RELEASE_ID: '443896807'
-      DUNGEON_APK_BYTES: '482231241'
-      DUNGEON_APK_SHA256: e8af843d3462e8a28ebed202faeed6d7d787b392a77a22452e544a4aba8369ef
+      RELEASE_TAG: dungeon-crush-v2.15.2-rc1
+      DUNGEON_RELEASE_SOURCE: 44fddcf235bd1144ad933e1650290d847ae4fa17
+      DUNGEON_RELEASE_RUN: '43392615202'
+      DUNGEON_RELEASE_ID: '444017344'
+      DUNGEON_APK_BYTES: '482246354'
+      DUNGEON_APK_SHA256: 33803a1f8dc4d4abd569079d409d084cac0079f294a5140b725850f9ee08d95e
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: f616e095a66be0d3d31c8e030d9022b3cad536e3
-      - name: Require the exact successful build and unpublished release
+          ref: 44fddcf235bd1144ad933e1650290d847ae4fa17
+      - name: Require the exact successful build and fixed draft release
         run: |
           test "$(gh api repos/$GH_REPO/actions/runs/$DUNGEON_RELEASE_RUN --jq .conclusion)" = success
           test "$(gh api repos/$GH_REPO/actions/runs/$DUNGEON_RELEASE_RUN --jq .head_sha)" = "$DUNGEON_RELEASE_SOURCE"
@@ -36,41 +36,59 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: DungeonCrush-APK
-          run-id: 43366493827
+          run-id: 43392615202
           github-token: ${{ github.token }}
           path: apk
-      - name: Verify exact signed APK, all 36 illustrations and compatible ZIP
-        run: python3 dungeon-crush/tools/package-release.py
-      - name: Publish verified persistent download
+      - name: Verify and package exact signed APK
         run: |
-          cat > release-notes.md <<'NOTES'
-          던전크러시! 2.15.0 원화 · 외형 미리보기 수정판 (versionCode 42).
-
-          아래 Assets에서 **DungeonCrush-2.15.0-RC1.zip**을 받아 압축을 풀고 APK를 설치하세요. 기존 앱을 삭제하지 말고 업데이트 설치하세요.
-
-          - 캐릭터 선택과 외형 상품 상세에 기본 6명·외형 30벌의 일러스트 36장을 넣었습니다. 해당 캐릭터의 의상과 무기를 원화에서 확인할 수 있습니다.
-          - 상품 상세에서 원화·동작·스킬 효과를 전환하고 구매·장착·해제합니다. 휴대폰의 상점 너비, 동작 선택, 고정 구매 버튼과 확대 글자 배치를 정리했습니다.
-          - 동작별 자동 카메라 배율 변경을 고쳤습니다. 대기/달리기/공격/점프/회피/스킬이 같은 기본 배율을 사용합니다. 큰 효과는 직접 넓게 보고 기본 배율로 돌아옵니다.
-          - 외형 30벌의 실제 장착·해제 후 마을/전투 몸 크기와 기본 6명을 비교했습니다. 모션 영상을 확인하고 원화/스프라이트 로딩 실패·재시도, 저장과 4인 통신을 검사했습니다.
-          - 전체 **55개 자동 검사**(코드25 + Java2 + Chrome28), APK/AAB·Android lint·기존 서명·최종 포함 리소스 검증을 통과했습니다.
-          - 외형·펫은 실제 결제 없는 무료 테스트 구매입니다. 48던전·4정예 레이드·24배경과 판매 보호·백업을 유지합니다.
-
-          저장 형식 2와 Wi-Fi 프로토콜 10을 유지합니다. 집사 사절 원본과 서버/DB는 수정하지 않았습니다. 실기기 장시간 FPS·발열과 스토어 등록은 별도입니다.
-          검증 소스: f616e095a66be0d3d31c8e030d9022b3cad536e3
-          검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/43366493827
-          APK SHA256: e8af843d3462e8a28ebed202faeed6d7d787b392a77a22452e544a4aba8369ef
-          NOTES
-          gh release upload "$RELEASE_TAG" DungeonCrush-2.15.0-RC1.zip --clobber
-          gh release edit "$RELEASE_TAG" --draft=false --prerelease --latest=false --notes-file release-notes.md
-      - name: Verify public ZIP size and digest
+          python3 - <<'PY'
+          import hashlib, json, os, subprocess, zipfile
+          from pathlib import Path
+          assert subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()==os.environ['DUNGEON_RELEASE_SOURCE']
+          p=Path('apk/DungeonCrush-2.15.2.apk'); data=p.read_bytes()
+          assert len(data)==int(os.environ['DUNGEON_APK_BYTES'])
+          assert hashlib.sha256(data).hexdigest()==os.environ['DUNGEON_APK_SHA256']
+          with zipfile.ZipFile(p) as z:
+              assert z.testzip() is None
+              for f in Path('dungeon-crush/app/src/main/assets').iterdir():
+                  if f.is_file() and f.suffix in ('.js','.css','.html'):assert z.read('assets/'+f.name)==f.read_bytes(),f.name
+              assert 'VER 2.15.2' in z.read('assets/index.html').decode()
+              ui=z.read('assets/premium-ui.js').decode()
+              assert "['walk'," not in ui and '걷기' not in ui
+          guide='던전크러시 2.15.2 (설치 버전 44)\r\n\r\n압축을 풀고 DungeonCrush-2.15.2.apk를 기존 앱 위에 업데이트 설치하세요. 기존 앱을 삭제하지 마세요.\r\n미리보기 걷기를 제거했습니다. 달리기→공격→점프→스킬 하나를 자동 재생합니다.\r\n저장 형식 2 / Wi-Fi 프로토콜 10 / 기존 서명을 유지합니다.\r\n검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/43392615202\r\nAPK SHA-256: '+os.environ['DUNGEON_APK_SHA256']+'\r\n'
+          out=Path('DungeonCrush-2.15.2-RC1.zip')
+          with zipfile.ZipFile(out,'w',compression=zipfile.ZIP_STORED) as z:
+              z.writestr(p.name,data)
+              z.writestr('INSTALL-KO.txt',b'\xef\xbb\xbf'+guide.encode())
+          with zipfile.ZipFile(out) as z:
+              assert z.testzip() is None
+              assert hashlib.sha256(z.read(p.name)).hexdigest()==os.environ['DUNGEON_APK_SHA256']
+          meta=dict(file=out.name,bytes=out.stat().st_size,sha256=hashlib.sha256(out.read_bytes()).hexdigest())
+          Path('package-verification.json').write_text(json.dumps(meta,indent=2));print(meta)
+          PY
+      - name: Publish permanent anonymous download
+        run: |
+          gh release upload "$RELEASE_TAG" DungeonCrush-2.15.2-RC1.zip --clobber
+          gh release edit "$RELEASE_TAG" --draft=false --prerelease --latest=false
+      - name: Verify anonymous full download and ZIP integrity
         run: |
           gh api "repos/$GH_REPO/releases/$DUNGEON_RELEASE_ID" > release-assets.json
-          python3 - <<'PYCODE'
-          from pathlib import Path
-          from hashlib import sha256
+          python3 - <<'PY'
           import json
-          p=Path('DungeonCrush-2.15.0-RC1.zip');r=json.loads(Path('release-assets.json').read_text());assert not r['draft']
-          a=next(a for a in r['assets'] if a['name']==p.name)
-          assert a['size']==p.stat().st_size and a['digest']=='sha256:'+sha256(p.read_bytes()).hexdigest()
-          print('Verified public ZIP:',a['browser_download_url'])
-          PYCODE
+          from pathlib import Path
+          m=json.loads(Path('package-verification.json').read_text());r=json.loads(Path('release-assets.json').read_text());assert not r['draft']
+          a=next(a for a in r['assets'] if a['name']==m['file']);assert a['size']==m['bytes'] and a['digest']=='sha256:'+m['sha256']
+          Path('download-url.txt').write_text(a['browser_download_url'])
+          PY
+          curl --fail --location --retry 2 "$(cat download-url.txt)" -o public-download.zip
+          python3 - <<'PY'
+          import hashlib,json,os,zipfile
+          from pathlib import Path
+          m=json.loads(Path('package-verification.json').read_text());p=Path('public-download.zip')
+          assert p.stat().st_size==m['bytes'] and hashlib.sha256(p.read_bytes()).hexdigest()==m['sha256']
+          with zipfile.ZipFile(p) as z:
+              assert z.testzip() is None
+              assert hashlib.sha256(z.read('DungeonCrush-2.15.2.apk')).hexdigest()==os.environ['DUNGEON_APK_SHA256']
+          print('Verified anonymous download:',Path('download-url.txt').read_text())
+          print(m)
+          PY
