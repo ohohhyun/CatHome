@@ -2,6 +2,12 @@
 
 이 파일을 먼저 읽고 `dungeon-crush/`만 이어서 작업하세요. 사용자에게는 한국어 존댓말을 사용하세요.
 
+## 2.18.0 작업 중 · 몬스터 스킬 이펙트
+
+- 최신 요청: 몬스터 스킬 이펙트 품질을 개선하고, 검수 실패0건 후 APK 주소만 복사 가능하게 제공합니다.
+- [변경·공식 참고·검수 범위](release/ENEMY-EFFECTS-NOTES.md). 16속성의 시전/타격/투사체/잔류 효과, 적 투사체 속성 누락, 모든 외형의 경고선, 효과 줄이기와 장식/캐시 예산을 보완했습니다. 기존 전투·성장·보상 수치와 원본은 유지합니다.
+- 2.18.0 / versionCode47 / 저장 형식2 / Wi-Fi 프로토콜11. 전체65개(코드30 + Java2 + Chrome33)와 APK/AAB·lint·서명·포함 자원·공개 다운로드 성공 전에는 새 APK를 공개하지 않습니다. 현재 공개판은 아래2.17.0입니다.
+
 ## 최신 공개 버전: 2.17.0 RC1 · 성장/전투/파밍/스킬 수정 완료
 
 - **[APK 바로 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.17.0-rc1/DungeonCrush-2.17.0.apk)** · [설치 안내 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.17.0-rc1/DungeonCrush-2.17.0-RC1.zip) · [릴리스 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.17.0-rc1). 로그인 없이 내려받으며 카톡에는 주소를 공유합니다. **기존 앱을 삭제하지 말고 업데이트 설치합니다.**
