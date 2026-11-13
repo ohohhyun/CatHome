@@ -13,7 +13,7 @@ actions.append(button('백업 파일 저장',()=>{if(!allowed())return;if(A.prog
 const privacy=node('p','성장 기록·설정은 기기에 저장합니다. 이 앱에는 광고·분석 SDK가 없습니다. Wi-Fi 멀티플레이는 같은 네트워크의 참가 기기와 게임 상태를 주고받습니다. 백업 파일에는 성장 기록이 포함되므로 직접 관리하세요.','note privacy-note');$('settings-screen').querySelector('.dialog-copy').append(privacy);
 function refresh(){const s=A.progressStatus();status.textContent=s.blocked?'기존 기록을 읽지 못해 덮어쓰기를 막았습니다. 백업을 복원하세요.':s.recovered?'손상된 저장 기록을 자동 백업에서 복구했습니다.':s.lastSavedAt?'자동 저장 '+new Date(s.lastSavedAt).toLocaleTimeString('ko-KR'):'기기에 자동 저장합니다.';}
 new MutationObserver(refresh).observe($('settings-screen'),{attributes:true,attributeFilter:['hidden']});refresh();
-root.onBackupEvent=event=>{if(event.kind==='import')review(event.text);else if(event.kind==='export')notify('백업 파일을 저장했습니다.');else if(event.kind==='error')notify(event.message||'백업 파일을 처리하지 못했습니다.');};
+root.onBackupEvent=event=>{if(event.kind==='import')review(event.text);else if(event.kind==='export')notify('파일을 저장했습니다.');else if(event.kind==='error')notify(event.message||'백업 파일을 처리하지 못했습니다.');};
 if(A.progressStatus().boot.recovered)setTimeout(()=>notify('자동 백업에서 성장 기록을 복구했습니다. 설정에서 파일로 백업하세요.'),900);
 if(A.progressStatus().blocked)setTimeout(()=>notify('저장 기록을 읽지 못했습니다. 기존 기록을 보호 중이니 설정에서 백업을 복원하세요.'),900);
 })(window);

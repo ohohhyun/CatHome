@@ -47,6 +47,7 @@ jobs:
           fi
       - name: Check combat and campaign
         run: |
+          node tests/pk.test.cjs
           node tests/hero-height.test.cjs
           node tests/motion-stability.test.cjs
           node tests/premium.test.cjs
@@ -87,6 +88,10 @@ jobs:
           PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: '1'
       - name: Install video encoder for real combat capture
         run: node "$RUNNER_TEMP/cathome-ui/node_modules/playwright/cli.js" install ffmpeg
+      - name: Verify four modes, shared-user AI PK, nicknames and weekly rewards
+        run: node tests/pk-presentation.test.cjs
+        env:
+          NODE_PATH: ${{ runner.temp }}/cathome-ui/node_modules
       - name: Verify selection hall, cutouts and distinct class heights
         run: node tests/hero-height-presentation.test.cjs
         env:
@@ -301,6 +306,7 @@ jobs:
             dungeon-crush/build/previews/key-art/**
             dungeon-crush/build/previews/scene-size/**
             dungeon-crush/build/previews/stability/**
+            dungeon-crush/build/previews/pk/**
             dungeon-crush/build/previews/hero-height/**
             dungeon-crush/build/previews/hero-height-audit.json
             dungeon-crush/build/previews/motion-stability-audit.json
