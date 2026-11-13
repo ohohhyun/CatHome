@@ -21,7 +21,7 @@ function show(img,cls,costume=''){
  if(!src){img.dataset.source='';img.dataset.state='unavailable';img.style.visibility='hidden';img.removeAttribute('src');status.textContent='이 외형은 동작 미리보기에서 확인할 수 있습니다.';return;}
  img.dataset.source=src;img.dataset.state='loading';img.style.visibility='hidden';img.alt=(root.Rift?.CLASSES[cls]?.name||'캐릭터')+' '+(root.DungeonPremium?.item(costume)?.name||'기본 외형')+' 일러스트';
  layout(img,cls,costume);
- img.onload=()=>{if(img.getAttribute('src')===src){img.dataset.state='ready';img.style.visibility='visible';status.hidden=true;layout(img,cls,costume);}};
+ img.onload=async()=>{try{await img.decode();}catch{if(img.getAttribute('src')===src)img.onerror();return;}if(img.getAttribute('src')===src){img.dataset.state='ready';img.style.visibility='visible';status.hidden=true;layout(img,cls,costume);}};
  img.onerror=()=>{if(img.getAttribute('src')===src){img.dataset.state='error';status.textContent='원화를 불러오지 못했습니다. ';const retry=document.createElement('button');retry.textContent='다시 불러오기';retry.onclick=()=>{delete img.dataset.source;show(img,cls,costume);};status.append(retry);}};
  img.src=src;
 }
