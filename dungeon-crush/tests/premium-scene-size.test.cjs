@@ -56,10 +56,10 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
      assert(await p.locator('[data-premium-view=art]').isDisabled());assert.equal(await p.evaluate(()=>DungeonPremiumUI.state().view),'motion');
     }
     await p.locator('[data-premium-view=motion]').click();
-    const zoom=await p.locator('#premium-zoom').inputValue();
+    const zoom=await p.evaluate(()=>DungeonPremiumUI.state().zoom);
     for(const mode of ['idle','run','combo','jump','dash','skill']){
      await p.evaluate(mode=>{DungeonPremiumUI.setMode(mode);return new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));},mode);
-     assert.equal(await p.locator('#premium-zoom').inputValue(),zoom,id+' camera must not resize the body when the motion changes');
+     assert.equal(await p.evaluate(()=>DungeonPremiumUI.state().zoom),zoom,id+' camera must not resize the body when the motion changes');
      const pixels=await p.evaluate(()=>window.previewPixelsPerWorldUnit);assert(pixels>0);
      if(referencePreviewScale===null)referencePreviewScale=pixels;
      assert(Math.abs(pixels-referencePreviewScale)<.001,id+'/'+mode+' actual CSS pixel camera size changed: '+pixels+' expected '+referencePreviewScale);

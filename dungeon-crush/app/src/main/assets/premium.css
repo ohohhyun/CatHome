@@ -43,3 +43,14 @@
 #premium-screen:not([data-preview-view=art]) #premium-fit-effect:not([hidden]){display:block}
 /* A single motion chooser gives the character more room on every display. */
 #premium-screen .premium-motion-controls{display:none}#premium-mode-select{display:block;width:100%;border:1px solid #bda16a66;background:#142136;color:#f4ddb1;font-size:13px;padding:7px 9px;border-radius:4px}
+
+/* The fitting room plays one automatic preview, with no action menus. */
+#premium-screen .premium-view-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}
+#premium-screen .premium-fitting{grid-template-rows:auto auto minmax(110px,1fr) auto}
+#premium-screen[data-preview-view=art] .premium-preview-note{display:none}
+#premium-screen .premium-preview-note{display:block;text-align:center;overflow-wrap:anywhere}
+@media(max-height:550px){
+ #premium-screen .premium-heading>.premium-view-tabs{flex-basis:124px;max-width:24vw}
+ #premium-screen .premium-fitting,#premium-screen[data-preview-view=art] .premium-fitting{grid-template-rows:auto minmax(110px,1fr) auto;overflow:hidden}
+ #premium-screen .premium-preview-note{font-size:10px;line-height:1.6;margin:3px 0 0}
+}

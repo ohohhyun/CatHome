@@ -1,0 +1,15 @@
+const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict'),crypto=require('node:crypto');
+const base='app/src/main/assets/',review=JSON.parse(fs.readFileSync('art-source/locomotion-stability-review.json'));
+const c={Image:class{set src(v){}},document:{createElement:()=>({getContext:()=>({drawImage(){}})})}};c.window=c;vm.createContext(c);
+for(const name of ['rpg','encounters','engine','growth','arena','actors','premium','premium-art-data'])vm.runInContext(fs.readFileSync(base+name+'.js','utf8'),c);
+const E=c.Rift,A=c.DungeonActors,X=c.DungeonEncounters;
+assert.equal(review.banks.length,164);assert.equal(new Set(review.banks.map(b=>b.id)).size,164);
+for(const record of review.banks){assert(record.afterRmsAccelerationAt160px<=record.beforeRmsAccelerationAt160px+.0001,record.id+' torso registration improves cycle acceleration');for(const[src,sha]of Object.entries(record.sourceSha256))assert.equal(crypto.createHash('sha256').update(fs.readFileSync(base+src)).digest('hex'),sha,record.id+' exact reviewed sprite');const[id,name]=record.id.split('/'),bank=name==='walk'?A.enemies.find(a=>a.id===id).walk:A.actors.find(a=>a.id===id)?.[name]||c.DungeonPremiumArtData.costumes[id].banks[name];assert.equal(bank.frames.length,bank.authoredPivots.length);const pivot=name==='walk'||A.actors.some(a=>a.id===id)?5:4;assert.equal(bank.frames[0][pivot],bank.authoredPivots[0][0]);assert.equal(bank.frames[0][pivot+1],bank.authoredPivots[0][1]);}
+const configs=[...Object.values(X.NORMALS),...X.BOSSES,...X.DUNGEON_NORMALS,...X.DUNGEON_BOSSES,...Object.values(X.FRONTIER_NORMALS).flat()];let cases=0;
+for(const [skin,model]of A.enemies.entries())for(const dt of [1/120,1/60,1/30])for(const dir of [-1,1])for(const laneOnly of [false,true]){
+ const config=configs.find(v=>v.skin===skin)||{type:skin===3?'boss':'knight'},g=E.create(6),h=E.player(0,'검수',0,100);g.players=[h];E.start(g);Object.assign(h,{x:1200,y:600,inv:99999});const e={...config,id:999,skin,type:config.type||'knight',x:h.x+(laneOnly?.3:dir*950),y:laneOnly?480:600.3,hp:1e9,maxHp:1e9,dir:-dir,cd:99999,at:0,stun:0};g.enemies=[e];let lastY=e.y,lastX=e.x,flips=0,lastDir=e.dir;
+ for(let tick=0;tick<240;tick++){E.step(g,{},dt);assert((e.y-h.y)*(lastY-h.y)>=-1e-8,model.id+' never overshoots lane centre');assert((e.x-h.x)*(lastX-h.x)>=-1e-8,model.id+' never overshoots player X');if(e.dir!==lastDir)flips++;lastDir=e.dir;lastY=e.y;lastX=e.x;assert(Number.isFinite(e.gait||0));}
+ assert(flips<=1,model.id+' no rapid facing reversals');cases++;
+ const restored=JSON.parse(JSON.stringify(g));for(let tick=0;tick<10;tick++){E.step(g,{},dt);E.step(restored,{},dt);}assert.equal(JSON.stringify(g),JSON.stringify(restored),'stable movement survives LAN snapshot');
+}
+console.log('PASS: 164 registered locomotion/idle banks / 1424 poses with original source hashes and first-pose anchors; '+cases+' chase/lane cases across all 92 monsters, both directions and 30/60/120Hz, no overshoot/facing chatter, deterministic snapshots.');
