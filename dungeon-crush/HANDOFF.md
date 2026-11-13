@@ -2,6 +2,13 @@
 
 이 파일을 먼저 읽고 `dungeon-crush/`만 이어서 작업하세요. 사용자에게는 한국어 존댓말을 사용하세요.
 
+## 2.17.0 작업 중 · 성장/난이도/반복 파밍/스킬 수정
+
+- 최신 사용자 요청: 레벨업이 너무 빠름, 몬스터가 약함, 던전 반복 이유 부족, 강화/스킬 성장 없이도 쉬움, 해금 레벨을 달성한 스킬 습득 불가를 전부 확인하고 수정합니다.
+- [수정·원인·공식 게임 참고·검수 범위](release/PROGRESSION-BALANCE-NOTES.md). 실제 만렙100과 기존 저장 XP는 유지하고 앞으로의 보상/전투 계산을 조정했습니다. 첫 스킬 습득 무료/SP는 강화에만 사용, 지원 스킬 랭크 효과, 짧은 터치 입력 보존을 포함합니다.
+- 검증 중이며 새 APK는 아직 공개하지 않았습니다. 현재 공개판은 아래 2.16.0입니다. 전체 63개(코드29 + Java2 + Chrome32), APK/AAB·lint·기존 서명·포함 자원 성공 후 공개합니다.
+- 2.17.0 / versionCode46 / 저장 형식2 / Wi-Fi 프로토콜11. 파티원 모두 업데이트합니다. 원본 app/legacy/root tests는 수정하지 않습니다. 기존 주간 보상/2주 초기화와 모든 보유 기록은 유지합니다.
+
 ## 최신 공개 버전: 2.16.0 RC1 · 검증·공개 다운로드 완료
 
 - **[APK 바로 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.16.0-rc1/DungeonCrush-2.16.0.apk)** · [APK+설치 안내 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.16.0-rc1/DungeonCrush-2.16.0-RC1.zip) · [릴리스 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.16.0-rc1). 로그인 없이 내려받을 수 있습니다. 카톡에는 파일 대신 APK 주소를 공유합니다. **기존 앱을 삭제하지 말고 업데이트 설치합니다.**
