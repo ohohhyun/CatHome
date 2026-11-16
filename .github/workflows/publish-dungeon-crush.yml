@@ -16,16 +16,16 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
-      RELEASE_TAG: dungeon-crush-v2.19.0-rc1
-      DUNGEON_RELEASE_SOURCE: 80b24b41b15a08ee216f007a77fd983e264c5d65
-      DUNGEON_RELEASE_RUN: '43818547972'
-      DUNGEON_RELEASE_ID: '446715122'
-      DUNGEON_APK_BYTES: '490012528'
-      DUNGEON_APK_SHA256: e14652c71a0d1f1ba9e0d4d35e2beea026026d28607be7bde5556aa130f04a99
+      RELEASE_TAG: dungeon-crush-v2.20.0-rc1
+      DUNGEON_RELEASE_SOURCE: c7f09d5a3b55ad6c482ca66c0c08226364bbe802
+      DUNGEON_RELEASE_RUN: '43861978409'
+      DUNGEON_RELEASE_ID: '447011223'
+      DUNGEON_APK_BYTES: '490019558'
+      DUNGEON_APK_SHA256: 1483bf7ef4854043315d46fac8ae3d7c85e2b118f5bc14c6e157cb283fc62a92
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 80b24b41b15a08ee216f007a77fd983e264c5d65
+          ref: c7f09d5a3b55ad6c482ca66c0c08226364bbe802
       - name: Require the exact successful build and fixed draft release
         run: |
           test "$(gh api repos/$GH_REPO/actions/runs/$DUNGEON_RELEASE_RUN --jq .conclusion)" = success
@@ -36,7 +36,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: DungeonCrush-APK
-          run-id: 43818547972
+          run-id: 43861978409
           github-token: ${{ github.token }}
           path: apk
       - name: Verify and package exact signed APK
@@ -45,19 +45,19 @@ jobs:
           import hashlib, json, os, subprocess, zipfile
           from pathlib import Path
           assert subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()==os.environ['DUNGEON_RELEASE_SOURCE']
-          p=Path('apk/DungeonCrush-2.19.0.apk'); data=p.read_bytes()
+          p=Path('apk/DungeonCrush-2.20.0.apk'); data=p.read_bytes()
           assert len(data)==int(os.environ['DUNGEON_APK_BYTES'])
           assert hashlib.sha256(data).hexdigest()==os.environ['DUNGEON_APK_SHA256']
           with zipfile.ZipFile(p) as z:
               assert z.testzip() is None
               for f in Path('dungeon-crush/app/src/main/assets').iterdir():
                   if f.is_file() and f.suffix in ('.js','.css','.html'):assert z.read('assets/'+f.name)==f.read_bytes(),f.name
-              assert 'VER 2.19.0' in z.read('assets/index.html').decode()
+              assert 'VER 2.20.0' in z.read('assets/index.html').decode()
               for asset in ['art/selection-atrium.webp','art/selection/kael.webp','art/selection/rin.webp','art/selection/bane.webp','art/selection/sera.webp','art/selection/aria.webp','pk.js','pk-ui.js']:assert z.read('assets/'+asset)==Path('dungeon-crush/app/src/main/assets',asset).read_bytes(),asset
               ui=z.read('assets/premium-ui.js').decode()
               assert "['walk'," not in ui and '걷기' not in ui
-          guide='던전크러시 2.19.0 (설치 버전 48)\r\n\r\n압축을 풀고 DungeonCrush-2.19.0.apk를 기존 앱 위에 업데이트 설치하세요. 기존 앱을 삭제하지 마세요.\r\n첫 시작에 닉네임을 만든 뒤 캐릭터를 선택합니다. 한글2~8자·영문4~16자, 비속어·선정성·운영자 사칭 필터를 적용했습니다. 좌우 이동 모션·메뉴를 개선하고 몬스터 음성24개를 추가했습니다. 플레이어용 성장 백업 파일 메뉴는 제거하고 자동 저장·복구와 상대 유저 정보 공유는 유지합니다. 파티원 전원이 업데이트하세요.\r\n저장 형식 2 / Wi-Fi 프로토콜 12 / 기존 서명을 유지합니다.\r\n검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/43818547972\r\nAPK SHA-256: '+os.environ['DUNGEON_APK_SHA256']+'\r\n'
-          out=Path('DungeonCrush-2.19.0-RC1.zip')
+          guide='던전크러시 2.20.0 (설치 버전 49)\r\n\r\n압축을 풀고 DungeonCrush-2.20.0.apk를 기존 앱 위에 업데이트 설치하세요. 기존 앱을 삭제하지 마세요.\r\n타이틀·마을 정보창·모험가 메뉴의 텍스트 겹침을 수정하고 랭킹을 표 중심으로 정리했습니다. 최초 닉네임은 무료 저장, 이후에는 닉네임 변경권1개를 사용해 변경합니다. 변경권은3,900원 상품으로 표시하며 등록된 결제 상품이 없어 현재 구매할 수 없습니다. 무료 테스트 상품으로 변경권을 지급하지 않습니다. 기존 기록과 서명을 유지합니다.\r\n저장 형식 2 / Wi-Fi 프로토콜 12 / 기존 서명을 유지합니다.\r\n검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/43861978409\r\nAPK SHA-256: '+os.environ['DUNGEON_APK_SHA256']+'\r\n'
+          out=Path('DungeonCrush-2.20.0-RC1.zip')
           with zipfile.ZipFile(out,'w',compression=zipfile.ZIP_STORED) as z:
               z.writestr(p.name,data)
               z.writestr('INSTALL-KO.txt',b'\xef\xbb\xbf'+guide.encode())
@@ -69,7 +69,7 @@ jobs:
           PY
       - name: Publish permanent anonymous download
         run: |
-          gh release upload "$RELEASE_TAG" DungeonCrush-2.19.0-RC1.zip apk/DungeonCrush-2.19.0.apk --clobber
+          gh release upload "$RELEASE_TAG" DungeonCrush-2.20.0-RC1.zip apk/DungeonCrush-2.20.0.apk --clobber
           gh release edit "$RELEASE_TAG" --draft=false --prerelease --latest=false
       - name: Verify anonymous full download and ZIP integrity
         run: |
@@ -80,7 +80,7 @@ jobs:
           m=json.loads(Path('package-verification.json').read_text());r=json.loads(Path('release-assets.json').read_text());assert not r['draft']
           a=next(a for a in r['assets'] if a['name']==m['file']);assert a['size']==m['bytes'] and a['digest']=='sha256:'+m['sha256']
           Path('download-url.txt').write_text(a['browser_download_url'])
-          apk=next(a for a in r['assets'] if a['name']=='DungeonCrush-2.19.0.apk');assert apk['size']==int(__import__('os').environ['DUNGEON_APK_BYTES']) and apk['digest']=='sha256:'+__import__('os').environ['DUNGEON_APK_SHA256']
+          apk=next(a for a in r['assets'] if a['name']=='DungeonCrush-2.20.0.apk');assert apk['size']==int(__import__('os').environ['DUNGEON_APK_BYTES']) and apk['digest']=='sha256:'+__import__('os').environ['DUNGEON_APK_SHA256']
           Path('apk-download-url.txt').write_text(apk['browser_download_url'])
           PY
           curl --fail --location --retry 2 "$(cat download-url.txt)" -o public-download.zip
@@ -91,7 +91,7 @@ jobs:
           assert p.stat().st_size==m['bytes'] and hashlib.sha256(p.read_bytes()).hexdigest()==m['sha256']
           with zipfile.ZipFile(p) as z:
               assert z.testzip() is None
-              assert hashlib.sha256(z.read('DungeonCrush-2.19.0.apk')).hexdigest()==os.environ['DUNGEON_APK_SHA256']
+              assert hashlib.sha256(z.read('DungeonCrush-2.20.0.apk')).hexdigest()==os.environ['DUNGEON_APK_SHA256']
           print('Verified anonymous download:',Path('download-url.txt').read_text())
           print(m)
           PY
