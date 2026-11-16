@@ -9,7 +9,7 @@ module.exports=async function priestPresentation(p,pixels){
   cv.id='priest-review';Object.assign(cv.style,{position:'fixed',inset:0,width:'1920px',height:'1600px',zIndex:99999});document.body.append(cv);window.priestExpected=expected;
   for(const dir of [1,-1])for(let i=0;i<8;i++){
    const x=i%4*480+240,y=(Math.floor(i/4)+(dir===-1?2:0))*400+340;
-   Object.assign(h,{action:'run',gait:(i+.05)/8*Math.PI*2*320/210,vx:0,vy:0});
+   Object.assign(h,{action:'run',gait:(i+.05)/8*Math.PI*2*DungeonActors.strideLength(h)/210,vx:0,vy:0});
    if(!DungeonActors.actor(c,5,x,y,293,dir,h,0))throw Error('Priest run not loaded');
    const f=DungeonActors.frame(h,0),r=bank.frames[f.index];e.save();e.translate(x,y);e.scale(dir,1);e.drawImage(im,r[1],r[2],r[3],r[4],-r[5],-r[6],r[3],r[4]);e.restore();
   }
