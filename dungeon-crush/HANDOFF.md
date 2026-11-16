@@ -2,6 +2,13 @@
 
 이 파일을 먼저 읽고 `dungeon-crush/`만 이어서 작업하세요. 사용자에게는 한국어 존댓말을 사용하세요.
 
+## 작업 중: 2.20.0 · 메뉴 겹침/랭킹/3,900원 변경권
+
+- 사용자 첨부의 타이틀·마을 왼쪽 HUD·모험가 메뉴 겹침을 재현해 수정하고, 메이플스토리 공식 랭킹을 참고해 표 중심으로 개편했습니다. 서버 미연결에서는 내 기록부터 표시하며 기존5종 종목과 전체 랭킹 연결 기능을 유지합니다.
+- 최초 닉네임은 ‘저장’, 이후 ‘변경’. 변경권1개가 있어야 바뀌고 사용 시 차감합니다. 유저ID/기록은 유지하며 취소·저장 실패·부적합 이름은 차감하지 않습니다. Wi-Fi 이름 입력의 우회 변경도 막았습니다.
+- **사용자 명시 확인: 등록된 결제 상품 없음 → 3,900원 상품을 표시하되 실결제 연결 전에는 구매 불가.** 무료 테스트 상품으로 변경권을 지급하지 않습니다.
+- [원인·구현·공식 참고·검수 범위](release/MENU-REPAIR-NOTES.md). 코드34 + Java2 + Chrome35 =71개와 서명/포함 파일 검증 후에만 게시합니다. versionCode49 / 저장2 / Wi-Fi12 / 원본 집사 사절 보호.
+
 ## 최신 공개 버전: 2.19.0 RC1 · 닉네임/이동/메뉴/몬스터 음성 개선 완료
 
 - **[APK 바로 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.19.0-rc1/DungeonCrush-2.19.0.apk)** · [설치 안내 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.19.0-rc1/DungeonCrush-2.19.0-RC1.zip) · [릴리스 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.19.0-rc1). 로그인 없이 내려받을 수 있습니다. 카톡에는 파일 대신 주소를 공유합니다. **기존 앱을 삭제하지 말고 업데이트 설치합니다.**

@@ -1,0 +1,183 @@
+{
+  "scope": "Local Chromium feature checks; complete CI/publication pending",
+  "browser": {
+    "passed": true,
+    "sizes": [
+      {
+        "width": 1280,
+        "height": 591
+      },
+      {
+        "width": 740,
+        "height": 360
+      },
+      {
+        "width": 640,
+        "height": 296
+      }
+    ],
+    "scales": [
+      1,
+      1.4
+    ],
+    "scenes": [
+      "title",
+      "rankings",
+      "town",
+      "quick-menu"
+    ],
+    "ticketPrice": 3900,
+    "paidStoreConnected": false,
+    "firstSaveFree": true,
+    "oneTicketRename": true,
+    "quotaRollback": true,
+    "lanReadOnly": true,
+    "errors": []
+  },
+  "rules": [
+    {
+      "test": "tests/enemy-effects.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/progression-balance.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/nickname-ticket.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/name-policy.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/movement-parity.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/monster-audio.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/pk.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/hero-height.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/motion-stability.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/premium.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/premium-art.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/key-art.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/background-cache.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/frontier.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/game.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/caster.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/ranged.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/navigation.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/generated-art.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/combat-timing.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/rpg.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/inventory.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/equipment-services.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/release.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/rankings.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/ranking-client.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/sound.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/font-coverage.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/ui-layout.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/party-recovery.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/run-cast-fix.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/new-content.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/expansion.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/hotfix.test.cjs",
+      "passed": true
+    }
+  ],
+  "billingProductRegistered": false,
+  "purchaseEnabled": false,
+  "remainingPhysicalChecks": [
+    "48 to 49 update and save retention",
+    "Android system text scale, keyboard and touch scrolling",
+    "2–4 physical Wi-Fi devices",
+    "sustained FPS and thermals"
+  ]
+}
