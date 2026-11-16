@@ -8,7 +8,7 @@ for(const size of [{width:1280,height:591},{width:740,height:360},{width:640,hei
   await p.evaluate(()=>{RiftApp.resetControls();Object.assign(DungeonClient.getTown().hero,{x:1500,y:580,vx:0,vy:0,gait:0,action:'idle',at:0,dashTime:0,rushTime:0,jump:0});window.touchCapture={time:0,distance:0,inputs:[],done:false};});
   await cdp.send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{x:box.x+box.width*(.5+dir*reach/2),y:box.y+box.height*(.5+drift/2),id:1}]});
   await p.waitForFunction(()=>touchCapture.done);await cdp.send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});
-  const result=await p.evaluate(()=>touchCapture);assert(result.inputs.every(([x,y])=>Math.abs(x)===1&&y===0),'actual touch reaches the same horizontal running input');assert(Math.abs(result.speed-result.top)<.02);results.push({dir,reach,drift,time:result.time,distance:result.distance,speed:result.speed});
+  const result=await p.evaluate(()=>touchCapture);assert(result.inputs.every(([x,y])=>x===dir&&y===0),'actual touch reaches the same horizontal running input');assert(Math.abs(result.speed-result.top)<.02);results.push({dir,reach,drift,time:result.time,distance:result.distance,speed:result.speed});
  }
  const rates=results.map(r=>r.distance/r.time);assert(Math.max(...rates)/Math.min(...rates)<1.025,'left/right travel rate agrees within browser tick boundary tolerance');touchReport.push({size,results});
 }
