@@ -10,8 +10,27 @@ function seasonInfo(save,now=Date.now()){const key=season(now);return {key,start
 function syncSeason(save,now=Date.now()){const p=save.pk,key=week(now),current=season(now);if(!p)return {ok:true,changed:false};if(key<p.lastWeek||p.season!==null&&p.season!==undefined&&current<p.season)return {ok:false,error:'기기 날짜를 확인한 뒤 다시 시도하세요.'};if(p.pending)return {ok:true,changed:false};const reset=p.season!==null&&p.season!==undefined&&current>p.season,changed=reset||p.season!==current||p.lastWeek!==key;if(reset){p.rating=800;p.wins=0;p.losses=0;p.draws=0;}p.season=current;p.lastWeek=key;return {ok:true,changed,reset};}
 function needsSync(save,now=Date.now()){const p=save.pk;return !!p&&!p.pending&&(p.season!==season(now)||p.lastWeek!==week(now));}
 function tier(points){return [...TIERS].reverse().find(t=>integer(points,800)>=t.min)||TIERS[0];}
-function nickname(value){const n=typeof value==='string'?value.trim():'';return /^[\p{L}\p{N} _.-]{2,12}$/u.test(n)?n:'';}
-function display(player){return '['+tier(player.pkRating??800).name+'] '+player.name;}
+// Independent offline name rules, based on public RPG naming-policy categories.
+const strongKO=['씨발','시발','씨팔','시팔','씹새','개새끼','개색끼','병신','븅신','좆','씹년','씹놈','개년','개놈','지랄','염병','느금마','니애미','니애비','애미뒤','애비뒤','섹스','섹시','쎅스','야동','포르노','보지','자지','딸딸이','정액','성노예','성폭행','강간','근친상간','조센징','짱깨','깜둥이','맘충','한남충','한녀충'];
+const strongEN=['fuck','fuk','fck','shit','bitch','blowjob','porn','hentai','pussy','dickhead','motherfucker','nigger','nigga','sibal','ssibal'];
+const wholeEN=new Set(['ass','sex','cum','cunt','dick','tits','cock','whore','slut','rape','nazi','kkk','xxx']);
+const innocentEN=new Set(['scunthorpe','sussex','essex','middlesex','assassin','cassiopeia','classics']);
+function nameState(value){
+ const bad=(error,reason)=>({ok:false,name:'',error,reason,units:0});
+ if(typeof value!=='string'||value.length>64)return bad('닉네임 길이를 확인해 주세요.','length');
+ const n=value.normalize('NFKC').normalize('NFC').trim();
+ if(!n)return bad('모험가 이름을 입력해 주세요.','empty');
+ if(!/^[가-힣A-Za-z0-9]+$/u.test(n))return bad('완성된 한글·영문·숫자만 사용할 수 있습니다.','characters');
+ const units=[...n].reduce((s,ch)=>s+(/[가-힣]/u.test(ch)?2:1),0);
+ if(units<4||units>16)return {...bad('한글 2~8자, 영문 4~16자로 입력해 주세요.','length'),units};
+ const folded=n.toLowerCase(),ko=folded.replace(/[a-z0-9]/g,''),latin=folded.replace(/[가-힣]/gu,'');
+ const leet=latin.replace(/[01345789]/g,ch=>({'0':'o','1':'i','3':'e','4':'a','5':'s','7':'t','8':'b','9':'g'}[ch])),variants=[latin,latin.replace(/[0-9]/g,''),leet,leet.replace(/(.)\1+/g,'$1')];
+ if(strongKO.some(w=>ko.includes(w))||variants.some(s=>!innocentEN.has(s)&&(strongEN.some(w=>s.includes(w))||wholeEN.has(s)||wholeEN.has(s.replace(/\d/g,'')))))return bad('사용할 수 없는 표현이 포함된 닉네임입니다.','content');
+ if(/운영자|관리자|게임마스터|시스템공지/u.test(ko)||/^(?:gm|admin|gamemaster|moderator|developer)(?:[a-z0-9]*$)/i.test(latin)||/(?:^|[가-힣0-9])gm(?:$|[가-힣0-9])/i.test(folded))return bad('운영자와 혼동될 수 있는 이름은 사용할 수 없습니다.','reserved');
+ return {ok:true,name:n,units,error:'',reason:''};
+}
+function nickname(value){const state=nameState(value);return state.ok?state.name:'';}
+function display(player){return '['+tier(player.pkRating??800).name+'] '+(nickname(player.name)||'모험가');}
 function validProfile(p){if(!p||p.format!=='DungeonCrush-PK'||p.version!==1||typeof p.id!=='string'||!/^pk-[a-zA-Z0-9-]{8,60}$/.test(p.id)||!nickname(p.name)||!Number.isInteger(p.cls)||p.cls<0||p.cls>5||!Number.isInteger(p.level)||p.level<30||p.level>100||!Number.isSafeInteger(p.rating)||p.rating<0||p.rating>100000||!Number.isSafeInteger(p.updatedAt)||p.updatedAt<0||!Array.isArray(p.loadout)||p.loadout.length!==6||p.loadout.some(n=>!Number.isInteger(n)||n<0||n>6)||new Set(p.loadout.filter(Boolean)).size!==p.loadout.filter(Boolean).length)return null;
  if(p.season!==undefined&&p.season!==season(p.updatedAt))return null;
  const appearance=root.DungeonPremium?.validAppearance(p.cls,p)||{};
@@ -20,7 +39,7 @@ function sanitize(raw){const p=raw&&typeof raw==='object'?raw:{};const weeks=[],
  const opponents=[],ids=new Set();for(const raw of (Array.isArray(p.opponents)?p.opponents:[]).slice(-100)){const o=validProfile(raw);if(o&&!ids.has(o.id)){ids.add(o.id);opponents.push(o);}}
  const q=p.pending;let pending=null;if(q&&typeof q.runId==='string'&&/^pvp-pk-[a-zA-Z0-9-]{1,80}$/.test(q.runId)&&Number.isInteger(q.cls)&&q.cls>=0&&q.cls<6&&typeof q.opponentId==='string')pending={runId:q.runId,cls:q.cls,opponentId:q.opponentId.slice(0,80),rating:integer(q.rating,800,100000),ownRating:integer(q.ownRating,integer(p.rating,800,100000),100000),season:Number.isSafeInteger(q.season)?q.season:Number.isSafeInteger(p.season)?p.season:null,week:Number.isSafeInteger(q.week)?q.week:integer(p.lastWeek)};
  return {id:typeof p.id==='string'&&/^pk-[a-zA-Z0-9-]{8,60}$/.test(p.id)?p.id:'',nickname:nickname(p.nickname),rating:integer(p.rating,800,100000),wins:integer(p.wins),losses:integer(p.losses),draws:integer(p.draws),lastWeek:integer(p.lastWeek),season:Number.isSafeInteger(p.season)&&p.season>=0?p.season:p.lastWeek>0?Math.floor(p.lastWeek/2):null,weeks:weeks.sort((a,b)=>a.key-b.key),opponents,pending};}
-function identify(save,name){const n=nickname(name);if(!n)return {ok:false,error:'닉네임은 한글·영문·숫자·공백·._- 2~12자로 입력하세요.'};const p=save.pk||=sanitize();p.nickname=n;if(!p.id)p.id='pk-'+(root.crypto?.randomUUID?.()||Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,12));return {ok:true};}
+function identify(save,name){const state=nameState(name);if(!state.ok)return {ok:false,error:state.error};const n=state.name;const p=save.pk||=sanitize();p.nickname=n;if(!p.id)p.id='pk-'+(root.crypto?.randomUUID?.()||Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,12));return {ok:true};}
 function profile(save,cls,now=Date.now()){const p=save.pk||sanitize(),R=root.RiftRPG,c=save.chars[cls];if(!p.id||!p.nickname)throw Error('닉네임을 먼저 설정하세요.');if(p.pending)throw Error('진행 중인 멀티 PK를 먼저 정산하세요.');if(R.level(c)<30)throw Error('멀티 PK와 정보 공유는 30레벨부터 열립니다.');return validProfile({format:'DungeonCrush-PK',version:1,id:p.id,name:p.nickname,cls,level:R.level(c),rating:ratingAt(save,now),updatedAt:now,season:season(now),loadout:R.loadout(c,'pvp'),...(root.DungeonPremium?.appearance(save,cls)||{})});}
 function encode(profile){return 'DCPK1.'+btoa(unescape(encodeURIComponent(JSON.stringify(profile))));}
 function decode(text){if(typeof text!=='string'||text.length>MAX_BYTES)throw Error('유저 정보는 32KB 이하여야 합니다.');let value=text.trim().replace(/^\uFEFF/,'');try{if(value.startsWith('DCPK1.'))value=decodeURIComponent(escape(atob(value.slice(6))));const p=validProfile(JSON.parse(value));if(!p)throw Error();return p;}catch{throw Error('던전크러시 PK 유저 정보 코드·파일인지 확인하세요.');}}
@@ -37,5 +56,5 @@ function ai(s,p){const zero={x:0,y:0,attack:false,skill:0,dash:false,jump:false,
  const skills=root.Rift.activeSkills(p.cls,p.level,'pvp',p.loadout,p.ranks),turn=Math.floor(s.time*2.5+p.id)%6;let skill=0;if(p.at<=.01&&Math.abs(dy)<65&&Math.abs(dx)<(ranged?650:310)){for(let n=0;n<6;n++){const index=(turn+n)%6,sk=skills[index];if(!sk||p.cd[index+1]>.01||p.mp<sk.cost)continue;if(sk.kind==='heal'&&p.hp>p.maxHp*.65)continue;if(sk.kind==='ultimate'&&p.rage<100)continue;skill=index+1;break;}}
  const danger=target.pending&&Math.abs(dx)<260&&p.dodgeCd<=0&&Math.floor(s.time*10)%9===0;
  return {x:danger?-Math.sign(dx):x,y,attack:!skill&&Math.abs(dx)<reach+40&&Math.abs(dy)<60,skill,dash:!!danger,jump:false,potion:false};}
-root.DungeonPK={TIERS,MAX_GAP,MAX_BYTES,week,season,ratingAt,seasonInfo,syncSeason,needsSync,tier,nickname,display,sanitize,identify,profile,encode,decode,importProfile,candidates,prepare,settle,pendingRewards,claim,ai};
+root.DungeonPK={TIERS,MAX_GAP,MAX_BYTES,week,season,ratingAt,seasonInfo,syncSeason,needsSync,tier,nameState,nickname,display,sanitize,identify,profile,encode,decode,importProfile,candidates,prepare,settle,pendingRewards,claim,ai};
 })(typeof window==='undefined'?globalThis:window);

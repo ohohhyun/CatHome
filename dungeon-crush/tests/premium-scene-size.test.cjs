@@ -7,7 +7,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
  try{
   await p.goto(process.env.DUNGEON_TEST_URL||'file://'+path.resolve('app/src/main/assets/index.html'));
   await p.waitForFunction(()=>window.DungeonKeyArt&&window.DungeonPremiumUI);await p.evaluate(()=>document.fonts.ready);
-  await p.locator('#title-cover-open').click();await p.locator('#game-start').click();
+  await p.locator('#title-cover-open').click();await p.locator('#game-start').click();await require('./nickname-flow.cjs').completeNickname(p);
   await p.evaluate(()=>{RiftApp.transaction(s=>{for(const it of DungeonPremium.ITEMS)DungeonPremium.purchase(s,it.id);for(const ch of s.chars){ch.xp=RiftRPG.xpAt(100);ch.advanced=true;ch.awakened=true;}return {ok:true};});});
   await p.evaluate(review=>{
    window.sceneReview=review;window.sceneDraws=[];

@@ -49,3 +49,8 @@ CC0. Recipe: tools/render-combat-audio.py (noise, filtered swishes, impacts and 
 These are sound effects; no new music or speech was composed/synthesized.
 Exact packaged SHA256s, original archive checksums, entries and processing details:
 combat-audio-sources.json. No runtime network access is used to play these sounds.
+
+Monster vocals (24 variations):
+Ogrebane, Monster Sound Effects Pack (CC0-1.0)
+https://opengameart.org/content/monster-sound-effects-pack
+Original nonverbal monster recordings; edited, pitched, filtered, normalized and faded for beast, brute, undead, stone, machine, insect, aether and divine cast/hurt/death events.

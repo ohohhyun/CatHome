@@ -2,6 +2,12 @@
 
 이 파일을 먼저 읽고 `dungeon-crush/`만 이어서 작업하세요. 사용자에게는 한국어 존댓말을 사용하세요.
 
+## 작업 중: 2.19.0 · 이름/모션/메뉴/몬스터 음성
+
+- 최신 요청: 걷기와 좌우 모션 개선, 유사 장르 공식 UI 참고, 게임 시작 전에 닉네임 생성(한글2~8자), 비속어/선정성 등 이름 필터, 플레이어용 백업 파일 기능 제거, 몬스터 소리 추가.
+- [구현·출처·검수 범위](release/PLAYER-EXPERIENCE-NOTES.md). 코드33 + Java2 + Chrome34 =69개 검사 후에만 APK/AAB를 생성합니다. 아래2.18.0은 현재 공개 파일이며 새 버전은 검사·게시 전입니다.
+- 저장 형식2와 기존 서명 유지, versionCode48/Wi-Fi12 예정. 자동 저장/복구와 공유 코드/파일 AI PK는 유지하고 플레이어 성장 백업 파일만 제거합니다. 원본 집사 사절은 수정하지 않습니다.
+
 ## 최신 공개 버전: 2.18.0 RC1 · 몬스터 스킬 이펙트 개선 완료
 
 - **[APK 바로 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.18.0-rc1/DungeonCrush-2.18.0.apk)** · [설치 안내 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.18.0-rc1/DungeonCrush-2.18.0-RC1.zip) · [릴리스 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.18.0-rc1). 로그인 없이 내려받을 수 있습니다. 카톡에는 파일 대신 주소를 공유합니다. **기존 앱을 삭제하지 말고 업데이트 설치합니다.**

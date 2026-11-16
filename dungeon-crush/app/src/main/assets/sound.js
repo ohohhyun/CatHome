@@ -6,6 +6,18 @@ for(const name of effects)files[name]=name+'.ogg';
 const roles=['kael','rin','bane','sera','aria','elian'],voiceCounts=[4,3,4,3,3,4];
 for(let cls=0;cls<6;cls++)for(let n=1;n<=voiceCounts[cls];n++)files['voice-'+roles[cls]+'-'+n]='voice-'+roles[cls]+'-'+n+'.ogg';
 const classEffects=[['blade-wave','fire-cast'],['spear-wind','ice-break'],['fist-crack','earth-break'],['gun-shot','gun-blast','arc-chain'],['fire-cast','ice-break','arc-chain','arcane-wave'],['holy-cast','holy-hit','holy-heal']];
+const monsterFamilies=['beast','brute','undead','stone','machine','insect','aether','divine'];
+for(const family of monsterFamilies)for(const event of ['cast','hurt','death'])files['monster-'+family+'-'+event]='monster-'+family+'-'+event+'.ogg';
+const monsterTimes=new Map(),bossHeard=new Set();let lastMonsterAt=-10000,monsterPlayed=0,lastFootCycle=null;
+function monsterFamily(e={}){const id=String(e.archetype||e.id||''),kit=String(e.kit||e.vfx||'');if(/judgement|mirror|corona|dawn/.test(kit)||/seraph|judge/.test(id))return 'divine';if(/automaton|puppet|clockwork|bronze|turbine|gear|pendulum|halberd/.test(id)||/clockwork|gear|turbine|pendulum/.test(kit))return 'machine';if(/wolf|hound|dragon|leviathan|kraken/.test(id))return 'beast';if(/brood|spore|scorpion|plague|rot|mire/.test(id)||/plague|venom|brood|mire/.test(kit))return 'insect';if(/wraith|ghost|drowned|reaper|necrom/.test(id))return 'undead';if(/colossus|guardian|warden|stone|crystal|golem/.test(id)||/forge|frost|crystal|lava/.test(kit))return 'stone';if(e.type==='caster'||/chrono|eclipse|void|astral|resonance|runebolt/.test(kit))return 'aether';return 'brute';}
+function monsterVoice(enemy,event,local,intro=false){
+ if(!enemy||scene!=='battle'||!local)return false;const now=performance.now(),distance=Math.hypot((enemy.x||0)-local.x,((enemy.y||local.y)-local.y)*1.5);if(distance>1100||now-lastMonsterAt<240)return false;
+ const family=monsterFamily(enemy),id=String(enemy.id||enemy.source||family),cooldown=event==='hurt'?650:1400,key=id+':'+event;if(now-(monsterTimes.get(key)||-10000)<cooldown)return false;
+ const activeMonsters=Object.values(pools).flat().filter(a=>a._monster&&active(a));if(activeMonsters.length>=2)return false;
+ const gain=(intro?.68:event==='hurt'?.26:event==='death'?.46:.52)*Math.max(.15,1-distance/1400),rate=intro?.82:1+(((enemy.skin||0)%3)-1)*.035;
+ if(!play('monster-'+family+'-'+(event==='intro'?'cast':event),gain,rate))return false;const audio=pools['monster-'+family+'-'+(event==='intro'?'cast':event)]?.find(a=>active(a)&&a._startedAt===now);if(audio)audio._monster=true;
+ lastMonsterAt=now;monsterTimes.set(key,now);if(monsterTimes.size>192)monsterTimes.delete(monsterTimes.keys().next().value);monsterPlayed++;return true;
+}
 let settings={music:.38,sfx:.7,voice:.25,shake:true,reducedEffects:false};
 try{settings={...settings,...JSON.parse(localStorage.getItem('dungeonCrushAudio')||'{}')};}catch{}
 for(const k of ['music','sfx','voice'])settings[k]=Math.max(0,Math.min(1,Number(settings[k])||0));
@@ -29,7 +41,7 @@ function play(key,volume=1,rate=1,owner=-1){
  if(!pools[key]){trimCache();pools[key]=[];}
  const pool=pools[key];let a=pool.find(a=>!active(a));
  if(!a){if(pool.length>=(channel==='voice'?1:2))return false;a=make(key);pool.push(a);}
- a._channel=channel;a._gain=Math.max(0,Math.min(1,volume));a._owner=owner;
+ a._monster=key.startsWith('monster-');a._startedAt=now;a._channel=channel;a._gain=Math.max(0,Math.min(1,volume));a._owner=owner;
  a.volume=Math.max(0,Math.min(1,settings[channel]*a._gain));a.playbackRate=channel==='voice'?Math.max(.98,Math.min(1.02,rate)):Math.max(.55,Math.min(1.6,rate));a.preservesPitch=channel==='voice';
  try{a.currentTime=0;const promise=a.play();promise?.then(()=>{played++;heard.push(key);if(heard.length>96)heard.shift();}).catch(()=>{});}catch{return false;}
  times[key]=now;return true;
@@ -72,22 +84,22 @@ function skillEffect(f,cls,volume,variation){const type=f.type,index=f.index||0;
 }
 function observe(game,myId=0){
  let moodChanged=false;
- if(lastRun!==game.runId){stopEffects();lastVoiceOwner=-1;lastFx=-1;lastRun=game.runId;moodChanged=true;bossRoom='';voiceTimes.clear();lastVoiceAt=-10000;try{music.boss.currentTime=0;}catch{}}
+ if(lastRun!==game.runId){stopEffects();lastVoiceOwner=-1;lastFx=-1;lastRun=game.runId;moodChanged=true;bossRoom='';voiceTimes.clear();monsterTimes.clear();bossHeard.clear();lastMonsterAt=-10000;lastFootCycle=null;lastVoiceAt=-10000;try{music.boss.currentTime=0;}catch{}}
  if(scene==='battle'&&game.kind!=='pvp'){
   const room=String(game.runId)+':'+game.room,isBoss=game.enemies?.some(e=>e.type==='boss'&&e.hp>0);
   if(isBoss&&bossRoom!==room){bossRoom=room;moodChanged=true;}else if(bossRoom&&bossRoom!==room){bossRoom='';moodChanged=true;}
  }
  if(moodChanged)sync();
- const local=game.players.find(p=>p.id===myId);let impacts=0;
+ const local=game.players.find(p=>p.id===myId);if(game.kind!=='pvp'){const boss=game.enemies?.find(e=>e.type==='boss'&&e.hp>0);if(boss&&!bossHeard.has(boss.id)){if(monsterVoice(boss,'cast',local,true))bossHeard.add(boss.id);}}let impacts=0;
  for(const f of game.fx.filter(f=>f.id>lastFx)){
   lastFx=Math.max(lastFx,f.id);const owner=game.players.find(p=>p.id===f.owner),cls=f.cls??owner?.cls??0,distance=local?Math.abs(f.x-local.x):0,volume=(f.owner===myId?1:.43)*Math.max(.12,1-distance/1800),variation=1+((f.id%5)-2)*.025,heavy=f.stage===2,index=f.index||0;
-  if(f.type==='playerwind'){
+  if(f.type==='windup'&&f.source!==undefined&&game.kind!=='pvp'){monsterVoice(game.enemies?.find(e=>e.id===f.source),'cast',local);continue;}if(f.type==='death'&&f.enemy&&game.kind!=='pvp'){monsterVoice({...f,id:f.source,type:f.monsterType},'death',local);continue;}if(f.type==='playerwind'){
    effort(f,owner,myId,volume);
    if(cls===4||cls===5)play('cloth2',.3*volume,.85);else if(cls===3)play('draw',.25*volume,variation);else play(cls===2?'cloth1':f.id%2?'slash1':'slash2',.55*volume,variation*(cls===1?1.12:.92));
   }else if(f.type==='muzzle'){
    if(f.caster)play('cloth2',.3*volume,.68);else play(cls===3?'gun-shot':index===1?'fire-cast':cls===5?'holy-cast':'arcane-wave',.62*volume,variation);
   }else if(f.type==='hit'){
-   if(impacts++>=3)continue;
+   if(game.kind!=='pvp'&&f.victim!==undefined)monsterVoice(game.enemies?.find(e=>e.id===f.victim),'hurt',local);if(impacts++>=3)continue;
    play(cls===2?'fist-crack':cls===5?'holy-hit':cls===4?(index===2?'ice-break':'glass'):cls===3?'metal2':f.id%2?'metal1':'metal2',volume*(heavy?.7:.48),variation);
    if(heavy||f.crit)play('soft',.28*volume,.88);
   }else if(['basic','cone','line','lift','rush','circle','pull','chain','ultimate','heal','shield'].includes(f.type)){
@@ -97,9 +109,9 @@ function observe(game,myId=0){
   else if(f.type==='impact')play(f.enemy?root.DungeonEnemyFX?.soundFor(f.vfx)||'earth-break':'earth-break',(f.enemy?.25:.33)*volume,.9);
   else if(f.type==='dash')play('cloth1',.5*volume,1.12);
  }
- if(local?.action==='run'&&performance.now()-lastStep>270){lastStep=performance.now();play('step',.22,1+(local.id%3)*.04);}
+ if(local?.action==='run'){const stride=root.DungeonActors?.strideLength(local)||200,cycle=Math.floor((local.gait||0)*210/stride/Math.PI),now=performance.now();if(cycle!==lastFootCycle&&now-lastStep>140){lastFootCycle=cycle;lastStep=now;play('step',.22,1+(local.id%3)*.04);}}else lastFootCycle=null;
 }
 function pause(value=true){suspended=value;if(value)stopEffects();sync();}
 function set(key,value){if(['shake','reducedEffects'].includes(key))settings[key]=!!value;else if(['music','sfx','voice'].includes(key))settings[key]=Math.max(0,Math.min(1,Number(value)||0));else return;save();if(key==='sfx'||key==='voice')for(const pool of Object.values(pools))for(const a of pool)if(a._channel===key){a.volume=settings[key]*a._gain;if(!settings[key])a.pause();}sync();}
-root.DungeonSound={isReducedEffects:()=>settings.reducedEffects,unlock,play,scene:change,observe,pause,set,warmClass,settings:()=>({...settings}),state:()=>({unlocked,suspended,track,played,currentTime:track?music[track].currentTime:0,ready:music[track||scene].readyState,duration:music[track||scene].duration,heard:[...heard],combatSamples:29,voiceSamples:21,bossRoom,bossFallback:bossFailed,activeEffects:Object.values(pools).flat().filter(active).length,activeVoices:Object.values(pools).flat().filter(a=>a._channel==='voice'&&active(a)).length,musicLevels:Object.fromEntries(Object.entries(music).map(([k,a])=>[k,a.volume]))})};
+root.DungeonSound={monsterFamily,isReducedEffects:()=>settings.reducedEffects,unlock,play,scene:change,observe,pause,set,warmClass,settings:()=>({...settings}),state:()=>({unlocked,suspended,track,played,currentTime:track?music[track].currentTime:0,ready:music[track||scene].readyState,duration:music[track||scene].duration,heard:[...heard],combatSamples:29,voiceSamples:21,monsterSamples:24,monsterPlayed,activeMonsters:Object.values(pools).flat().filter(a=>a._monster&&active(a)).length,bossRoom,bossFallback:bossFailed,activeEffects:Object.values(pools).flat().filter(active).length,activeVoices:Object.values(pools).flat().filter(a=>a._channel==='voice'&&active(a)).length,musicLevels:Object.fromEntries(Object.entries(music).map(([k,a])=>[k,a.volume]))})};
 })(window);

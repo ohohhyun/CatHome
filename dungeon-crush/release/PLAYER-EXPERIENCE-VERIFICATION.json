@@ -1,0 +1,479 @@
+{
+  "scope": "2.19.0 local verification; CI/publication pending",
+  "ruleChecks": [
+    {
+      "test": "tests/enemy-effects.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/progression-balance.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/name-policy.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/movement-parity.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/monster-audio.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/pk.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/hero-height.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/motion-stability.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/premium.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/premium-art.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/key-art.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/background-cache.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/frontier.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/game.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/caster.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/ranged.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/navigation.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/generated-art.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/combat-timing.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/rpg.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/inventory.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/equipment-services.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/release.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/rankings.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/ranking-client.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/sound.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/font-coverage.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/ui-layout.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/party-recovery.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/run-cast-fix.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/new-content.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/expansion.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/hotfix.test.cjs",
+      "passed": true
+    }
+  ],
+  "experience": {
+    "passed": true,
+    "layouts": [
+      {
+        "width": 1280,
+        "height": 591
+      },
+      {
+        "width": 740,
+        "height": 360
+      },
+      {
+        "width": 640,
+        "height": 296
+      }
+    ],
+    "firstLaunch": true,
+    "atomicNameSave": true,
+    "ime": true,
+    "legacyNameRetainsIdentity": true,
+    "settingsPolicy": true,
+    "noBackupTools": true,
+    "decoded": [
+      {
+        "file": "monster-beast-cast.ogg",
+        "duration": 0.68,
+        "peak": 0.5097417831420898,
+        "rms": 0.08758631493426461
+      },
+      {
+        "file": "monster-beast-hurt.ogg",
+        "duration": 0.2728344671201814,
+        "peak": 0.5041236281394958,
+        "rms": 0.11162992919653195
+      },
+      {
+        "file": "monster-beast-death.ogg",
+        "duration": 0.9384126984126984,
+        "peak": 0.5217413902282715,
+        "rms": 0.10792558586672459
+      },
+      {
+        "file": "monster-brute-cast.ogg",
+        "duration": 0.5050340136054422,
+        "peak": 0.4959266185760498,
+        "rms": 0.08857859110938
+      },
+      {
+        "file": "monster-brute-hurt.ogg",
+        "duration": 0.268390022675737,
+        "peak": 0.5040504932403564,
+        "rms": 0.06886943964322499
+      },
+      {
+        "file": "monster-brute-death.ogg",
+        "duration": 0.9384126984126984,
+        "peak": 0.4850795567035675,
+        "rms": 0.10267381378048494
+      },
+      {
+        "file": "monster-undead-cast.ogg",
+        "duration": 0.5398639455782313,
+        "peak": 0.49669042229652405,
+        "rms": 0.08359988916932927
+      },
+      {
+        "file": "monster-undead-hurt.ogg",
+        "duration": 0.2728344671201814,
+        "peak": 0.47625142335891724,
+        "rms": 0.06358793084047326
+      },
+      {
+        "file": "monster-undead-death.ogg",
+        "duration": 0.9384126984126984,
+        "peak": 0.4722272753715515,
+        "rms": 0.10489979561779746
+      },
+      {
+        "file": "monster-stone-cast.ogg",
+        "duration": 0.4990476190476191,
+        "peak": 0.5033968687057495,
+        "rms": 0.09566150690920137
+      },
+      {
+        "file": "monster-stone-hurt.ogg",
+        "duration": 0.268390022675737,
+        "peak": 0.49790507555007935,
+        "rms": 0.11723381595554841
+      },
+      {
+        "file": "monster-stone-death.ogg",
+        "duration": 0.9384126984126984,
+        "peak": 0.503714382648468,
+        "rms": 0.105883092973622
+      },
+      {
+        "file": "monster-machine-cast.ogg",
+        "duration": 0.6648526077097505,
+        "peak": 0.49169328808784485,
+        "rms": 0.08404979862332368
+      },
+      {
+        "file": "monster-machine-hurt.ogg",
+        "duration": 0.268390022675737,
+        "peak": 0.4864037334918976,
+        "rms": 0.11017378571434258
+      },
+      {
+        "file": "monster-machine-death.ogg",
+        "duration": 0.9462131519274376,
+        "peak": 0.49994096159935,
+        "rms": 0.10295285027158542
+      },
+      {
+        "file": "monster-insect-cast.ogg",
+        "duration": 0.29038548752834464,
+        "peak": 0.4809325337409973,
+        "rms": 0.09947384314147965
+      },
+      {
+        "file": "monster-insect-hurt.ogg",
+        "duration": 0.22267573696145124,
+        "peak": 0.5290000438690186,
+        "rms": 0.06012315782319806
+      },
+      {
+        "file": "monster-insect-death.ogg",
+        "duration": 0.35011337868480724,
+        "peak": 0.5024260878562927,
+        "rms": 0.10593499841531714
+      },
+      {
+        "file": "monster-aether-cast.ogg",
+        "duration": 0.688390022675737,
+        "peak": 0.49597689509391785,
+        "rms": 0.11369055463887982
+      },
+      {
+        "file": "monster-aether-hurt.ogg",
+        "duration": 0.2728344671201814,
+        "peak": 0.5070462226867676,
+        "rms": 0.10576002290671728
+      },
+      {
+        "file": "monster-aether-death.ogg",
+        "duration": 0.6327437641723356,
+        "peak": 0.5089970827102661,
+        "rms": 0.08668389697686174
+      },
+      {
+        "file": "monster-divine-cast.ogg",
+        "duration": 0.433015873015873,
+        "peak": 0.49336451292037964,
+        "rms": 0.09776136320587121
+      },
+      {
+        "file": "monster-divine-hurt.ogg",
+        "duration": 0.268390022675737,
+        "peak": 0.4908755421638489,
+        "rms": 0.10326171476952888
+      },
+      {
+        "file": "monster-divine-death.ogg",
+        "duration": 0.5955102040816327,
+        "peak": 0.4896690845489502,
+        "rms": 0.08072466783666277
+      }
+    ],
+    "realMonsterCues": 3,
+    "maxMonsterVoices": 2
+  },
+  "motion": {
+    "actors": 128,
+    "renderSamples": 30720,
+    "singleOpaqueBody": true
+  },
+  "baselineMovement": {
+    "joysticks": [
+      {
+        "viewport": [
+          1280,
+          640
+        ],
+        "rect": {
+          "x": 64,
+          "y": 427.40625,
+          "width": 155,
+          "height": 155
+        }
+      },
+      {
+        "viewport": [
+          740,
+          360
+        ],
+        "rect": {
+          "x": 37,
+          "y": 231.421875,
+          "width": 96.1875,
+          "height": 96.1875
+        }
+      },
+      {
+        "viewport": [
+          640,
+          296
+        ],
+        "rect": {
+          "x": 32,
+          "y": 186.1875,
+          "width": 83.1875,
+          "height": 83.1875
+        }
+      }
+    ],
+    "parity": [
+      {
+        "cls": 0,
+        "pair": [
+          {
+            "dir": -1,
+            "x": 380.00807139456964,
+            "vx": -419.99999999999994,
+            "gait": 24.534101132473772,
+            "phase": 0.5624747768919698
+          },
+          {
+            "dir": 1,
+            "x": 2019.9919286054303,
+            "vx": 419.99999999999994,
+            "gait": 24.534101132473786,
+            "phase": 0.5624747768919711
+          }
+        ],
+        "distDifference": 0
+      },
+      {
+        "cls": 1,
+        "pair": [
+          {
+            "dir": -1,
+            "x": 223.8191326125842,
+            "vx": -499.9999999999999,
+            "gait": 29.207263252944923,
+            "phase": 0.05056521058567354
+          },
+          {
+            "dir": 1,
+            "x": 2176.1808673874184,
+            "vx": 499.9999999999999,
+            "gait": 29.207263252944987,
+            "phase": 0.0505652105856802
+          }
+        ],
+        "distDifference": -2.6147972675971687e-12
+      },
+      {
+        "cls": 2,
+        "pair": [
+          {
+            "dir": -1,
+            "x": 487.38796680718684,
+            "vx": -364.99999999999994,
+            "gait": 21.321302174649794,
+            "phase": 0.22691260372754174
+          },
+          {
+            "dir": 1,
+            "x": 1912.612033192812,
+            "vx": 364.99999999999994,
+            "gait": 21.32130217464977,
+            "phase": 0.22691260372753952
+          }
+        ],
+        "distDifference": 1.1368683772161603e-12
+      },
+      {
+        "cls": 3,
+        "pair": [
+          {
+            "dir": -1,
+            "x": 331.19902802520016,
+            "vx": -444.99999999999994,
+            "gait": 25.994464295120988,
+            "phase": 0.7150030374212504
+          },
+          {
+            "dir": 1,
+            "x": 2068.8009719747997,
+            "vx": 444.99999999999994,
+            "gait": 25.994464295121002,
+            "phase": 0.7150030374212522
+          }
+        ],
+        "distDifference": 1.1368683772161603e-13
+      },
+      {
+        "cls": 4,
+        "pair": [
+          {
+            "dir": -1,
+            "x": 331.19902802520016,
+            "vx": -444.99999999999994,
+            "gait": 25.994464295120988,
+            "phase": 0.7150030374212504
+          },
+          {
+            "dir": 1,
+            "x": 2068.8009719747997,
+            "vx": 444.99999999999994,
+            "gait": 25.994464295121002,
+            "phase": 0.7150030374212522
+          }
+        ],
+        "distDifference": 1.1368683772161603e-13
+      },
+      {
+        "cls": 5,
+        "pair": [
+          {
+            "dir": -1,
+            "x": 409.29349741619274,
+            "vx": -404.99999999999994,
+            "gait": 23.657883234885407,
+            "phase": 0.47095782057439806
+          },
+          {
+            "dir": 1,
+            "x": 1990.7065025838072,
+            "vx": 404.99999999999994,
+            "gait": 23.65788323488539,
+            "phase": 0.47095782057439584
+          }
+        ],
+        "distDifference": 1.1368683772161603e-13
+      }
+    ]
+  },
+  "limits": [
+    "Physical Android update/input/audio and multi-device Wi-Fi remain unverified",
+    "Offline name list does not guarantee detection of every language/context/evasion"
+  ]
+}

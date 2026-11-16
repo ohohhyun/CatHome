@@ -10,7 +10,7 @@ const sizes=[{width:1280,height:591},{width:1024,height:472},{width:960,height:4
   await p.addInitScript(()=>{window.RiftNative={send:()=>{},disconnect:()=>{},saveProgress:()=>true,vibrate:()=>{}};});
   await p.goto(process.env.DUNGEON_TEST_URL||'file://'+path.resolve('app/src/main/assets/index.html'));
   await p.waitForFunction(()=>window.DungeonNavigation);await p.evaluate(()=>document.fonts.ready);
-  await p.locator('#title-cover-open').click();await p.locator('#game-start').click();await p.locator('#enter-character').click();
+  await p.locator('#title-cover-open').click();await p.locator('#game-start').click();await require('./nickname-flow.cjs').completeNickname(p);await p.locator('#enter-character').click();
   // Existing quest refresh initializes the current daily ledger; prime it before the read-only snapshot.
   await p.evaluate(()=>{RiftTown.open('quests');appBack();});
   const original=await p.evaluate(()=>JSON.stringify(RiftApp.getSave()));
