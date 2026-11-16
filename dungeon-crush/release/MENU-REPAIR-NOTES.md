@@ -25,3 +25,9 @@
 [타이틀 전](MenuRepair-2.20-Title-Before.png) · [후](MenuRepair-2.20-Title-After.png) · [랭킹 전](MenuRepair-2.20-Ranking-Before.png) · [후](MenuRepair-2.20-Ranking-After.png) · [마을 전](MenuRepair-2.20-Town-Before.png) · [후](MenuRepair-2.20-Town-After.png) · [메뉴 전](MenuRepair-2.20-Menu-Before.png) · [후](MenuRepair-2.20-Menu-After.png).
 
 [3,900원 변경권·판매 준비 표시](MenuRepair-2.20-Ticket.png).
+
+## 공개 검증 완료
+
+전체71개 검사·APK/AAB·Android lint·서명·포함 파일 검증: https://github.com/ohohhyun/CatHome/actions/runs/43861978409
+
+공개 APK/ZIP 익명 전체 다운로드·크기·해시·CRC 검증: https://github.com/ohohhyun/CatHome/actions/runs/43866901781

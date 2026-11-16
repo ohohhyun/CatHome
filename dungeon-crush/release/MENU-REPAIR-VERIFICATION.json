@@ -1,5 +1,5 @@
 {
-  "scope": "Local Chromium feature checks; complete CI/publication pending",
+  "scope": "Automated local feature audit and complete successful CI on the same app source; not physical-device completion",
   "browser": {
     "passed": true,
     "sizes": [
@@ -179,5 +179,9 @@
     "Android system text scale, keyboard and touch scrolling",
     "2–4 physical Wi-Fi devices",
     "sustained FPS and thermals"
-  ]
+  ],
+  "source": "c7f09d5a3b55ad6c482ca66c0c08226364bbe802",
+  "buildRun": 43861978409,
+  "checksPassed": 71,
+  "checksFailed": 0
 }
