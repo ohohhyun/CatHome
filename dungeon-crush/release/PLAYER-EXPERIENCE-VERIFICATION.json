@@ -1,5 +1,5 @@
 {
-  "scope": "2.19.0 local verification; CI/publication pending",
+  "scope": "Exact tested app source; automated checks, not physical-device FPS/thermals/input verification",
   "ruleChecks": [
     {
       "test": "tests/enemy-effects.test.cjs",
@@ -306,9 +306,10 @@
     "maxMonsterVoices": 2
   },
   "motion": {
+    "passed": true,
     "actors": 128,
-    "renderSamples": 30720,
-    "singleOpaqueBody": true
+    "samples": 30720,
+    "errors": []
   },
   "baselineMovement": {
     "joysticks": [
@@ -475,5 +476,9 @@
   "limits": [
     "Physical Android update/input/audio and multi-device Wi-Fi remain unverified",
     "Offline name list does not guarantee detection of every language/context/evasion"
-  ]
+  ],
+  "source": "80b24b41b15a08ee216f007a77fd983e264c5d65",
+  "buildRun": 43818547972,
+  "checksPassed": 69,
+  "checksFailed": 0
 }

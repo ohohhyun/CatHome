@@ -1,4 +1,16 @@
-## 최신 공개 버전: 2.18.0 RC1 · 몬스터 스킬 이펙트 개선 완료
+## 최신 공개 버전: 2.19.0 RC1 · 닉네임/이동/메뉴/몬스터 음성 개선 완료
+
+- **[APK 바로 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.19.0-rc1/DungeonCrush-2.19.0.apk)** · [설치 안내 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.19.0-rc1/DungeonCrush-2.19.0-RC1.zip) · [릴리스 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.19.0-rc1). 로그인 없이 내려받을 수 있습니다. 카톡에는 파일 대신 주소를 공유합니다. **기존 앱을 삭제하지 말고 업데이트 설치합니다.**
+- 첫 실행은 닉네임 생성 → 캐릭터 선택입니다. 한글2~8/영문4~16자와 혼합 길이, 비속어·선정성·혐오·운영자 사칭/변형 필터를 적용했습니다. 설정·유저 정보 공유·Wi-Fi 입장도 같은 규칙을 사용합니다. 기존 규칙에 맞지 않는 이름은 다시 정하며 ID/성장/점수는 유지합니다.
+- 6직업·30외형의 키에 맞춘 보폭과 좌우 반전 자세/접지 위상을 개선하고 메뉴·버튼·패널·선택 표시를 다듬었습니다. 몬스터8계열 시전/피격/사망24음을 추가했습니다. 플레이어용 성장 백업 파일 기능은 제거하고 **자동 저장/복구와 공유 코드·파일 AI PK는 유지**합니다. [변경·공식 게임/음원 출처](PLAYER-EXPERIENCE-NOTES.md) · [변경 전](PlayerExperience-2.19-Before.png) · [변경 후](PlayerExperience-2.19-After.png).
+- 검증 소스 `80b24b41b15a08ee216f007a77fd983e264c5d65`. [전체 **69개 검사(코드33 + Java2 + Chrome34)**와 Android 컴파일·APK/AAB·Android lint·기존 서명·포함 파일 검증 성공](https://github.com/ohohhyun/CatHome/actions/runs/43818547972). 수행한 검사 실패0건입니다. 이름/IME/저장 실패·기존 기록/3크기·확대 글자/24실제 음원·전수 모션/4인 전투를 포함합니다. [배포 검증](2.19.0-VERIFICATION.json) · [상세 검수](PLAYER-EXPERIENCE-VERIFICATION.json).
+- APK **490,012,528 bytes**, SHA-256 `e14652c71a0d1f1ba9e0d4d35e2beea026026d28607be7bde5556aa130f04a99`. ZIP **490,013,621 bytes**, SHA-256 `776a9bf742b83f880409b25d2e25ef495749a8a5c55951620e697aa555e6657d`. [공개 게시·익명 전체 다운로드 성공](https://github.com/ohohhyun/CatHome/actions/runs/43823028013): APK 크기/해시, ZIP 크기/해시/CRC와 내부 APK 일치를 검증했습니다. 별도 익명 HEAD도 두 파일 모두 HTTP200입니다.
+- versionName2.19.0 / versionCode48 / 저장 형식2 / **Wi-Fi 프로토콜12, 파티원 전원 업데이트**. 설치 인증서 `e43fedd9099e7b5df82eccfa3e92fc020d429ad99795463abbe40e2af4880708`을 유지합니다. 기존 전투 수치·물리 이동 속도·성장·장비·보상·소유 외형과 저장 기록을 보존합니다.
+- 4가지 모드·공유 코드/파일 AI PK·계급·기존 랭킹·매주 월요일00:00 KST 보상/2주마다 초기화·미수령 보상·걷기 없는 미리보기를 유지합니다. 서버·DB·실결제는 연결하지 않습니다.
+- **남은 실기기 검수**: Android47→48 업데이트/저장 보존, 닉네임 키보드/파일 선택/클립보드, 2~4대 물리 Wi-Fi, 장시간 FPS·발열·터치 조작·몬스터 음량. 자동 검사 결과를 모든 환경의 오류0 보장이나 실기기 완료로 표현하지 않습니다.
+- 집사 사절 원본 보호 트리 유지: root app `a70564ab782100b61cf07077e52753370e199045`, legacy `8bb4cd16f95ce641b3fa31296b021d8f976cb7e6`, root tests `07eea64ee955f5580a13a9f237490d346ceefe7a`. 이후 배포/문서 커밋은 검증한 앱 소스를 바꾸지 않습니다.
+
+## 이전 공개 버전: 2.18.0 RC1 · 몬스터 스킬 이펙트 개선 완료
 
 - **[APK 바로 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.18.0-rc1/DungeonCrush-2.18.0.apk)** · [설치 안내 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.18.0-rc1/DungeonCrush-2.18.0-RC1.zip) · [릴리스 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.18.0-rc1). 로그인 없이 내려받을 수 있습니다. 카톡에는 파일 대신 주소를 공유합니다. **기존 앱을 삭제하지 말고 업데이트 설치합니다.**
 - 몬스터16속성의 시전·타격·잔류·투사체를 개선하고, 적 투사체 타격의 속성 정보 누락을 수정했습니다. 모든 외형에서 경고선을 마지막에 표시하며 도넛 안전지대·직선 경계·효과 줄이기를 보존합니다. 장식은 프레임96개/축소 모드24개, 텍스처는48개 약6MB로 제한합니다. [변경·공식 게임 참고](ENEMY-EFFECTS-NOTES.md) · [변경 전](MonsterEffects-2.18-Before.png) · [변경 후](MonsterEffects-2.18-After.png).
