@@ -25,7 +25,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
   }
   await p.evaluate(()=>{for(const edge of ['left','right','top','bottom'])document.documentElement.style.setProperty('--safe-'+edge,'0px');});await p.setViewportSize({width:740,height:360});
   await p.evaluate(()=>{for(const cls of [0,5,1,4,2,3,0])RiftApp.choose(cls);DungeonClient.refresh();});await p.waitForFunction(()=>document.getElementById('select-key-art').dataset.state==='ready');assert((await p.locator('#select-key-art').getAttribute('src')).endsWith('kael.webp'));
-  await p.locator('#enter-character').click();await p.locator('#town-shortcuts [data-shortcut=premium]').click();
+  await p.locator('#enter-character').click();await require('./town-navigation.cjs').shortcut(p,'premium');
   await p.locator('[data-premium-view=motion]').click();assert.equal(await p.locator('[data-premium-view=motion]').innerText(),'미리보기');assert(await p.locator('#premium-preview').isVisible());assert.equal(await p.evaluate(()=>DungeonPremiumUI.state().zoom),1.3);
   for(let cls=0;cls<6;cls++){
    await p.locator('#premium-class').selectOption(String(cls));
@@ -42,7 +42,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
      assert((await p.locator('#select-key-art').getAttribute('src')).endsWith(id+'.webp'),id+' equipped selection must use the purchased outfit illustration');
      equipped.push(id);await p.screenshot({path:'build/previews/key-art/selection-equipped-'+id+'.png'});await p.locator('#enter-character').click();
      assert.equal(await p.evaluate(()=>DungeonClient.getTown().hero.costume),id,id+' selection entry preserves the actual equipped outfit');
-     await p.locator('#town-shortcuts [data-shortcut=premium]').click();await p.locator('#premium-remove').click();
+     await require('./town-navigation.cjs').shortcut(p,'premium');await p.locator('#premium-remove').click();
      assert.equal(await p.evaluate(cls=>DungeonPremium.appearance(RiftApp.getSave(),cls).costume,cls),'',id+' removal restores the base selection appearance');
     }
    }

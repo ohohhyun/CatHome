@@ -2,6 +2,12 @@
 
 이 파일을 먼저 읽고 `dungeon-crush/`만 이어서 작업하세요. 사용자에게는 한국어 존댓말을 사용하세요.
 
+## 2.20.1 작업 중 · 최신 사용자 지시
+
+- 타이틀의 외형·펫 상점 진입은 제거합니다. 상점은 마을에서 이용합니다. 마을 왼쪽 위는 정보만 모서리에 붙이고 중복 조작은 넣지 않습니다. 오른쪽 아래는 기본 접기 / 펼치기·접기입니다. 이후 UI 변경 시 이 배치 지시를 우선합니다.
+- 좌우 달리기는 엔진의 같은 수치 입력만 비교하지 않습니다. 실제 터치 입력·출발/반전·6직업/30외형의 다리 포즈 간격과 좌우 렌더 픽셀까지 재검수합니다. [범위와 방법](release/TOWN-RUN-REPAIR-NOTES.md).
+- 아래2.20.0이 아직 공개 버전입니다.2.20.1은 전체 검사·APK 빌드/서명/포함 파일·공개 익명 다운로드 검증 후에만 완료로 바꿉니다.
+
 ## 최신 공개 버전: 2.20.0 RC1 · 텍스트 겹침/랭킹/닉네임 변경권 수정 완료
 
 - **[APK 바로 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.20.0-rc1/DungeonCrush-2.20.0.apk)** · [설치 안내 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.20.0-rc1/DungeonCrush-2.20.0-RC1.zip) · [릴리스 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.20.0-rc1). 로그인 없이 내려받습니다. 카톡에는 파일 대신 주소를 공유합니다. **기존 앱을 삭제하지 말고 업데이트 설치합니다.**

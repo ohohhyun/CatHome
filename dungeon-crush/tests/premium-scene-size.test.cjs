@@ -47,7 +47,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
    await p.evaluate(()=>RiftApp.home());
    const ids=Object.keys(review.costumes).filter(id=>review.costumes[id].cls===cls);
    for(const id of ids){
-    await p.locator('#town-shortcuts [data-shortcut=premium]').click();await p.locator('[data-premium-item="'+id+'"]').click();
+    await require('./town-navigation.cjs').shortcut(p,'premium');await p.locator('[data-premium-item="'+id+'"]').click();
     await p.waitForFunction(()=>DungeonPremiumUI.state().ready);
     if(await p.evaluate(id=>!!DungeonKeyArt.source(DungeonPremium.item(id).cls,id),id)){
      await p.waitForFunction(()=>document.getElementById('premium-key-art').dataset.state==='ready');
@@ -89,7 +89,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
     records.push({id,cls,scenes:['town','battle'],samples:draws.length,banks:[...new Set(draws.map(r=>r.bank))],maxEyeError:Math.max(...draws.filter(r=>r.eyeError!==null).map(r=>Math.abs(r.eyeError)))});
     fs.writeFileSync('build/previews/premium-scene-size-progress.json',JSON.stringify(records,null,2));
     await p.evaluate(()=>{RiftApp.home();DungeonClient.go('town');});
-    await p.locator('#town-shortcuts [data-shortcut=premium]').click();await p.locator('#premium-remove').click();await p.locator('#premium-close').click();await p.evaluate(()=>sceneDraws.length=0);
+    await require('./town-navigation.cjs').shortcut(p,'premium');await p.locator('#premium-remove').click();await p.locator('#premium-close').click();await p.evaluate(()=>sceneDraws.length=0);
     assert.equal(await p.evaluate(()=>DungeonClient.getTown().hero.costume),'');
     await p.waitForFunction(cls=>sceneDraws.some(r=>r.id==='base-'+cls&&r.scene==='town'&&r.eyeError!==null),cls,{timeout:10000});
     assert(await p.evaluate(()=>sceneDraws.filter(r=>r.eyeError!==null).every(r=>Math.abs(r.eyeError)<1.5&&Math.abs(r.soleError)<1)),'unequip restores the actual basic body');

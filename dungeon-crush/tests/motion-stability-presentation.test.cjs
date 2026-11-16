@@ -15,6 +15,23 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
     const before=draws;c.clearRect(0,0,1440,1120);c.save();let ok;if(kind==='enemy')ok=DungeonActors.enemy(c,index,720,800,260,-dir,h,phase);else if(id)ok=DungeonPremiumArt.actor(c,index,720,800,260,dir,h,phase);else ok=DungeonActors.actor(c,index,720,800,260,dir,h,phase);c.restore();if(!ok||draws-before!==1)throw Error(kind+'/'+index+'/'+tick+' draws '+(draws-before)+' full bodies');states.add(bank);
    }}finally{c.drawImage=original;}if(nonOpaque)throw Error(kind+'/'+index+' has '+nonOpaque+' translucent full-body poses');return {kind,index,id,draws,states:[...states]};
   };});
+  // Compare real rendered pixels, not just matching numeric phases, for every run pose.
+  await p.evaluate(()=>{window.runningPair=(cls,id)=>{
+   const views=[document.createElement('canvas'),document.createElement('canvas')];for(const cv of views){cv.width=320;cv.height=320;}
+   const bank=id?DungeonPremiumArt.DATA.costumes[id].banks.run:DungeonActors.actors[cls].run;let differing=0,channels=0;
+   const sheet=document.createElement('canvas');sheet.width=1600;sheet.height=500;const sc=sheet.getContext('2d');sc.fillStyle='#142030';sc.fillRect(0,0,1600,500);sc.fillStyle='#e8d4af';sc.font='15px sans-serif';sc.fillText(id||DungeonActors.actors[cls].id,10,18);
+   for(let i=0;i<8;i++){
+    const phase=bank.runTimes[i],hero=Rift.player(90000+cls,'',cls,100,{costume:id||''});Object.assign(hero,{action:'run',gait:phase*Math.PI*2*DungeonActors.strideLength(hero)/210,moveBlend:1});
+    const data=[];for(const [side,dir]of [-1,1].entries()){
+     Object.assign(hero,{dir,vx:dir*300});const cv=views[side],c=cv.getContext('2d');c.clearRect(0,0,320,320);
+     for(let warm=0;warm<30;warm++){c.clearRect(0,0,320,320);if(id)DungeonPremiumArt.actor(c,cls,160,300,200,dir,hero,10+warm/60);else DungeonActors.actor(c,cls,160,300,200,dir,hero,10+warm/60);}
+     data.push(c.getImageData(0,0,320,320).data);sc.drawImage(cv,i*200,30+side*230,200,200);
+    }
+    for(let y=0;y<320;y++)for(let x=0;x<320;x++)for(let k=0;k<4;k++){if(Math.abs(data[0][(y*320+x)*4+k]-data[1][(y*320+319-x)*4+k])>8)differing++;channels++;}
+   }
+   document.getElementById('stability-review').getContext('2d').clearRect(0,0,1440,1120);document.getElementById('stability-review').getContext('2d').drawImage(sheet,0,0,1440,450);
+   return {id:id||'base-'+cls,poses:8,differing,channels,fraction:differing/channels};
+  };});const reflectedRuns=[];
   const enemies=await p.evaluate(()=>DungeonActors.enemies.map(a=>a.id));assert.equal(enemies.length,92);
   for(let index=0;index<enemies.length;index++){
    await p.evaluate(index=>DungeonActors.prepareEnemies([index]),index);await p.waitForFunction(index=>DungeonActors.enemiesReady([index]),index,{timeout:60000});
@@ -26,9 +43,9 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
    await p.evaluate(indices=>{const c=document.getElementById('stability-review').getContext('2d');c.fillStyle='#142030';c.fillRect(0,0,1440,1120);for(const[row,index]of indices.entries()){c.fillStyle='#eedcba';c.font='14px sans-serif';c.fillText(index+' '+DungeonActors.enemies[index].id,5,row*140+16);for(let n=0;n<8;n++){const phase=(n%4+.3)/4,h={id:index,hp:100,dir:n%2?-1:1,moving:n<4,gait:phase*Math.PI*2,at:n<4?0:(1.65+.8)*(1-phase),castDuration:1.65,recovery:.8};DungeonActors.enemy(c,index,90+n*180,row*140+135,100,-h.dir,h,phase);}}},indices);await p.screenshot({path:'build/previews/stability/enemies-'+start+'.png'});
   }
   for(let cls=0;cls<6;cls++){
-   await p.evaluate(cls=>{DungeonActors.setActiveClasses([cls]);DungeonActors.warmCombat(cls);},cls);await p.waitForFunction(cls=>DungeonActors.combatReady(cls),cls,{timeout:60000});audit.push(await p.evaluate(cls=>stabilityDraw('hero',cls,''),cls));
-   const ids=await p.evaluate(cls=>DungeonPremium.ITEMS.filter(i=>i.kind==='outfit'&&i.cls===cls).map(i=>i.id),cls);for(const id of ids){await p.evaluate(id=>DungeonPremiumArt.prepare([],id),id);await p.waitForFunction(id=>DungeonPremiumArt.readyCostume(id),id,{timeout:60000});audit.push(await p.evaluate(({cls,id})=>stabilityDraw('outfit',cls,id),{cls,id}));}
+   await p.evaluate(cls=>{DungeonActors.setActiveClasses([cls]);DungeonActors.warmCombat(cls);},cls);await p.waitForFunction(cls=>DungeonActors.combatReady(cls),cls,{timeout:60000});audit.push(await p.evaluate(cls=>stabilityDraw('hero',cls,''),cls));reflectedRuns.push(await p.evaluate(cls=>runningPair(cls,''),cls));await p.screenshot({path:'build/previews/stability/run-base-'+cls+'.png'});
+   const ids=await p.evaluate(cls=>DungeonPremium.ITEMS.filter(i=>i.kind==='outfit'&&i.cls===cls).map(i=>i.id),cls);for(const id of ids){await p.evaluate(id=>DungeonPremiumArt.prepare([],id),id);await p.waitForFunction(id=>DungeonPremiumArt.readyCostume(id),id,{timeout:60000});audit.push(await p.evaluate(({cls,id})=>stabilityDraw('outfit',cls,id),{cls,id}));reflectedRuns.push(await p.evaluate(({cls,id})=>runningPair(cls,id),{cls,id}));await p.screenshot({path:'build/previews/stability/run-'+id+'.png'});}
   }
-  assert.equal(audit.length,128);assert(audit.every(a=>a.draws===240));assert.deepEqual(errors,[]);fs.writeFileSync('build/previews/motion-stability-audit.json',JSON.stringify({passed:true,actors:128,samples:audit.reduce((s,a)=>s+a.draws,0),audit,errors},null,2));console.log('PASS: actual Chromium rendering of all 92 monsters, six base heroes and thirty outfits, 30,720 moving/attack samples in both directions; exactly one opaque body per sample, no missing frames, twelve enemy review sheets.');
+  assert.equal(reflectedRuns.length,36);assert(reflectedRuns.every(r=>r.fraction<.003),'all 36 left/right run cycles are reflected pixel matches');assert.equal(audit.length,128);assert(audit.every(a=>a.draws===240));assert.deepEqual(errors,[]);fs.writeFileSync('build/previews/motion-stability-audit.json',JSON.stringify({passed:true,actors:128,samples:audit.reduce((s,a)=>s+a.draws,0),reflectedRuns,audit,errors},null,2));console.log('PASS: actual Chromium rendering of all 92 monsters, six base heroes and thirty outfits, 30,720 moving/attack samples in both directions; exactly one opaque body per sample, no missing frames, twelve enemy review sheets.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1)});

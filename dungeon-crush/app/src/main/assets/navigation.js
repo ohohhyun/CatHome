@@ -8,6 +8,10 @@ function icon(key){const svg=document.createElementNS('http://www.w3.org/2000/sv
 function button(key,label,detail){const b=document.createElement('button');b.type='button';b.dataset.shortcut=key;b.append(icon(key));const copy=document.createElement('span'),name=document.createElement('strong');name.textContent=label;copy.append(name);if(detail){const small=document.createElement('small');small.textContent=detail;copy.append(small);}b.append(copy);b.onclick=()=>activate(key,b);return b;}
 for(const [key,label,detail]of items)grid.append(button(key,label,detail));
 for(const key of ['expedition','inventory','skills','premium','shop','forge','ranking','menu']){const item=items.find(v=>v[0]===key);dock.append(button(key,item?.[1]||'메뉴'));}
+// One lower-right control owns the dock. A fresh launch leaves the view clear.
+const dockToggle=document.createElement('button');dockToggle.id='town-dock-toggle';dockToggle.type='button';dockToggle.setAttribute('aria-controls',dock.id);dock.before(dockToggle);
+function foldDock(expanded){dock.hidden=!expanded;dockToggle.setAttribute('aria-expanded',String(expanded));dockToggle.textContent=expanded?'메뉴 접기 ▾':'메뉴 펼치기 ▴';A.resetControls();return expanded;}
+dockToggle.onclick=()=>foldDock(dock.hidden);foldDock(false);
 const menuTile=button('back','마을로','메뉴 닫기');menuTile.onclick=()=>close();grid.append(menuTile);
 function ready(){return C.phase()==='town'&&A.getMode()==='menu';}
 function close(focus=true){if(screen.hidden)return false;screen.hidden=true;A.resetControls();if(focus&&opener?.isConnected&&opener.getClientRects().length)opener.focus();return true;}

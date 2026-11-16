@@ -9,7 +9,7 @@ module.exports=async(p,pixels)=>{
    const images=new Map();for(const b of Object.values(a))if(b?.sources)for(const src of b.sources)if(!images.has(src)){const im=new Image();im.src=src;await im.decode();images.set(src,im);}
    let count=0,clips=0,draws=0;const draw=c.drawImage.bind(c);c.drawImage=(...args)=>{draws++;return draw(...args);};c.clip=()=>{clips++;throw Error('Body is being sliced at the waist');};
    for(const [kind,b]of Object.entries(a)){if(kind==='id')continue;for(let i=0;i<b.frames.length;i++){
-    const phase=kind==='dash'?((b.stops?.[i-1]||0)+(b.stops?.[i]||1))/2:(i+.00001)/b.frames.length,h=Rift.player(6000+cls*200+count,'',cls),x=count%8*300+150,y=Math.floor(count/8)*320+290,height=180;let time=0;
+    const phase=kind==='run'?b.runTimes[i]:kind==='dash'?((b.stops?.[i-1]||0)+(b.stops?.[i]||1))/2:(i+.00001)/b.frames.length,h=Rift.player(6000+cls*200+count,'',cls),x=count%8*300+150,y=Math.floor(count/8)*320+290,height=180;let time=0;
     if(kind==='run')Object.assign(h,{action:'run',gait:phase*Math.PI*2*DungeonActors.strideLength(h)/210});
     else if(kind==='jump')h.jump=.7*(1-phase);
     else if(kind==='dash')h.dashTime=.22*(1-phase);

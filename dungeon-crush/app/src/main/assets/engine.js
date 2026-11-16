@@ -106,6 +106,15 @@ function regionalTelegraph(s,e,target,base,spec){
  return false;
 }
 function telegraph(s,e,target){const boss=e.type==='boss',caster=e.type==='caster',brute=e.type==='brute',rage=boss&&e.hp/e.maxHp<.45,threats=s.telegraphs.filter(t=>t.target===target.id).length,casterThreats=s.telegraphs.filter(t=>t.caster&&t.target===target.id).length+s.projectiles.filter(q=>q.team==='enemy'&&q.target===target.id).length;if(threats>=2||s.time<(target.nextThreatAt||0)||caster&&(s.time<(s.nextCasterAt||0)||casterThreats>=2)){e.cd=.2;return;}const sequence=(e.pattern=(e.pattern||0)+1),spec=e.kit?root.DungeonEncounters?.pattern(e,sequence):null,pattern=boss?(sequence%3):caster?1:0,duration=caster?1.65:boss?(pattern===2?1.7:1.5):brute?1.25:1,recovery=caster?.65:boss?.8:brute?.65:.55,baseCd=caster?3.6:boss?(rage?2.7:3.2):brute?3:2.5;e.castName=spec?.name||'';e.at=duration+recovery;e.castDuration=duration;e.recovery=recovery;e.cd=Math.max(caster?3.2:duration+recovery,baseCd*balance(s.players.length,s.difficulty).cooldown);target.nextThreatAt=s.time+.45;if(caster)s.nextCasterAt=s.time+.9;const damage=(boss?38:brute?23:15)*balance(s.players.length,s.difficulty).damage*(1+(s.kind==='story'||R.raidRoute(s)?DUNGEONS[s.dungeon].level:60)*.075)*(1+Math.max(0,(s.kind==='story'||R.raidRoute(s)?DUNGEONS[s.dungeon].level:60)-20)*.007)*(s.kind==='rift'?1+s.tier*.025:1),base={damage,color:e.color,element:e.kit,vfx:e.vfx||'sentinel',source:e.id,caster,target:target.id,duration,life:duration,fromX:e.x,fromY:e.y};if(spec&&regionalTelegraph(s,e,target,base,spec)){fx(s,'windup',e.x,e.y,{color:e.color||'#cf7ae7',caster,source:e.id,life:duration,duration});return;}if(pattern===2){for(let i=0;i<3;i++)s.telegraphs.push({id:s.nextId++,x:target.x+(i-1)*180,y:target.y+(i%2)*45,r:115,...base});}else s.telegraphs.push({id:s.nextId++,x:pattern===1?target.x:e.x+e.dir*(boss?110:brute?90:120),y:pattern===1?target.y:e.y,r:boss?185:caster?55:100,...base});fx(s,'windup',e.x,e.y,{color:caster?'#bc99ff':boss?'#cf7ae7':'#e97754',caster,source:e.id,life:duration,duration});}
+// Match the visible thumb travel; ignore small thumb drift around a horizontal run.
+function stickInput(x,y){
+ x=Number.isFinite(x)?x:0;y=Number.isFinite(y)?y:0;
+ if(Math.abs(y)<Math.abs(x)*.25)y=0;
+ else if(Math.abs(x)<Math.abs(y)*.25)x=0;
+ const len=Math.hypot(x,y);if(len<=.12)return {x:0,y:0};
+ const strength=clamp((len-.12)/(.6-.12),0,1);
+ return {x:x/len*strength,y:y/len*strength};
+}
 function move(s,p,input,dt){
  dt=clamp(Number(dt)||0,0,.05);const c=CLASSES[p.cls],limit=s.world||WORLD,oldJump=p.jump;
  let dx=clamp(Number(input.x)||0,-1,1),dy=clamp(Number(input.y)||0,-1,1),len=Math.hypot(dx,dy);if(len>1){dx/=len;dy/=len;}
@@ -125,6 +134,9 @@ function move(s,p,input,dt){
  }else if(p.rushTime>0){
   const step=Math.min(dt,p.rushTime),q=1-(p.rushTime-step/2)/p.rushDuration;p.x=clamp(p.x+p.rushVx*step*(1.15-.3*q),60,limit-60);p.rushTime=Math.max(0,p.rushTime-step);p.vx=0;p.vy=0;p.moveBlend=0;
  }else if(p.at<=.1){
+  // A reversed input starts the same acceleration as a fresh run. Carrying the
+  // old velocity made a turn slide backward while the feet kept cycling forward.
+  if(dx*(p.vx||0)<0)p.vx=0;if(dy*(p.vy||0)<0)p.vy=0;
   const blend=1-Math.exp(-dt*(len>.1?18:38));p.vx=(p.vx||0)+(dx*c.speed-(p.vx||0))*blend;p.vy=(p.vy||0)+(dy*c.speed*.62-(p.vy||0))*blend;
   p.x=clamp(p.x+p.vx*dt,60,limit-60);p.y=clamp(p.y+p.vy*dt,475,665);
   p.moveBlend=clamp(Math.hypot(p.vx,p.vy/.62)/c.speed,0,1);
@@ -152,5 +164,5 @@ function step(s,inputs,dt){dt=clamp(Number(dt)||0,0,.05);s.tick++;s.fx.forEach(f
  if(!s.enemies.length){s.clearTime+=dt;s.gate=s.room<s.roomCount;if(s.clearTime>1.2&&(s.room===s.roomCount||s.players.some(p=>p.hp>0&&p.x>2240))){if(s.room>=s.roomCount){s.phase='victory';s.gold+=300*(DUNGEONS[s.dungeon].chapter+1)*(s.difficulty+1);}else{s.room++;s.telegraphs=[];s.projectiles=[];for(const [i,p]of s.players.entries()){p.x=300+i*80;p.y=540+i*24;p.vx=0;p.vy=0;p.dashTime=0;p.jump=0;p.landing=0;p.gait=0;p.moveBlend=0;p.at=0;p.action="idle";p.pending=null;p.bufferTime=0;p.bufferIndex=-1;p.basicChain=0;p.rushTime=0;p.poseHold=0;p.hp=Math.min(p.maxHp,Math.max(p.hp,p.maxHp*.12)+p.maxHp*.08);p.mp=Math.min(100,p.mp+30);p.inv=1;p.down=0;}spawn(s);}}}
 
 }
-root.Rift={supportPower,WORLD,LANE,CLASSES,DUNGEONS,create,player,start,step,move,attack,timing,balance,clamp,usePotion,hazardContains,updatePlayer,stepProjectiles,fx,damageEnemy,targets,allies,skillFor,skillByCode};
+root.Rift={stickInput,supportPower,WORLD,LANE,CLASSES,DUNGEONS,create,player,start,step,move,attack,timing,balance,clamp,usePotion,hazardContains,updatePlayer,stepProjectiles,fx,damageEnemy,targets,allies,skillFor,skillByCode};
 })(typeof window!=='undefined'?window:globalThis);

@@ -2,7 +2,6 @@
 html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 #title-menu .title-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));width:100%;max-width:100%;gap:8px;flex-shrink:0}
 #title-menu .title-actions>button{position:static;min-width:0;min-height:44px;height:auto;line-height:1.6;padding:8px 10px;box-sizing:border-box}
-#title-menu #title-premium{grid-column:1/-1;font-size:13px;letter-spacing:0;margin:0;justify-self:stretch}
 #title-menu #title-pvp>span{display:block;white-space:nowrap}
 #title-menu #title-pvp small{display:block;line-height:1.6;font-size:10px;word-break:keep-all}
 #title-menu .title-top{gap:12px}
@@ -110,3 +109,9 @@ body[data-phase=town] #menu .nav #audio{width:44px;height:44px;padding:8px}
 body[data-phase=town] #menu .town-level{position:relative;height:auto;min-height:16px;padding:1px 6px;box-sizing:border-box}
 body[data-phase=town] #menu .town-level>i{position:absolute;left:0;top:0;bottom:0;height:100%}
 body[data-phase=town] #menu .town-level>span{position:relative;display:block;inset:auto;transform:none;z-index:1;line-height:1.5;min-height:1.5em}
+
+/* Town status is information only. All actions belong to the lower-right menu. */
+body[data-phase=town] #menu>header{position:absolute;left:calc(6px + var(--safe-left));top:calc(6px + var(--safe-top));width:min(310px,43vw);padding:7px 9px;gap:0;border-radius:8px;pointer-events:none}
+body[data-phase=town] #menu>header>.nav{display:none}
+#town-dock-toggle{position:absolute;right:calc(8px + var(--safe-right));bottom:calc(8px + var(--safe-bottom));z-index:5;pointer-events:auto;min-width:104px;min-height:44px;padding:8px 12px;border:1px solid #c9b38470;border-radius:10px;background:#142235ee;color:#ecd5a8;font-size:12px;line-height:1.6}
+#town-shortcuts{right:calc(8px + var(--safe-right));bottom:calc(58px + var(--safe-bottom));grid-template-columns:repeat(4,minmax(0,1fr));width:clamp(240px,32vw,400px);max-height:calc(100% - var(--safe-top) - var(--safe-bottom) - 72px);overflow-y:auto;overscroll-behavior:contain}

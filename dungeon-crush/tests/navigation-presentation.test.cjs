@@ -11,6 +11,7 @@ const sizes=[{width:1280,height:591},{width:1024,height:472},{width:960,height:4
   await p.goto(process.env.DUNGEON_TEST_URL||'file://'+path.resolve('app/src/main/assets/index.html'));
   await p.waitForFunction(()=>window.DungeonNavigation);await p.evaluate(()=>document.fonts.ready);
   await p.locator('#title-cover-open').click();await p.locator('#game-start').click();await require('./nickname-flow.cjs').completeNickname(p);await p.locator('#enter-character').click();
+  assert(await p.locator('#town-shortcuts').isHidden(),'fresh launch keeps the dock folded');assert.equal(await p.locator('#town-dock-toggle').getAttribute('aria-expanded'),'false');
   // Existing quest refresh initializes the current daily ledger; prime it before the read-only snapshot.
   await p.evaluate(()=>{RiftTown.open('quests');appBack();});
   const original=await p.evaluate(()=>JSON.stringify(RiftApp.getSave()));
@@ -42,9 +43,10 @@ const sizes=[{width:1280,height:591},{width:1024,height:472},{width:960,height:4
   for(const size of sizes){
    await p.setViewportSize({width:size.width,height:size.height});
    await p.evaluate(insets=>{for(const edge of ['left','right','top','bottom'])document.documentElement.style.setProperty('--safe-'+edge,(insets[edge]||0)+'px');DungeonClient.go('town');},size.insets||{});
-   await fit('#town-shortcuts');
+   await require('./town-navigation.cjs').expand(p);await fit('#town-shortcuts');
    const targets=await p.locator('#town-shortcuts button').evaluateAll(nodes=>nodes.map(n=>{const b=n.getBoundingClientRect(),c=document.elementFromPoint(b.x+b.width/2,b.y+b.height/2);return {w:b.width,h:b.height,reachable:n.contains(c),left:b.left,right:b.right,top:b.top,bottom:b.bottom};}));
    assert.equal(targets.length,8);assert(targets.every(v=>v.w>=44&&v.h>=44&&v.reachable&&v.left>=0&&v.top>=0&&v.right<=size.width&&v.bottom<=size.height),'eight reachable finger-sized shortcuts');
+   await p.locator('#town-dock-toggle').click();assert(await p.locator('#town-shortcuts').isHidden());await p.locator('#town-dock-toggle').click();assert(await p.locator('#town-shortcuts').isVisible());
    await dock('menu').click();assert.equal(await p.locator('#quick-menu-grid button').count(),13);
    const shell=await p.locator('.quick-menu-shell').boundingBox();assert(shell.x>=0&&shell.y>=0&&shell.x+shell.width<=size.width+1&&shell.y+shell.height<=size.height+1);
    for(const scale of [1,1.4]){
