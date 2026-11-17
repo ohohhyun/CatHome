@@ -1,4 +1,17 @@
-## 최신 공개 버전: 2.20.1 RC1 · 좌우 달리기와 마을 화면 수정
+## 최신 공개 버전: 2.20.2 RC1 · 걸음 박자·장비 비교·메뉴 정렬·보스 마법 수정
+
+- **[APK 바로 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.20.2-rc1/DungeonCrush-2.20.2.apk)** · [설치 안내 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.20.2-rc1/DungeonCrush-2.20.2-RC1.zip) · [릴리스 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.20.2-rc1). 로그인 없이 내려받습니다. 카톡에는 주소를 공유하고 기존 앱을 삭제하지 않은 채 업데이트 설치합니다.
+- 2.20.1의 가변 포즈 시간과 주기 끝 조기 복귀를 제거했습니다.8개 전신 포즈를 같은 시간씩 표시하고, 키×260 보폭으로 다리 회전만 낮춥니다. **물리 이동 속도·조이스틱·좌우 보정은 그대로**입니다. 픽셀 차이별 재생 시간 조절을 다시 적용하지 않습니다. 원화·기준점·몸 배율도 보존합니다.
+- 가방 상세·비교는 왼쪽 착용 장비/오른쪽 선택 장비를 나란히 표시합니다. 각 옵션 차이와 전체 장비·세트 효과를 반영한 교체 후 수치/전투력 증감을 ↑상승/↓하락/변화 없음으로 구분합니다.4세트 HP·6세트 집중 손실을 포함하며, 레벨 제한 장비에는 잘못된 전체 감소 예측을 표시하지 않습니다. 빈 슬롯·같은 장비·읽기 전용·안전영역·1.4배 글자도 검사했습니다.
+- 오른쪽8개 메뉴 칸의 폭/높이와 전체 메뉴 카드의 행 정렬을 맞췄습니다. 기본 접기/펼치기·접기, 왼쪽 위 정보만 모서리 배치, 타이틀 상점 제거 지시는 유지합니다.
+- 보스 마법의 시전/폭발/잔류/투사체를 크게 보강했습니다. 보스 폭발0.9초·발사광0.35초입니다. **피해·범위·패턴·경고선·충돌·랜덤·보상은 바꾸지 않습니다.**16속성/효과 줄이기/96·24장식/48텍스처 제한과 도넛 중앙 안전지대를 유지합니다. [방법·범위·비교 화면](CADENCE-COMPARE-BOSS-NOTES.md) · [상세 검수](CADENCE-COMPARE-BOSS-VERIFICATION.json).
+- 검증 소스 `4fc1030fc23183809203565df41d789a4bf4b33c`. [전체 **71개 검사(코드34 + Java2 + Chrome35)**와 APK/AAB·Android lint·기존 서명·포함 파일 검증 성공](https://github.com/ohohhyun/CatHome/actions/runs/44020842900). 수행한 검사 실패0건입니다. 전수 모션·실제 터치/4인·장비 교체/세트 손실·글자/메뉴 칸·보스 효과 표시 면적/안전지대/부하·552회 이펙트 외 상태 비교 및 기존 성장/랭킹/이름/저장 회귀를 포함합니다.
+- APK **490,023,153 bytes**, SHA-256 `3f3ca5ce6a7421f12baa30607f75b526e1c5b79fde82336944917fdb602fd0e6`. ZIP **490,024,501 bytes**, SHA-256 `104daaf1bba5fa83cc3c907ddf8b25086fbff7810b3e36e6e76fa7d7da70aece`. [공개 게시·익명 전체 다운로드 검증](https://github.com/ohohhyun/CatHome/actions/runs/44024668652): 크기·해시·ZIP CRC·내부 APK 일치. 별도 익명 HEAD도 두 파일 HTTP200입니다. [배포 기록](2.20.2-VERIFICATION.json).
+- versionName2.20.2 / versionCode51 / 저장2 / Wi-Fi12 / 설치 인증서 `e43fedd9099e7b5df82eccfa3e92fc020d429ad99795463abbe40e2af4880708` 유지. 기존 이름·ID·계급·성장·장비·XP·외형·보상 기록을 보존합니다. 닉네임 최초 무료 저장/이후 변경권1개·3,900원/결제 전 구매 불가,4모드·공유 AI PK·기존5종 랭킹·매주 보상/2주 초기화·걷기 없는 미리보기·자동 저장을 유지합니다. 서버·DB·실결제는 연결하지 않습니다.
+- **남은 실기기 검수:** Android50→51 업데이트/저장·변경권 보존, 실제 손가락 조작감과 보행 체감, 시스템 글자/키보드/터치 스크롤, 물리 Wi-Fi2~4대, 장시간 FPS/발열/음량. 자동 검사 통과를 모든 환경의 무결함 보장이나 실기기 완료로 표현하지 않습니다.
+- 집사 사절 원본 보호: app `a70564ab782100b61cf07077e52753370e199045`, legacy `8bb4cd16f95ce641b3fa31296b021d8f976cb7e6`, root tests `07eea64ee955f5580a13a9f237490d346ceefe7a`. 이후 게시/문서 커밋은 검증 앱 소스를 바꾸지 않습니다.
+
+## 이전 공개 버전: 2.20.1 RC1 · 좌우 달리기와 마을 화면 수정
 
 - **[APK 바로 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.20.1-rc1/DungeonCrush-2.20.1.apk)** · [설치 안내 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.20.1-rc1/DungeonCrush-2.20.1-RC1.zip) · [릴리스 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.20.1-rc1). 로그인 없이 내려받습니다. 카톡에는 파일 대신 주소를 공유하고 기존 앱을 삭제하지 않은 채 업데이트 설치합니다.
 - **최신 UI 지시:** 타이틀에는 외형·펫 상점을 넣지 않습니다. 마을에서 이용합니다. 마을 왼쪽 위는 계급·닉네임·골드·직업·레벨·EXP만 안전영역+6px에 붙이며 중복 조작을 넣지 않습니다. 오른쪽 아래는 기본 접기 상태에서 펼치기·접기로 이용합니다.8개 바로가기/12개 전체 메뉴 기능을 유지하고 Wi-Fi 파티는 대기실로 바로 엽니다. 이후 변경도 이 배치 지시를 우선합니다.
