@@ -6,8 +6,8 @@ android {
         applicationId 'com.dungeoncrush.game'
         minSdk 23
         targetSdk 36
-        versionCode 51
-        versionName '2.20.2'
+        versionCode 52
+        versionName '2.20.3'
     }
     signingConfigs {
         debug {

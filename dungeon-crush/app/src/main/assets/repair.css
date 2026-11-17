@@ -24,13 +24,16 @@ body[data-phase=town] #menu .nav>button,body[data-phase=town] #menu .nav #lan-op
 body[data-phase=town] #menu .nav #audio{width:44px;height:44px;padding:8px}
 #menu .nav #lan-open small{display:none}
 #town-guide{max-width:min(400px,48%);padding:5px 8px;background:#0b1725e6;box-sizing:border-box;border:1px solid #aa91674a}
-#quick-menu-screen .quick-menu-shell{height:min(100%,740px);grid-template-rows:auto auto minmax(0,1fr) auto}
-#quick-menu-grid{grid-auto-rows:auto;align-items:stretch;align-content:start;gap:9px;padding:12px 16px;scroll-padding:10px}
-#quick-menu-grid button{display:grid;grid-template-columns:24px minmax(0,1fr);align-items:start;align-self:stretch;min-width:0;height:auto!important;min-height:90px!important;padding:12px!important;gap:10px;box-sizing:border-box;overflow:hidden}
-#quick-menu-grid button>span{display:flex;flex-direction:column;gap:4px;min-width:0;min-height:0;height:auto}
-#quick-menu-grid strong{font-size:14px;line-height:1.6;margin:0;word-break:keep-all;overflow-wrap:anywhere}
-#quick-menu-grid small{display:block;font-size:11px;line-height:1.7;margin:0;word-break:keep-all;overflow-wrap:anywhere}
-#quick-menu-grid svg{width:22px;height:22px;margin-top:2px}
+#quick-menu-screen .quick-menu-shell{height:min(100%,740px);width:min(1120px,100%);grid-template-rows:auto auto minmax(0,1fr) auto}
+#quick-menu-screen #quick-menu-grid{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(3,minmax(var(--menu-cell-min,58px),1fr));align-items:stretch;align-content:stretch;gap:8px;padding:12px 16px;scroll-padding:12px;box-sizing:border-box}
+#quick-menu-screen #quick-menu-grid button{display:grid;grid-template-columns:22px minmax(0,1fr);align-items:start;align-self:stretch;min-width:0;height:100%!important;min-height:0!important;padding:10px!important;gap:9px;box-sizing:border-box;overflow:visible;text-align:left}
+#quick-menu-screen #quick-menu-grid button>span{display:block;min-width:0;min-height:0;height:auto;align-self:start;flex:none}
+#quick-menu-screen #quick-menu-grid strong{font-size:14px;line-height:1.4;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+#quick-menu-screen #quick-menu-grid small{display:block;font-size:11px;line-height:1.4;margin:4px 0 0;word-break:keep-all;overflow-wrap:anywhere}
+#quick-menu-screen #quick-menu-grid svg{width:22px;height:22px;margin:0}
+@media(max-height:420px){#quick-menu-screen #quick-menu-grid{gap:6px;padding:8px 12px}#quick-menu-screen #quick-menu-grid button{grid-template-columns:18px minmax(0,1fr);padding:8px!important;gap:7px}#quick-menu-screen #quick-menu-grid strong{font-size:12px}#quick-menu-screen #quick-menu-grid small{font-size:10px}#quick-menu-screen #quick-menu-grid svg{width:18px;height:18px}}
+@media(max-height:360px){#quick-menu-screen .quick-menu-heading{padding:3px 12px}#quick-menu-screen .quick-menu-heading>div>small{display:none}#quick-menu-screen .quick-menu-heading h2{font-size:18px}#quick-menu-screen .quick-menu-profile{padding:4px 12px}#quick-menu-screen .quick-menu-hint{display:none}#quick-menu-screen #quick-menu-grid{padding:6px 10px}}
+
 /* Conventional ranking: filters, metric tabs, full-width record list and own record. */
 #ranking-screen .ranking-shell{max-width:1150px;border-radius:16px;grid-template-rows:auto minmax(0,1fr)}
 #ranking-screen .ranking-heading{position:static;height:auto;min-height:0;padding:12px 20px}
@@ -99,11 +102,6 @@ body[data-phase=town] #menu .nav #audio{width:44px;height:44px;padding:8px}
 #title-menu .title-copy{position:static;grid-column:2;inset:auto;width:100%;min-width:0;min-height:0;max-width:none;max-height:100%;height:auto;align-self:center;justify-content:flex-start;padding:4px 2px 8px;box-sizing:border-box;overflow-y:auto}
 #title-menu>footer{position:static;grid-column:1/-1;inset:auto;width:auto;min-width:0;max-width:100%;margin:0;font-size:10px;line-height:1.6;gap:4px 12px;align-self:end}
 @media(max-height:420px){#title-menu{gap:7px 16px;padding-top:calc(10px + var(--safe-top));padding-bottom:calc(8px + var(--safe-bottom))}#title-menu .title-top{min-height:44px}#title-menu>footer{font-size:8px}#title-menu .title-copy{padding:2px 2px 6px}}
-#quick-menu-grid{grid-auto-rows:minmax(max-content,auto)}
-#quick-menu-grid button{height:auto!important;align-self:stretch;overflow:visible}
-#quick-menu-grid button>span{display:block;height:max-content;min-height:auto;align-self:start;flex:none}
-#quick-menu-grid strong,#quick-menu-grid small{flex-shrink:0}
-#quick-menu-grid small{margin-top:4px}
 #title-menu #title-pvp{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:2px;height:max-content;letter-spacing:0}
 #title-menu #title-pvp small{max-width:100%;letter-spacing:0;white-space:normal;overflow-wrap:anywhere}
 body[data-phase=town] #menu .town-level{position:relative;height:auto;min-height:16px;padding:1px 6px;box-sizing:border-box}

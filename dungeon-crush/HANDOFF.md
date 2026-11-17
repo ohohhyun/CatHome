@@ -2,6 +2,12 @@
 
 이 파일을 먼저 읽고 `dungeon-crush/`만 이어서 작업하세요. 사용자에게는 한국어 존댓말을 사용하세요.
 
+## 진행 중: 2.20.3 · 전 캐릭터 양발 이동과 전체 메뉴 칸 수정
+
+- 기본 6종·외형 30종의 이동 전신 원화를 교체합니다. 느린 이동 접지와 달리기의 바닥 기준을 구분하고, 일반 이동의 발을 가리던 먼지·문양·속도 선을 제거합니다. 이동 속도·물리·전투·저장·Wi-Fi는 보존합니다.
+- 전체 모험가 메뉴는 12칸 4열×3행으로 맞추고 중복 복귀 타일을 제거합니다. 모든 칸의 폭·높이·제목 줄과 마지막 행 가시성을 검사합니다.
+- [구현·검수 범위](release/FOOTWORK-MENU-NOTES.md). 아직 새 APK 검증·게시 완료로 표시하지 않습니다. 아래 2.20.2가 현재 공개 버전입니다.
+
 ## 최신 공개 버전: 2.20.2 RC1 · 걸음 박자·장비 비교·메뉴 정렬·보스 마법 수정
 
 - **[APK 바로 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.20.2-rc1/DungeonCrush-2.20.2.apk)** · [설치 안내 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.20.2-rc1/DungeonCrush-2.20.2-RC1.zip) · [릴리스 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.20.2-rc1). 로그인 없이 내려받습니다. 카톡에는 주소를 공유하고 기존 앱을 삭제하지 않은 채 업데이트 설치합니다.

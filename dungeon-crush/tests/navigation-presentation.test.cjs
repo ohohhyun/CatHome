@@ -1,6 +1,6 @@
 const {chromium}=require('playwright');
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
-const sizes=[{width:1280,height:591},{width:1024,height:472},{width:960,height:480},{width:740,height:360},{width:640,height:296},{width:1024,height:768},{width:1920,height:1080},{width:1280,height:591,insets:{left:38,right:30,top:8,bottom:20}},{width:640,height:296,insets:{left:22,right:18,top:6,bottom:10}}];
+const sizes=[{width:1280,height:591},{width:853,height:393},{width:2048,height:944},{width:1024,height:472},{width:960,height:480},{width:740,height:360},{width:640,height:296},{width:1024,height:768},{width:1920,height:1080},{width:1280,height:591,insets:{left:38,right:30,top:8,bottom:20}},{width:640,height:296,insets:{left:22,right:18,top:6,bottom:10}}];
 (async()=>{
  fs.mkdirSync('build/previews',{recursive:true});
  const browser=await chromium.launch({executablePath:process.env.CHROME_BIN||'/usr/bin/google-chrome',args:['--no-sandbox']});
@@ -47,11 +47,11 @@ const sizes=[{width:1280,height:591},{width:1024,height:472},{width:960,height:4
    const targets=await p.locator('#town-shortcuts button').evaluateAll(nodes=>nodes.map(n=>{const b=n.getBoundingClientRect(),c=document.elementFromPoint(b.x+b.width/2,b.y+b.height/2);return {w:b.width,h:b.height,reachable:n.contains(c),left:b.left,right:b.right,top:b.top,bottom:b.bottom};}));
    assert.equal(targets.length,8);assert(Math.max(...targets.map(t=>t.w))-Math.min(...targets.map(t=>t.w))<1,'all dock columns have equal width');assert(Math.max(...targets.map(t=>t.h))-Math.min(...targets.map(t=>t.h))<1,'all eight dock cells have equal height');assert(targets.every(v=>v.w>=44&&v.h>=44&&v.reachable&&v.left>=0&&v.top>=0&&v.right<=size.width&&v.bottom<=size.height),'eight reachable finger-sized shortcuts');
    await p.locator('#town-dock-toggle').click();assert(await p.locator('#town-shortcuts').isHidden());await p.locator('#town-dock-toggle').click();assert(await p.locator('#town-shortcuts').isVisible());
-   await dock('menu').click();assert.equal(await p.locator('#quick-menu-grid button').count(),13);
+   await dock('menu').click();assert.equal(await p.locator('#quick-menu-grid button').count(),12);
    const shell=await p.locator('.quick-menu-shell').boundingBox();assert(shell.x>=0&&shell.y>=0&&shell.x+shell.width<=size.width+1&&shell.y+shell.height<=size.height+1);
    for(const scale of [1,1.4]){
     if(scale!==1)await p.locator('#quick-menu-screen').evaluate(root=>{window.navFonts=[...root.querySelectorAll('strong,small,span,h2,p,button')].filter(n=>[...n.childNodes].some(c=>c.nodeType===3&&c.textContent.trim())).map(n=>[n,n.style.fontSize,n.style.lineHeight,parseFloat(getComputedStyle(n).fontSize)]);for(const[n,,,font]of navFonts){n.style.fontSize=font*1.4+'px';n.style.lineHeight='1.65';}});
-    await fit('#quick-menu-screen');await tile('back').scrollIntoViewIfNeeded();await fit('#quick-menu-screen');assert(await tile('back').isVisible());
+    await require('./full-menu-layout.cjs')(p,{baseline:scale===1});await fit('#quick-menu-screen');await tile('settings').scrollIntoViewIfNeeded();await fit('#quick-menu-screen');assert(await tile('settings').isVisible());
     await p.screenshot({path:'build/previews/navigation-'+size.width+'-'+size.height+'-'+scale+(size.insets?'-safe':'')+'.png'});
     if(scale!==1)await p.evaluate(()=>{for(const[n,size,line]of navFonts){n.style.fontSize=size;n.style.lineHeight=line;}});
    }

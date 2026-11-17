@@ -1,0 +1,185 @@
+{
+  "version": "2.20.3",
+  "localRules": [
+    {
+      "test": "tests/enemy-effects.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/progression-balance.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/nickname-ticket.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/name-policy.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/movement-parity.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/monster-audio.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/pk.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/hero-height.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/motion-stability.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/premium.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/premium-art.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/key-art.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/background-cache.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/frontier.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/game.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/caster.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/ranged.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/navigation.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/generated-art.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/combat-timing.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/rpg.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/inventory.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/equipment-services.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/release.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/rankings.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/ranking-client.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/sound.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/font-coverage.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/ui-layout.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/party-recovery.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/run-cast-fix.test.cjs",
+      "passed": true,
+      "log": "run-cast-approved.log"
+    },
+    {
+      "test": "tests/new-content.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/expansion.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/hotfix.test.cjs",
+      "passed": true
+    }
+  ],
+  "footwork": {
+    "looks": 36,
+    "samples": 1152,
+    "passed": true
+  },
+  "menuTests": [
+    "navigation-approved.log",
+    "menu-approved.log"
+  ],
+  "continuousVideo": {
+    "file": "footwork-menu/all-looks-slow-run.webm",
+    "sha256": "f805de80fb1237dc5de09512c7f0ed2234c90410c595c98964571dba0ecf3d66",
+    "bytes": 12271780
+  },
+  "review": {
+    "fullSpeedSheets": 6,
+    "lowSpeedSheets": 6,
+    "manuallyInspected": true
+  },
+  "fullBuild": "pending",
+  "remainingPhysical": [
+    "Android51→52 업데이트 설치/저장·변경권 보존",
+    "실제 손가락 조작감·보행 체감",
+    "시스템 글자·키보드·터치 스크롤",
+    "물리 Wi-Fi 2~4대",
+    "장시간 FPS·발열·음량"
+  ],
+  "localMotion": {
+    "actors": 128,
+    "samples": 30720,
+    "reflectedRuns": 36,
+    "passed": true
+  },
+  "localCoherent": {
+    "coldClasses": 4,
+    "directions": 2,
+    "scenes": [
+      "town",
+      "battle"
+    ],
+    "contactSamples": 1152,
+    "passed": true
+  }
+}
