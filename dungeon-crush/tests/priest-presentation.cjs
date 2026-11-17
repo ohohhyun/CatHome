@@ -11,7 +11,7 @@ module.exports=async function priestPresentation(p,pixels){
    const x=i%4*480+240,y=(Math.floor(i/4)+(dir===-1?2:0))*400+340;
    Object.assign(h,{action:'run',gait:(i+.05)/8*Math.PI*2*DungeonActors.strideLength(h)/210,vx:0,vy:0});
    if(!DungeonActors.actor(c,5,x,y,293,dir,h,0))throw Error('Priest run not loaded');
-   const f=DungeonActors.frame(h,0),r=bank.frames[f.index];e.save();e.translate(x,y);e.scale(dir,1);e.drawImage(im,r[1],r[2],r[3],r[4],-r[5],-r[6],r[3],r[4]);e.restore();
+   const f=DungeonActors.frame(h,0),r=bank.frames[f.index],cacheScale=Math.min(1,320/r[7]),tile=document.createElement('canvas');tile.width=Math.ceil(r[3]*cacheScale);tile.height=Math.ceil(r[4]*cacheScale);tile.getContext('2d').drawImage(im,r[1],r[2],r[3],r[4],0,0,tile.width,tile.height);const scale=293/r[7];e.save();e.translate(x,y);e.scale(dir,1);e.drawImage(tile,0,0,tile.width,tile.height,-r[5]*scale,-r[6]*scale,r[3]*scale,r[4]*scale);e.restore();
   }
  });
  // Browser screenshots work for both HTTP and CI file URLs; file-image canvases cannot use getImageData.
