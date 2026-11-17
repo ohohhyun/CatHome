@@ -37,8 +37,55 @@ function gearPress(b,inspect){let timer,start=null,suppress=false;const stop=()=
 function activateGear(id){if(A.getMode()!=='menu')return;const it=hero().items.find(it=>it.id===id);if(!it)return;itemId=id;focusDetails=true;if(hero().equipped[R.SLOTS[it.slot]]===id){showDescription(id);return;}commit(s=>R.equip(s,cls(),id),'장비를 장착·교체했습니다.');refresh();}
 function signed(n){return (n>0?'+':'')+amount(n);}
 function closeDescription(){DungeonDialogs.unmark();if($('gear-inspect-screen'))$('gear-inspect-screen').hidden=true;}
-function showDescription(id){if(A.getMode()!=='menu')return;DungeonDialogs.close();const info=R.compareEquipment(data(),cls(),id);if(!info)return;itemId=id;if(tab==='inventory'){focusDetails=true;refresh();}A.resetControls();const {item:it,current,delta}=info,body=$('gear-inspect-body');body.replaceChildren();body.dataset.itemId=id;const heading=el('div','inspect-heading');heading.append(itemArt(it.slot,cls(),true));const title=el('div');title.append(el('div','eyebrow','EQUIPMENT DETAIL'),el('h2','',R.itemName(it,cls())));title.style.setProperty('--rarity',R.RARITIES[it.rarity].color);paragraph(title,R.RARITIES[it.rarity].name+' · '+R.SLOT_NAMES[it.slot]+' · 필요 LV.'+it.level+' · 강화 +'+it.plus);heading.append(title);body.append(heading);const descriptions=['기본 공격과 스킬의 피해를 높이는 공격력 중심 장비입니다.','최대 HP를 높이는 생존 중심 장비입니다.','최대 HP를 높이는 생존 중심 장비입니다.','최대 HP를 높이는 생존 중심 장비입니다.','공격력과 최대 HP를 함께 보완하는 장신구입니다.','공격력과 최대 HP를 보완하며 등급에 따라 집중이 붙는 장신구입니다.'];paragraph(body,descriptions[it.slot],'gear-description');paragraph(body,'집중은 마나 회복을 높이고 스킬 재사용 시간을 줄입니다. 등급·장비 레벨·강화 단계가 높을수록 기본 옵션이 증가합니다.','note');if(it.rarity>=3)paragraph(body,R.SET_NAMES[it.set]+' 세트 · 2개 공격력 +10% / 4개 HP +15% / 6개 집중 +3','inspect-set');
- const compare=section('현재 착용 장비와 비교',body);compare.classList.add('gear-comparison');paragraph(compare,'현재 착용: '+(current?R.itemName(current,cls())+' · LV.'+current.level:'없음'),'compare-current');const table=el('table','compare-table'),head=el('thead'),hr=el('tr');for(const label of ['옵션','현재 착용','선택 장비','차이'])hr.append(el('th','',label));head.append(hr);table.append(head);const rows=el('tbody'),a=current?R.gearStats(current):{atk:0,hp:0,focus:0},b=R.gearStats(it);for(const [key,label]of [['atk','공격력'],['hp','최대 HP'],['focus','집중']]){const row=el('tr');row.append(el('th','',label),el('td','',amount(a[key])),el('td','',amount(b[key])),el('td',b[key]>a[key]?'stat-up':b[key]<a[key]?'stat-down':'stat-same',signed(b[key]-a[key])));rows.append(row);}table.append(rows);compare.append(table);paragraph(compare,'교체 시 능력 변화 · 세트 효과 포함','compare-total-title');const changes=el('div','compare-totals');for(const [key,label]of [['atk','공격력'],['hp','최대 HP'],['focus','집중'],['power','전투력']]){const n=el('span',delta[key]>0?'stat-up':delta[key]<0?'stat-down':'stat-same',label+' '+(delta[key]>0?'↑ ':delta[key]<0?'↓ ':'')+signed(delta[key]));n.dataset.stat=key;n.dataset.delta=delta[key];changes.append(n);}compare.append(changes);const worn=current?.id===id;paragraph(body,worn?'현재 착용 중인 장비입니다.':!info.allowed?'현재 LV.'+R.level(hero())+' · 장비 레벨 조건을 충족하지 못했습니다.':delta.atk>=0&&delta.hp>=0&&(delta.atk>0||delta.hp>0)?'교체하면 공격력과 생존 능력이 같거나 높아집니다.':'상승·하락하는 옵션을 비교해 전투 방식에 맞게 선택하세요.','inspect-advice');const actions=el('div','inspect-actions');actions.append(button(worn?'장비 해제':current?'이 장비로 교체':'이 장비 장착',()=>{const result=worn?commit(s=>R.unequip(s,cls(),id),'장비를 해제했습니다.'):commit(s=>R.equip(s,cls(),id),'장비를 장착·교체했습니다.');if(result?.ok)showDescription(id);},'primary',!worn&&!info.allowed),button('닫기',closeDescription,'outline'));body.append(actions);window.DungeonMenus?.inspect(body);DungeonDialogs.modal('gear-inspect-screen');body.parentElement.scrollTop=0;}
+function changeLabel(n){return n>0?'↑ '+signed(n)+' 상승':n<0?'↓ '+signed(n)+' 하락':'변화 없음';}
+function changeClass(n){return n>0?'stat-up':n<0?'stat-down':'stat-same';}
+function comparisonItem(it,side,slot){
+ const cell=el('th','compare-equipment '+(side==='current'?'compare-current':'compare-selected'));
+ cell.scope='col';cell.dataset.side=side;cell.dataset.itemId=it?.id||0;
+ cell.append(el('span','compare-item-label',side==='current'?'착용 장비':'선택 장비'));
+ const identity=el('div','compare-item-identity');identity.append(itemArt(slot,cls(),true));
+ const copy=el('div','compare-item-copy');identity.append(copy);
+ copy.append(el('strong','compare-item-name',it?R.itemName(it,cls()):'착용 장비 없음'));
+ if(it){cell.style.setProperty('--rarity',R.RARITIES[it.rarity].color);paragraph(copy,R.RARITIES[it.rarity].name+' · LV.'+it.level+' · 강화 +'+it.plus,'compare-item-meta');}
+ else paragraph(copy,R.SLOT_NAMES[slot]+' 미착용','compare-item-meta');
+ cell.append(identity);paragraph(cell,it?.rarity>=3?R.SET_NAMES[it.set]+' 세트':'세트 효과 없음','compare-item-set');
+ return cell;
+}
+function showDescription(id){
+ if(A.getMode()!=='menu')return;DungeonDialogs.close();
+ const info=R.compareEquipment(data(),cls(),id);if(!info)return;
+ itemId=id;if(tab==='inventory'){focusDetails=true;refresh();}A.resetControls();
+ const {item:it,current,delta}=info,body=$('gear-inspect-body');body.replaceChildren();body.dataset.itemId=id;
+ const heading=el('div','inspect-heading'),title=el('div');
+ title.append(el('div','eyebrow','장비 상세 비교'),el('h2','',R.itemName(it,cls())));heading.append(title);body.append(heading);
+ const compare=section('',body);compare.classList.add('gear-comparison');
+ const table=el('table','compare-table');table.setAttribute('aria-label','착용 장비와 선택 장비 능력치 비교');
+ const head=el('thead'),hr=el('tr'),label=el('th','compare-option-heading',R.SLOT_NAMES[it.slot]);label.scope='col';
+ hr.append(label,comparisonItem(current,'current',it.slot),comparisonItem(it,'selected',it.slot));head.append(hr);table.append(head);
+ const rows=el('tbody'),a=current?R.gearStats(current):{atk:0,hp:0,focus:0},b=R.gearStats(it);
+ for(const [key,name]of [['atk','공격력'],['hp','최대 HP'],['focus','집중']]){
+  const row=el('tr'),nameCell=el('th','',name);nameCell.scope='row';row.dataset.stat=key;
+  const old=el('td','compare-old-value',amount(a[key])),next=el('td','compare-next-value');
+  next.append(el('strong','',amount(b[key])),el('span','compare-option-change '+changeClass(b[key]-a[key]),changeLabel(b[key]-a[key])));
+  next.dataset.value=b[key];next.dataset.delta=b[key]-a[key];row.append(nameCell,old,next);rows.append(row);
+ }
+ table.append(rows);compare.append(table);
+ const totals=section(info.allowed?'교체 효과 · 전체 장비와 세트 효과 반영':'장착 레벨 조건 미충족',body),changes=el('div','compare-totals');
+ totals.classList.add('compare-total-section');
+ if(info.allowed)for(const [key,name,before,after]of [['atk','장비 공격력',info.before.gearAtk,info.after.gearAtk],['hp','장비 최대 HP',info.before.gearHp,info.after.gearHp],['focus','장비 집중',info.before.gearFocus,info.after.gearFocus],['power','전투력',info.beforePower,info.afterPower]]){
+  const row=el('div','compare-total-row'),change=el('span','compare-change '+changeClass(delta[key]),changeLabel(delta[key]));
+  change.dataset.stat=key;change.dataset.delta=delta[key];
+  row.append(el('span','compare-total-name',name),el('span','compare-total-values',amount(before)+' → '+amount(after)),change);changes.append(row);
+ }
+ if(!info.allowed)paragraph(totals,'장착할 수 없는 장비입니다. 위 옵션은 비교할 수 있지만 전체 능력치 변화는 적용하지 않습니다.','compare-blocked');totals.append(changes);
+ const worn=current?.id===id;
+ paragraph(body,worn?'현재 착용 중인 장비입니다.':!info.allowed?'장착 불가 · 필요 LV.'+it.level+' / 현재 LV.'+R.level(hero())+'. 장착 레벨 조건을 먼저 충족해야 합니다.':'상승·하락 수치는 선택한 장비로 교체했을 때의 변화입니다.','inspect-advice');
+ if(it.rarity>=3)paragraph(body,'세트 효과: 2개 공격력 +10% / 4개 HP +15% / 6개 집중 +3. 교체로 사라지는 효과도 위 수치에 반영됩니다.','inspect-set');
+ paragraph(body,'집중은 마나 회복을 높이고 스킬 재사용 시간을 줄입니다.','gear-description');
+ const actions=el('div','inspect-actions');
+ actions.append(button(worn?'장비 해제':current?'이 장비로 교체':'이 장비 장착',()=>{const result=worn?commit(s=>R.unequip(s,cls(),id),'장비를 해제했습니다.'):commit(s=>R.equip(s,cls(),id),'장비를 장착·교체했습니다.');if(result?.ok)showDescription(id);},'primary',!worn&&!info.allowed),button('닫기',closeDescription,'outline'));
+ body.append(actions);DungeonDialogs.modal('gear-inspect-screen');body.parentElement.scrollTop=0;
+}
 let servicePage=0,saleClass=-1;const saleChecks=new Set();
 function sell(body){
  const c=hero(),role=cls(),eligible=R.inventoryItems(c,{equipped:'spare',sort:'id',direction:'desc'}).filter(it=>!it.locked),valid=new Set(eligible.map(it=>it.id));

@@ -12,7 +12,7 @@ const profiles=[
  ['clockwork','혈철 태엽','#e89a78','#ffe0a8','gears'],['dawn','여명 심판','#f1d795','#fff6cc','sun']
 ].map(([id,name,color,accent,shape])=>({id,name,color,accent,shape}));
 const byId=Object.fromEntries(profiles.map(p=>[p.id,p])),aliases={guardian:'sentinel',strike:'sentinel',slam:'forge',pounce:'roots',venom:'plague',tidebolt:'tide',runebolt:'chrono',turbine:'current',leviathan:'current',resonance:'current',brood:'plague',mire:'plague',pendulum:'clockwork',gearstorm:'clockwork',bloodmoon:'clockwork',judgement:'dawn',mirror:'dawn',corona:'dawn'};
-let warningDraws=0,impactDraws=0,projectileDraws=0;const stylesSeen=new Set();
+let warningDraws=0,impactDraws=0,projectileDraws=0,bossDraws=0,bossProjectileDraws=0;const stylesSeen=new Set();
 function profile(value){const id=typeof value==='string'?value:value?.vfx||value?.element;return byId[id]||byId[aliases[id]]||profiles[Number.isInteger(value?.region)?clamp(value.region,0,15):0];}
 function lane(){return root.Rift?.LANE||2.6;}
 function low(){return !!root.DungeonSound?.isReducedEffects?.();}
@@ -83,10 +83,26 @@ function warning(c,t,camera,time){
  }
  c.restore();edge(c,t,camera);warningDraws++;stylesSeen.add(p.id);return true;
 }
+// Boss spell ornament is visual only. The floor footprint and final warning edge stay exact.
+function bossMagic(c,p,r,age,height=0){
+ const reduced=low();if(!budget(reduced?2:10))return;bossDraws++;
+ const pulse=Math.sin(Math.PI*clamp(age,0,1)),rise=ease(age/.2),h=(height||Math.max(210,r*1.75))*(.7+rise*.3);
+ c.save();c.globalAlpha*=reduced?.28:.65;c.globalCompositeOperation='screen';
+ const width=r*(reduced?1:1.4);
+ if(!reduced)sprite(c,p,'burst',0,-h*.45,r*2.6,h*1.2,.7*(1-age));
+ const g=c.createLinearGradient(0,-h,0,12);g.addColorStop(0,p.accent+'00');g.addColorStop(.25,p.color+'38');g.addColorStop(.75,p.color+'88');g.addColorStop(1,p.accent+'00');
+ c.fillStyle=g;c.beginPath();c.moveTo(-width*.65,0);c.bezierCurveTo(-width*.36,-h*.36,width*.3,-h*.7,0,-h);c.bezierCurveTo(width*.8,-h*.55,width*.7,-h*.17,width*.65,0);c.fill();
+ c.strokeStyle=p.accent;c.lineWidth=reduced?1.2:2;
+ for(let ring=0;ring<(reduced?1:3);ring++){const y=-h*(.2+ring*.25),rr=width*(.75-ring*.16)*(1-.13*age);c.save();c.translate(0,y);c.scale(1,.25);c.rotate(age*(ring%2?-1:1));polygon(c,rr,ring%2?8:6,ring*.25);c.stroke();c.beginPath();c.arc(0,0,rr*.86,age,age+TAU*.82);c.stroke();c.restore();}
+ if(!reduced)for(let n=0;n<10;n++){const angle=n*2.399+age*1.6,x=Math.cos(angle)*width*(.3+age*.5),y=-h*((n/10+age*.65)%1);star(c,x,y,3+pulse*4,n%2?p.color:p.accent,age+n);}
+ if(!reduced&&pulse>.2){c.lineWidth=2;c.strokeStyle=p.accent+'bb';c.beginPath();c.moveTo(-width*.65,0);c.bezierCurveTo(width*.6,-h*.35,-width*.5,-h*.65,0,-h);c.stroke();}
+ c.restore();
+}
 function windup(c,f,camera,time,p,age){
- const height=f.height||135,focusY=-height*.72,r=f.caster?26:35,ready=ease(age);c.save();c.translate(f.x-camera,f.y);c.globalAlpha*=.22+ready*.5;
+ const height=f.height||135,focusY=-height*.72,r=(f.caster?26:35)*(f.boss?1.7:1),ready=ease(age);c.save();c.translate(f.x-camera,f.y);c.globalAlpha*=.22+ready*.5;
+ if(f.boss)bossMagic(c,p,Math.max(80,height*.55),age,height*1.7);
  c.save();c.scale(1,1/lane());c.strokeStyle=p.color;c.lineWidth=1.6;c.beginPath();c.arc(0,0,r+18*(1-ready),-age*2,TAU-age*2);c.stroke();c.restore();
- sprite(c,p,'burst',0,focusY,65+ready*40,65+ready*40,.55);
+ sprite(c,p,'burst',0,focusY,(65+ready*40)*(f.boss?1.8:1),(65+ready*40)*(f.boss?1.8:1),.55);
  const count=low()?2:5;for(let i=0;i<count;i++){const a=i*TAU/count+age*1.3,d=(1-ready)*48+12,x=Math.cos(a)*d,y=focusY+Math.sin(a)*d*.6;c.fillStyle=i%2?p.color:p.accent;c.beginPath();c.ellipse(x,y,1.2+ready*1.4,2+ready*2,a,0,TAU);c.fill();}
  c.strokeStyle=p.accent;c.lineWidth=1.3;c.beginPath();c.ellipse(0,focusY,r*(.65+ready*.35),r*.32,age*.5,0,TAU);c.stroke();if(!low()&&budget()){c.globalAlpha*=.45;for(let i=0;i<3;i++){c.beginPath();c.moveTo((i-1)*20,0);c.bezierCurveTo((i-1)*38,-height*.3,(1-i)*25,focusY-10,0,focusY);c.strokeStyle=p.color;c.stroke();}}
  c.restore();windupDraws++;stylesSeen.add(p.id);return true;
@@ -99,10 +115,11 @@ function beamImpact(c,f,camera,p,age){
 function effect(c,f,camera,time){
  if(!f.enemy||!['impact','muzzle','windup'].includes(f.type))return false;const p=profile(f),age=clamp(1-f.life/(f.duration||(f.type==='muzzle'?.22:.55)),0,1),L=lane();
  if(f.type==='windup')return windup(c,f,camera,time,p,age);
- if(f.shape==='beam'){beamImpact(c,f,camera,p,age);impactDraws++;stylesSeen.add(p.id);return true;}
- const r=clamp(f.range||f.r||75,18,360),rise=ease(age/.22),fade=(1-age)**.8,n=low()?3:6;
+ if(f.shape==='beam'){beamImpact(c,f,camera,p,age);if(f.boss){c.save();c.translate(f.x-camera,f.y);bossMagic(c,p,Math.max(120,(f.range||40)*2),age,330);c.restore();}impactDraws++;stylesSeen.add(p.id);return true;}
+ const r=clamp(f.range||f.r||75,18,360),rise=ease(age/.22),fade=(1-age)**.8,n=low()?3:f.boss?10:6;
  c.save();c.translate(f.x-camera,f.y-(f.height||0));c.globalAlpha*=fade;
  if(f.inner){const t={x:0,y:0,r,inner:f.inner};footprint(c,t,0);c.clip('evenodd');}
+ if(f.boss)bossMagic(c,p,r,age);
  if(f.type==='muzzle'||f.caster&&f.height){
   sprite(c,p,'burst',0,0,r*3.4,r*2.8,.8);const rr=r*(.4+ease(age)*.65);c.strokeStyle=p.color;c.lineWidth=3;c.beginPath();c.ellipse(0,0,rr,rr*.6,age*.4,0,TAU);c.stroke();for(let i=0;i<n;i++){const a=i*TAU/n,x=Math.cos(a)*rr,y=Math.sin(a)*rr*.65;line(c,[[x*.7,y*.7],[x,y]],i%2?p.color:p.accent,2);}c.restore();impactDraws++;stylesSeen.add(p.id);return true;
  }
@@ -139,7 +156,7 @@ function effect(c,f,camera,time){
 }
 function projectile(c,q,x,y,time){
  if(q.team!=='enemy')return false;const p=profile(q),r=clamp(q.radius||14,9,24),angle=Math.atan2(q.vy-(q.heightV||0),q.vx),phase=time*.8+(q.id||0)*.27;
- c.save();c.translate(x,y-(q.height||135));c.rotate(angle);sprite(c,p,'trail',-29,0,110,28,.85);sprite(c,p,'burst',0,0,r*4.3,r*3.5,.58);c.lineJoin='round';c.lineCap='round';c.strokeStyle=p.color;c.fillStyle=p.color;c.lineWidth=2;c.globalAlpha*=.95;
+ c.save();c.translate(x,y-(q.height||135));c.rotate(angle);if(q.boss){c.scale(low()?1.15:1.7,low()?1.15:1.7);bossProjectileDraws++;}sprite(c,p,'trail',-29,0,110,28,.85);sprite(c,p,'burst',0,0,r*4.3,r*3.5,.58);c.lineJoin='round';c.lineCap='round';c.strokeStyle=p.color;c.fillStyle=p.color;c.lineWidth=2;c.globalAlpha*=.95;
  switch(p.shape){
   case 'crescent':c.save();c.scale(1,.7);c.beginPath();c.arc(0,0,r,-1.3,1.3);c.arc(-r*.28,0,r*.78,1.3,-1.3,true);c.closePath();c.fill();c.strokeStyle=p.accent;c.lineWidth=1;c.stroke();c.restore();break;
   case 'hammer':case 'eruption':debris(c,0,0,r*.8,p,phase,true);if(p.shape==='eruption')flame(c,-r*.4,0,r*2,r*.6,p,phase);break;
@@ -157,5 +174,5 @@ function projectile(c,q,x,y,time){
 }
 function soundFor(value){return {crescent:'blade-wave',hammer:'earth-break',vines:'spear-wind',prism:'ice-break',surge:'arcane-wave',lightning:'arc-chain',dial:'ward-rise',eclipse:'gun-blast',snow:'ice-break',eruption:'fire-cast',meteor:'arc-chain',tentacle:'gun-blast',current:'arcane-wave',spores:'holy-cast',gears:'earth-break',sun:'holy-hit'}[profile(value).shape];}
 function edge(c,t,camera){c.save();c.globalCompositeOperation='source-over';footprint(c,t,camera);c.lineJoin='round';c.strokeStyle='#020712';c.lineWidth=t.life<.28?9:7;c.globalAlpha=.9;c.stroke();c.strokeStyle=t.life<.28?'#fff4d7':profile(t).color;c.lineWidth=t.life<.28?4:2.5;c.globalAlpha=.96;c.stroke();c.restore();}
-root.DungeonEnemyFX={beginFrame,edge,profiles,profile,contains,warning,effect,projectile,soundFor,stats:()=>({warningDraws,impactDraws,projectileDraws,windupDraws,styles:[...stylesSeen],cachedTextures:textures.size,cacheBytes:[...textures.values()].reduce((n,v)=>n+v.width*v.height*4,0),detailUsed,peakDetail,detailLimit:DETAIL_LIMIT})};
+root.DungeonEnemyFX={beginFrame,edge,profiles,profile,contains,warning,effect,projectile,soundFor,stats:()=>({warningDraws,impactDraws,projectileDraws,windupDraws,bossDraws,bossProjectileDraws,styles:[...stylesSeen],cachedTextures:textures.size,cacheBytes:[...textures.values()].reduce((n,v)=>n+v.width*v.height*4,0),detailUsed,peakDetail,detailLimit:DETAIL_LIMIT})};
 })(typeof window!=='undefined'?window:globalThis);

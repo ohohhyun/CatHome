@@ -2,6 +2,12 @@
 
 이 파일을 먼저 읽고 `dungeon-crush/`만 이어서 작업하세요. 사용자에게는 한국어 존댓말을 사용하세요.
 
+## 2.20.2 작업 중 · 사용자 수정 요청
+
+- 2.20.1의 가변 포즈 타이밍/조기 첫 포즈 복귀는 걸음 박자를 악화시켰습니다. 일정한8포즈 박자와 키×260 보폭으로 바꾸며 물리 속도/좌우 보정은 유지합니다. 픽셀 차이별 재생 시간 조절을 다시 적용하지 않습니다.
+- 상세 비교는 착용 장비 왼쪽/선택 장비 오른쪽, 각 옵션과 세트 손실을 반영한 실제 증감으로 표시합니다. 오른쪽 메뉴는 모든 칸 크기를 같게 합니다. 보스 마법은 시전/폭발/잔류/투사체를 크게 보강하며 판정은 보존합니다. [변경·검수 범위](release/CADENCE-COMPARE-BOSS-NOTES.md).
+- 아래2.20.1이 아직 공개 버전입니다.2.20.2는 전체71개 검사·APK/AAB·서명/포함 파일·공개 익명 다운로드 검증 후에만 완료로 바꿉니다.
+
 ## 최신 공개 버전: 2.20.1 RC1 · 좌우 달리기와 마을 화면 수정
 
 - **[APK 바로 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.20.1-rc1/DungeonCrush-2.20.1.apk)** · [설치 안내 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.20.1-rc1/DungeonCrush-2.20.1-RC1.zip) · [릴리스 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.20.1-rc1). 로그인 없이 내려받습니다. 카톡에는 파일 대신 주소를 공유하고 기존 앱을 삭제하지 않은 채 업데이트 설치합니다.

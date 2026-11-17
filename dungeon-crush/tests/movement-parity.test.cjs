@@ -1,7 +1,7 @@
 const fs=require('fs'),vm=require('vm'),assert=require('node:assert/strict');const ctx={Image:class{set src(v){}},document:{createElement:()=>({getContext:()=>({drawImage(){}})})}};ctx.window=ctx;vm.createContext(ctx);for(const n of ['rpg','engine','actors'])vm.runInContext(fs.readFileSync('app/src/main/assets/'+n+'.js','utf8'),ctx);const E=ctx.Rift,A=ctx.DungeonActors;
 for(let cls=0;cls<6;cls++){
  for(const strength of [.2,.55,1]){const pair=[];for(const dir of [-1,1]){const p=E.player(0,'모험가',cls);p.x=1200;p.y=550;const s={world:3000,fx:[],nextId:1};for(let tick=0;tick<120;tick++)E.move(s,p,{x:dir*strength},1/60);pair.push(p);}assert(Math.abs(Math.abs(pair[0].x-1200)-Math.abs(pair[1].x-1200))<1e-8);assert(Math.abs(A.runPhase(pair[0])-A.runPhase(pair[1]))<1e-7);assert.equal(A.frame(pair[0],1).index,A.frame(pair[1],1).index);}
- const p=E.player(0,'모험가',cls);p.action='run';p.hp=100;const stride=A.strideLength(p),hz=E.CLASSES[cls].speed/stride;assert(hz>1.5&&hz<2.9);for(let i=0;i<8;i++){p.gait=A.actors[cls].run.runTimes[i]*stride/210*Math.PI*2;assert.equal(A.frame(p,0).index,i);}
+ const p=E.player(0,'모험가',cls);p.action='run';p.hp=100;const stride=A.strideLength(p),hz=E.CLASSES[cls].speed/stride;assert(hz>1.1&&hz<2.1);for(let i=0;i<8;i++){p.gait=A.actors[cls].run.runTimes[i]*stride/210*Math.PI*2;assert.equal(A.frame(p,0).index,i);}
  for(const epsilon of [-1e-12,1e-12]){p.gait=(stride+epsilon)/210*Math.PI*2;assert.equal(A.frame(p,0).index,0,'same contact pose at floating-point cycle boundary');}
  Object.assign(p,{dir:-1,vx:200,vy:0});assert.equal(A.presentation(p,0).dir,1,'presentation faces actual travel through a reversal');assert.equal(A.locomotion(p,null,1).dir,1);Object.assign(p,{action:'basic',at:.3});assert.equal(A.presentation(p,0).dir,-1,'attacks retain input aiming');assert.equal(A.locomotion(p,null,1).dir,-1);
 }
@@ -27,6 +27,6 @@ for(const record of review.banks){
  assert.deepEqual(Array.from(bank.runTimes),record.times);assert.equal(bank.runTimes[0],0);assert.equal(bank.runTimes[4],.5,'both foot contacts remain half a stride apart');
  for(let i=0;i<8;i++)assert.equal(A.runIndex(bank,bank.runTimes[i]),i,'each complete source pose stays reachable');
  for(const [src,sha]of Object.entries(record.sourceSha256))assert.equal(crypto.createHash('sha256').update(fs.readFileSync('app/src/main/assets/'+src)).digest('hex'),sha,'measured source image preserved');
- for(let tick=0;tick<480;tick++){const index=A.runIndex(bank,tick/480);assert(index>=0&&index<8);}
+ const dwell=Array(8).fill(0);for(let tick=0;tick<480;tick++){const index=A.runIndex(bank,(tick+.25)/480);assert(index>=0&&index<8);dwell[index]++;}assert.deepEqual(dwell,Array(8).fill(60),'every run pose has the same hold duration; no short/long galloping beat');
 }
 console.log('PASS: real stick normalization, all six classes / 30–120Hz / three throws / thumb drift / both turns, immediate reversed travel with continuous gait; measured timing and unmodified full-body sources for all 36 run banks.');

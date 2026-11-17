@@ -6,7 +6,7 @@ assert.equal(Object.keys(R.sanitize(JSON.parse(JSON.stringify(save))).chars[0].e
 for(const it of c.items){assert(R.equip(save,0,it.id).ok);assert.equal(c.equipped[R.SLOTS[it.slot]],it.id);}
 for(const it of c.items){it.rarity=3;it.set=0;it.plus=3;}
 const replacement={id:save.nextId++,owner:0,slot:5,level:60,rarity:2,plus:8,set:0,locked:false};c.items.push(replacement);const before=JSON.stringify(save),comparison=R.compareEquipment(save,0,replacement.id),oldId=c.equipped.ring,profile=R.profile(save,0),power=R.power(save,0);assert.equal(JSON.stringify(save),before,'inspection cannot change saved gear, order or revision');assert.equal(comparison.current.id,oldId);assert.equal(comparison.before.setCount,6);assert.equal(comparison.after.setCount,5);assert.equal(comparison.delta.focus,comparison.after.gearFocus-profile.gearFocus,'comparison includes lost six-piece set bonus');
-assert(R.equip(save,0,replacement.id).ok);assert.equal(c.equipped.ring,replacement.id);assert(c.items.some(it=>it.id===oldId),'replaced item stays in the bag');for(const k of ['atk','hp','focus'])assert.equal(comparison.delta[k],R.profile(save,0)[{atk:'gearAtk',hp:'gearHp',focus:'gearFocus'}[k]]-profile[{atk:'gearAtk',hp:'gearHp',focus:'gearFocus'}[k]]);assert.equal(comparison.delta.power,R.power(save,0)-power);
+assert(R.equip(save,0,replacement.id).ok);assert.equal(c.equipped.ring,replacement.id);assert(c.items.some(it=>it.id===oldId),'replaced item stays in the bag');for(const k of ['atk','hp','focus'])assert.equal(comparison.delta[k],R.profile(save,0)[{atk:'gearAtk',hp:'gearHp',focus:'gearFocus'}[k]]-profile[{atk:'gearAtk',hp:'gearHp',focus:'gearFocus'}[k]]);assert.equal(comparison.delta.power,R.power(save,0)-power);assert.equal(comparison.beforePower,power);assert.equal(comparison.afterPower,R.power(save,0));
 assert(!R.sellGear(save,0,replacement.id).ok);assert(!R.dismantle(save,0,replacement.id).ok);R.unequip(save,0,replacement.id);replacement.locked=true;assert(!R.sellGear(save,0,replacement.id).ok);replacement.locked=false;const gold=save.gold,sale=R.salePrice(replacement);assert(R.sellGear(save,0,replacement.id).ok);assert.equal(save.gold,gold+sale);assert(!c.items.some(it=>it.id===replacement.id));assert(!R.sellGear(save,0,replacement.id).ok,'cannot sell twice');
 for(let slot=0;slot<6;slot++)for(let rarity=0;rarity<2;rarity++){const funds=save.gold,ids={...c.equipped},result=R.buyGear(save,0,slot,rarity);assert(result.ok);assert.equal(result.item.slot,slot);assert.equal(result.item.rarity,rarity);assert.equal(result.item.level,60);assert.equal(save.gold,funds-R.shopPrice(60,rarity));assert.equal(JSON.stringify(c.equipped),JSON.stringify(ids),'purchasing does not silently equip');assert(R.salePrice(result.item)<R.shopPrice(60,rarity));}
 for(const [slot,rarity]of [[-1,0],[6,0],[1,4],[1,NaN],[1.5,0]]){const old=JSON.stringify(save);assert(!R.buyGear(save,0,slot,rarity).ok);assert.equal(JSON.stringify(save),old);}
@@ -14,3 +14,16 @@ save.gold=0;const count=c.items.length;assert(!R.buyGear(save,0,0,0).ok);assert.
 const low=R.sanitize(R.fresh()),item=low.chars[0].items[0];item.level=60;const lowBefore=JSON.stringify(low);assert(!R.equip(low,0,item.id).ok);assert.equal(JSON.stringify(low),lowBefore);
 console.log('PASS: six-slot unequip/reload, one-tap replacement preserving old items, immutable set-aware comparison matching the actual resulting build, level limits, shop gold/bag/rarity guards and worn/locked/double-sale protection.');
 require('./bulk-sale.cjs')(R);
+// A stronger individual piece can still remove a set bonus: compare the actual resulting build.
+for(const setSize of [4,6]){
+ const s=R.sanitize(R.fresh()),h=s.chars[0];h.xp=R.xpAt(60);
+ const setSlots=setSize===4?[0,1,2,5]:[0,1,2,3,4,5];
+ for(const it of h.items){Object.assign(it,{level:30,plus:0,rarity:setSlots.includes(it.slot)?3:0,set:0});}
+ const old=h.items.find(it=>it.slot===5),next={...old,id:s.nextId++,rarity:2,plus:setSize===4?7:15};h.items.push(next);
+ const state=JSON.stringify(s),cmp=R.compareEquipment(s,0,next.id);assert.equal(JSON.stringify(s),state);
+ assert(R.gearStats(next).atk>R.gearStats(old).atk);
+ assert(setSize===4?cmp.delta.hp<0:cmp.delta.focus<0,'set loss must appear as a decrease even for a stronger item');
+ assert(R.equip(s,0,next.id).ok);const actual=R.profile(s,0);
+ for(const [key,field]of [['atk','gearAtk'],['hp','gearHp'],['focus','gearFocus']])assert.equal(cmp.delta[key],actual[field]-cmp.before[field]);
+ assert.equal(cmp.afterPower,R.power(s,0));
+}
