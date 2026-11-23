@@ -1,4 +1,17 @@
-## 최신 공개 버전: 2.20.3 RC1 · 전 캐릭터 양발 이동·전체 메뉴 칸 수정
+## 최신 공개 버전: 2.20.4 RC1 · 장비 그림·강화·가방 비교
+
+- **[APK 바로 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.20.4-rc1/DungeonCrush-2.20.4.apk)** · [설치 안내 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.20.4-rc1/DungeonCrush-2.20.4-RC1.zip) · [릴리스 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.20.4-rc1). 로그인 없이 내려받습니다. 카톡에는 주소를 공유하고 기존 앱을 삭제하지 않은 채 업데이트 설치합니다.
+- 장비36개·재화6개를 각각의 그림 영역으로 분리해 옆 아이템 조각이 섞이는 문제를 수정했습니다. 아리아·엘리안 장비12개도 다른4직업과 같은 무테·투명 배경으로 통일했습니다. 기존 스킬 그림과4직업의 장비 원본은 유지하고 새 PNG·무손실 WebP·알파 검수를 기록합니다. 무기·물약·착용·가방·상세·제작·판매·강화에 공통 적용합니다.
+- 강화는 대상 목록,현재→다음 능력치·증가량,보유/필요 골드·철편,100% 성공 안내,최종 확인으로 정리했습니다. 작은 화면은 내용만 스크롤하고 실행 버튼을 유지합니다. 기존 비용·효과·최대+15·저장 규칙은 유지합니다.
+- 가방 미착용 장비는 **하나라도 옵션이 오르면 녹색↑**, 상승 옵션이 없으면 빨간색↓입니다. 같은 수치도 상승 없음이며 착용 중에는 화살표를 붙이지 않습니다. 레벨 제한과 상세 비교의 개별/세트 손실 안내는 유지합니다.
+- [원인·공식 게임 참고·비교 화면](EQUIPMENT-UPGRADE-NOTES.md) · [상세 검수](EQUIPMENT-UPGRADE-VERIFICATION.json).42개 아이콘×두 화면 비율84개 실제 렌더를 독립 원본 추출과 비교하고,576개 강화 예측과6개 일반/확대 안전영역 화면·취소/중복/상태 변경/저장 실패/재료 부족/최대/빈 가방을 검사했습니다.
+- 검증 소스 `c33902aceec4385eef28ffdff69062616b131135`. [최종 전체 **71개 검사(코드34 + Java2 + Chrome35)**와 APK/AAB·Android lint·기존 서명·포함 파일 검증 성공](https://github.com/ohohhyun/CatHome/actions/runs/45144912234). 이 최종 빌드의 검사 실패0건입니다. 기존 전수 이동·장비 비교·보스 효과·터치/4인·닉네임/변경권·성장/랭킹/저장 회귀를 포함합니다.
+- APK **514,337,684 bytes**, SHA-256 `85f017acf5a4568afb854623a6f28a40074848f0a202772e4030d38278a4b499`. ZIP **514,339,302 bytes**, SHA-256 `93b13c1672b8bc5250631bff76aee7963c0f175238b67bc72cc397a7a11a5751`. [공개 게시·익명 전체 다운로드 검증](https://github.com/ohohhyun/CatHome/actions/runs/45149719690): 크기·해시·ZIP CRC·내부 APK 일치. 별도 익명 HEAD도 두 파일 HTTP200입니다. [배포 기록](2.20.4-VERIFICATION.json).
+- versionName2.20.4 / versionCode53 / 저장2 / Wi-Fi12 / 설치 인증서 `e43fedd9099e7b5df82eccfa3e92fc020d429ad99795463abbe40e2af4880708` 유지. 기존 이름·ID·계급·성장·장비·XP·외형·보상 기록을 보존합니다. 닉네임 최초 무료 저장/이후 변경권1개·3,900원/결제 전 구매 불가,4모드·공유 AI PK·기존5종 랭킹·매주 보상/2주 초기화·걷기 없는 미리보기·자동 저장을 유지합니다. 기존 양발 이동·메뉴12칸·오른쪽 아래 접기/펼치기·왼쪽 위 정보만·타이틀 상점 제거도 유지합니다. 서버·DB·실결제는 연결하지 않습니다.
+- **남은 실기기 검수:** Android52→53 업데이트/저장·변경권 보존, 실제 손가락 조작감과 보행 체감, 시스템 글자/키보드/터치 스크롤, 물리 Wi-Fi2~4대, 장시간 FPS/발열/음량. 자동 검사 통과를 모든 환경의 무결함 보장이나 실기기 완료로 표현하지 않습니다.
+- 집사 사절 원본 보호: app `a70564ab782100b61cf07077e52753370e199045`, legacy `8bb4cd16f95ce641b3fa31296b021d8f976cb7e6`, root tests `07eea64ee955f5580a13a9f237490d346ceefe7a`. 이후 게시/문서 커밋은 검증 앱 소스를 바꾸지 않습니다.
+
+## 이전 공개 버전: 2.20.3 RC1 · 전 캐릭터 양발 이동·전체 메뉴 칸 수정
 
 - **[APK 바로 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.20.3-rc1/DungeonCrush-2.20.3.apk)** · [설치 안내 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.20.3-rc1/DungeonCrush-2.20.3-RC1.zip) · [릴리스 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.20.3-rc1). 로그인 없이 내려받습니다. 카톡에는 주소를 공유하고 기존 앱을 삭제하지 않은 채 업데이트 설치합니다.
 - 기본6종·외형30종의 이동을 새 전신8포즈로 교체했습니다. 양발의 교대가 읽히도록 가까운 다리/먼 다리를 구분하고, 느린 이동은 접지, 달리기는 공중 포즈를 유지합니다. 일반 이동의 발을 가리던 먼지·속도 선·문양을 제거했습니다. 물리 이동 속도·좌우 입력·전투·성장은 유지합니다.

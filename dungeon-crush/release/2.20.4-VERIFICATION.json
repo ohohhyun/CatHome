@@ -1,0 +1,174 @@
+{
+  "version": "2.20.4 RC1",
+  "versionCode": 53,
+  "source": "c33902aceec4385eef28ffdff69062616b131135",
+  "buildRun": 45144912234,
+  "publishRun": 45149719690,
+  "releaseId": 455224189,
+  "checksPassed": 71,
+  "checksFailed": 0,
+  "checks": {
+    "scripts": [
+      "tests/enemy-effects.test.cjs",
+      "tests/progression-balance.test.cjs",
+      "tests/nickname-ticket.test.cjs",
+      "tests/name-policy.test.cjs",
+      "tests/movement-parity.test.cjs",
+      "tests/monster-audio.test.cjs",
+      "tests/pk.test.cjs",
+      "tests/hero-height.test.cjs",
+      "tests/motion-stability.test.cjs",
+      "tests/premium.test.cjs",
+      "tests/premium-art.test.cjs",
+      "tests/key-art.test.cjs",
+      "tests/background-cache.test.cjs",
+      "tests/frontier.test.cjs",
+      "tests/game.test.cjs",
+      "tests/caster.test.cjs",
+      "tests/ranged.test.cjs",
+      "tests/navigation.test.cjs",
+      "tests/generated-art.test.cjs",
+      "tests/combat-timing.test.cjs",
+      "tests/rpg.test.cjs",
+      "tests/inventory.test.cjs",
+      "tests/equipment-services.test.cjs",
+      "tests/release.test.cjs",
+      "tests/rankings.test.cjs",
+      "tests/ranking-client.test.cjs",
+      "tests/sound.test.cjs",
+      "tests/font-coverage.test.cjs",
+      "tests/ui-layout.test.cjs",
+      "tests/party-recovery.test.cjs",
+      "tests/run-cast-fix.test.cjs",
+      "tests/new-content.test.cjs",
+      "tests/expansion.test.cjs",
+      "tests/hotfix.test.cjs",
+      "tests/menu-repair-presentation.test.cjs",
+      "tests/player-experience-presentation.test.cjs",
+      "tests/enemy-effects-presentation.test.cjs",
+      "tests/progression-presentation.test.cjs",
+      "tests/pk-presentation.test.cjs",
+      "tests/navigation-presentation.test.cjs",
+      "tests/hero-height-presentation.test.cjs",
+      "tests/motion-stability-presentation.test.cjs",
+      "tests/premium-size-presentation.test.cjs",
+      "tests/premium-scene-size.test.cjs",
+      "tests/key-art-presentation.test.cjs",
+      "tests/premium-presentation.test.cjs",
+      "tests/premium-rendering.test.cjs",
+      "tests/town-services.test.cjs",
+      "tests/release-presentation.test.cjs",
+      "tests/rankings-presentation.test.cjs",
+      "tests/frontier-presentation.test.cjs",
+      "tests/sound-presentation.test.cjs",
+      "tests/inventory-ui.test.cjs",
+      "tests/new-content-presentation.test.cjs",
+      "tests/expansion-presentation.test.cjs",
+      "tests/hotfix-presentation.test.cjs",
+      "tests/coherent-motion-presentation.test.cjs",
+      "tests/actor-size-presentation.test.cjs",
+      "tests/run-skill-presentation.test.cjs",
+      "tests/motion24-presentation.test.cjs",
+      "tests/generated-presentation.test.cjs",
+      "tests/exploration.test.cjs",
+      "tests/locomotion.test.cjs",
+      "tests/ranged-presentation.test.cjs",
+      "tests/combat-presentation.test.cjs",
+      "tests/layout.test.cjs",
+      "tests/presentation.test.cjs",
+      "tests/browser.test.cjs",
+      "tests/party-recovery-presentation.test.cjs"
+    ],
+    "native": [
+      "LanTransportTest",
+      "RankingHttpClientTest"
+    ],
+    "total": 71
+  },
+  "saveFormat": 2,
+  "wifiProtocol": 12,
+  "signerSha256": "e43fedd9099e7b5df82eccfa3e92fc020d429ad99795463abbe40e2af4880708",
+  "protectedTrees": {
+    "app": "a70564ab782100b61cf07077e52753370e199045",
+    "legacy": "8bb4cd16f95ce641b3fa31296b021d8f976cb7e6",
+    "tests": "07eea64ee955f5580a13a9f237490d346ceefe7a"
+  },
+  "remainingPhysicalChecks": [
+    "Android52→53 업데이트 설치와 저장·닉네임·변경권 보존",
+    "실제 손가락 조작감과 보행 체감",
+    "Android 시스템 글자·키보드·터치 스크롤",
+    "물리 Wi-Fi 2~4대",
+    "장시간 FPS·발열·음량"
+  ],
+  "apk": {
+    "bytes": 514337684,
+    "sha256": "85f017acf5a4568afb854623a6f28a40074848f0a202772e4030d38278a4b499",
+    "url": "https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.20.4-rc1/DungeonCrush-2.20.4.apk",
+    "artifactId": 14805382803
+  },
+  "zip": {
+    "bytes": 514339302,
+    "sha256": "93b13c1672b8bc5250631bff76aee7963c0f175238b67bc72cc397a7a11a5751",
+    "url": "https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.20.4-rc1/DungeonCrush-2.20.4-RC1.zip"
+  },
+  "anonymousDownloadVerification": {
+    "publisherRun": 45149719690,
+    "completeAPK": true,
+    "completeZIP": true,
+    "sizeAndSHA256": true,
+    "zipCRC": true,
+    "embeddedAPKMatches": true,
+    "separateHEAD": {
+      "apk": 200,
+      "zip": 200
+    }
+  },
+  "supersededRuns": [
+    {
+      "run": 45111001016,
+      "source": "5e2d3df5611eaa7239977c72d8a375dd2d769a4e",
+      "conclusion": "failure",
+      "phase": "Install video encoder for real combat capture",
+      "reason": "ubuntu-latest upgraded to Ubuntu26.04; pinned Playwright1.56.1 does not support ffmpeg on ubuntu26.04-x64. Pin runner to supported Ubuntu24.04; all game code and native checks had passed; APK build not reached.",
+      "appUnchanged": true
+    },
+    {
+      "run": 45111370454,
+      "source": "58efec0e4d3a837b0be71490ab8188106fe05356",
+      "conclusion": "cancelled",
+      "reason": "Local full regression found an obsolete mage equipment assertion checking backgroundImage after intentional isolated SVG rendering. All84 independent real crop comparisons had passed. Update test to verify every mage gear viewport uses the original mage source. App bytes unchanged. Cancelled before APK build.",
+      "appUnchanged": true
+    }
+  ],
+  "localSupersededChecks": [
+    {
+      "test": "tests/new-content-presentation.test.cjs",
+      "exit": 1,
+      "seconds": 8.2
+    },
+    {
+      "test": "tests/exploration.test.cjs",
+      "exit": 1,
+      "seconds": 16.3
+    }
+  ],
+  "postUnificationChecks": [
+    {
+      "test": "upgrade-new-icons",
+      "exit": 0,
+      "seconds": 34.6
+    },
+    {
+      "test": "new-content-new-icons",
+      "exit": 0,
+      "seconds": 36.9
+    },
+    {
+      "test": "exploration-new-icons",
+      "exit": 0,
+      "seconds": 16.0
+    }
+  ],
+  "classGearReview": "Actual both-class inventory/forge/six worn gear slots and live combat weapon buttons; screenshots reviewed and source metadata verified.",
+  "additionalCheck": "Twelve new transparent frameless Aria/Elian equipment illustrations match the original four-class icon family. Original skill sheets and first-four-class equipment retained, source PNG/exact-RGBA lossless WebP registered. 42 source-isolated gear/currency images at square/landscape aspect ratios matched to independently reviewed rectangles. Original source SHA preservation. 576 immutable enhancement quotes matched to exact existing costs/results. Bag hints for any improvement, equal/down/no equipment/set loss/level restriction; worn no arrows; filters/equip refresh. Forge selection/preview/final confirm with resource counts, six normal/enlarged safe layouts and fixed actions, cancel/read-only, duplicate and stale quotes, failed persistence rollback, shortage/max15/empty inventory. Existing movement, menu, boss FX, progression, nickname/tickets, rankings, PK, weekly/two-week rewards and save unchanged."
+}

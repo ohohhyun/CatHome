@@ -1,0 +1,1031 @@
+{
+  "passed": true,
+  "icons": [
+    {
+      "row": 0,
+      "slot": 0,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 0,
+      "slot": 1,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 0,
+      "slot": 2,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 0,
+      "slot": 3,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 0,
+      "slot": 4,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 0,
+      "slot": 5,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 1,
+      "slot": 0,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 1,
+      "slot": 1,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 1,
+      "slot": 2,
+      "width": 72,
+      "height": 72,
+      "mean": 0.18357767489711935
+    },
+    {
+      "row": 1,
+      "slot": 3,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 1,
+      "slot": 4,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 1,
+      "slot": 5,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 2,
+      "slot": 0,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 2,
+      "slot": 1,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 2,
+      "slot": 2,
+      "width": 72,
+      "height": 72,
+      "mean": 0.0606835133744856
+    },
+    {
+      "row": 2,
+      "slot": 3,
+      "width": 72,
+      "height": 72,
+      "mean": 0.058256172839506175
+    },
+    {
+      "row": 2,
+      "slot": 4,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 2,
+      "slot": 5,
+      "width": 72,
+      "height": 72,
+      "mean": 0.022376543209876542
+    },
+    {
+      "row": 3,
+      "slot": 0,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 3,
+      "slot": 1,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 3,
+      "slot": 2,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 3,
+      "slot": 3,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 3,
+      "slot": 4,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 3,
+      "slot": 5,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 4,
+      "slot": 0,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 4,
+      "slot": 1,
+      "width": 72,
+      "height": 72,
+      "mean": 0.3389113940329218
+    },
+    {
+      "row": 4,
+      "slot": 2,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 4,
+      "slot": 3,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 4,
+      "slot": 4,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 4,
+      "slot": 5,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 5,
+      "slot": 0,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 5,
+      "slot": 1,
+      "width": 72,
+      "height": 72,
+      "mean": 0.5460390946502057
+    },
+    {
+      "row": 5,
+      "slot": 2,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 5,
+      "slot": 3,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 5,
+      "slot": 4,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 5,
+      "slot": 5,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 6,
+      "slot": 0,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 6,
+      "slot": 1,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 6,
+      "slot": 2,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 6,
+      "slot": 3,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 6,
+      "slot": 4,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 6,
+      "slot": 5,
+      "width": 72,
+      "height": 72,
+      "mean": 0
+    },
+    {
+      "row": 0,
+      "slot": 0,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 0,
+      "slot": 1,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 0,
+      "slot": 2,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 0,
+      "slot": 3,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 0,
+      "slot": 4,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 0,
+      "slot": 5,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 1,
+      "slot": 0,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 1,
+      "slot": 1,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 1,
+      "slot": 2,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 1,
+      "slot": 3,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 1,
+      "slot": 4,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 1,
+      "slot": 5,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 2,
+      "slot": 0,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 2,
+      "slot": 1,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 2,
+      "slot": 2,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 2,
+      "slot": 3,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 2,
+      "slot": 4,
+      "width": 108,
+      "height": 80,
+      "mean": 0.09214891975308642
+    },
+    {
+      "row": 2,
+      "slot": 5,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 3,
+      "slot": 0,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 3,
+      "slot": 1,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 3,
+      "slot": 2,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 3,
+      "slot": 3,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 3,
+      "slot": 4,
+      "width": 108,
+      "height": 80,
+      "mean": 0.06834490740740741
+    },
+    {
+      "row": 3,
+      "slot": 5,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 4,
+      "slot": 0,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 4,
+      "slot": 1,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 4,
+      "slot": 2,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 4,
+      "slot": 3,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 4,
+      "slot": 4,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 4,
+      "slot": 5,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 5,
+      "slot": 0,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 5,
+      "slot": 1,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 5,
+      "slot": 2,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 5,
+      "slot": 3,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 5,
+      "slot": 4,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 5,
+      "slot": 5,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 6,
+      "slot": 0,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 6,
+      "slot": 1,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 6,
+      "slot": 2,
+      "width": 108,
+      "height": 80,
+      "mean": 0.09112654320987654
+    },
+    {
+      "row": 6,
+      "slot": 3,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 6,
+      "slot": 4,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    },
+    {
+      "row": 6,
+      "slot": 5,
+      "width": 108,
+      "height": 80,
+      "mean": 0
+    }
+  ],
+  "layoutCount": 6,
+  "checks": [
+    "42 independent reviewed source crops at square and landscape sizes",
+    "source SHA preservation",
+    "green any option/up, red equal/down, restricted level, filters and equipment refresh",
+    "visible fixed action with 1.4x text/safe edges/scroll",
+    "read-only selection/cancel",
+    "exact single transaction and double-click prevention",
+    "stale quote rejection",
+    "save-failure exact rollback/no false success",
+    "resource shortfall/max15/empty inventory"
+  ],
+  "equipmentStyle": {
+    "original": "art-source/equipment2204/extra-gear.png",
+    "originalSha256": "a7dfd39d3ace8313d9ee9052044b3c324dcddf3b34105c7e9ec55c91fd03acc7",
+    "generator": "OpenAI image_gen",
+    "generated": "2026-11-23",
+    "layout": "3 columns x 4 rows; six Aria then six Elian items; gear only, frameless transparent background matching the other four classes",
+    "decodedRGBAIdentical": true,
+    "cellCornerAlpha": [
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  },
+  "source": "c33902aceec4385eef28ffdff69062616b131135",
+  "fullBuild": {
+    "run": 45144912234,
+    "passed": 71,
+    "failed": 0,
+    "apkAabLintSignerAndResources": true
+  },
+  "publication": {
+    "run": 45149719690,
+    "releaseId": 455224189,
+    "anonymousFullDownloads": true,
+    "separateHEAD": {
+      "apk": 200,
+      "zip": 200
+    }
+  },
+  "localRules": [
+    {
+      "test": "tests/enemy-effects.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/progression-balance.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/nickname-ticket.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/name-policy.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/movement-parity.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/monster-audio.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/pk.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/hero-height.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/motion-stability.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/premium.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/premium-art.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/key-art.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/background-cache.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/frontier.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/game.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/caster.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/ranged.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/navigation.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/generated-art.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/combat-timing.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/rpg.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/inventory.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/equipment-services.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/release.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/rankings.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/ranking-client.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/sound.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/font-coverage.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/ui-layout.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/party-recovery.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/run-cast-fix.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/new-content.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/expansion.test.cjs",
+      "passed": true
+    },
+    {
+      "test": "tests/hotfix.test.cjs",
+      "passed": true
+    }
+  ],
+  "localBrowserChecks": [
+    {
+      "test": "tests/menu-repair-presentation.test.cjs",
+      "exit": 0,
+      "seconds": 77.4
+    },
+    {
+      "test": "tests/player-experience-presentation.test.cjs",
+      "exit": 0,
+      "seconds": 34.9
+    },
+    {
+      "test": "tests/enemy-effects-presentation.test.cjs",
+      "exit": 0,
+      "seconds": 84.4
+    },
+    {
+      "test": "tests/progression-presentation.test.cjs",
+      "exit": 0,
+      "seconds": 44.9
+    },
+    {
+      "test": "tests/pk-presentation.test.cjs",
+      "exit": 0,
+      "seconds": 79.1
+    },
+    {
+      "test": "tests/navigation-presentation.test.cjs",
+      "exit": 0,
+      "seconds": 70.6
+    },
+    {
+      "test": "tests/hero-height-presentation.test.cjs",
+      "exit": 0,
+      "seconds": 42.5
+    },
+    {
+      "test": "tests/motion-stability-presentation.test.cjs",
+      "exit": 0,
+      "seconds": 127.3
+    },
+    {
+      "test": "tests/premium-size-presentation.test.cjs",
+      "exit": 0,
+      "seconds": 26.5
+    },
+    {
+      "test": "tests/premium-scene-size.test.cjs",
+      "exit": 0,
+      "seconds": 320.9
+    },
+    {
+      "test": "tests/key-art-presentation.test.cjs",
+      "exit": 0,
+      "seconds": 56.7
+    },
+    {
+      "test": "tests/premium-presentation.test.cjs",
+      "exit": 0,
+      "seconds": 285.4
+    },
+    {
+      "test": "tests/premium-rendering.test.cjs",
+      "exit": 0,
+      "seconds": 129.7
+    },
+    {
+      "test": "tests/town-services.test.cjs",
+      "exit": 0,
+      "seconds": 91.4
+    },
+    {
+      "test": "tests/release-presentation.test.cjs",
+      "exit": 0,
+      "seconds": 28.4
+    },
+    {
+      "test": "tests/rankings-presentation.test.cjs",
+      "exit": 0,
+      "seconds": 12.8
+    },
+    {
+      "test": "tests/frontier-presentation.test.cjs",
+      "exit": 0,
+      "seconds": 43.1
+    },
+    {
+      "test": "tests/sound-presentation.test.cjs",
+      "exit": 0,
+      "seconds": 11.0
+    },
+    {
+      "test": "tests/inventory-ui.test.cjs",
+      "exit": 0,
+      "seconds": 157.0
+    },
+    {
+      "test": "tests/new-content-presentation.test.cjs",
+      "exit": 0,
+      "seconds": 36.9,
+      "supersededExit": 1,
+      "retest": "new-content-new-icons",
+      "reason": "Old background-image assumptions updated to verify every real isolated SVG source and decoded controls after the new icon art."
+    },
+    {
+      "test": "tests/expansion-presentation.test.cjs",
+      "exit": 0,
+      "seconds": 73.2
+    },
+    {
+      "test": "tests/hotfix-presentation.test.cjs",
+      "exit": 0,
+      "seconds": 156.8
+    },
+    {
+      "test": "tests/coherent-motion-presentation.test.cjs",
+      "exit": 0,
+      "seconds": 111.5
+    },
+    {
+      "test": "tests/actor-size-presentation.test.cjs",
+      "exit": 0,
+      "seconds": 19.6
+    },
+    {
+      "test": "tests/run-skill-presentation.test.cjs",
+      "exit": 0,
+      "seconds": 44.1
+    },
+    {
+      "test": "tests/motion24-presentation.test.cjs",
+      "exit": 0,
+      "seconds": 42.4
+    },
+    {
+      "test": "tests/generated-presentation.test.cjs",
+      "exit": 0,
+      "seconds": 78.9
+    },
+    {
+      "test": "tests/exploration.test.cjs",
+      "exit": 0,
+      "seconds": 16.0,
+      "supersededExit": 1,
+      "retest": "exploration-new-icons",
+      "reason": "Old background-image assumptions updated to verify every real isolated SVG source and decoded controls after the new icon art."
+    },
+    {
+      "test": "tests/locomotion.test.cjs",
+      "exit": 0,
+      "seconds": 35.8
+    },
+    {
+      "test": "tests/ranged-presentation.test.cjs",
+      "exit": 0,
+      "seconds": 13.3
+    },
+    {
+      "test": "tests/combat-presentation.test.cjs",
+      "exit": 0,
+      "seconds": 20.3
+    },
+    {
+      "test": "tests/layout.test.cjs",
+      "exit": 0,
+      "seconds": 62.6
+    },
+    {
+      "test": "tests/presentation.test.cjs",
+      "exit": 0,
+      "seconds": 30.1
+    },
+    {
+      "test": "tests/browser.test.cjs",
+      "exit": 0,
+      "seconds": 87.8
+    },
+    {
+      "test": "tests/party-recovery-presentation.test.cjs",
+      "exit": 0,
+      "seconds": 53.2
+    }
+  ],
+  "remainingPhysical": [
+    "Android52→53 업데이트 설치와 저장·닉네임·변경권 보존",
+    "실제 손가락 조작감과 보행 체감",
+    "Android 시스템 글자·키보드·터치 스크롤",
+    "물리 Wi-Fi 2~4대",
+    "장시간 FPS·발열·음량"
+  ]
+}

@@ -28,3 +28,13 @@
 - [기존 강화 화면](equipment-upgrade/before-forge.png) · [개선한 강화 화면](equipment-upgrade/forge-1280.png) · [작은 화면](equipment-upgrade/forge-640.png)
 - [최종 확인](equipment-upgrade/confirm-1280.png) · [작은 화면의 스크롤 확인창](equipment-upgrade/confirm-640.png)
 - [두 직업의 기존 프레임](equipment-upgrade/before-all-42-icons.png) · [전 직업 장비36개·재화6개 무테 통일 검수](equipment-upgrade/all-42-icons.png)
+
+[아리아 실제 가방](equipment-upgrade/gear-class-4-inventory.png) · [엘리안 실제 강화](equipment-upgrade/gear-class-5-forge.png) · [지팡이 전투 버튼](equipment-upgrade/gear-class-4-attack.png) · [망치 전투 버튼](equipment-upgrade/gear-class-5-attack.png)
+
+[가방의 녹색↑·빨간색↓](equipment-upgrade/equipment-upgrade-inventory.png) · [작은 화면1.4배 글자](equipment-upgrade/equipment-upgrade-confirm-640-1.4.png)
+
+## 최종 공개 검증
+
+전체71개 검사·APK/AAB·Android lint·서명·포함 파일 검증: https://github.com/ohohhyun/CatHome/actions/runs/45144912234
+
+APK/ZIP 익명 전체 다운로드·크기·해시·CRC 검증: https://github.com/ohohhyun/CatHome/actions/runs/45149719690
