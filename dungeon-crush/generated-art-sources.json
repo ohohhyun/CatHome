@@ -1,9 +1,9 @@
 {
-  "version": "2.20.3",
+  "version": "2.20.4",
   "generator": "OpenAI image_gen",
   "characterFrames": 272,
   "effectFrames": 240,
-  "notes": "2.9.2 replaces mixed locomotion with single-atlas eight-pose runs, eight dedicated jump poses and four held dash poses. Upper-body run layer remains fixed. Incompatible locomotion intermediates remain source-only. Critical movement atlases are prepared and pinned before play. Combat clips and 2.9.1 skill/death-cast fixes remain. 2.9.3 applies reviewed per-class run body scale at the common ground anchor; all other pose scales, movement timing and original artwork bytes stay unchanged. 2.9.4 separates equipped status/art/name layout, adds inventory grade/worn filters and ascending/descending sorting, and audits UI text; all artwork and 2.9.3 motion scales are retained. 2.9.5 adds three generated town residents; equipment taps equip/unequip, long presses inspect set-aware comparisons and town residents provide shops, forging and training. Existing combat/motion artwork bytes are retained. 2.20.3 replaces six base and thirty costume locomotion banks with 288 guided alternating-foot full-body poses. One opaque body is rendered per actor; low-speed stance and full-speed flight use their own ground anchors. Run art has no baked afterimages. Original generated PNGs and measurements remain source-only.",
+  "notes": "2.9.2 replaces mixed locomotion with single-atlas eight-pose runs, eight dedicated jump poses and four held dash poses. Upper-body run layer remains fixed. Incompatible locomotion intermediates remain source-only. Critical movement atlases are prepared and pinned before play. Combat clips and 2.9.1 skill/death-cast fixes remain. 2.9.3 applies reviewed per-class run body scale at the common ground anchor; all other pose scales, movement timing and original artwork bytes stay unchanged. 2.9.4 separates equipped status/art/name layout, adds inventory grade/worn filters and ascending/descending sorting, and audits UI text; all artwork and 2.9.3 motion scales are retained. 2.9.5 adds three generated town residents; equipment taps equip/unequip, long presses inspect set-aware comparisons and town residents provide shops, forging and training. Existing combat/motion artwork bytes are retained. 2.20.3 replaces six base and thirty costume locomotion banks with 288 guided alternating-foot full-body poses. One opaque body is rendered per actor; low-speed stance and full-speed flight use their own ground anchors. Run art has no baked afterimages. Original generated PNGs and measurements remain source-only. 2.20.4 replaces the two newer classes framed equipment images with twelve generated frameless transparent gear icons matching the original four classes. Original skill sheets remain unchanged. Lossless runtime is decoded-RGBA identical to the generated PNG.",
   "assets": [
     {
       "id": "kael",
@@ -19941,6 +19941,25 @@
       "minimumQuality": 95,
       "encoding": "lossless",
       "frames": 8
+    },
+    {
+      "id": "unified-extra-equipment",
+      "file": "art/equipment2204/extra-gear.webp",
+      "bytes": 1405790,
+      "sha256": "68c29a05a212b2a11f7ea699ec13abdaa20326af7c5d2b364d53868767c76eb5",
+      "width": 1086,
+      "height": 1448,
+      "columns": 3,
+      "rows": 4,
+      "frames": 12,
+      "generator": "OpenAI image_gen",
+      "generated": "2026-11-23",
+      "originalOutput": "exec-1ce7d82e-230c-4800-a8e1-88ad207e0932.png",
+      "originalFile": "art-source/equipment2204/extra-gear.png",
+      "originalSha256": "a7dfd39d3ace8313d9ee9052044b3c324dcddf3b34105c7e9ec55c91fd03acc7",
+      "encoding": "lossless WebP; decoded RGBA verified identical to original PNG",
+      "opaqueRgbPSNR": 99,
+      "packaged": true
     }
   ],
   "activeCharacterFrames": 744,
@@ -19970,5 +19989,7 @@
   "selectionBackgrounds": 1,
   "selectionCutouts": 5,
   "locomotionCount": 36,
-  "locomotionFrames": 288
+  "locomotionFrames": 288,
+  "unifiedEquipmentAtlases": 1,
+  "unifiedEquipmentIcons": 12
 }

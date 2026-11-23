@@ -1,6 +1,6 @@
 {
   "version": "2.20.4",
-  "method": "Reviewed opaque connected-component bounds (alpha >180, component >=350 pixels), paired boots/gauntlets united, one-pixel margin. Exact isolated viewport, no atlas cell-width assumption.",
+  "method": "Reviewed opaque connected-component bounds (alpha >180, component >=350 pixels), paired boots/gauntlets united, one-pixel margin. Exact isolated viewport, no atlas cell-width assumption. Aria/Elian twelve equipment icons replaced with generated transparent frameless art; reviewed each 362x362 cell and isolated item bounds. Original skill sheets remain unchanged.",
   "sources": [
     {
       "file": "art/advanced/equipment.webp",
@@ -19,6 +19,12 @@
       "width": 2172,
       "height": 724,
       "sha256": "b82ea004a88cb624747bb7336f5ce15b4ac1f16607222b6280fe195c938ea19e"
+    },
+    {
+      "file": "art/equipment2204/extra-gear.webp",
+      "width": 1086,
+      "height": 1448,
+      "sha256": "68c29a05a212b2a11f7ea699ec13abdaa20326af7c5d2b364d53868767c76eb5"
     }
   ],
   "baseRects": [
@@ -215,40 +221,162 @@
   ],
   "extraRects": [
     [
-      0,
-      362,
-      362,
-      362
+      [
+        29,
+        20,
+        300,
+        334
+      ],
+      [
+        395,
+        12,
+        300,
+        348
+      ],
+      [
+        785,
+        21,
+        207,
+        341
+      ],
+      [
+        49,
+        395,
+        272,
+        303
+      ],
+      [
+        415,
+        382,
+        257,
+        303
+      ],
+      [
+        753,
+        425,
+        281,
+        252
+      ]
     ],
     [
-      362,
-      362,
-      362,
-      362
-    ],
-    [
-      724,
-      362,
-      362,
-      362
-    ],
-    [
-      1086,
-      362,
-      362,
-      362
-    ],
-    [
-      1448,
-      362,
-      362,
-      362
-    ],
-    [
-      1810,
-      362,
-      362,
-      362
+      [
+        73,
+        734,
+        260,
+        329
+      ],
+      [
+        374,
+        733,
+        336,
+        325
+      ],
+      [
+        771,
+        734,
+        232,
+        328
+      ],
+      [
+        49,
+        1121,
+        275,
+        298
+      ],
+      [
+        425,
+        1101,
+        236,
+        319
+      ],
+      [
+        758,
+        1138,
+        276,
+        267
+      ]
     ]
-  ]
+  ],
+  "extraStyle": {
+    "original": "art-source/equipment2204/extra-gear.png",
+    "originalSha256": "a7dfd39d3ace8313d9ee9052044b3c324dcddf3b34105c7e9ec55c91fd03acc7",
+    "generator": "OpenAI image_gen",
+    "generated": "2026-11-23",
+    "layout": "3 columns x 4 rows; six Aria then six Elian items; gear only, frameless transparent background matching the other four classes",
+    "decodedRGBAIdentical": true,
+    "cellCornerAlpha": [
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0,
+        0
+      ],
+      [
+        1,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ],
+      [
+        0,
+        0,
+        0,
+        0
+      ]
+    ]
+  }
 }
