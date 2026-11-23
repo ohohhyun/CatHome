@@ -1,6 +1,20 @@
-# 던전크러시! 2.20.4
+# 던전크러시! 2.20.5
 
-## 최신 공개 버전: 2.20.4 RC1 · 장비 그림·강화·가방 비교
+## 최신 공개 버전: 2.20.5 RC1 · 전 직업·유료 외형 신체 크기 통일
+
+- **[APK 바로 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.20.5-rc1/DungeonCrush-2.20.5.apk)** · [설치 안내 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.20.5-rc1/DungeonCrush-2.20.5-RC1.zip) · [릴리스 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.20.5-rc1). 로그인 없이 내려받습니다. 카톡에는 주소를 공유하고 기존 앱을 삭제하지 않은 채 업데이트 설치합니다.
+- **최신 사용자 지시가 이전 직업별 키 차이 지시보다 우선합니다.**6직업 배율을 모두1로 통일해 기존0.84~1.16배/약38% 차이를 제거합니다. 기본6종·유료30종은 원본 그림의 눈높이~발바닥 기준으로 보정합니다. 무기·모자·장식의 전체 바운딩박스로 몸을 줄이지 않습니다. 원본 그림·체형·종횡비를 보존합니다.
+- 선택창36개 고해상도 원화를 공통 신체 높이와 바닥에 맞춥니다. 실제 마을·전투·미리보기에서도 같은 신체 스케일을 적용하고 사람형 마을 NPC3종의 몸·바닥·이름표·터치 영역·그림자를 맞춥니다. 이동 속도·전투 판정·점프 궤적·성장·저장은 유지합니다.
+- [원인·기준점·실제 비교 화면](release/BODY-SIZE-NOTES.md) · [상세 전수 검수](release/BODY-SIZE-VERIFICATION.json). 선택창144조건(36종×4화면/안전영역), 실제 합성36종의 공통 신체·접지·전신1회, 마을 NPC3종, 유료30종 실제 착용/해제 후 마을·전투·고정 미리보기와 전 동작을 검사했습니다. 수동 기준점은 원본에서 약±12픽셀의 오차가 있으며 수치 통과를 해부학적1픽셀 정확도로 표현하지 않습니다.
+- 검증 소스 `af2c0c3073b60afedc9d7f9deeb13b61de9aa416`. [최종 전체 **71개 검사(코드34 + Java2 + Chrome35)**와 APK/AAB·Android lint·기존 서명·포함 파일 검증 성공](https://github.com/ohohhyun/CatHome/actions/runs/45284847918). 이 최종 빌드의 검사 실패0건입니다. 기존 이동·장비 비교/강화·보스 효과·터치/4인·닉네임/변경권·성장/랭킹/저장 회귀를 포함합니다.
+- APK **514,339,993 bytes**, SHA-256 `90408b5fd9a869c2a0b54ec59acf84c217c7251984486c789735703452dc258d`. ZIP **514,341,437 bytes**, SHA-256 `b2c59bd35afc1208c07098e5f366fb72f5099c3bb708679fe182d4385a793d98`. [공개 게시·익명 전체 다운로드 검증](https://github.com/ohohhyun/CatHome/actions/runs/45290239245): 크기·해시·ZIP CRC·내부 APK 일치. 별도 익명 HEAD도 두 파일 HTTP200입니다. [배포 기록](release/2.20.5-VERIFICATION.json).
+- versionName2.20.5 / versionCode54 / 저장2 / Wi-Fi12 / 설치 인증서 `e43fedd9099e7b5df82eccfa3e92fc020d429ad99795463abbe40e2af4880708` 유지. 기존 이름·ID·계급·성장·장비·XP·외형·보상 기록을 보존합니다. 닉네임 최초 무료 저장/이후 변경권1개·3,900원/결제 전 구매 불가,4모드·공유 AI PK·기존5종 랭킹·매주 보상/2주 초기화·걷기 없는 미리보기·자동 저장을 유지합니다. 기존 양발 이동·메뉴12칸·오른쪽 아래 접기/펼치기·왼쪽 위 정보만·타이틀 상점 제거·장비 아이콘/강화·가방 화살표/상세 비교도 유지합니다. 서버·DB·실결제는 연결하지 않습니다.
+- **남은 실기기 검수:** Android53→54 업데이트/저장·변경권 보존, 실제 손가락 조작감과 보행 체감, 시스템 글자/키보드/터치 스크롤, 물리 Wi-Fi2~4대, 장시간 FPS/발열/음량. 자동 검사 통과를 모든 환경의 무결함 보장이나 실기기 완료로 표현하지 않습니다.
+- 집사 사절 원본 보호: app `a70564ab782100b61cf07077e52753370e199045`, legacy `8bb4cd16f95ce641b3fa31296b021d8f976cb7e6`, root tests `07eea64ee955f5580a13a9f237490d346ceefe7a`. 이후 게시/문서 커밋은 검증 앱 소스를 바꾸지 않습니다.
+
+# 이전 버전: 던전크러시! 2.20.4
+
+## 이전 공개 버전: 2.20.4 RC1 · 장비 그림·강화·가방 비교
 
 - **[APK 바로 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.20.4-rc1/DungeonCrush-2.20.4.apk)** · [설치 안내 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.20.4-rc1/DungeonCrush-2.20.4-RC1.zip) · [릴리스 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.20.4-rc1). 로그인 없이 내려받습니다. 카톡에는 주소를 공유하고 기존 앱을 삭제하지 않은 채 업데이트 설치합니다.
 - 장비36개·재화6개를 각각의 그림 영역으로 분리해 옆 아이템 조각이 섞이는 문제를 수정했습니다. 아리아·엘리안 장비12개도 다른4직업과 같은 무테·투명 배경으로 통일했습니다. 기존 스킬 그림과4직업의 장비 원본은 유지하고 새 PNG·무손실 WebP·알파 검수를 기록합니다. 무기·물약·착용·가방·상세·제작·판매·강화에 공통 적용합니다.

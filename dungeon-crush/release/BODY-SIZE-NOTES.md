@@ -10,7 +10,7 @@
 
 검수는 선택창36종×4화면/안전영역144개, 실제 합성 렌더36종의 공통 신체 스케일·바닥·단일 전신, 실제 마을 NPC3종, 실제 착용한 유료30종의 마을·전투·고정 미리보기 카메라 및 이동·공격·점프·대시·스킬 전환을 포함합니다. 기존 전 동작/좌우·4인·성장·닉네임 변경권·랭킹·주간 보상/2주 초기화·저장·장비 비교·가방 화살표·강화 검사도 유지합니다.
 
-현재는 구현·검수 범위 기록입니다. 최종 전체71개 검사·APK/AAB·Android lint·서명·포함 파일·공개 다운로드 결과는 배포 기록에 기재합니다. Android53→54 실제 업데이트 설치·보존, 물리 Wi-Fi2~4대, 시스템 글자·키보드·손가락 조작·장시간 FPS/발열/음량은 실기기 검수로 남습니다.
+최종 전체71개 검사·APK/AAB·Android lint·서명·포함 파일·공개 다운로드를 통과했습니다. [배포 기록](2.20.5-VERIFICATION.json)과 [신체 크기 상세 검수](BODY-SIZE-VERIFICATION.json)에 결과를 기재합니다. Android53→54 실제 업데이트 설치·보존, 물리 Wi-Fi2~4대, 시스템 글자·키보드·손가락 조작·장시간 FPS/발열/음량은 실기기 검수로 남습니다.
 
 ## 실제 비교 화면
 
@@ -20,3 +20,7 @@
 - 린 유료 외형 마을: [이전](body-size/before-town-1-noel.png) · [수정](body-size/after-town-1-noel.png)
 - [36종 실제 합성 신체·접지 비교](body-size/all36-world-neutral.png)
 - 선택창 전체: [카엘](body-size/selection-row-0.png) · [린](body-size/selection-row-1.png) · [베인](body-size/selection-row-2.png) · [세라](body-size/selection-row-3.png) · [아리아](body-size/selection-row-4.png) · [엘리안](body-size/selection-row-5.png)
+
+전체71개·빌드 검증: https://github.com/ohohhyun/CatHome/actions/runs/45284847918
+
+APK/ZIP 익명 전체 다운로드 검증: https://github.com/ohohhyun/CatHome/actions/runs/45290239245
