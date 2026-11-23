@@ -16,16 +16,16 @@ jobs:
     env:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
-      RELEASE_TAG: dungeon-crush-v2.20.2-rc1
-      DUNGEON_RELEASE_SOURCE: 4fc1030fc23183809203565df41d789a4bf4b33c
-      DUNGEON_RELEASE_RUN: '44020842900'
-      DUNGEON_RELEASE_ID: '448185941'
-      DUNGEON_APK_BYTES: '490023153'
-      DUNGEON_APK_SHA256: 3f3ca5ce6a7421f12baa30607f75b526e1c5b79fde82336944917fdb602fd0e6
+      RELEASE_TAG: dungeon-crush-v2.20.3-rc1
+      DUNGEON_RELEASE_SOURCE: 12451dfba010ed432a566702cbe2444c86203eb7
+      DUNGEON_RELEASE_RUN: '44176222151'
+      DUNGEON_RELEASE_ID: '449228943'
+      DUNGEON_APK_BYTES: '512926747'
+      DUNGEON_APK_SHA256: 062b2211476d5fcaada67fff9e0c6a12fac7a86121fb330bf07fedc783643ec7
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: 4fc1030fc23183809203565df41d789a4bf4b33c
+          ref: 12451dfba010ed432a566702cbe2444c86203eb7
       - name: Require the exact successful build and fixed draft release
         run: |
           test "$(gh api repos/$GH_REPO/actions/runs/$DUNGEON_RELEASE_RUN --jq .conclusion)" = success
@@ -36,7 +36,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           name: DungeonCrush-APK
-          run-id: 44020842900
+          run-id: 44176222151
           github-token: ${{ github.token }}
           path: apk
       - name: Verify and package exact signed APK
@@ -45,19 +45,19 @@ jobs:
           import hashlib, json, os, subprocess, zipfile
           from pathlib import Path
           assert subprocess.check_output(['git','rev-parse','HEAD'],text=True).strip()==os.environ['DUNGEON_RELEASE_SOURCE']
-          p=Path('apk/DungeonCrush-2.20.2.apk'); data=p.read_bytes()
+          p=Path('apk/DungeonCrush-2.20.3.apk'); data=p.read_bytes()
           assert len(data)==int(os.environ['DUNGEON_APK_BYTES'])
           assert hashlib.sha256(data).hexdigest()==os.environ['DUNGEON_APK_SHA256']
           with zipfile.ZipFile(p) as z:
               assert z.testzip() is None
               for f in Path('dungeon-crush/app/src/main/assets').iterdir():
                   if f.is_file() and f.suffix in ('.js','.css','.html'):assert z.read('assets/'+f.name)==f.read_bytes(),f.name
-              assert 'VER 2.20.2' in z.read('assets/index.html').decode()
+              assert 'VER 2.20.3' in z.read('assets/index.html').decode()
               for asset in ['art/selection-atrium.webp','art/selection/kael.webp','art/selection/rin.webp','art/selection/bane.webp','art/selection/sera.webp','art/selection/aria.webp','pk.js','pk-ui.js']:assert z.read('assets/'+asset)==Path('dungeon-crush/app/src/main/assets',asset).read_bytes(),asset
               ui=z.read('assets/premium-ui.js').decode()
               assert "['walk'," not in ui and '걷기' not in ui
-          guide='던전크러시 2.20.2 (설치 버전 51)\r\n\r\n압축을 풀고 DungeonCrush-2.20.2.apk를 기존 앱 위에 업데이트 설치하세요. 기존 앱을 삭제하지 마세요.\r\n걸음의 가변 박자와 조기 포즈 복귀를 제거하고 일정한 박자로 맞췄습니다. 좌우 이동 속도는 유지합니다. 장비 상세 비교에서 착용 장비와 선택 장비, 세트 효과를 반영한 상승·하락 수치를 나란히 표시합니다. 메뉴 칸 크기를 맞추고 보스 마법을 크게 보강했습니다. 최초 닉네임은 무료 저장, 이후에는 닉네임 변경권1개를 사용해 변경합니다. 변경권은3,900원 상품으로 표시하며 등록된 결제 상품이 없어 현재 구매할 수 없습니다. 무료 테스트 상품으로 변경권을 지급하지 않습니다. 기존 기록과 서명을 유지합니다.\r\n저장 형식 2 / Wi-Fi 프로토콜 12 / 기존 서명을 유지합니다.\r\n검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/44020842900\r\nAPK SHA-256: '+os.environ['DUNGEON_APK_SHA256']+'\r\n'
-          out=Path('DungeonCrush-2.20.2-RC1.zip')
+          guide='던전크러시 2.20.3 (설치 버전 52)\r\n\r\n압축을 풀고 DungeonCrush-2.20.3.apk를 기존 앱 위에 업데이트 설치하세요. 기존 앱을 삭제하지 마세요.\r\n기본6종과 외형30종의 이동을 양발이 번갈아 디디는 전신8포즈로 교체했습니다. 느린 이동과 달리기의 접지 기준을 맞추고 발을 가리던 일반 이동 장식을 제거했습니다. 실제 이동 속도는 유지합니다. 모험가 메뉴12칸의 폭·높이·제목 줄과 마지막 행을 맞췄습니다. 최초 닉네임은 무료 저장, 이후에는 닉네임 변경권1개를 사용해 변경합니다. 변경권은3,900원 상품으로 표시하며 등록된 결제 상품이 없어 현재 구매할 수 없습니다. 무료 테스트 상품으로 변경권을 지급하지 않습니다. 기존 기록과 서명을 유지합니다.\r\n저장 형식 2 / Wi-Fi 프로토콜 12 / 기존 서명을 유지합니다.\r\n검증 빌드: https://github.com/ohohhyun/CatHome/actions/runs/44176222151\r\nAPK SHA-256: '+os.environ['DUNGEON_APK_SHA256']+'\r\n'
+          out=Path('DungeonCrush-2.20.3-RC1.zip')
           with zipfile.ZipFile(out,'w',compression=zipfile.ZIP_STORED) as z:
               z.writestr(p.name,data)
               z.writestr('INSTALL-KO.txt',b'\xef\xbb\xbf'+guide.encode())
@@ -69,7 +69,7 @@ jobs:
           PY
       - name: Publish permanent anonymous download
         run: |
-          gh release upload "$RELEASE_TAG" DungeonCrush-2.20.2-RC1.zip apk/DungeonCrush-2.20.2.apk --clobber
+          gh release upload "$RELEASE_TAG" DungeonCrush-2.20.3-RC1.zip apk/DungeonCrush-2.20.3.apk --clobber
           gh release edit "$RELEASE_TAG" --draft=false --prerelease --latest=false
       - name: Verify anonymous full download and ZIP integrity
         run: |
@@ -80,7 +80,7 @@ jobs:
           m=json.loads(Path('package-verification.json').read_text());r=json.loads(Path('release-assets.json').read_text());assert not r['draft']
           a=next(a for a in r['assets'] if a['name']==m['file']);assert a['size']==m['bytes'] and a['digest']=='sha256:'+m['sha256']
           Path('download-url.txt').write_text(a['browser_download_url'])
-          apk=next(a for a in r['assets'] if a['name']=='DungeonCrush-2.20.2.apk');assert apk['size']==int(__import__('os').environ['DUNGEON_APK_BYTES']) and apk['digest']=='sha256:'+__import__('os').environ['DUNGEON_APK_SHA256']
+          apk=next(a for a in r['assets'] if a['name']=='DungeonCrush-2.20.3.apk');assert apk['size']==int(__import__('os').environ['DUNGEON_APK_BYTES']) and apk['digest']=='sha256:'+__import__('os').environ['DUNGEON_APK_SHA256']
           Path('apk-download-url.txt').write_text(apk['browser_download_url'])
           PY
           curl --fail --location --retry 2 "$(cat download-url.txt)" -o public-download.zip
@@ -91,7 +91,7 @@ jobs:
           assert p.stat().st_size==m['bytes'] and hashlib.sha256(p.read_bytes()).hexdigest()==m['sha256']
           with zipfile.ZipFile(p) as z:
               assert z.testzip() is None
-              assert hashlib.sha256(z.read('DungeonCrush-2.20.2.apk')).hexdigest()==os.environ['DUNGEON_APK_SHA256']
+              assert hashlib.sha256(z.read('DungeonCrush-2.20.3.apk')).hexdigest()==os.environ['DUNGEON_APK_SHA256']
           print('Verified anonymous download:',Path('download-url.txt').read_text())
           print(m)
           PY
