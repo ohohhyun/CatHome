@@ -6,12 +6,14 @@ function source(cls,costume=''){
  const id=item?.kind==='outfit'&&item.cls===cls?item.id:heroes[cls];
  return root.DungeonKeyArtAssets?.[id]||'';
 }
-function selectionSource(cls,costume=''){return costume?source(cls,costume):root.DungeonSelectionArt?.[heroes[cls]]?.src||source(cls);}
+function selectionId(cls,costume=''){const it=root.DungeonPremium?.item(costume);return it?.kind==='outfit'&&it.cls===cls?it.id:heroes[cls];}
+function selectionSource(cls,costume=''){return root.DungeonSelectionArt?.[selectionId(cls,costume)]?.src||source(cls,costume);}
 function layout(img,cls,costume=''){
- const factor=(root.DungeonArt?.heightScale?.(cls)||1)/1.16,mark=img.id==='select-key-art'&&!costume?root.DungeonSelectionArt?.[heroes[cls]]:null;
- const scale=mark ? .76*factor*mark.height/(mark.soleY-mark.eyeY):factor*(root.DungeonKeyArtInset?.[img.dataset.source?.split('/').pop().replace('.webp','')]||1);
+ const mark=img.id==='select-key-art'?root.DungeonSelectionArt?.[selectionId(cls,costume)]:null;
+ const factor=(root.DungeonArt?.heightScale?.(cls)||1)/1.16;
+ const scale=mark ? .64*mark.height/(mark.soleY-mark.eyeY):factor*(root.DungeonKeyArtInset?.[img.dataset.source?.split('/').pop().replace('.webp','')]||1);
  const fitHeight=mark?Math.min(img.clientHeight,img.clientWidth*mark.height/mark.width):0,shift=mark?fitHeight*(scale*(1-mark.soleY/mark.height)-.08):0;
- img.dataset.heightScale=String(factor);img.style.transformOrigin='center bottom';img.style.transform='translateY('+shift+'px) scale('+scale+')';
+ img.dataset.heightScale=String(mark?1:factor);img.style.transformOrigin='center bottom';img.style.transform='translateY('+shift+'px) scale('+scale+')';
 }
 function show(img,cls,costume=''){
  if(!img)return;const src=img.id==='select-key-art'?selectionSource(cls,costume):source(cls,costume);if(img.dataset.source===src){layout(img,cls,costume);return;}

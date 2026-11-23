@@ -2,6 +2,13 @@
 
 이 파일을 먼저 읽고 `dungeon-crush/`만 이어서 작업하세요. 사용자에게는 한국어 존댓말을 사용하세요.
 
+## 진행 중: 2.20.5 · 기본·유료 외형 신체 크기 통일
+
+- **최신 사용자 지시가 이전 직업별 키 차이 지시보다 우선합니다.**6직업과 유료30종의 신체 스케일을 같은 기준으로 맞춥니다. 기존0.84~1.16 배율/약38% 차이는 제거합니다. 무기·모자·장식·배경의 전체 바운딩박스로 몸을 줄이지 않습니다.
+- 기본6종/유료30종은 기존 원본·종횡비를 보존한 균일 배율입니다. 플레이어/사람형 마을 NPC는 같은 신체 기준입니다. 선택창 원화36개 모두 눈높이~발바닥과 공통 바닥으로 배치합니다. [기준점·원본 해시](art-source/selection-presentation.json).
+- 선택창144개 경우(36종×4화면/안전영역),36종 실제 합성 렌더, 마을 NPC3종 검사 통과. 유료30종 실제 착용 후 마을·전투·미리보기와 전 동작·저장/전투 회귀 검수 중입니다. [원인·비교·검수 범위](release/BODY-SIZE-NOTES.md).
+- version2.20.5/code54 준비 중이며 아직 공개하지 않았습니다. 현재 공개 APK는 아래2.20.4입니다. 전체71개와 APK/AAB/lint/서명/포함 파일/공개 전체 다운로드 확인 후 배포합니다. 남은 실기기 항목은 아래 기록을 이어갑니다. 집사 사절 원본은 수정하지 않습니다.
+
 ## 최신 공개 버전: 2.20.4 RC1 · 장비 그림·강화·가방 비교
 
 - **[APK 바로 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.20.4-rc1/DungeonCrush-2.20.4.apk)** · [설치 안내 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.20.4-rc1/DungeonCrush-2.20.4-RC1.zip) · [릴리스 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.20.4-rc1). 로그인 없이 내려받습니다. 카톡에는 주소를 공유하고 기존 앱을 삭제하지 않은 채 업데이트 설치합니다.

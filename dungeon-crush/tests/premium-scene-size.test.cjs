@@ -1,6 +1,6 @@
 const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
 (async()=>{
- const review=JSON.parse(fs.readFileSync('art-source/premium-body-calibration.json'));
+ const review=JSON.parse(fs.readFileSync('art-source/premium-body-calibration.json')),expectedBodyHeight=260*(review.base.kael.banks.reaction.soleY-review.base.kael.banks.reaction.eyeY)/review.base.kael.banks.reaction.reference;
  const browser=await chromium.launch({executablePath:process.env.CHROME_BIN||'/usr/bin/google-chrome',args:['--no-sandbox']});
  const p=await browser.newPage({viewport:{width:740,height:360},hasTouch:true}),errors=[],records=[],bases=[];
  p.on('pageerror',e=>errors.push(e.message));fs.mkdirSync('build/previews/scene-size',{recursive:true});
@@ -22,13 +22,13 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
     try{return draw(...args);}finally{
      c.drawImage=original;
      if(sceneDraws.length>40000)sceneDraws.splice(0,10000);
-     const basic=Object.values(sceneReview.base).find(b=>b.cls===cls),point=hero.costume?sceneReview.costumes[hero.costume]?.banks[frame.bank]:basic?.banks[frame.bank];let eyeError=null,soleError=null;
+     const basic=Object.values(sceneReview.base).find(b=>b.cls===cls),point=hero.costume?sceneReview.costumes[hero.costume]?.banks[frame.bank]:basic?.banks[frame.bank];let eyeError=null,soleError=null,bodyHeight=null;
      if(point&&frame.index===point.frame&&calls.length===1&&calls[0].rect.length===8&&frame.state==='idle'){
       const a=calls[0].rect,m=calls[0].m,b=basic.banks[frame.bank],sourceHeight=point.rect[3];
       const eye=m.f+m.d*(a[5]+point.eyeY*a[7]/sourceHeight),sole=m.f+m.d*(a[5]+point.soleY*a[7]/sourceHeight);
-      eyeError=eye-(y-height*DungeonArt.bodyScale(cls)*(b.soleY-b.eyeY)/b.reference);soleError=sole-y;
+      bodyHeight=sole-eye;eyeError=eye-(y-height*DungeonArt.bodyScale(cls)*(b.soleY-b.eyeY)/b.reference);soleError=sole-y;
      }
-     sceneDraws.push({scene:RiftApp.getMode()==='playing'?'battle':'town',id:hero.costume||'base-'+cls,cls,bank:frame.bank,index:frame.index,height,dir,eyeError,soleError,calls:calls.length});
+     sceneDraws.push({scene:RiftApp.getMode()==='playing'?'battle':'town',id:hero.costume||'base-'+cls,cls,bank:frame.bank,index:frame.index,height,dir,eyeError,soleError,bodyHeight,calls:calls.length});
     }
    };
   },review);
@@ -43,7 +43,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
    await p.evaluate(()=>RiftApp.solo());await p.locator('#loading-screen').waitFor({state:'hidden',timeout:60000});await p.evaluate(()=>{const g=RiftApp.getState(),hero=g.players[0];hero.inv=0;hero.hurt=0;g.enemies=[{...g.enemies[0],id:9001,type:'brute',skin:2,x:2000,y:hero.y,hp:1e12,maxHp:1e12,stun:99999,cd:99999,at:0}];g.projectiles=[];g.telegraphs=[];g.clearTime=0;});
    await p.waitForFunction(cls=>sceneDraws.some(r=>r.id==='base-'+cls&&r.scene==='battle'&&r.eyeError!==null),cls,{timeout:10000});
    await p.screenshot({path:'build/previews/scene-size/base-'+cls+'-battle.png'});
-   const baseline=await p.evaluate(cls=>sceneDraws.filter(r=>r.id==='base-'+cls&&r.eyeError!==null),cls);assert(baseline.every(r=>Math.abs(r.eyeError)<1.5&&Math.abs(r.soleError)<1),'actual basic-body eye/sole reference');bases.push({cls,maxEyeError:Math.max(...baseline.map(r=>Math.abs(r.eyeError)))});
+   const baseline=await p.evaluate(cls=>sceneDraws.filter(r=>r.id==='base-'+cls&&r.eyeError!==null),cls);assert(baseline.every(r=>Math.abs(r.eyeError)<1.5&&Math.abs(r.soleError)<1&&Math.abs(r.bodyHeight-expectedBodyHeight)<1.5),'actual basic-body eye/sole reference');bases.push({cls,maxEyeError:Math.max(...baseline.map(r=>Math.abs(r.eyeError)))});
    await p.evaluate(()=>RiftApp.home());
    const ids=Object.keys(review.costumes).filter(id=>review.costumes[id].cls===cls);
    for(const id of ids){
@@ -81,7 +81,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
     for(const scene of ['town','battle']){
      const rows=draws.filter(r=>r.scene===scene),neutral=rows.filter(r=>r.eyeError!==null);
      assert(neutral.length,id+' actual '+scene+' neutral must be visible');assert(rows.every(r=>r.height===260&&r.calls>0),id+' full gameplay body at fixed world size');
-     assert(neutral.every(r=>Math.abs(r.eyeError)<1.5&&Math.abs(r.soleError)<1),id+' '+scene+' independently measured eye/sole projection');
+     assert(neutral.every(r=>Math.abs(r.eyeError)<1.5&&Math.abs(r.soleError)<1&&Math.abs(r.bodyHeight-expectedBodyHeight)<1.5),id+' '+scene+' independently measured eye/sole projection');
      assert(rows.some(r=>r.bank==='run'),id+' actual '+scene+' running');
     }
     assert(draws.some(r=>r.scene==='battle'&&r.bank.startsWith('combo')),id+' actual basic attack');

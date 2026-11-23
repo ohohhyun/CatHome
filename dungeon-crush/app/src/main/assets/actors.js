@@ -34,7 +34,7 @@ function drawCel(c,b,index,height,alpha=1,grounded=false){if(!b)return false;con
 function drawPose(c,b,f,height){return drawCel(c,b,f.index,height,1,f.gaitKind==='walk');}
 // Uniform pose durations keep both steps on the same beat. Movement speed is unchanged.
 function runIndex(bank,phase,walking=false){const count=bank?.frames.length||1,index=Math.min(count-1,Math.max(0,Math.floor(phase*count)));return walking&&count===8?[0,1,2,2,4,5,6,6][index]:index;}
-function strideLength(p){return 260*(root.DungeonArt?.heightScale?.(p.cls)||[1,1.08,1.16,.92,.84,1.04][p.cls]||1);}
+function strideLength(p){return 260*(root.DungeonArt?.heightScale?.(p.cls)||1);}
 function runPhase(p){const cycles=Math.round((p.gait||0)*210/strideLength(p)/TAU*1e9)/1e9;return ((cycles%1)+1)%1;}
 function locomotion(p,old,time){const dt=old?clamp(time-old.time,0,.05):1/60,top=root.Rift?.CLASSES[p.cls]?.speed||420,speed=clamp(Math.hypot(p.vx||0,(p.vy||0)/.62)/top,0,1),f=frame(p,time),running=f.state==='run',travelFacing=running&&Math.abs(p.vx||0)>Math.max(6,top*.02),target=f.state==='dash'?.08:0,lean=running?0:(old?.lean||0)+(target-(old?.lean||0))*(1-Math.exp(-dt*12));return {time,speed,dir:travelFacing?Math.sign(p.vx):p.dir||1,travelFacing,lean,running,phase:runPhase(p)};}
 function actor(c,cls,x,y,height,dir,p,time,alpha=1){const a=DATA.heroes[cls];if(!a)return false;const f=frame(p,time),b=a[f.bank];loadBank(a.reaction);loadBank(b);if(!bankReady(b)){poseMisses[f.state]=(poseMisses[f.state]||0)+1;return false;}const key=cls+':'+p.id+':'+height,old=history.get(key),motion=locomotion(p,old,time);
