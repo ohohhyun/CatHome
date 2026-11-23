@@ -27,3 +27,30 @@ for(const setSize of [4,6]){
  for(const [key,field]of [['atk','gearAtk'],['hp','gearHp'],['focus','gearFocus']])assert.equal(cmp.delta[key],actual[field]-cmp.before[field]);
  assert.equal(cmp.afterPower,R.power(s,0));
 }
+
+// Inventory hints deliberately mean ANY improved option, even when another option/set is lost.
+for(let cls=0;cls<6;cls++) {
+ const s=R.sanitize(R.fresh()),h=s.chars[cls];h.xp=R.xpAt(60);
+ for(const slot of [0,1,2,3,4,5]){
+  const worn=h.items.find(it=>it.id===h.equipped[R.SLOTS[slot]]);
+  assert.equal(R.equipmentTrend(s,cls,worn.id).direction,'worn');
+  const copy={...worn,id:s.nextId++};h.items.push(copy);
+  assert.equal(R.equipmentTrend(s,cls,copy.id).direction,'down','equal gear has no improved option');
+  copy.level=60;assert.equal(R.equipmentTrend(s,cls,copy.id).direction,'up');
+  worn.level=60;worn.plus=15;copy.level=1;assert.equal(R.equipmentTrend(s,cls,copy.id).direction,'down');
+  delete h.equipped[R.SLOTS[slot]];assert.equal(R.equipmentTrend(s,cls,copy.id).direction,'up','empty slot improves');
+ }
+ assert.equal(R.equipmentTrend(s,cls,-1),null);
+}
+{const s=R.sanitize(R.fresh()),h=s.chars[0];h.xp=R.xpAt(60);for(const it of h.items)Object.assign(it,{level:30,plus:0,rarity:3,set:0});const ring=h.items.find(it=>it.slot===5),candidate={...ring,id:s.nextId++,rarity:2,plus:15};h.items.push(candidate);const state=JSON.stringify(s),info=R.compareEquipment(s,0,candidate.id);assert(info.delta.focus<0);assert.equal(R.equipmentTrend(s,0,candidate.id).direction,'up','a higher attack option stays green despite lost set focus');assert.equal(JSON.stringify(s),state);h.xp=0;assert.equal(R.equipmentTrend(s,0,candidate.id).direction,'up','level-restricted gear still advertises its item improvement');assert(!R.equip(s,0,candidate.id).ok);}
+// A read-only quote must exactly predict the existing guaranteed enhancement transaction.
+for(let cls=0;cls<6;cls++)for(let slot=0;slot<6;slot++)for(let plus=0;plus<=15;plus++){
+ const s=R.sanitize(R.fresh()),it=s.chars[cls].items.find(it=>it.slot===slot);Object.assign(it,{plus,rarity:plus%5,level:60});s.gold=1e9;s.mats.iron=1e6;
+ const before=JSON.stringify(s),q=R.enhancePreview(s,cls,it.id);assert.equal(JSON.stringify(s),before);
+ assert.equal(q.maximum,plus===15);assert.equal(q.canEnhance,plus<15);
+ if(plus===15){assert.equal(q.cost,null);assert(!R.enhance(s,cls,it.id).ok);assert.equal(JSON.stringify(s),before);continue;}
+ const gold=s.gold,iron=s.mats.iron;assert(R.enhance(s,cls,it.id).ok);assert.equal(s.gold,gold-q.cost.gold);assert.equal(s.mats.iron,iron-q.cost.iron);assert.equal(it.plus,q.to);assert.deepEqual(R.gearStats(it),q.after);
+ for(const k of ['atk','hp','focus'])assert.equal(q.delta[k],q.after[k]-q.before[k]);
+ s.gold=0;s.mats.iron=0;const short=R.enhancePreview(s,cls,it.id);if(it.plus<15){assert(!short.canEnhance);assert.deepEqual(short.shortfall,short.cost);const state=JSON.stringify(s);assert(!R.enhance(s,cls,it.id).ok);assert.equal(JSON.stringify(s),state);}
+}
+console.log('PASS: all six classes/six slots inventory trends, equal/empty/level guard/set-loss cases and 576 immutable enhancement quotes matched to exact costs, results, maximum and resource guards.');
