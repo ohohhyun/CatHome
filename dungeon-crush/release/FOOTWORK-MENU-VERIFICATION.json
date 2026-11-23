@@ -158,11 +158,16 @@
     "lowSpeedSheets": 6,
     "manuallyInspected": true
   },
-  "fullBuild": "pending",
+  "fullBuild": {
+    "run": 44176222151,
+    "passed": 71,
+    "failed": 0,
+    "apkAabLintSignerAndResources": true
+  },
   "remainingPhysical": [
-    "Android51→52 업데이트 설치/저장·변경권 보존",
-    "실제 손가락 조작감·보행 체감",
-    "시스템 글자·키보드·터치 스크롤",
+    "Android51→52 업데이트 설치와 저장·닉네임·변경권 보존",
+    "실제 손가락 조작감과 보행 체감",
+    "Android 시스템 글자·키보드·터치 스크롤",
     "물리 Wi-Fi 2~4대",
     "장시간 FPS·발열·음량"
   ],
@@ -181,5 +186,2462 @@
     ],
     "contactSamples": 1152,
     "passed": true
+  },
+  "source": "12451dfba010ed432a566702cbe2444c86203eb7",
+  "publication": {
+    "run": 45106532129,
+    "releaseId": 449228943,
+    "anonymousFullDownloads": true,
+    "separateHEAD": {
+      "apk": 200,
+      "zip": 200
+    }
+  },
+  "localAdditionalChecks": [
+    {
+      "test": "hotfix-presentation",
+      "exit": 0
+    },
+    {
+      "test": "premium-size-presentation",
+      "exit": 0
+    },
+    {
+      "test": "premium-scene-size",
+      "exit": 0
+    },
+    {
+      "test": "premium-rendering",
+      "exit": 0
+    },
+    {
+      "test": "actor-size-presentation",
+      "exit": 0
+    },
+    {
+      "test": "run-skill-presentation",
+      "exit": 0
+    },
+    {
+      "test": "locomotion",
+      "exit": 0
+    },
+    {
+      "test": "hero-height-presentation",
+      "exit": 0
+    }
+  ],
+  "localLateChecks": [
+    {
+      "test": "release-presentation",
+      "exit": 0
+    },
+    {
+      "test": "rankings-presentation",
+      "exit": 0
+    },
+    {
+      "test": "frontier-presentation",
+      "exit": 0
+    },
+    {
+      "test": "sound-presentation",
+      "exit": 0
+    },
+    {
+      "test": "inventory-ui",
+      "exit": 0
+    },
+    {
+      "test": "new-content-presentation",
+      "exit": 0
+    },
+    {
+      "test": "expansion-presentation",
+      "exit": 0
+    },
+    {
+      "test": "motion24-presentation",
+      "exit": 0
+    },
+    {
+      "test": "generated-presentation",
+      "exit": 0
+    },
+    {
+      "test": "exploration",
+      "exit": 0
+    },
+    {
+      "test": "ranged-presentation",
+      "exit": 0
+    },
+    {
+      "test": "combat-presentation",
+      "exit": 0
+    },
+    {
+      "test": "layout",
+      "exit": 0
+    },
+    {
+      "test": "presentation",
+      "exit": 0
+    },
+    {
+      "test": "browser",
+      "exit": 0
+    },
+    {
+      "test": "party-recovery-presentation",
+      "exit": 0
+    }
+  ],
+  "cacheCapacity": {
+    "combinations": 27405,
+    "peakBytes": 97126384,
+    "looks": [
+      "kael-lunar",
+      "aria-ember",
+      "elian-noel",
+      "elian-aurora"
+    ],
+    "budgetBytes": 100663296,
+    "pets": "four largest distinct pet banks",
+    "passed": true
+  },
+  "allActorMotion": {
+    "passed": true,
+    "actors": 128,
+    "samples": 30720,
+    "reflectedRuns": [
+      {
+        "id": "base-0",
+        "poses": 8,
+        "differing": 83,
+        "channels": 777600,
+        "fraction": 0.00010673868312757201
+      },
+      {
+        "id": "kael-noel",
+        "poses": 8,
+        "differing": 130,
+        "channels": 777600,
+        "fraction": 0.00016718106995884774
+      },
+      {
+        "id": "kael-ember",
+        "poses": 8,
+        "differing": 52,
+        "channels": 777600,
+        "fraction": 6.687242798353909e-05
+      },
+      {
+        "id": "kael-lunar",
+        "poses": 8,
+        "differing": 216,
+        "channels": 777600,
+        "fraction": 0.0002777777777777778
+      },
+      {
+        "id": "kael-aurora",
+        "poses": 8,
+        "differing": 73,
+        "channels": 777600,
+        "fraction": 9.387860082304527e-05
+      },
+      {
+        "id": "kael-abyss",
+        "poses": 8,
+        "differing": 99,
+        "channels": 777600,
+        "fraction": 0.0001273148148148148
+      },
+      {
+        "id": "base-1",
+        "poses": 8,
+        "differing": 135,
+        "channels": 777600,
+        "fraction": 0.00017361111111111112
+      },
+      {
+        "id": "rin-noel",
+        "poses": 8,
+        "differing": 174,
+        "channels": 777600,
+        "fraction": 0.00022376543209876544
+      },
+      {
+        "id": "rin-ember",
+        "poses": 8,
+        "differing": 40,
+        "channels": 777600,
+        "fraction": 5.1440329218106995e-05
+      },
+      {
+        "id": "rin-lunar",
+        "poses": 8,
+        "differing": 126,
+        "channels": 777600,
+        "fraction": 0.00016203703703703703
+      },
+      {
+        "id": "rin-aurora",
+        "poses": 8,
+        "differing": 89,
+        "channels": 777600,
+        "fraction": 0.00011445473251028806
+      },
+      {
+        "id": "rin-abyss",
+        "poses": 8,
+        "differing": 53,
+        "channels": 777600,
+        "fraction": 6.815843621399177e-05
+      },
+      {
+        "id": "base-2",
+        "poses": 8,
+        "differing": 62,
+        "channels": 777600,
+        "fraction": 7.973251028806585e-05
+      },
+      {
+        "id": "bane-noel",
+        "poses": 8,
+        "differing": 141,
+        "channels": 777600,
+        "fraction": 0.00018132716049382717
+      },
+      {
+        "id": "bane-ember",
+        "poses": 8,
+        "differing": 74,
+        "channels": 777600,
+        "fraction": 9.516460905349794e-05
+      },
+      {
+        "id": "bane-lunar",
+        "poses": 8,
+        "differing": 123,
+        "channels": 777600,
+        "fraction": 0.00015817901234567902
+      },
+      {
+        "id": "bane-aurora",
+        "poses": 8,
+        "differing": 113,
+        "channels": 777600,
+        "fraction": 0.00014531893004115227
+      },
+      {
+        "id": "bane-abyss",
+        "poses": 8,
+        "differing": 47,
+        "channels": 777600,
+        "fraction": 6.044238683127572e-05
+      },
+      {
+        "id": "base-3",
+        "poses": 8,
+        "differing": 36,
+        "channels": 777600,
+        "fraction": 4.6296296296296294e-05
+      },
+      {
+        "id": "sera-noel",
+        "poses": 8,
+        "differing": 114,
+        "channels": 777600,
+        "fraction": 0.00014660493827160494
+      },
+      {
+        "id": "sera-ember",
+        "poses": 8,
+        "differing": 62,
+        "channels": 777600,
+        "fraction": 7.973251028806585e-05
+      },
+      {
+        "id": "sera-lunar",
+        "poses": 8,
+        "differing": 142,
+        "channels": 777600,
+        "fraction": 0.00018261316872427984
+      },
+      {
+        "id": "sera-aurora",
+        "poses": 8,
+        "differing": 61,
+        "channels": 777600,
+        "fraction": 7.844650205761316e-05
+      },
+      {
+        "id": "sera-abyss",
+        "poses": 8,
+        "differing": 35,
+        "channels": 777600,
+        "fraction": 4.5010288065843624e-05
+      },
+      {
+        "id": "base-4",
+        "poses": 8,
+        "differing": 96,
+        "channels": 777600,
+        "fraction": 0.0001234567901234568
+      },
+      {
+        "id": "aria-noel",
+        "poses": 8,
+        "differing": 116,
+        "channels": 777600,
+        "fraction": 0.00014917695473251028
+      },
+      {
+        "id": "aria-ember",
+        "poses": 8,
+        "differing": 31,
+        "channels": 777600,
+        "fraction": 3.986625514403292e-05
+      },
+      {
+        "id": "aria-lunar",
+        "poses": 8,
+        "differing": 123,
+        "channels": 777600,
+        "fraction": 0.00015817901234567902
+      },
+      {
+        "id": "aria-aurora",
+        "poses": 8,
+        "differing": 30,
+        "channels": 777600,
+        "fraction": 3.8580246913580246e-05
+      },
+      {
+        "id": "aria-abyss",
+        "poses": 8,
+        "differing": 125,
+        "channels": 777600,
+        "fraction": 0.00016075102880658436
+      },
+      {
+        "id": "base-5",
+        "poses": 8,
+        "differing": 165,
+        "channels": 777600,
+        "fraction": 0.00021219135802469136
+      },
+      {
+        "id": "elian-noel",
+        "poses": 8,
+        "differing": 240,
+        "channels": 777600,
+        "fraction": 0.00030864197530864197
+      },
+      {
+        "id": "elian-ember",
+        "poses": 8,
+        "differing": 69,
+        "channels": 777600,
+        "fraction": 8.873456790123456e-05
+      },
+      {
+        "id": "elian-lunar",
+        "poses": 8,
+        "differing": 308,
+        "channels": 777600,
+        "fraction": 0.00039609053497942386
+      },
+      {
+        "id": "elian-aurora",
+        "poses": 8,
+        "differing": 156,
+        "channels": 777600,
+        "fraction": 0.00020061728395061727
+      },
+      {
+        "id": "elian-abyss",
+        "poses": 8,
+        "differing": 908,
+        "channels": 777600,
+        "fraction": 0.0011676954732510287
+      }
+    ],
+    "audit": [
+      {
+        "kind": "enemy",
+        "index": 0,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 1,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 2,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 3,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 4,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 5,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 6,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 7,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 8,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 9,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 10,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 11,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 12,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 13,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 14,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 15,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 16,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 17,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 18,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 19,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 20,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 21,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 22,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 23,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 24,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 25,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 26,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 27,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 28,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 29,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 30,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 31,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 32,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 33,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 34,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 35,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 36,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 37,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 38,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 39,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 40,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 41,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 42,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 43,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 44,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 45,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 46,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 47,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 48,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 49,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 50,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 51,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 52,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 53,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 54,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 55,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 56,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 57,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 58,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 59,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 60,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 61,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 62,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 63,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 64,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 65,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 66,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 67,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 68,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 69,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 70,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 71,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 72,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 73,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 74,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 75,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 76,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 77,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 78,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 79,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 80,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 81,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 82,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 83,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 84,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 85,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 86,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 87,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 88,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 89,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 90,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "enemy",
+        "index": 91,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ]
+      },
+      {
+        "kind": "hero",
+        "index": 0,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 0,
+        "id": "kael-noel",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 0,
+        "id": "kael-ember",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 0,
+        "id": "kael-lunar",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 0,
+        "id": "kael-aurora",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 0,
+        "id": "kael-abyss",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "hero",
+        "index": 1,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 1,
+        "id": "rin-noel",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 1,
+        "id": "rin-ember",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 1,
+        "id": "rin-lunar",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 1,
+        "id": "rin-aurora",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 1,
+        "id": "rin-abyss",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "hero",
+        "index": 2,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 2,
+        "id": "bane-noel",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 2,
+        "id": "bane-ember",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 2,
+        "id": "bane-lunar",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 2,
+        "id": "bane-aurora",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 2,
+        "id": "bane-abyss",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "hero",
+        "index": 3,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 3,
+        "id": "sera-noel",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 3,
+        "id": "sera-ember",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 3,
+        "id": "sera-lunar",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 3,
+        "id": "sera-aurora",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 3,
+        "id": "sera-abyss",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "hero",
+        "index": 4,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 4,
+        "id": "aria-noel",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 4,
+        "id": "aria-ember",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 4,
+        "id": "aria-lunar",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 4,
+        "id": "aria-aurora",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 4,
+        "id": "aria-abyss",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "hero",
+        "index": 5,
+        "id": "",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 5,
+        "id": "elian-noel",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 5,
+        "id": "elian-ember",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 5,
+        "id": "elian-lunar",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 5,
+        "id": "elian-aurora",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      },
+      {
+        "kind": "outfit",
+        "index": 5,
+        "id": "elian-abyss",
+        "draws": 240,
+        "states": [
+          "run",
+          "attack"
+        ],
+        "runCounts": [
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ],
+          [
+            8,
+            7,
+            8,
+            7,
+            8,
+            7,
+            8,
+            7
+          ]
+        ]
+      }
+    ],
+    "errors": []
   }
 }

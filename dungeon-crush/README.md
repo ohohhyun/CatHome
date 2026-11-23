@@ -1,4 +1,18 @@
-# 던전크러시! 2.15.0 — 캐릭터 원화와 외형 미리보기
+# 던전크러시! 2.20.3
+
+## 최신 공개 버전: 2.20.3 RC1 · 전 캐릭터 양발 이동·전체 메뉴 칸 수정
+
+- **[APK 바로 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.20.3-rc1/DungeonCrush-2.20.3.apk)** · [설치 안내 ZIP](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.20.3-rc1/DungeonCrush-2.20.3-RC1.zip) · [릴리스 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.20.3-rc1). 로그인 없이 내려받습니다. 카톡에는 주소를 공유하고 기존 앱을 삭제하지 않은 채 업데이트 설치합니다.
+- 기본6종·외형30종의 이동을 새 전신8포즈로 교체했습니다. 양발의 교대가 읽히도록 가까운 다리/먼 다리를 구분하고, 느린 이동은 접지, 달리기는 공중 포즈를 유지합니다. 일반 이동의 발을 가리던 먼지·속도 선·문양을 제거했습니다. 물리 이동 속도·좌우 입력·전투·성장은 유지합니다.
+- **전체 모험가 메뉴12칸**의 폭·높이·제목 줄과 마지막 행을 맞췄습니다.4열×3행이며 중복 복귀 카드는 제거합니다. 작은 화면·안전영역·1.4배 글자를 검사했습니다. 오른쪽 아래 기본 접기/펼치기, 왼쪽 위 정보만 모서리 배치, 타이틀 상점 제거는 유지합니다.
+- [구현·화면·95초 연속 이동 영상](release/FOOTWORK-MENU-NOTES.md) · [전수 검수](release/FOOTWORK-MENU-VERIFICATION.json).36종×느린 이동/달리기×두 방향×8시점1,152개 실제 접지 렌더, 원본 알파에서 독립 측정한 발바닥,128개 캐릭터·몬스터30,720회 렌더와36종 좌우 픽셀 비교,744개 기본 포즈·6직업 실제 연속 전투를 포함합니다.
+- 검증 소스 `12451dfba010ed432a566702cbe2444c86203eb7`. [최종 전체 **71개 검사(코드34 + Java2 + Chrome35)**와 APK/AAB·Android lint·기존 서명·포함 파일 검증 성공](https://github.com/ohohhyun/CatHome/actions/runs/44176222151). 이 최종 빌드의 검사 실패0건입니다. 기존 장비 비교/세트 효과·보스 마법·터치/4인·닉네임/변경권·성장/랭킹/저장 회귀를 포함합니다.
+- APK **512,926,747 bytes**, SHA-256 `062b2211476d5fcaada67fff9e0c6a12fac7a86121fb330bf07fedc783643ec7`. ZIP **512,928,091 bytes**, SHA-256 `7903badc67ae388fc8f7a5ec77788e75323724b8d2abf478536d224763468c1d`. [공개 게시·익명 전체 다운로드 검증](https://github.com/ohohhyun/CatHome/actions/runs/45106532129): 크기·해시·ZIP CRC·내부 APK 일치. 별도 익명 HEAD도 두 파일 HTTP200입니다. [배포 기록](release/2.20.3-VERIFICATION.json).
+- versionName2.20.3 / versionCode52 / 저장2 / Wi-Fi12 / 설치 인증서 `e43fedd9099e7b5df82eccfa3e92fc020d429ad99795463abbe40e2af4880708` 유지. 기존 이름·ID·계급·성장·장비·XP·외형·보상 기록을 보존합니다. 닉네임 최초 무료 저장/이후 변경권1개·3,900원/결제 전 구매 불가,4모드·공유 AI PK·기존5종 랭킹·매주 보상/2주 초기화·걷기 없는 미리보기·자동 저장을 유지합니다. 서버·DB·실결제는 연결하지 않습니다.
+- **남은 실기기 검수:** Android51→52 업데이트/저장·변경권 보존, 실제 손가락 조작감과 보행 체감, 시스템 글자/키보드/터치 스크롤, 물리 Wi-Fi2~4대, 장시간 FPS/발열/음량. 자동 검사 통과를 모든 환경의 무결함 보장이나 실기기 완료로 표현하지 않습니다.
+- 집사 사절 원본 보호: app `a70564ab782100b61cf07077e52753370e199045`, legacy `8bb4cd16f95ce641b3fa31296b021d8f976cb7e6`, root tests `07eea64ee955f5580a13a9f237490d346ceefe7a`. 이후 게시/문서 커밋은 검증 앱 소스를 바꾸지 않습니다.
+
+# 이전 버전: 던전크러시! 2.15.0 — 캐릭터 원화와 외형 미리보기
 
 - [APK ZIP 바로 다운로드](https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.15.0-rc1/DungeonCrush-2.15.0-RC1.zip) · [릴리스 페이지](https://github.com/ohohhyun/CatHome/releases/tag/dungeon-crush-v2.15.0-rc1). 압축을 풀고 `DungeonCrush-2.15.0.apk`를 설치하세요. 기존 앱은 삭제하지 말고 업데이트 설치합니다. versionCode 42, 저장 형식 2, Wi-Fi 프로토콜 10입니다.
 - 캐릭터 선택에 기본 캐릭터 6명과 외형 30벌의 전신 원화를 표시합니다. 상점 상품 상세에서는 원화·동작·스킬 효과를 확인하고 장착/해제할 수 있습니다. 동작별 미리보기 크기와 휴대폰 상점 UI를 정리했습니다.

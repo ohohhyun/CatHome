@@ -21,3 +21,9 @@
 - [전 외형의 느린 이동·달리기·좌우 전환 영상](footwork-menu/all-looks-slow-run.webm)
 - 직업별 포즈 시트: [카엘](footwork-menu/poses-0-run.png), [린](footwork-menu/poses-1-run.png), [베인](footwork-menu/poses-2-run.png), [세라](footwork-menu/poses-3-run.png), [아리아](footwork-menu/poses-4-run.png), [엘리안](footwork-menu/poses-5-run.png). 같은 폴더의 `-walk.png`는 느린 이동입니다.
 - [1,152조합 접지 측정](footwork-menu/contact-audit.json) · [최종 검수 기록](FOOTWORK-MENU-VERIFICATION.json)
+
+## 최종 공개 검증
+
+전체71개 검사·APK/AAB·Android lint·서명·포함 파일 검증: https://github.com/ohohhyun/CatHome/actions/runs/44176222151
+
+APK/ZIP 익명 전체 다운로드·크기·해시·CRC 검증: https://github.com/ohohhyun/CatHome/actions/runs/45106532129

@@ -1,0 +1,141 @@
+{
+  "version": "2.20.3 RC1",
+  "versionCode": 52,
+  "source": "12451dfba010ed432a566702cbe2444c86203eb7",
+  "buildRun": 44176222151,
+  "publishRun": 45106532129,
+  "releaseId": 449228943,
+  "checksPassed": 71,
+  "checksFailed": 0,
+  "checks": {
+    "scripts": [
+      "tests/enemy-effects.test.cjs",
+      "tests/progression-balance.test.cjs",
+      "tests/nickname-ticket.test.cjs",
+      "tests/name-policy.test.cjs",
+      "tests/movement-parity.test.cjs",
+      "tests/monster-audio.test.cjs",
+      "tests/pk.test.cjs",
+      "tests/hero-height.test.cjs",
+      "tests/motion-stability.test.cjs",
+      "tests/premium.test.cjs",
+      "tests/premium-art.test.cjs",
+      "tests/key-art.test.cjs",
+      "tests/background-cache.test.cjs",
+      "tests/frontier.test.cjs",
+      "tests/game.test.cjs",
+      "tests/caster.test.cjs",
+      "tests/ranged.test.cjs",
+      "tests/navigation.test.cjs",
+      "tests/generated-art.test.cjs",
+      "tests/combat-timing.test.cjs",
+      "tests/rpg.test.cjs",
+      "tests/inventory.test.cjs",
+      "tests/equipment-services.test.cjs",
+      "tests/release.test.cjs",
+      "tests/rankings.test.cjs",
+      "tests/ranking-client.test.cjs",
+      "tests/sound.test.cjs",
+      "tests/font-coverage.test.cjs",
+      "tests/ui-layout.test.cjs",
+      "tests/party-recovery.test.cjs",
+      "tests/run-cast-fix.test.cjs",
+      "tests/new-content.test.cjs",
+      "tests/expansion.test.cjs",
+      "tests/hotfix.test.cjs",
+      "tests/menu-repair-presentation.test.cjs",
+      "tests/player-experience-presentation.test.cjs",
+      "tests/enemy-effects-presentation.test.cjs",
+      "tests/progression-presentation.test.cjs",
+      "tests/pk-presentation.test.cjs",
+      "tests/navigation-presentation.test.cjs",
+      "tests/hero-height-presentation.test.cjs",
+      "tests/motion-stability-presentation.test.cjs",
+      "tests/premium-size-presentation.test.cjs",
+      "tests/premium-scene-size.test.cjs",
+      "tests/key-art-presentation.test.cjs",
+      "tests/premium-presentation.test.cjs",
+      "tests/premium-rendering.test.cjs",
+      "tests/town-services.test.cjs",
+      "tests/release-presentation.test.cjs",
+      "tests/rankings-presentation.test.cjs",
+      "tests/frontier-presentation.test.cjs",
+      "tests/sound-presentation.test.cjs",
+      "tests/inventory-ui.test.cjs",
+      "tests/new-content-presentation.test.cjs",
+      "tests/expansion-presentation.test.cjs",
+      "tests/hotfix-presentation.test.cjs",
+      "tests/coherent-motion-presentation.test.cjs",
+      "tests/actor-size-presentation.test.cjs",
+      "tests/run-skill-presentation.test.cjs",
+      "tests/motion24-presentation.test.cjs",
+      "tests/generated-presentation.test.cjs",
+      "tests/exploration.test.cjs",
+      "tests/locomotion.test.cjs",
+      "tests/ranged-presentation.test.cjs",
+      "tests/combat-presentation.test.cjs",
+      "tests/layout.test.cjs",
+      "tests/presentation.test.cjs",
+      "tests/browser.test.cjs",
+      "tests/party-recovery-presentation.test.cjs"
+    ],
+    "native": [
+      "LanTransportTest",
+      "RankingHttpClientTest"
+    ],
+    "total": 71
+  },
+  "saveFormat": 2,
+  "wifiProtocol": 12,
+  "signerSha256": "e43fedd9099e7b5df82eccfa3e92fc020d429ad99795463abbe40e2af4880708",
+  "protectedTrees": {
+    "app": "a70564ab782100b61cf07077e52753370e199045",
+    "legacy": "8bb4cd16f95ce641b3fa31296b021d8f976cb7e6",
+    "tests": "07eea64ee955f5580a13a9f237490d346ceefe7a"
+  },
+  "remainingPhysicalChecks": [
+    "Android51→52 업데이트 설치와 저장·닉네임·변경권 보존",
+    "실제 손가락 조작감과 보행 체감",
+    "Android 시스템 글자·키보드·터치 스크롤",
+    "물리 Wi-Fi 2~4대",
+    "장시간 FPS·발열·음량"
+  ],
+  "supersededRuns": [
+    {
+      "run": 44064356656,
+      "source": "361bc84c4ccdd73e9ee937fed414e0fad6048e68",
+      "reason": "Cancelled before APK packaging: priest full-body source comparison assumed the previous native reference=293. Updated expected cache resampling and rendered scale from the new bank reference, preserving the <=200 changed-channel threshold. Application bytes unchanged."
+    },
+    {
+      "run": 44064920318,
+      "source": "4e727ae2730df4c519b7a490eaadf8220a0c0274",
+      "conclusion": "failure",
+      "passed": 50,
+      "failed": "release-presentation.test.cjs used the previous hardcoded run asset path to simulate load failure; the replacement run asset was never blocked, so the expected retry UI timed out. Changed fixture to derive the critical source from actual runtime metadata; retry/time-gate/refund assertions preserved. No APK build or publication occurred."
+    }
+  ],
+  "apk": {
+    "bytes": 512926747,
+    "sha256": "062b2211476d5fcaada67fff9e0c6a12fac7a86121fb330bf07fedc783643ec7",
+    "url": "https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.20.3-rc1/DungeonCrush-2.20.3.apk",
+    "artifactId": 14372377162
+  },
+  "zip": {
+    "bytes": 512928091,
+    "sha256": "7903badc67ae388fc8f7a5ec77788e75323724b8d2abf478536d224763468c1d",
+    "url": "https://github.com/ohohhyun/CatHome/releases/download/dungeon-crush-v2.20.3-rc1/DungeonCrush-2.20.3-RC1.zip"
+  },
+  "anonymousDownloadVerification": {
+    "publisherRun": 45106532129,
+    "completeAPK": true,
+    "completeZIP": true,
+    "sizeAndSHA256": true,
+    "zipCRC": true,
+    "embeddedAPKMatches": true,
+    "separateHEAD": {
+      "apk": 200,
+      "zip": 200
+    }
+  },
+  "additionalCheck": "36 complete replacement locomotion banks / 288 authored alternating-foot poses. 1152 actual slow/full-speed contact renders in both directions, independent original-alpha sole measurements, one opaque body, no normal movement FX, preserved authored flight, class height calibration. All128actors/30720opaque samples and36mirrored run sheets. Twelve equal full-menu cards, aligned title rows, last-row visibility, small/supplied-aspect/inset/enlarged-font checks. Physical movement, combat, progression, save2, WiFi12 and existing features unchanged."
+}
