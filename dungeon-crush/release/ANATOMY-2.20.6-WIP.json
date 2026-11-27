@@ -1,0 +1,53 @@
+{
+  "version": "2.20.6",
+  "status": "work_in_progress",
+  "releaseBlocked": true,
+  "apkPublished": false,
+  "currentPublicVersion": "2.20.5",
+  "heightCm": {
+    "kael": 185,
+    "rin": 170,
+    "bane": 200,
+    "sera": 165,
+    "aria": 160,
+    "elian": 190
+  },
+  "verified": {
+    "localChromeLocomotionLooks": 36,
+    "localChromeLocomotionRenders": 1152,
+    "sourceOpaqueBootContacts": true,
+    "oneOpaqueBody": true,
+    "noNormalMovementTrails": true,
+    "partialPoseComparisons": 60,
+    "partialPoseLooks": 5,
+    "partialPoseChecksSupersededByStricterHeadIdentityReview": true
+  },
+  "unresolved": [
+    "Remaining paid combat head/torso/leg identity; standalone facial landmark ratios need actual source-pixel review",
+    "Full final-source verification, Android APK upgrade emulator check and signed release have not run"
+  ],
+  "generation": {
+    "savedActions": 25,
+    "requiredActions": 120,
+    "error": "usage_limit_reached",
+    "httpStatus": 429,
+    "resetsAt": 1795820919,
+    "resetsAtKST": "2026-11-28T08:08:39+09:00"
+  },
+  "physicalHardwareTested": false,
+  "checks": {
+    "codePassed": 34,
+    "codeTotal": 35,
+    "failedTest": "anatomy-pixels.test.cjs",
+    "finalCIComplete": false,
+    "localChromeCoherentMotionPassed": true,
+    "localChromePremiumRenderingPassed": true
+  },
+  "headIdentityReview": {
+    "required": true,
+    "passed": false,
+    "firstFailingLook": "kael-noel",
+    "firstFailingClip": "combo0",
+    "sourceFacialLandmarksRequireManualSkullReview": true
+  }
+}

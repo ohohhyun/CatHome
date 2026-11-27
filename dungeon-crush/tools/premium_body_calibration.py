@@ -5,6 +5,8 @@ import json
 
 def apply_body_calibration(root, data):
     review = json.loads((root / 'art-source/premium-body-calibration.json').read_text())
+    if review['version'] >= 2:
+        raise RuntimeError('This legacy eye-floor normalizer cannot handle crouched anatomy. Use tools/audit-anatomy-heads.py and tools/calibrate-anatomy.py for the approved native models.')
     assets = root / 'app/src/main/assets'
     checked = set()
     for costume_id, costume in data['costumes'].items():

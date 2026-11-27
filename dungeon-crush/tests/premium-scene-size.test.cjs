@@ -43,7 +43,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
    await p.evaluate(()=>RiftApp.solo());await p.locator('#loading-screen').waitFor({state:'hidden',timeout:60000});await p.evaluate(()=>{const g=RiftApp.getState(),hero=g.players[0];hero.inv=0;hero.hurt=0;g.enemies=[{...g.enemies[0],id:9001,type:'brute',skin:2,x:2000,y:hero.y,hp:1e12,maxHp:1e12,stun:99999,cd:99999,at:0}];g.projectiles=[];g.telegraphs=[];g.clearTime=0;});
    await p.waitForFunction(cls=>sceneDraws.some(r=>r.id==='base-'+cls&&r.scene==='battle'&&r.eyeError!==null),cls,{timeout:10000});
    await p.screenshot({path:'build/previews/scene-size/base-'+cls+'-battle.png'});
-   const baseline=await p.evaluate(cls=>sceneDraws.filter(r=>r.id==='base-'+cls&&r.eyeError!==null),cls);assert(baseline.every(r=>Math.abs(r.eyeError)<1.5&&Math.abs(r.soleError)<1&&Math.abs(r.bodyHeight-expectedBodyHeight)<1.5),'actual basic-body eye/sole reference');bases.push({cls,maxEyeError:Math.max(...baseline.map(r=>Math.abs(r.eyeError)))});
+   const baseline=await p.evaluate(cls=>sceneDraws.filter(r=>r.id==='base-'+cls&&r.eyeError!==null),cls);assert(baseline.every(r=>Math.abs(r.eyeError)<1.5&&Math.abs(r.soleError)<1&&Math.abs(r.bodyHeight-expectedBodyHeight*[185,170,200,165,160,190][cls]/185)<1.5),'actual basic-body eye/sole reference');bases.push({cls,maxEyeError:Math.max(...baseline.map(r=>Math.abs(r.eyeError)))});
    await p.evaluate(()=>RiftApp.home());
    const ids=Object.keys(review.costumes).filter(id=>review.costumes[id].cls===cls);
    for(const id of ids){
@@ -81,7 +81,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
     for(const scene of ['town','battle']){
      const rows=draws.filter(r=>r.scene===scene),neutral=rows.filter(r=>r.eyeError!==null);
      assert(neutral.length,id+' actual '+scene+' neutral must be visible');assert(rows.every(r=>r.height===260&&r.calls>0),id+' full gameplay body at fixed world size');
-     assert(neutral.every(r=>Math.abs(r.eyeError)<1.5&&Math.abs(r.soleError)<1&&Math.abs(r.bodyHeight-expectedBodyHeight)<1.5),id+' '+scene+' independently measured eye/sole projection');
+     assert(neutral.every(r=>Math.abs(r.eyeError)<1.5&&Math.abs(r.soleError)<1&&Math.abs(r.bodyHeight-expectedBodyHeight*[185,170,200,165,160,190][cls]/185)<1.5),id+' '+scene+' independently measured eye/sole projection');
      assert(rows.some(r=>r.bank==='run'),id+' actual '+scene+' running');
     }
     assert(draws.some(r=>r.scene==='battle'&&r.bank.startsWith('combo')),id+' actual basic attack');

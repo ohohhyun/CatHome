@@ -1,0 +1,27 @@
+[
+  {
+    "id": "reported-sera-aurora",
+    "file": "tests/fixtures/anatomy2206/reported-sera-aurora.png",
+    "sha256": "85735032f3a457c50369680ea98f55aeec3f51f194d7d3caa26d6e7419fc4d18",
+    "eye": [
+      143.91756693522137,
+      88.30429077148438
+    ],
+    "mouth": [
+      143.59495035807294,
+      97.16498819986978
+    ],
+    "sole": 223,
+    "faceRatio": 0.16488305243956952,
+    "eyeToFace": 15.191413263084133
+  },
+  {
+    "id": "unapproved-kael-aurora-red",
+    "kind": "costumePalette",
+    "file": "tests/fixtures/anatomy2206/unapproved-kael-aurora-red.png",
+    "sha256": "f6fcc91be122759d9866c7afe88e7632dcb794d5b52c97b7ff1185562a7bd6c2",
+    "faceBottom": 64.57902018229167,
+    "sole": 224,
+    "description": "Unreleased intermediate art with the wrong red coat; white/gold Aurora armor must remain consistent."
+  }
+]

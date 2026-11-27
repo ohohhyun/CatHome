@@ -5,11 +5,11 @@ function loadPicture(key,src){sources.set(key,src);if(pictures.has(key)||loading
 function ensureSkills(cls){if(!ACTORS[cls])return;loadPicture('skills'+cls,cls===4?'art/motion299/aria-skills.webp':cls===5?'art/motion210/elian-skills.webp':'art/advanced/'+ACTORS[cls].id+'-skills.webp');loadPicture('growth'+cls,'art/motion210/'+root.DungeonGrowth.ids[cls]+'-growth-skills.webp');}
 function ensure(cls){root.DungeonActors.ensure(cls);ensureSkills(cls);}
 // Use one human body height for every class; native artwork anatomy is calibrated below.
-const HERO_HEIGHT_SCALES=Object.freeze([1,1,1,1,1,1]);
+const HERO_HEIGHT_SCALES=Object.freeze([185/185,170/185,200/185,165/185,160/185,190/185]);
 function heightScale(cls){return HERO_HEIGHT_SCALES[cls]||1;}
-const BASE_BODY_RATIOS=Object.freeze([349/418.681,351/426.923,384/446.703,384/443.956,238/294,262/293]);
-function bodyHeight(height=260){return height*BASE_BODY_RATIOS[0];}
-function bodyScale(cls){return heightScale(cls)*BASE_BODY_RATIOS[0]/(BASE_BODY_RATIOS[cls]||BASE_BODY_RATIOS[0]);}
+const BODY_EYE_RATIO=349/418.681;
+function bodyHeight(height=260){return height*BODY_EYE_RATIO;}
+function bodyScale(cls){return heightScale(cls);}
 function actor(c,cls,x,y,height,dir,p,time,alpha=1){
  const sizedHeight=height*bodyScale(cls),rise=root.DungeonActors.frame(p,time).rise||0;
  // Preserve the original jump trajectory while changing the body's standing height.

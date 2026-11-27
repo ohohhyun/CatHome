@@ -1,129 +1,9 @@
 {
-  "method": "Five-tap cyclic upper-silhouette registration; first pose and scale preserved; no source pixel changes.",
+  "method": "Native whole-body anatomy; per-source constant reference, pose hip-root and actual boot ground. Existing enemy cyclic registration retained.",
   "baseHeroes": 6,
   "outfits": 30,
   "enemies": 92,
   "banks": [
-    {
-      "id": "kael/run",
-      "frames": 8,
-      "beforeRmsAccelerationAt160px": 3.3075,
-      "afterRmsAccelerationAt160px": 0.4275,
-      "maxPivotAdjustmentAt160px": 2.2131,
-      "sourceSha256": {
-        "art/motion211/kael-run-consistent.webp": "02c75765530484a18163bf274f5ac3b72dd77c0ed0fe0058562b53bfe57351d6"
-      }
-    },
-    {
-      "id": "kael/reaction",
-      "frames": 4,
-      "beforeRmsAccelerationAt160px": 10.8479,
-      "afterRmsAccelerationAt160px": 2.6343,
-      "maxPivotAdjustmentAt160px": 10.8133,
-      "sourceSha256": {
-        "art/motion29/kael-reaction.webp": "20f60b8faef63a7c5aee2114182822d74472b0899e44b0e170c99b82ba2ef71b"
-      }
-    },
-    {
-      "id": "rin/run",
-      "frames": 8,
-      "beforeRmsAccelerationAt160px": 5.906,
-      "afterRmsAccelerationAt160px": 1.1015,
-      "maxPivotAdjustmentAt160px": 2.9769,
-      "sourceSha256": {
-        "art/motion211/rin-run-consistent.webp": "7150d55e08ff0d8cb22e1c6e3d57f034481d718a39c293be27d0444626c4a514"
-      }
-    },
-    {
-      "id": "rin/reaction",
-      "frames": 4,
-      "beforeRmsAccelerationAt160px": 5.7342,
-      "afterRmsAccelerationAt160px": 1.3919,
-      "maxPivotAdjustmentAt160px": 4.0799,
-      "sourceSha256": {
-        "art/motion29/rin-reaction.webp": "66a4182b607f2f146b69bdf90001e50ae8c062a01882955b21e9edc3261e074d"
-      }
-    },
-    {
-      "id": "bane/run",
-      "frames": 8,
-      "beforeRmsAccelerationAt160px": 2.7486,
-      "afterRmsAccelerationAt160px": 0.7309,
-      "maxPivotAdjustmentAt160px": 2.2502,
-      "sourceSha256": {
-        "art/motion211/bane-run-consistent.webp": "fe669c7fda262026eea9d9acc52d4e29c0724a21af945c14ce195bf2e165030e"
-      }
-    },
-    {
-      "id": "bane/reaction",
-      "frames": 4,
-      "beforeRmsAccelerationAt160px": 6.8853,
-      "afterRmsAccelerationAt160px": 1.7054,
-      "maxPivotAdjustmentAt160px": 5.1498,
-      "sourceSha256": {
-        "art/motion29/bane-reaction.webp": "5c5cd2ac610aa8e040e505b1768011eee93fb89611e99e24ba7ddf6986a2bea5"
-      }
-    },
-    {
-      "id": "sera/run",
-      "frames": 8,
-      "beforeRmsAccelerationAt160px": 2.204,
-      "afterRmsAccelerationAt160px": 0.5054,
-      "maxPivotAdjustmentAt160px": 1.9711,
-      "sourceSha256": {
-        "art/motion211/sera-run-consistent.webp": "be14d2d142f644eba468cdb554a5190da13da6821e407ae05f028e8cd5b51b79"
-      }
-    },
-    {
-      "id": "sera/reaction",
-      "frames": 4,
-      "beforeRmsAccelerationAt160px": 10.4569,
-      "afterRmsAccelerationAt160px": 2.4259,
-      "maxPivotAdjustmentAt160px": 10.1944,
-      "sourceSha256": {
-        "art/motion29/sera-reaction.webp": "432832afb9b5d916fdc81b316a5f096e9e6f01b18d097615c75aa5e9dce2474f"
-      }
-    },
-    {
-      "id": "aria/run",
-      "frames": 8,
-      "beforeRmsAccelerationAt160px": 5.1227,
-      "afterRmsAccelerationAt160px": 1.1079,
-      "maxPivotAdjustmentAt160px": 2.9661,
-      "sourceSha256": {
-        "art/motion299/aria-mobility.webp": "1a9730c25115ccf6f13cabad5d97eeb082360fa48b95e44ca7ed2731d6f594d6"
-      }
-    },
-    {
-      "id": "aria/reaction",
-      "frames": 4,
-      "beforeRmsAccelerationAt160px": 3.4955,
-      "afterRmsAccelerationAt160px": 0.6115,
-      "maxPivotAdjustmentAt160px": 2.3723,
-      "sourceSha256": {
-        "art/motion299/aria-recovery.webp": "9bea9e155688a4764d3307222fef92e39774e70dcaa6ea63c1b121e73ae5881d"
-      }
-    },
-    {
-      "id": "elian/run",
-      "frames": 8,
-      "beforeRmsAccelerationAt160px": 5.2379,
-      "afterRmsAccelerationAt160px": 1.2108,
-      "maxPivotAdjustmentAt160px": 3.8441,
-      "sourceSha256": {
-        "art/motion210/elian-mobility.webp": "93fdcf738d6ae7d23d51359c56a0a2f3f6e11c29288f05c39282e8d5ad23a3ce"
-      }
-    },
-    {
-      "id": "elian/reaction",
-      "frames": 4,
-      "beforeRmsAccelerationAt160px": 2.8249,
-      "afterRmsAccelerationAt160px": 0.3599,
-      "maxPivotAdjustmentAt160px": 1.7576,
-      "sourceSha256": {
-        "art/motion210/elian-recovery.webp": "cf2c4714fc2f669073d60951c48165b170dc861447a7a3262c1ff4de2a225f0b"
-      }
-    },
     {
       "id": "knight/walk",
       "frames": 24,
@@ -1077,604 +957,869 @@
       }
     },
     {
+      "id": "kael/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/kael.webp": "6a38ddf3807357d17ecda01c55211301ec61d980bde4a91b7f7a819c0757c576"
+      }
+    },
+    {
+      "id": "kael/run",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/kael.webp": "6a38ddf3807357d17ecda01c55211301ec61d980bde4a91b7f7a819c0757c576"
+      }
+    },
+    {
+      "id": "kael/reaction",
+      "frames": 4,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/anatomy2206/kael-movement.webp": "1719133b06a3339cee77cbabf253ad60f3a46f9587c0a9b1fcf10455961ca991"
+      }
+    },
+    {
+      "id": "kael-noel/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/kael-noel.webp": "1a8f1dd069a4d8c8b96d0d6061305f797040d81b4227ce381416051b0f0974b5"
+      }
+    },
+    {
       "id": "kael-noel/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 9.3041,
-      "afterRmsAccelerationAt160px": 1.4691,
-      "maxPivotAdjustmentAt160px": 5.7855,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/kael-noel-movement.webp": "e822f43fc22269d350ca8121ec8117e7417580536e4afdfe5d7d235efc36078d"
+        "art/locomotion2203/kael-noel.webp": "1a8f1dd069a4d8c8b96d0d6061305f797040d81b4227ce381416051b0f0974b5"
       }
     },
     {
       "id": "kael-noel/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 5.0978,
-      "afterRmsAccelerationAt160px": 1.0498,
-      "maxPivotAdjustmentAt160px": 4.2009,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/kael-noel-movement.webp": "e822f43fc22269d350ca8121ec8117e7417580536e4afdfe5d7d235efc36078d"
+        "art/premium/kael-noel-movement.webp": "a0af43d83c9ac680a371c9f7a227a5a52ba79d080c3428f42caf39d44e558da0"
+      }
+    },
+    {
+      "id": "kael-ember/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/kael-ember.webp": "66681cfd0604713af846f9b016f1138171e35a22e19fdd7fe7b20a6cb440b494"
       }
     },
     {
       "id": "kael-ember/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 4.5523,
-      "afterRmsAccelerationAt160px": 0.9039,
-      "maxPivotAdjustmentAt160px": 2.1514,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/kael-ember-movement.webp": "b07de7e0d1b65c09d40d88c96d2029c25b32654feb7c614aed29d47138f6ef00"
+        "art/locomotion2203/kael-ember.webp": "66681cfd0604713af846f9b016f1138171e35a22e19fdd7fe7b20a6cb440b494"
       }
     },
     {
       "id": "kael-ember/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 1.1241,
-      "afterRmsAccelerationAt160px": 0.121,
-      "maxPivotAdjustmentAt160px": 0.7516,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/kael-ember-movement.webp": "b07de7e0d1b65c09d40d88c96d2029c25b32654feb7c614aed29d47138f6ef00"
+        "art/premium/kael-ember-movement.webp": "7bb94270812eaeccba5c657fe39f3156c3f573306f852a1f84286953e03d5a88"
+      }
+    },
+    {
+      "id": "kael-lunar/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/kael-lunar.webp": "c6491fdcb112bcfa95c2b322fb664d6d841fe38e7037cddb159b49653ab59aa2"
       }
     },
     {
       "id": "kael-lunar/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 7.593,
-      "afterRmsAccelerationAt160px": 1.3078,
-      "maxPivotAdjustmentAt160px": 5.1834,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/kael-lunar-movement.webp": "349abcebb5d4ec29f1372cc20404305b9abfcbab83a7bf5f4189331e2bf37891"
+        "art/locomotion2203/kael-lunar.webp": "c6491fdcb112bcfa95c2b322fb664d6d841fe38e7037cddb159b49653ab59aa2"
       }
     },
     {
       "id": "kael-lunar/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 2.5203,
-      "afterRmsAccelerationAt160px": 0.4024,
-      "maxPivotAdjustmentAt160px": 1.7066,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/kael-lunar-movement.webp": "349abcebb5d4ec29f1372cc20404305b9abfcbab83a7bf5f4189331e2bf37891"
+        "art/premium/kael-lunar-movement.webp": "ee473305e25e01923ef9ef20ee16e0277fb5a1fee6b4c76bfede935d25ea3cf9"
+      }
+    },
+    {
+      "id": "kael-aurora/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/kael-aurora.webp": "1f6a759ac3776cc382bd698e32ecc59e6e889cb5eb5398309d3cf420209eb9b9"
       }
     },
     {
       "id": "kael-aurora/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 5.7762,
-      "afterRmsAccelerationAt160px": 1.4167,
-      "maxPivotAdjustmentAt160px": 2.9743,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/kael-aurora-movement.webp": "c7adb579667397b8b4a3fac8a483d51dccef0bf82950f2bf4a604d89fa9da4bf"
+        "art/locomotion2203/kael-aurora.webp": "1f6a759ac3776cc382bd698e32ecc59e6e889cb5eb5398309d3cf420209eb9b9"
       }
     },
     {
       "id": "kael-aurora/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 1.0269,
-      "afterRmsAccelerationAt160px": 0.1832,
-      "maxPivotAdjustmentAt160px": 0.5738,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/kael-aurora-movement.webp": "c7adb579667397b8b4a3fac8a483d51dccef0bf82950f2bf4a604d89fa9da4bf"
+        "art/premium/kael-aurora-movement.webp": "8f8a73b3da6d4e2971778506a0f1cba45671aa5cb1748492cccae6eab1ac259f"
+      }
+    },
+    {
+      "id": "kael-abyss/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/kael-abyss.webp": "baf7f4f83f4cffeeaf47b6f56c5a85b9f6e848238ff3245a28fd8e2bf03a2301"
       }
     },
     {
       "id": "kael-abyss/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 11.0384,
-      "afterRmsAccelerationAt160px": 1.5487,
-      "maxPivotAdjustmentAt160px": 7.0336,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/kael-abyss-movement.webp": "779d96aa3948822786cb61a70dec9bebc1027882f667e5734c8bd2564d99e753"
+        "art/locomotion2203/kael-abyss.webp": "baf7f4f83f4cffeeaf47b6f56c5a85b9f6e848238ff3245a28fd8e2bf03a2301"
       }
     },
     {
       "id": "kael-abyss/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 4.0561,
-      "afterRmsAccelerationAt160px": 0.6115,
-      "maxPivotAdjustmentAt160px": 3.2832,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/kael-abyss-movement.webp": "779d96aa3948822786cb61a70dec9bebc1027882f667e5734c8bd2564d99e753"
+        "art/premium/kael-abyss-movement.webp": "18c5e9e532063ca40afc00be649fb6f30bc3d71e13bd9766ecc6a9c27c2d01ee"
+      }
+    },
+    {
+      "id": "rin/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/rin.webp": "19e6d204be03ee5c01081e22fae4bfae3323f6bac28413ee4c5fe8a244b7563f"
+      }
+    },
+    {
+      "id": "rin/run",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/rin.webp": "19e6d204be03ee5c01081e22fae4bfae3323f6bac28413ee4c5fe8a244b7563f"
+      }
+    },
+    {
+      "id": "rin/reaction",
+      "frames": 4,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/anatomy2206/rin-movement.webp": "188b812e41393038a0dc801bf434ed7b5207cdb14218b3f1c47d818051847701"
+      }
+    },
+    {
+      "id": "rin-noel/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/rin-noel.webp": "8aa710878b293dede57bb357f406d6d95e061cd8aeedfc1ddfe28e968bbfbe47"
       }
     },
     {
       "id": "rin-noel/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 7.2866,
-      "afterRmsAccelerationAt160px": 1.6505,
-      "maxPivotAdjustmentAt160px": 5.8496,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/rin-noel-movement.webp": "99cf8a7009a0baf0c74cb547b37dc981c2a4b4675245f3f297d9806d0a36390b"
+        "art/locomotion2203/rin-noel.webp": "8aa710878b293dede57bb357f406d6d95e061cd8aeedfc1ddfe28e968bbfbe47"
       }
     },
     {
       "id": "rin-noel/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 1.9714,
-      "afterRmsAccelerationAt160px": 0.4554,
-      "maxPivotAdjustmentAt160px": 1.7987,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/rin-noel-movement.webp": "99cf8a7009a0baf0c74cb547b37dc981c2a4b4675245f3f297d9806d0a36390b"
+        "art/premium/rin-noel-movement.webp": "7f32822701bfa35162828921b6b2d4af5c3ac756164cc87018a9148bac677443"
+      }
+    },
+    {
+      "id": "rin-ember/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/rin-ember.webp": "0eb973538de060607b762f34a2af1af13c7432312e0fa381d6ad06f419565c65"
       }
     },
     {
       "id": "rin-ember/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 6.6608,
-      "afterRmsAccelerationAt160px": 2.4096,
-      "maxPivotAdjustmentAt160px": 4.0509,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/rin-ember-movement.webp": "7afe6cc4de5e99bf5e90118162e0554ed27a4fc794a2334d7132be408be5ae7e"
+        "art/locomotion2203/rin-ember.webp": "0eb973538de060607b762f34a2af1af13c7432312e0fa381d6ad06f419565c65"
       }
     },
     {
       "id": "rin-ember/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 3.1269,
-      "afterRmsAccelerationAt160px": 0.264,
-      "maxPivotAdjustmentAt160px": 2.0604,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/rin-ember-movement.webp": "7afe6cc4de5e99bf5e90118162e0554ed27a4fc794a2334d7132be408be5ae7e"
+        "art/premium/rin-ember-movement.webp": "b6bb4a482ac1ac3e738a4961d3645af98be4f88fcbd2c752a99c16934706325f"
+      }
+    },
+    {
+      "id": "rin-lunar/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/rin-lunar.webp": "ce771afaa0479d217ab1d29af877cc3024d31dde581d0d69bd1f54d5abf36877"
       }
     },
     {
       "id": "rin-lunar/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 4.0137,
-      "afterRmsAccelerationAt160px": 1.4264,
-      "maxPivotAdjustmentAt160px": 2.978,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/rin-lunar-movement.webp": "16fe4b74f565fa3041e01c96fb6ad65950e6b6077c7d49139b75ca74076cce83"
+        "art/locomotion2203/rin-lunar.webp": "ce771afaa0479d217ab1d29af877cc3024d31dde581d0d69bd1f54d5abf36877"
       }
     },
     {
       "id": "rin-lunar/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 2.6942,
-      "afterRmsAccelerationAt160px": 0.3882,
-      "maxPivotAdjustmentAt160px": 2.1397,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/rin-lunar-movement.webp": "16fe4b74f565fa3041e01c96fb6ad65950e6b6077c7d49139b75ca74076cce83"
+        "art/premium/rin-lunar-movement.webp": "e9d1b2fc99bc2004a85b588f9c3b268ba57c2e63ea86787bede26f91620d9de7"
+      }
+    },
+    {
+      "id": "rin-aurora/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/rin-aurora.webp": "d3d941b80c1947acbf4808d805f87266b479c8d2004f0fd017f5ae06cf88ce67"
       }
     },
     {
       "id": "rin-aurora/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 9.8237,
-      "afterRmsAccelerationAt160px": 1.0426,
-      "maxPivotAdjustmentAt160px": 8.7477,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/rin-aurora-movement.webp": "918486a990bde76a1a53057b31dc6fb86a8690486ac0265ebce1027d0583027d"
+        "art/locomotion2203/rin-aurora.webp": "d3d941b80c1947acbf4808d805f87266b479c8d2004f0fd017f5ae06cf88ce67"
       }
     },
     {
       "id": "rin-aurora/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 1.3479,
-      "afterRmsAccelerationAt160px": 0.2208,
-      "maxPivotAdjustmentAt160px": 1.0765,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/rin-aurora-movement.webp": "918486a990bde76a1a53057b31dc6fb86a8690486ac0265ebce1027d0583027d"
+        "art/premium/rin-aurora-movement.webp": "795542f447514bf4f70f0686dbe34ad782bfc92b1cdd5f35fc9829e67f8260c1"
+      }
+    },
+    {
+      "id": "rin-abyss/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/rin-abyss.webp": "47f4bea38dcc47fe5bc65409dc781481a4aad6f4b2e6c3230fc132c292301a81"
       }
     },
     {
       "id": "rin-abyss/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 9.6085,
-      "afterRmsAccelerationAt160px": 1.0572,
-      "maxPivotAdjustmentAt160px": 5.4262,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/rin-abyss-movement.webp": "b27ab4fbdc385ed2c93385425a457812bded09f73bff790228cd1dded5bbda23"
+        "art/locomotion2203/rin-abyss.webp": "47f4bea38dcc47fe5bc65409dc781481a4aad6f4b2e6c3230fc132c292301a81"
       }
     },
     {
       "id": "rin-abyss/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 2.62,
-      "afterRmsAccelerationAt160px": 0.4028,
-      "maxPivotAdjustmentAt160px": 1.9667,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/rin-abyss-movement.webp": "b27ab4fbdc385ed2c93385425a457812bded09f73bff790228cd1dded5bbda23"
+        "art/premium/rin-abyss-movement.webp": "998fd56d981a3edc083e09cf37d4d7ad63a4af4dab0a604596a3488387cf9658"
+      }
+    },
+    {
+      "id": "bane/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/bane.webp": "5bfda7d38cc58c8a2ce0c8c16ca2ae28eb52b07dcd34936477a5d13ac53b02e2"
+      }
+    },
+    {
+      "id": "bane/run",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/bane.webp": "5bfda7d38cc58c8a2ce0c8c16ca2ae28eb52b07dcd34936477a5d13ac53b02e2"
+      }
+    },
+    {
+      "id": "bane/reaction",
+      "frames": 4,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/anatomy2206/bane-movement.webp": "bb2eb238829aefd86b15065bd02f8c27d9fbe8eed7fd8cd37e3845cfbb0a0969"
+      }
+    },
+    {
+      "id": "bane-noel/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/bane-noel.webp": "652c596bac9cc81ad07f3b34e50fb0d0949e810304807e02b7da3c2605fdc79d"
       }
     },
     {
       "id": "bane-noel/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 2.0903,
-      "afterRmsAccelerationAt160px": 0.598,
-      "maxPivotAdjustmentAt160px": 1.2408,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/bane-noel-movement.webp": "e296bc1941a16bfa12dccc85fbe3a3119320055cacf017a415f09f96106f8f07"
+        "art/locomotion2203/bane-noel.webp": "652c596bac9cc81ad07f3b34e50fb0d0949e810304807e02b7da3c2605fdc79d"
       }
     },
     {
       "id": "bane-noel/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 4.5201,
-      "afterRmsAccelerationAt160px": 0.4847,
-      "maxPivotAdjustmentAt160px": 2.2313,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/bane-noel-movement.webp": "e296bc1941a16bfa12dccc85fbe3a3119320055cacf017a415f09f96106f8f07"
+        "art/premium/bane-noel-movement.webp": "6e81acf0218dc5dc8e7c3c629f8ec81b226049910994701d59c781d1404c5be1"
+      }
+    },
+    {
+      "id": "bane-ember/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/bane-ember.webp": "c091a645494693d0a7466bc482f1781f9d1d8095a3abc60c19986170126eff11"
       }
     },
     {
       "id": "bane-ember/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 6.9203,
-      "afterRmsAccelerationAt160px": 1.1304,
-      "maxPivotAdjustmentAt160px": 4.5954,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/bane-ember-movement.webp": "d56556f93ce607b2cd25bc5218171e7961988c09f40080399025afca6e8268be"
+        "art/locomotion2203/bane-ember.webp": "c091a645494693d0a7466bc482f1781f9d1d8095a3abc60c19986170126eff11"
       }
     },
     {
       "id": "bane-ember/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 3.63,
-      "afterRmsAccelerationAt160px": 0.3471,
-      "maxPivotAdjustmentAt160px": 2.0693,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/bane-ember-movement.webp": "d56556f93ce607b2cd25bc5218171e7961988c09f40080399025afca6e8268be"
+        "art/premium/bane-ember-movement.webp": "ebb689196476b3be46d7f9dace086b4c7e16b29e41df672b53f4109ae13f3dd1"
+      }
+    },
+    {
+      "id": "bane-lunar/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/bane-lunar.webp": "db0ed02731276124dea01d1e53b483fbffd22a08e6f1772298f46d246439bf63"
       }
     },
     {
       "id": "bane-lunar/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 6.4115,
-      "afterRmsAccelerationAt160px": 1.1194,
-      "maxPivotAdjustmentAt160px": 2.5894,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/bane-lunar-movement.webp": "56e9e24b387958aac21e5b949cae032938e86d45a62702b25b36c403f5f370a7"
+        "art/locomotion2203/bane-lunar.webp": "db0ed02731276124dea01d1e53b483fbffd22a08e6f1772298f46d246439bf63"
       }
     },
     {
       "id": "bane-lunar/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 2.179,
-      "afterRmsAccelerationAt160px": 0.5191,
-      "maxPivotAdjustmentAt160px": 1.689,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/bane-lunar-movement.webp": "56e9e24b387958aac21e5b949cae032938e86d45a62702b25b36c403f5f370a7"
+        "art/premium/bane-lunar-movement.webp": "3d660816e4b3e62366e91f39db256293af50deb3cf8c3eadf0d592d53aa9f809"
+      }
+    },
+    {
+      "id": "bane-aurora/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/bane-aurora.webp": "3287097b45e18f8fdb4366249416844be24c47df4ad7f1a9dd3a6845b32531b7"
       }
     },
     {
       "id": "bane-aurora/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 5.5978,
-      "afterRmsAccelerationAt160px": 1.0447,
-      "maxPivotAdjustmentAt160px": 3.5118,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/bane-aurora-movement.webp": "e2c2fe830d59a16e0ca1abe18ef78dbf79c962bf1e350b081097929e7caa4fbd"
+        "art/locomotion2203/bane-aurora.webp": "3287097b45e18f8fdb4366249416844be24c47df4ad7f1a9dd3a6845b32531b7"
       }
     },
     {
       "id": "bane-aurora/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 2.2222,
-      "afterRmsAccelerationAt160px": 0.5365,
-      "maxPivotAdjustmentAt160px": 2.1755,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/bane-aurora-movement.webp": "e2c2fe830d59a16e0ca1abe18ef78dbf79c962bf1e350b081097929e7caa4fbd"
+        "art/premium/bane-aurora-movement.webp": "f2cf74cf3db283ddc99df539af76d07514dd36de76545d37ac71de4fef1e9531"
+      }
+    },
+    {
+      "id": "bane-abyss/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/bane-abyss.webp": "8c89537f33b69a20c1fe31a565868d88f380543ebfa2e2366b19e68f652267e2"
       }
     },
     {
       "id": "bane-abyss/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 4.2795,
-      "afterRmsAccelerationAt160px": 1.0456,
-      "maxPivotAdjustmentAt160px": 2.4964,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/bane-abyss-movement.webp": "32d8fba3d93b5afb42965a7baa79a498f38f63f58b8f55da1f9f2022201a2744"
+        "art/locomotion2203/bane-abyss.webp": "8c89537f33b69a20c1fe31a565868d88f380543ebfa2e2366b19e68f652267e2"
       }
     },
     {
       "id": "bane-abyss/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 4.5559,
-      "afterRmsAccelerationAt160px": 0.4942,
-      "maxPivotAdjustmentAt160px": 3.3647,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/bane-abyss-movement.webp": "32d8fba3d93b5afb42965a7baa79a498f38f63f58b8f55da1f9f2022201a2744"
+        "art/premium/bane-abyss-movement.webp": "eed18d4183632a06711b40e420acda1573bbdff6fb9cac190b37c7a2883c3a32"
+      }
+    },
+    {
+      "id": "sera/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/sera.webp": "93ad849a32dba43da0204e572afcea2fed215e1c885af56784d19f5549c9fc6c"
+      }
+    },
+    {
+      "id": "sera/run",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/sera.webp": "93ad849a32dba43da0204e572afcea2fed215e1c885af56784d19f5549c9fc6c"
+      }
+    },
+    {
+      "id": "sera/reaction",
+      "frames": 4,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/anatomy2206/sera-movement.webp": "455970b3fa0d3a8a8cfcd433300bcbe8630b8c045cf41942510f56ad0542a1b9"
+      }
+    },
+    {
+      "id": "sera-noel/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/sera-noel.webp": "e02185ec5441ff29fc372808a56fc00858441c1b8fe01ce3c08123498ab581c1"
       }
     },
     {
       "id": "sera-noel/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 11.2805,
-      "afterRmsAccelerationAt160px": 1.5512,
-      "maxPivotAdjustmentAt160px": 7.0175,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/sera-noel-movement.webp": "535a75f7c12339fe71ec12f8c68efe02ae08f5e577dd914ddcdd7dde65e0490d"
+        "art/locomotion2203/sera-noel.webp": "e02185ec5441ff29fc372808a56fc00858441c1b8fe01ce3c08123498ab581c1"
       }
     },
     {
       "id": "sera-noel/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 5.6359,
-      "afterRmsAccelerationAt160px": 0.8168,
-      "maxPivotAdjustmentAt160px": 4.6176,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/sera-noel-movement.webp": "535a75f7c12339fe71ec12f8c68efe02ae08f5e577dd914ddcdd7dde65e0490d"
+        "art/premium/sera-noel-movement.webp": "b6f9e2fb5075f78050daae723b719eeae2576a78ba1cba8eb16aa11aa5833d49"
+      }
+    },
+    {
+      "id": "sera-ember/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/sera-ember.webp": "063b8980949df4c0c7b5ecbb97a4730036838d19558ac08024c530bd6b329651"
       }
     },
     {
       "id": "sera-ember/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 7.183,
-      "afterRmsAccelerationAt160px": 1.5276,
-      "maxPivotAdjustmentAt160px": 7.4534,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/sera-ember-movement.webp": "832bc23c0c48c610ab7c8f1322b2028cfad821c6a44f228c9d0d35b54afc34bd"
+        "art/locomotion2203/sera-ember.webp": "063b8980949df4c0c7b5ecbb97a4730036838d19558ac08024c530bd6b329651"
       }
     },
     {
       "id": "sera-ember/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 2.0744,
-      "afterRmsAccelerationAt160px": 0.4586,
-      "maxPivotAdjustmentAt160px": 1.7861,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/sera-ember-movement.webp": "832bc23c0c48c610ab7c8f1322b2028cfad821c6a44f228c9d0d35b54afc34bd"
+        "art/premium/sera-ember-movement.webp": "93a217880d8b13338a34e0c32e678702636250fb4c0bf6f1c225c156420668d6"
+      }
+    },
+    {
+      "id": "sera-lunar/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/sera-lunar.webp": "6faf33f877c632f21d28f4cf68190e3c59c8c5dac723348760e62198a0d54e5e"
       }
     },
     {
       "id": "sera-lunar/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 6.2417,
-      "afterRmsAccelerationAt160px": 0.7118,
-      "maxPivotAdjustmentAt160px": 5.2655,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/sera-lunar-movement.webp": "09b33e8e19e0995bb8bc9c9b30dc6a677252daf0a32e21bd0993d07dabdc53f5"
+        "art/locomotion2203/sera-lunar.webp": "6faf33f877c632f21d28f4cf68190e3c59c8c5dac723348760e62198a0d54e5e"
       }
     },
     {
       "id": "sera-lunar/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 2.1504,
-      "afterRmsAccelerationAt160px": 0.4401,
-      "maxPivotAdjustmentAt160px": 1.5606,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/sera-lunar-movement.webp": "09b33e8e19e0995bb8bc9c9b30dc6a677252daf0a32e21bd0993d07dabdc53f5"
+        "art/premium/sera-lunar-movement.webp": "19721cb794618fdb3bacfc68de76aeb0e4f77d861f6ba6cf30cdff3e69f0fd29"
+      }
+    },
+    {
+      "id": "sera-aurora/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/sera-aurora.webp": "ae4960a8571a758d85f45ee84b7509a00fccb9d3ac5efe7998818ffefe9ed972"
       }
     },
     {
       "id": "sera-aurora/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 10.0683,
-      "afterRmsAccelerationAt160px": 1.695,
-      "maxPivotAdjustmentAt160px": 7.1326,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/sera-aurora-movement.webp": "087dbae017b884ebd74b90a591342acf48256011abfcaf67f9082f97395198fa"
+        "art/locomotion2203/sera-aurora.webp": "ae4960a8571a758d85f45ee84b7509a00fccb9d3ac5efe7998818ffefe9ed972"
       }
     },
     {
       "id": "sera-aurora/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 3.081,
-      "afterRmsAccelerationAt160px": 0.5082,
-      "maxPivotAdjustmentAt160px": 2.6523,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/sera-aurora-movement.webp": "087dbae017b884ebd74b90a591342acf48256011abfcaf67f9082f97395198fa"
+        "art/premium/sera-aurora-movement.webp": "0fe1638538665452e12ec744a196575df584cf808282d8ee4db6ab68a921c8ab"
+      }
+    },
+    {
+      "id": "sera-abyss/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/sera-abyss.webp": "211ab50d6c198dc0f58d7a814304780825c4c4040346fef515ad643a5fb806b5"
       }
     },
     {
       "id": "sera-abyss/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 3.1409,
-      "afterRmsAccelerationAt160px": 1.3265,
-      "maxPivotAdjustmentAt160px": 2.4356,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/sera-abyss-movement.webp": "7164929c449033ed9fbe7961aed79509aa024b2390811865c47f5cd99ac5b3be"
+        "art/locomotion2203/sera-abyss.webp": "211ab50d6c198dc0f58d7a814304780825c4c4040346fef515ad643a5fb806b5"
       }
     },
     {
       "id": "sera-abyss/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 0.7071,
-      "afterRmsAccelerationAt160px": 0.1337,
-      "maxPivotAdjustmentAt160px": 0.5208,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/sera-abyss-movement.webp": "7164929c449033ed9fbe7961aed79509aa024b2390811865c47f5cd99ac5b3be"
+        "art/premium/sera-abyss-movement.webp": "ba44f8969b598088e65b13ba3767762908247d00fcc3985d76a40bb9a67f75ad"
+      }
+    },
+    {
+      "id": "aria/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/aria.webp": "6c86bbb638e793cfc5176822a504409f6fc53fc0f725f5a519c93191793a528d"
+      }
+    },
+    {
+      "id": "aria/run",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/aria.webp": "6c86bbb638e793cfc5176822a504409f6fc53fc0f725f5a519c93191793a528d"
+      }
+    },
+    {
+      "id": "aria/reaction",
+      "frames": 4,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/anatomy2206/aria-movement.webp": "f3aeea150c1cdc2a0fbe919f75d6cb898a7f7cf560438f0f1d50f217c7e8a6b6"
+      }
+    },
+    {
+      "id": "aria-noel/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/aria-noel.webp": "4676f8cbce2f0db541f8440bf4667c7fff10b6dd533a50bd5bad1111156ef353"
       }
     },
     {
       "id": "aria-noel/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 28.2836,
-      "afterRmsAccelerationAt160px": 9.2341,
-      "maxPivotAdjustmentAt160px": 19.2,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/aria-noel-movement.webp": "2e1c6bf7ca554684ca44a58976d360151bc6f9242b20146d7fc8fad38a96d2ba"
+        "art/locomotion2203/aria-noel.webp": "4676f8cbce2f0db541f8440bf4667c7fff10b6dd533a50bd5bad1111156ef353"
       }
     },
     {
       "id": "aria-noel/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 19.8999,
-      "afterRmsAccelerationAt160px": 4.7829,
-      "maxPivotAdjustmentAt160px": 15.9711,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/aria-noel-movement.webp": "2e1c6bf7ca554684ca44a58976d360151bc6f9242b20146d7fc8fad38a96d2ba"
+        "art/premium/aria-noel-movement.webp": "9cf297eb3749de695971b3596dcce0f9bc51ae2007c5129883d4425d4063c9f3"
+      }
+    },
+    {
+      "id": "aria-ember/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/aria-ember.webp": "f4c5f65024a38c716b92a413da1fad78a35e403833076db47e658f6a069d1a60"
       }
     },
     {
       "id": "aria-ember/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 7.8177,
-      "afterRmsAccelerationAt160px": 1.3937,
-      "maxPivotAdjustmentAt160px": 7.4457,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/aria-ember-movement.webp": "69338d2b4d5c464cf3e68ea9b632e6753cadf375fc2231328dab631248250c37"
+        "art/locomotion2203/aria-ember.webp": "f4c5f65024a38c716b92a413da1fad78a35e403833076db47e658f6a069d1a60"
       }
     },
     {
       "id": "aria-ember/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 2.1611,
-      "afterRmsAccelerationAt160px": 0.2272,
-      "maxPivotAdjustmentAt160px": 1.3043,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/aria-ember-movement.webp": "69338d2b4d5c464cf3e68ea9b632e6753cadf375fc2231328dab631248250c37"
+        "art/premium/aria-ember-movement.webp": "d4796bc17490d1fa007f73330f89f441c89e0e75ccb4facc495022c9ce441fac"
+      }
+    },
+    {
+      "id": "aria-lunar/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/aria-lunar.webp": "927d06569759c5c0fd2d3c46c25926e674a4f4a1cc08a6a271dba109934c7abd"
       }
     },
     {
       "id": "aria-lunar/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 39.2484,
-      "afterRmsAccelerationAt160px": 18.7818,
-      "maxPivotAdjustmentAt160px": 19.2,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/aria-lunar-movement.webp": "6a13eb5df72135ddcab1fbf39d35aa931865315c7c1097f6df3ea0ca71933d62"
+        "art/locomotion2203/aria-lunar.webp": "927d06569759c5c0fd2d3c46c25926e674a4f4a1cc08a6a271dba109934c7abd"
       }
     },
     {
       "id": "aria-lunar/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 32.9337,
-      "afterRmsAccelerationAt160px": 14.4993,
-      "maxPivotAdjustmentAt160px": 19.2,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/aria-lunar-movement.webp": "6a13eb5df72135ddcab1fbf39d35aa931865315c7c1097f6df3ea0ca71933d62"
+        "art/premium/aria-lunar-movement.webp": "5002a5d7d83ea35f3347a84ad4730764a91e1eb602cdc94bb26d559ddeae0535"
+      }
+    },
+    {
+      "id": "aria-aurora/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/aria-aurora.webp": "fc0b990c068907ec8f48adcb66fb44ee644754afc0f41cd3f283fccba11d9b4e"
       }
     },
     {
       "id": "aria-aurora/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 5.9597,
-      "afterRmsAccelerationAt160px": 0.7382,
-      "maxPivotAdjustmentAt160px": 4.4085,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/aria-aurora-movement.webp": "5ef26e40cf4f24c2027ee42f62bab1feb0336a8eaef44ec9d18ff473a0d9472e"
+        "art/locomotion2203/aria-aurora.webp": "fc0b990c068907ec8f48adcb66fb44ee644754afc0f41cd3f283fccba11d9b4e"
       }
     },
     {
       "id": "aria-aurora/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 2.6509,
-      "afterRmsAccelerationAt160px": 0.449,
-      "maxPivotAdjustmentAt160px": 2.1507,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/aria-aurora-movement.webp": "5ef26e40cf4f24c2027ee42f62bab1feb0336a8eaef44ec9d18ff473a0d9472e"
+        "art/premium/aria-aurora-movement.webp": "027b6907bf009f2d7cf9bcf569b63a5c36bc2d1ca4bdfed4e0024e442a5edc99"
+      }
+    },
+    {
+      "id": "aria-abyss/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/aria-abyss.webp": "32ca71645a53eb98f76f488fc1d01545331a0613c7ce24c37e3a4eed702830ac"
       }
     },
     {
       "id": "aria-abyss/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 8.1245,
-      "afterRmsAccelerationAt160px": 1.7072,
-      "maxPivotAdjustmentAt160px": 6.5784,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/aria-abyss-movement.webp": "4aac95fb0364ab1fca4d7c75c06fd2ff64390ee42b21528d2c5d95d75f9debb8"
+        "art/locomotion2203/aria-abyss.webp": "32ca71645a53eb98f76f488fc1d01545331a0613c7ce24c37e3a4eed702830ac"
       }
     },
     {
       "id": "aria-abyss/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 1.8829,
-      "afterRmsAccelerationAt160px": 0.257,
-      "maxPivotAdjustmentAt160px": 1.3298,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/aria-abyss-movement.webp": "4aac95fb0364ab1fca4d7c75c06fd2ff64390ee42b21528d2c5d95d75f9debb8"
+        "art/premium/aria-abyss-movement.webp": "e21dd2fd002e00e97f3a576fd9a3814e5999fe2ae4be9fbfcaf053f0959293cb"
+      }
+    },
+    {
+      "id": "elian/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/elian.webp": "f7313be1ed9cc3594c127f1c618fdc4c0e839bc02c7f41466786637b373440a4"
+      }
+    },
+    {
+      "id": "elian/run",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/elian.webp": "f7313be1ed9cc3594c127f1c618fdc4c0e839bc02c7f41466786637b373440a4"
+      }
+    },
+    {
+      "id": "elian/reaction",
+      "frames": 4,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/anatomy2206/elian-movement.webp": "c302da02e72be8b3eaebb8a57486c9eff02badbf70d057863d262752bb9cbca0"
+      }
+    },
+    {
+      "id": "elian-noel/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/elian-noel.webp": "b013a5f03ee6fb2a9972b8747907c9e5b8dc987f619e1245c0b1b19701fcccee"
       }
     },
     {
       "id": "elian-noel/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 24.9338,
-      "afterRmsAccelerationAt160px": 4.1438,
-      "maxPivotAdjustmentAt160px": 12.7911,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/elian-noel-movement.webp": "aacdeeb97c5cca1e49134701671b1d2fcb13fe566990aa6dba1da61c04f904eb"
+        "art/locomotion2203/elian-noel.webp": "b013a5f03ee6fb2a9972b8747907c9e5b8dc987f619e1245c0b1b19701fcccee"
       }
     },
     {
       "id": "elian-noel/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 7.9576,
-      "afterRmsAccelerationAt160px": 1.7808,
-      "maxPivotAdjustmentAt160px": 7.2551,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/elian-noel-movement.webp": "aacdeeb97c5cca1e49134701671b1d2fcb13fe566990aa6dba1da61c04f904eb"
+        "art/premium/elian-noel-movement.webp": "9208b9189227e273a6278c6953c5556dbea36897cf85aad2cabaa0133a778f9a"
+      }
+    },
+    {
+      "id": "elian-ember/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/elian-ember.webp": "0648371799a260f011e788e62494b4ba015f0779b3a8126267c90bb9fdfa5f72"
       }
     },
     {
       "id": "elian-ember/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 23.2864,
-      "afterRmsAccelerationAt160px": 6.4137,
-      "maxPivotAdjustmentAt160px": 11.2138,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/elian-ember-movement.webp": "a4697d65e35e8bb61a6f9763918023527fc565b8c4bd8c4c8dbdf4e239e3302b"
+        "art/locomotion2203/elian-ember.webp": "0648371799a260f011e788e62494b4ba015f0779b3a8126267c90bb9fdfa5f72"
       }
     },
     {
       "id": "elian-ember/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 1.5735,
-      "afterRmsAccelerationAt160px": 0.279,
-      "maxPivotAdjustmentAt160px": 1.0199,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/elian-ember-movement.webp": "a4697d65e35e8bb61a6f9763918023527fc565b8c4bd8c4c8dbdf4e239e3302b"
+        "art/premium/elian-ember-movement.webp": "ca5dc2b057f619cbdd1ced82e01ff0bcf8ddaadb7d0b6206ebf70a754914252a"
+      }
+    },
+    {
+      "id": "elian-lunar/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/elian-lunar.webp": "cd9a7ee6158a4b7abee5a1d9b70a33a47c80a9aa40b24fea7b25e5690553e5bd"
       }
     },
     {
       "id": "elian-lunar/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 13.4351,
-      "afterRmsAccelerationAt160px": 2.0761,
-      "maxPivotAdjustmentAt160px": 8.6096,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/elian-lunar-movement.webp": "96b382dd583c1f6c65fa6a458e489ab149f324778a6ac4d0935c52e01e714e9d"
+        "art/locomotion2203/elian-lunar.webp": "cd9a7ee6158a4b7abee5a1d9b70a33a47c80a9aa40b24fea7b25e5690553e5bd"
       }
     },
     {
       "id": "elian-lunar/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 5.3596,
-      "afterRmsAccelerationAt160px": 0.361,
-      "maxPivotAdjustmentAt160px": 3.3316,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/elian-lunar-movement.webp": "96b382dd583c1f6c65fa6a458e489ab149f324778a6ac4d0935c52e01e714e9d"
+        "art/premium/elian-lunar-movement.webp": "599abc6bbdd1822e951b13289859ee4fc9ef05b13ecd69d076f0f120c639ee9d"
+      }
+    },
+    {
+      "id": "elian-aurora/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/elian-aurora.webp": "4f2d93026bdd9d38080e7d02b1423374a32a7f0e17de0aabb591cdab6130484a"
       }
     },
     {
       "id": "elian-aurora/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 19.589,
-      "afterRmsAccelerationAt160px": 3.7456,
-      "maxPivotAdjustmentAt160px": 13.4044,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/elian-aurora-movement.webp": "5c773dc4fb70843ef1d60fdee9ca3fa3b58ec9c3ff735f5a64b4402f7d836e68"
+        "art/locomotion2203/elian-aurora.webp": "4f2d93026bdd9d38080e7d02b1423374a32a7f0e17de0aabb591cdab6130484a"
       }
     },
     {
       "id": "elian-aurora/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 1.4881,
-      "afterRmsAccelerationAt160px": 0.2908,
-      "maxPivotAdjustmentAt160px": 0.9038,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/elian-aurora-movement.webp": "5c773dc4fb70843ef1d60fdee9ca3fa3b58ec9c3ff735f5a64b4402f7d836e68"
+        "art/premium/elian-aurora-movement.webp": "4c4389c6c73c739592f720730ea9b9d73b0cceef1d7bcfefa569dc2e86e338fb"
+      }
+    },
+    {
+      "id": "elian-abyss/walk",
+      "frames": 8,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
+      "sourceSha256": {
+        "art/locomotion2203/elian-abyss.webp": "f8ef9ec48a62bbb94b66e0d292585c845972b01458e66087706b734c21990a98"
       }
     },
     {
       "id": "elian-abyss/run",
       "frames": 8,
-      "beforeRmsAccelerationAt160px": 16.4971,
-      "afterRmsAccelerationAt160px": 2.698,
-      "maxPivotAdjustmentAt160px": 9.8325,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/elian-abyss-movement.webp": "23cdf114f7d7b0decbe0a19eda95834de6ca4deb20b81b49e461c4bab595e286"
+        "art/locomotion2203/elian-abyss.webp": "f8ef9ec48a62bbb94b66e0d292585c845972b01458e66087706b734c21990a98"
       }
     },
     {
       "id": "elian-abyss/reaction",
       "frames": 4,
-      "beforeRmsAccelerationAt160px": 2.9276,
-      "afterRmsAccelerationAt160px": 0.4298,
-      "maxPivotAdjustmentAt160px": 1.6894,
+      "method": "actual pixel hip and foot landmarks; constant source-model anatomy",
       "sourceSha256": {
-        "art/premium/elian-abyss-movement.webp": "23cdf114f7d7b0decbe0a19eda95834de6ca4deb20b81b49e461c4bab595e286"
+        "art/premium/elian-abyss-movement.webp": "ed9172aa9cf93f57be1a54fc8638be58f59bcfba6fd359e6ce514750e47d962b"
       }
     }
-  ]
+  ],
+  "version": "2.20.6"
 }

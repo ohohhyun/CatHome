@@ -1,13 +1,27 @@
 const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
-(async()=>{fs.mkdirSync('build/previews',{recursive:true});const browser=await chromium.launch({executablePath:process.env.CHROME_BIN||'/usr/bin/google-chrome',args:['--no-sandbox']}),p=await browser.newPage({viewport:{width:1600,height:800}}),errors=[];p.on('pageerror',e=>errors.push(e.message));
-try{await p.goto((process.env.DUNGEON_TEST_URL||'file://'+path.resolve('app/src/main/assets/index.html')));await p.waitForFunction(()=>window.DungeonActors);await p.evaluate(()=>DungeonActors.preloadAll());await p.waitForFunction(()=>DungeonActors.readyAll(),null,{timeout:120000});
-await p.evaluate(()=>{const cv=document.createElement('canvas');cv.id='size-review';cv.width=2400;cv.height=1200;Object.assign(cv.style,{position:'fixed',inset:0,width:'100vw',height:'100vh',zIndex:99999});document.body.append(cv);
-window.sizeReview=(cls,old=false)=>{const c=cv.getContext('2d');c.fillStyle='#23364c';c.fillRect(0,0,2400,1200);const kinds=['idle','run','combo0','combo1','combo2','cast','jump','dash'],audit=[];for(let i=0;i<kinds.length;i++){const kind=kinds[i],col=i%4,row=Math.floor(i/4),h=Rift.player(100+i,'',cls);Object.assign(h,{action:kind==='run'?'run':kind==='dash'?'dash':kind.startsWith('combo')?'basic':kind==='cast'?'circle':'idle',comboStage:kind.startsWith('combo')?+kind.slice(5):0,gait:.05*Math.PI*2*DungeonActors.strideLength(h)/210,at:kind==='dash'?.16:kind.startsWith('combo')||kind==='cast'?.37:0,actionDuration:.4,impactTime:.1,jump:kind==='jump'?.65:0});const f=DungeonActors.frame(h,10),bank=DungeonActors.actors[cls][f.bank],saved=bank.bodyScale;if(old&&f.bank==='run')bank.bodyScale=1;c.save();c.translate(col*600,row*600);c.fillStyle='#f4e3b0';c.font='28px sans-serif';c.fillText(Rift.CLASSES[cls].name+' / '+kind+(old?' / 2.9.2':' / 2.10.1'),24,40);c.strokeStyle='#65798b';c.beginPath();c.moveTo(0,540);c.lineTo(600,540);c.stroke();const draw=c.drawImage.bind(c),transforms=[];c.drawImage=(...a)=>{const m=c.getTransform();transforms.push({scale:Math.hypot(m.a,m.b),footX:m.e,footY:m.f});draw(...a);};if(!DungeonActors.actor(c,cls,300,540-f.rise*400,400,1,h,10))throw Error('Missing pose');c.drawImage=draw;c.restore();if(saved===undefined)delete bank.bodyScale;else bank.bodyScale=saved;audit.push({kind,bank:f.bank,transforms});}return audit;};});
-for(let cls=0;cls<4;cls++){
- const old=await p.evaluate(cls=>sizeReview(cls,true),cls);assert(old.find(a=>a.kind==='run').transforms.every(a=>Math.abs(a.scale-1)<.001));await p.screenshot({path:'build/previews/size-before-'+cls+'.png'});
- const current=await p.evaluate(cls=>sizeReview(cls,false),cls);for(const a of current){assert(a.transforms.length>0);for(const t of a.transforms){if(a.kind==='run')assert(Math.abs(t.scale-1)<.001,'run uses the same world/body scale as every other state');else assert(t.scale>.99&&t.scale<1.01,'attack/jump/dash/idle must not inherit run size');assert(Math.abs(t.footX-(Math.floor(current.indexOf(a)%4)*600+300))<1,'size changes preserve the common ground X');assert(Math.abs(t.footY-(Math.floor(current.indexOf(a)/4)*600+540))<1,'size changes preserve the common ground Y');}}await p.screenshot({path:'build/previews/size-after-'+cls+'.png'});
- // Repeat actual state switches in each direction and at all eight gait phases; no history-based size easing or overshoot.
- const switches=await p.evaluate(cls=>{const c=document.getElementById('size-review').getContext('2d'),out=[],h=Rift.player(80,'',cls),draw=c.drawImage.bind(c);c.drawImage=(...a)=>{const m=c.getTransform();out.push({action:h.action,jump:h.jump,scale:Math.hypot(m.a,m.b)});draw(...a);};for(const dir of [-1,1])for(let i=0;i<8;i++)for(const kind of ['run','basic','run','circle','run','jump','run','dash','idle']){Object.assign(h,{action:kind==='jump'?'idle':kind,gait:i/8*Math.PI*2*320/210,jump:kind==='jump'?.4:0,dashTime:kind==='dash'?.16:0,at:['basic','circle'].includes(kind)?.25:0,actionDuration:.4,impactTime:.1,landing:0,hurt:0});DungeonActors.actor(c,cls,300,500,400,dir,h,20+i*.1);}c.drawImage=draw;return out;},cls);assert(switches.every(v=>v.action==='run'&&v.jump===0?v.scale>.99&&v.scale<1.01:v.scale>.99&&v.scale<1.01));
-}
-assert.deepEqual(errors,[]);console.log('PASS: reviewed body-size comparison for four classes/eight motions, actual Canvas scale and grounded anchors, repeated run-to-attack/skill/jump/dash/idle switches at eight phases in both directions without scale inheritance or overshoot.');
-}finally{await browser.close();}})().catch(e=>{console.error(e);process.exit(1);});
+(async()=>{
+ fs.mkdirSync('build/previews',{recursive:true});
+ const browser=await chromium.launch({executablePath:process.env.CHROME_BIN||'/usr/bin/google-chrome',args:['--no-sandbox']}),page=await browser.newPage({viewport:{width:1600,height:800}}),errors=[];
+ page.on('pageerror',e=>errors.push(e.message));
+ try{
+  await page.goto(process.env.DUNGEON_TEST_URL||'file://'+path.resolve('app/src/main/assets/index.html'));await page.waitForFunction(()=>window.DungeonActors);await page.evaluate(()=>DungeonActors.preloadAll());await page.waitForFunction(()=>DungeonActors.readyAll(),null,{timeout:120000});
+  // Actual state switches must retain one opaque, uniformly scaled authored body.
+  const switches=await page.evaluate(()=>{
+   const c=document.createElement('canvas').getContext('2d'),draw=c.drawImage.bind(c),samples=[];let hero;
+   c.drawImage=(...args)=>{const m=c.getTransform();samples.push({state:hero.action,scale:Math.hypot(m.a,m.b),alpha:c.globalAlpha});return draw(...args);};
+   for(let cls=0;cls<6;cls++)for(const dir of [-1,1])for(let phase=0;phase<8;phase++){
+    hero=Rift.player(90000+cls*100+phase,'',cls);
+    for(const state of ['run','basic','run','circle','run','jump','run','dash','idle']){
+     Object.assign(hero,{action:state==='jump'?'idle':state,vx:state==='run'?dir*Rift.CLASSES[cls].speed:0,gait:phase/8*Math.PI*2*DungeonActors.strideLength(hero,'run')/210,jump:state==='jump'?.4:0,dashTime:state==='dash'?.16:0,at:['basic','circle'].includes(state)?.25:0,actionDuration:.4,impactTime:.1,landing:0,hurt:0});
+     const before=JSON.stringify(hero),count=samples.length;
+     if(!DungeonActors.actor(c,cls,300,500,400,dir,hero,20+phase*.1))throw Error('Missing state '+state);
+     if(samples.length!==count+1||JSON.stringify(hero)!==before)throw Error('State switch repeats or mutates body');
+    }
+   }
+   return samples;
+  });
+  assert.equal(switches.length,864);assert(switches.every(s=>Math.abs(s.scale-1)<1e-6&&s.alpha===1),'state changes preserve native aspect and one opaque body');
+  await require('./all-look-anatomy.cjs')(page);await require('./canvas-cover.cjs')(page);assert.deepEqual(errors,[]);
+  console.log('PASS: 864 real state transitions in six classes/both directions; 432 actual full-color body comparisons in all 36 looks, source-pixel anatomy and height checks, and actual screen aspect pixels.');
+ }finally{await browser.close();}
+})().catch(e=>{console.error(e);process.exit(1);});

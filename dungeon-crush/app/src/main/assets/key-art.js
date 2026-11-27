@@ -11,9 +11,9 @@ function selectionSource(cls,costume=''){return root.DungeonSelectionArt?.[selec
 function layout(img,cls,costume=''){
  const mark=img.id==='select-key-art'?root.DungeonSelectionArt?.[selectionId(cls,costume)]:null;
  const factor=(root.DungeonArt?.heightScale?.(cls)||1)/1.16;
- const scale=mark ? .64*mark.height/(mark.soleY-mark.eyeY):factor*(root.DungeonKeyArtInset?.[img.dataset.source?.split('/').pop().replace('.webp','')]||1);
+ const scale=mark ? .64*(root.DungeonArt?.heightScale?.(cls)||1)*mark.height/(mark.soleY-mark.eyeY):factor*(root.DungeonKeyArtInset?.[img.dataset.source?.split('/').pop().replace('.webp','')]||1);
  const fitHeight=mark?Math.min(img.clientHeight,img.clientWidth*mark.height/mark.width):0,shift=mark?fitHeight*(scale*(1-mark.soleY/mark.height)-.08):0;
- img.dataset.heightScale=String(mark?1:factor);img.style.transformOrigin='center bottom';img.style.transform='translateY('+shift+'px) scale('+scale+')';
+ img.dataset.heightScale=String(mark?(root.DungeonArt?.heightScale?.(cls)||1):factor);img.style.transformOrigin='center bottom';img.style.transform='translateY('+shift+'px) scale('+scale+')';
 }
 function show(img,cls,costume=''){
  if(!img)return;const src=img.id==='select-key-art'?selectionSource(cls,costume):source(cls,costume);if(img.dataset.source===src){layout(img,cls,costume);return;}

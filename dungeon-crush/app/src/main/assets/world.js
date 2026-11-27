@@ -53,5 +53,6 @@ function portal(c,x,y,time,ready=true,scale=1){
  c.save();c.globalCompositeOperation='lighter';for(let i=0;i<4;i++){const a=time*.22+i*TAU/4;c.globalAlpha=.45*intensity;c.strokeStyle=i%2?'#68b8eb':'#b5eadb';c.lineWidth=1.8;c.beginPath();c.ellipse(0,-169,96,151,0,a,a+.35);c.stroke();}
  for(let i=0;i<12;i++){const a=i*2.399+time*.3,r=112+Math.sin(i+time)*8;c.globalAlpha=(.2+.3*Math.sin(time+i)**2)*intensity;c.fillStyle='#c6e7f1';c.beginPath();c.arc(Math.cos(a)*r,-169+Math.sin(a)*172,1+i%2*.4,0,TAU);c.fill();}c.restore();c.restore();
 }
-root.DungeonWorld={cameraAt,follow,background,portal,layers:camera=>({ground:-camera,distant:-camera*.28}),gateReady:()=>true};
+function viewport(){const cv=root.document?.getElementById?.('scene'),r=cv?.getBoundingClientRect?.()||{left:0,top:0,width:1600,height:800},scale=Math.max(r.width/1600,r.height/800),x=r.left+(r.width-1600*scale)/2,y=r.top+(r.height-800*scale)/2,left=(r.left-x)/scale,top=(r.top-y)/scale,right=left+r.width/scale,bottom=top+r.height/scale,clip=[];if(left>0)clip.push({x:0,y:0,w:left,h:800});if(right<1600)clip.push({x:right,y:0,w:1600-right,h:800});if(top>0)clip.push({x:0,y:0,w:1600,h:top});if(bottom<800)clip.push({x:0,y:bottom,w:1600,h:800-bottom});return{x,y,scale,width:r.width,height:r.height,clip};}
+root.DungeonWorld={viewport,cameraAt,follow,background,portal,layers:camera=>({ground:-camera,distant:-camera*.28}),gateReady:()=>true};
 })(window);

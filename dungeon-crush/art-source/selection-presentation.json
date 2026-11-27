@@ -1,12 +1,12 @@
 {
   "background": "art/selection-atrium.webp",
   "heightScales": [
-    1,
-    1,
-    1,
-    1,
-    1,
-    1
+    1.0,
+    0.918918918918919,
+    1.0810810810810811,
+    0.8918918918918919,
+    0.8648648648648649,
+    1.027027027027027
   ],
   "bodyLandmarks": {
     "kael": {
@@ -335,13 +335,13 @@
     }
   },
   "scope": "Rendering only. All six classes share one anatomical body height; each paid outfit matches its own base. Simulation/collisions/stats/save unchanged.",
-  "version": "2.20.5",
+  "version": "2.20.6",
   "bodyFraction": 0.64,
   "groundInset": 0.08,
   "landmarkMethod": "Manually reviewed eye center and lowest boot sole on all36 original selection images; weapons, hats, capes, effects and painted scenery excluded. Approximate readings +/-12 source pixels; source images unchanged.",
   "townPeople": {
     "src": "art/town-npcs.webp",
-    "sha256": "da8c8a5cc65b7d0cd675a05b362760eaabd28cfa299fc3d2700e1cc4b76c48d2",
+    "sha256": "7f628d1aee2868f1474e71372cd5ad7108600b66acd21283984eb7b5ae5d872b",
     "floorY": 580,
     "bodyHeight": "DungeonArt.bodyHeight(260)",
     "landmarks": {
@@ -351,15 +351,28 @@
         "soleY": 965
       },
       "blacksmith": {
-        "headY": 65,
-        "eyeY": 125,
-        "soleY": 964
+        "headY": 24.1153,
+        "eyeY": 99.9202,
+        "soleY": 965
       },
       "trainer": {
         "headY": 58,
         "eyeY": 120,
         "soleY": 966
       }
+    },
+    "heightCm": {
+      "merchant": 170,
+      "blacksmith": 195,
+      "trainer": 175
     }
-  }
+  },
+  "heightCm": [
+    185,
+    170,
+    200,
+    165,
+    160,
+    190
+  ]
 }

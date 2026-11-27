@@ -30,3 +30,12 @@ for(const record of review.banks){
  const dwell=Array(8).fill(0);for(let tick=0;tick<480;tick++){const index=A.runIndex(bank,(tick+.25)/480);assert(index>=0&&index<8);dwell[index]++;}assert.deepEqual(dwell,Array(8).fill(60),'every run pose has the same hold duration; no short/long galloping beat');
 }
 console.log('PASS: real stick normalization, all six classes / 30–120Hz / three throws / thumb drift / both turns, immediate reversed travel with continuous gait; measured timing and unmodified full-body sources for all 36 run banks.');
+// Render extrapolation can move slightly behind the previous visual sample when a LAN snapshot arrives.
+for(let cls=0;cls<6;cls++){
+ const p=E.player(88000+cls,'보간 검수',cls),top=E.CLASSES[cls].speed;p.action='run';p.vx=top*.35;p.gait=1;A.runPhase(p,'walk');p.vx=top;p.gait=1.5;const phase=A.runPhase(p,'run');p.gait=1.49;const corrected=A.runPhase(p,'run'),error=Math.abs(((corrected-phase+.5)%1+1)%1-.5);assert(error<.015,'small snapshot correction cannot reset a blended walk/run stride');
+ p.gait=0;assert.equal(A.runPhase(p,'run'),0,'new scene/spawn starts at a clean contact phase');
+}
+for(let cls=0;cls<6;cls++){
+ const p=E.player(89000+cls,'걷기 경계',cls),top=E.CLASSES[cls].speed;p.action='run';p.vx=top*.35;p.gait=1;A.frame(p,0);const banks=[];for(let n=0;n<30;n++){p.vx=top*(n%2?.54:.56);p.gait+=.05;banks.push(A.frame(p,n/60).bank);}assert(banks.every(k=>k==='walk'),'thumb noise must not alternate entire walk/run models');p.vx=top;assert.equal(A.frame(p,1).bank,'run');
+}
+console.log('PASS: small LAN visual corrections preserve continuous gait, scene resets remain clean, and analog threshold noise never alternates whole walking/running models.');

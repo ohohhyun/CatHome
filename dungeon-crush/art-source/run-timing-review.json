@@ -26,7 +26,7 @@
         0.048781685197327014
       ],
       "sourceSha256": {
-        "art/motion211/kael-run-consistent.webp": "02c75765530484a18163bf274f5ac3b72dd77c0ed0fe0058562b53bfe57351d6"
+        "art/locomotion2203/kael.webp": "6a38ddf3807357d17ecda01c55211301ec61d980bde4a91b7f7a819c0757c576"
       }
     },
     {
@@ -52,7 +52,7 @@
         0.16813229093368334
       ],
       "sourceSha256": {
-        "art/motion211/rin-run-consistent.webp": "7150d55e08ff0d8cb22e1c6e3d57f034481d718a39c293be27d0444626c4a514"
+        "art/locomotion2203/rin.webp": "19e6d204be03ee5c01081e22fae4bfae3323f6bac28413ee4c5fe8a244b7563f"
       }
     },
     {
@@ -78,7 +78,7 @@
         0.06929606946186762
       ],
       "sourceSha256": {
-        "art/motion211/bane-run-consistent.webp": "fe669c7fda262026eea9d9acc52d4e29c0724a21af945c14ce195bf2e165030e"
+        "art/locomotion2203/bane.webp": "5bfda7d38cc58c8a2ce0c8c16ca2ae28eb52b07dcd34936477a5d13ac53b02e2"
       }
     },
     {
@@ -104,7 +104,7 @@
         0.08232944149461431
       ],
       "sourceSha256": {
-        "art/motion211/sera-run-consistent.webp": "be14d2d142f644eba468cdb554a5190da13da6821e407ae05f028e8cd5b51b79"
+        "art/locomotion2203/sera.webp": "93ad849a32dba43da0204e572afcea2fed215e1c885af56784d19f5549c9fc6c"
       }
     },
     {
@@ -130,7 +130,7 @@
         0.06490711467027806
       ],
       "sourceSha256": {
-        "art/motion299/aria-mobility.webp": "1a9730c25115ccf6f13cabad5d97eeb082360fa48b95e44ca7ed2731d6f594d6"
+        "art/locomotion2203/aria.webp": "6c86bbb638e793cfc5176822a504409f6fc53fc0f725f5a519c93191793a528d"
       }
     },
     {
@@ -156,7 +156,7 @@
         0.1418951734378007
       ],
       "sourceSha256": {
-        "art/motion210/elian-mobility.webp": "93fdcf738d6ae7d23d51359c56a0a2f3f6e11c29288f05c39282e8d5ad23a3ce"
+        "art/locomotion2203/elian.webp": "f7313be1ed9cc3594c127f1c618fdc4c0e839bc02c7f41466786637b373440a4"
       }
     },
     {
@@ -182,7 +182,7 @@
         0.10210869145029315
       ],
       "sourceSha256": {
-        "art/premium/kael-noel-movement.webp": "e822f43fc22269d350ca8121ec8117e7417580536e4afdfe5d7d235efc36078d"
+        "art/locomotion2203/kael-noel.webp": "1a8f1dd069a4d8c8b96d0d6061305f797040d81b4227ce381416051b0f0974b5"
       }
     },
     {
@@ -208,7 +208,7 @@
         0.08225648236228968
       ],
       "sourceSha256": {
-        "art/premium/kael-ember-movement.webp": "b07de7e0d1b65c09d40d88c96d2029c25b32654feb7c614aed29d47138f6ef00"
+        "art/locomotion2203/kael-ember.webp": "66681cfd0604713af846f9b016f1138171e35a22e19fdd7fe7b20a6cb440b494"
       }
     },
     {
@@ -234,7 +234,7 @@
         0.12909993249710597
       ],
       "sourceSha256": {
-        "art/premium/kael-lunar-movement.webp": "349abcebb5d4ec29f1372cc20404305b9abfcbab83a7bf5f4189331e2bf37891"
+        "art/locomotion2203/kael-lunar.webp": "c6491fdcb112bcfa95c2b322fb664d6d841fe38e7037cddb159b49653ab59aa2"
       }
     },
     {
@@ -260,7 +260,7 @@
         0.2212235891242436
       ],
       "sourceSha256": {
-        "art/premium/kael-aurora-movement.webp": "c7adb579667397b8b4a3fac8a483d51dccef0bf82950f2bf4a604d89fa9da4bf"
+        "art/locomotion2203/kael-aurora.webp": "1f6a759ac3776cc382bd698e32ecc59e6e889cb5eb5398309d3cf420209eb9b9"
       }
     },
     {
@@ -286,7 +286,7 @@
         0.13630742072831536
       ],
       "sourceSha256": {
-        "art/premium/kael-abyss-movement.webp": "779d96aa3948822786cb61a70dec9bebc1027882f667e5734c8bd2564d99e753"
+        "art/locomotion2203/kael-abyss.webp": "baf7f4f83f4cffeeaf47b6f56c5a85b9f6e848238ff3245a28fd8e2bf03a2301"
       }
     },
     {
@@ -312,7 +312,7 @@
         0.16252275074924843
       ],
       "sourceSha256": {
-        "art/premium/rin-noel-movement.webp": "99cf8a7009a0baf0c74cb547b37dc981c2a4b4675245f3f297d9806d0a36390b"
+        "art/locomotion2203/rin-noel.webp": "8aa710878b293dede57bb357f406d6d95e061cd8aeedfc1ddfe28e968bbfbe47"
       }
     },
     {
@@ -338,7 +338,7 @@
         0.1040501669043796
       ],
       "sourceSha256": {
-        "art/premium/rin-ember-movement.webp": "7afe6cc4de5e99bf5e90118162e0554ed27a4fc794a2334d7132be408be5ae7e"
+        "art/locomotion2203/rin-ember.webp": "0eb973538de060607b762f34a2af1af13c7432312e0fa381d6ad06f419565c65"
       }
     },
     {
@@ -364,7 +364,7 @@
         0.15326285534294037
       ],
       "sourceSha256": {
-        "art/premium/rin-lunar-movement.webp": "16fe4b74f565fa3041e01c96fb6ad65950e6b6077c7d49139b75ca74076cce83"
+        "art/locomotion2203/rin-lunar.webp": "ce771afaa0479d217ab1d29af877cc3024d31dde581d0d69bd1f54d5abf36877"
       }
     },
     {
@@ -390,7 +390,7 @@
         0.14296791359629563
       ],
       "sourceSha256": {
-        "art/premium/rin-aurora-movement.webp": "918486a990bde76a1a53057b31dc6fb86a8690486ac0265ebce1027d0583027d"
+        "art/locomotion2203/rin-aurora.webp": "d3d941b80c1947acbf4808d805f87266b479c8d2004f0fd017f5ae06cf88ce67"
       }
     },
     {
@@ -416,7 +416,7 @@
         0.07673868294821311
       ],
       "sourceSha256": {
-        "art/premium/rin-abyss-movement.webp": "b27ab4fbdc385ed2c93385425a457812bded09f73bff790228cd1dded5bbda23"
+        "art/locomotion2203/rin-abyss.webp": "47f4bea38dcc47fe5bc65409dc781481a4aad6f4b2e6c3230fc132c292301a81"
       }
     },
     {
@@ -442,7 +442,7 @@
         0.17671400796643635
       ],
       "sourceSha256": {
-        "art/premium/bane-noel-movement.webp": "e296bc1941a16bfa12dccc85fbe3a3119320055cacf017a415f09f96106f8f07"
+        "art/locomotion2203/bane-noel.webp": "652c596bac9cc81ad07f3b34e50fb0d0949e810304807e02b7da3c2605fdc79d"
       }
     },
     {
@@ -468,7 +468,7 @@
         0.16297534817891676
       ],
       "sourceSha256": {
-        "art/premium/bane-ember-movement.webp": "d56556f93ce607b2cd25bc5218171e7961988c09f40080399025afca6e8268be"
+        "art/locomotion2203/bane-ember.webp": "c091a645494693d0a7466bc482f1781f9d1d8095a3abc60c19986170126eff11"
       }
     },
     {
@@ -494,7 +494,7 @@
         0.14076939529113622
       ],
       "sourceSha256": {
-        "art/premium/bane-lunar-movement.webp": "56e9e24b387958aac21e5b949cae032938e86d45a62702b25b36c403f5f370a7"
+        "art/locomotion2203/bane-lunar.webp": "db0ed02731276124dea01d1e53b483fbffd22a08e6f1772298f46d246439bf63"
       }
     },
     {
@@ -520,7 +520,7 @@
         0.21909605455480302
       ],
       "sourceSha256": {
-        "art/premium/bane-aurora-movement.webp": "e2c2fe830d59a16e0ca1abe18ef78dbf79c962bf1e350b081097929e7caa4fbd"
+        "art/locomotion2203/bane-aurora.webp": "3287097b45e18f8fdb4366249416844be24c47df4ad7f1a9dd3a6845b32531b7"
       }
     },
     {
@@ -546,7 +546,7 @@
         0.12484588074432573
       ],
       "sourceSha256": {
-        "art/premium/bane-abyss-movement.webp": "32d8fba3d93b5afb42965a7baa79a498f38f63f58b8f55da1f9f2022201a2744"
+        "art/locomotion2203/bane-abyss.webp": "8c89537f33b69a20c1fe31a565868d88f380543ebfa2e2366b19e68f652267e2"
       }
     },
     {
@@ -572,7 +572,7 @@
         0.16457615509747917
       ],
       "sourceSha256": {
-        "art/premium/sera-noel-movement.webp": "535a75f7c12339fe71ec12f8c68efe02ae08f5e577dd914ddcdd7dde65e0490d"
+        "art/locomotion2203/sera-noel.webp": "e02185ec5441ff29fc372808a56fc00858441c1b8fe01ce3c08123498ab581c1"
       }
     },
     {
@@ -598,7 +598,7 @@
         0.08593172353880238
       ],
       "sourceSha256": {
-        "art/premium/sera-ember-movement.webp": "832bc23c0c48c610ab7c8f1322b2028cfad821c6a44f228c9d0d35b54afc34bd"
+        "art/locomotion2203/sera-ember.webp": "063b8980949df4c0c7b5ecbb97a4730036838d19558ac08024c530bd6b329651"
       }
     },
     {
@@ -624,7 +624,7 @@
         0.1329030055421434
       ],
       "sourceSha256": {
-        "art/premium/sera-lunar-movement.webp": "09b33e8e19e0995bb8bc9c9b30dc6a677252daf0a32e21bd0993d07dabdc53f5"
+        "art/locomotion2203/sera-lunar.webp": "6faf33f877c632f21d28f4cf68190e3c59c8c5dac723348760e62198a0d54e5e"
       }
     },
     {
@@ -650,7 +650,7 @@
         0.17377511050809089
       ],
       "sourceSha256": {
-        "art/premium/sera-aurora-movement.webp": "087dbae017b884ebd74b90a591342acf48256011abfcaf67f9082f97395198fa"
+        "art/locomotion2203/sera-aurora.webp": "ae4960a8571a758d85f45ee84b7509a00fccb9d3ac5efe7998818ffefe9ed972"
       }
     },
     {
@@ -676,7 +676,7 @@
         0.11983094125479583
       ],
       "sourceSha256": {
-        "art/premium/sera-abyss-movement.webp": "7164929c449033ed9fbe7961aed79509aa024b2390811865c47f5cd99ac5b3be"
+        "art/locomotion2203/sera-abyss.webp": "211ab50d6c198dc0f58d7a814304780825c4c4040346fef515ad643a5fb806b5"
       }
     },
     {
@@ -702,7 +702,7 @@
         0.1980275919658502
       ],
       "sourceSha256": {
-        "art/premium/aria-noel-movement.webp": "2e1c6bf7ca554684ca44a58976d360151bc6f9242b20146d7fc8fad38a96d2ba"
+        "art/locomotion2203/aria-noel.webp": "4676f8cbce2f0db541f8440bf4667c7fff10b6dd533a50bd5bad1111156ef353"
       }
     },
     {
@@ -728,7 +728,7 @@
         0.15318484633722054
       ],
       "sourceSha256": {
-        "art/premium/aria-ember-movement.webp": "69338d2b4d5c464cf3e68ea9b632e6753cadf375fc2231328dab631248250c37"
+        "art/locomotion2203/aria-ember.webp": "f4c5f65024a38c716b92a413da1fad78a35e403833076db47e658f6a069d1a60"
       }
     },
     {
@@ -754,7 +754,7 @@
         0.24055590675589003
       ],
       "sourceSha256": {
-        "art/premium/aria-lunar-movement.webp": "6a13eb5df72135ddcab1fbf39d35aa931865315c7c1097f6df3ea0ca71933d62"
+        "art/locomotion2203/aria-lunar.webp": "927d06569759c5c0fd2d3c46c25926e674a4f4a1cc08a6a271dba109934c7abd"
       }
     },
     {
@@ -780,7 +780,7 @@
         0.18360830761443594
       ],
       "sourceSha256": {
-        "art/premium/aria-aurora-movement.webp": "5ef26e40cf4f24c2027ee42f62bab1feb0336a8eaef44ec9d18ff473a0d9472e"
+        "art/locomotion2203/aria-aurora.webp": "fc0b990c068907ec8f48adcb66fb44ee644754afc0f41cd3f283fccba11d9b4e"
       }
     },
     {
@@ -806,7 +806,7 @@
         0.13405970237245513
       ],
       "sourceSha256": {
-        "art/premium/aria-abyss-movement.webp": "4aac95fb0364ab1fca4d7c75c06fd2ff64390ee42b21528d2c5d95d75f9debb8"
+        "art/locomotion2203/aria-abyss.webp": "32ca71645a53eb98f76f488fc1d01545331a0613c7ce24c37e3a4eed702830ac"
       }
     },
     {
@@ -832,7 +832,7 @@
         0.2259722160109453
       ],
       "sourceSha256": {
-        "art/premium/elian-noel-movement.webp": "aacdeeb97c5cca1e49134701671b1d2fcb13fe566990aa6dba1da61c04f904eb"
+        "art/locomotion2203/elian-noel.webp": "b013a5f03ee6fb2a9972b8747907c9e5b8dc987f619e1245c0b1b19701fcccee"
       }
     },
     {
@@ -858,7 +858,7 @@
         0.12398665396618455
       ],
       "sourceSha256": {
-        "art/premium/elian-ember-movement.webp": "a4697d65e35e8bb61a6f9763918023527fc565b8c4bd8c4c8dbdf4e239e3302b"
+        "art/locomotion2203/elian-ember.webp": "0648371799a260f011e788e62494b4ba015f0779b3a8126267c90bb9fdfa5f72"
       }
     },
     {
@@ -884,7 +884,7 @@
         0.1705277467213933
       ],
       "sourceSha256": {
-        "art/premium/elian-lunar-movement.webp": "96b382dd583c1f6c65fa6a458e489ab149f324778a6ac4d0935c52e01e714e9d"
+        "art/locomotion2203/elian-lunar.webp": "cd9a7ee6158a4b7abee5a1d9b70a33a47c80a9aa40b24fea7b25e5690553e5bd"
       }
     },
     {
@@ -910,7 +910,7 @@
         0.17501761476018365
       ],
       "sourceSha256": {
-        "art/premium/elian-aurora-movement.webp": "5c773dc4fb70843ef1d60fdee9ca3fa3b58ec9c3ff735f5a64b4402f7d836e68"
+        "art/locomotion2203/elian-aurora.webp": "4f2d93026bdd9d38080e7d02b1423374a32a7f0e17de0aabb591cdab6130484a"
       }
     },
     {
@@ -936,8 +936,9 @@
         0.21546122626186828
       ],
       "sourceSha256": {
-        "art/premium/elian-abyss-movement.webp": "23cdf114f7d7b0decbe0a19eda95834de6ca4deb20b81b49e461c4bab595e286"
+        "art/locomotion2203/elian-abyss.webp": "f8ef9ec48a62bbb94b66e0d292585c845972b01458e66087706b734c21990a98"
       }
     }
-  ]
+  ],
+  "version": "2.20.6"
 }
